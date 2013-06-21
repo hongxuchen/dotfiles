@@ -1,0 +1,32 @@
+# -*- mode:sh -*-
+# vim:ft=sh
+
+# For colourful man pages (and other tools that use `less`, CLUG-Wiki style)
+## pager
+export PAGER="less"
+export LESS="-R -i -g -c -W"
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
+export LESSOPEN='|/usr/bin/lesspipe %s'
+export LESSCLOSE='/usr/bin/lesspipe %s %s'
+
+#grep
+export GREP_OPTIONS='--color=auto'
+export GREP_COLOR='1;32'
+
+# system related; the first one is only used for llvm shared library testing
+export PATH=~/moonbox/llvm-obj/Debug+Asserts/bin:~/moonbox/llvm-obj/Debug+Asserts/lib:~/moonbox/llvm-gcc4.2-2.9-x86_64-linux/bin:~/moonbox/klee-install/bin:~/moonbox/klee/scripts:/usr/local/texlive/2012/bin/i386-linux:~/INSTALL/bin:~/.bin:/home/hongxuchen/data_backup/rtags/bin:$PATH
+export LD_LIBRARY_PATH=/usr/lib/llvm-3.4/lib
+#export C_INCLUDE_PATH
+#export CPLUS_INCLUDE_PATH
+#export LD_LIBRARY_PATH
+#export PYTHONPATH
+#export GTAGSLIBPATH
+
+stty ixany
+stty ixoff -ixon

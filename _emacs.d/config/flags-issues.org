@@ -1,0 +1,10 @@
+* distinguish between C and C++ files
+** the mainly difference is the ~-std=~ option
+** need to judge whether the header file ~.h~ is C or C++'s
+
+* How to deal with directory that I have no write permission?
+* the local directory variable works fine or not, can emacs search ~.dir-locals.el~ recursively up?
+* What is the time when the local variable(for both file and directory) is set?
+* cc-lookup should work with mark back
+* seems that `-I/usr/include/linux and -I/usr/include' should NEVER be added explicitly for flags. http://stackoverflow.com/questions/1107940/size-t-can-not-be-found-by-g-4-1-or-others-on-ubuntu-8-1
+* ~auto-clang-complete~ doesn't support `-I' without space.

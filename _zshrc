@@ -1,0 +1,24 @@
+# -*- mode:sh -*-
+#based on oh-my-zsh, @see https://github.com/robbyrussell/oh-my-zsh
+
+ZSH=$HOME/.oh-my-zsh
+ALIAS=$HOME/.aliases
+
+# Set name of the theme to load.
+# Look in ~/.oh-my-zsh/themes/
+#"random"
+#ZSH_THEME="bira"
+#ZSH_THEME="candy"
+#ZSH_THEME="dst"
+#ZSH_THEME="imajes"
+ZSH_THEME="nanotech"
+#ZSH_THEME="steeef"
+
+# ~/.oh-my-zsh/plugins/
+plugins=(debian vi-mode command-not-found)
+
+source $ZSH/oh-my-zsh.sh
+
+if [[ -e $ALIAS ]];then
+    source $ALIAS
+fi

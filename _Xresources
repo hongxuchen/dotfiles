@@ -1,0 +1,56 @@
+!-*- mode:conf -*-
+!I do not use ~/.Xdefaults,see
+!<http://superuser.com/questions/243914/xresources-or-xdefaults/243916#243916>
+!for details
+
+!Xft settings
+Antialias             : 1
+Xft.dpi               : 86
+Xft.hinting           : 1
+Xft.hintstyle         : hintfull
+Xft.rgba              : rgb
+Xft*antialias         : true
+Xft*hinting           : full
+
+!otherwise xterm would bind Alt-x to M-8
+xterm*metaSendsEscape: true
+
+Emacs.pane.menubar.background: darkGrey
+Emacs.pane.menubar.foreground: black
+Emacs*menubar.margin: 0
+Emacs*shadowThickness: 0
+
+!font and size
+XTerm*faceSize: 13
+XTerm*faceSize1: 13
+XTerm*faceSize2: 13
+XTerm*faceSize3: 13
+XTerm*faceSize4: 13
+XTerm*faceSize5: 13
+XTerm*faceSize6: 13
+XTerm*fontMenu*fontdefault*Label: Default
+!use fc-list to see installed fonts(~/.fonts,...)
+!generally used:sans-serif
+xterm*faceName: Dejavu Sans Mono Book
+XTerm*faceNameDoublesize:WenQuanYi Micro Hei
+XTerm*cjkWidth:false
+XTerm*internalBorder: 0
+
+!no blink cursor and visual bell, they harm my eyesight
+XTerm*cursorBlink: false
+XTerm*visualBell: false
+XTerm*locale: true
+XTerm*utf8Title: true
+
+XTerm*background: #000000
+XTerm*foreground: #AAAAAA
+XTerm*scrollBar: false
+XTerm*rightScrollBar: false
+XTerm*toolBar: false
+XTerm*jumpScroll: true
+XTerm*SaveLines: 3000
+!xterm*termName: xterm-256color
+xterm*trimSelection: true
+xterm*borderWidth: 0 
+!so that both select and ctrl-c contents are put into CLIPBOARD
+XTerm*selectToClipboard: true

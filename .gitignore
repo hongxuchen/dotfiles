@@ -1,0 +1,31 @@
+*.swp
+*.pyc
+*.pyo
+*~
+
+.*.s[a-w][a-z]
+*.un~
+Session.vim
+.netrwhist
+
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+.elc
+auto-save-list
+tramp
+\#*
+\.#*
+
+# Org-mode
+.org-id-locations
+*_archive
+
+*.log
+_emacs.keyfreq
+
+
+# for security issues
+/_notifier.conf
+
+*.tar.gz

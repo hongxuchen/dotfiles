@@ -1,0 +1,35 @@
+[ui]
+username = Hongxu Chen<leftcopy.chx@gmail.com>
+
+[extensions]
+extdiff=
+pager=
+fetch=
+rebase=
+transplant=
+graphlog =
+hgext.bookmarks =
+
+[merge-tools]
+kdiff3.executable = /usr/bin/kdiff3
+kdiff3.gui = True
+
+[extdiff]
+cmd.kdiff = vimdiff
+cmd.wdiff = vimdiff
+opts.wdiff = --diff --ab
+
+[pager]
+attend = diff, log, df
+ignore = l1, l5
+
+[alias]
+ps = push
+ad = add
+adr = addremove
+df = diff
+pl = pl
+pr = pull --rebase
+ft = fetch
+l1 = log --limit 1
+l5 = log --limit 5

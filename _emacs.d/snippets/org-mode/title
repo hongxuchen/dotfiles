@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+#name : Title Block
+#key : title
+#contributor : Rick Moynihan <rick@sourcesmouth.co.uk>
+# --
+#+TITLE: ${1:title}

@@ -1,0 +1,67 @@
+	# -*- mode: gitconfig; -*-
+	;  vim: set ft=gitconfig ts=4 sw=2 tw=0 et :
+
+[user]
+	name = HongxuChen
+	email = leftcopy.chx@gmail.com
+
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	ui = auto
+
+[push]
+	default = tracking
+
+[core]
+	editor = vim
+	pager = less
+	; excludesfile = /home/hongxuchen/.gitignore_global
+
+[alias]
+	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+	wc = whatchanged -p --abbrev-commit --pretty=medium
+	dv= !zsh -c 'git diff -w "$@" | view -'
+	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+	lp = log --decorate --pretty=\"%h %ce [%ar] : %s\"
+	last =  log --pretty=\"%h %ce [%ar] : %s\" -1 HEAD
+	lm = !git log --decorate --pretty=format:'%an <%ae>' $1 | sort | uniq -c
+	up = !zsh -c 'git pull --rebase --prune && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
+	# [b]ranch
+	bd = !zsh -c 'diff -u <(git rev-list --first-parent "${1}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -1' -
+	# [c]ommit
+	cl = !git log --decorate --graph --abbrev-commit --date=relative --pretty='tformat:%C(yellow)%h%Creset}%Cgreen(%ar)%Creset}%C(bold blue)<%an>%Creset}%C(red)%d%Creset %s' $* | sed -Ee 's/(^[^<]*) ago)/\\1)/' | sed -Ee 's/(^[^<]*), [[:digit:]]+ .*months?)/\\1)/' | column -t -s '}' | less -FXRS
+	cp = cherry-pick -x
+	cr = reset --hard HEAD^
+	# [f]ile
+	faa = !git add -A && git ws
+	# [r]emote
+	rp = !git push && git push --tags
+	rfp = !git add -A && git commit --amend -C HEAD && git push -f
+	rup = !git add -A && git commit && git push -u
+	# [s]ubmodule
+	scm = submodule foreach --recursive git checkout master
+	sl = submodule --quiet foreach --recursive echo $path on $(git rev-parse --abbrev-ref HEAD)
+	ss = !git submodule sync && git submodule update --init --recursive # [s]ync
+	su = submodule foreach --recursive git pull # [u]pdate
+	# [t]ag
+	tl = tag -n1 --list
+	tr = tag -d
+	# [w]orking copy
+	wd = diff --color-words --cached
+	ws = status --short --branch --ignore-submodules=untracked
+	undo = reset HEAD@{1}
+
+[diff]
+	tool = vimdiff
+[merge]
+	tool = vimdiff
+[branch]
+	autosetuprebase = always
+[apply]
+	ignorewhitespace = change
+[mergetool]
+	prompt = false
+[gc]
+	reflogexpireunreachable = 3
