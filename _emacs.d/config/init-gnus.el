@@ -2,6 +2,8 @@
 
 (require 'gnus-cite)
 (require 'gnus-setup)
+(require 'supercite)
+;; (require 'gnus-demon)
 
 ;;-----------------------------------------------------------------------------
 ;; gnus basic settings
@@ -12,13 +14,42 @@
 ;; (setq gnus-read-active-file nil)
 ;; (setq gnus-visual t)
 
+;; TODO not sure
+(setq gnus-nov-is-evil nil)
+(setq gnus-treat-fill-long-lines t)
+(setq gc-cons-threshold 3500000)
+(setq gnus-use-correct-string-widths t)
+;; (setq message-directory "~/MyEmacs/Gnus/Mail/")
+;; (setq message-auto-save-directory "~/MyEmacs/Gnus/Mail/drafts")
+;; (setq mail-source-directory "~/MyEmacs/Gnus/Mail/incoming")
+;; (setq gnus-summary-display-while-building 50)
+
+;; general settings
+(setq gnus-activate-level 3) 
+(setq gnus-novice-user nil)
+(setq gnus-expert-user t)
+(setq gnus-use-dribble-file t)
+(setq gnus-always-read-dribble-file t)
+(setq mail-user-agent 'gnus-user-agent) ;; Gcc settings
+(setq gnus-inhibit-startup-message t)
+(setq gnus-summary-ignore-duplicates t)
+
+;; file settings
+(setq gnus-startup-file "~/.emacs.d/.newsrc")
+(setq my-gnus-directory "~/.gnus")
+(setq gnus-article-save-directory my-gnus-directory)
+(setq gnus-kill-files-directory (expand-file-name "trash" my-gnus-directory))
+(setq gnus-agent-directory (expand-file-name "agent" my-gnus-directory))
+(setq gnus-cache-directory (expand-file-name "cache" my-gnus-directory))
+(setq gnus-cache-active-file (expand-file-name "active" gnus-cache-directory))
+(setq mm-default-directory (expand-file-name "mm" gnus-cache-directory))
+
 ;; (add-hook 'gnus-article-mode-hook 'linum-on)
 (setq gnus-asynchronous t)
 (setq gnus-use-cache t)
 (setq gnus-verbose 1)
 (setq gnus-save-newsrc-file nil)
 (setq gnus-read-newsrc-file nil)
-(setq gnus-startup-file (expand-file-name "~/.emacs.d/.newsrc"))
 (setq
  gnus-summary-line-format "%U%R%z %(%&user-date;  %-15,15f  %B%s%)\n"
  gnus-user-date-format-alist '((t . "%Y-%m-%d %H:%M"))
@@ -32,23 +63,14 @@
       '((".*" (address "leftcopy.chx@gmail.com")
          (signature-file "~/.emacs.d/signature"))))
 (setq gnus-treat-hide-signature t)
-(setq gnus-inhibit-startup-message t)
-(setq gnus-auto-select-next 'almost-quietly)
 
 (remove-hook 'gnus-mark-article-hook
              'gnus-summary-mark-read-and-unread-as-read)
 (add-hook 'gnus-mark-article-hook 'gnus-summary-mark-unread-as-read)
 
-(setq
- gnus-use-trees t                                                       ;联系老的标题
- gnus-tree-minimize-window nil                                          ;用最小窗口显示
- ;; gnus-fetch-old-headers 'some                                           ;抓取老的标题以联系线程,速度极慢
- gnus-generate-tree-function 'gnus-generate-horizontal-tree             ;生成水平树
- gnus-summary-thread-gathering-function 'gnus-gather-threads-by-subject ;聚集函数根据标题聚集
- )
-
 (setq gnus-fetch-old-headers t)
 
+(setq gnus-default-charset 'utf-8)
 (setq rfc2047-header-encoding-alist
       '(("Newsgroups" . t)
         ("Message-ID" . nil)
@@ -81,8 +103,9 @@
 (setq gnus-summary-display-arrow t
       gnus-treat-display-smileys nil ; I do not like graphics smileys.
       gnus-keep-backlog 50 ;default 20
-      gnus-auto-center-summary nil
-      gnus-auto-select-next nil)
+      gnus-auto-center-summary nil)
+;; (setq gnus-auto-select-first nil)
+(setq gnus-auto-select-next 'almost-quietly)
 
 ;;-----------------------------------------------------------------------------
 ;; receive email,use fetchmail+procmail to put new mail into ~/Mail
@@ -116,6 +139,7 @@
 
 (setq gnus-gcc-mark-as-read t) ;; don't re-read
 (setq gnus-message-archive-group '("nnmaildir+mymailbox:sent," "nnmaildir+mymailbox:inbox"))
+(setq message-confirm-send t) ;;
 ;; smtp to send email directly(no need for other external programs)
 (setq message-send-mail-function 'smtpmail-send-it
       smtpmail-starttls-credentials '(("smtp.gmail.com" 587 nil nil))
@@ -146,7 +170,6 @@
    ))
 
 ;; Automate the fetching of mail.
-;; (require 'gnus-demon)
 ;; Check for new mail once in every this many minutes.
 (gnus-demon-add-handler 'gnus-demon-scan-news 5 nil)
 
@@ -163,7 +186,6 @@
                                    gnus-thread-sort-by-total-score
                                    gnus-thread-sort-by-date))
 (setq message-from-style 'angles)
-(setq message-from-style 'default)
 (setq message-kill-buffer-on-exit t)
 (setq message-syntax-checks '((sender . disabled) (from . disabled)))
 
@@ -213,3 +235,40 @@
       '(lambda ()
          (local-unset-key [(tab)])
          (local-set-key [(tab)] 'my-hide-show-thread)))
+
+(setq mm-inline-large-images t)
+(add-to-list 'mm-attachment-override-types "image/*")
+(setq nnmail-extra-headers gnus-extra-headers)
+(add-hook 'gnus-article-prepare-hook 'gnus-article-date-local)
+(add-hook 'gnus-select-group-hook 'gnus-group-set-timestamp)
+
+(setq gnus-treat-emphasize t
+      gnus-treat-buttonize t
+      gnus-treat-buttonize-head 'head
+      gnus-treat-unsplit-urls 'last
+      gnus-treat-leading-whitespace 'head
+      gnus-treat-highlight-citation t
+      gnus-treat-highlight-signature t
+      gnus-treat-date-lapsed 'head
+      gnus-treat-strip-trailing-blank-lines t
+      gnus-treat-strip-cr t
+      gnus-treat-overstrike nil
+      gnus-treat-display-x-face t
+      gnus-treat-display-face t
+      gnus-treat-display-smileys nil
+      gnus-treat-x-pgp-sig 'head)
+
+(setq sc-attrib-selection-list nil
+      sc-auto-fill-region-p nil
+      sc-blank-lines-after-headers 1
+      sc-citation-delimiter-regexp "[>]+\\|\\(: \\)+"
+      sc-cite-blank-lines-p nil
+      sc-confirm-always-p nil
+      sc-electric-references-p nil
+      sc-fixup-whitespace-p t
+      sc-nested-citation-p nil
+      sc-preferred-header-style 4
+      sc-use-only-preference-p nil)
+
+(add-hook 'gnus-switch-on-after-hook 'gnus-group-first-unread-group)
+(add-hook 'gnus-summary-exit-hook 'gnus-group-first-unread-group)

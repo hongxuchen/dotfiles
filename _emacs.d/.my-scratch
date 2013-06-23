@@ -1,5 +1,2 @@
 ;; Hongxu Chen
-  (require 'shell-here)
-  (define-key (current-global-map) "\C-c!" 'shell-here)
-    (require 'shell-command)
-    (shell-command-completion-mode)
+

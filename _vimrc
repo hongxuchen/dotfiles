@@ -342,3 +342,5 @@ nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 " filetype settings
 " =====================================================
 autocmd FileType c,cpp set path+=/usr/lib/llvm-2.9/include,/usr/include/c++/4.6,~/moonbox/klee/include
+autocmd FileType c,cpp setl cms=//%s
+autocmd FileType lisp setl cms=;;%s
