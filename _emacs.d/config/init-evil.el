@@ -25,6 +25,7 @@
 (evil-set-initial-state 'calendar-mode 'emacs) ;; evil treat this mode stupidly
 (evil-set-initial-state 'archive-mode 'emacs) ;; evil treat this mode stupidly
 (evil-set-initial-state 'dired-mode 'emacs) ;; seems that a lot of conflicts
+(evil-set-initial-state 'wdired-mode 'normal) ;; seems that a lot of conflicts
 (evil-set-initial-state 'jabber-roster-mode 'emacs) ;; evil conflicts with the keybings
 (evil-set-initial-state 'org-agenda-mode 'emacs) ;; no editing
 (evil-set-initial-state 'diff-mode 'emacs) ;; conflicts
@@ -61,21 +62,6 @@
 ;; (evil-global-set-key 'normal (kbd "K") 'man)
 (evil-global-set-key 'normal (kbd "K") 'man)
 (evil-global-set-key 'insert (kbd "\C-e") 'move-end-of-line)
-
-(defun find-loadfile-by-map (map)
-  "Find load file by MAP."
-  (case map
-    ('Info-mode-map "info")
-    ('ebrowse-tree-mode-map "Tree")))
-
-(dolist (map `(Info-mode-map ebrowse-tree-mode-map))
-  (let ((file (find-loadfile-by-map map)))
-    (eval-after-load file
-      `(progn
-         (define-key ,map "h" 'backward-char)
-         (define-key ,map "l" 'forward-char)
-         (define-key ,map "j" 'next-line)
-         (define-key ,map "k" 'previous-line)))))
 
 ;; vim-surround like, @see https://github.com/timcharper/evil-surround
 (require 'surround)

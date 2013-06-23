@@ -1,56 +1,4 @@
-;;; ffap-gcc-path.el --- get gcc's include path for ffap-c-path
-
-;; Copyright 2007, 2008, 2009, 2011, 2012 Kevin Ryde
-
-;; Author: Kevin Ryde <user42@zip.com.au>
-;; Version: 7
-;; Keywords: files, ffap, C
-;; URL: http://user42.tuxfamily.org/ffap-gcc-path/index.html
-;; EmacsWiki: FindFileAtPoint
-
-;; ffap-gcc-path.el is free software; you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by the
-;; Free Software Foundation; either version 3, or (at your option) any later
-;; version.
-;;
-;; ffap-gcc-path.el is distributed in the hope that it will be useful, but
-;; WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU General
-;; Public License for more details.
-;;
-;; You can get a copy of the GNU General Public License online at
-;; <http://www.gnu.org/licenses/>.
-
-
-;;; Commentary:
-
-;; The default `ffap-c-path' is "/usr/include" and "/usr/local/include",
-;; but gcc has a separate directory for bits it provides, like float.h.
-;; This spot of code extracts gcc's path by parsing the output of "gcc -v".
-;;
-;; The same could be done for `PC-include-file-path' perhaps, but there's
-;; nothing for that yet.
-
-;;; Install:
-
-;; Put ffap-gcc-path.el in one of your `load-path' directories and in your
-;; .emacs add
-;;
 ;; (eval-after-load "ffap" '(require 'ffap-gcc-path))
-;;
-
-;;; History:
-;;
-;; Version 1 - the first version
-;; Version 2 - don't side-effect process-environment
-;; Version 3 - namespace clean on xemacs (by avoiding what it doesn't have)
-;; Version 4 - cope with non-existent `default-directory'
-;; Version 5 - no autoload cookie, as it's a user preference really
-;; - fix for non-existant ffap-gcc-program executable
-;; Version 6 - use pipe rather than pty for subprocess
-;; Version 7 - use `null-device'
-
-;;; Code:
 
 (require 'ffap)
 
@@ -109,8 +57,6 @@ URL `http://user42.tuxfamily.org/ffap-gcc-path/index.html'"
 
 ;; do the setup now
 (ffap-gcc-path-setup)
-
-;; LocalWords: usr gcc gcc's
 
 (provide 'ffap-gcc-path)
 

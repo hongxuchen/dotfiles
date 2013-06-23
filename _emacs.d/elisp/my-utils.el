@@ -13,10 +13,6 @@
       (setq pos (match-end group)))
     result))
 
-(defun string-rtrim (str)
-  "Remove trailing whitespace from `STR'."
-  (replace-regexp-in-string "[ \t\n]*$" "" str))
-
 (defun delete-this-file ()
   "Delete the current file, and kill the buffer."
   (interactive)
@@ -33,10 +29,10 @@
         (filename (buffer-file-name)))
     (unless filename
       (error "Buffer '%s' is not visiting a file!" name))
-        (rename-file filename new-name t)
-        (rename-buffer new-name t)
-        (set-visited-file-name new-name)
-        (set-buffer-modified-p nil)))
+    (rename-file filename new-name t)
+    (rename-buffer new-name t)
+    (set-visited-file-name new-name)
+    (set-buffer-modified-p nil)))
 
 (defun move-this-file (dir)
   "Moves both current buffer and file it's visiting to DIR." (interactive "DNew directory: ")
@@ -101,26 +97,6 @@
                       t nil 'switch-major-mode-history))))
   (setq switch-major-mode-history (cons (symbol-name major-mode) switch-major-mode-history))
   (funcall mode))
-
-(defun yank-to-x-clipboard ()
-  (interactive)
-  (if (region-active-p)
-      (progn
-        (shell-command-on-region (region-beginning) (region-end)
-                                 (cond
-                                  (*is-a-mac* "pbcopy")
-                                  (t "xclip -selection clipboard")))
-        (message "Yanked region to clipboard!")
-        (deactivate-mark))
-    (message "No region active; can't yank to clipboard!")))
-
-(defun paste-from-x-clipboard()
-  (interactive)
-  (shell-command
-   (cond
-    (*is-a-mac* "pbpaste")
-    (t "xclip -o"))
-   1))
 
 (defun kill-process-interactive ()
   (interactive)
@@ -232,11 +208,5 @@ FEATURE may be a named feature or a file name, see
        'with-no-warnings)
     (eval-after-load ',feature
       `(funcall (function ,(lambda () ,@forms))))))
-
-(defun my-shell-dir (name dir)
-  (interactive "sShell name: \nDDirectory: ")
-  (let ((default-directory dir))
-    (shell name)))
-
 
 (provide 'my-utils)

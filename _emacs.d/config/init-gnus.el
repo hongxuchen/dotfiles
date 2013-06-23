@@ -26,8 +26,8 @@
 
 ;; general settings
 (setq gnus-activate-level 3) 
-(setq gnus-novice-user nil)
-(setq gnus-expert-user t)
+(setq gnus-novice-user t)
+(setq gnus-expert-user nil)
 (setq gnus-use-dribble-file t)
 (setq gnus-always-read-dribble-file t)
 (setq mail-user-agent 'gnus-user-agent) ;; Gcc settings
@@ -70,7 +70,7 @@
 
 (setq gnus-fetch-old-headers t)
 
-(setq gnus-default-charset 'utf-8)
+;; (setq gnus-default-charset 'undecided)
 (setq rfc2047-header-encoding-alist
       '(("Newsgroups" . t)
         ("Message-ID" . nil)

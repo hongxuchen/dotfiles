@@ -58,7 +58,7 @@ C++ code is C++11 compatible (default)"
 
 ;;;###autoload
 (defcustom cppcheck-enable-list
-  nil
+  all
   "Enable additional checks. The available ids are:
 * all
 Enable all checks

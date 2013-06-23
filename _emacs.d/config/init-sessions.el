@@ -1,3 +1,4 @@
+(setq session-use-package t)
 (setq session-save-file (expand-file-name "~/.emacs.d/.session"))
 (add-hook 'after-init-hook 'session-initialize)
 

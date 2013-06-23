@@ -3,8 +3,6 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/config"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/doxymacs/share/emacs/site-lisp"))
-;; (add-to-list 'load-path (expand-file-name "~/data_backup/org-mode/lisp"))
-;; (add-to-list 'load-path (expand-file-name "~/data_backup/org-mode/contrib/lisp"))
 
 ;;----------------------------------------------------------------------------
 ;; Which functionality to enable (use t or nil for true and false)
@@ -28,7 +26,6 @@
 (require 'init-basics)
 (require 'my-utils)
 (require 'init-misc)
-(require 'init-shell)
 (require 'init-frame)
 (require 'init-dired)
 (require 'init-ibuffer)
@@ -43,7 +40,6 @@
 (require 'init-modeline)
 ;; (require 'init-smartparens)
 ;; (require 'init-mmm)
-;; (require 'init-gnus)
 ;; (require 'init-marmalade)  helper to marmalade
 ;; (require 'init-proxies)    ;; proxy settings
 ;; (require 'init-osx-keys)
@@ -71,12 +67,9 @@
 ;; (require 'init-cmake-mode)
 
 (require 'init-python-mode)
-;; (require 'init-erlang)
 ;; (require 'init-haskell)
 ;; (require 'init-ruby-mode)
 ;; (require 'init-rails)
-;; (require 'init-rcirc)
-;; (require 'init-yari)
 ;; (require 'init-lua-mode)
 
 (require 'init-lisp)

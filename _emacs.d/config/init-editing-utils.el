@@ -21,8 +21,17 @@
  truncate-partial-width-windows nil
  visible-bell nil)
 
+;; TODO not sure
+(setq find-file-suppress-same-file-warnings t)
+(setq view-read-only t)
+(setq buffer-offer-save t)
+(setq auto-save-default t)
+(require 'saveplace)
+(setq-default save-place t
+              save-place-file "~/.emacs.d/saved-places")
+
+
 (tooltip-mode -1)
-(setq tooltip-use-echo-area t)
 
 ;; other minor modes
 (global-pointback-mode t)

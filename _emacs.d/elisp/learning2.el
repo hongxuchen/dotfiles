@@ -1,13 +1,9 @@
-(read-string "what your name? " user-full-name)
-
 (defun read-hidden-file (file arg)
   (interactive (list (read-file-name "choose a hidden file: " "~/" nil nil nil
                                      (lambda (name)
                                        (string-match "^\\." (file-name-nondirectory name))))
                      current-prefix-arg))
   (message "%S, %S" file arg))
-
-(defun foo () (interactive) (message "%S" current-prefix-arg ))
 
 (defun tree-mapcar (func tree)
   (if (consp tree)
@@ -20,10 +16,6 @@
   (declare (indent 0) (debug t))
   (cons 'let (cons '(inhibit-read-only t))
         body))
-
-;;buffer related
-(current-buffer)
-(message (buffer-name))
 
 (defun show-region (beg end)
   (interactive
@@ -50,17 +42,6 @@
 (selected-terminal)
 (window-tree)
 
-(setq foo (selected-window))
-(delete-window)
-(windowp foo)
-(window-live-p foo)
-(window-live-p (selected-window))
-
-(window-height)
-(window-width)
-(window-edges)
-(window-inside-edges)
-
 ;;file related
 (with-current-buffer (find-file-noselect "/tmp/test")
   buffer-file-name)
@@ -68,11 +49,8 @@
 (find-buffer-visiting "/tmp/test")
 (get-file-buffer "/tmp/test")
 
-(file-exists-p "/tmp/testt")
-(file-readable-p "/tmp/test")
-(format "%o" (file-modes "/tmp/test"))
-(setq my-temp-file (make-temp-file "foo"))
-(file-exists-p my-temp-file)
+(file-modes "/root/.bashrc")
+(format "%o" (file-modes "/tmp"))
 
 (message "%d" most-positive-fixnum)
 
@@ -84,5 +62,3 @@
 (defun my-subseq (list from &optional to)
   (if (null to) (nthcdr from list)
     (butlast (nthcdr from list) (- (length list) to))))
-
-(setq my-el-files (directory-files "~/.emacs.d/elisp" t "\\([^.]elc\\|[^h]\\).el\\'" t))

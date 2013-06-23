@@ -1,3 +1,5 @@
+(provide 'init-keymaps)
+
 (define-key minibuffer-local-map [escape] 'keyboard-quit)
 (define-key minibuffer-local-ns-map [escape] 'keyboard-quit)
 (define-key minibuffer-local-completion-map [escape] 'keyboard-quit)
@@ -17,7 +19,6 @@
 (global-set-key (kbd "C-h C-l") 'dict-lookup-definition)
 (global-set-key (kbd "C-h C-s") 'my-goto-scratch-buffer)
 (global-set-key (kbd "<f2>") 'repeat-complex-command)
-
 
 (global-set-key (kbd "<C-f9>") 'smarter-compile)
 (global-set-key (kbd "<M-f2>") 'eshell)
@@ -50,4 +51,17 @@
 (global-set-key "\M-x" 'smex)
 (global-set-key "\C-ci" 'idomenu)
 
-(provide 'init-keymaps)
+(defun find-loadfile-by-map (map)
+  "Find load file by MAP."
+  (case map
+    ('Info-mode-map "info")
+    ('ebrowse-tree-mode-map "Tree")))
+
+(dolist (map `(Info-mode-map ebrowse-tree-mode-map))
+  (let ((file (find-loadfile-by-map map)))
+    (eval-after-load file
+      `(progn
+         (define-key ,map "h" 'backward-char)
+         (define-key ,map "l" 'forward-char)
+         (define-key ,map "j" 'next-line)
+         (define-key ,map "k" 'previous-line)))))

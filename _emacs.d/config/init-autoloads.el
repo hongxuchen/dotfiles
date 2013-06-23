@@ -40,3 +40,23 @@
 
 ;; apt-utils
 (eval-after-load "apt-utils" '(require 'apt-utils-ido))
+
+;; ffap
+;; FIXME redefine rather than defadvice
+(eval-after-load "ffap"
+  '(defun ffap-read-file-or-url (prompt guess)
+  "Read file or URL from minibuffer, with PROMPT and initial GUESS."
+  (or guess (setq guess default-directory))
+  (let (dir)
+    (or (ffap-url-p guess)
+        (progn
+          (or (ffap-file-remote-p guess)
+              (setq guess
+                    (abbreviate-file-name (expand-file-name guess))
+                    ))
+          (setq dir (file-name-directory guess))))
+    ;; Do file substitution like (interactive "F"), suggested by MCOOK.
+    (or (ffap-url-p guess) (setq guess (substitute-in-file-name guess)))
+    ;; Should not do it on url's, where $ is a common (VMS?) character.
+    ;; Note: upcoming url.el package ought to handle this automatically.
+    guess)))

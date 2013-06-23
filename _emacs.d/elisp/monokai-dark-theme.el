@@ -24,6 +24,7 @@
  ;; `(default ((t (:foreground "#f8f8f2" :background "#141411))))
  `(cursor ((t (:foreground "#f92672"))))
  `(hl-line ((t (:background "#141411"))))
+ `(menu ((t (:background "#d1d1d1" :foreground "#000000"))))
  `(minibuffer-prompt ((t (:foreground "#1e90ff"))))
  `(mode-line ((t (:background "#1e1e1e" :foreground "#e6e6e6"))))
  `(region ((t (:background "#383830"))))
@@ -59,6 +60,7 @@
  `(Man-underline ((((class color)) :foreground "#00ee33" :italic nil :bold t)))
  `(Man-reverse ((t (:foreground "#eeee00"))))
  ;; TODO which-func
+ `(which-func ((t (:foreground "#feff7f"))))
  )
 
 ;;; ###autoload
@@ -74,3 +76,7 @@
 ;; End:
 
 ;;; monokai-dark-theme.el ends here
+
+;; '(ansi-color-faces-vector [default bold shadow italic underline bold bold-italic bold])
+;; '(ansi-color-names-vector ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
+;; '(ansi-term-color-vector ["#3f3f3f" "#cc9393" "#7f9f7f" "#f0dfaf" "#8cd0d3" "#dc8cc3" "#93e0e3" "#dcdccc"] t)

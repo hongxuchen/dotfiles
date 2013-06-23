@@ -4,6 +4,9 @@
 (require 'em-term)
 (require 'em-cmpl)
 
+;;----------------------------------------------------------------------------
+;; eshell settings
+;;----------------------------------------------------------------------------
 (setq eshell-history-size 512)
 (setq eshell-hist-ignoredups t)
 
@@ -265,3 +268,5 @@ directory."
     (pcomplete-here* pcmpl-hg-commands))
    (t
     (while (pcomplete-here (pcomplete-entries))))))
+
+(eval-after-load 'esh-opt '(progn (require 'init-eshell)))

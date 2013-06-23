@@ -5,34 +5,33 @@
 ################################################################################
 
 # General options {{{
-nolirc=yes
-nojoystick=yes
+nolirc=1
+nojoystick=1
 
 # Disable screensaver
-stop-xscreensaver=yes
-#heartbeat-cmd="gnome-screensaver-command -p &"
+stop-xscreensaver=1
 # }}}
 
 # Audio {{{
-#ao=pulse
-ao=alsa
+# ao=pulse
+# ao=alsa
 
 # English please
 alang=en
 # }}}
 
 # Video {{{
-vo=xv
+# vo=xv #no display for me
 #vo=gl
 #vo=directfb
 
 zoom=1
 
 # double buffering (for subtitles)
-double=yes
+double=1
 
 # drop frames nicely if necessary
-framedrop=yes
+framedrop=1
 hardframedrop=no
 # }}}
 
@@ -51,7 +50,7 @@ ass-line-spacing=0
 ass-styles=styles.ass
 
 # Use fontconfig
-fontconfig=yes
+fontconfig = 1
 font="DejaVu Sans"
 
 # Give subtitles a narrow black outline
@@ -81,11 +80,13 @@ subalign=2
 
 # Unicode
 subfont-encoding="unicode"
-unicode=yes
-utf8=yes
+unicode=1
+utf8=1
 # }}}
 
-
-fs=yes #fullscreen
+fs=1 #fullscreen
 subcp=cp936 #Chinese sub
 overlapsub=1 #i18n sub
+
+# wide screen
+vf-add=expand=::::1:16/9:16

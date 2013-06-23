@@ -26,3 +26,13 @@
 ;; douban-music
 (setq douban-music-default-channel 10)
 
+;; shell settings
+(defalias 'shell 'eshell "farewell, my shell!")
+(eval-after-load 'exec-path-from-shell
+  '(progn
+     (dolist (var '("SSH_AUTH_SOCK" "SSH_AGENT_PID" "GPG_AGENT_INFO" "PATH"))
+       (add-to-list 'exec-path-from-shell-variables var))))
+(when (memq window-system '(mac ns))
+  (exec-path-from-shell-initialize))
+(setq explicit-shell-file-name "/usr/bin/zsh"
+      shell-command-switch "-ic")

@@ -16,12 +16,13 @@
 (require 'dired-x)
 (setq-default dired-omit-files-p t)
 (setq dired-omit-verbose nil)
-(setq my-dired-special-files "")
-(setq dired-omit-files
-      (concat dired-omit-files "\\|^\\..+$\\|^GTAGS$\\|^GSYMS$\\|^GRTAGS$\\|^GPATH$" ))
+(setq dired-omit-files "^\\.$\\|^\\.\\.$\\|^GTAGS$\\|^GSYMS$\\|^GRTAGS$\\|^GPATH$")
 
 (require 'openwith)
 (openwith-mode t)
+
+(define-key dired-mode-map "W" 'wdired-change-to-wdired-mode)
+(setq list-directory-brief-switches (purecopy "-ACF"))
 
 (defvar dired-sort-map (make-sparse-keymap))
 (define-key dired-mode-map "s" dired-sort-map)

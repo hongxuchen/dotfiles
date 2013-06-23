@@ -36,11 +36,6 @@
 (setq-default fill-column 80
               auto-fill-mode 1)
 
-(require 'saveplace)
-(setq-default save-place t
-              save-place-file "~/.emacs.d/saved-places"
-              auto-save-default nil
-              )
 
 
 (add-hook 'find-file-hook 'goto-address-prog-mode) ;; buttonize URLs
@@ -69,23 +64,23 @@
                                  )))
 (setq suggest-key-bindings nil)
 (fset 'yes-or-no-p 'y-or-n-p)
-      (setq confirm-nonexistent-file-or-buffer nil)
-      (setq kill-buffer-query-functions
-            (remq 'process-kill-buffer-query-function
-                  kill-buffer-query-functions))
-      ;; TODO local variable without query unsafe
-      (setq enable-local-variables :all)
-      (setq enable-local-eval t)
-      (setq dired-enable-local-variables :all)
-      (setq revert-without-query t)
+(setq confirm-nonexistent-file-or-buffer nil)
+(setq kill-buffer-query-functions
+      (remq 'process-kill-buffer-query-function
+            kill-buffer-query-functions))
+;; TODO local variable without query unsafe
+(setq enable-local-variables :all)
+(setq enable-local-eval t)
+(setq dired-enable-local-variables :all)
+(setq revert-without-query t)
 
-      ;; (add-auto-mode 'crontab-mode "\\.?cron\\(tab\\)?\\'") ;;only with crontab-mode plugin
-      (add-auto-mode 'tcl-mode "Portfile\\'")
+;; (add-auto-mode 'crontab-mode "\\.?cron\\(tab\\)?\\'") ;;only with crontab-mode plugin
+(add-auto-mode 'tcl-mode "Portfile\\'")
 
-      (setq source-directory (expand-file-name "~/.bin/builds/emacs"))
+(setq source-directory (expand-file-name "~/.bin/builds/emacs"))
 
 ;; TODO
 (setq fortune-dir "/usr/share/games/fortunes")
 (setq fortune-file (expand-file-name "fortunes" fortune-dir))
 
-      (provide 'init-misc)
+(provide 'init-misc)
