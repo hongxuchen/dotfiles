@@ -1,81 +1,53 @@
-;; basic settings
-(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
-(setq goto-address-mail-face 'link)
-(setq disabled-command-function nil)
-(setq-default regex-tool-backend 'perl)
-(setq echo-keystrokes 0.1)
-;; (setq next-line-add-newlines nil)
+(provide 'init-misc)
 
-(progn
-  (setq x-select-enable-clipboard t) ;; Copied
-  (setq x-select-enable-primary t) ;; selected
-  (setq select-active-regions nil)
-  (setq mouse-drag-copy-region t)
-  (global-set-key [mouse-2] 'mouse-yank-at-click))
+;; kill/yank/paste
+(setq x-select-enable-clipboard t
+      setq x-select-enable-primary t
+      setq select-active-regions nil
+      setq mouse-drag-copy-region t
+      kill-do-not-save-duplicates t
+      setq mouse-yank-at-point t)
 
-(setq isearch-allow-scroll t)
-
-;; backup files
-(setq
- backup-by-coping t ; don't clobber symlinks
- backup-directory-alist '(("." . "~/.backups"))
- delete-old-versions t
- kept-new-versions 3
- kept-old-versions 2
- version-control t  ;use versioned backups
- vc-make-backup-files nil ;; no backup for vc files
- )
-
-(setq list-command-history-max 64)
-
-;; display time
-(setq display-time-24hr-format nil
-      display-time-day-and-date t)
-
-;; fill issues
-(setq-default fill-column 80
-              auto-fill-mode 1)
-
-
-
-(add-hook 'find-file-hook 'goto-address-prog-mode) ;; buttonize URLs
-(add-hook 'find-file-hook
-          (lambda ()
-            (when buffer-read-only
-              (view-buffer (current-buffer) 'kill-buffer-if-not-modified))))
-
-;; vc issues
+;; file content
+(setq backup-by-coping t ; don't clobber symlinks
+      backup-directory-alist '(("." . "~/.backups"))
+      delete-old-versions t
+      kept-new-versions 3
+      kept-old-versions 2
+      version-control t
+      vc-make-backup-files nil)
+(setq find-file-suppress-same-file-warnings t)
+(setq view-read-only t)
+(setq auto-save-default nil)
+(require 'saveplace)
+(setq-default save-place t
+              save-place-file "~/.emacs.d/saved-places")
+(global-auto-revert-mode t)
+(setq global-auto-revert-non-file-buffers t
+      revert-without-query t
+      auto-revert-verbose nil)
 (setq vc-follow-symlinks t
       vc-stay-local t)
-
-;; for search words using dictionary-el
-(setq dictionary-server "localhost")
-
-;; google-translate
-(setq google-translate-default-source-language "en")
-(setq google-translate-default-target-language  "zh-CN")
 
 ;; prompt related
 ;; used for emacs daemon
 (add-hook 'server-visit-hook '(lambda ()
                                 (remove-hook
                                  'kill-buffer-query-functions
-                                 'server-kill-buffer-query-function
-                                 )))
-(setq suggest-key-bindings nil)
+                                 'server-kill-buffer-query-function)))
 (fset 'yes-or-no-p 'y-or-n-p)
-(setq confirm-nonexistent-file-or-buffer nil)
+(setq suggest-key-bindings nil
+      confirm-nonexistent-file-or-buffer nil)
 (setq kill-buffer-query-functions
       (remq 'process-kill-buffer-query-function
             kill-buffer-query-functions))
 ;; TODO local variable without query unsafe
 (setq enable-local-variables :all)
 (setq enable-local-eval t)
-(setq dired-enable-local-variables :all)
-(setq revert-without-query t)
 
-;; (add-auto-mode 'crontab-mode "\\.?cron\\(tab\\)?\\'") ;;only with crontab-mode plugin
-(add-auto-mode 'tcl-mode "Portfile\\'")
+;; BUG when there are both Uppercase and separator
+(setq glasses-face 'bold)
+(setq glasses-separator "")
 
 (setq source-directory (expand-file-name "~/.bin/builds/emacs"))
 
@@ -83,4 +55,30 @@
 (setq fortune-dir "/usr/share/games/fortunes")
 (setq fortune-file (expand-file-name "fortunes" fortune-dir))
 
-(provide 'init-misc)
+;; shell settings
+(defalias 'shell 'eshell "farewell, my shell!")
+(eval-after-load 'exec-path-from-shell
+  '(progn
+     (exec-path-from-shell-initialize)
+     (dolist (var '("SSH_AUTH_SOCK" "SSH_AGENT_PID" "GPG_AGENT_INFO" "PATH"))
+       (add-to-list 'exec-path-from-shell-variables var))))
+(setq explicit-shell-file-name "/usr/bin/zsh"
+      shell-command-switch "-ic")
+
+(setq browse-url-generic-program
+      (cond
+       (*is-a-mac* "open")
+       (*linux* (executable-find "x-www-browser"))))
+
+;; google
+(require 'google-this)
+(google-this-mode t)
+(setq google-translate-default-source-language "en"
+      google-translate-default-target-language  "zh-CN")
+
+;; nicer naming
+(require 'uniquify) ;; 24.3 contained
+(setq uniquify-buffer-name-style 'forward
+      uniquify-separator " • "
+      uniquify-after-kill-buffer-p t
+      uniquify-ignore-buffers-re "^\\*")

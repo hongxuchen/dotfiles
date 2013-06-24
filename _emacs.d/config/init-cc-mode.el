@@ -53,6 +53,8 @@
   (turn-on-fic-mode)
   (require 'which-func)
   (which-function-mode t)
+  (require 'cpp)
+  (global-cwarn-mode t)
   (hide-ifdef-mode t)
   (default-cc-flags-setup)
   (my-ac-cc-mode-setup)
@@ -63,8 +65,7 @@
 (add-hook 'c-initialization-hook' setup-cc-keymaps)
 
 
-;REVIEW 2013-06-14 10:46 Hongxu Chen;
-;;cwarn
+                                        ;REVIEW 2013-06-14 10:46 Hongxu Chen;
 
 ;; -----------------------------------------------------------------------------
 ;; includes and flags
@@ -100,15 +101,11 @@
         (mapcar (lambda (item)(concat "-I" item))
                 my-c++-include-directories))
 
-  (if (eq major-mode 'c++-mode)
-      (setq ac-clang-flags (append my-c++-include-flags '("-std=c++11")))
-      (setq ac-clang-flags my-c++-include-flags))
-  )
+  (cond
+   ((eq major-mode 'c++-mode)
+    (setq ac-clang-flags (append my-c++-include-flags '("-std=c++11"))))
+   ((eq major-mode 'c-mode)
+    (setq ac-clang-flags (append my-c++-include-flags '("-std=c99"))))
+   ))
 
-(defun emacs-format-function ()
-   "Format the whole buffer."
-   (interactive)
-   (c-set-style "Google")
-   (indent-region (point-min) (point-max) nil)
-   (untabify (point-min) (point-max))
-   (save-buffer))
+(add-hook 'cc-mode-hook 'turn-on-auto-fill)

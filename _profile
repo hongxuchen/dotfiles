@@ -21,6 +21,7 @@ export LC_MEASUREMENT="en_US.UTF-8"
 export LC_IDENTIFICATION="en_US.UTF-8"
 export LC_ALL=
 
+export EMAIL="leftcopy.chx@gmail.com"
 export TZ='Asia/Shanghai'
 export GTK_IM_MODULE='ibus'
 export QT_IM_MODULE='ibus'

@@ -1,4 +1,3 @@
-(autoload 'turn-on-pretty-mode "pretty-mode")
 
 (autoload 'enable-paredit-mode "paredit")
 ;;; (require 'evil-paredit)
@@ -9,11 +8,6 @@
      (local-set-key (kbd "RET") 'paredit-newline)))
 
 (add-hook 'paredit-mode-hook 'maybe-map-paredit-newline)
-
-(eval-after-load 'paredit
-  '(progn
-     (diminish 'paredit-mode " Par")
-     ))
 
 ;; Compatibility with other modes
 (defun suspend-mode-during-cua-rect-selection (mode-name)

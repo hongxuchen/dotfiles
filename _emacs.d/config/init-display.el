@@ -1,4 +1,4 @@
-(provide 'init-frame)
+(provide 'init-display)
 ;;----------------------------------------------------------------------------
 ;; startup issues
 ;;----------------------------------------------------------------------------
@@ -50,18 +50,24 @@
 ;;                                          :size=12)))
 ;;   )
 
-;; nicer naming
-(require 'uniquify) ;; 24.3 contained
-(setq uniquify-buffer-name-style 'forward
-      uniquify-separator " • "
-      uniquify-after-kill-buffer-p t
-      uniquify-ignore-buffers-re "^\\*")
-
 ;; WoMan settings
-(setq woman-fill-column 100)
-(setq woman-use-own-frame nil)
+(setq woman-fill-column 90
+      woman-use-own-frame nil)
 
 ;; man settings
 (setq Man-notify-method 'aggressive
       Man-width 90
       Man-see-also-regexp "SEE ALSO\\|RELATED INFORMATION")
+
+;; encodings
+(set-language-environment 'utf-8)
+(set-default-coding-systems 'utf-8)
+(set-terminal-coding-system 'utf-8)
+(set-selection-coding-system 'utf-8)
+(prefer-coding-system 'utf-8)
+(setq locale-coding-system 'utf-8
+      coding-system-for-read 'utf-8
+      coding-system-for-write 'utf-8)
+
+(setq goto-address-mail-face 'link)
+(add-hook 'find-file-hook 'goto-address-prog-mode)

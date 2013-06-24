@@ -81,7 +81,6 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (require-package 'smex)
 (require-package 'w3m)
 (require-package 'jabber)
-(require-package 'diminish) ;; used in init-ruby-mode/init-lisp-mode
 (require-package 'autopair)
 (require-package 'ibuffer-vc)
 (require-package 'mmm-mode)

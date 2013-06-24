@@ -69,20 +69,25 @@
 
 (defun show-file-name () (interactive) (message (buffer-file-name)))
 
-(defun cleanup-buffer ()
+(defsubst my-gnu-indent ()
+  "indent current c or header file using GNU indent"
+  (progn
+    (shell-command (format "indent %s" (shell-quote-argument (buffer-file-name))))
+    (revert-buffer t t t)
+    (message "Successfully indented!")))
+
+(defun my-cleanup-buffer ()
   (interactive)
-  (if (or
-       (string= major-mode "makefile-mode")
-       (string= major-mode "makefile-gmake-mode")
-       (string= major-mode "python-mode")
-       )
-      (message "will not cleanup buffer when major mode is %s" major-mode)
-    (progn
-      (untabify (point-min) (point-max))
-      (delete-trailing-whitespace)
-      (indent-region (point-min) (point-max))
-      (set-buffer-file-coding-system 'utf-8)
-      )))
+  (cond ((member major-mode '(makefile-mode makefile-gmake-mode python-mode))
+         (message "will not cleanup buffer when major mode is %s" major-mode))
+        ((string= major-mode "c-mode") (my-gnu-indent))
+        (t (progn
+             (untabify (point-min) (point-max))
+             (delete-trailing-whitespace)
+             (indent-region (point-min) (point-max))
+             (set-buffer-file-coding-system 'utf-8)
+             (save-buffer)
+             ))))
 
 ;; TODO contains minor mode, but autoloads need to be included
 (defvar switch-major-mode-history nil)
@@ -182,12 +187,6 @@ Note, for the time zone offset, both the formats 「hhmm」 and 「hh:mm」 are 
              (current-buffer))
     (error (message "Invalid expression")
            (insert (current-kill 0)))))
-
-(defun my-dict-external ()
-  (interactive
-   (if (current-word)
-       (shell-command (concat "dict " (current-word)))
-     (shell-command (concat "dict " (read-string "word to lookup : "))))))
 
 (defmacro stante-after (feature &rest forms)
   "After FEATURE is loaded, evaluate FORMS.

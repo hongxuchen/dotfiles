@@ -11,7 +11,6 @@
         (write-region (point-min) (point-max)
                       persistent-scratch-filename)))))
 
-;; TODO not meant to work like this
 (defun load-persistent-scratch ()
   "Load the contents of `persistent-scratch-filename' into the
   scratch buffer, clearing its contents first."

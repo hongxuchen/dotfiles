@@ -27,10 +27,4 @@
 (setq speedbar-default-position 'left)
 (setq speedbar-verbosity-level 2)
 
-;; (eval-after-load 'speedbar
-;;   '(progn
-;;      (require 'semantic/sb)
-;;      (semantic-mode)
-;;      ))
-
 (provide 'init-symbols-tags)

@@ -26,7 +26,7 @@
 (require 'init-basics)
 (require 'my-utils)
 (require 'init-misc)
-(require 'init-frame)
+(require 'init-display)
 (require 'init-dired)
 (require 'init-ibuffer)
 (require 'init-minibuffer)
@@ -49,13 +49,11 @@
 ;;----------------------------------------------------------------------------
 (require 'init-org)
 (require 'init-markdown)
-(require 'init-spelling)
 (require 'init-yasnippet)
 
 ;;----------------------------------------------------------------------------
 ;; development
 ;;----------------------------------------------------------------------------
-
 (require 'init-compile)
 (require 'init-auto-complete) ; after init-yasnippet to override TAB
 (require 'init-gtags) ;; gtags funs
@@ -87,7 +85,6 @@
 ;; (require 'init-zencoding-mode) ;behind init-better-register to override C-j
 
 (require 'init-sh)
-(require 'init-locales)
 (require 'init-autoloads)
 (require 'init-scratch)
 (require 'init-keymaps)
@@ -95,7 +92,6 @@
 
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
-
 (require 'time-date)
 (message "Emacs startup time: %d seconds."
 (time-to-seconds (time-since emacs-load-start-time)))

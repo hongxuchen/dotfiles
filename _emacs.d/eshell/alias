@@ -7,7 +7,7 @@ alias e find-file $1
 alias vi find-file $1
 alias vim find-file $1
 alias la ls -a
-alias l ls -F
+alias l ls
 alias ll ls -l $*
 alias clear recenter 0
 alias q exit

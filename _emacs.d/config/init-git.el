@@ -1,5 +1,8 @@
 (setq magit-save-some-buffers nil
       magit-process-popup-time 10
+      magit-set-upstream-on-push 'askifnotset
+      magit-highlight-whitespace nil
+      magit-diff-refine-hunk t
       magit-completing-read-function 'magit-ido-completing-read)
 
 (eval-after-load 'magit

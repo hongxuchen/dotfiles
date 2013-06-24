@@ -3,8 +3,10 @@
               evil-cross-lines t
               evil-echo-state nil
               evil-ex-search-vim-style-regexp t
+              evil-flash-delay 5
+              evil-complete-all-buffers nil ;; not sure
+              evil-ex-substitute-global t
               ;; evil-search-module 'isearch
-              ;; evil-flash-delay 2
               ;; evil-move-cursor-back t
               ;; evil-want-C-i-jump t
               ;; evil-want-fine-undo nil
@@ -59,7 +61,6 @@
 
 ;; revert to emacs keymaps for some keys
 (evil-global-set-key 'normal (kbd "q") 'bury-buffer)
-;; (evil-global-set-key 'normal (kbd "K") 'man)
 (evil-global-set-key 'normal (kbd "K") 'man)
 (evil-global-set-key 'insert (kbd "\C-e") 'move-end-of-line)
 
@@ -74,7 +75,7 @@
 (setq evil-leader/leader "\\")
 (evil-leader/set-key
   "r" 'review-fixme-comment
-  "f" 'cleanup-buffer
+  "f" 'my-cleanup-buffer
   "T" 'nav-toggle
   "b" 'magit-blame-mode
   "t" 'taglist)

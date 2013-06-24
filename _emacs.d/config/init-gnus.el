@@ -94,6 +94,8 @@
 ;; (setq starttls-gnutls-program "gnutls-cli")
 ;; (setq starttls-extra-arguments nil)
 
+;; (setq compose-mail-user-agent-warnings nil)
+(setq read-mail-command 'gnus)
 (setq gnus-use-sc t)
 ;; (setq gnus-use-rmail t)
 ;; (setq gnus-use-vm t)

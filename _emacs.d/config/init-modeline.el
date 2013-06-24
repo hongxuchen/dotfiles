@@ -1,3 +1,13 @@
+;; which-func
+(progn
+  (require 'which-func)
+  (which-function-mode t)
+  (setq which-func-modes '(c-mode c++-mode python-mode makefile-mode sh-mode org-mode)))
+
+;; display time
+(setq display-time-24hr-format nil
+      display-time-day-and-date t)
+
 (setq global-mode-string '((vc-mode vc-mode))) ;; to make it updated
 
 (setq minor-mode-alist

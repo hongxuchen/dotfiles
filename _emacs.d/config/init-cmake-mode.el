@@ -3,5 +3,4 @@
                               '(("\\.cmake\\'" . cmake-mode))
                               auto-mode-alist))
 
-;; (add-to-list 'auto-mode-alist '("\\.java\\'" . java-mode))
 (provide 'init-cmake-mode)

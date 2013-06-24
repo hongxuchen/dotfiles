@@ -1,52 +1,43 @@
-;; Some basic preferences
-(setq-default
- blink-cursor-delay 0
- blink-cursor-interval 0.4
- bookmark-default-file "~/.emacs.d/.bookmarks.el"
- buffers-menu-max-size 20
- case-fold-search t
- lazy-highlight-cleanup nil
- case-replace nil
- compilation-scroll-output t
- ediff-split-window-function 'split-window-horizontally
- ediff-window-setup-function 'ediff-setup-windows-plain
- grep-highlight-matches t
- grep-scroll-output t
- indent-tabs-mode nil
- line-spacing 0.2
- mouse-yank-at-point nil
- set-mark-command-repeat-pop t
- tooltip-delay 0.5
- truncate-lines nil
- truncate-partial-width-windows nil
- visible-bell nil)
+(provide 'init-editing-utils)
 
-;; TODO not sure
-(setq find-file-suppress-same-file-warnings t)
-(setq view-read-only t)
-(setq buffer-offer-save t)
-(setq auto-save-default t)
-(require 'saveplace)
-(setq-default save-place t
-              save-place-file "~/.emacs.d/saved-places")
+(setq-default blink-cursor-delay 0
+              fill-column 80
+              blink-cursor-interval 0.4
+              bookmark-default-file "~/.emacs.d/.bookmarks.el"
+              buffers-menu-max-size 20
+              regex-tool-backend 'perl
+              case-fold-search t
+              lazy-highlight-cleanup nil
+              case-replace nil
+              compilation-scroll-output t
+              ediff-split-window-function 'split-window-horizontally
+              ediff-window-setup-function 'ediff-setup-windows-plain
+              indent-tabs-mode nil
+              line-spacing 0.2
+              set-mark-command-repeat-pop t
+              truncate-lines nil
+              disabled-command-function nil
+              echo-keystrokes 0.1
+              Info-use-header-line t
+              isearch-allow-scroll t
+              help-window-select t
+              truncate-partial-width-windows nil
+              visible-bell nil)
 
+(setq completion-show-help nil)
+(setq kill-whole-line t)
 
 (tooltip-mode -1)
-
-;; other minor modes
-(global-pointback-mode t)
-(global-auto-revert-mode t)
-(setq global-auto-revert-non-file-buffers t
-      auto-revert-verbose nil)
-(setq kill-do-not-save-duplicates t)
 (transient-mark-mode t)
 (delete-selection-mode t)
+(global-pointback-mode t)
 
-;; M-x grep
+;; grep
 (setq grep-program "grep"
-      grep-command "grep -inH")
+      grep-command "grep -inH"
+      grep-highlight-matches t
+      grep-scroll-output t)
 
-;; Don't disable narrowing commands
 (put 'narrow-to-region 'disabled nil)
 (put 'narrow-to-page 'disabled nil)
 (put 'narrow-to-defun 'disabled nil)
@@ -55,7 +46,6 @@
 (show-paren-mode t)
 (setq autopair-autowrap t)
 (autopair-global-mode t)
-
 ;; (electric-pair-mode -1)
 ;; (setq electric-pair-pairs '(
 ;;                               (?\" . ?\")
@@ -63,13 +53,6 @@
 ;;                               (?\[ . ?\])
 ;;                               (?\{ . ?\})
 ;;                               ))
-
-;; Get around the emacswiki spam protection
-(eval-after-load 'oddmuse
-  (add-hook 'oddmuse-mode-hook
-            (lambda ()
-              (unless (string-match "question" oddmuse-post)
-                (setq oddmuse-post (concat "uihnscuskc=1;" oddmuse-post))))))
 
 (add-hook 'prog-mode-hook
           '(lambda ()
@@ -80,17 +63,14 @@
              (rainbow-delimiters-mode t)
              (hs-minor-mode t)))
 
-;; which-func
-(progn
-  (require 'which-func)
-  (which-function-mode t)
-  (setq which-func-modes '(c-mode c++-mode python-mode makefile-mode sh-mode org-mode)))
+(add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
-;; don't show trailing whitespace in SQLi, inf-ruby etc.
-(add-hook 'comint-mode-hook
-          (lambda () (setq show-trailing-whitespace nil)))
+;; spelling
+(dolist (hook '(message-mode-hook
+                ))
+  (add-hook hook 'flyspell-mode))
+(when (executable-find "aspell")
+  (setq ispell-program-name "aspell"
+        ispell-extra-args '("--sug-mode=ultra" "--lang=en_US")))
 
-(add-hook 'change-log-mode-hook 'turn-on-auto-fill)
-(add-hook 'cc-mode-hook 'turn-on-auto-fill)
-
-(provide 'init-editing-utils)
+(setq ispell-personal-dictionary "~/.emacs.d/dict-spell/.aspell.en.pws")
