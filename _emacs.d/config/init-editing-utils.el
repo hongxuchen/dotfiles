@@ -7,11 +7,13 @@
               buffers-menu-max-size 20
               regex-tool-backend 'perl
               case-fold-search t
+              major-mode 'text-mode
               lazy-highlight-cleanup nil
               case-replace nil
               compilation-scroll-output t
               ediff-split-window-function 'split-window-horizontally
               ediff-window-setup-function 'ediff-setup-windows-plain
+              max-mini-window-height 3
               indent-tabs-mode nil
               line-spacing 0.2
               set-mark-command-repeat-pop t
@@ -44,6 +46,7 @@
 
 ;; match related
 (show-paren-mode t)
+(setq show-paren-delay 0.00)
 (setq autopair-autowrap t)
 (autopair-global-mode t)
 ;; (electric-pair-mode -1)

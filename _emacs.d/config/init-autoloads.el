@@ -14,6 +14,7 @@
 (autoload 'llvm-mode "llvm-mode" "major mode for ll files" t)
 (setq auto-mode-alist (append '(("\\.td$" . tablegen-mode)) auto-mode-alist))
 (autoload 'tablegen-mode "tablegen-mode" "major mode for tg files" t)
+(add-to-list 'load-path (expand-file-name "/usr/share/emacs/site-lisp/clang-format-3.4"))
 
 ;; cc-mode related, doxymacs and cc-lookup
 (autoload 'doxymacs-mode "doxymacs"
@@ -83,4 +84,4 @@
 (eval-after-load "find-file-in-project"
   `(progn
      (setq ffip-limit 1024)
-     (setq ffip-patterns (append ffip-patterns '("*.c" "*.c++" "*.cpp" "*.cc" "*.cxx" "*.h" "*.hpp")))))
+     (setq ffip-patterns (append ffip-patterns '("*.c" "*.c++" "*.cpp" "*.cc" "*.cxx" "*.h" "*.hpp" "Makefile")))))

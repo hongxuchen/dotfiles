@@ -1,5 +1,4 @@
-(setq persistent-scratch-filename "~/.emacs.d/.my-scratch")
-(setq persistent-scratch-backup-directory "~/.emacs.d/.my-scratch-backups/")
+(setq persistent-scratch-filename (expand-file-name ".my-scratch" user-emacs-directory))
 
 (defun save-persistent-scratch ()
   "Write the contents of *scratch* to the file name
@@ -17,7 +16,7 @@
   (if (file-exists-p persistent-scratch-filename)
       (with-current-buffer (get-buffer "*scratch*")
         (erase-buffer)
-        (shell-command (format "cat %s" persistent-scratch-filename) (current-buffer)))))
+        (call-process "cat" nil (current-buffer) nil persistent-scratch-filename))))
 
 (add-hook 'kill-emacs-hook 'save-persistent-scratch)
 

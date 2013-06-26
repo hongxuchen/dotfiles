@@ -51,11 +51,6 @@
       org-clock-into-drawer t
       org-clock-out-remove-zero-time-clocks t)
 
-(eval-after-load 'org-clock
-  '(progn
-     (define-key org-clock-mode-line-map [header-line mouse-2] 'org-clock-goto)
-     (define-key org-clock-mode-line-map [header-line mouse-1] 'org-clock-menu)))
-
 ;; Show iCal calendars in the org agenda
 (when *is-a-mac*
   (eval-after-load "org"

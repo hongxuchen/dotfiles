@@ -238,7 +238,6 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (require-package 'slime-fuzzy)
 (require-package 'slime-repl)
 (require-package 'ac-slime)
-(require-package 'elisp-slime-nav)
 
 (require-package 'sicp)
 

@@ -29,10 +29,11 @@ opposite happens."
 (define-key google-this-mode-submap "s" 'google-symbol)
 (define-key google-this-mode-submap "e" 'google-error) 
 (define-key google-this-mode-submap "c" 'google-cpp-reference) 
-(define-key google-this-mode-submap "l" 'google-translate-query-or-region)
+(define-key google-this-mode-submap "L" 'google-translate-query-or-region)
 (define-key google-this-mode-submap "g" 'google-github)
+(define-key google-this-mode-submap "l" 'google-llvm)
 (define-key google-this-mode-submap "f" 'google-file)
-(define-key google-this-mode-submap "f" 'google-SO)
+(define-key google-this-mode-submap "S" 'google-SO)
 
 (defun google-translate-query-or-region ()
   "If region is active `google-translate-at-point', otherwise `google-translate-query-translate'."
@@ -196,6 +197,11 @@ Uses replacements in `google-error-regexp' and stops at the first match."
 (defun google-github ()
   (interactive)
   (parse-and-google-string (concat "site:github.com " (thing-at-point 'symbol)) nil))
+
+;;;###autoload
+(defun google-llvm ()
+  (interactive)
+  (parse-and-google-string (concat "site:llvm.org " (thing-at-point 'symbol)) nil))
 
 ;; TODO when region is active, choose it; otherwise prompt
 ;;;###autoload

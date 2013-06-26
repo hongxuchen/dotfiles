@@ -2,11 +2,11 @@
 
 ;; kill/yank/paste
 (setq x-select-enable-clipboard t
-      setq x-select-enable-primary t
-      setq select-active-regions nil
-      setq mouse-drag-copy-region t
+      x-select-enable-primary t
+      select-active-regions nil
+      mouse-drag-copy-region t
       kill-do-not-save-duplicates t
-      setq mouse-yank-at-point t)
+      mouse-yank-at-point t)
 
 ;; file content
 (setq backup-by-coping t ; don't clobber symlinks

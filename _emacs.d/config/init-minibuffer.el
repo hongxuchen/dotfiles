@@ -6,7 +6,7 @@
       ido-use-filename-at-point nil
       ido-ubiquitous-enable-compatibility nil
       ido-auto-merge-work-directories-length -1
-      ido-enable-regexp t
+      ido-enable-regexp nil
       ido-max-prospects 12
       ido-max-window-height 2
       ido-use-virtual-buffers t
@@ -23,5 +23,12 @@
 (setq imenu-use-popup-ml)
 (setq imenu-eager-completion-buffer nil)
 (setq imenu-auto-rescan t)
+
+(defadvice find-file (before make-directory-maybe (filename &optional wildcards) activate)
+  "Create parent directory if not exists while visiting file."
+  (unless (file-exists-p filename)
+    (let ((dir (file-name-directory filename)))
+      (unless (file-exists-p dir)
+        (make-directory dir)))))
 
 (provide 'init-minibuffer)

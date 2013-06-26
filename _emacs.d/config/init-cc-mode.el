@@ -108,4 +108,5 @@
     (setq ac-clang-flags (append my-c++-include-flags '("-std=c99"))))
    ))
 
+(global-set-key [C-M-tab] 'clang-format-buffer)
 (add-hook 'cc-mode-hook 'turn-on-auto-fill)

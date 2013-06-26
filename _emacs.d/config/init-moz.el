@@ -1,8 +1,8 @@
 (autoload 'moz-minor-mode "moz" "Mozilla Minor and Inferior Mozilla Modes" t)
 
 (defun moz-custom-setup ()
-  (moz-minor-mode 1)
-  )
+  (moz-minor-mode 1))
+
 (add-hook 'javascript-mode-hook 'moz-custom-setup)
 (add-hook 'js2-mode-hook 'moz-custom-setup)
 (add-hook 'html-mode-hook 'moz-custom-setup)

@@ -1,20 +1,19 @@
-;; these variables had better to be set before evil mode is loaded
-(setq-default evil-auto-indent t
-              evil-cross-lines t
-              evil-echo-state nil
-              evil-ex-search-vim-style-regexp t
-              evil-flash-delay 5
-              evil-complete-all-buffers nil ;; not sure
-              evil-ex-substitute-global t
-              ;; evil-search-module 'isearch
-              ;; evil-move-cursor-back t
-              ;; evil-want-C-i-jump t
-              ;; evil-want-fine-undo nil
-              ;; evil-repeat-move-cursor t
-              ;; evil-want-C-u-scroll nil  ;; default
-              ;; evil-shift-width 4
-              ;; evil-lookup-func 'woman ;; default
-              )
+(setq evil-auto-indent t
+      evil-cross-lines t
+      evil-echo-state nil
+      evil-ex-search-vim-style-regexp t
+      evil-flash-delay 5
+      evil-complete-all-buffers nil
+      evil-ex-substitute-global t
+      ;; evil-search-module 'isearch
+      ;; evil-move-cursor-back t
+      ;; evil-want-C-i-jump t
+      ;; evil-want-fine-undo nil
+      ;; evil-repeat-move-cursor t
+      ;; evil-want-C-u-scroll nil
+      ;; evil-shift-width 4
+      ;; evil-lookup-func 'woman
+      )
 (require 'evil)
 (evil-mode t)
 (evil-set-initial-state 'text-mode 'normal)
@@ -26,25 +25,18 @@
 (evil-set-initial-state 'xgtags-select-mode 'emacs) ;;xgtags select mode supports j/k originally
 (evil-set-initial-state 'calendar-mode 'emacs) ;; evil treat this mode stupidly
 (evil-set-initial-state 'archive-mode 'emacs) ;; evil treat this mode stupidly
-(evil-set-initial-state 'dired-mode 'emacs) ;; seems that a lot of conflicts
-(evil-set-initial-state 'wdired-mode 'normal) ;; seems that a lot of conflicts
-(evil-set-initial-state 'jabber-roster-mode 'emacs) ;; evil conflicts with the keybings
+(evil-set-initial-state 'dired-mode 'emacs)
+(evil-set-initial-state 'wdired-mode 'normal)
+(evil-set-initial-state 'jabber-roster-mode 'emacs)
 (evil-set-initial-state 'org-agenda-mode 'emacs) ;; no editing
 (evil-set-initial-state 'diff-mode 'emacs) ;; conflicts
-(evil-set-initial-state 'eshell-mode 'emacs) ;;for simplicity
+(evil-set-initial-state 'eshell-mode 'emacs)
 (evil-set-initial-state 'term-mode 'emacs) ;;term-mode is not a comint-mode!
 (evil-set-initial-state 'shell-mode 'emacs)
 (evil-set-initial-state 'speedbar-mode 'emacs)
-(evil-set-initial-state 'Info-mode 'emacs) ;; the links
+(evil-set-initial-state 'Info-mode 'emacs)
 (evil-set-initial-state 'recentf-dialog-mode 'normal)
-(evil-set-initial-state 'nav-mode 'emacs)
-
 (evil-set-initial-state 'douban-music-mode 'emacs)
-(evil-set-initial-state 'mpc-mode 'emacs)
-(evil-set-initial-state 'mpc-status-mode 'emacs)
-(evil-set-initial-state 'mpc-tagbrowser-mode 'emacs)
-(evil-set-initial-state 'mpc-tagbrowser-dir-mode 'emacs)
-(evil-set-initial-state 'mpc-songs-mode 'emacs)
 
 ;; derived from special-mode
 (evil-set-initial-state 'ebrowse-tree-mode 'emacs)
@@ -62,7 +54,8 @@
 ;; revert to emacs keymaps for some keys
 (evil-global-set-key 'normal (kbd "q") 'bury-buffer)
 (evil-global-set-key 'normal (kbd "K") 'man)
-(evil-global-set-key 'insert (kbd "\C-e") 'move-end-of-line)
+(evil-global-set-key 'insert (kbd "C-k") 'kill-line)
+(evil-global-set-key 'insert (kbd "C-e") 'move-end-of-line)
 
 ;; vim-surround like, @see https://github.com/timcharper/evil-surround
 (require 'surround)
@@ -72,12 +65,13 @@
 
 (require 'evil-leader)
 (global-evil-leader-mode t)
-(setq evil-leader/leader "\\")
 (evil-leader/set-key
   "r" 'review-fixme-comment
-  "f" 'my-cleanup-buffer
-  "T" 'nav-toggle
+  "g" 'rgrep
+  "f" 'my-format-buffer
+  "s" 'show-file-name
   "b" 'magit-blame-mode
+  "v" 'eval-buffer
   "t" 'taglist)
 
 (provide 'init-evil)

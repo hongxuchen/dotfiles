@@ -27,3 +27,11 @@
 (setq compile-command "make "
       compile-history (list "make" "make clean"))
 (setq compilation-read-command nil)
+(setq compilation-finish-function
+      (lambda (buf str)
+        (if (string-match-p "exited abnormally" str)
+            (message "contains errors, press C-x ` to visit")
+          (with-current-buffer buf
+            (goto-char (point-min))
+            (unless (search-forward "warning:" nil t)
+              (winner-undo))))))

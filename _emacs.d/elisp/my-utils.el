@@ -71,12 +71,12 @@
 
 (defsubst my-gnu-indent ()
   "indent current c or header file using GNU indent"
-  (progn
-    (shell-command (format "indent %s" (shell-quote-argument (buffer-file-name))))
-    (revert-buffer t t t)
-    (message "Successfully indented!")))
+  (save-buffer)
+  (shell-command (format "indent %s" (shell-quote-argument (buffer-file-name))))
+  (revert-buffer t t t)
+  (message "Successfully indented!"))
 
-(defun my-cleanup-buffer ()
+(defun my-format-buffer ()
   (interactive)
   (cond ((member major-mode '(makefile-mode makefile-gmake-mode python-mode))
          (message "will not cleanup buffer when major mode is %s" major-mode))

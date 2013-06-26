@@ -1,15 +1,16 @@
+;; @see http://mumble.net/~campbell/emacs/paredit.html
 
 (autoload 'enable-paredit-mode "paredit")
-;;; (require 'evil-paredit)
-; (add-hook 'emacs-lisp-mode-hook 'evil-paredit-mode)
 
- (defun maybe-map-paredit-newline ()
-   (unless (or (eq major-mode 'inferior-emacs-lisp-mode) (minibufferp))
-     (local-set-key (kbd "RET") 'paredit-newline)))
+(add-to-list 'auto-mode-alist '("\\.emacs-project\\'" . emacs-lisp-mode))
+(add-hook 'paredit-mode-hook (lambda ()
+                               (unless (or (eq major-mode 'inferior-emacs-lisp-mode) (minibufferp))
+                                 (local-set-key (kbd "RET") 'paredit-newline)
+                                 (local-set-key (kbd "C-k") 'paredit-kill))
+                               (local-set-key (kbd "C-x C-a") 'pp-macroexpand-last-sexp)
+                               (surround-mode -1)))
+(evil-define-key 'normal emacs-lisp-mode-map "\C-]" 'find-elisp-thing-at-point)
 
-(add-hook 'paredit-mode-hook 'maybe-map-paredit-newline)
-
-;; Compatibility with other modes
 (defun suspend-mode-during-cua-rect-selection (mode-name)
   "Add an advice to suspend `MODE-NAME' while selecting a CUA rectangle."
   (let ((flagvar (intern (format "%s-was-active-before-cua-rectangle" mode-name)))
@@ -28,7 +29,6 @@
 
 (suspend-mode-during-cua-rect-selection 'paredit-mode)
 
-;; Use paredit in the minibuffer
 (add-hook 'minibuffer-setup-hook 'conditionally-enable-paredit-mode)
 
 (defvar paredit-minibuffer-commands '(eval-expression
@@ -43,47 +43,21 @@
   (if (memq this-command paredit-minibuffer-commands)
       (enable-paredit-mode)))
 
-
-
-;; ----------------------------------------------------------------------------
-;; Hippie-expand
-;; ----------------------------------------------------------------------------
-(defun set-up-hippie-expand-for-elisp ()
-  "Locally set `hippie-expand' completion functions for use with Emacs Lisp."
-  (make-local-variable 'hippie-expand-try-functions-list)
-  (add-to-list 'hippie-expand-try-functions-list 'try-complete-lisp-symbol t)
-  (add-to-list 'hippie-expand-try-functions-list 'try-complete-lisp-symbol-partially t))
-
-
-;; ----------------------------------------------------------------------------
-;; Highlight current sexp
-;; ----------------------------------------------------------------------------
-
 ;; Prevent flickery behaviour due to hl-sexp-mode unhighlighting before each command
 (eval-after-load 'hl-sexp
   '(defadvice hl-sexp-mode (after unflicker (turn-on) activate)
      (when turn-on
        (remove-hook 'pre-command-hook #'hl-sexp-unhighlight))))
 
-
-
-;; ----------------------------------------------------------------------------
-;; Enable desired features for all lisp modes
-;; ----------------------------------------------------------------------------
-
 (defun my-lisp-setup ()
   "Enable features useful in any Lisp mode."
   (enable-paredit-mode)
   (turn-on-eldoc-mode))
 
-(defun my-emacs-lisp-setup ()
+(defun my-elisp-setup ()
   "Enable features useful when working with elisp."
   (yas-minor-mode -1)
-  (rainbow-delimiters-mode t)
-  ;; (elisp-slime-nav-mode t)
-  (set-up-hippie-expand-for-elisp)
-  (ac-emacs-lisp-mode-setup)
-  (checkdoc-minor-mode))
+  (ac-emacs-lisp-mode-setup))
 
 (let* ((elispy-hooks '(emacs-lisp-mode-hook
                        ielm-mode-hook))
@@ -93,29 +67,7 @@
   (dolist (hook lispy-hooks)
     (add-hook hook 'my-lisp-setup))
   (dolist (hook elispy-hooks)
-    (add-hook hook 'my-emacs-lisp-setup)))
-
-
-;(require 'eldoc-eval)
-
-(add-to-list 'auto-mode-alist '("\\.emacs-project\\'" . emacs-lisp-mode))
-(add-to-list 'auto-mode-alist '("archive-contents\\'" . emacs-lisp-mode))
-
-(define-key emacs-lisp-mode-map (kbd "C-x C-a") 'pp-macroexpand-last-sexp)
-
-
-;; ----------------------------------------------------------------------------
-;; Delete .elc files when reverting the .el from VC or magit
-;; ----------------------------------------------------------------------------
-
-;; When .el files are open, we can intercept when they are modified
-;; by VC or magit in order to remove .elc files that are likely to
-;; be out of sync.
-
-;; This is handy while actively working on elisp files, though
-;; obviously it doesn't ensure that unopened files will also have
-;; their .elc counterparts removed - VC hooks would be necessary for
-;; that.
+    (add-hook hook 'my-elisp-setup)))
 
 (defvar my-vc-reverting nil
   "Whether or not VC or Magit is currently reverting buffers.")
@@ -137,5 +89,43 @@
 (defadvice vc-revert-buffer-internal (around my-reverting activate)
   (let ((my-vc-reverting t))
     ad-do-it))
+
+(defsubst navigable-symbols ()
+  "Return a list of strings for the symbols to which navigation is possible."
+  (cl-loop for x being the symbols
+           if (or (fboundp x) (boundp x) (symbol-plist x) (facep x))
+           collect (symbol-name x)))
+
+(defsubst read-symbol-at-point ()
+  "Return the symbol at point as a string.
+If `current-prefix-arg' is not nil, the user is prompted for the symbol."
+  (let* ((sym-at-point (symbol-at-point))
+         (at-point (and sym-at-point (symbol-name sym-at-point))))
+    (if current-prefix-arg
+        (completing-read "Symbol: "
+                         (navigable-symbols)
+                         nil t at-point)
+      at-point)))
+
+(defun find-elisp-thing-at-point (sym-name)
+  "Jump to the elisp thing at point, be it a function, variable, library or face.
+With a prefix arg, prompt for the symbol to jump to.
+Argument SYM-NAME thing to find."
+  (interactive (list (read-symbol-at-point)))
+  (when sym-name
+    (let ((sym (intern sym-name)))
+      (message "Searching for %s..." (pp-to-string sym))
+      ;; (ring-insert find-tag-marker-ring (point-marker))
+      (cond
+       ((fboundp sym) (find-function sym))
+       ((boundp sym) (find-variable sym))
+       ((or (featurep sym) (locate-library sym-name))
+        (find-library sym-name))
+       ((facep sym)
+        (find-face-definition sym))
+       (:else
+        (progn
+          (pop-tag-mark)
+          (error "Don't know how to find '%s'" sym)))))))
 
 (provide 'init-lisp)

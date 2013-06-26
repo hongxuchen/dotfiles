@@ -44,6 +44,7 @@
         (org-cdlatex-mode " OCDL")
         (orgstruct-mode " OrgStruct")
         (outline-minor-mode " Outl")
+        (cwarn-mode cwarn-mode-text)
         (mml-mode " MML")
         (eldoc-mode eldoc-minor-mode-string)
         (paredit-mode " Par")
