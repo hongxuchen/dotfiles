@@ -96,4 +96,4 @@
 (message "Emacs startup time: %d seconds."
 (time-to-seconds (time-since emacs-load-start-time)))
 (load-persistent-scratch)
-(server-start)
+;; (server-start)

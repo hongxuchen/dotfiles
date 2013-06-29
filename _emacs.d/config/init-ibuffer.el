@@ -39,4 +39,7 @@
              (ibuffer-auto-mode 1)
              (ibuffer-switch-to-saved-filter-groups "home")))
 
+;; TODO workaround
+(add-hook 'Buffer-menu-mode-hook 'buffer-disable-undo)
+
 (provide 'init-ibuffer)

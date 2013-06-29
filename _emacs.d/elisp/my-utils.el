@@ -65,7 +65,7 @@
     (switch-to-buffer scratch-name)
     (unless buf
       (insert initial-scratch-message))
-    (lisp-interaction-mode)))
+    (emacs-lisp-mode)))
 
 (defun show-file-name () (interactive) (message (buffer-file-name)))
 
@@ -207,5 +207,15 @@ FEATURE may be a named feature or a file name, see
        'with-no-warnings)
     (eval-after-load ',feature
       `(funcall (function ,(lambda () ,@forms))))))
+
+(defun my-eval-and-replace ()
+  "Replace the preceding sexp with its value."
+  (interactive)
+  (backward-kill-sexp)
+  (condition-case nil
+      (prin1 (eval (read (current-kill 0)))
+             (current-buffer))
+    (error (message "Invalid expression")
+           (insert (current-kill 0)))))
 
 (provide 'my-utils)

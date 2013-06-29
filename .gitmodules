@@ -1,6 +1,3 @@
 [submodule "_emacs.d/others/reveal.js"]
 	path = _emacs.d/others/reveal.js
 	url = git@github.com:hakimel/reveal.js.git
-[submodule "_emacs.d/site-lisp/cc-lookup"]
-	path = _emacs.d/site-lisp/cc-lookup
-	url = git@github.com:HongxuChen/cc-lookup.git

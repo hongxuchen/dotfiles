@@ -4,9 +4,12 @@
 ;; some setups for cc-mode
 ;; -----------------------------------------------------------------------------
 
+(setq cc-lookup-diagnostics-level 0)
 (defun setup-cc-keymaps()
   (evil-define-key 'normal c++-mode-map "\C-]" 'cc-lookup)
-  (evil-define-key 'normal c-mode-map "\C-]" 'cc-lookup))
+  (evil-define-key 'normal c-mode-map "\C-]" 'cc-lookup)
+  (local-set-key (kbd "<mouse-3>") 'cc-lookup)
+  )
 
 (defun setup-cpputils ()
   "manually setup cpputils"
@@ -35,7 +38,6 @@
 ;; -----------------------------------------------------------------------------
 (defun my-cc-mode-hook ()
   (setq compilation-window-height 8)
-
   (setq c-style-variables-are-local-p nil)
   ;; NO newline automatically after electric expressions are entered
   (setq c-auto-newline nil)
@@ -53,26 +55,25 @@
   (turn-on-fic-mode)
   (require 'which-func)
   (which-function-mode t)
-  (require 'cpp)
-  (global-cwarn-mode t)
-  (hide-ifdef-mode t)
+  ;; (require 'cpp)
+  ;; (global-cwarn-mode t)
+  ;; (hide-ifdef-mode t)
   (default-cc-flags-setup)
   (my-ac-cc-mode-setup)
-  )
+
+  (local-set-key (kbd "<f7>") 'gud-step)
+  (local-set-key (kbd "<f8>") 'gud-next)
+)
 
 (add-hook 'c-mode-hook 'my-cc-mode-hook)
 (add-hook 'c++-mode-hook 'my-cc-mode-hook)
 (add-hook 'c-initialization-hook' setup-cc-keymaps)
-
-
-                                        ;REVIEW 2013-06-14 10:46 Hongxu Chen;
 
 ;; -----------------------------------------------------------------------------
 ;; includes and flags
 ;; -----------------------------------------------------------------------------
 
 ;; setup all cc flags values
-;; FIXME shouldn't be used interactively
 (defun default-cc-flags-setup ()
   "setup all of my paths and flags in c/c++ mode."
   (setq my-c++-include-directories

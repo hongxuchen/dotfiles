@@ -28,6 +28,8 @@
 ;; (global-set-key "\C-cx" 'clipboard-kill-ring-save)
 ;; (global-set-key "\C-cc" 'copy-region-as-kill)
 
+(global-set-key (kbd "C-c e") 'my-eval-and-replace)
+
 (global-set-key "\C-x\C-t" nil) ;;origin is transpose-lines
 (global-set-key "\M-t" nil) ;; transpose-words
 (global-set-key "\M-u" nil) ;; upcase-word
@@ -45,6 +47,12 @@
 ;; helpers
 (global-set-key (kbd "C-h C-f") 'find-function)
 (global-set-key (kbd "C-h C-v") 'find-variable)
+
+;;windmove
+(global-set-key [s-left] 'windmove-left)          ; move to left windnow
+(global-set-key [s-right] 'windmove-right)        ; move to right window
+(global-set-key [s-up] 'windmove-up)              ; move to upper window
+(global-set-key [s-down] 'windmove-down)          ; move to downer window
 
 (global-set-key (kbd "C-x C-d") 'ido-dired)
 (global-set-key (kbd "C-x f") 'ido-find-file)

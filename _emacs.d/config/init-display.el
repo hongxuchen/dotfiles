@@ -17,10 +17,12 @@
 
 (menu-bar-mode -1) ;; use menu-bar since I am not familiar with the keybings, WTF
 (tool-bar-mode -1)
+(setq tool-bar-style 'text)
 (if (fboundp 'scroll-bar-mode) (set-scroll-bar-mode nil))
 (blink-cursor-mode -1)
 (column-number-mode 1)
 (winner-mode t)
+(setq winner-ring-size 20)
 (mouse-avoidance-mode 'banish)
 (setq x-stretch-cursor t)
 

@@ -1,6 +1,11 @@
 (provide 'init-compile)
 
-(setq-default gud-chdir-before-run nil)
+(setq gdb-many-windows t)
+(setq gdb-show-main t)
+(setq gud-chdir-before-run nil)
+(setq gud-tooltip-mode t)
+(setq gdb-create-source-file-list nil)
+
 (defun hack-gud-mode ()
   (when (string= major-mode "gud-mode")
     (goto-char (point-max))))
@@ -8,7 +13,6 @@
 (defadvice switch-to-buffer (after switch-to-buffer-after activate)
   (hack-gud-mode))
 
-;; windmove-do-window-select is from windmove.el
 (defadvice windmove-do-window-select (after windmove-do-window-select-after activate)
   (hack-gud-mode))
 
@@ -27,11 +31,13 @@
 (setq compile-command "make "
       compile-history (list "make" "make clean"))
 (setq compilation-read-command nil)
-(setq compilation-finish-function
-      (lambda (buf str)
-        (if (string-match-p "exited abnormally" str)
-            (message "contains errors, press C-x ` to visit")
-          (with-current-buffer buf
-            (goto-char (point-min))
-            (unless (search-forward "warning:" nil t)
-              (winner-undo))))))
+(setq compilation-finish-function nil)
+(setq compilation-finish-functions nil)
+;; (setq compilation-finish-functions
+;;       (lambda (buf str)
+;;         (if (string-match-p "exited abnormally" str)
+;;             (message "contains errors, press C-x ` to visit")
+;;           (with-current-buffer buf
+;;             (goto-char (point-min))
+;;             (unless (search-forward "warning:" nil t)
+;;               (winner-undo))))))

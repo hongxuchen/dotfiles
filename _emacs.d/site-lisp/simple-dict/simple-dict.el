@@ -1,7 +1,6 @@
-;; -*- lexical-binding: t; -*-
+;; -*- lexical-binding: nil; -*-
 ;; TODO
 ;; 1. goto-address-prog-mode to buttonize possible urls
-;; 2. switch to it
 
 (provide 'simple-dict)
 
@@ -39,6 +38,11 @@ M-x dict-list-strategies"
 
 (defconst dict-buffer-name "*simple-dict*"
   "Name of the buffer to display dictionary lookup results.")
+
+(defcustom after-dict-hook nil
+  "hooks that runs after dict function")
+
+(setq after-dict-hook '(shell-command (concat "dict-emacs '" (format (shell-quote-argument word-to-lookup)) "'") ))
 
 (defconst dict-options-alist
   '((dict-server-host    "-h" t)
@@ -112,4 +116,10 @@ specify."
                         dict-db-name
                         dict-strategy)
                       (list word-to-lookup))
-    (switch-to-buffer-other-window dict-buffer-name)))
+    (unless (string= (buffer-name (current-buffer)) dict-buffer-name)
+      (switch-to-buffer-other-window dict-buffer-name))
+    (unless (search-forward "No definitions found for" nil t)
+      (with-temp-buffer
+        (insert (concat word-to-lookup "\n"))
+        (write-region (point-min) (point-max) (expand-file-name (format-time-string "%Y%m") "~/.dict") t)))
+    ))

@@ -87,7 +87,6 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (require-package 'pointback)
 (require-package 'exec-path-from-shell)
 (require-package 'undo-tree) ;; evil mode needs it!
-(require-package 'smarter-compile)
 (require-package 'ido-ubiquitous)
 (require-package 'info+)
 ;; (require-package 'wgrep)
@@ -156,7 +155,6 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 ;; auto-complete
 (require-package 'fuzzy)
 (require-package 'auto-complete) ;auto-complete depends on fuzzy
-(require-package 'auto-complete-clang)
 
 ;; c/c++
 (require-package 'cpputils-cmake)

@@ -10,6 +10,4 @@
          ("\\.bash$" . sh-mode)
          ("\\.zsh$" . sh-mode))
        auto-mode-alist))
-;; TODO no effect
-(define-auto-insert 'sh-mode '(nil "#!/bin/bash\n\n"))
 (provide 'init-sh)
