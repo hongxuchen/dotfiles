@@ -1,0 +1,4 @@
+# name: #include "..."
+# key: inc1
+# --
+#include "$1"

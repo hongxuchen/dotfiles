@@ -56,8 +56,8 @@
 ;;----------------------------------------------------------------------------
 (require 'init-compile)
 (require 'init-auto-complete) ; after init-yasnippet to override TAB
-(require 'init-gtags) ;; gtags funs
-(require 'xcscope)
+;; (require 'init-gtags) ;; gtags funs
+;; (require 'xcscope)
 (require 'init-flymake) ;; online check
 
 (require 'init-cc-mode)

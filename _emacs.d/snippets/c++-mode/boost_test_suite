@@ -1,5 +1,5 @@
 # -*- mode: snippet -*-
-# name: test_suite
+# name: boost_test_suite
 # key: ts
 # --
 BOOST_AUTO_TEST_SUITE( ${1:test_suite1} )

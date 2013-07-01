@@ -1,8 +1,9 @@
 (global-linum-mode t)
 
-(if (window-system)
-    (setq linum-format 'dynamic)
-  (setq linum-format "%3d "))
+;; (if (window-system)
+;;     (setq linum-format 'dynamic)
+;;   (setq linum-format "%3d "))
+(setq linum-format "%3d ")
 
 (setq linum-mode-inhibit-modes-list '(eshell-mode
                                       shell-mode

@@ -1,5 +1,1 @@
 ;; Hongxu Chen
-insert-file-contents
-(write-file)
-(write-char)
-(write-region)

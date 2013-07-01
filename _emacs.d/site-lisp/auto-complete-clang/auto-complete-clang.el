@@ -1,5 +1,6 @@
 (provide 'auto-complete-clang)
 (require 'auto-complete)
+(require 'yasnippet)
 
 (defcustom ac-clang-executable
   (executable-find "clang")
@@ -322,11 +323,11 @@ This variable will typically contain include paths, e.g., ( \"-I~/MyProject\", \
                     (dolist (arg sl)
                       (setq snp (concat snp ", ${" arg "}")))
                     (condition-case nil
-                        (yas/expand-snippet (concat "("  (substring snp 2) ")")
+                        (yas-expand-snippet (concat "("  (substring snp 2) ")")
                                             ac-template-start-point pos) ;; 0.6.1c
                       (error
                        ;; try this one:
-                       (ignore-errors (yas/expand-snippet
+                       (ignore-errors (yas-expand-snippet
                                        ac-template-start-point pos
                                        (concat "("  (substring snp 2) ")"))) ;; work in 0.5.7
                        )))
@@ -346,10 +347,10 @@ This variable will typically contain include paths, e.g., ( \"-I~/MyProject\", \
                       (setq s (replace-regexp-in-string "#>" "}" s))
                       (setq s (replace-regexp-in-string ", \\.\\.\\." "}, ${..." s))
                       (condition-case nil
-                          (yas/expand-snippet s ac-template-start-point pos) ;; 0.6.1c
+                          (yas-expand-snippet s ac-template-start-point pos) ;; 0.6.1c
                         (error
                          ;; try this one:
-                         (ignore-errors (yas/expand-snippet ac-template-start-point pos s)) ;; work in 0.5.7
+                         (ignore-errors (yas-expand-snippet ac-template-start-point pos s)) ;; work in 0.5.7
                          )))
                      ((featurep 'snippet)
                       (delete-region ac-template-start-point pos)

@@ -119,7 +119,5 @@ specify."
     (unless (string= (buffer-name (current-buffer)) dict-buffer-name)
       (switch-to-buffer-other-window dict-buffer-name))
     (unless (search-forward "No definitions found for" nil t)
-      (with-temp-buffer
-        (insert (concat word-to-lookup "\n"))
-        (write-region (point-min) (point-max) (expand-file-name (format-time-string "%Y%m") "~/.dict") t)))
+        (write-region (concat word-to-lookup "\n") nil (expand-file-name (format-time-string "%Y%m") "~/.dict") t))
     ))

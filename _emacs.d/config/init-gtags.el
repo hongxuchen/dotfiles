@@ -30,6 +30,8 @@ C-u M-x `my-add-gtagslibpath' will remove the directory from GTAGSLIBPATH."
 (add-hook 'xgtags-mode-hook
           (lambda () (local-set-key "\C-cwU" 'my-gtags-create-or-update)))
 
+(setq xgtags-support-mouse nil)
+(setq xgtags-goto-tag 'unique)
 (add-hook 'c-mode-common-hook (lambda () (xgtags-mode 1)))
 (add-hook 'c++-mode-common-hook (lambda () (xgtags-mode 1)))
 

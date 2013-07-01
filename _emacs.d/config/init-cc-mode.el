@@ -7,9 +7,7 @@
 (setq cc-lookup-diagnostics-level 0)
 (defun setup-cc-keymaps()
   (evil-define-key 'normal c++-mode-map "\C-]" 'cc-lookup)
-  (evil-define-key 'normal c-mode-map "\C-]" 'cc-lookup)
-  (local-set-key (kbd "<mouse-3>") 'cc-lookup)
-  )
+  (evil-define-key 'normal c-mode-map "\C-]" 'cc-lookup))
 
 (defun setup-cpputils ()
   "manually setup cpputils"
@@ -63,10 +61,18 @@
 
   (local-set-key (kbd "<f7>") 'gud-step)
   (local-set-key (kbd "<f8>") 'gud-next)
-)
+  )
 
-(add-hook 'c-mode-hook 'my-cc-mode-hook)
-(add-hook 'c++-mode-hook 'my-cc-mode-hook)
+(add-hook 'c-mode-hook (lambda ()
+                         (my-cc-mode-hook)
+                         (local-set-key (kbd "<mouse-1>") 'cc-lookup)
+                         (local-set-key (kbd "<mouse-3>") 'pop-global-mark)))
+
+(add-hook 'c++-mode-hook (lambda ()
+                         (my-cc-mode-hook)
+                         (define-key c++-mode-map (kbd "<mouse-1>") 'cc-lookup)
+                         (define-key c++-mode-map (kbd "<mouse-3>") 'pop-global-mark)))
+
 (add-hook 'c-initialization-hook' setup-cc-keymaps)
 
 ;; -----------------------------------------------------------------------------
@@ -95,8 +101,7 @@
   (setq my-ac-extra-flags
         '("-I/usr/local/include" "-I/usr/include/x86_64-linux-gnu" "-I/usr/include"))
 
-
-  (setq ffap-c-path '("/usr/include" "/usr/include/linux" "/usr/local/include"))
+  (setq ffap-c-path '("/usr/include" "/usr/include/linux" "/usr/local/include" "/usr/include/c++/4.6/"))
 
   (setq my-c++-include-flags
         (mapcar (lambda (item)(concat "-I" item))

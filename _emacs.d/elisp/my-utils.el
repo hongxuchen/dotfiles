@@ -156,11 +156,18 @@ Note, for the time zone offset, both the formats 「hhmm」 and 「hh:mm」 are 
             ((string-match "[\]})>]" prev-char)
              (indent-region (progn (backward-sexp 1) (point)) pos nil))))))
 
-(defun my-sudo-edit (&optional arg)
-  (interactive "p")
-  (if (or arg (not buffer-file-name))
-      (find-file (concat "/sudo:root@localhost:" (ido-read-file-name "File: ")))
-    (find-alternate-file (concat "/sudo:root@localhost:" buffer-file-name))))
+(defun my-sudo-edit ()
+  "Edit the current buffer file as superuser -
+in a new buffer, that should look the same."
+  (interactive)
+  (let ((start-point-pos (point)))
+    (let ((top-window-pos (point))
+          (buffer (buffer-file-name)) )
+      (kill-buffer)
+      (find-file (format "/sudo::%s" buffer))
+      (goto-char top-window-pos)
+      (recenter-top-bottom 0)
+      (goto-char start-point-pos) )))
 
 (defun my-totd ()
   (interactive)

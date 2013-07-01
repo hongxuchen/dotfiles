@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# CONFLICTS
+# name: operator[]_c
+# key: c[]
+# --
+const ${1:Type}& operator[](${2:int index}) const {
+        $0
+}
