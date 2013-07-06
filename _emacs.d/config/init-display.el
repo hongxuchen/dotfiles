@@ -17,6 +17,7 @@
 
 (menu-bar-mode -1) ;; use menu-bar since I am not familiar with the keybings, WTF
 (tool-bar-mode -1)
+(fringe-mode '(1 . 1))
 (setq tool-bar-style 'image)
 (if (fboundp 'scroll-bar-mode) (set-scroll-bar-mode nil))
 (blink-cursor-mode -1)
@@ -41,16 +42,16 @@
 (require 'monokai-dark-theme)
 (setq-default windmove-wrap-around t)
 
-;; (if (display-graphic-p)
-;;   ;; Setting English Font
-;;   (set-face-attribute 'default nil :font "DejaVu Sans Mono 12")
-;;   ;; Chinese Font
-;;   (dolist (charset '(kana han symbol cjk-misc bopomofo))
-;;   (set-fontset-font (frame-parameter nil 'font)
-;;                       charset (font-spec :family "WenQuanYi Micro Hei"
-;;                                          :style=Regular
-;;                                          :size=12)))
-;;   )
+(if (display-graphic-p)
+    (progn
+      ;; (set-face-attribute 'default nil :font "Consolas 14")
+      (set-face-attribute 'default nil :font "DejaVu Sans Mono 13")
+      (dolist (charset '(kana han symbol cjk-misc bopomofo))
+        (set-fontset-font (frame-parameter nil 'font)
+                          charset
+                          (font-spec :family "文泉驿等宽微米黑"
+                                     :size 12
+                                     :weight 'light)))))
 
 ;; WoMan settings
 (setq woman-fill-column 90

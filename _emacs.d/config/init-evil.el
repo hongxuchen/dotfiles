@@ -53,6 +53,7 @@
 
 ;; revert to emacs keymaps for some keys
 (evil-global-set-key 'normal (kbd "q") 'bury-buffer)
+(evil-global-set-key 'normal (kbd "C-t") 'pop-global-mark)
 (evil-global-set-key 'normal (kbd "K") 'man)
 (evil-global-set-key 'insert (kbd "C-k") 'kill-line)
 (evil-global-set-key 'insert (kbd "C-e") 'move-end-of-line)

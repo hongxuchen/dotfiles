@@ -2,7 +2,6 @@
 # name: proof
 # key: prf
 # condition: (or (= (current-column) 3) (= (current-column) 0))
-# contributor: Rafael Villarroel (rvf0068@gmail.com)
 # --
 #+BEGIN_PROOF
 $0

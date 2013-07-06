@@ -1,7 +1,6 @@
 # -*- mode: snippet -*-
 # name: tikz-figure
 # condition: (or (= (current-column) 3) (= (current-column) 0))
-# contributor: Rafael Villarroel <rvf0068@gmail.com>
 # key: tkz
 # --
 #+CAPTION: $1

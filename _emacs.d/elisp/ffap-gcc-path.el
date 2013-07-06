@@ -55,9 +55,6 @@ URL `http://user42.tuxfamily.org/ffap-gcc-path/index.html'"
           (replace-match "" t t))
         (setq ffap-c-path (split-string (buffer-string) "\n"))))))
 
-;; do the setup now
 (ffap-gcc-path-setup)
 
 (provide 'ffap-gcc-path)
-
-;;; ffap-gcc-path.el ends here

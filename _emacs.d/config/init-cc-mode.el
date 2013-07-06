@@ -7,7 +7,9 @@
 (setq cc-lookup-diagnostics-level 0)
 (defun setup-cc-keymaps()
   (evil-define-key 'normal c++-mode-map "\C-]" 'cc-lookup)
-  (evil-define-key 'normal c-mode-map "\C-]" 'cc-lookup))
+  (evil-define-key 'normal c++-mode-map "\C-t" 'cc-jump-back)
+  (evil-define-key 'normal c-mode-map "\C-]" 'cc-lookup)
+  (evil-define-key 'normal c-mode-map "\C-t" 'cc-jump-back))
 
 (defun setup-cpputils ()
   "manually setup cpputils"
@@ -65,13 +67,13 @@
 
 (add-hook 'c-mode-hook (lambda ()
                          (my-cc-mode-hook)
-                         (local-set-key (kbd "<mouse-1>") 'cc-lookup)
-                         (local-set-key (kbd "<mouse-3>") 'pop-global-mark)))
+                         (local-set-key (kbd "<s-mouse-1>") 'cc-lookup)
+                         (local-set-key (kbd "<s-mouse-3>") 'pop-global-mark)))
 
 (add-hook 'c++-mode-hook (lambda ()
-                         (my-cc-mode-hook)
-                         (define-key c++-mode-map (kbd "<mouse-1>") 'cc-lookup)
-                         (define-key c++-mode-map (kbd "<mouse-3>") 'pop-global-mark)))
+                           (my-cc-mode-hook)
+                           (define-key c++-mode-map (kbd "<s-mouse-1>") 'cc-lookup)
+                           (define-key c++-mode-map (kbd "<s-mouse-3>") 'pop-global-mark)))
 
 (add-hook 'c-initialization-hook' setup-cc-keymaps)
 
@@ -114,5 +116,13 @@
     (setq ac-clang-flags (append my-c++-include-flags '("-std=c99"))))
    ))
 
-(global-set-key [C-M-tab] 'clang-format-buffer)
 (add-hook 'cc-mode-hook 'turn-on-auto-fill)
+
+(dir-locals-set-class-variables 'llvm-3.4-directory
+                                '((nil . ((ac-clang-flags . ("-I/usr/lib/llvm-3.4/include"   "/usr/include/c++/4.6" "/usr/include/c++/4.6/backward" "/usr/include/c++/4.6/x86_64-linux-gnu" "/usr/include/c++/4.6/i686-linux-gnu" "/usr/lib/gcc/x86_64-linux-gnu/4.6/include"))))
+                                  (nil . ((ffap-c-path . ("/usr/lib/llvm-3.4/include" "/usr/include" "/usr/include/linux" "/usr/local/include" "/usr/include/c++/4.6/"))))))
+(dir-locals-set-directory-class
+ "/usr/lib/llvm-3.4/include/clang-c/" 'llvm-3.4-directory)
+
+(dir-locals-set-directory-class
+ "/usr/lib/llvm-3.4/include/clang" 'llvm-3.4-directory)

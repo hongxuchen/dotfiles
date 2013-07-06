@@ -3,7 +3,6 @@
 # key: el
 # condition: (= (current-column) 2)
 # --
-#+NAME: $1
 #+BEGIN_SRC emacs-lisp
 $0
 #+END_SRC

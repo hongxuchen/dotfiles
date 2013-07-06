@@ -1,6 +1,6 @@
 # -*- mode: snippet -*-
 #name : #+begin_...#+end_
-#key : beg
+#key : blk
 # expand-env: ((yas/indent-line 'fixed) (yas/wrap-around-region 'nil))
 # --
 #+BEGIN_$1 $2

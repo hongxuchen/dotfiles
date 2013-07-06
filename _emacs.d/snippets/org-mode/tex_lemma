@@ -2,7 +2,6 @@
 # name: lemma
 # key: lem
 # condition: (or (= (current-column) 3) (= (current-column) 0))
-# contributor: Rafael Villarroel (rvf0068@gmail.com)
 # --
 # <<$1>>
 #+BEGIN_LEMMA

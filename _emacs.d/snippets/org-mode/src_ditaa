@@ -1,8 +1,6 @@
 # -*- mode: snippet -*-
 # name: ditaa
 # key: dit
-# contributor: Rick Moynihan <rick@sourcesmouth.co.uk>
-# contributor: Rafael Villarroel (rvf0068@gmail.com)
 # --
 #+BEGIN_SRC ditaa ${1:export-file-name} -r -s -e
 ${0}

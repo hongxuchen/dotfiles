@@ -1,4 +1,6 @@
+# -*- mode: snippet -*-
 #name : #+srcname:..#+begin_src...#+end_src
+#key :src1
 # expand-env: ((yas/indent-line 'fixed) (yas/wrap-around-region 'nil))
 # --
 #+SOURCE: ${1:NAME}

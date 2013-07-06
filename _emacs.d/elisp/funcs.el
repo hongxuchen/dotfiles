@@ -62,3 +62,29 @@
 (defun my-subseq (list from &optional to)
   (if (null to) (nthcdr from list)
     (butlast (nthcdr from list) (- (length list) to))))
+
+(defun walk-path (dir action)
+       "walk DIR executing ACTION with (dir file)"
+       (cond ((file-directory-p dir)
+              (or (char-equal ?/ (aref dir(1- (length dir))))
+                  (setq dir (file-name-as-directory dir)))
+              (let ((lst (directory-files dir nil nil t))
+                     fullname file)
+                (while lst
+                  (setq file (car lst))
+                  (setq lst (cdr lst))
+                  (cond ((member file '("." "..")))
+                        (t
+                         (and (funcall action dir file)
+                              (setq fullname (concat dir file))
+                              (file-directory-p fullname)
+                              (walk-path fullname action)))))))
+             (t
+              (funcall action
+                       (file-name-directory dir)
+                       (file-name-nondirectory dir)))))
+    (defun walk-path-visitor (dir file)
+       "Called by walk-path for each file found"
+       (message (concat  dir file)))
+
+    (walk-path "~/" 'walk-path-visitor)

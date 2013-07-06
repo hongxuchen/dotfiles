@@ -2,7 +2,6 @@
 # name: equation
 # key: eqn
 # condition: (or (= (current-column) 3) (= (current-column) 0))
-# contributor: Rafael Villarroel (rvf0068@gmail.com)
 # --
 # <<$1>>
 \begin{equation}

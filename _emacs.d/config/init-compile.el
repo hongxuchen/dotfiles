@@ -3,29 +3,19 @@
 (setq gdb-many-windows t)
 (setq gdb-show-main t)
 (setq gud-chdir-before-run nil)
-(setq gud-tooltip-mode t)
 (setq gdb-create-source-file-list nil)
+
+(setq comint-scroll-to-bottom-on-input t)
+(setq comint-scroll-to-bottom-on-output t)
 
 (defun hack-gud-mode ()
   (when (string= major-mode "gud-mode")
-    (goto-char (point-max))))
+    (run-with-timer 0.25 nil (goto-char (point-max)))))
 
 (add-hook 'gud-mode-hook (lambda ()
-                           (tool-bar-mode 1)
+                           (tooltip-mode 1)
+                           (gud-tooltip-mode t)
                            (autopair-mode -1)))
-
-(defadvice switch-to-buffer (after switch-to-buffer-after activate)
-  (hack-gud-mode))
-
-(defadvice comint-send-input (after comint-send-input-after activate)
-  (hack-gud-mode))
-
-(defadvice windmove-do-window-select (after windmove-do-window-select-after activate)
-  (hack-gud-mode))
-
-
-(defadvice gud-call (after gud-call-select-after activate)
-  (hack-gud-mode))
 
 ;; show current line of code
 (defadvice gdb-display-source-buffer
@@ -75,6 +65,42 @@
   "Kill gdb process."
   (interactive)
   (with-current-buffer gud-comint-buffer (comint-skip-input))
-  (kill-process (get-buffer-process gud-comint-buffer)))
+  (kill-process (get-buffer-process gud-comint-buffer))
+  (delete-window))
 
 (setq auto-mode-alist (append '(("\\.gdb$" . gdb-script-mode)) auto-mode-alist))
+
+(defun gud-get-process-name ()
+  (let ((process (get-buffer-process gud-comint-buffer)))
+    (if (null process)
+        nil
+      (process-name process))))
+
+(defun gdb-save-breakpoints ()
+  "Save current breakpoint definitions as a script."
+  (interactive)
+  (let ((gud-process-name (gud-get-process-name)))
+    (cond (gud-process-name
+           (gud-basic-call
+            (format "save breakpoints ~/.%s-breakpoints.gdb"
+                    gud-process-name))))))
+
+(defun gdb-restore-breakpoints ()
+  "Restore the saved breakpoint definitions as a script."
+  (interactive)
+  (let ((breakpoints-file (format "~/.%s-breakpoints.gdb"
+                                  (gud-get-process-name))))
+    (if (file-exists-p breakpoints-file)
+        (gud-basic-call (format "source %s" breakpoints-file)))))
+
+(defun gdb-kill-buffer ()
+  "Kill gdb-buffer."
+  (interactive)
+  (gdb-save-breakpoints)
+  (kill-buffer))
+
+;; (defun gdb-breakpoint-session ()
+;;   (gdb-restore-breakpoints)
+;;   (local-set-key (kbd "C-x k") 'gdb-kill-buffer))
+
+;; (add-hook 'gdb-mode-hook 'gdb-breakpoint-session)

@@ -2,6 +2,5 @@
 # name: LaTeX class
 # key: lcl
 # condition: (= (current-column) 3)
-# contributor: Rafael Villarroel (rvf0068@gmail.com)
 # --
 #+LATEX_CLASS: ${0:$$(yas/choose-value '("report" "book" "article"))}

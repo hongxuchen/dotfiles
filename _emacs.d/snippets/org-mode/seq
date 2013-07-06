@@ -1,4 +1,5 @@
+# -*- mode: snippet -*-
 #name : SEQ TODO
-#contributor : Rick Moynihan <rick@sourcesmouth.co.uk>
+#key : seqt
 # --
 #+SEQ_TODO: ${1:STATES} | ${2:FINISHED}

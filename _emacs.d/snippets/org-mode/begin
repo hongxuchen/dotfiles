@@ -1,5 +1,6 @@
 # -*- mode: snippet -*-
 #name : \begin{...} ... \end{...}
+#key : be
 # expand-env: ((yas/indent-line 'fixed) (yas/wrap-around-region 'nil))
 # --
 \begin{$1}

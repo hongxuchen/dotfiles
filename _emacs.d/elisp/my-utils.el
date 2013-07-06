@@ -69,29 +69,31 @@
 
 (defun show-file-name () (interactive) (message (buffer-file-name)))
 
-(defsubst my-gnu-indent ()
+(defun my-gnu-indent ()
   "indent current c or header file using GNU indent"
+  (interactive)
   (save-buffer)
   (shell-command (format "indent %s" (shell-quote-argument (buffer-file-name))))
   (revert-buffer t t t)
   (message "Successfully indented!"))
 
+(require 'clang-format)
 (defun my-format-buffer ()
   (interactive)
-  (cond ((member major-mode '(makefile-mode makefile-gmake-mode python-mode))
+  (cond ((member major-mode '(makefile-mode makefile-gmake-mode python-mode org-mode))
          (message "will not cleanup buffer when major mode is %s" major-mode))
-        ((string= major-mode "c-mode") (my-gnu-indent))
+        ((member major-mode '(c-mode c++-mode)) (clang-format-buffer))
         (t (progn
              (untabify (point-min) (point-max))
              (delete-trailing-whitespace)
              (indent-region (point-min) (point-max))
-             (set-buffer-file-coding-system 'utf-8)
              (save-buffer)
              ))))
 
-;; TODO contains minor mode, but autoloads need to be included
 (defvar switch-major-mode-history nil)
 (defun switch-major-mode (mode)
+  "Switch major mode.
+It contains minor mode, but autoloads need to be included"
   (interactive
    (list
     (intern
@@ -188,6 +190,7 @@ in a new buffer, that should look the same."
 (defun my-eval-and-replace ()
   "Replace the preceding sexp with its value."
   (interactive)
+  (forward-char)
   (backward-kill-sexp)
   (condition-case nil
       (prin1 (eval (read (current-kill 0)))

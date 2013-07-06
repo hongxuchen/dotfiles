@@ -283,7 +283,7 @@ let g:tagbar_autoshowtag = 0
 let g:tagbar_updateonsave_maxlines = 10000
 let g:tagbar_systemenc = 'encoding'
 
-"clang_complete
+" clang_complete
 let g:clang_auto_select=1
 let g:clang_complete_auto=1
 let g:clang_complete_copen=1
@@ -296,7 +296,7 @@ let g:clang_exec="clang"
 let g:clang_user_options=""
 let g:clang_auto_user_options=".clang_complete,path"
 let g:clang_use_library=1
-"let g:clang_library_path="/usr/lib"
+let g:clang_library_path="/usr/lib/llvm-3.4/lib/"
 let g:clang_sort_algo="priority"
 let g:clang_complete_macros=1
 let g:clang_complete_patterns=0

@@ -26,13 +26,12 @@
 (setq org-tag-alist '(("@urgent" . ?u) ("@normal" . ?n) 
                       ("trivial" . ?t)))
 
-(setq org-export-html-postamble nil)
+(setq org-html-postamble-format '(("en" "<p class=\"date\">Date: %d</p>")))
 
 (setq-default org-structure-template-alist nil) ;; NO easy template, yasnippet instead
 
-(setq org-export-html-style-include-default nil)
-(setq org-export-html-style "<link rel=\"stylesheet\" type=\"text/css\" href=\"/home/hongxuchen/.emacs.d/others/css/worg.css\" />") ;; 7.x
-(setq org-html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"/home/hongxuchen/.emacs.d/others/css/worg.css\" />") ;; 8.x
+(setq org-export-html-style-include-default t)
+(setq org-html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"/home/hongxuchen/.emacs.d/others/css/wiki.css\" />")
 ; Refile targets include this file and any file contributing to the agenda - up to 5 levels deep
 (setq org-refile-targets (quote ((nil :maxlevel . 5) (org-agenda-files :maxlevel . 5))))
 ; Targets start with the file name - allows creating level 1 tasks

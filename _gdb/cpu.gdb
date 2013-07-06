@@ -46,7 +46,7 @@ define reg
     if ($X86_64 == 1)
       printf "\t\t\t\t"
     end
-    dumpjump
+    # dumpjump
     printf "\n"
   end
 
