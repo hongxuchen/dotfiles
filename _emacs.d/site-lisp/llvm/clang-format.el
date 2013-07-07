@@ -1,6 +1,7 @@
-;;   (global-set-key [C-M-tab] 'clang-format-region)
-
 (require 'json)
+
+(defgroup clang-format nil
+  "group for `clang-format'." :group 'programming)
 
 (defcustom clang-format-binary "clang-format-3.4"
   "executable for clang-format")
@@ -9,7 +10,8 @@
 
 (defcustom clang-format-style "Google"
   "Style for clang format, candidates are \"LLVM\", \"Google\", \"Chromium\", \"Mozilla\""
-    :type 'string)
+  :type 'string
+  :group 'clang-format)
 
 (defun clang-format-region ()
   "Use clang-format to format the currently active region."
@@ -38,8 +40,8 @@
                              "-style" clang-format-style)
       (goto-char (point-min))
       (let ((json-output (json-read-from-string
-                           (buffer-substring-no-properties
-                             (point-min) (line-beginning-position 2)))))
+                          (buffer-substring-no-properties
+                           (point-min) (line-beginning-position 2)))))
         (delete-region (point-min) (line-beginning-position 2))
         (goto-char (1+ (cdr (assoc 'Cursor json-output))))
         (dotimes (index (length orig-windows))

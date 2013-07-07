@@ -49,10 +49,10 @@
 (global-set-key (kbd "C-h C-v") 'find-variable)
 
 ;;windmove
-(global-set-key [s-left] 'windmove-left)          ; move to left windnow
-(global-set-key [s-right] 'windmove-right)        ; move to right window
-(global-set-key [s-up] 'windmove-up)              ; move to upper window
-(global-set-key [s-down] 'windmove-down)          ; move to downer window
+(global-set-key [M-left] 'windmove-left)          ; move to left windnow
+(global-set-key [M-right] 'windmove-right)        ; move to right window
+(global-set-key [M-up] 'windmove-up)              ; move to upper window
+(global-set-key [M-down] 'windmove-down)          ; move to downer window
 
 (global-set-key (kbd "C-x C-d") 'ido-dired)
 (global-set-key (kbd "C-x f") 'ido-find-file)

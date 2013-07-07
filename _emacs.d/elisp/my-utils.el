@@ -82,7 +82,9 @@
   (interactive)
   (cond ((member major-mode '(makefile-mode makefile-gmake-mode python-mode org-mode))
          (message "will not cleanup buffer when major mode is %s" major-mode))
-        ((member major-mode '(c-mode c++-mode)) (clang-format-buffer))
+        ((member major-mode '(c-mode c++-mode)) (progn
+                                                  (clang-format-buffer)
+                                                  (save-buffer)))
         (t (progn
              (untabify (point-min) (point-max))
              (delete-trailing-whitespace)

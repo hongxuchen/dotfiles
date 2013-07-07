@@ -5,6 +5,7 @@
       evil-flash-delay 5
       evil-complete-all-buffers nil
       evil-ex-substitute-global t
+      evil-want-visual-char-semi-exclusive
       ;; evil-search-module 'isearch
       ;; evil-move-cursor-back t
       ;; evil-want-C-i-jump t
@@ -21,6 +22,7 @@
 (evil-set-initial-state 'comint-mode 'emacs)
 (evil-set-initial-state 'gud-mode 'emacs)
 ;; below are mode that derived from fundamental-mode
+(evil-set-initial-state 'finder-mode 'emacs)
 (evil-set-initial-state 'taglist-mode 'emacs)
 (evil-set-initial-state 'xgtags-select-mode 'emacs) ;;xgtags select mode supports j/k originally
 (evil-set-initial-state 'calendar-mode 'emacs) ;; evil treat this mode stupidly
@@ -52,11 +54,20 @@
 ;; (evil-set-initial-state 'yari-mode 'emacs)
 
 ;; revert to emacs keymaps for some keys
+(setcdr evil-insert-state-map nil)
+(define-key evil-insert-state-map
+  (read-kbd-macro evil-toggle-key) 'evil-emacs-state)
+
 (evil-global-set-key 'normal (kbd "q") 'bury-buffer)
 (evil-global-set-key 'normal (kbd "C-t") 'pop-global-mark)
 (evil-global-set-key 'normal (kbd "K") 'man)
-(evil-global-set-key 'insert (kbd "C-k") 'kill-line)
-(evil-global-set-key 'insert (kbd "C-e") 'move-end-of-line)
+(evil-global-set-key 'insert (kbd "<escape>") 'evil-normal-state)
+
+(defun evil-undefine ()
+ (interactive)
+ (let (evil-mode-map-alist)
+   (call-interactively (key-binding (this-command-keys)))))
+(define-key evil-normal-state-map (kbd "TAB") 'evil-undefine)
 
 ;; vim-surround like, @see https://github.com/timcharper/evil-surround
 (require 'surround)

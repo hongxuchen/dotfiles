@@ -1,0 +1,18 @@
+;; Hongxu Chen
+
+(split-string
+     (shell-command-to-string
+      (read-shell-command "Shell command: " nil nil
+                          (and buffer-file-name
+                               (file-relative-name buffer-file-name)))))
+
+(funcall '+ 1 2 3)
+(apply '+ 1 '(2 3)
+ )
+
+(apply 'list 1 '(nil))
+(stringp nil)
+(stringp 'nil)
+(stringp 'major-mode)
+
+(with-temp-buffer )

@@ -11,13 +11,17 @@
 
 (setq indicate-empty-lines t)
 
+;; comint
+(setq comint-scroll-to-bottom-on-input t
+      comint-scroll-to-bottom-on-output t)
+
 ;;----------------------------------------------------------------------------
 ;; Window size and features
 ;;----------------------------------------------------------------------------
 
 (menu-bar-mode -1) ;; use menu-bar since I am not familiar with the keybings, WTF
 (tool-bar-mode -1)
-(fringe-mode '(1 . 1))
+;; (fringe-mode '(1 . 1))
 (setq tool-bar-style 'image)
 (if (fboundp 'scroll-bar-mode) (set-scroll-bar-mode nil))
 (blink-cursor-mode -1)

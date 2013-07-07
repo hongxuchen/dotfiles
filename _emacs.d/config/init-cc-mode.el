@@ -25,7 +25,7 @@
   (require 'auto-complete-clang)
   (setq ac-clang-executable "/usr/bin/clang")
   (setq ac-sources '(ac-source-clang ac-source-yasnippet ac-source-dictionary))
-  (setq ac-clang-auto-save t)
+  ;; (setq ac-clang-auto-save t)
 
   ;; (require 'auto-complete-clang-async)
   ;; (setq ac-clang-complete-executable "~/.emacs.d/site-lisp/emacs-clang-complete-async/clang-complete")

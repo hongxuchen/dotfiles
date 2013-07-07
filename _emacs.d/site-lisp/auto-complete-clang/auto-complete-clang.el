@@ -2,20 +2,14 @@
 (require 'auto-complete)
 (require 'yasnippet)
 
+(defconst ac-clang-stdout "*ac-clang-stdout*")
+(defconst ac-clang-stderr "*ac-clang-error*")
+
 (defcustom ac-clang-executable
   (executable-find "clang")
   "*Location of clang executable"
   :group 'auto-complete
   :type 'file)
-
-(defcustom ac-clang-auto-save t
-  "*Determines whether to save the buffer when retrieving completions.
-Old version of clang can only complete correctly when the buffer has been saved.
-Now clang can parse the codes from standard input so that we can turn this option
-to Off. If you are still using the old clang, turn it on!"
-  :group 'auto-complete
-  :type '(choice (const :tag "Off" nil)
-                 (const :tag "On" t)))
 
 (defcustom ac-clang-lang-option-function nil
   "Function to return the lang type for option -x.
@@ -31,7 +25,7 @@ This variable will typically contain include paths, e.g., ( \"-I~/MyProject\", \
   :group 'auto-complete
   :type '(repeat (string :tag "Argument" "")))
 
-;;; The prefix header to use with Clang code completion. 
+;;; The prefix header to use with Clang code completion.
 (defvar ac-clang-prefix-header nil)
 
 ;;; Set the Clang prefix header
@@ -58,16 +52,14 @@ This variable will typically contain include paths, e.g., ( \"-I~/MyProject\", \
   "set new cflags for ac-clang from shell command output"
   (interactive)
   (setq ac-clang-flags
-    (split-string
-     (shell-command-to-string
-      (read-shell-command "Shell command: " nil nil
-                          (and buffer-file-name
-                               (file-relative-name buffer-file-name)))))))
+        (split-string
+         (shell-command-to-string
+          (read-shell-command "Shell command: " nil nil
+                              (and buffer-file-name
+                                   (file-relative-name buffer-file-name)))))))
 
 (defconst ac-clang-completion-pattern
   "^COMPLETION: \\(%s[^\s\n:]*\\)\\(?: : \\)*\\(.*$\\)")
-
-(defconst ac-clang-error-buffer-name "*clang error*")
 
 (defun ac-clang-parse-output (prefix)
   (goto-char (point-min))
@@ -79,7 +71,7 @@ This variable will typically contain include paths, e.g., ( \"-I~/MyProject\", \
       (setq match (match-string-no-properties 1))
       (unless (string= "Pattern" match)
         (setq detailed_info (match-string-no-properties 2))
-      
+
         (if (string= match prev-match)
             (progn
               (when detailed_info
@@ -94,51 +86,30 @@ This variable will typically contain include paths, e.g., ( \"-I~/MyProject\", \
           (setq prev-match match)
           (when detailed_info
             (setq match (propertize match 'ac-clang-help detailed_info)))
-          (push match lines))))    
+          (push match lines))))
     lines))
 
-
 (defun ac-clang-handle-error (res args)
-  (goto-char (point-min))
-  (let* ((buf (get-buffer-create ac-clang-error-buffer-name))
-         (cmd (concat ac-clang-executable " " (mapconcat 'identity args " ")))
-         (pattern (format ac-clang-completion-pattern ""))
-         (err (if (re-search-forward pattern nil t)
-                  (buffer-substring-no-properties (point-min)
-                                                  (1- (match-beginning 0)))
-                ;; Warn the user more agressively if no match was found.
-                (message "clang failed with error %d:\n%s" res cmd)
-                (buffer-string))))
-
-    (with-current-buffer buf
-      (let ((inhibit-read-only t))
-        (erase-buffer)
-        (insert (current-time-string)
-                (format "\nclang failed with error %d:\n" res)
-                cmd "\n\n")
-        (insert err)
-        (setq buffer-read-only t)
-        (goto-char (point-min))))))
+  (message "error"))
 
 (defun ac-clang-call-process (prefix &rest args)
-  (let ((buf (get-buffer-create "*clang-output*"))
-        res)
+  (let* (
+         (buf (get-buffer-create ac-clang-stdout))
+         (res))
     (with-current-buffer buf (erase-buffer))
-    (setq res (if ac-clang-auto-save
-                  (apply 'call-process ac-clang-executable nil buf nil args)
-                (apply 'call-process-region (point-min) (point-max)
-                       ac-clang-executable nil buf nil args)))
+    (setq res (apply 'call-process-region (point-min) (point-max)
+                     ac-clang-executable nil (list ac-clang-stdout ac-clang-stderr) nil args))
     (with-current-buffer buf
-      (unless (eq 0 res)
-        (ac-clang-handle-error res args))
-      ;; Still try to get any useful input.
-      (ac-clang-parse-output prefix))))
+      ;; (unless (eq 0 res)
+      ;;   (ac-clang-handle-error res args))
+      (ac-clang-parse-output prefix)
+      )))
 
 
 (defsubst ac-clang-build-location (pos)
   (save-excursion
     (goto-char pos)
-    (format "%s:%d:%d" (if ac-clang-auto-save buffer-file-name "-") (line-number-at-pos)
+    (format "%s:%d:%d" buffer-file-name (line-number-at-pos)
             (1+ (- (point) (line-beginning-position))))))
 
 (defsubst ac-clang-lang-option ()
@@ -158,29 +129,25 @@ This variable will typically contain include paths, e.g., ( \"-I~/MyProject\", \
 
 (defsubst ac-clang-build-complete-args (pos)
   (append '("-cc1" "-fsyntax-only")
-          (unless ac-clang-auto-save
-            (list "-x" (ac-clang-lang-option)))
+          (list "-x" (ac-clang-lang-option))
           ac-clang-flags
           (when (stringp ac-clang-prefix-header)
             (list "-include-pch" (expand-file-name ac-clang-prefix-header)))
           '("-code-completion-at")
           (list (ac-clang-build-location pos))
-          (list (if ac-clang-auto-save buffer-file-name "-"))))
+          (list buffer-file-name)))
 
 
 (defsubst ac-clang-clean-document (s)
-  (when s
+  ;; (when s
     (setq s (replace-regexp-in-string "<#\\|#>\\|\\[#" "" s))
-    (setq s (replace-regexp-in-string "#\\]" " " s)))
+    (setq s (replace-regexp-in-string "#\\]" " " s))
+    ;; )
   s)
 
 (defun ac-clang-document (item)
   (if (stringp item)
-      (let (s)
-        (setq s (get-text-property 0 'ac-clang-help item))
-        (ac-clang-clean-document s)))
-  ;; (popup-item-property item 'ac-clang-help)
-  )
+      (ac-clang-clean-document (get-text-property 0 'ac-clang-help item))))
 
 (defface ac-clang-candidate-face
   '((t (:background "lightgray" :foreground "navy")))
@@ -192,24 +159,23 @@ This variable will typically contain include paths, e.g., ( \"-I~/MyProject\", \
   "Face for the clang selected candidate."
   :group 'auto-complete)
 
-(defsubst ac--in-string-comment ()
-  "Return non-nil if point is in a literal (a comment or string)."
-  (nth 8 (syntax-ppss)))
+;; (defsubst ac--in-string-comment ()
+;;   "Return non-nil if point is in a literal (a comment or string)."
+;;   (nth 8 (syntax-ppss)))
 
 (defun ac-clang-candidate ()
-  (unless (ac--in-string-comment)
-    (and ac-clang-auto-save
-         (buffer-modified-p)
-         (basic-save-buffer))
-    (save-restriction
-      (widen)
-      (apply 'ac-clang-call-process
-             ac-prefix
-             (ac-clang-build-complete-args (- (point) (length ac-prefix)))))))
-
+  ;; (if (ac--in-string-comment)
+  ;;     (message "in string/comment"))
+  ;; (and (buffer-modified-p)
+  ;;      (basic-save-buffer))
+  (save-restriction
+    (widen)
+    (apply 'ac-clang-call-process
+           ac-prefix
+           (ac-clang-build-complete-args (- (point) (length ac-prefix))))))
 
 (defvar ac-template-start-point nil)
-(defvar ac-template-candidates (list "ok" "no" "yes:)"))
+(defvar ac-template-candidates)
 
 (defun ac-clang-action ()
   (interactive)
@@ -247,9 +213,9 @@ This variable will typically contain include paths, e.g., ( \"-I~/MyProject\", \
            (setq ac-template-candidates candidates)
            (setq ac-template-start-point (point))
            (ac-complete-template)
-           
+
            (unless (cdr candidates) ;; unless length > 1
-             (message (replace-regexp-in-string "\n" "   ;    " help))))
+             (message (replace-regexp-in-string "\n" "   ;    " help)))) ;
           (t
            (message (replace-regexp-in-string "\n" "   ;    " help))))))
 
@@ -331,14 +297,9 @@ This variable will typically contain include paths, e.g., ( \"-I~/MyProject\", \
                                        ac-template-start-point pos
                                        (concat "("  (substring snp 2) ")"))) ;; work in 0.5.7
                        )))
-                   ((featurep 'snippet)
-                    (delete-region ac-template-start-point pos)
-                    (dolist (arg sl)
-                      (setq snp (concat snp ", $${" arg "}")))
-                    (snippet-insert (concat "("  (substring snp 2) ")")))
                    (t
                     (message "Dude! You are too out! Please install a yasnippet or a snippet script:)"))))
-             (t
+            (t
              (unless (string= s "()")
                (setq s (replace-regexp-in-string "{#" "" s))
                (setq s (replace-regexp-in-string "#}" "" s))
@@ -352,12 +313,6 @@ This variable will typically contain include paths, e.g., ( \"-I~/MyProject\", \
                          ;; try this one:
                          (ignore-errors (yas-expand-snippet ac-template-start-point pos s)) ;; work in 0.5.7
                          )))
-                     ((featurep 'snippet)
-                      (delete-region ac-template-start-point pos)
-                      (setq s (replace-regexp-in-string "<#" "$${" s))
-                      (setq s (replace-regexp-in-string "#>" "}" s))
-                      (setq s (replace-regexp-in-string ", \\.\\.\\." "}, $${..." s))
-                      (snippet-insert s))
                      (t
                       (message "Dude! You are too out! Please install a yasnippet or a snippet script:)")))))))))
 

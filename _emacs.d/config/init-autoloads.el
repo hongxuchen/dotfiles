@@ -84,4 +84,18 @@
 (eval-after-load "find-file-in-project"
   `(progn
      (setq ffip-limit 1024)
-     (setq ffip-patterns (append ffip-patterns '("*.c" "*.c++" "*.cpp" "*.cc" "*.cxx" "*.h" "*.hpp" "Makefile")))))
+     (setq ffip-patterns (append ffip-patterns '("*.c" "*.c++" "*.cpp" "*.cc" "*.cxx" "*.h" "*.hpp" "Makefile")))
+     (defun my-ffip-project-root-function ()
+       "Check for `ffip-project-file' and if no such, \
+return current directory."
+       (let ((project-directory
+              (if (listp ffip-project-file)
+                  (some (apply-partially 'locate-dominating-file
+                                         default-directory)
+                        ffip-project-file)
+                (locate-dominating-file default-directory
+                                        ffip-project-file))))
+         (or project-directory default-directory)))
+
+     (setq-default
+      ffip-project-root-function 'my-ffip-project-root-function)))

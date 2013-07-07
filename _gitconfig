@@ -6,20 +6,40 @@
 	email = leftcopy.chx@gmail.com
 
 [color]
-	diff = auto
-	status = auto
-	branch = auto
-	ui = auto
+	ui = true
+	diff = true
+	status = true
+	branch = true
+	interactive = true
+[color "branch"]
+	current = yellow reverse
+	local = yellow
+	remote = green
+
+[color "diff"]
+	meta = yellow bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+
+	; [color "status"]
+	;       added = yellow
+	;       changed = green
+	;       untracked = cyan
 
 [push]
 	default = tracking
 
 [core]
-	editor = vim
+	editor = vim -c ':normal gg'
 	pager = less
+	autocrlf = input
+	whitespace = trailing-space,space-before-tab,indent-with-non-tab
 	; excludesfile = /home/hongxuchen/.gitignore_global
 
 [alias]
+	# ls
+	ls-ignored = ls-files --exclude-standard --ignored --others
 	lol = log --graph --decorate --pretty=oneline --abbrev-commit
 	wc = whatchanged -p --abbrev-commit --pretty=medium
 	dv= !zsh -c 'git diff -w "$@" | view -'
@@ -55,6 +75,7 @@
 
 [diff]
 	tool = vimdiff
+	mnemonicprefix = true
 [merge]
 	tool = vimdiff
 [branch]
@@ -65,3 +86,5 @@
 	prompt = false
 [gc]
 	reflogexpireunreachable = 3
+[diff "exif"]
+	textconv = exiftool
