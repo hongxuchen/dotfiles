@@ -15,10 +15,14 @@ Xft*hinting           : full
 !otherwise xterm would bind Alt-x to M-8
 xterm*metaSendsEscape: true
 
-Emacs.pane.menubar.background: darkGrey
-Emacs.pane.menubar.foreground: black
-Emacs*menubar.margin: 0
-Emacs*shadowThickness: 0
+!Emacs.pane.menubar.background: darkGrey
+!Emacs.pane.menubar.foreground: black
+!Emacs*menubar.margin: 0
+!Emacs*shadowThickness: 0
+
+Emacs.menuBar: off
+Emacs.verticalScrollBars: off
+Emacs.toolBar: off
 
 !font and size
 XTerm*faceSize: 13

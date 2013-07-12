@@ -58,6 +58,8 @@
 (define-key evil-insert-state-map
   (read-kbd-macro evil-toggle-key) 'evil-emacs-state)
 
+(keyboard-translate ?\C-i ?\H-i)
+(define-key evil-motion-state-map [?\H-i] 'evil-jump-forward)
 (evil-global-set-key 'normal (kbd "q") 'bury-buffer)
 (evil-global-set-key 'normal (kbd "C-t") 'pop-global-mark)
 (evil-global-set-key 'normal (kbd "K") 'man)
@@ -67,7 +69,7 @@
  (interactive)
  (let (evil-mode-map-alist)
    (call-interactively (key-binding (this-command-keys)))))
-(define-key evil-normal-state-map (kbd "TAB") 'evil-undefine)
+(define-key evil-normal-state-map (kbd "<tab>") 'evil-undefine)
 
 ;; vim-surround like, @see https://github.com/timcharper/evil-surround
 (require 'surround)

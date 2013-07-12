@@ -19,11 +19,8 @@
 ;; Window size and features
 ;;----------------------------------------------------------------------------
 
-(menu-bar-mode -1) ;; use menu-bar since I am not familiar with the keybings, WTF
-(tool-bar-mode -1)
-;; (fringe-mode '(1 . 1))
 (setq tool-bar-style 'image)
-(if (fboundp 'scroll-bar-mode) (set-scroll-bar-mode nil))
+;; (fringe-mode '(1 . 1))
 (blink-cursor-mode -1)
 (column-number-mode 1)
 (setq winner-ring-size 20)

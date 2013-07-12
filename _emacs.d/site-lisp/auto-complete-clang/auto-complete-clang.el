@@ -3,7 +3,7 @@
 (require 'yasnippet)
 
 (defconst ac-clang-stdout "*ac-clang-stdout*")
-(defconst ac-clang-stderr "*ac-clang-error*")
+(defconst ac-clang-stderr "/tmp/ac-clang-error")
 
 (defcustom ac-clang-executable
   (executable-find "clang")
