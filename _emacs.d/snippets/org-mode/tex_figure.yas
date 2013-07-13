@@ -1,0 +1,6 @@
+#name: figure
+#key: texf
+# --
+#+attr_latex: width=$1\textwidth
+`(org-insert-link '(4))`
+$0

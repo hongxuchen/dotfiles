@@ -1,0 +1,5 @@
+# key: href
+# group: environments
+# name: \href{url}{text}
+# --
+\href{${1:url}}{${2:text}}$0

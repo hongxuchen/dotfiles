@@ -1,0 +1,5 @@
+# name: Reference Label
+# key: rlb
+# --
+[${1:Reference}]: ${2:URL} $3
+$0

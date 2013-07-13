@@ -1,0 +1,6 @@
+#name : LATEX
+#key : ltx
+# --
+#+BEGIN_LATEX
+${0}
+#+END_LATEX

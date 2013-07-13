@@ -133,6 +133,7 @@ Argument SYM-NAME thing to find."
   (add-hook 'after-save-hook
             (lambda ()
               (when (file-exists-p (concat buffer-file-name "c"))
+                (eval-buffer)
                 (byte-compile-file buffer-file-name)))
             t))
 (add-hook 'emacs-lisp-mode-hook 'byte-compile-on-save)

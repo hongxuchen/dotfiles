@@ -1,0 +1,7 @@
+# key : desc
+# group: environments
+# name : \begin{description} ... \end{description}
+# --
+\begin{description}
+\item[$0]
+\end{description}

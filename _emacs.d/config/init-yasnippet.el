@@ -1,4 +1,6 @@
 (setq yas-snippet-dirs '("~/.emacs.d/snippets")) ;; should be set ahead
+(setq auto-mode-alist (cons '("\\.yas$"
+                              . snippet-mode) auto-mode-alist))
 (require 'yasnippet)
 (yas-global-mode 1)
 (require 'dropdown-list)

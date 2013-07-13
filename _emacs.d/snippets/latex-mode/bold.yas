@@ -1,0 +1,5 @@
+# key: bf
+# group: font
+# name: {\bf ... }
+# --
+{\bf $1}$0

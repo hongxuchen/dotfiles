@@ -1,6 +1,0 @@
-# -*- mode: snippet -*-
-# name: LaTeX class
-# key: lcl
-# condition: (= (current-column) 3)
-# --
-#+LATEX_CLASS: ${0:$$(yas/choose-value '("report" "book" "article"))}

@@ -1,0 +1,5 @@
+# key: use
+# group: misc
+# name: \usepackage
+# --
+\usepackage[$2]{$1}$0

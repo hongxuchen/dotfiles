@@ -1,0 +1,4 @@
+# name: Referenced Image
+# key: rimg
+# --
+![${1:Alt Text}][$2] $0

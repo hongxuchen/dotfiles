@@ -1,4 +1,3 @@
-(provide 'auto-complete-clang)
 (require 'auto-complete)
 (require 'yasnippet)
 
@@ -14,42 +13,38 @@
 (defcustom ac-clang-lang-option-function nil
   "Function to return the lang type for option -x.
 
-Return value is a string that can be \"c\", \"c++\", \"objective-c\", \"objective-c++\""
+Return value is a string that can be \"c\", \"c++\", \"objective-c\",\"objective-c++\", it
+is a function that takes no arguments."
   :group 'auto-complete
   :type 'function)
 
-;;; Extra compilation flags to pass to clang.
 (defcustom ac-clang-flags nil
   "Extra flags to pass to the Clang executable.
 This variable will typically contain include paths, e.g., ( \"-I~/MyProject\", \"-I.\" )."
   :group 'auto-complete
   :type '(repeat (string :tag "Argument" "")))
 
-;;; The prefix header to use with Clang code completion.
-(defvar ac-clang-prefix-header nil)
-
-;;; Set the Clang prefix header
-(defun ac-clang-set-prefix-header (ph)
+(defvar ac-clang-precompiled-header nil)
+(defun ac-clang-set-precompiled-header (ph)
   (interactive
    (let ((def (car (directory-files "." t "\\([^.]h\\|[^h]\\).pch\\'" t))))
      (list
-      (read-file-name (concat "Clang prefix header(current: " ac-clang-prefix-header ") : ")
+      (read-file-name (concat "Clang precompiled header(current: " ac-clang-precompiled-header ") : ")
                       (when def (file-name-directory def))
                       def nil (when def (file-name-nondirectory def))))))
   (cond ((string-match "^[\s\t]*$" ph)
-         (setq ac-clang-prefix-header nil))
+         (setq ac-clang-precompiled-header nil))
         (t
-         (setq ac-clang-prefix-header ph))))
+         (setq ac-clang-precompiled-header ph))))
 
-;;; Set a new cflags for clang
 (defun ac-clang-set-cflags ()
   "set new cflags for clang from input string"
   (interactive)
   (setq ac-clang-flags (split-string (read-string "New cflags: "))))
 
-;;; Set new cflags from shell command output
 (defun ac-clang-set-cflags-from-shell-command ()
-  "set new cflags for ac-clang from shell command output"
+  "set new cflags for ac-clang from shell command output.
+Usually it is something like \"pkg-config --cflags\", \"llvm-config --cflags\" etc."
   (interactive)
   (setq ac-clang-flags
         (split-string
@@ -129,20 +124,17 @@ This variable will typically contain include paths, e.g., ( \"-I~/MyProject\", \
 
 (defsubst ac-clang-build-complete-args (pos)
   (append '("-cc1" "-fsyntax-only")
-          (list "-x" (ac-clang-lang-option))
-          ac-clang-flags
-          (when (stringp ac-clang-prefix-header)
-            (list "-include-pch" (expand-file-name ac-clang-prefix-header)))
-          '("-code-completion-at")
-          (list (ac-clang-build-location pos))
-          (list buffer-file-name)))
-
+             (list "-x" (ac-clang-lang-option))
+             ac-clang-flags
+             (when (stringp ac-clang-precompiled-header)
+               (list "-include-pch" (expand-file-name ac-clang-precompiled-header)))
+             (list "-code-completion-at" (ac-clang-build-location pos) buffer-file-name)))
 
 (defsubst ac-clang-clean-document (s)
   ;; (when s
-    (setq s (replace-regexp-in-string "<#\\|#>\\|\\[#" "" s))
-    (setq s (replace-regexp-in-string "#\\]" " " s))
-    ;; )
+  (setq s (replace-regexp-in-string "<#\\|#>\\|\\[#" "" s))
+  (setq s (replace-regexp-in-string "#\\]" " " s))
+  ;; )
   s)
 
 (defun ac-clang-document (item)
@@ -166,8 +158,8 @@ This variable will typically contain include paths, e.g., ( \"-I~/MyProject\", \
 (defun ac-clang-candidate ()
   ;; (if (ac--in-string-comment)
   ;;     (message "in string/comment"))
-  ;; (and (buffer-modified-p)
-  ;;      (basic-save-buffer))
+  (and (buffer-modified-p)
+       (basic-save-buffer))
   (save-restriction
     (widen)
     (apply 'ac-clang-call-process
@@ -329,5 +321,7 @@ This variable will typically contain include paths, e.g., ( \"-I~/MyProject\", \
     (document . ac-clang-document)
     (cache)
     (symbol . "t")))
+
+(provide 'auto-complete-clang)
 
 ;;; auto-complete-clang.el ends here

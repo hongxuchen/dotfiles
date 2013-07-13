@@ -1,0 +1,7 @@
+# name: ifdef..endif
+# key: ifdef
+# --
+#ifdef ${1:SYMBOL}
+       #2:
+#endif
+$0

@@ -1,6 +1,5 @@
 " vim: set ft=vim ts=4 sw=2 tw=78 et :
 " =====================================================
-" https://github.com/nonoob/dotfiles/
 " AUTHOR: Hongxu Chen
 " EMAIL:  leftcopy.chx@gmail.com
 " =====================================================
@@ -18,10 +17,7 @@ autocmd BufReadPost *
 " Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
 " save and reload vimrc
-nnoremap <silent> <leader>V :w<CR>:source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
-
-" quickfix
-aug QFClose au!  au WinEnter * if winnr('$') == 1 && getbufvar(winbufnr(winnr()), "&buftype") == "quickfix"|q|endif aug END
+nnoremap <silent> <leader>v :w<CR>:source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
 " sudo write this
 cnoremap W! w !sudo tee % >/dev/null
@@ -79,7 +75,6 @@ function! s:VSetSearch(cmdtype)
   let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
   let @s = temp
 endfunction
-
 xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
 
@@ -238,11 +233,7 @@ Bundle 'Tagbar'
 " auto-pairs
 Bundle "jiangmiao/auto-pairs"
 "llvm and tablegen syntax highlighing
-Bundle "Superbil/llvm.vim"
-" TextMate like snippet, snippets are in .vim/snippets
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tomtom/tlib_vim'
-Bundle 'garbas/vim-snipmate'
+" Bundle "Superbil/llvm.vim"
 " auto complete popup
 Bundle 'AutoComplPop'
 " supertab
@@ -250,38 +241,11 @@ Bundle "ervandew/supertab"
 "tabular to align
 " Bundle 'godlygeek/tabular'
 " c++11
-Bundle 'Cpp11-Syntax-Support'
+" Bundle 'Cpp11-Syntax-Support'
 " csv files
-Bundle 'chrisbra/csv.vim'
+" Bundle 'chrisbra/csv.vim'
 " Bundle 'ack.vim'
-" Bundle 'kien/ctrlp.vim'
-
-" ctrlp
-let g:ctrlp_working_path_mode = 0
-let g:ctrlp_clear_cache_on_exit = 0
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_max_files = 0
-let g:ctrlp_open_new_file = 'r'
-let g:ctrlp_open_multiple_files = '2vjr'
-let g:ctrlp_max_height = 30
-let g:ctrlp_max_depth = 4
-let g:ctrlp_mruf_max = 250
-let g:ctrlp_follow_symlinks = 2
-
-" tagbar
-noremap <leader>t :TagbarToggle<CR>
-let g:tagbar_autoclose=0
-let g:tagbar_left = 0
-let g:tagbar_width = 31
-let g:tagbar_autofocus = 0
-let g:tagbar_sort = 1
-let g:tagbar_compact = 1
-let g:tagbar_expand = 0
-let g:tagbar_singleclick = 0
-let g:tagbar_foldlevel = 5
-let g:tagbar_autoshowtag = 0
-let g:tagbar_updateonsave_maxlines = 10000
-let g:tagbar_systemenc = 'encoding'
+"
 
 " clang_complete
 let g:clang_auto_select=1
@@ -302,13 +266,20 @@ let g:clang_complete_macros=1
 let g:clang_complete_patterns=0
 nnoremap <Leader>q :call g:ClangUpdateQuickFix()<CR>
 
-" full markdown extension support
-autocmd BufNewFile,BufRead *.markdown,*.md,*.mdown,*.mkd
-      \ if &ft =~# '^\%(conf\|modula2\)$' |
-      \ set ft=markdown |
-      \ else |
-      \ setf markdown |
-      \ endif
+" tagbar
+noremap <leader>t :TagbarToggle<CR>
+let g:tagbar_autoclose=0
+let g:tagbar_left = 0
+let g:tagbar_width = 31
+let g:tagbar_autofocus = 0
+let g:tagbar_sort = 1
+let g:tagbar_compact = 1
+let g:tagbar_expand = 0
+let g:tagbar_singleclick = 0
+let g:tagbar_foldlevel = 5
+let g:tagbar_autoshowtag = 0
+let g:tagbar_updateonsave_maxlines = 10000
+let g:tagbar_systemenc = 'encoding'
 
 " gf issues; set suffixesadd+=
 set includeexpr=GuessFilename(v:fname)
@@ -341,6 +312,6 @@ nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 " =====================================================
 " filetype settings
 " =====================================================
-autocmd FileType c,cpp set path+=/usr/lib/llvm-2.9/include,/usr/include/c++/4.6,~/moonbox/klee/include
+autocmd FileType c,cpp setl path+=/usr/lib/llvm-2.9/include,/usr/include/c++/4.6,~/moonbox/klee/include
 autocmd FileType c,cpp setl cms=//%s
 autocmd FileType lisp setl cms=;;%s

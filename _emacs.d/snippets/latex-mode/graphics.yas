@@ -1,0 +1,4 @@
+# key : graphics
+# name : \includegraphics
+# --
+\includegraphics[width=${1:\linewidth}]{${2:file}}

@@ -1,0 +1,4 @@
+#name : SEQ TODO
+#key : seqt
+# --
+#+SEQ_TODO: ${1:STATES} | ${2:FINISHED}

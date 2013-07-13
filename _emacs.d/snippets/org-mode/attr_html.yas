@@ -1,0 +1,5 @@
+# name : attr_html
+# key: ath
+# condition: (= (current-column) 3)
+# --
+#+ATTR_HTML: alt="$1" img class="aligncenter"
