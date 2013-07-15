@@ -42,7 +42,7 @@
 (set-face-attribute 'default nil :height 125)
 (setq-default windmove-wrap-around t)
 
-
+(require 'monokai-dark-theme)
 
 (if (display-graphic-p)
     (progn
@@ -53,8 +53,7 @@
                           charset
                           (font-spec :family "文泉驿等宽微米黑"
                                      :size 12
-                                     :weight 'light)))
-      (require 'monokai-dark-theme))
+                                     :weight 'light))))
   (progn
     (menu-bar-mode -1)
     (tool-bar-mode -1)

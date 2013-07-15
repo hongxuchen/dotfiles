@@ -128,6 +128,7 @@ Argument SYM-NAME thing to find."
           (pop-tag-mark)
           (error "Don't know how to find '%s'" sym)))))))
 
+;; dir-locals.el
 (defun byte-compile-on-save ()
   "If you're saving an elisp file, likely the .elc is no longer valid."
   (add-hook 'after-save-hook

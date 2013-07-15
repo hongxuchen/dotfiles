@@ -15,23 +15,24 @@
 ;; along with GNU Emacs.
 
 (deftheme monokai-dark "monokai-dark theme")
+(defconst THRESHOLD 2048)
 
 (custom-theme-set-faces
  'monokai-dark
  ;; Frame
- `(default ( (((class color) (min-colors 256)) (:foreground "#eee" :background "#222"))
-             ((:foreground "#eee" :background "#000"))))
- ;; `(default ((t (:foreground "#f8f8f2" :background "#141411))))
+ `(default ( (((class color) (min-colors ,THRESHOLD)) (:foreground "#f8f8f2" :background "#141411"))
+             (t (:foreground "#eee" :background "#000"))))
  `(cursor ((t (:foreground "#f92672"))))
  `(hl-line ((t (:background "#141411"))))
- `(menu ((t (:background "#d1d1d1" :foreground "#000000"))))
+ `(menu ((((class color) (min-colors ,THRESHOLD)) (:bold t :foreground "#afafaf" :background "#777777"))))
  `(minibuffer-prompt ((t (:foreground "#1e90ff"))))
  `(mode-line ((t (:background "#1e1e1e" :foreground "#e6e6e6"))))
  `(region ((t (:background "#383830"))))
  `(show-paren-match-face ((t (:background "#383830"))))
  ;; Main
- `(font-lock-builtin-face ((t (:foreground "#a6e22a"))))
- `(font-lock-comment-face ((t (:foreground "#1e90ff"))))
+ `(font-lock-builtin-face ((t (:foreground "#a6e62a"))))
+ `(font-lock-comment-face ((((class color) (min-colors ,THRESHOLD)) (:foreground "#2f70ff"))
+                              (t (:foreground "#33a" :background "#333"))))
  `(font-lock-constant-face ((t (:foreground "#ae81ff"))))
  `(font-lock-doc-string-face ((t (:foreground "#e6db74"))))
  `(font-lock-function-name-face ((t (:foreground "#a6e22a"))))

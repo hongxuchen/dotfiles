@@ -8,7 +8,7 @@
                    flymake-simple-cleanup
                    flymake-get-real-file-name)
                  flymake-allowed-file-name-masks))
-     (global-set-key (kbd "C-`") 'flymake-goto-next-error)
+     (global-set-key (kbd "M-`") 'flymake-goto-next-error)
      (setq flymake-no-changes-timeout 2)
      (defun flymake-can-syntax-check-file (file-name)
        "Determine whether we can syntax check FILE-NAME.
