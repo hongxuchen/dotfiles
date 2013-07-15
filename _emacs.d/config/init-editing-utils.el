@@ -59,9 +59,10 @@
 
 (add-hook 'prog-mode-hook
           '(lambda ()
-             (require 'ffap)
              (require 'fic-mode)
              (turn-on-fic-mode)
+             (require 'which-func)
+             (which-function-mode t)
              (rainbow-mode t)
              (rainbow-delimiters-mode t)
              (hs-minor-mode t)))

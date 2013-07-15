@@ -28,7 +28,7 @@ function unlink_file {
 function init_vim {
     if ! [ -d ~/.vim/bundle/vundle ]; then
         git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
-        vim -c 'BundleInstall' -c 'q'
+        vim -c 'BundleInstall' -c 'qa'
     fi
 }
 

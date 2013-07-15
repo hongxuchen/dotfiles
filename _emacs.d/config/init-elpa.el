@@ -154,6 +154,7 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 
 ;; auto-complete
 (require-package 'fuzzy)
+(require-package 'pos-tip)
 (require-package 'auto-complete) ;auto-complete depends on fuzzy
 
 ;; c/c++
@@ -239,7 +240,6 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 
 (require-package 'sicp)
 
-;;
 (require-package 's)
 
 ;;scala

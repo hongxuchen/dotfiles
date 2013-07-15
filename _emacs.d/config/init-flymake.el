@@ -22,9 +22,7 @@ Return nil if we cannot, non-nil if we can."
          (local-file (file-relative-name
                       temp-file
                       (file-name-directory (buffer-file-name)))))
-    `("clang",(append ac-clang-flags
-                      `("-fsyntax-only"
-                        "-fno-color-diagnostics"
-                        ,local-file)))))
+    (list ac-clang-executable
+          (append ac-clang-flags (list "-fsyntax-only" local-file)))))
 
 (provide 'init-flymake)

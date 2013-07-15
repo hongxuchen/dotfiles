@@ -3,14 +3,22 @@
 ;; -----------------------------------------------------------------------------
 ;; some setups for cc-mode
 ;; -----------------------------------------------------------------------------
-
 (setq cc-lookup-diagnostics-level 0)
-(defun setup-cc-keymaps()
+
+(progn
   (evil-define-key 'normal c++-mode-map "\C-]" 'cc-lookup)
   (evil-define-key 'normal c++-mode-map "\C-t" 'cc-jump-back)
   (evil-define-key 'normal c-mode-map "\C-]" 'cc-lookup)
   (evil-define-key 'normal c-mode-map "\C-t" 'cc-jump-back))
+(add-hook 'c-mode-hook (lambda ()
+                         (my-cc-mode-hook)
+                         (local-set-key (kbd "<s-mouse-1>") 'cc-lookup)
+                         (local-set-key (kbd "<s-mouse-3>") 'cc-jump-back)))
 
+(add-hook 'c++-mode-hook (lambda ()
+                           (my-cc-mode-hook)
+                           (define-key c++-mode-map (kbd "<s-mouse-1>") 'cc-lookup)
+                           (define-key c++-mode-map (kbd "<s-mouse-3>") 'cc-jump-back)))
 (defun setup-cpputils ()
   "manually setup cpputils"
   (interactive)
@@ -20,16 +28,14 @@
   (remove-hook 'find-file-hook 'rinari-launch))
 
 ;; clang variable settings
-;; @see https://github.com/brianjcj/auto-complete-clang
 (defun my-ac-cc-mode-setup ()
   (require 'auto-complete-clang)
   (setq ac-clang-executable "/usr/bin/clang")
   (setq ac-sources '(ac-source-clang ac-source-yasnippet ac-source-dictionary))
-  ;; (setq ac-clang-auto-save t)
-
+  (set (make-local-variable 'ac-auto-start) nil)
   ;; (require 'auto-complete-clang-async)
   ;; (setq ac-clang-complete-executable "~/.emacs.d/site-lisp/emacs-clang-complete-async/clang-complete")
-  ;; (setq ac-sources '(ac-source-clang-async))
+  ;; (setq ac-sources '(ac-source-clang-async ac-source-yasnippet ac-source-dictionary))
   ;; (ac-clang-launch-completion-process)
   )
 
@@ -51,31 +57,13 @@
   (setq c-default-style "Google")
   (setq comment-start "// " comment-end "")
   (doxymacs-mode t)
-  (require 'fic-mode)
-  (turn-on-fic-mode)
-  (require 'which-func)
-  (which-function-mode t)
   ;; (require 'cpp)
   ;; (global-cwarn-mode t)
   ;; (hide-ifdef-mode t)
   (default-cc-flags-setup)
-  (my-ac-cc-mode-setup)
+  (my-ac-cc-mode-setup))
 
-  (local-set-key (kbd "<f7>") 'gud-step)
-  (local-set-key (kbd "<f8>") 'gud-next)
-  )
-
-(add-hook 'c-mode-hook (lambda ()
-                         (my-cc-mode-hook)
-                         (local-set-key (kbd "<s-mouse-1>") 'cc-lookup)
-                         (local-set-key (kbd "<s-mouse-3>") 'pop-global-mark)))
-
-(add-hook 'c++-mode-hook (lambda ()
-                           (my-cc-mode-hook)
-                           (define-key c++-mode-map (kbd "<s-mouse-1>") 'cc-lookup)
-                           (define-key c++-mode-map (kbd "<s-mouse-3>") 'pop-global-mark)))
-
-(add-hook 'c-initialization-hook' setup-cc-keymaps)
+;; (add-hook 'c-initialization-hook' setup-cc-keymaps)
 
 ;; -----------------------------------------------------------------------------
 ;; includes and flags

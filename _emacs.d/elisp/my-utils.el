@@ -24,7 +24,7 @@
 
 (defun rename-this-file (new-name)
   "Renames both current buffer and file it's visiting to NEW-NAME."
-  (interactive "sNew name: ")
+  (interactive "F")
   (let ((name (buffer-name))
         (filename (buffer-file-name)))
     (unless filename
@@ -32,19 +32,8 @@
     (rename-file filename new-name t)
     (rename-buffer new-name t)
     (set-visited-file-name new-name)
-    (set-buffer-modified-p nil)))
-
-(defun move-this-file (dir)
-  "Moves both current buffer and file it's visiting to DIR." (interactive "DNew directory: ")
-  (let* ((name (buffer-name))
-         (filename (buffer-file-name))
-         (dir
-          (if (string-match dir "\\(?:/\\|\\\\)$")
-              (substring dir 0 -1) dir))
-         (newname (concat dir "/" name)))
-    (if (not filename)
-        (message "Buffer '%s' is not visiting a file!" name)
-      (progn (copy-file filename newname 1) (delete-file filename) (set-visited-file-name newname) (set-buffer-modified-p nil) t))))
+    (set-buffer-modified-p nil)
+    (message "new file: [%s]" new-name)))
 
 (defmacro with-selected-frame (frame &rest forms)
   (let ((prev-frame (gensym))
@@ -82,15 +71,13 @@
   (interactive)
   (cond ((member major-mode '(makefile-mode makefile-gmake-mode python-mode org-mode))
          (message "will not cleanup buffer when major mode is %s" major-mode))
-        ((member major-mode '(c-mode c++-mode)) (progn
-                                                  (clang-format-buffer)
-                                                  (save-buffer)))
+        ((member major-mode '(c-mode c++-mode))(clang-format-buffer))
         (t (progn
              (untabify (point-min) (point-max))
              (delete-trailing-whitespace)
              (indent-region (point-min) (point-max))
-             (save-buffer)
-             ))))
+             )))
+  (when (and (buffer-file-name) (buffer-modified-p)) (basic-save-buffer)))
 
 (defvar switch-major-mode-history nil)
 (defun switch-major-mode (mode)

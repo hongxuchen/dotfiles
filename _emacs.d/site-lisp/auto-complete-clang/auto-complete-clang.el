@@ -2,8 +2,7 @@
 (require 'yasnippet)
 
 (defconst ac-clang-stdout "*ac-clang-stdout*")
-(defconst ac-clang-stderr "/tmp/ac-clang-error")
-
+(defconst ac-clang-stderr "/tmp/ac-clang-stderr")
 (defcustom ac-clang-executable
   (executable-find "clang")
   "*Location of clang executable"
@@ -56,6 +55,7 @@ Usually it is something like \"pkg-config --cflags\", \"llvm-config --cflags\" e
 (defconst ac-clang-completion-pattern
   "^COMPLETION: \\(%s[^\s\n:]*\\)\\(?: : \\)*\\(.*$\\)")
 
+;; in ac-clang-stdout buffer
 (defun ac-clang-parse-output (prefix)
   (goto-char (point-min))
   (let ((pattern (format ac-clang-completion-pattern
@@ -84,9 +84,6 @@ Usually it is something like \"pkg-config --cflags\", \"llvm-config --cflags\" e
           (push match lines))))
     lines))
 
-(defun ac-clang-handle-error (res args)
-  (message "error"))
-
 (defun ac-clang-call-process (prefix &rest args)
   (let* (
          (buf (get-buffer-create ac-clang-stdout))
@@ -94,12 +91,15 @@ Usually it is something like \"pkg-config --cflags\", \"llvm-config --cflags\" e
     (with-current-buffer buf (erase-buffer))
     (setq res (apply 'call-process-region (point-min) (point-max)
                      ac-clang-executable nil (list ac-clang-stdout ac-clang-stderr) nil args))
+    (unless (zerop res)
+      (with-current-buffer (find-file-noselect ac-clang-stderr t)
+        (goto-char (point-min))
+        (if (re-search-forward "\\(?:error: \\(?:invalid\\|unknown\\)\\) argument:" nil t)
+            (message "[clang] %s" (buffer-substring-no-properties (line-beginning-position) (line-end-position))))
+        ;; TODO more efficiently
+        (kill-buffer)))
     (with-current-buffer buf
-      ;; (unless (eq 0 res)
-      ;;   (ac-clang-handle-error res args))
-      (ac-clang-parse-output prefix)
-      )))
-
+      (ac-clang-parse-output prefix))))
 
 (defsubst ac-clang-build-location (pos)
   (save-excursion
@@ -124,11 +124,11 @@ Usually it is something like \"pkg-config --cflags\", \"llvm-config --cflags\" e
 
 (defsubst ac-clang-build-complete-args (pos)
   (append '("-cc1" "-fsyntax-only")
-             (list "-x" (ac-clang-lang-option))
-             ac-clang-flags
-             (when (stringp ac-clang-precompiled-header)
-               (list "-include-pch" (expand-file-name ac-clang-precompiled-header)))
-             (list "-code-completion-at" (ac-clang-build-location pos) buffer-file-name)))
+          (list "-x" (ac-clang-lang-option))
+          ac-clang-flags
+          (when (stringp ac-clang-precompiled-header)
+            (list "-include-pch" (expand-file-name ac-clang-precompiled-header)))
+          (list "-code-completion-at" (ac-clang-build-location pos) buffer-file-name)))
 
 (defsubst ac-clang-clean-document (s)
   ;; (when s
@@ -159,7 +159,8 @@ Usually it is something like \"pkg-config --cflags\", \"llvm-config --cflags\" e
   ;; (if (ac--in-string-comment)
   ;;     (message "in string/comment"))
   (and (buffer-modified-p)
-       (basic-save-buffer))
+       (let ((executing-kbd-macro t))
+         (basic-save-buffer)))
   (save-restriction
     (widen)
     (apply 'ac-clang-call-process
@@ -170,7 +171,6 @@ Usually it is something like \"pkg-config --cflags\", \"llvm-config --cflags\" e
 (defvar ac-template-candidates)
 
 (defun ac-clang-action ()
-  (interactive)
   (let ((help (ac-clang-clean-document (get-text-property 0 'ac-clang-help (cdr ac-last-completion))))
         (raw-help (get-text-property 0 'ac-clang-help (cdr ac-last-completion)))
         (candidates (list)) ss fn args (ret-t "") ret-f)
@@ -263,12 +263,10 @@ Usually it is something like \"pkg-config --cflags\", \"llvm-config --cflags\" e
           (t
            sl))))
 
-
 (defun ac-template-candidate ()
   ac-template-candidates)
 
 (defun ac-template-action ()
-  (interactive)
   (unless (null ac-template-start-point)
     (let ((pos (point)) sl (snp "")
           (s (get-text-property 0 'raw-args (cdr ac-last-completion))))
@@ -277,42 +275,23 @@ Usually it is something like \"pkg-config --cflags\", \"llvm-config --cflags\" e
              (setq s (cdr ac-last-completion))
              (setq s (replace-regexp-in-string "^(\\|)$" "" s))
              (setq sl (ac-clang-split-args s))
-             (cond ((featurep 'yasnippet)
-                    (dolist (arg sl)
-                      (setq snp (concat snp ", ${" arg "}")))
-                    (condition-case nil
-                        (yas-expand-snippet (concat "("  (substring snp 2) ")")
-                                            ac-template-start-point pos) ;; 0.6.1c
-                      (error
-                       ;; try this one:
-                       (ignore-errors (yas-expand-snippet
-                                       ac-template-start-point pos
-                                       (concat "("  (substring snp 2) ")"))) ;; work in 0.5.7
-                       )))
-                   (t
-                    (message "Dude! You are too out! Please install a yasnippet or a snippet script:)"))))
+             (dolist (arg sl)
+               (setq snp (concat snp ", ${" arg "}")))
+             (yas-expand-snippet (concat "("  (substring snp 2) ")")
+                                 ac-template-start-point pos))
             (t
              (unless (string= s "()")
                (setq s (replace-regexp-in-string "{#" "" s))
                (setq s (replace-regexp-in-string "#}" "" s))
-               (cond ((featurep 'yasnippet)
-                      (setq s (replace-regexp-in-string "<#" "${" s))
-                      (setq s (replace-regexp-in-string "#>" "}" s))
-                      (setq s (replace-regexp-in-string ", \\.\\.\\." "}, ${..." s))
-                      (condition-case nil
-                          (yas-expand-snippet s ac-template-start-point pos) ;; 0.6.1c
-                        (error
-                         ;; try this one:
-                         (ignore-errors (yas-expand-snippet ac-template-start-point pos s)) ;; work in 0.5.7
-                         )))
-                     (t
-                      (message "Dude! You are too out! Please install a yasnippet or a snippet script:)")))))))))
-
+               (setq s (replace-regexp-in-string "<#" "${" s))
+               (setq s (replace-regexp-in-string "#>" "}" s))
+               (setq s (replace-regexp-in-string ", \\.\\.\\." "}, ${..." s))
+               (yas-expand-snippet s ac-template-start-point pos)
+               ))))))
 
 (defun ac-template-prefix ()
   ac-template-start-point)
 
-;; this source shall only be used internally.
 (ac-define-source template
   '((candidates . ac-template-candidate)
     (prefix . ac-template-prefix)
@@ -320,7 +299,7 @@ Usually it is something like \"pkg-config --cflags\", \"llvm-config --cflags\" e
     (action . ac-template-action)
     (document . ac-clang-document)
     (cache)
-    (symbol . "t")))
+    (symbol . "ct")))
 
 (provide 'auto-complete-clang)
 

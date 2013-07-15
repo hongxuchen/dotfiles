@@ -3,12 +3,18 @@
 (global-auto-complete-mode t)
 (setq ac-expand-on-auto-complete t)
 (setq popup-use-optimized-column-computation nil)
-(setq ac-auto-start nil)
+(setq ac-auto-start 2)
 (setq ac-dwim t)
 (setq ac-auto-show-menu t)
-(setq ac-use-fuzzy nil) ;; TODO
+(setq ac-use-fuzzy nil)
+(setq ac-use-comphist nil)
 (setq ac-comphist-threshold 0.5)
-(setq ac-quick-help-delay 0.7)
+(setq ac-use-quick-help nil)
+(setq ac-quick-help-delay 0.1)
+(setq ac-ignore-case nil)
+(setq ac-quick-help-prefer-pos-tip nil)
+(define-key ac-mode-map (kbd "C-c h") 'ac-last-quick-help)
+(define-key ac-mode-map (kbd "C-c H") 'ac-last-help)
 
 ;; (define-key ac-mode-map  [(control tab)] 'auto-complete)
 (ac-set-trigger-key "TAB") ; after input prefix, press TAB key ASAP

@@ -1,4 +1,4 @@
-(setq persistent-scratch-filename (expand-file-name ".my-scratch" user-emacs-directory))
+(setq persistent-scratch-filename (expand-file-name ".my-scratch.el" user-emacs-directory))
 
 (defun save-persistent-scratch ()
   "Write the contents of *scratch* to the file name

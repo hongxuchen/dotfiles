@@ -235,7 +235,7 @@ Bundle "jiangmiao/auto-pairs"
 "llvm and tablegen syntax highlighing
 " Bundle "Superbil/llvm.vim"
 " auto complete popup
-Bundle 'AutoComplPop'
+" Bundle 'AutoComplPop'
 " supertab
 Bundle "ervandew/supertab"
 "tabular to align

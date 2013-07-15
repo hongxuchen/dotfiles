@@ -132,9 +132,9 @@ Argument SYM-NAME thing to find."
   "If you're saving an elisp file, likely the .elc is no longer valid."
   (add-hook 'after-save-hook
             (lambda ()
-              (when (file-exists-p (concat buffer-file-name "c"))
-                (eval-buffer)
-                (byte-compile-file buffer-file-name)))
+              (when (and (buffer-file-name) (string= major-mode 'emacs-lisp-mode))
+                (and (file-exists-p (concat buffer-file-name "c")) (byte-compile-file buffer-file-name))
+                (eval-buffer)))
             t))
 (add-hook 'emacs-lisp-mode-hook 'byte-compile-on-save)
 

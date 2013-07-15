@@ -5,7 +5,8 @@
       evil-flash-delay 5
       evil-complete-all-buffers nil
       evil-ex-substitute-global t
-      evil-want-visual-char-semi-exclusive
+      evil-want-visual-char-semi-exclusive t
+      evil-move-cursor-back nil
       ;; evil-search-module 'isearch
       ;; evil-move-cursor-back t
       ;; evil-want-C-i-jump t
