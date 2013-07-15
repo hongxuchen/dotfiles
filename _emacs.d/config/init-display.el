@@ -40,8 +40,9 @@
 (require 'font-lock)
 (global-font-lock-mode t)
 (set-face-attribute 'default nil :height 125)
-(require 'monokai-dark-theme)
 (setq-default windmove-wrap-around t)
+
+
 
 (if (display-graphic-p)
     (progn
@@ -52,7 +53,12 @@
                           charset
                           (font-spec :family "文泉驿等宽微米黑"
                                      :size 12
-                                     :weight 'light)))))
+                                     :weight 'light)))
+      (require 'monokai-dark-theme))
+  (progn
+    (menu-bar-mode -1)
+    (tool-bar-mode -1)
+    (scroll-bar-mode -1)))
 
 ;; WoMan settings
 (setq woman-fill-column 90
