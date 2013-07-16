@@ -102,8 +102,6 @@
   "Kill gdb-buffer."
   (interactive)
   (gdb-save-breakpoints)
-  ;; (with-current-buffer gud-comint-buffer (comint-skip-input))
-  ;; (kill-process (get-buffer-process gud-comint-buffer))
   (kill-buffer)
   (delete-window))
 

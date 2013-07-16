@@ -53,7 +53,7 @@ XTerm*rightScrollBar: false
 XTerm*toolBar: false
 XTerm*jumpScroll: true
 XTerm*SaveLines: 3000
-!xterm*termName: xterm-256color
+xterm*termName: xterm-256color
 xterm*trimSelection: true
 xterm*borderWidth: 0 
 !so that both select and ctrl-c contents are put into CLIPBOARD

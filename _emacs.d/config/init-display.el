@@ -20,7 +20,7 @@
 ;;----------------------------------------------------------------------------
 
 (setq tool-bar-style 'image)
-;; (fringe-mode '(1 . 1))
+(fringe-mode '(1 . 1))
 (blink-cursor-mode -1)
 (column-number-mode 1)
 (setq winner-ring-size 20)
