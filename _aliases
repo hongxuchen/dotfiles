@@ -25,11 +25,11 @@ alias whatgcc='gcc -E -x c  /dev/null -dM'
 #Google style
 alias indent="command indent -kr -ci2 -cli2 -i2 -l80 -nut"
 
-#alias sudo='sudo env PATH=$PATH'
+alias sudo='sudo '
 alias sl='ls' # so there would be no *sl train*
 alias more='less'               #`less` is more than `more`
 alias info='man'                # NEVER use `info' in the terminal
-#alias rm='trash-put'           #not the rude `rm`
+# alias rm='trash-put'           #not the rude `rm`
 
 alias ...='cd ../..'
 alias d='dirs -v | head -10'

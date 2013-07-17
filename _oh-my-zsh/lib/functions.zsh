@@ -88,3 +88,11 @@ while [ $1 ]; do
 done
 cd $cd
 }
+
+function init() {
+    if  [ $SSH_CLIENT ]; then
+        echo "don't use init when ssh"
+    else
+        command init
+    fi
+}

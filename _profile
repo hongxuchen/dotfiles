@@ -26,4 +26,4 @@ export TZ='Asia/Shanghai'
 export GTK_IM_MODULE='ibus'
 export QT_IM_MODULE='ibus'
 export XMODIFIERS=@im='ibus'
-[ `hostname` = 'nonoobPC' ] || ps -C fetchmail >/dev/null || fetchmail -d 300
+[ `hostname` != 'hongxuchen-VM' ] || ps -C fetchmail >/dev/null || fetchmail -d 300

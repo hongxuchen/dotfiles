@@ -29,7 +29,7 @@
  `(grep-match-face ((t (:foreground "#fd971f" :weight bold))))
  `(match ((t (:foreground "#a6e22e" :background "171a0b" :weight bold))))
  ;; only works for x
- `(linum ((t (:foreground "#ae81ff" :background "#202020"))))
+ `(linum ((((class color) (min-colors ,THRESHOLD)) (:foreground "#ae81ff" :background "#202020")) (t (:foreground "#cd00cd"))))
  `(cursor ( (((class color) (min-colors ,THRESHOLD)) (:background "#e0e0e0"))) (t (:background "#eee")))
  `(fringe ( (((class color) (min-colors ,THRESHOLD)) (:background "#1a1a1a"))))
  `(hl-line ( (((class color) (min-colors ,THRESHOLD)) (:bold nil :background "#141411")) (t (:background "#0f0"))))
@@ -37,10 +37,10 @@
  `(minibuffer-prompt ((((class color) (min-colors ,THRESHOLD)) (:bold nil :foreground "#1e90ff"))
                       (t (:foreground "#005f57" :background "#000"))))
  `(mode-line ((((class color) (min-colors ,THRESHOLD)) (:foreground "#f8f8f2" :background "#303030" :box (:line-width -1 :style released-button))) (t (:background "#000" :foreground "#024"))))
- `(region ((((class color) (min-colors ,THRESHOLD)) (:bold nil :background "#003b3b" :inverse-video nil)) (t (:background "#001"))))
+ `(region ((((class color) (min-colors ,THRESHOLD)) (:bold nil :background "#003b3b" :inverse-video nil)) (t (:background "#004b4b" :foreground "#1e1eee" :inverse-video t))))
  `(show-paren-match-face ((((class color) (min-colors ,THRESHOLD)) (:bold nil :background "#aaaaaa"))(t (:background "#999"))))
  ;; Main
- `(font-lock-builtin-face ((((class color) (min-colors ,THRESHOLD)) (:foreground "#aee22e"))(t (:foreground "#11ff00"))))
+ `(font-lock-builtin-face ((((class color) (min-colors ,THRESHOLD)) (:foreground "#aee22e"))(t (:foreground "#00cdcd"))))
  `(font-lock-preprocessor-face ((((class color) (min-colors ,THRESHOLD)) (:foreground "#16c62a"))(t (:foreground "#2d3"))))
  `(font-lock-comment-face ((((class color) (min-colors ,THRESHOLD)) (:foreground "#2f70ff"))(t (:foreground "#ae81ff"))))
  `(font-lock-constant-face ((((class color) (min-colors ,THRESHOLD)) (:foreground "#ae81ff")) (t (:foreground "#11f"))))
@@ -62,7 +62,7 @@
  ;; Yasnippet
  `(yas-field-highlight-face ((((class color) (min-colors ,THRESHOLD)) (:background "#383830")) (t (:background "#838"))))
  ;; popup
- `(popup-face ((t (:background "cyan" :foreground "blue"))))
+ `(popup-face ((t (:background "#00cdcd" :foreground "#0000ee"))))
  `(popup-tip-face ((t (:background "#99cccc" :foreground "#cc1111"))))
  ;; woman
  `(woman-bold ((((class color) (min-colors ,THRESHOLD)) (:foreground "#ff2200" :bold t)) (t (:foreground "#ff2200"))))
@@ -74,7 +74,10 @@
  `(Man-underline ((((class color) (min-colors ,THRESHOLD)) (:foreground "#00ee00" :italic nil)) (t (:foreground "#00ee00"))))
  `(Man-reverse ((((class color) (min-colors ,THRESHOLD)) (:foreground "#eeee00")) (t (:foreground "#eeee00"))))
  ;; which-func
- `(which-func((((class color) (min-colors ,THRESHOLD)) (:foreground "#e6db74")) (t (:foreground "#e6db74"))))
+ `(which-func ((((class color) (min-colors ,THRESHOLD)) (:foreground "#e6db74")) (t (:foreground "#e6db74"))))
+ ;; flymake
+ `(flymake-errline ((((class color) (min-colors ,THRESHOLD)) (:foreground "#F92672")) (t (:foreground "#A20C41" :weight bold :underline t))))
+ `(flymake-warnline ((((class color) (min-colors ,THRESHOLD)) (:foreground "#FD971F")) (t (:foreground "#00cdcd" :weight bold :underline t))))
  )
 
 ;;;###autoload

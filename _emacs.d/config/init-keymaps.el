@@ -23,6 +23,7 @@
 (global-set-key (kbd "<f2>") 'repeat-complex-command)
 
 (global-set-key (kbd "<C-f9>") 'smarter-compile)
+(global-set-key (kbd "<f9>") 'smarter-compile)
 (global-set-key (kbd "<M-f2>") 'eshell)
 
 ;; (global-set-key "\C-cx" 'clipboard-kill-ring-save)

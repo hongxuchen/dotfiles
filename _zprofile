@@ -1,6 +1,10 @@
 # -*- mode:sh -*-
 # vim:ft=sh
 
+if ! [ $DISPLAY ]; then
+    source ~/.profile
+fi
+
 export PAGER="less"
 export LESS="-R -i -g -c -W"
 export LESS_TERMCAP_mb=$'\E[01;31m'

@@ -1,0 +1,8 @@
+wildcard
+patsubst
+phony
+all
+test
+clean
+dist-clean
+install

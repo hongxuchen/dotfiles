@@ -15,6 +15,9 @@
 (setq ac-quick-help-prefer-pos-tip nil)
 (define-key ac-mode-map (kbd "C-c h") 'ac-last-quick-help)
 (define-key ac-mode-map (kbd "C-c H") 'ac-last-help)
+(add-to-list 'ac-dictionary-directories '"~/.emacs.d/.dict")
+
+(setq ac-modes (append ac-modes '(makefile-gmake-mode makefile-automake-mode)))
 
 ;; (define-key ac-mode-map  [(control tab)] 'auto-complete)
 (ac-set-trigger-key "TAB") ; after input prefix, press TAB key ASAP
