@@ -57,6 +57,7 @@
   (setq c-default-style "Google")
   (setq comment-start "// " comment-end "")
   (doxymacs-mode t)
+  (doxymacs-font-lock)
   ;; (require 'cpp)
   ;; (global-cwarn-mode t)
   ;; (hide-ifdef-mode t)

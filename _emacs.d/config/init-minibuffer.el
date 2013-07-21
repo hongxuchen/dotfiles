@@ -12,11 +12,15 @@
       ido-use-virtual-buffers t
       ido-create-new-buffer 'always
       ido-save-directory-list-file "~/.emacs.d/.ido.last"
+      ido-use-faces t
       ;; allow same buffer opened in different frames
       ido-default-buffer-method 'selected-window)
-
 (setq ido-ignore-directories (append ido-ignore-directories '("^auto/$" "\\.prv/" "_region_")))
 (setq ido-ignore-files (append ido-ignore-files '("^auto/$" "_region_")))
+
+;; (flx-ido-mode 1)
+;; (require 'flx-ido)
+;; (setq flx-ido-use-faces nil)
 
 (smex-initialize)
 

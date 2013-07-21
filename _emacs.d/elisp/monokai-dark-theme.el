@@ -76,8 +76,8 @@
  ;; which-func
  `(which-func ((((class color) (min-colors ,THRESHOLD)) (:foreground "#e6db74")) (t (:foreground "#e6db74"))))
  ;; flymake
- `(flymake-errline ((((class color) (min-colors ,THRESHOLD)) (:foreground "#F92672")) (t (:foreground "#A20C41" :weight bold :underline t))))
- `(flymake-warnline ((((class color) (min-colors ,THRESHOLD)) (:foreground "#FD971F")) (t (:foreground "#00cdcd" :weight bold :underline t))))
+ `(flymake-errline ((((class color) (min-colors ,THRESHOLD)) (:underline (:style line) :inherit error)) (t (:foreground "#A20C41" :weight bold :underline t))))
+ `(flymake-warnline ((((class color) (min-colors ,THRESHOLD)) (:foreground "#FD971F" :underline (:style line) :inherit warning)) (t (:foreground "#00cdcd" :weight bold :underline t))))
  )
 
 ;;;###autoload

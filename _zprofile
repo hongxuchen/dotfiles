@@ -23,11 +23,11 @@ export GREP_COLOR='1;32'
 
 # system related; the first one is only used for llvm shared library testing
 export PATH=~/.dict/recite:~/moonbox/llvm-obj/Debug+Asserts/bin:~/moonbox/llvm-obj/Debug+Asserts/lib:~/moonbox/llvm-gcc4.2-2.9-x86_64-linux/bin:~/moonbox/klee-install/bin:~/moonbox/klee/scripts:/usr/local/texlive/2012/bin/i386-linux:~/INSTALL/bin:~/.bin:/home/hongxuchen/data_backup/rtags/bin:~/moonbox/llvm-obj/Debug+Asserts/bin:~/moonbox/llvm-obj/Debug+Asserts/lib:~/moonbox/llvm-gcc4.2-2.9-x86_64-linux/bin:~/moonbox/klee-install/bin:~/moonbox/klee/scripts:/usr/local/texlive/2012/bin/i386-linux:~/INSTALL/bin:~/.bin:/home/hongxuchen/data_backup/rtags/bin:$PATH
-#export C_INCLUDE_PATH
-#export CPLUS_INCLUDE_PATH
-#export LD_LIBRARY_PATH
-#export PYTHONPATH
-#export GTAGSLIBPATH
+# export C_INCLUDE_PATH
+# export CPLUS_INCLUDE_PATH
+export LD_LIBRARY_PATH=/usr/lib/llvm-3.4/lib
+# export PYTHONPATH
+# export GTAGSLIBPATH
 
 stty ixany
 stty ixoff -ixon

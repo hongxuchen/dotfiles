@@ -9,10 +9,10 @@
 " =====================================================
 
 " When editing a file, always jump to the last known cursor position.
-autocmd BufReadPost *
-      \ if line("'\"") > 1 && line("'\"") <= line("$") |
-      \   exe "normal! g`\"" |
-      \ endif
+" autocmd BufReadPost *
+"       if line("'\"") > 1 && line("'\"") <= line("$") |
+"         exe "normal! g`\"" |
+"       endif
 
 " Set working directory
 nnoremap <leader>. :lcd %:p:h<CR>
@@ -21,6 +21,7 @@ nnoremap <silent> <leader>v :w<CR>:source ~/.vimrc<CR>:filetype detect<CR>:exe "
 
 " sudo write this
 cnoremap W! w !sudo tee % >/dev/null
+
 
 "read pdf files using pdftotext; used with :tabnew!
 :command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> - |fmt -csw78
@@ -44,7 +45,7 @@ nnoremap gj j
 noremap gk k
 
 " don't use macro
-nnoremap q :bN<CR>
+nnoremap q :bN
 
 " remap D to remove line without x register, anyway I have cc
 nnoremap D "_dd
@@ -170,7 +171,8 @@ set matchpairs+=<:>           " show matching <> (html mainly) as well
 set foldmethod=syntax         " allow us to fold on indents
 set foldlevel=99              " don't fold by default
 set history=200               " up/down can also be used when some words have been inserted
-colorscheme desert            " koehler,elflord,murphy,torte,evening,delek
+" colorscheme desert            " koehler,elflord,murphy,torte,evening,delek
+colorscheme delek
 " Reading/Writing
 set noautowrite               " Never write a file unless I request it.
 set noautowriteall            " NEVER.
@@ -220,51 +222,47 @@ runtime macros/matchit.vim
 " VUNDLE rtp, @see https://github.com/gmarik/vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-" vundle manages itself
 Bundle 'gmarik/vundle'
-" keybindings for comments
 Bundle 'tpope/vim-commentary'
 " git syntax, indent, and filetypes
 Bundle 'tpope/vim-git'
-" surround
 Bundle 'tpope/vim-surround'
-" tagbar used with C/C++
 Bundle 'Tagbar'
-" auto-pairs
-Bundle "jiangmiao/auto-pairs"
-"llvm and tablegen syntax highlighing
-" Bundle "Superbil/llvm.vim"
-" auto complete popup
+Bundle 'jiangmiao/auto-pairs'
+Bundle 'Valloric/YouCompleteMe'
+Bundle 'Valloric/vim-valloric-colorscheme'
+Bundle 'Superbil/llvm.vim'
 " Bundle 'AutoComplPop'
-" supertab
-Bundle "ervandew/supertab"
-"tabular to align
+" Bundle 'ervandew/supertab'
 " Bundle 'godlygeek/tabular'
-" c++11
 " Bundle 'Cpp11-Syntax-Support'
-" csv files
 " Bundle 'chrisbra/csv.vim'
 " Bundle 'ack.vim'
 "
+colorscheme valloric
 
+" ycm
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_global_ycm_extra_conf = '~/.bin/.ycm_extra_conf.py'
+let g:ycm_complete_in_strings = 1
 " clang_complete
-let g:clang_auto_select=1
-let g:clang_complete_auto=1
-let g:clang_complete_copen=1
-let g:clang_hl_errors=1
-let g:clang_periodic_quickfix=0
-let g:clang_snippets=1
-let g:clang_snippets_engine="clang_complete"
-let g:clang_conceal_snippets=1
-let g:clang_exec="clang"
-let g:clang_user_options=""
-let g:clang_auto_user_options=".clang_complete,path"
-let g:clang_use_library=1
-let g:clang_library_path="/usr/lib/llvm-3.4/lib/"
-let g:clang_sort_algo="priority"
-let g:clang_complete_macros=1
-let g:clang_complete_patterns=0
-nnoremap <Leader>q :call g:ClangUpdateQuickFix()<CR>
+" let g:clang_auto_select=0
+" let g:clang_complete_auto=1
+" let g:clang_complete_copen=1
+" let g:clang_hl_errors=1
+" let g:clang_periodic_quickfix=0
+" let g:clang_snippets=1
+" let g:clang_snippets_engine="clang_complete"
+" let g:clang_conceal_snippets=1
+" let g:clang_exec="clang"
+" let g:clang_user_options=""
+" let g:clang_auto_user_options=".clang_complete,path"
+" let g:clang_use_library=1
+" let g:clang_library_path="/usr/lib/llvm-3.4/lib/"
+" let g:clang_sort_algo="priority"
+" let g:clang_complete_macros=1
+" let g:clang_complete_patterns=0
+" nnoremap <Leader>q :call g:ClangUpdateQuickFix()<CR>
 
 " tagbar
 noremap <leader>t :TagbarToggle<CR>
@@ -314,4 +312,5 @@ nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 " =====================================================
 autocmd FileType c,cpp setl path+=/usr/lib/llvm-2.9/include,/usr/include/c++/4.6,~/moonbox/klee/include
 autocmd FileType c,cpp setl cms=//%s
+autocmd FileType c,cpp nnoremap <silent> <C-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 autocmd FileType lisp setl cms=;;%s

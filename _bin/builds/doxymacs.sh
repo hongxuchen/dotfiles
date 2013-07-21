@@ -10,6 +10,6 @@ if ! [ -d $SRC ]; then
 fi
 
 cd $SRC
-./configure --prefix=$HOME/.emacs.d/site-lisp/doxymacs --with-default-style=C++
+./configure --prefix=$HOME/.emacs.d/site-lisp/doxymacs --with-default-style=JavaDoc
 make
 make install

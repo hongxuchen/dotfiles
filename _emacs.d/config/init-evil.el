@@ -54,19 +54,21 @@
 ;; (evil-set-initial-state 'inf-ruby-mode 'emacs)
 ;; (evil-set-initial-state 'yari-mode 'emacs)
 
-;; revert to emacs keymaps for some keys
-(setcdr evil-insert-state-map nil)
-;; (define-key evil-insert-state-map
-;;   (read-kbd-macro evil-toggle-key) 'evil-emacs-state)
-
 (when (display-graphic-p)
   (keyboard-translate ?\C-i ?\H-i)
   (define-key evil-motion-state-map [?\H-i] 'evil-jump-forward))
 (evil-global-set-key 'normal (kbd "q") 'bury-buffer)
 (evil-global-set-key 'normal (kbd "C-t") 'pop-global-mark)
 (evil-global-set-key 'normal (kbd "K") 'man)
+;; revert to emacs keymaps for some keys
+(setcdr evil-insert-state-map nil)
+;; (define-key evil-insert-state-map
+  ;; (read-kbd-macro evil-toggle-key) 'evil-emacs-state)
 (evil-global-set-key 'insert (kbd "<escape>") 'evil-normal-state)
-(evil-global-set-key 'insert (kbd "<ESC>") 'evil-normal-state)
+;; M-n and <ESC> conflict
+;; (evil-global-set-key 'insert (kbd "<ESC>") 'evil-normal-state)
+(evil-global-set-key 'insert (kbd "M-n") 'evil-complete-next)
+(evil-global-set-key 'insert (kbd "M-p") 'evil-complete-previous)
 
 (defun evil-undefine ()
   (interactive)
@@ -83,6 +85,7 @@
 (require 'evil-leader)
 (global-evil-leader-mode t)
 (evil-leader/set-key
+  "c" 'flymake-mode
   "r" 'review-fixme-comment
   "g" 'rgrep
   "f" 'my-format-buffer

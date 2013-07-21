@@ -85,21 +85,23 @@ Usually it is something like \"pkg-config --cflags\", \"llvm-config --cflags\" e
     lines))
 
 (defun ac-clang-call-process (prefix &rest args)
-  (let* (
-         (buf (get-buffer-create ac-clang-stdout))
+  (let* ((buf (get-buffer-create ac-clang-stdout))
          (res))
     (with-current-buffer buf (erase-buffer))
     (setq res (apply 'call-process-region (point-min) (point-max)
                      ac-clang-executable nil (list ac-clang-stdout ac-clang-stderr) nil args))
-    (unless (zerop res)
-      (with-current-buffer (find-file-noselect ac-clang-stderr t)
-        (goto-char (point-min))
-        (if (re-search-forward "\\(?:error: \\(?:invalid\\|unknown\\)\\) argument:" nil t)
-            (message "[clang] %s" (buffer-substring-no-properties (line-beginning-position) (line-end-position))))
-        ;; TODO more efficiently
-        (kill-buffer)))
-    (with-current-buffer buf
-      (ac-clang-parse-output prefix))))
+    (if (not (zerop res))
+        (with-current-buffer (find-file-noselect ac-clang-stderr t)
+          (goto-char (point-min))
+          ;; (if (re-search-forward "\\(?:error: \\(?:invalid\\|unknown\\)\\) argument:" nil t)
+          (if (search-forward "error:" nil t)
+              (message "[clang] %s" (buffer-substring-no-properties (line-beginning-position) (line-end-position)))
+            )
+          ;; TODO more efficiently
+          (kill-buffer) "")
+      (with-current-buffer buf
+        (ac-clang-parse-output prefix))
+      )))
 
 (defsubst ac-clang-build-location (pos)
   (save-excursion

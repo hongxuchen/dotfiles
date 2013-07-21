@@ -9,5 +9,6 @@
 (evil-define-key 'normal python-mode-map "\C-]" 'elpy-goto-definition)
 (eval-after-load 'python '(elpy-enable))
 (setq elpy-rpc-python-command "python")
+(setq elpy-rpc-backend "jedi")
 
 (provide 'init-python-mode)
