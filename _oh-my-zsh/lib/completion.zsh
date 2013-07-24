@@ -23,7 +23,9 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-
 zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
 
 # disable named-directories autocompletion
-zstyle ':completion:*:cd:*' tag-order local-directories directory-stack path-directories
+zstyle ':completion:*:cd:*' tag-order local-directories directory-stack
+# path-directories
+zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
 cdpath=(.)
 
 # use /etc/hosts and known_hosts for hostname completion
@@ -55,13 +57,3 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 
 # ... unless we really want to.
 zstyle '*' single-ignored show
-
-# if [ "x$COMPLETION_WAITING_DOTS" = "xtrue" ]; then
-#   expand-or-complete-with-dots() {
-#     echo -n "\e[31m......\e[0m"
-#     zle expand-or-complete
-#     zle redisplay
-#   }
-#   zle -N expand-or-complete-with-dots
-#   bindkey "^I" expand-or-complete-with-dots
-# fi

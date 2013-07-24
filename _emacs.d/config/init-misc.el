@@ -55,6 +55,7 @@
 (setq fortune-dir "/usr/share/games/fortunes")
 (setq fortune-file (expand-file-name "fortunes" fortune-dir))
 
+(setq explicit-shell-file-name "/bin/zsh")
 ;; shell settings
 (defalias 'shell 'eshell "farewell, my shell!")
 (eval-after-load 'exec-path-from-shell
@@ -62,8 +63,7 @@
      (exec-path-from-shell-initialize)
      (dolist (var '("SSH_AUTH_SOCK" "SSH_AGENT_PID" "GPG_AGENT_INFO" "PATH"))
        (add-to-list 'exec-path-from-shell-variables var))))
-(setq explicit-shell-file-name "/usr/bin/zsh"
-      shell-command-switch "-ic")
+      (setq shell-command-switch "-ic")
 
 (setq browse-url-generic-program
       (cond

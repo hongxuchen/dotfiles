@@ -28,6 +28,8 @@
 (setq imenu-eager-completion-buffer nil)
 (setq imenu-auto-rescan t)
 
+(setq echo-keystrokes 0)
+
 (defadvice find-file (before make-directory-maybe (filename &optional wildcards) activate)
   "Create parent directory if not exists while visiting file."
   (unless (file-exists-p filename)

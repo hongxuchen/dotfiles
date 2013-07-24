@@ -38,6 +38,7 @@
 (require 'init-symbols-tags)
 (require 'init-auto-insert)
 (require 'init-modeline)
+(require 'init-term)
 ;; (require 'init-smartparens)
 ;; (require 'init-mmm)
 ;; (require 'init-marmalade)  helper to marmalade

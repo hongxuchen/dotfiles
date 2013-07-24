@@ -91,7 +91,6 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (require-package 'info+)
 ;; (require-package 'wgrep)
 ;; (require-package 'smartparens)
-;; (require-package 'auto-compile);;
 ;; (require-package 'anything)
 ;; (require-package 'mic-paren) ;; extend paren.el
 ;; (require-package 'crontab-mode)

@@ -24,7 +24,10 @@
 
 (global-set-key (kbd "<C-f9>") 'smarter-compile)
 (global-set-key (kbd "<f9>") 'smarter-compile)
-(global-set-key (kbd "<M-f2>") 'eshell)
+(global-set-key (kbd "M-<f1>")
+                (lambda () (interactive)
+                  (start-process "XTerm" nil "xterm")))
+(global-set-key (kbd "<M-f3>") 'eshell)
 
 ;; (global-set-key "\C-cx" 'clipboard-kill-ring-save)
 ;; (global-set-key "\C-cc" 'copy-region-as-kill)
@@ -59,8 +62,10 @@
 (global-set-key (kbd "C-x f") 'ido-find-file)
 (global-set-key (kbd "C-x d") 'ido-dired)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
-;; (global-set-key "\M-x" 'smex)
+
 (global-set-key "\M-x" 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
+(global-set-key (kbd "C-c M-x") 'smex-update)
 (global-set-key "\C-ci" 'idomenu)
 
 (defun find-loadfile-by-map (map)

@@ -39,6 +39,7 @@
  'ac-sources
  (append  '(ac-source-filename ac-source-files-in-current-dir) ac-sources))
 
+(setq dabbrev-case-fold-search nil)
 ;; hippie-expand
 (setq hippie-expand-try-functions-list
       '(try-complete-file-name-partially

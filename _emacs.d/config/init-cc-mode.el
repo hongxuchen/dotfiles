@@ -5,6 +5,8 @@
 ;; -----------------------------------------------------------------------------
 (setq cc-lookup-diagnostics-level 0)
 
+(setq hide-ifdef-shadow t)
+
 (progn
   (evil-define-key 'normal c++-mode-map "\C-]" 'cc-lookup)
   (evil-define-key 'normal c++-mode-map "\C-t" 'cc-jump-back)
@@ -29,14 +31,30 @@
 
 ;; clang variable settings
 (defun my-ac-cc-mode-setup ()
+
+  ;; auto-complete-clang
   (require 'auto-complete-clang)
   (setq ac-clang-executable "/usr/bin/clang")
-  (setq ac-sources '(ac-source-clang ac-source-yasnippet ac-source-dictionary))
   (set (make-local-variable 'ac-auto-start) nil)
+
+  ;; auto-complete-clang-async
   ;; (require 'auto-complete-clang-async)
-  ;; (setq ac-clang-complete-executable "~/.emacs.d/site-lisp/emacs-clang-complete-async/clang-complete")
+  ;; (setq ac-clang-complete-executable "~/.emacs.d/elisp/emacs-clang-complete-async/clang-complete")
   ;; (setq ac-sources '(ac-source-clang-async ac-source-yasnippet ac-source-dictionary))
   ;; (ac-clang-launch-completion-process)
+
+  ;; irony-mode
+  (add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp/irony/irony-mode/elisp"))
+  (require 'irony)
+  (irony-mode 1)
+  (irony-enable 'ac)
+  (add-hook 'find-file-hook
+            (lambda ()
+              (if (memq major-mode irony-known-modes)
+                  (setq ffap-c-path (irony-header-search-paths)))))
+
+  (setq ac-sources '(ac-source-irony ac-source-yasnippet ac-source-dictionary))
+  ;; (setq ac-sources '(ac-source-clang ac-source-irony ac-source-yasnippet ac-source-dictionary))
   )
 
 ;; -----------------------------------------------------------------------------

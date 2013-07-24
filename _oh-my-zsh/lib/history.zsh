@@ -4,7 +4,7 @@ HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
-alias history='fc -l 1'  #fc is a zshbuiltins
+alias history='fc -l 1'  #fc is a zshbuiltin
 
 setopt append_history
 setopt extended_history

@@ -133,7 +133,7 @@ Argument SYM-NAME thing to find."
   "If you're saving an elisp file, likely the .elc is no longer valid."
   (add-hook 'after-save-hook
             (lambda ()
-              (when (and (buffer-file-name) (not (string=  (file-name-nondirectory (buffer-file-name)) ".dir-locals.el")) (string= major-mode 'emacs-lisp-mode))
+              (when (and (buffer-file-name) (not (member (file-name-nondirectory (buffer-file-name)) '(".dir-locals.el" "init-elpa.el"))) (string= major-mode 'emacs-lisp-mode))
                 (and (file-exists-p (concat buffer-file-name "c")) (byte-compile-file buffer-file-name))
                 (eval-buffer)))
             t))

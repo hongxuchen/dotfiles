@@ -19,10 +19,11 @@ xterm*metaSendsEscape: true
 !Emacs.pane.menubar.foreground: black
 !Emacs*menubar.margin: 0
 !Emacs*shadowThickness: 0
-
+Emacs.fontBackend: xft
 Emacs.menuBar: off
 Emacs.verticalScrollBars: off
 Emacs.toolBar: off
+Emacs*font:    Consolas:antialias=true
 
 !font and size
 XTerm*faceSize: 13

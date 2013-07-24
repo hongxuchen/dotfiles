@@ -62,11 +62,12 @@
 (evil-global-set-key 'normal (kbd "K") 'man)
 ;; revert to emacs keymaps for some keys
 (setcdr evil-insert-state-map nil)
-;; (define-key evil-insert-state-map
-  ;; (read-kbd-macro evil-toggle-key) 'evil-emacs-state)
+(define-key evil-insert-state-map
+  (read-kbd-macro evil-toggle-key) 'evil-emacs-state)
 (evil-global-set-key 'insert (kbd "<escape>") 'evil-normal-state)
 ;; M-n and <ESC> conflict
 ;; (evil-global-set-key 'insert (kbd "<ESC>") 'evil-normal-state)
+
 (evil-global-set-key 'insert (kbd "M-n") 'evil-complete-next)
 (evil-global-set-key 'insert (kbd "M-p") 'evil-complete-previous)
 

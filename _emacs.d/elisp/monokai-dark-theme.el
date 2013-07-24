@@ -22,7 +22,7 @@
              (t (:foreground "#adadad" :background "#000"))))
  ;; ;; Grep
  `(grep-context-face ((((class color) (min-colors ,THRESHOLD)) (:foreground "#f8f8f2" :background "#272822"))
-             (t (:foreground "#adadad" :background "#222"))))
+                      (t (:foreground "#adadad" :background "#222"))))
 
  `(grep-error-face ((t (:foreground "#f92672" :weight bold :underline t))))
  `(grep-hit-face ((t (:foreground "#fd5ff0"))))
@@ -78,6 +78,9 @@
  ;; flymake
  `(flymake-errline ((((class color) (min-colors ,THRESHOLD)) (:underline (:style line) :inherit error)) (t (:foreground "#A20C41" :weight bold :underline t))))
  `(flymake-warnline ((((class color) (min-colors ,THRESHOLD)) (:foreground "#FD971F" :underline (:style line) :inherit warning)) (t (:foreground "#00cdcd" :weight bold :underline t))))
+ ;; ac-irony
+ `(ac-irony-candidate-face ((((class color) (min-colors ,THRESHOLD)) (:background "lightgray" :foreground "navy")) (t :background "lightgray" :foreground "navy")))
+ `(ac-irony-selection-face ((((class color) (min-colors ,THRESHOLD)) (:background "navy" :foreground "white")) (t :background "blue" :foreground "white")))
  )
 
 ;;;###autoload
@@ -88,8 +91,9 @@
 (custom-theme-set-variables
  'monokai-dark
  `(ansi-color-faces-vector [default bold shadow italic underline bold bold-italic bold])
- `(ansi-color-names-vector ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
- `(ansi-term-color-vector ["#3f3f3f" "#cc9393" "#7f9f7f" "#f0dfaf" "#8cd0d3" "#dc8cc3" "#93e0e3" "#dcdccc"] t)
+ ;; `(ansi-color-names-vector ["#2d3743" "#ff4242" "#74af68" "#dbdb95" "#34cae2" "#008b8b" "#00ede1" "#e1e1e0"])
+ '(ansi-color-names-vector ["black" "#d55e00" "#009e73" "#f8ec59" "#0072b2" "#cc79a7" "#56b4e9" "white"])
+ ;; `(ansi-term-color-vector ["#3f3f3f" "#cc9393" "#7f9f7f" "#f0dfaf" "#8cd0d3" "#dc8cc3" "#93e0e3" "#dcdccc"])
  )
 
 (provide-theme 'monokai-dark)
