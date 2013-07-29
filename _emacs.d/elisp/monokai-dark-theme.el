@@ -78,9 +78,13 @@
  ;; flymake
  `(flymake-errline ((((class color) (min-colors ,THRESHOLD)) (:underline (:style line) :inherit error)) (t (:foreground "#A20C41" :weight bold :underline t))))
  `(flymake-warnline ((((class color) (min-colors ,THRESHOLD)) (:foreground "#FD971F" :underline (:style line) :inherit warning)) (t (:foreground "#00cdcd" :weight bold :underline t))))
+ `(flycheck-error ((((class color) (min-colors ,THRESHOLD)) (:underline (:style line) :inherit error)) (t (:foreground "#A20C41" :weight bold :underline t))))
+ `(flycheck-warning ((((class color) (min-colors ,THRESHOLD)) (:foreground "#FD971F" :underline (:style line) :inherit warning)) (t (:foreground "#00cdcd" :weight bold :underline t))))
+ `(irony-flycheck-error ((((class color) (min-colors ,THRESHOLD)) (:underline (:style line) :inherit error)) (t (:foreground "#A20C41" :weight bold :underline t))))
+ `(irony-flycheck-warning ((((class color) (min-colors ,THRESHOLD)) (:foreground "#FD971F" :underline (:style line) :inherit warning)) (t (:foreground "#00cdcd" :weight bold :underline t))))
  ;; ac-irony
- `(ac-irony-candidate-face ((((class color) (min-colors ,THRESHOLD)) (:background "lightgray" :foreground "navy")) (t :background "lightgray" :foreground "navy")))
- `(ac-irony-selection-face ((((class color) (min-colors ,THRESHOLD)) (:background "navy" :foreground "white")) (t :background "blue" :foreground "white")))
+ ;; `(ac-irony-candidate-face ((((class color) (min-colors ,THRESHOLD)) (:background "lightgray" :foreground "navy")) (t :background "lightgray" :foreground "navy")))
+ ;; `(ac-irony-selection-face ((((class color) (min-colors ,THRESHOLD)) (:background "navy" :foreground "white")) (t :background "blue" :foreground "white")))
  )
 
 ;;;###autoload

@@ -2,12 +2,12 @@
 
 BASEDIR="`dirname $0`"
 cd $BASEDIR
-SRC=$PWD/irony
+SRC=$PWD/irony-mode
+BUILD=$SRC/build
 
-if ! [ -d $SRC/build ]; then
-    mkdir -p $SRC/build
-    cd $SRC
-    git clone --recursive git@github.com:HongxuChen/irony-mode.git irony-mode
+if ! [ -d $BUILD ]; then
+    git clone --recursive git@github.com:HongxuChen/irony-mode.git $SRC
+    mkdir -p $BUILD
 else
     cd $SRC
     git pull --all
@@ -15,9 +15,9 @@ else
 fi
 
 git checkout mine
-cd $SRC/build
-cmake $SRC/irony-mode
+cd $BUILD
+cmake $SRC
 make -j 2
 make install
 
-ln -sf $SRC ~/.emacs.d/elisp/irony
+ln -sf $SRC ~/.emacs.d/elisp/irony-mode

@@ -22,7 +22,14 @@ Return nil if we cannot, non-nil if we can."
          (local-file (file-relative-name
                       temp-file
                       (file-name-directory (buffer-file-name)))))
-    (list ac-clang-executable
-          (append ac-clang-flags (list "-fsyntax-only" local-file)))))
+    (list "clang"
+          (append irony-compile-flags (list "-fsyntax-only" local-file)))))
 
+(eval-after-load 'flymake
+  '(progn
+     (push '("\\.hpp\\'" flymake-simple-make-init) flymake-allowed-file-name-masks)
+     (push '("\\.hh\\'" flymake-simple-make-init) flymake-allowed-file-name-masks)))
+
+;; (require 'flycheck)
+;; (global-flycheck-mode 1)
 (provide 'init-flymake)

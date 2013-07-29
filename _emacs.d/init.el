@@ -3,6 +3,7 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/config"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/doxymacs/share/emacs/site-lisp"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp/irony-mode/elisp"))
 
 ;;----------------------------------------------------------------------------
 ;; Which functionality to enable (use t or nil for true and false)
@@ -62,7 +63,6 @@
 (require 'init-flymake) ;; online check
 
 (require 'init-cc-mode)
-;; (require 'init-irony)
 ;; (require 'init-cmake-mode)
 
 (require 'init-python-mode)

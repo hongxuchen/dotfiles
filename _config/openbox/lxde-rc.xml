@@ -275,9 +275,9 @@ and back in -->
       <action name="Execute">
         <startupnotify>
           <enabled>true</enabled>
-          <name>PCManFM</name>
+          <name>emacs</name>
         </startupnotify>
-        <command>pcmanfm</command>
+        <command>emacs -fs</command>
       </action>
     </keybind>
 
@@ -718,10 +718,10 @@ and back in -->
       <maximized>yes</maximized>
     </application>
 
-    <application name="pcmanfm">
-      <fullscreen>yes</fullscreen>
-      <maximized>yes</maximized>
-    </application>
+    <!-- <application name="pcmanfm"> -->
+    <!--   <fullscreen>yes</fullscreen> -->
+    <!--   <maximized>yes</maximized> -->
+    <!-- </application> -->
 
     <application name="emacs">
       <maximized>yes</maximized>

@@ -1,5 +1,5 @@
 (defvar my-terminal-process)
-(defconst my-terminal-name "*terminal*")
+(defconst my-terminal-name " *terminal*")
 (autoload 'term-send-string "term" nil t)
 (defun terminal (target-directory)
   "Switch to terminal. Launch if nonexistant."

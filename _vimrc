@@ -342,3 +342,4 @@ autocmd FileType c,cpp setl path+=/usr/lib/llvm-2.9/include,/usr/include/c++/4.6
 autocmd FileType c,cpp setl cms=//%s
 autocmd FileType c,cpp nnoremap <silent> <C-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>
 autocmd FileType lisp setl cms=;;%s
+autocmd FileType cmake setl cms=#%s

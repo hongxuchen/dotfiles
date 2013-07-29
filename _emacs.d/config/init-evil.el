@@ -65,6 +65,11 @@
 (define-key evil-insert-state-map
   (read-kbd-macro evil-toggle-key) 'evil-emacs-state)
 (evil-global-set-key 'insert (kbd "<escape>") 'evil-normal-state)
+(evil-global-set-key 'normal (kbd "g j") 'evil-next-line)
+(evil-global-set-key 'normal (kbd "g k") 'evil-previous-line)
+(evil-global-set-key 'normal (kbd "j") 'evil-next-visual-line)
+(evil-global-set-key 'normal (kbd "k") 'evil-previous-visual-line)
+
 ;; M-n and <ESC> conflict
 ;; (evil-global-set-key 'insert (kbd "<ESC>") 'evil-normal-state)
 

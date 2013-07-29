@@ -24,24 +24,10 @@
      (dolist (mode (list 'html-mode 'nxml-mode))
        (mmm-add-mode-ext-class mode "\\.r?html\\(\\.erb\\)?\\'" 'html-css))))
 
-
-
-;; Colourise CSS colour literals
 (dolist (hook '(css-mode-hook html-mode-hook sass-mode-hook))
-  (add-hook hook 'rainbow-mode))
+  (add-hook hook (lambda () (rainbow-mode 1))))
 
-
-(defun maybe-flymake-css-load ()
-  "Activate flymake-css as necessary, but not in derived modes."
-  (when (eq major-mode 'css-mode)
-    (flymake-css-load)))
-(add-hook 'css-mode-hook 'maybe-flymake-css-load)
-
-
-(add-hook 'sass-mode-hook 'flymake-sass-load)
-(add-hook 'scss-mode-hook 'flymake-sass-load)
 (setq-default scss-compile-at-save nil)
-
 
 (eval-after-load 'auto-complete
   '(progn

@@ -1,0 +1,18 @@
+#+BEGIN_QUOTE
+This dotfile is based on https://github.com/sontek/dotfiles, and _emacs.d is based on https://github.com/redguardtoo/emacs.d
+#+END_QUOTE
+
+
+*** Installation
+See ~install.sh~ for detailed information.
+
+- Installing source files: ~./install.sh~
+- Restore old source files: ~./install.sh restore~
+
+***  Congurations
+
+- tmux
+- Zsh/Bash
+- Vim7.4/Emacs24
+- LXDE/openbox
+- Ubuntu/Debian
