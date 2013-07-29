@@ -1,9 +1,12 @@
 (setq emacs-load-start-time (current-time))
+;; (eval-when-compile (require 'cl))
+(require 'cl)
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/config"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/doxymacs/share/emacs/site-lisp"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp/irony-mode/elisp"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp/rtags/src"))
 
 ;;----------------------------------------------------------------------------
 ;; Which functionality to enable (use t or nil for true and false)
@@ -20,7 +23,6 @@
 ;;----------------------------------------------------------------------------
 ;; Load configs for specific features and modes
 ;;----------------------------------------------------------------------------
-(eval-when-compile (require 'cl))
 
 ;; basic settings
 (require 'init-elpa)
@@ -95,6 +97,6 @@
 (load custom-file)
 (require 'time-date)
 (message "Emacs startup time: %d seconds."
-(time-to-seconds (time-since emacs-load-start-time)))
+(float-time (time-since emacs-load-start-time)))
 (load-persistent-scratch)
 ;; (server-start)

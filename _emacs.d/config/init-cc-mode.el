@@ -1,4 +1,8 @@
 (provide 'init-cc-mode)
+(require 'rtags)
+(rtags-enable-standard-keybindings c-mode-base-map)
+(setq rtags-completion-enabled nil)
+;; (setq rtags-path (expand-file-name "~/.bin/builds/rtags/bin"))
 
 ;; -----------------------------------------------------------------------------
 ;; some setups for cc-mode
@@ -44,7 +48,7 @@
   (irony-mode 1)
   (irony-enable 'ac)
   ;; (irony-enable 'flycheck)
-  ;; (setq ac-sources '(ac-source-irony ac-source-yasnippet ac-source-dictionary))
+  (setq ac-sources '(ac-source-irony ac-source-yasnippet ac-source-dictionary))
   )
 
 ;; -----------------------------------------------------------------------------

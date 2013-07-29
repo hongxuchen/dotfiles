@@ -48,6 +48,7 @@
 (evil-set-initial-state 'process-menu-mode 'emacs)
 (evil-set-initial-state 'apt-utils-mode 'emacs)
 (evil-set-initial-state 'ert-results-mode 'emacs)
+(evil-set-initial-state 'rtags-mode 'emacs)
 
 ;; others
 ;; (evil-set-initial-state 'help-mode 'normal)
