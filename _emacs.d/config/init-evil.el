@@ -58,7 +58,7 @@
 (when (display-graphic-p)
   (keyboard-translate ?\C-i ?\H-i)
   (define-key evil-motion-state-map [?\H-i] 'evil-jump-forward))
-(evil-global-set-key 'normal (kbd "q") 'bury-buffer)
+(evil-global-set-key 'normal (kbd "q") 'quit-window)
 (evil-global-set-key 'normal (kbd "C-t") 'pop-global-mark)
 (evil-global-set-key 'normal (kbd "K") 'man)
 ;; revert to emacs keymaps for some keys

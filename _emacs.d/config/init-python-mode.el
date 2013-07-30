@@ -5,7 +5,7 @@
 		("SConscript\\'" . python-mode))
               auto-mode-alist))
 
-(evil-define-key 'normal python-mode-map "\C-t" 'elpy-goto-definition)
+;; (evil-define-key 'normal python-mode-map "\C-t" 'elpy-goto-definition)
 (evil-define-key 'normal python-mode-map "\C-]" 'elpy-goto-definition)
 (eval-after-load 'python '(elpy-enable))
 (setq elpy-rpc-python-command "python")

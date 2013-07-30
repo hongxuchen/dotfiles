@@ -96,7 +96,6 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 (require 'time-date)
-(message "Emacs startup time: %d seconds."
-(float-time (time-since emacs-load-start-time)))
 (load-persistent-scratch)
-;; (server-start)
+(message "startup time: %d seconds." (float-time (time-since emacs-load-start-time)))
+(server-start)
