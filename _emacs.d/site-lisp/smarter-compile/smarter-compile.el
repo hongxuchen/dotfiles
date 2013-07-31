@@ -244,8 +244,8 @@ COMMAND can be:
                                         ("%d" . (format-time-string "%y-%b-%d"))
                                         ("%F" . (buffer-file-name))
                                         ("%f" . (file-name-nondirectory (buffer-file-name)))
-                                        ("%n" . (file-name-sans-extension
-                                                 (file-name-nondirectory (buffer-file-name))))
+                                        ("%n" . (concat (file-name-sans-extension
+                                                 (file-name-nondirectory (buffer-file-name))) ".out"))
                                         ("%e" . (or (file-name-extension (buffer-file-name)) ""))
                                         ))
 (put 'smart-compile-expando-alist 'risky-local-variable t)

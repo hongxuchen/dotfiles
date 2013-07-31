@@ -33,3 +33,4 @@ alias info='man'                # NEVER use `info' in the terminal
 
 alias ...='cd ../..'
 alias d='dirs -v | head -10'
+alias rdm='command rdm &>/tmp/log_rdm &'
