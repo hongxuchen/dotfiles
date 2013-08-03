@@ -39,6 +39,9 @@
       grep-command "grep -inH"
       grep-highlight-matches t
       grep-scroll-output t)
+(eval-after-load "rgrep" '(require 'wgrep))
+(eval-after-load "lgrep" '(require 'wgrep))
+(eval-after-load "grep" '(require 'wgrep))
 
 (put 'narrow-to-region 'disabled nil)
 (put 'narrow-to-page 'disabled nil)

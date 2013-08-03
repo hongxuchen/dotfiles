@@ -85,11 +85,10 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (require-package 'ibuffer-vc)
 (require-package 'mmm-mode)
 (require-package 'pointback)
-(require-package 'exec-path-from-shell)
 (require-package 'undo-tree) ;; evil mode needs it!
 (require-package 'ido-ubiquitous)
 (require-package 'info+)
-;; (require-package 'wgrep)
+(require-package 'wgrep)
 ;; (require-package 'smartparens)
 ;; (require-package 'anything)
 ;; (require-package 'mic-paren) ;; extend paren.el
@@ -121,8 +120,6 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 ;;------------------------------------------------------------------------------
 ;; writings
 ;;------------------------------------------------------------------------------
-;; oddmuse for emacswiki
-(require-package 'oddmuse)
 ;; latex
 (require-package 'auctex)
 ;; gnuplot

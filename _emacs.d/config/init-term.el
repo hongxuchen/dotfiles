@@ -7,7 +7,8 @@
       (progn
         (switch-to-buffer my-terminal-name)
         (term-send-string my-terminal-process (format "cd %s\n" target-directory))
-        (goto-char (point-max)))
+        ;; (goto-char (point-max))
+        )
     (progn
       (term "/bin/zsh"))
     (setq my-terminal-process (get-buffer-process my-terminal-name))))

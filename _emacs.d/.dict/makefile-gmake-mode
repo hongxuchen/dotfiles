@@ -6,3 +6,4 @@ test
 clean
 dist-clean
 install
+realpath

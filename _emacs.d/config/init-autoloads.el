@@ -25,8 +25,8 @@
 (autoload 'file-template-find-file-not-found-hook "file-template" nil t)
 
 ;; escreen
-(autoload 'escreen-create-screen "init-escreen" "make Emacs create Vim like tabs" t)
-(evil-ex-define-cmd "tabe" 'escreen-create-screen)
+;; (autoload 'escreen-create-screen "init-escreen" "make Emacs create Vim like tabs" t)
+;; (evil;; -ex-define-cmd "tabe" 'escreen-create-screen)
 
 ;;douban fm
 (setq douban-music-default-channel 10)
@@ -71,14 +71,6 @@
 
 ;; smex
 (eval-after-load 'smex '(defun smex-show-key-advice (command) ()))
-
-;; oddmuse
-;; Get around the emacswiki spam protection
-(eval-after-load 'oddmuse
-  (add-hook 'oddmuse-mode-hook
-            (lambda ()
-              (unless (string-match "question" oddmuse-post)
-                (setq oddmuse-post (concat "uihnscuskc=1;" oddmuse-post))))))
 
 ;;ffip
 (eval-after-load "find-file-in-project"

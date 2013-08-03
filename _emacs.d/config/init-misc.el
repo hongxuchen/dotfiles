@@ -58,12 +58,6 @@
 (setq explicit-shell-file-name "/bin/zsh")
 ;; shell settings
 (defalias 'shell 'eshell "farewell, my shell!")
-(eval-after-load 'exec-path-from-shell
-  '(progn
-     (exec-path-from-shell-initialize)
-     (dolist (var '("SSH_AUTH_SOCK" "SSH_AGENT_PID" "GPG_AGENT_INFO" "PATH"))
-       (add-to-list 'exec-path-from-shell-variables var))))
-      (setq shell-command-switch "-ic")
 
 (setq browse-url-generic-program
       (cond

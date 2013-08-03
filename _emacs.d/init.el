@@ -29,8 +29,8 @@
 (require 'init-basics)
 (require 'my-utils)
 (require 'init-misc)
-(require 'init-display)
 (require 'init-dired)
+(require 'init-display)
 (require 'init-ibuffer)
 (require 'init-minibuffer)
 (require 'init-sessions)
@@ -42,7 +42,6 @@
 (require 'init-auto-insert)
 (require 'init-modeline)
 (require 'init-term)
-;; (require 'init-smartparens)
 ;; (require 'init-mmm)
 ;; (require 'init-marmalade)  helper to marmalade
 ;; (require 'init-proxies)    ;; proxy settings
@@ -62,7 +61,7 @@
 (require 'init-auto-complete) ; after init-yasnippet to override TAB
 ;; (require 'init-gtags) ;; gtags funs
 ;; (require 'xcscope)
-(require 'init-flymake) ;; online check
+(require 'init-flymake)
 
 (require 'init-cc-mode)
 ;; (require 'init-cmake-mode)
@@ -98,4 +97,4 @@
 (require 'time-date)
 (load-persistent-scratch)
 (message "startup time: %d seconds." (float-time (time-since emacs-load-start-time)))
-(server-start)
+;; (server-start)

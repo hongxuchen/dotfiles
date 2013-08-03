@@ -1,4 +1,3 @@
-(provide 'init-display)
 ;;----------------------------------------------------------------------------
 ;; startup issues
 ;;----------------------------------------------------------------------------
@@ -28,12 +27,6 @@
 (mouse-avoidance-mode 'banish)
 (setq x-stretch-cursor t)
 
-;; scroll related
-;; (setq scroll-step 1)
-;; (setq scroll-conservatively 10000)
-;; (setq auto-window-vscroll nil)
-(setq scroll-preserve-screen-position t)
-
 ;;----------------------------------------------------------------------------
 ;; face related
 ;;----------------------------------------------------------------------------
@@ -57,7 +50,8 @@
   (progn
     (menu-bar-mode -1)
     (tool-bar-mode -1)
-    (scroll-bar-mode -1)))
+    (scroll-bar-mode -1))
+)
 
 ;; WoMan settings
 (setq woman-fill-column 90
@@ -68,15 +62,17 @@
       Man-width 90
       Man-see-also-regexp "SEE ALSO\\|RELATED INFORMATION")
 
-;; encodings
+;; ;; encodings
 (set-language-environment 'utf-8)
 (set-default-coding-systems 'utf-8)
 (set-terminal-coding-system 'utf-8)
 (set-selection-coding-system 'utf-8)
 (prefer-coding-system 'utf-8)
-(setq locale-coding-system 'utf-8
-      coding-system-for-read 'utf-8
-      coding-system-for-write 'utf-8)
+;; (setq locale-coding-system 'utf-8
+;;       coding-system-for-read 'utf-8
+;;       coding-system-for-write 'utf-8)
 
 (setq goto-address-mail-face 'link)
 (add-hook 'find-file-hook 'goto-address-prog-mode)
+
+(provide 'init-display)

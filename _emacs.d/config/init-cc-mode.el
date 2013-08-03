@@ -1,38 +1,27 @@
-(provide 'init-cc-mode)
 (require 'rtags)
 (rtags-enable-standard-keybindings c-mode-base-map)
 (setq rtags-completion-enabled nil)
-;; (setq rtags-path (expand-file-name "~/.bin/builds/rtags/bin"))
 
 ;; -----------------------------------------------------------------------------
 ;; some setups for cc-mode
 ;; -----------------------------------------------------------------------------
-(setq cc-lookup-diagnostics-level 0)
-
 (setq hide-ifdef-shadow t)
 
-(progn
-  (evil-define-key 'normal c++-mode-map "\C-]" 'irony-lookup)
-  (evil-define-key 'normal c++-mode-map "\C-t" 'irony-jump-back)
-  (evil-define-key 'normal c-mode-map "\C-]" 'irony-lookup)
-  (evil-define-key 'normal c-mode-map "\C-t" 'irony-jump-back))
+;; (progn
+;;   (evil-define-key 'normal c++-mode-map "\C-]" 'irony-lookup)
+;;   (evil-define-key 'normal c++-mode-map "\C-t" 'irony-jump-back)
+;;   (evil-define-key 'normal c-mode-map "\C-]" 'irony-lookup)
+;;   (evil-define-key 'normal c-mode-map "\C-t" 'irony-jump-back))
 
-(add-hook 'c-mode-hook (lambda ()
-                         (my-cc-mode-hook)
-                         (local-set-key (kbd "<s-mouse-1>") 'irony-lookup)
-                         (local-set-key (kbd "<s-mouse-3>") 'irony-jump-back)))
+;; (add-hook 'c-mode-hook (lambda ()
+;;                          (my-cc-mode-hook)
+;;                          (local-set-key (kbd "<s-mouse-1>") 'irony-lookup)
+;;                          (local-set-key (kbd "<s-mouse-3>") 'irony-jump-back)))
 
-(add-hook 'c++-mode-hook (lambda ()
-                           (my-cc-mode-hook)
-                           (define-key c++-mode-map (kbd "<s-mouse-1>") 'irony-lookup)
-                           (define-key c++-mode-map (kbd "<s-mouse-3>") 'irony-jump-back)))
-
-(defun setup-cpputils ()
-  "manually setup cpputils"
-  (interactive)
-  ;; FIXME
-  (cppcm-reload-all)
-  (remove-hook 'find-file-hook 'rinari-launch))
+;; (add-hook 'c++-mode-hook (lambda ()
+;;                            (my-cc-mode-hook)
+;;                            (define-key c++-mode-map (kbd "<s-mouse-1>") 'irony-lookup)
+;;                            (define-key c++-mode-map (kbd "<s-mouse-3>") 'irony-jump-back)))
 
 ;; clang variable settings
 (defun my-ac-cc-mode-setup ()
@@ -43,12 +32,12 @@
   ;; (set (make-local-variable 'ac-auto-start) nil)
 
   ;; irony-mode
-  (require 'irony)
-  (require 'irony-chx)
-  (irony-mode 1)
-  (irony-enable 'ac)
+  ;; (require 'irony)
+  ;; (require 'irony-chx)
+  ;; (irony-mode 1)
+  ;; (irony-enable 'ac)
   ;; (irony-enable 'flycheck)
-  (setq ac-sources '(ac-source-irony ac-source-yasnippet ac-source-dictionary))
+  ;; (setq ac-sources '(ac-source-irony ac-source-yasnippet ac-source-dictionary))
   )
 
 ;; -----------------------------------------------------------------------------
@@ -90,3 +79,4 @@
 
 (dir-locals-set-directory-class
  "/usr/lib/llvm-3.4/include/clang" 'llvm-3.4-directory)
+(provide 'init-cc-mode)

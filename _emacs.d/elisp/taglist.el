@@ -33,7 +33,8 @@
   ;; (setq imenu--index-alist nil)
 
   (let ((source-buffer (current-buffer))
-        (current-line (line-number-at-pos)))
+        (current-line (line-number-at-pos))
+        (fn (buffer-file-name)))
 
     (if (get-buffer taglist-buffer)
         (kill-buffer taglist-buffer))
@@ -43,8 +44,9 @@
     (setq taglist-current 0)
     (taglist-fill-tags
      source-buffer
-     (cddr (speedbar-fetch-dynamic-tags
-            (buffer-file-name source-buffer)))
+     ;; (cddr (speedbar-fetch-dynamic-tags
+     ;;        (buffer-file-name source-buffer)))
+     (rtags-call-rc :path fn :path-filter fn "--imenu" "--list-symbols" "-Y")
      ""
      current-line)
 

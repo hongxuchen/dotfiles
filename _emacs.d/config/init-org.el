@@ -23,7 +23,7 @@
       org-startup-indented t)
 
 (setq org-use-property-inheritance t)
-(setq org-tag-alist '(("@urgent" . ?u) ("@normal" . ?n) 
+(setq org-tag-alist '(("@urgent" . ?u) ("@normal" . ?n)
                       ("trivial" . ?t)))
 
 (setq org-html-postamble-format '(("en" "<p class=\"date\">Date: %d</p>")))
@@ -32,11 +32,11 @@
 
 (setq org-export-html-style-include-default t)
 (setq org-html-head "<link rel=\"stylesheet\" type=\"text/css\" href=\"/home/hongxuchen/.emacs.d/others/css/wiki.css\" />")
-; Refile targets include this file and any file contributing to the agenda - up to 5 levels deep
+                                        ; Refile targets include this file and any file contributing to the agenda - up to 5 levels deep
 (setq org-refile-targets (quote ((nil :maxlevel . 5) (org-agenda-files :maxlevel . 5))))
-; Targets start with the file name - allows creating level 1 tasks
+                                        ; Targets start with the file name - allows creating level 1 tasks
 (setq org-refile-use-outline-path (quote file))
-; Targets complete in steps so we start with filename, TAB shows the next level of targets etc
+                                        ; Targets complete in steps so we start with filename, TAB shows the next level of targets etc
 (setq org-outline-path-complete-in-steps t)
 
 (setq org-todo-keywords
@@ -101,14 +101,15 @@
         "xelatex -interaction nonstopmode -output-directory %o %f"
         "xelatex -interaction nonstopmode -output-directory %o %f"))
 
-(evil-define-key 'normal org-mode-map
-  "gh" 'outline-up-heading
-  "gl" 'outline-next-visible-heading
-  "$" 'org-end-of-line
-  "^" 'org-beginning-of-line
-  "-" 'org-ctrl-c-minus
-  "<" 'org-promote-subtree
-  ">" 'org-demote-subtree)
+(if (fboundp 'evil-mode)
+    (evil-define-key 'normal org-mode-map
+      "gh" 'outline-up-heading
+      "gl" 'outline-next-visible-heading
+      "$" 'org-end-of-line
+      "^" 'org-beginning-of-line
+      "-" 'org-ctrl-c-minus
+      "<" 'org-promote-subtree
+      ">" 'org-demote-subtree))
 
 (setq org-agenda-files (list (expand-file-name  "~/.org/life.org") (expand-file-name  "~/.org/study.org") (expand-file-name "~/.org/other.org")))
 ;; (org-agena-list t)
@@ -118,7 +119,7 @@
    (list
     (completing-read "File: "
                      (mapcar 'file-name-nondirectory
-			     (file-expand-wildcards "~/.org/*.org"))
+                             (file-expand-wildcards "~/.org/*.org"))
                      nil nil)))
   (unless (string-match "\\.org$" file)
     (error "Not an org file"))
