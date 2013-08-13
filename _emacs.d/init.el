@@ -1,5 +1,4 @@
 (setq emacs-load-start-time (current-time))
-;; (eval-when-compile (require 'cl))
 (require 'cl)
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/config"))
@@ -64,7 +63,6 @@
 (require 'init-flymake)
 
 (require 'init-cc-mode)
-;; (require 'init-cmake-mode)
 
 (require 'init-python-mode)
 ;; (require 'init-haskell)

@@ -108,3 +108,7 @@ function init() {
         command init
     fi
 }
+
+function rdm() {
+    command rdm &>/dev/null &
+}

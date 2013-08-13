@@ -10,7 +10,7 @@
                                (local-set-key (kbd "C-x C-a") 'pp-macroexpand-last-sexp)
                                (surround-mode -1)))
 (if (fboundp 'evil-mode)
-    (evil-define-key 'normal emacs-lisp-mode-map "\C-]" 'find-elisp-thing-at-point))
+    (evil-define-key 'normal emacs-lisp-mode-map "gd" 'find-elisp-thing-at-point))
 
 (defun suspend-mode-during-cua-rect-selection (mode-name)
   "Add an advice to suspend `MODE-NAME' while selecting a CUA rectangle."

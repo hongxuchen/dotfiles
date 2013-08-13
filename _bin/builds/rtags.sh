@@ -20,4 +20,5 @@ make -j 2
 ln -sf $SRC/bin/gcc-rtags-wrapper.sh ~/.bin/g++
 ln -sf $SRC/bin/gcc-rtags-wrapper.sh ~/.bin/gcc
 ln -sf $SRC/bin/gcc-rtags-wrapper.sh ~/.bin/clang++
+ln -sf $SRC/bin/gcc-rtags-wrapper.sh ~/.bin/clang
 ln -sf $SRC ~/.emacs.d/elisp/rtags

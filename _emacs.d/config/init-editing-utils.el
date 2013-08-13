@@ -39,6 +39,7 @@
       grep-command "grep -inH"
       grep-highlight-matches t
       grep-scroll-output t)
+(setq wgrep-auto-save-buffer t)
 (eval-after-load "rgrep" '(require 'wgrep))
 (eval-after-load "lgrep" '(require 'wgrep))
 (eval-after-load "grep" '(require 'wgrep))

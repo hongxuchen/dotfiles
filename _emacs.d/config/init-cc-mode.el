@@ -1,6 +1,10 @@
 (require 'rtags)
 (rtags-enable-standard-keybindings c-mode-base-map)
 (setq rtags-completion-enabled nil)
+(evil-define-key 'normal c-mode-base-map "gd" 'rtags-find-symbol-at-point)
+(evil-define-key 'normal c-mode-base-map "\C-o" 'rtags-location-stack-back)
+(evil-define-key 'normal c-mode-base-map "\C-i" 'rtags-location-stack-forward)
+(evil-define-key 'normal c-mode-base-map "\C-]" 'rtags-find-references-at-point)
 
 ;; -----------------------------------------------------------------------------
 ;; some setups for cc-mode
@@ -13,15 +17,8 @@
 ;;   (evil-define-key 'normal c-mode-map "\C-]" 'irony-lookup)
 ;;   (evil-define-key 'normal c-mode-map "\C-t" 'irony-jump-back))
 
-;; (add-hook 'c-mode-hook (lambda ()
-;;                          (my-cc-mode-hook)
-;;                          (local-set-key (kbd "<s-mouse-1>") 'irony-lookup)
-;;                          (local-set-key (kbd "<s-mouse-3>") 'irony-jump-back)))
-
-;; (add-hook 'c++-mode-hook (lambda ()
-;;                            (my-cc-mode-hook)
-;;                            (define-key c++-mode-map (kbd "<s-mouse-1>") 'irony-lookup)
-;;                            (define-key c++-mode-map (kbd "<s-mouse-3>") 'irony-jump-back)))
+(add-hook 'c-mode-hook 'my-cc-mode-hook)
+(add-hook 'c++-mode-hook 'my-cc-mode-hook)
 
 ;; clang variable settings
 (defun my-ac-cc-mode-setup ()
@@ -32,12 +29,13 @@
   ;; (set (make-local-variable 'ac-auto-start) nil)
 
   ;; irony-mode
-  ;; (require 'irony)
-  ;; (require 'irony-chx)
-  ;; (irony-mode 1)
-  ;; (irony-enable 'ac)
+  (require 'irony)
+  (require 'irony-chx)
+  (irony-mode 1)
+  (irony-enable 'ac)
   ;; (irony-enable 'flycheck)
-  ;; (setq ac-sources '(ac-source-irony ac-source-yasnippet ac-source-dictionary))
+  (setq ac-sources '(ac-source-irony ac-source-yasnippet ac-source-dictionary))
+  ;; (setq ac-sources '(ac-source-yasnippet ac-source-dictionary))
   )
 
 ;; -----------------------------------------------------------------------------

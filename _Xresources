@@ -1,7 +1,6 @@
 !-*- mode:conf -*-
 !I do not use ~/.Xdefaults,see
 !<http://superuser.com/questions/243914/xresources-or-xdefaults/243916#243916>
-!for details
 
 !Xft settings
 Antialias             : 1
@@ -41,7 +40,6 @@ XTerm*faceNameDoublesize:WenQuanYi Micro Hei
 XTerm*cjkWidth:false
 XTerm*internalBorder: 0
 
-!no blink cursor and visual bell, they harm my eyesight
 XTerm*cursorBlink: false
 XTerm*visualBell: false
 XTerm*locale: true

@@ -55,9 +55,9 @@
 ;; (evil-set-initial-state 'inf-ruby-mode 'emacs)
 ;; (evil-set-initial-state 'yari-mode 'emacs)
 
-(when (display-graphic-p)
-  (keyboard-translate ?\C-i ?\H-i)
-  (define-key evil-motion-state-map [?\H-i] 'evil-jump-forward))
+;; (when (display-graphic-p)
+;;   (keyboard-translate ?\C-i ?\H-i)
+;;   (define-key evil-motion-state-map [?\H-i] 'evil-jump-forward))
 (evil-global-set-key 'normal (kbd "q") 'quit-window)
 (evil-global-set-key 'normal (kbd "C-t") 'pop-global-mark)
 (evil-global-set-key 'normal (kbd "K") 'man)

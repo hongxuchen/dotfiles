@@ -22,7 +22,7 @@ export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 
 # system related; the first one is only used for llvm shared library testing
-export PATH=~/.bin/builds/rtags/bin:~/moonbox/dryrun/bin:~/moonbox/dryrun/utils/:~/.bin:~/moonbox/llvm-obj/Debug+Asserts/bin:~/moonbox/llvm-gcc4.2-2.9-x86_64-linux/bin:~/moonbox/klee-install/bin:~/moonbox/klee/scripts:/usr/local/texlive/2012/bin/i386-linux:$PATH
+export PATH=~/.bin/builds/rtags/bin:~/moonbox/dryrun/bin:~/moonbox/dryrun/utils:~/.bin:~/moonbox/llvm-obj/Debug+Asserts/bin:~/moonbox/llvm-gcc4.2-2.9-x86_64-linux/bin:~/moonbox/klee-install/bin:~/moonbox/klee/scripts:/usr/local/texlive/2012/bin/i386-linux:$PATH
 # export C_INCLUDE_PATH
 # export CPLUS_INCLUDE_PATH
 export LD_LIBRARY_PATH=/usr/lib/llvm-3.4/lib

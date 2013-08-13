@@ -131,3 +131,6 @@
 ;;             (goto-char (point-min))
 ;;             (unless (search-forward "warning:" nil t)
 ;;               (winner-undo))))))
+(add-to-list 'auto-mode-alist
+              (cons "Makefile"
+                    'makefile-gmake-mode))
