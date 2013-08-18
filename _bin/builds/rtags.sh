@@ -4,8 +4,8 @@ BASEDIR="`dirname $0`"
 cd $BASEDIR
 SRC=$PWD/rtags
 
-if ! [ -d $BUILD ]; then
-    git clone --recursive git@github.com:HongxuChen/rtags.git $SRC
+if ! [ -d $SRC ]; then
+    git clone --recursive git@github.com:Andersbakken/rtags.git  $SRC
 else
     cd $SRC
     git pull --all
@@ -13,7 +13,7 @@ else
 fi
 
 cd $SRC
-git checkout mine
+git checkout master
 cmake $SRC
 make -j 2
 

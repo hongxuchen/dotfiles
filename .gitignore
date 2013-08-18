@@ -29,3 +29,6 @@ _emacs.keyfreq
 /_notifier.conf
 
 *.tar.gz
+
+# links
+_emacs.d/elisp/rtags

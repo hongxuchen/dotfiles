@@ -171,8 +171,8 @@ set matchpairs+=<:>           " show matching <> (html mainly) as well
 set foldmethod=syntax         " allow us to fold on indents
 set foldlevel=99              " don't fold by default
 set history=200               " up/down can also be used when some words have been inserted
-" colorscheme desert            " koehler,elflord,murphy,torte,evening,delek
-colorscheme delek
+colorscheme default           " koehler,elflord,murphy,torte,evening,delek
+" colorscheme delek
 " Reading/Writing
 set noautowrite               " Never write a file unless I request it.
 set noautowriteall            " NEVER.
@@ -230,13 +230,12 @@ Bundle 'tpope/vim-surround'
 Bundle 'Tagbar'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'Valloric/YouCompleteMe'
-Bundle 'Valloric/vim-valloric-colorscheme'
 Bundle 'Superbil/llvm.vim'
 " Bundle 'Cpp11-Syntax-Support'
 " Bundle 'chrisbra/csv.vim'
 " Bundle 'ack.vim'
 "
-colorscheme valloric
+" colorscheme valloric
 
 " ycm
 let g:ycm_confirm_extra_conf = 0

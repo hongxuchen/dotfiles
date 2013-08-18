@@ -35,7 +35,8 @@
 (set-face-attribute 'default nil :height 125)
 (setq-default windmove-wrap-around t)
 
-(require 'monokai-dark-theme)
+(add-to-list 'custom-theme-load-path "~/.emacs.d/elisp")
+(load-theme 'monokai-dark t)
 
 (if (display-graphic-p)
     (progn

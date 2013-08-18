@@ -1,5 +1,6 @@
 (provide 'init-autoloads)
 
+
 ;; pretty-mode
 (autoload 'turn-on-pretty-mode "pretty-mode")
 
@@ -10,11 +11,15 @@
 (autoload 'youdao-dict "youdao-dict" "look up words via youdao dictionary" t)
 
 ;; llvm related
+(add-to-list 'load-path (expand-file-name "~/moonbox/dryrun/utils/emacs"))
+(require 'llvmize)
+(require 'dryrun)
+(setq auto-mode-alist (append '(("\\.pc$" . klee-pc-mode)) auto-mode-alist))
+(autoload 'klee-pc-mode "klee-pc-mode" "klee pc mode" t)
 (setq auto-mode-alist (append '(("\\.ll$" . llvm-mode)) auto-mode-alist))
 (autoload 'llvm-mode "llvm-mode" "major mode for ll files" t)
 (setq auto-mode-alist (append '(("\\.td$" . tablegen-mode)) auto-mode-alist))
 (autoload 'tablegen-mode "tablegen-mode" "major mode for tg files" t)
-(add-to-list 'load-path (expand-file-name "/usr/share/emacs/site-lisp/clang-format-3.4"))
 
 ;; cc-mode related, doxymacs and cc-lookup
 (autoload 'doxymacs-mode "doxymacs"

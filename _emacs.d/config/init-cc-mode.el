@@ -6,6 +6,7 @@
 (evil-define-key 'normal c-mode-base-map "\C-i" 'rtags-location-stack-forward)
 (evil-define-key 'normal c-mode-base-map "\C-]" 'rtags-find-references-at-point)
 
+
 ;; -----------------------------------------------------------------------------
 ;; some setups for cc-mode
 ;; -----------------------------------------------------------------------------

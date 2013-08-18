@@ -101,14 +101,16 @@ function sub() {
     cd $cd
 }
 
-function init() {
-    if  [ $SSH_CLIENT ]; then
-        echo "don't use init when ssh"
-    else
-        command init
-    fi
-}
-
 function rdm() {
     command rdm &>/dev/null &
+}
+
+sudo() {
+
+    if [ "$1" = init ] && [ -n "$SSH_CLIENT" ]; then
+        echo >&2 "Never use init when ssh"
+        return 1
+    else
+        command sudo "$@"
+    fi
 }

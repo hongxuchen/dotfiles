@@ -33,3 +33,7 @@ alias info='man'                # NEVER use `info' in the terminal
 
 alias ...='cd ../..'
 alias d='dirs -v | head -10'
+
+if [ $SSH_CLIENT ]; then
+  alias init 'echo Never use init when ssh'
+fi
