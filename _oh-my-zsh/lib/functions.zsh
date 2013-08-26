@@ -1,4 +1,3 @@
-# -*- mode: sh -*-
 function zsh_stats() {
     history | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n20
 }
@@ -41,7 +40,6 @@ function git-set-remote () {
     git config --add branch.$branch.merge refs/heads/$branch
 }
 
-
 function mv(){
     FILE="${@: -1}" # bash or ksh,zsh
     if [ -f $FILE ];
@@ -70,24 +68,17 @@ function dict(){
 function encode64(){ echo -n $1 | base64 }
 function decode64(){ echo -n $1 | base64 -D }
 
-vimhtml() { [[ -f "$1" ]] || return 1; vim +'syn on | run! syntax/2html.vim | wq | q' "$1";}
-
 function emacs() {
-    ps -C emacs >/dev/null
-    if [ $? -eq 0 ];
+    if ! [ $DISPLAY ];
     then
-        if [ $DISPLAY ];
+        emacsclient -t $@;
+    else
+        ps -C emacs >/dev/null
+        if [ $? -eq 0 ];
         then
             emacsclient -c $@ &;
         else
-            emacsclient -t $@
-        fi
-    else
-        if [ $DISPLAY ];
-        then
             (nohup emacs -fs $@  >~/.nohup.out) & disown
-        else
-            command emacs -nw
         fi
     fi
 }

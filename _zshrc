@@ -22,3 +22,5 @@ source $ZSH/oh-my-zsh.sh
 if [[ -e $ALIAS ]];then
     source $ALIAS
 fi
+
+ps -C rdm >/dev/null || rdm

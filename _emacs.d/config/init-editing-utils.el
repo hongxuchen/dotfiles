@@ -7,7 +7,6 @@
               buffers-menu-max-size 20
               regex-tool-backend 'perl
               case-fold-search t
-              major-mode 'text-mode
               lazy-highlight-cleanup nil
               case-replace nil
               compilation-scroll-output t
@@ -69,13 +68,13 @@
              (which-function-mode t)
              (rainbow-mode t)
              (rainbow-delimiters-mode t)
+             (visual-line-mode t)
              (hs-minor-mode t)))
 
 (add-hook 'after-save-hook 'executable-make-buffer-file-executable-if-script-p)
 
 ;; spelling
-(dolist (hook '(message-mode-hook
-                ))
+(dolist (hook '(message-mode-hook))
   (add-hook hook 'flyspell-mode))
 (when (executable-find "aspell")
   (setq ispell-program-name "aspell"
