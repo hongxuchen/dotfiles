@@ -96,7 +96,7 @@ function rdm() {
     command rdm &>/dev/null &
 }
 
-sudo() {
+function sudo() {
 
     if [ "$1" = init ] && [ -n "$SSH_CLIENT" ]; then
         echo >&2 "Never use init when ssh"
@@ -104,4 +104,22 @@ sudo() {
     else
         command sudo "$@"
     fi
+}
+
+function llvmgcc() {
+    llvm-gcc -std=c99 -emit-llvm -S $1 -o ${1%.*}.bc ${*:2}
+}
+
+function opt() {
+    command opt -load ~/moonbox/dryrun/bin/test.so -load ~/moonbox/dryrun/bin/slice.so $@
+}
+
+function clean_llvm(){
+    rm -rf klee-* LOG* *.bc *.ll
+}
+
+function build_and_run_klee(){
+    bc_file=${1%.*}.bc
+    llvm-gcc $1 -c -emit-llvm -o ${bc_file}
+    klee --max-time=120. -watchdog ${bc_file}
 }

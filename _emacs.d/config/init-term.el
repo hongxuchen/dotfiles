@@ -12,9 +12,10 @@
     (progn
       (term "/bin/zsh"))
     (setq my-terminal-process (get-buffer-process my-terminal-name))))
-
-(global-set-key (kbd "M-<f2>") (lambda () (interactive)
-                                 (terminal default-directory)))
+(defun my-terminal ()
+  (interactive)
+  (terminal default-directory))
+(global-set-key (kbd "<f10>") 'my-terminal)
 
 (setq term-scroll-to-bottom-on-output t)
 

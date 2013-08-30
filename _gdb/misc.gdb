@@ -128,3 +128,5 @@ end
 document attsyntax
 Change disassembly syntax to at&t flavor.
 end
+
+set unwindonsignal on

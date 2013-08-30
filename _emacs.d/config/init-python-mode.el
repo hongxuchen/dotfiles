@@ -2,11 +2,12 @@
 
 (setq auto-mode-alist
       (append '(("SConstruct\\'" . python-mode)
-		("SConscript\\'" . python-mode))
+                ("SConscript\\'" . python-mode))
               auto-mode-alist))
 
-;; (evil-define-key 'normal python-mode-map "\C-t" 'elpy-goto-definition)
-;; (evil-define-key 'normal python-mode-map "\C-]" 'elpy-goto-definition)
+(evil-define-key 'normal python-mode-map "gd" 'elpy-goto-definition)
+(evil-define-key 'normal python-mode-map "\C-]" 'elpy-rgrep-symbol)
+
 (eval-after-load 'python '(elpy-enable))
 (setq elpy-rpc-python-command "python")
 (setq elpy-rpc-backend "jedi")

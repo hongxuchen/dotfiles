@@ -31,9 +31,7 @@ alias more='less'               #`less` is more than `more`
 alias info='man'                # NEVER use `info' in the terminal
 # alias rm='trash-put'           #not the rude `rm`
 
+alias vim='emacs'
+
 alias ...='cd ../..'
 alias d='dirs -v | head -10'
-
-if [ $SSH_CLIENT ]; then
-  alias init 'echo Never use init when ssh'
-fi

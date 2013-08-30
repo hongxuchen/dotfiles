@@ -29,9 +29,6 @@
                   (start-process "XTerm" nil "xterm")))
 (global-set-key (kbd "<M-f3>") 'eshell)
 
-;; (global-set-key "\C-cx" 'clipboard-kill-ring-save)
-;; (global-set-key "\C-cc" 'copy-region-as-kill)
-
 (global-set-key (kbd "C-c e") 'my-eval-and-replace)
 
 (global-set-key "\C-x\C-t" nil) ;;origin is transpose-lines
