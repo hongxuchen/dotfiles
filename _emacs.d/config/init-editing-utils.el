@@ -33,6 +33,9 @@
 (delete-selection-mode t)
 (global-pointback-mode t)
 
+(setq whitespace-style '(face empty tabs lines-tail trailing))
+;; (global-whitespace-mode t)
+
 ;; grep
 (setq grep-program "grep"
       grep-command "grep -inH"

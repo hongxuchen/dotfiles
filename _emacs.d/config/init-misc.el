@@ -1,12 +1,16 @@
 (provide 'init-misc)
 
 ;; kill/yank/paste
-(setq x-select-enable-clipboard t
-      x-select-enable-primary t
-      select-active-regions nil
-      mouse-drag-copy-region t
-      kill-do-not-save-duplicates t
-      mouse-yank-at-point t)
+(if (display-graphic-p)
+    (setq x-select-enable-clipboard t
+          x-select-enable-primary t
+          select-active-regions nil
+          mouse-drag-copy-region t
+          kill-do-not-save-duplicates t
+          mouse-yank-at-point t)
+  (setq x-select-enable-clipboard nil
+        x-select-enable-clipboard-manager nil
+        x-select-enable-primary nil))
 
 ;; file content
 (setq backup-by-coping t ; don't clobber symlinks

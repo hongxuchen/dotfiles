@@ -107,11 +107,11 @@ function sudo() {
 }
 
 function llvmgcc() {
-    llvm-gcc -std=c99 -emit-llvm -S $1 -o ${1%.*}.bc ${*:2}
+    llvm-gcc -std=c99 -emit-llvm -S $1 -o ${1%.*}.ll ${*:2}
 }
 
 function opt() {
-    command opt -load ~/moonbox/dryrun/bin/test.so -load ~/moonbox/dryrun/bin/slice.so $@
+    command opt -load ~/moonbox/dryrun/bin/test.so -debug-buffer-size=1024 -load ~/moonbox/dryrun/bin/slice.so >/dev/null  $@
 }
 
 function clean_llvm(){

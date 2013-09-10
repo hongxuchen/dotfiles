@@ -4,16 +4,22 @@ BASEDIR="`dirname $0`"
 cd $BASEDIR
 SRC=$PWD/rtags
 
-if ! [ -d $SRC ]; then
-    git clone --recursive git@github.com:Andersbakken/rtags.git  $SRC
-else
-    cd $SRC
-    git pull --all
-    git submodule update --recursive
-fi
+# rm -f ~/.bin/clang
+# rm -f ~/.bin/clang++
+# rm -f ~/.bin/gcc
+# rm -f ~/.bin/g++
+
+# if ! [ -d $SRC ]; then
+#     git clone --recursive git@github.com:Andersbakken/rtags.git  $SRC
+# else
+#     cd $SRC
+#     git pull --all
+#     git submodule update --recursive
+# fi
 
 cd $SRC
 git checkout master
+rm -rf CMakeCache.txt CMakeFiles
 cmake $SRC
 make -j 2
 
