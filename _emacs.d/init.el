@@ -63,6 +63,7 @@
 (require 'init-flymake)
 
 (require 'init-cc-mode)
+(require 'init-cmake)
 
 (require 'init-python-mode)
 ;; (require 'init-haskell)

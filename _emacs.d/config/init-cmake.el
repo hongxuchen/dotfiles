@@ -1,0 +1,6 @@
+(append '(("CMakeLists\\.txt\\'" . cmake-mode)
+          ("\\.cmake\\'" . cmake-mode))
+        auto-mode-alist)
+(autoload 'andersl-cmake-font-lock-activate "andersl-cmake-font-lock" nil t)
+(add-hook 'cmake-mode-hook 'andersl-cmake-font-lock-activate)
+(provide 'init-cmake)

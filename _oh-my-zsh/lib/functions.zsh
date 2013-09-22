@@ -111,7 +111,7 @@ function llvmgcc() {
 }
 
 function opt() {
-    command opt -load ~/moonbox/dryrun/bin/test.so -debug-buffer-size=1024 -load ~/moonbox/dryrun/bin/slice.so >/dev/null  $@
+    command opt -load ~/moonbox/dryrun/bin/test.so -debug-buffer-size=1024 -load ~/moonbox/dryrun/bin/slice.so $@
 }
 
 function clean_llvm(){

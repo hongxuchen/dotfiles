@@ -154,6 +154,7 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (require-package 'auto-complete) ;auto-complete depends on fuzzy
 
 ;; c/c++
+(require-package 'cmake-mode)
 (require-package 'cpputils-cmake)
 ;; (require-package 'cmake-mode) ;;debian/ubuntu actually has this
 

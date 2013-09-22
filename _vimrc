@@ -222,6 +222,7 @@ runtime macros/matchit.vim
 " VUNDLE rtp, @see https://github.com/gmarik/vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+Bundle 'rdavison/clavim'
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-commentary'
 " git syntax, indent, and filetypes

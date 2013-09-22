@@ -46,21 +46,31 @@
              (progn ,@forms)
            (select-frame ,prev-frame))))))
 
+;;; ----------------------------------------------
+(defvar paste-mode nil)
+(add-to-list 'minor-mode-alist '(paste-mode " Paste"))
 (defun paste-mode ()
-  "Exit by hitting ESC."
   (interactive)
-  (let ((stay t))
-    (while stay
-      (let ((char (let ((inhibit-redisplay t)) (read-event nil t 0.1))))
-        (unless char
-          (redisplay)
-          (setq char (read-event nil t)))
-        (cond
-         ((not (characterp char)) (setq stay nil))
-         ((eq char ?\r) (insert "\n"))
-         ((eq char ?\e)
-          (if (sit-for 0.1 'nodisp) (setq stay nil) (insert "\e")))
-         (t (insert char)))))))
+  (let ((buf (current-buffer))
+        (paste-mode t))
+    (with-temp-buffer
+      (let ((stay t)
+            (text (current-buffer)))
+        (redisplay)
+        (while stay
+          (let ((char (let ((inhibit-redisplay t)) (read-event nil t 0.1))))
+            (unless char
+              (with-current-buffer buf (insert-buffer-substring text))
+              (erase-buffer)
+              (redisplay)
+              (setq char (read-event nil t)))
+            (cond
+             ((not (characterp char)) (setq stay nil))
+             ((eq char ?\r) (insert ?\n))
+             ((eq char ?\e)
+              (if (sit-for 0.1 'nodisp) (setq stay nil) (insert ?\e)))
+             (t (insert char)))))
+        (insert-buffer-substring text)))))
 
 (defun my-goto-scratch-buffer ()
   "go to *scratch* buffer, create it if non-exist"
