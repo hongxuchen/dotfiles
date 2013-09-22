@@ -31,12 +31,9 @@
 
   ;; irony-mode
   (require 'irony)
-  (require 'irony-chx)
   (irony-mode 1)
   (irony-enable 'ac)
-  ;; (irony-enable 'flycheck)
   (setq ac-sources '(ac-source-irony ac-source-yasnippet ac-source-dictionary))
-  ;; (setq ac-sources '(ac-source-yasnippet ac-source-dictionary))
   )
 
 ;; -----------------------------------------------------------------------------
