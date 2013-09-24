@@ -83,8 +83,14 @@
  `(irony-flycheck-error ((((class color) (min-colors ,THRESHOLD)) (:underline (:style line) :inherit error)) (t (:foreground "#A20C41" :weight bold :underline t))))
  `(irony-flycheck-warning ((((class color) (min-colors ,THRESHOLD)) (:foreground "#FD971F" :underline (:style line) :inherit warning)) (t (:foreground "#00cdcd" :weight bold :underline t))))
  ;; ac-irony
- ;; `(ac-irony-candidate-face ((((class color) (min-colors ,THRESHOLD)) (:background "lightgray" :foreground "navy")) (t :background "lightgray" :foreground "navy")))
- ;; `(ac-irony-selection-face ((((class color) (min-colors ,THRESHOLD)) (:background "navy" :foreground "white")) (t :background "blue" :foreground "white")))
+ `(ac-irony-candidate-face ((((class color) (min-colors ,THRESHOLD)) (:background "lightgray" :foreground "navy")) (t :background "#e9ffff" :foreground "#212121")))
+ `(ac-irony-selection-face ((((class color) (min-colors ,THRESHOLD)) (:background "navy" :foreground "white")) (t :background "blue" :foreground "white")))
+ ;; auto-complete
+ `(ac-candidate-face ((((class color) (min-colors ,THRESHOLD)) (:background "lightgray" :foreground "navy")) (t :background "#00cdcd" :foreground "#ffffff")))
+ `(ac-selection-face ((((class color) (min-colors ,THRESHOLD)) (:background "navy" :foreground "white")) (t :background "blue" :foreground "white")))
+ ;; `(ac-complete-face ((((class color) (min-colors ,THRESHOLD)) (:background "navy" :foreground "white")) (t :background "#00cdcd" :foreground "#111111")))
+ ;;
+ `(eldoc-highlight-function-argument ((((class color) (min-colors ,THRESHOLD)) (:inherit bold)) (t :foreground "green")))
  )
 
 ;;;###autoload

@@ -66,7 +66,11 @@
 (setq browse-url-generic-program
       (cond
        (*is-a-mac* "open")
-       (*linux* (executable-find "x-www-browser"))))
+       (*linux*
+        (if (display-graphic-p)
+            (executable-find "x-www-browser")
+          (executable-find "w3m")
+          ))))
 
 ;; google
 (require 'google-this)

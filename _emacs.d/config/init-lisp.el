@@ -115,8 +115,6 @@ Argument SYM-NAME thing to find."
   (interactive (list (read-symbol-at-point)))
   (when sym-name
     (let ((sym (intern sym-name)))
-      (message "Searching for %s..." (pp-to-string sym))
-      ;; (ring-insert find-tag-marker-ring (point-marker))
       (cond
        ((fboundp sym) (find-function sym))
        ((boundp sym) (find-variable sym))
@@ -124,10 +122,7 @@ Argument SYM-NAME thing to find."
         (find-library sym-name))
        ((facep sym)
         (find-face-definition sym))
-       (:else
-        (progn
-          (pop-tag-mark)
-          (error "Don't know how to find '%s'" sym)))))))
+       (t (error "Don't know how to find '%s'" sym))))))
 
 ;; dir-locals.el
 (defun byte-compile-on-save ()

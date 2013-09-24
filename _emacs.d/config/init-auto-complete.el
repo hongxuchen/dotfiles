@@ -3,7 +3,7 @@
 (global-auto-complete-mode t)
 (setq ac-expand-on-auto-complete t)
 (setq popup-use-optimized-column-computation nil)
-(setq ac-auto-start 2)
+(setq ac-auto-start 4)
 (setq ac-dwim t)
 (setq ac-auto-show-menu t)
 (setq ac-use-fuzzy nil)
@@ -23,7 +23,7 @@
 (ac-set-trigger-key "TAB") ; after input prefix, press TAB key ASAP
 ;; Use C-n/C-p to select candidate ONLY when completion menu is displayed
 (setq ac-use-menu-map t)
-(setq ac-fuzzy-enable t)
+;; (setq ac-fuzzy-enable nil)
 (ac-config-default)
 (ac-flyspell-workaround)
 ;; (setq ac-ignore-case 'smart) ;;default

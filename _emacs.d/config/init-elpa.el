@@ -149,9 +149,9 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 ;; tags related
 
 ;; auto-complete
-(require-package 'fuzzy)
+(require-package 'fuzzy) ;auto-complete depends on fuzzy
+(require-package 'auto-complete)
 (require-package 'pos-tip)
-(require-package 'auto-complete) ;auto-complete depends on fuzzy
 
 ;; c/c++
 (require-package 'cmake-mode)

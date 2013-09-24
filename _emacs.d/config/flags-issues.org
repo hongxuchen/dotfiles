@@ -1,5 +1,0 @@
-* distinguish between C and C++ files
-** need to judge whether the header file ~.h~ is C or C++'s
-
-* How to deal with directory that I have no write permission?
-* seems that `-I/usr/include/linux and -I/usr/include' should NEVER be added explicitly for flags. http://stackoverflow.com/questions/1107940/size-t-can-not-be-found-by-g-4-1-or-others-on-ubuntu-8-1
