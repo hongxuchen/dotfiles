@@ -79,21 +79,16 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (package-initialize)
 (require-package 'session)
 (require-package 'smex)
-(require-package 'w3m)
-(require-package 'jabber)
+;; (require-package 'w3m)
 (require-package 'autopair)
 (require-package 'ibuffer-vc)
-(require-package 'mmm-mode)
 (require-package 'pointback)
 (require-package 'undo-tree) ;; evil mode needs it!
 (require-package 'ido-ubiquitous)
 (require-package 'info+)
 (require-package 'wgrep)
 ;; (require-package 'smartparens)
-;; (require-package 'anything)
-;; (require-package 'mic-paren) ;; extend paren.el
 ;; (require-package 'crontab-mode)
-;; (require-package 'marmalade)
 ;; (require-package 'xml-rpc)
 ;; (require-package 'regex-tool)
 
@@ -108,35 +103,29 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 ;; version control
 ;;------------------------------------------------------------------------------
 ;; git
-(require-package 'magit)
-(require-package 'github-browse-file)
+;; (require-package 'magit)
+;; (require-package 'github-browse-file)
 (require-package 'git-commit-mode)
 (require-package 'gitignore-mode)
 (require-package 'gitconfig-mode)
-;; (require-package 'magithub)
 ;; svn
 ;; (require-package 'dsvn)
 
 ;;------------------------------------------------------------------------------
 ;; writings
 ;;------------------------------------------------------------------------------
-;; latex
-(require-package 'auctex)
-;; gnuplot
-(require-package 'gnuplot)
-;; markdown
+;; (require-package 'auctex)
+;; (require-package 'gnuplot)
 (require-package 'markdown-mode)
 ;; org
-(require-package 'cdlatex)
+;; (require-package 'cdlatex)
 (require-package 'org-plus-contrib)
-;; (require-package 'org-plus-contrib)
 (require-package 'htmlize)
 
 ;;------------------------------------------------------------------------------
 ;; development
 ;;------------------------------------------------------------------------------
 (require-package 'find-file-in-project)
-;; jump requires which-func, which is built in
 (require-package 'inflections) ;; required by jump
 (require-package 'jump)
 ;; required by jump, surprisingly this package from elpa contains jump and inflections
@@ -154,12 +143,9 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (require-package 'pos-tip)
 
 ;; c/c++
-(require-package 'cmake-mode)
-(require-package 'cpputils-cmake)
-;; (require-package 'cmake-mode) ;;debian/ubuntu actually has this
 
 ;; shell
-(require-package 'flymake-shell)
+(require-package 'flymake-shell) ;; require flymake-easy
 
 ;; python
 (require-package 'elpy)
@@ -192,6 +178,7 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (require-package 'pretty-mode)
 ;; (require-package 'smarty-mode) ;; html templates
 ;; (require-package 'zencoding-mode)
+
 ;; (require-package 'tidy)
 ;; (require-package 'flymake-css)
 (require-package 'rainbow-mode)
@@ -235,7 +222,7 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (require-package 'slime-repl)
 (require-package 'ac-slime)
 
-(require-package 'sicp)
+;; (require-package 'sicp)
 
 (require-package 's)
 

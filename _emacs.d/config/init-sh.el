@@ -10,4 +10,8 @@
          ("\\.bash$" . sh-mode)
          ("\\.zsh$" . sh-mode))
        auto-mode-alist))
+
+(require 'flymake-shell)
+(add-hook 'sh-set-shell-hook 'flymake-shell-load)
+
 (provide 'init-sh)
