@@ -8,7 +8,6 @@
 (evil-define-key 'normal c-mode-base-map "\C-i" 'rtags-location-stack-forward)
 (evil-define-key 'normal c-mode-base-map "\C-]" 'rtags-find-references-at-point)
 
-
 ;; -----------------------------------------------------------------------------
 ;; some setups for cc-mode
 ;; -----------------------------------------------------------------------------
@@ -18,24 +17,17 @@
 (add-hook 'c++-mode-hook 'my-cc-mode-hook)
 
 (defun my-ac-cc-mode-setup ()
-
-  ;; auto-complete-clang
-  ;; (require 'auto-complete-clang)
-  ;; (setq ac-clang-executable "/usr/bin/clang")
-  ;; (set (make-local-variable 'ac-auto-start) nil)
-
-  ;; irony-mode
   (require 'irony)
   (irony-mode 1)
+  (make-local-variable 'ac-auto-start)
+  (setq ac-auto-start 4)
   (irony-enable 'ac)
-  (setq ac-sources '(ac-source-irony ac-source-yasnippet ac-source-dictionary))
-  )
+  (setq ac-sources '(ac-source-irony ac-source-yasnippet ac-source-dictionary)))
 
 ;; -----------------------------------------------------------------------------
 ;; customize my hooks
 ;; -----------------------------------------------------------------------------
 (defun my-cc-mode-hook ()
-  (setq compilation-window-height 8)
   (setq c-style-variables-are-local-p nil)
   ;; NO newline automatically after electric expressions are entered
   (setq c-auto-newline nil)
@@ -53,8 +45,11 @@
   ;; (require 'cpp)
   ;; (global-cwarn-mode t)
   ;; (hide-ifdef-mode t)
-  ;; (default-cc-flags-setup)
-  (my-ac-cc-mode-setup))
+  (unless buffer-read-only (my-ac-cc-mode-setup)))
+
+(eval-after-load "cc-mode"
+  '(progn
+     (defun c-invalidate-state-cache (here) " " nil)))
 
 ;; -----------------------------------------------------------------------------
 ;; includes and flags
@@ -62,12 +57,13 @@
 
 (add-hook 'cc-mode-hook 'turn-on-auto-fill)
 
-(dir-locals-set-class-variables 'llvm-3.4-directory
-                                '((nil . ((irony-compile-flags. ("-I/usr/lib/llvm-3.4/include"   "/usr/include/c++/4.6" "/usr/include/c++/4.6/backward" "/usr/include/c++/4.6/x86_64-linux-gnu" "/usr/include/c++/4.6/i686-linux-gnu" "/usr/lib/gcc/x86_64-linux-gnu/4.6/include"))))
-                                  (nil . ((irony-compile-flags . ("/usr/lib/llvm-3.4/include" "/usr/include" "/usr/include/linux" "/usr/local/include" "/usr/include/c++/4.6/"))))))
-(dir-locals-set-directory-class
- "/usr/lib/llvm-3.4/include/clang-c/" 'llvm-3.4-directory)
+;; (dir-locals-set-class-variables 'llvm-3.4-directory
+;;                                 '((nil . ((irony-compile-flags. ("-I/usr/lib/llvm-3.4/include"   "/usr/include/c++/4.6" "/usr/include/c++/4.6/backward" "/usr/include/c++/4.6/x86_64-linux-gnu" "/usr/include/c++/4.6/i686-linux-gnu" "/usr/lib/gcc/x86_64-linux-gnu/4.6/include"))))
+;;                                   (nil . ((irony-compile-flags . ("/usr/lib/llvm-3.4/include" "/usr/include" "/usr/include/linux" "/usr/local/include" "/usr/include/c++/4.6/"))))))
+;; (dir-locals-set-directory-class
+;;  "/usr/lib/llvm-3.4/include/clang-c/" 'llvm-3.4-directory)
 
-(dir-locals-set-directory-class
- "/usr/lib/llvm-3.4/include/clang" 'llvm-3.4-directory)
+;; (dir-locals-set-directory-class
+;;  "/usr/lib/llvm-3.4/include/clang" 'llvm-3.4-directory)
+
 (provide 'init-cc-mode)

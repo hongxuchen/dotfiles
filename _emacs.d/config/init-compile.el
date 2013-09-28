@@ -118,6 +118,7 @@
  '("\\.css\\'"   .   "/bin/csslint.js --format=compiler %f"))
 (autoload 'smarter-compile "smarter-compile" "smarter compile current file")
 
+(setq compilation-window-height 8)
 (setq compile-command "make "
       compile-history (list "make" "make clean"))
 (setq compilation-read-command nil)
@@ -132,5 +133,5 @@
 ;;             (unless (search-forward "warning:" nil t)
 ;;               (winner-undo))))))
 (add-to-list 'auto-mode-alist
-              (cons "Makefile"
-                    'makefile-gmake-mode))
+             (cons "Makefile"
+                   'makefile-gmake-mode))

@@ -3,7 +3,6 @@
   (unless (eq ibuffer-sorting-mode 'filename/process)
     (ibuffer-do-sort-by-filename/process)))
 
-;; Modify the default ibuffer-formats
 (setq ibuffer-formats
       '((mark modified read-only vc-status-mini " "
               (name 18 18 :left :elide)
@@ -17,7 +16,6 @@
               filename-and-process)))
 
 (setq ibuffer-sorting-mode t)
-(setq ibuffer-last-sorting-mode t)
 (setq ibuffer-expert t)
 (setq ibuffer-filter-group-name-face 'font-lock-doc-face)
 

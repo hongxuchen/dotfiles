@@ -3,7 +3,7 @@
 (global-auto-complete-mode t)
 (setq ac-expand-on-auto-complete t)
 (setq popup-use-optimized-column-computation nil)
-(setq ac-auto-start 4)
+(setq ac-auto-start 2)
 (setq ac-dwim t)
 (setq ac-auto-show-menu t)
 (setq ac-use-fuzzy nil)
