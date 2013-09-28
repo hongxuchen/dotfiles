@@ -39,7 +39,6 @@
 (evil-set-initial-state 'speedbar-mode 'emacs)
 (evil-set-initial-state 'Info-mode 'emacs)
 (evil-set-initial-state 'recentf-dialog-mode 'normal)
-(evil-set-initial-state 'douban-music-mode 'emacs)
 
 ;; derived from special-mode
 (evil-set-initial-state 'ebrowse-tree-mode 'emacs)
@@ -100,6 +99,7 @@
   "s" 'show-file-name
   "b" 'magit-blame-mode
   "v" 'eval-buffer
+  "p" 'paste-mode
   "t" 'taglist)
 
 (provide 'init-evil)

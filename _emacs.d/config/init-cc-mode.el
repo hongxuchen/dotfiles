@@ -3,6 +3,7 @@
 (setq rtags-completion-enabled nil)
 (evil-define-key 'normal c-mode-base-map "gd" 'rtags-find-symbol-at-point)
 (evil-define-key 'normal c-mode-base-map "gs" 'rtags-set-current-project)
+(evil-define-key 'normal c-mode-base-map "M-`" 'rtags-cycle-overlays-on-screen)
 (evil-define-key 'normal c-mode-base-map "\C-o" 'rtags-location-stack-back)
 (evil-define-key 'normal c-mode-base-map "\C-i" 'rtags-location-stack-forward)
 (evil-define-key 'normal c-mode-base-map "\C-]" 'rtags-find-references-at-point)
@@ -16,7 +17,6 @@
 (add-hook 'c-mode-hook 'my-cc-mode-hook)
 (add-hook 'c++-mode-hook 'my-cc-mode-hook)
 
-;; clang variable settings
 (defun my-ac-cc-mode-setup ()
 
   ;; auto-complete-clang

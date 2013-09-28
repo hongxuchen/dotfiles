@@ -5,13 +5,6 @@
                                    (require 'slime)
                                    (normal-mode)))))
 
-(eval-after-load 'slime
-  '(progn
-     (add-to-list 'slime-lisp-implementations
-                  '(sbcl ("sbcl") :coding-system utf-8-unix))
-     (add-to-list 'slime-lisp-implementations
-                  '(cmucl ("lisp") :coding-system iso-latin-1-unix))))
-
 ;; From http://bc.tech.coop/blog/070515.html
 (defun lispdoc ()
   "Searches lispdoc.com for SYMBOL, which is by default the symbol currently under the curser"
@@ -39,5 +32,42 @@
 
 (define-key lisp-mode-map (kbd "C-c l") 'lispdoc)
 
+;;; slime
+
+(autoload 'slime-fuzzy-init "slime-fuzzy" "" nil)
+;; use sbcl, `C-h v slime-read-interactive-args RET` for details
+(setq slime-default-lisp 'sbcl)
+(eval-after-load 'slime-fuzzy
+  '(require 'slime-repl))
+
+(defun smp/set-up-slime-repl-auto-complete ()
+  "Bind TAB to `indent-for-tab-command', as in regular Slime buffers."
+  (local-set-key (kbd "TAB") 'indent-for-tab-command))
+
+(eval-after-load 'slime
+  '(progn
+     (add-to-list 'slime-lisp-implementations
+                  '(sbcl ("sbcl") :coding-system utf-8-unix))
+     (add-to-list 'slime-lisp-implementations
+                  '(cmucl ("lisp") :coding-system iso-latin-1-unix))
+     (add-to-list 'load-path (concat (directory-of-library "slime") "/contrib"))
+     (setq slime-protocol-version 'ignore)
+     (setq slime-net-coding-system 'utf-8-unix)
+     (add-hook 'slime-repl-mode-hook 'sanityinc/lisp-setup)
+     (slime-setup '(slime-repl slime-fuzzy))
+     (setq slime-complete-symbol*-fancy t)
+     (setq slime-complete-symbol-function 'slime-fuzzy-complete-symbol)
+     ;; Stop SLIME's REPL from grabbing DEL, annoying when backspacing over a '('
+     (defun override-slime-repl-bindings-with-paredit ()
+       (define-key slime-repl-mode-map (read-kbd-macro paredit-backward-delete-key) nil))
+     (add-hook 'slime-repl-mode-hook 'override-slime-repl-bindings-with-paredit)
+     (add-hook 'slime-mode-hook 'set-up-slime-hippie-expand)
+     (add-hook 'slime-repl-mode-hook 'set-up-slime-hippie-expand)
+     (add-hook 'slime-repl-mode-hook (lambda () (setq show-trailing-whitespace nil)))
+     (add-hook 'slime-mode-hook 'set-up-slime-ac)
+     (add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+     (add-hook 'slime-repl-mode-hook 'smp/set-up-slime-repl-auto-complete)
+     (eval-after-load 'auto-complete
+       '(add-to-list 'ac-modes 'slime-repl-mode))))
 
 (provide 'init-common-lisp)

@@ -1,5 +1,5 @@
-(provide 'init-misc)
-
+(setq user-full-name "Hongxu Chen"
+      user-mail-address "leftcopy.chx@gmail.com")
 ;; kill/yank/paste
 (if (display-graphic-p)
     (setq x-select-enable-clipboard t
@@ -23,9 +23,7 @@
 (setq find-file-suppress-same-file-warnings t)
 (setq view-read-only t)
 (setq auto-save-default nil)
-;; (require 'saveplace)
-;; (setq-default save-place t
-;;               save-place-file "~/.emacs.d/saved-places")
+
 (global-auto-revert-mode t)
 (setq global-auto-revert-non-file-buffers t
       revert-without-query t
@@ -84,3 +82,5 @@
       uniquify-separator " • "
       uniquify-after-kill-buffer-p t
       uniquify-ignore-buffers-re "^\\*")
+
+(provide 'init-misc)

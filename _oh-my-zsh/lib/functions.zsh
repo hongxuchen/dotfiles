@@ -69,16 +69,17 @@ function encode64(){ echo -n $1 | base64 }
 function decode64(){ echo -n $1 | base64 -D }
 
 function emacs() {
-    if ! [ $DISPLAY ];
+    ps -C emacs >/dev/null
+    if [ $? -eq 0 ];
     then
-        emacsclient -t $@;
+        if [ $DISPLAY ];
+        then emacsclient -c $@ &
+        else emacsclient -c $@
+        fi
     else
-        ps -C emacs >/dev/null
-        if [ $? -eq 0 ];
-        then
-            emacsclient -c $@ &;
-        else
-            (nohup emacs -fs $@  >~/.nohup.out) & disown
+        if [ $DISPLAY ];
+        then (nohup emacs -fs $@  >~/.nohup.out) & disown
+        else command emacs
         fi
     fi
 }

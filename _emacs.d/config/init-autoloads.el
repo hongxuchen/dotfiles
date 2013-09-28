@@ -1,6 +1,5 @@
 (provide 'init-autoloads)
 
-
 ;; pretty-mode
 (autoload 'turn-on-pretty-mode "pretty-mode")
 
@@ -29,14 +28,6 @@
 ;; file-template
 (autoload 'file-template-find-file-not-found-hook "file-template" nil t)
 
-;; escreen
-;; (autoload 'escreen-create-screen "init-escreen" "make Emacs create Vim like tabs" t)
-;; (evil;; -ex-define-cmd "tabe" 'escreen-create-screen)
-
-;;douban fm
-(setq douban-music-default-channel 10)
-(autoload 'douban-music "douban-music-mode" nil t)
-
 ;; gnus
 (autoload 'gnus "init-gnus" "the powerful gnu newsreader" t)
 (autoload 'compose-mail "init-gnus" "compose mail using gnus" t)
@@ -52,7 +43,7 @@
 (eval-after-load "apt-utils" '(require 'apt-utils-ido))
 
 ;; ffap
-;; FIXME redefine rather than defadvice
+;; FIXME it's a redefine rather than defadvice
 (eval-after-load "ffap"
   '(defun ffap-read-file-or-url (prompt guess)
      "Read file or URL from minibuffer, with PROMPT and initial GUESS."

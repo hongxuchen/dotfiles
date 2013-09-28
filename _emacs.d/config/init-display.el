@@ -7,6 +7,7 @@
 (setq inhibit-startup-echo-area-message t)
 (setq initial-scratch-message
       (concat ";; " user-full-name "\n\n"))
+(setq view-inhibit-help-message t)
 
 (setq indicate-empty-lines t)
 
@@ -52,7 +53,7 @@
     (menu-bar-mode -1)
     (tool-bar-mode -1)
     (scroll-bar-mode -1))
-)
+  )
 
 ;; WoMan settings
 (setq woman-fill-column 90
