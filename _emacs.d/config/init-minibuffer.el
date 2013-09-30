@@ -1,3 +1,4 @@
+(setq ido-ubiquitous-enable-old-style-default nil)
 (require 'ido-ubiquitous)
 (ido-mode t)
 (ido-everywhere t)

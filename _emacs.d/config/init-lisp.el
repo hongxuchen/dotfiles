@@ -122,7 +122,7 @@ Argument SYM-NAME thing to find."
         (find-library sym-name))
        ((facep sym)
         (find-face-definition sym))
-       (t (error "Don't know how to find '%s'" sym))))))
+       (t (error "Don't know how to find <%s>" sym))))))
 
 ;; dir-locals.el
 (defun byte-compile-on-save ()

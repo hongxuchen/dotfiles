@@ -33,7 +33,7 @@
 ;; NOTE: If you manually turn on fic-mode, you you might need to force re-fontification initially
 ;;   M-x font-lock-fontify-buffer
 
-(defcustom fic-highlighted-words '("FIXME" "TODO" "BUG" "REVIEW")
+(defcustom fic-highlighted-words '("FIXME" "TODO" "BUG" "REVIEW" "DEPRECATED")
   "Words to highlight"
   :group 'fic-mode)
 
@@ -57,20 +57,20 @@
 
 (defun fic-in-doc/comment-region (pos)
   (memq (get-char-property pos 'face)
-	(list font-lock-doc-face font-lock-string-face font-lock-comment-face)))
+        (list font-lock-doc-face font-lock-string-face font-lock-comment-face)))
 
 (defun fic-search-for-keyword (limit)
   (let ((match-data-to-set nil)
-	found)
+        found)
     (save-match-data
       (while (and (null match-data-to-set)
-		  (re-search-forward fic-search-list-re limit t))
-	(if (and (fic-in-doc/comment-region (match-beginning 0))
-		 (fic-in-doc/comment-region (match-end 0))) 
-	    (setq match-data-to-set (match-data)))))
+                  (re-search-forward fic-search-list-re limit t))
+        (if (and (fic-in-doc/comment-region (match-beginning 0))
+                 (fic-in-doc/comment-region (match-end 0)))
+            (setq match-data-to-set (match-data)))))
     (when match-data-to-set
       (set-match-data match-data-to-set)
-      (goto-char (match-end 0)) 
+      (goto-char (match-end 0))
       t)))
 
 (defun review-labeled-timestamp-comment (label)
@@ -89,7 +89,7 @@
     (review-labeled-timestamp-comment commentWord)))
 
 ;;;###autoload
-(define-minor-mode fic-mode "highlight FIXMEs in comments and strings (as well as TODO BUG REVIEW and KLUDGE"
+(define-minor-mode fic-mode "highlight FIXMEs in comments and strings"
   :lighter " FIC" :group 'fic-mode
   (let ((kwlist '((fic-search-for-keyword (0 'font-lock-fic-face t)))))
     (if fic-mode
