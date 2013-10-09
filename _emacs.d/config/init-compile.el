@@ -122,16 +122,23 @@
 (setq compile-command "make "
       compile-history (list "make" "make clean"))
 (setq compilation-read-command nil)
-(setq compilation-finish-function nil)
-(setq compilation-finish-functions nil)
-;; (setq compilation-finish-functions
-;;       (lambda (buf str)
-;;         (if (string-match-p "exited abnormally" str)
-;;             (message "contains errors, press C-x ` to visit")
-;;           (with-current-buffer buf
-;;             (goto-char (point-min))
-;;             (unless (search-forward "warning:" nil t)
-;;               (winner-undo))))))
+(setq compilation-finish-functions 'bury-compile-buffer-if-successful)
+
+(defun bury-compile-buffer-if-successful (buf string)
+  "Bury a compilation buffer if succeeded without warnings "
+  (if (and
+       (string= (buffer-name) "*compilation*")
+       (string-match "finished" string)
+       (not
+        (with-current-buffer buf
+          (goto-char (point-min))
+          (search-forward "warning" nil t))))
+      (progn
+        (bury-buffer buf)
+        (switch-to-prev-buffer (get-buffer-window buf) 'kill)
+        (delete-other-windows)
+        )))
+
 (add-to-list 'auto-mode-alist
              (cons "Makefile"
                    'makefile-gmake-mode))

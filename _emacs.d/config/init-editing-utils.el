@@ -85,6 +85,6 @@
         ispell-extra-args '("--sug-mode=ultra" "--lang=en_US")))
 
 (setq grep-files-aliases
-      '(("all" . "* .*") ("el" . "*.el") ("ch" . "*.[ch] *.cc *.cxx *.cpp *.C *.CC *.c++") ("c" . "*.c") ("cc" . "*.cc *.cxx *.cpp *.C *.CC *.c++ *.c *.h *.hpp") ("cchh" . "*.cc *.[ch]xx *.[ch]pp *.[CHh] *.CC *.HH *.[ch]++") ("hh" . "*.hxx *.hpp *.[Hh] *.HH *.h++") ("h" . "*.h") ("l" . "[Cc]hange[Ll]og*") ("m" . "[Mm]akefile*") ("tex" . "*.tex") ("texi" . "*.texi") ("asm" . "*.[sS]")))
+      '(("all" . "* .*") ("el" . "*.el") ("ch" . "*.[ch] *.hpp *.cc *.cxx *.cpp *.C *.CC *.c++") ("c" . "*.c") ("cc" . "*.cc *.cxx *.cpp *.C *.CC *.c++ *.c *.h *.hpp") ("cchh" . "*.cc *.[ch]xx *.[ch]pp *.[CHh] *.CC *.HH *.[ch]++") ("hh" . "*.hxx *.hpp *.[Hh] *.HH *.h++") ("h" . "*.h") ("l" . "[Cc]hange[Ll]og*") ("m" . "[Mm]akefile*") ("tex" . "*.tex") ("texi" . "*.texi") ("asm" . "*.[sS]")))
 
 (setq ispell-personal-dictionary "~/.emacs.d/dict-spell/.aspell.en.pws")
