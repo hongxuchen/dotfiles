@@ -9,7 +9,8 @@
 (evil-define-key 'normal python-mode-map "\C-]" 'elpy-rgrep-symbol)
 
 (eval-after-load 'python '(elpy-enable))
-(setq elpy-rpc-python-command "python")
+(setq python-shell-interpreter "python3")
+(setq elpy-rpc-python-command "python3")
 (setq elpy-rpc-backend "jedi")
 
 (provide 'init-python-mode)

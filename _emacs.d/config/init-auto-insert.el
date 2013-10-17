@@ -4,5 +4,5 @@
 (add-hook 'find-file-not-found-hooks 'file-template-find-file-not-found-hook 'append)
 (add-hook 'find-file-hooks 'auto-insert)
 (define-auto-insert 'sh-mode '(nil "#!/bin/bash\n\n"))
-(define-auto-insert 'python-mode '(nil "#!/usr/bin/python\n\n"))
+(define-auto-insert 'python-mode '(nil "#!/usr/bin/python3\n\n"))
 (provide 'init-auto-insert)
