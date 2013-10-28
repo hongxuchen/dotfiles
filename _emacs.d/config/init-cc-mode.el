@@ -47,9 +47,9 @@
   ;; (hide-ifdef-mode t)
   (unless buffer-read-only (my-ac-cc-mode-setup)))
 
-(eval-after-load "cc-mode"
-  '(progn
-     (defun c-invalidate-state-cache (here) " " nil)))
+;; (eval-after-load "cc-mode"
+;;   '(progn
+;;      (defun c-invalidate-state-cache (here) " " nil)))
 
 ;; -----------------------------------------------------------------------------
 ;; includes and flags

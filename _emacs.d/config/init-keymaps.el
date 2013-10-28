@@ -31,6 +31,7 @@
 
 (global-set-key (kbd "C-c e") 'my-eval-and-replace)
 
+(global-set-key "\C-x\C-z" nil) ;;origin is transpose-lines
 (global-set-key "\C-x\C-t" nil) ;;origin is transpose-lines
 (global-set-key "\M-t" nil) ;; transpose-words
 (global-set-key "\M-u" nil) ;; upcase-word

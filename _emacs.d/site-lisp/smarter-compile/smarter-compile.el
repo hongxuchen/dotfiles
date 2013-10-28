@@ -150,7 +150,7 @@
     (html-helper-mode   . (browse-url-of-buffer))
     (octave-mode        . (run-octave))
 
-    ("\\.c\\'"          . "clang -Wall -Wextra %f -lm -lpthread -o %n -std=c99 -O0")
+    ("\\.c\\'"          . "clang -Wall -Wextra -Wshadow -Wbad-function-cast -Wcast-align %f -lm -lpthread -o %n -std=c99 -O0")
     ("\\.[Cc]+[Pp]*\\'" . "clang++ -Wall -Wextra %f -lm -lpthread -o %n -std=c++11 -O0")
     ("\\.m\\'"          . "clang %f -lobjc -lpthread -o %n -std=c99 -O0")
     ("\\.java\\'"       . "javac %f")

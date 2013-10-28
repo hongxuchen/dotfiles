@@ -22,7 +22,7 @@
 (evil-set-initial-state 'prog-mode 'normal)
 (evil-set-initial-state 'comint-mode 'emacs)
 (evil-set-initial-state 'gud-mode 'emacs)
-;; below are mode that derived from fundamental-mode
+;; below are modes that derived from fundamental-mode
 (evil-set-initial-state 'finder-mode 'emacs)
 (evil-set-initial-state 'taglist-mode 'emacs)
 (evil-set-initial-state 'xgtags-select-mode 'emacs) ;;xgtags select mode supports j/k originally

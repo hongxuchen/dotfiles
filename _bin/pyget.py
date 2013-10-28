@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 """
@@ -38,7 +38,9 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 """
 
-import os, time, sys
+import os
+import time
+import sys
 import signal
 import pycurl
 from multiprocessing import Manager, Pool, cpu_count
@@ -51,7 +53,8 @@ except ImportError:
 
 parser = OptionParser()
 parser.add_option("-w", "--worker_count", dest="worker_count",
-    type="int", default=cpu_count(), help="downloading process count")
+                  type="int", default=cpu_count(),
+                  help="downloading process count")
 
 
 (options, args) = parser.parse_args()
@@ -59,7 +62,7 @@ if options.worker_count < 1 or options.worker_count > 20:
     sys.stdout.write("Error: worker_count must in range [1-20]\n")
     sys.stdout.flush()
     sys.exit(0)
-    
+
 INFO_FILE_TAIL = ".pyget"
 
 piece = 100000
@@ -84,7 +87,7 @@ def get_file_info(url):
     curl.setopt(pycurl.NOPROGRESS, 1)
     curl.setopt(pycurl.NOBODY, 1)
     curl.perform()
-    
+
     return {
         "url": curl.getinfo(pycurl.EFFECTIVE_URL),
         "file_name": os.path.split(curl.getinfo(pycurl.EFFECTIVE_URL))[1],
@@ -106,20 +109,21 @@ def write_content_to_disk(point, content):
         fp.seek(point[0])
         fp.write(content)
         fp.flush()
-    
+
     with open(file_name + INFO_FILE_TAIL, "a") as fp:
         fp.write(str(point) + "_")
         fp.flush()
-    
+
 
 def remove_info_from_disk():
     os.remove(file_name + INFO_FILE_TAIL)
+
 
 def show_progbar(throughput):
     point_set_len = len(point_set)
     progress = float(
         point_set_len - len(point_list)) / float(point_set_len) * 100
-    
+
     sys.stdout.write(
         "\r[%.0f%%]:%s\t\t" % (progress, throughput))
     sys.stdout.flush()
@@ -146,7 +150,6 @@ def download(point):
 signal.signal(signal.SIGINT, lambda n, e: sys.exit(0))
 
 
-
 if os.path.exists(args[0]) and args[0].endswith(INFO_FILE_TAIL):
     if not os.path.exists(args[0][:-len(INFO_FILE_TAIL)]):
         sys.stdout.write("bad file!\n")
@@ -159,39 +162,37 @@ if os.path.exists(args[0]) and args[0].endswith(INFO_FILE_TAIL):
         args = eval(fp.readline())
 
         file_info = get_file_info(args[0])
-        file_size = file_info["file_size"]        
+        file_size = file_info["file_size"]
 
-        downloaded_point_list = [eval(p) for p in fp.read().split("_") if p]    
+        downloaded_point_list = [eval(p) for p in fp.read().split("_") if p]
 
 else:
     file_info = get_file_info(args[0])
     file_name = file_info["file_name"]
     file_size = file_info["file_size"]
-    
+
     if os.path.exists(file_name):
         tail = str(max(
             map(int,
-                filter(lambda x: x.isdigit(), [   
-                    s.replace(file_name + ".", "") 
+                filter(lambda x: x.isdigit(), [
+                    s.replace(file_name + ".", "")
                     for s in list(os.walk("."))[0][2]
-                        if s.startswith(file_name + ".")
-                ])
-            ) or [0]
+                    if s.startswith(file_name + ".")
+                ])) or [0]
         ) + 1)
-        
+
         file_name = ".".join([file_name, tail])
 
-    open(file_name, "wb").close()    
+    open(file_name, "wb").close()
 
     with open(''.join([file_name, INFO_FILE_TAIL]), "w") as fp:
         fp.write(str(args) + "\n")
         fp.flush()
 
-        
 
 point_set = set(map(lambda x:
-        (x * piece, (x + 1) * piece),
-        xrange(0, file_size / piece)))
+                    (x * piece, (x + 1) * piece),
+                    range(0, file_size / piece)))
 
 point_set.add((file_size - (file_size % piece), file_size))
 
@@ -204,7 +205,7 @@ pool = Pool(processes=options.worker_count)
 pool.map_async(download, map(lambda x: (x), point_list))
 use_time = 0
 
- 
+
 while True:
     if point_list:
         show_progbar(get_throughput(
@@ -216,10 +217,9 @@ while True:
         continue
 
     sys.stdout.write("""
-        \r[100%%]done!-  time:%ds--%s saved\n""" %
-        (use_time, file_name))
+        \r[100%%]done!-  time:%ds--%s saved\n""" % (use_time, file_name))
     sys.stdout.flush()
-        
+
     remove_info_from_disk()
 
     sys.exit(0)

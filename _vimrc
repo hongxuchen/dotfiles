@@ -337,6 +337,7 @@ nmap <silent> <F5> :call ClangCheck()<CR>
 " =====================================================
 autocmd FileType c,cpp setl path+=/usr/lib/llvm-2.9/include,/usr/include/c++/4.6,~/moonbox/klee/include
 autocmd FileType c,cpp setl cms=//%s
-autocmd FileType c,cpp nnoremap <silent> <C-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+autocmd FileType c,cpp nnoremap <silent> <C-]>: YcmCompleter GoToDefinitionElseDeclaration<CR>
+autocmd FileType python nnoremap <silent> <C-]>: YcmCompleter GoToDefinitionElseDeclaration<CR>
 autocmd FileType lisp setl cms=;;%s
 autocmd FileType cmake setl cms=#%s

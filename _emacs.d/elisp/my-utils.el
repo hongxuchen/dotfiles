@@ -92,15 +92,24 @@
   (revert-buffer t t t)
   (message "Successfully indented!"))
 
+(defun autopep8-buffer ()
+  (interactive)
+  "auto format python buffer to be consistent with pep8 style"
+  (basic-save-buffer)
+  (call-process "autopep8" nil t nil "-i" (buffer-file-name))
+  (normal-mode)
+  )
+
 (require 'clang-format)
 (defun my-format-buffer ()
   (interactive)
-  (cond ((member major-mode '(makefile-mode makefile-gmake-mode python-mode org-mode))
+  (delete-trailing-whitespace)
+  (cond ((member major-mode '(makefile-mode makefile-gmake-mode org-mode))
          (message "will not cleanup buffer when major mode is %s" major-mode))
         ((member major-mode '(c-mode c++-mode))(clang-format-buffer))
+        ((member major-mode '(python-mode)) (autopep8-buffer))
         (t (progn
              (untabify (point-min) (point-max))
-             (delete-trailing-whitespace)
              (indent-region (point-min) (point-max))
              )))
   (when (and (buffer-file-name) (buffer-modified-p)) (basic-save-buffer)))

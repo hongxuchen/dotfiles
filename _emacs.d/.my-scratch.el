@@ -1,2 +1,2 @@
-;; Hongxu Chen
+/build/
 

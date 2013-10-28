@@ -16,13 +16,13 @@ output=
 
 while getopts "hf:o:" option; do
     case "$option" in
-        h)
-            usage
-            exit 1 ;;
-        f)
-            format="$OPTARG" ;;
-        o)
-            output="$OPTARG" ;;
+    h)
+        usage
+        exit 1 ;;
+    f)
+        format="$OPTARG" ;;
+    o)
+        output="$OPTARG" ;;
     esac
 done
 shift $((OPTIND-1))
@@ -43,37 +43,37 @@ complete=
 # tar files if necessary
 if [[ ${#@} -gt 1 || -d "$@" ]]; then
     case "$format" in
-        zip) ;;
-        gz)
-            tar -acf "${output}.tar.gz" "$@"
-            complete=1;;
-        bzip2)
-            tar -acf "${output}.tar.bzip2" "$@"
-            complete=1;;
-        lzma)
-            tar -acf "${output}.tar.lzma" "$@"
-            complete=1;;
-        xz)
-            tar -acf "${output}.tar.xz" "$@"
-            complete=1;;
-        *)   
-            output="${output}.tar"
-            tar -cf "$output" "$@"
-            ;;
+    zip) ;;
+    gz)
+        tar -acf "${output}.tar.gz" "$@"
+        complete=1;;
+    bzip2)
+        tar -acf "${output}.tar.bzip2" "$@"
+        complete=1;;
+    lzma)
+        tar -acf "${output}.tar.lzma" "$@"
+        complete=1;;
+    xz)
+        tar -acf "${output}.tar.xz" "$@"
+        complete=1;;
+    *)
+        output="${output}.tar"
+        tar -cf "$output" "$@"
+        ;;
     esac
 fi
 
 if [[ -n "$complete" ]]; then; exit 0; fi
 
 case "$format" in
-    gz)
-        gzip -rc "$@" > "${output}.gz";;
-    bzip2)
-        bzip2 -kz "$@" ;;
-    lzma)
-        lzma -zk "$@" ;;
-    xz)
-        xz -zk "$@" ;;
-    zip)
-        zip -r "${output}" "$@" ;;
+gz)
+    gzip -rc "$@" > "${output}.gz";;
+bzip2)
+    bzip2 -kz "$@" ;;
+lzma)
+    lzma -zk "$@" ;;
+xz)
+    xz -zk "$@" ;;
+zip)
+    zip -r "${output}" "$@" ;;
 esac

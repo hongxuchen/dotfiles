@@ -12,26 +12,26 @@ usage ()
     echo
     exit 1
 }
- 
+
 if [[ -z "$@" ]]
 then
     usage
 else
- 
+
     words="$@"
 fi
- 
+
 declare -a num_array
 num_array=(`echo $words | od -An -t dC | tr -d "\n"`)
 num_array=(`echo $words | od -An -t dC `)
- 
+
 answer=$(echo ${num_array[0]}*${num_array[2]} | bc)
- 
+
 length=${#num_array[@]}
- 
+
 tmp=1
 answer=0
- 
+
 for(( i=$length-1;i>=0;i-- ))
 do
     tmp=${num_array[$i]}
@@ -42,7 +42,7 @@ do
     done
     answer=$(echo $answer+$tmp | bc)
     answer=$(echo $answer|tr -d "\\\\\ ")
- 
+
 done
- 
+
 echo $answer

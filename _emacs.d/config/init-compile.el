@@ -134,8 +134,8 @@
           (goto-char (point-min))
           (search-forward "warning" nil t))))
       (progn
-        (bury-buffer buf)
-        (switch-to-prev-buffer (get-buffer-window buf) 'kill)
+        ;; (bury-buffer buf)
+        ;; (switch-to-prev-buffer (get-buffer-window buf) 'kill)
         (delete-other-windows)
         )))
 

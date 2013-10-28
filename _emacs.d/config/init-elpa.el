@@ -114,11 +114,11 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 ;;------------------------------------------------------------------------------
 ;; writings
 ;;------------------------------------------------------------------------------
-;; (require-package 'auctex)
+(require-package 'auctex)
 ;; (require-package 'gnuplot)
 (require-package 'markdown-mode)
 ;; org
-;; (require-package 'cdlatex)
+(require-package 'cdlatex)
 (require-package 'org-plus-contrib)
 (require-package 'htmlize)
 

@@ -1,6 +1,0 @@
-#!/bin/bash
-if [ $SSH_CLIENT ]; then
-  echo "Never use init when in ssh"
-else
-  command init
-fi
