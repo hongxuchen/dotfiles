@@ -32,8 +32,8 @@ x-scheme-handler/news=thunderbird.desktop;
 x-scheme-handler/feed=thunderbird.desktop;
 application/rss+xml=thunderbird.desktop;
 application/x-extension-rss=thunderbird.desktop;
-application/zip=xarchiver.desktop;wps-office-wpp.desktop;
-application/x-ole-storage=wps-office-wpp.desktop;
+application/zip=xarchiver.desktop;wps-office-wpp.desktop;wps-office-et.desktop;
+application/x-ole-storage=wps-office-wpp.desktop;libreoffice-impress.desktop;
 
 [Default Applications]
 x-scheme-handler/http=firefox.desktop

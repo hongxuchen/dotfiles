@@ -320,21 +320,21 @@ and back in -->
 
     <!-- Keybinding for Volume management -->
     <keybind key="XF86AudioRaiseVolume">
-     <action name="Execute">
+      <action name="Execute">
         <command>amixer -q sset Master 3%+</command>
-     </action>
+      </action>
     </keybind>
 
     <keybind key="XF86AudioLowerVolume">
-     <action name="Execute">
+      <action name="Execute">
         <command>amixer -q sset Master 3%-</command>
-     </action>
+      </action>
     </keybind>
 
     <keybind key="XF86AudioMute">
-     <action name="Execute">
+      <action name="Execute">
         <command>amixer -q sset Master toggle</command>
-     </action>
+      </action>
     </keybind>
   </keyboard>
 
@@ -726,6 +726,10 @@ and back in -->
     <application name="emacs">
       <maximized>yes</maximized>
       <fullscreen>yes</fullscreen>
+    </application>
+
+    <application name="skype">
+      <decor>yes</decor>
     </application>
 
     <application name="xterm">

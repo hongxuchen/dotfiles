@@ -733,6 +733,11 @@
       <decor>no</decor>
       <maximized>true</maximized>
     </application>
+
+    <application name="skype">
+      <decor>yes</decor>
+    </application>
+    
     <application name="xterm">
       <skip_pager>yes</skip_pager>
       <skip_taskbar>no</skip_taskbar>
