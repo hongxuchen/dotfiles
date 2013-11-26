@@ -24,6 +24,12 @@ Emacs.verticalScrollBars: off
 Emacs.toolBar: off
 Emacs*font:    Consolas:antialias=true
 
+Emacs24.fontBackend: xft
+Emacs24.menuBar: off
+Emacs24.verticalScrollBars: off
+Emacs24.toolBar: off
+Emacs24*font:    Consolas:antialias=true
+
 !font and size
 XTerm*faceSize: 13
 XTerm*faceSize1: 13

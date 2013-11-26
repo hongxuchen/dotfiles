@@ -273,11 +273,7 @@ and back in -->
     <!-- Keybindings for running applications -->
     <keybind key="W-e">
       <action name="Execute">
-        <startupnotify>
-          <enabled>true</enabled>
-          <name>emacs</name>
-        </startupnotify>
-        <command>emacs -fs</command>
+        <command>pcmanfm </command>
       </action>
     </keybind>
 
@@ -706,6 +702,8 @@ and back in -->
 
     <application class="*">
       <decor>no</decor>
+      <maximized>no</maximized>
+      <fullscreen>no</fullscreen>
     </application>
 
     <application name="evince">
@@ -717,11 +715,6 @@ and back in -->
       <fullscreen>yes</fullscreen>
       <maximized>yes</maximized>
     </application>
-
-    <!-- <application name="pcmanfm"> -->
-    <!--   <fullscreen>yes</fullscreen> -->
-    <!--   <maximized>yes</maximized> -->
-    <!-- </application> -->
 
     <application name="emacs">
       <maximized>yes</maximized>

@@ -1,13 +1,17 @@
 #!/bin/sh
 
-update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.6 50
-update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.6 50
-update-alternatives --install /usr/bin/cpp cpp-bin /usr/bin/cpp-4.6 50
+V1=4.6
+V2=4.8
+VD=$V2
 
-update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 100
-update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 100
-update-alternatives --install /usr/bin/cpp cpp-bin /usr/bin/cpp-4.8 100
+update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-$V1 50
+update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-$V1 50
+update-alternatives --install /usr/bin/cpp cpp-bin /usr/bin/cpp-$V1 50
 
-update-alternatives --set g++ /usr/bin/g++-4.8
-update-alternatives --set gcc /usr/bin/gcc-4.8
-update-alternatives --set cpp-bin /usr/bin/cpp-4.8
+update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-$V2 100
+update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-$V2 100
+update-alternatives --install /usr/bin/cpp cpp-bin /usr/bin/cpp-$V2 100
+
+update-alternatives --set g++ /usr/bin/g++-$VD
+update-alternatives --set gcc /usr/bin/gcc-$VD
+update-alternatives --set cpp-bin /usr/bin/cpp-$VD

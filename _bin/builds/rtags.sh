@@ -23,7 +23,6 @@ rm $ELISP
 git checkout master
 mkdir -p $BUILD
 cd $BUILDS
-rm -rf *
 
 cmake $SRC
 make -j 2

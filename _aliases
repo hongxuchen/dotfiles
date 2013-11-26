@@ -10,6 +10,7 @@ alias dstat='dstat -cdlmnpsy'
 alias goagent="~/data_backup/goagent/local/goagent-gtk.py &disown"
 alias telnet="luit -encoding gb18030 telnet"
 alias v6='sudo isatapd -d isatap.sjtu.edu.cn'
+alias synaptic='sudo synaptic &>/dev/null & disown'
 alias chromium-browser="chromium-browser &>/dev/null & disown"
 alias firefox="firefox &>/dev/null & disown"
 alias pyhttpd='python -m SimpleHTTPServer'

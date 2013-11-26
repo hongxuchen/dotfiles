@@ -3,7 +3,7 @@
 
 " OPTIONS {{{
 " basics
-set fullscreen
+set nofullscreen
 set autocomplete=true
 set complete=slf
 set wildmode=list:full

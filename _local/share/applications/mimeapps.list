@@ -1,8 +1,6 @@
-
 [Added Associations]
 application/x-trash=emacs24.desktop;
-x-scheme-handler/http=firefox.desktop;
-x-scheme-handler/https=exo-web-browser.desktop
+x-scheme-handler/https=exo-web-browser.desktop;firefox.desktop;
 x-scheme-handler/file=exo-file-manager.desktop
 x-scheme-handler/trash=exo-file-manager.desktop
 application/octet-stream=gvim.desktop;
@@ -14,7 +12,7 @@ text/plain=emacs24.desktop;retext.desktop;
 application/vnd.rn-realmedia=smplayer.desktop;gnome-mplayer.desktop;
 image/jpeg=gpicview.desktop;
 image/bmp=gpicview.desktop;
-text/html=firefox.desktop;google-chrome.desktop;
+text/html=google-chrome.desktop;
 application/x-bittorrent=thunder.desktop;thunder5.desktop;
 application/x-java=gvim.desktop;
 application/x-deb=gdebi.desktop;
@@ -34,6 +32,14 @@ application/rss+xml=thunderbird.desktop;
 application/x-extension-rss=thunderbird.desktop;
 application/zip=xarchiver.desktop;wps-office-wpp.desktop;wps-office-et.desktop;
 application/x-ole-storage=wps-office-wpp.desktop;libreoffice-impress.desktop;
+x-scheme-handler/ftp=firefox.desktop;
+x-scheme-handler/chrome=firefox.desktop;
+application/x-extension-htm=firefox.desktop;
+application/x-extension-html=firefox.desktop;
+application/x-extension-shtml=firefox.desktop;
+application/xhtml+xml=firefox.desktop;
+application/x-extension-xhtml=firefox.desktop;
+application/x-extension-xht=firefox.desktop;
 
 [Default Applications]
 x-scheme-handler/http=firefox.desktop
@@ -59,3 +65,12 @@ x-scheme-handler/feed=thunderbird.desktop
 application/rss+xml=thunderbird.desktop
 application/x-extension-rss=thunderbird.desktop
 application/x-ole-storage=wps-office-wpp.desktop
+x-scheme-handler/https=firefox.desktop
+x-scheme-handler/ftp=firefox.desktop
+x-scheme-handler/chrome=firefox.desktop
+application/x-extension-htm=firefox.desktop
+application/x-extension-html=firefox.desktop
+application/x-extension-shtml=firefox.desktop
+application/xhtml+xml=firefox.desktop
+application/x-extension-xhtml=firefox.desktop
+application/x-extension-xht=firefox.desktop

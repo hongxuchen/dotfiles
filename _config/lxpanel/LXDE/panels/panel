@@ -2,7 +2,7 @@
 # Use preference dialog in lxpanel to adjust config when you can.
 
 Global {
-    edge=bottom
+    edge=top
     allign=left
     margin=0
     widthtype=percent
@@ -22,6 +22,7 @@ Global {
     background=1
     backgroundfile=/usr/share/lxpanel/images/background.png
     iconsize=24
+    loglevel=2
 }
 
 Plugin {
@@ -61,10 +62,10 @@ Plugin {
 }
 
 Plugin {
-    type = tray
+    type = volumealsa
 }
 
 Plugin {
-    type = volumealsa
+    type = tray
 }
 

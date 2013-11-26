@@ -23,7 +23,13 @@ export LC_ALL=
 
 export EMAIL="leftcopy.chx@gmail.com"
 export TZ='Asia/Shanghai'
-export GTK_IM_MODULE='ibus'
-export QT_IM_MODULE='ibus'
-export XMODIFIERS=@im='ibus'
-[ `hostname` != 'hongxuchen-VM' ] || ps -C fetchmail >/dev/null || fetchmail -d 300
+
+# export GTK_IM_MODULE=ibus
+# export XMODIFIERS=@im=ibus
+# export QT_IM_MODULE=ibus
+
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+
+[ `hostname` != 'HongxuChen' ] || ps -C fetchmail >/dev/null || fetchmail -d 300
