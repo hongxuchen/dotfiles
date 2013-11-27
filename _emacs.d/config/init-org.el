@@ -11,7 +11,7 @@
       org-startup-folded nil
       org-startup-align-all-tables t
       org-startup-with-inline-images nil
-      org-startup-with-latex-preview t
+      org-startup-with-latex-preview nil
       org-agenda-start-on-weekday nil
       org-agenda-span 14  ;; 14 days
       org-agenda-include-diary t

@@ -31,6 +31,7 @@ set! browser.tabs.warnOnClose=false
 set! browser.zoom.full=false
 set! general.warnOnAboutConfig=false
 set! browser.startup.homepage="https://google.com.hk/"
+" set! browser.startup.homepage="https://duckduckgo.com/"
 " 2 no close buttons; 0 only active tab has; 1 each has one
 set! browser.tabs.closeButtons=2 
 set! browser.search.defaultenginename=google
