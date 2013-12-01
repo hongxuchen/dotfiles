@@ -57,3 +57,9 @@ zstyle ':completion:*:*:*:users' ignored-patterns \
 
 # ... unless we really want to.
 zstyle '*' single-ignored show
+
+# ninja build
+_ninja() {
+  reply=(`(ninja -t targets all 2&>/dev/null) | awk -F: '{print $1}'`)
+}
+compctl -K _ninja ninja

@@ -28,8 +28,10 @@ export TZ='Asia/Shanghai'
 # export XMODIFIERS=@im=ibus
 # export QT_IM_MODULE=ibus
 
-export GTK_IM_MODULE=ibus
-export XMODIFIERS=@im=ibus
-export QT_IM_MODULE=ibus
+export XIM=fcitx
+export XIM_PROGRAM=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
 
 [ `hostname` != 'HongxuChen' ] || ps -C fetchmail >/dev/null || fetchmail -d 300

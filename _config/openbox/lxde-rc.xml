@@ -691,7 +691,7 @@ and back in -->
   </menu>
   <applications>
     <application class="*">
-      <decor>no</decor>
+      <decor>yes</decor>
       <maximized>no</maximized>
       <fullscreen>no</fullscreen>
     </application>

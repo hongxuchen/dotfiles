@@ -115,16 +115,21 @@ function clang-ll() {
     clang -std=c99 -emit-llvm -S $1 -o ${1%.*}.ll ${*:2}
 }
 
+# -debug-buffer-size=1024
 function opt() {
-    command opt -load ~/moonbox/dryrun/bin/test.so -load ~/moonbox/dryrun/bin/slice.so -debug-buffer-size=1024 $@
-}
-
-function opt-3.4() {
-    command opt-3.4 -load ~/moonbox/dryrun/bin-3.4/test.so -debug-compile=1 -load ~/moonbox/dryrun/bin-3.4/slice.so $@
+    command opt -load ~/moonbox/dryrun/bin/test.so -load ~/moonbox/dryrun/bin/slice.so $@
 }
 
 function clean_llvm(){
     rm -rf klee-* LOG* *.bc *.ll
+}
+
+function cmake-ninja(){
+    cmake -GNinja $@ && ninja
+}
+
+function evince(){
+    command evince $@ &>/dev/null &
 }
 
 function build_and_run_klee(){

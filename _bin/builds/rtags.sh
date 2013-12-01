@@ -1,8 +1,10 @@
 #!/bin/bash
 
+# We'd better use a deb package of libclang/llvm; clang isn't necessary
+
 BASEDIR="`dirname $0`"
 cd $BASEDIR
-SRC=$PWD/rtags
+SRC=$(pwd)/rtags
 BUILD=$SRC/build
 ELISP=$HOME/.emacs.d/elisp/rtags
 
@@ -21,11 +23,12 @@ fi
 
 rm $ELISP
 git checkout master
-mkdir -p $BUILD
-cd $BUILDS
 
-cmake $SRC
-make -j 2
+# INSTALL_DIR=$HOME/data_backup/llvm/install
+# PATH=${INSTALL_DIR}/bin:$PATH
+rm -rf $BUILD && mkdir -p $BUILD && cd $BUILD
+# cmake -GNinja -DCLANG_ROOT=${INSTALL_DIR}  $SRC  && ninja
+cmake -GNinja $SRC  && ninja
 
 ln -sf $SRC/bin/gcc-rtags-wrapper.sh ~/.bin/g++
 ln -sf $SRC/bin/gcc-rtags-wrapper.sh ~/.bin/gcc

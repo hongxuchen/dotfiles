@@ -2,7 +2,8 @@
 
 BASEDIR="`dirname $0`"
 cd $BASEDIR
-SRC=$PWD/irony-mode
+
+SRC=$(pwd)/irony-mode
 BUILD=$SRC/build
 
 if ! [ -d $BUILD ]; then
@@ -16,8 +17,7 @@ fi
 
 git checkout mine
 cd $BUILD
-cmake $SRC
-make -j 2
-make install
+cmake -GNinja $SRC
+ninja
 
-ln -sf $SRC ~/.emacs.d/elisp/irony-mode
+ln -sfT $SRC ~/.emacs.d/elisp/irony-mode

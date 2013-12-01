@@ -3,9 +3,9 @@
 (defgroup clang-format nil
   "group for `clang-format'." :group 'programming)
 
-(defcustom clang-format-binary "clang-format-3.4"
+(defcustom clang-format-binary "clang-format"
   "executable for clang-format")
-(defcustom clang-format-binary "clang-format-diff-3.4"
+(defcustom clang-format-binary "clang-format-diff"
   "python executable for clang-format-diff")
 
 (defcustom clang-format-style "Google"
