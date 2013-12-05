@@ -21,6 +21,7 @@
       version-control t
       vc-make-backup-files nil)
 (setq find-file-suppress-same-file-warnings t)
+(remove-hook 'find-file-hook  'vc-find-file-hook)
 (setq view-read-only t)
 (setq auto-save-default nil)
 

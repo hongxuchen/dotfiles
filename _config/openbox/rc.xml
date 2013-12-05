@@ -730,7 +730,7 @@
   </menu>
   <applications>
     <application class="*">
-      <decor>no</decor>
+      <decor>yes</decor>
       <maximized>true</maximized>
     </application>
 

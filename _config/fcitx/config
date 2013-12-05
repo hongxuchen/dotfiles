@@ -1,6 +1,6 @@
 [Hotkey]
 # Trigger Input Method
-TriggerKey=CTRL_LCTRL
+TriggerKey=SUPER_SPACE
 # Use extra trigger key only after using it to inactivate
 # Available Value:
 # True False
@@ -105,7 +105,7 @@ SwitchKey=Disabled
 # True False
 #SendTextWhenSwitchEng=True
 # Candidate Word Number
-#CandidateWordNumber=5
+CandidateWordNumber=6
 # Give the tips of Phrase
 # Available Value:
 # True False

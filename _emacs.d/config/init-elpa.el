@@ -115,6 +115,11 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 ;; writings
 ;;------------------------------------------------------------------------------
 (require-package 'auctex)
+(require-package 'auctex-latexmk)
+(require-package 'ac-math)
+(require-package 'latex-extra)
+(require-package 'latex-pretty-symbols)
+(require-package 'latex-preview-pane)
 ;; (require-package 'gnuplot)
 (require-package 'markdown-mode)
 ;; org

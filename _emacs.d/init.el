@@ -78,3 +78,4 @@
 (load-persistent-scratch)
 (message "startup time: %d seconds." (float-time (time-since emacs-load-start-time)))
 (server-start)
+(setenv "LC_CTYPE" "zh_CN.UTF-8")
