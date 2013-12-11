@@ -45,7 +45,7 @@
   :group 'processes)
 
 (defcustom openwith-associations
-  '(("\\.pdf\\'" "zathura" (file))
+  '(("\\.pdf\\'" "evince" (file))
     ("\\.mp3\\'" "xmms" (file))
     ("\\.\\(?:mpe?g\\|avi\\|wmv\\)\\'" "mplayer" ("-idx" file))
     ("\\.\\(?:jp?g\\|png\\)\\'" "display" (file)))

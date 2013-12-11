@@ -162,7 +162,7 @@
 
 (require 'ox-reveal)
 (setq org-reveal-transition nil)
-(setq org-reveal-root "file:///home/hongxuchen/.emacs.d/others/reveal.js/")
+(setq org-reveal-root "file:///home/hongxu/.emacs.d/others/reveal.js/")
 
 (defun org-other-modes ()
   (turn-on-orgtbl)

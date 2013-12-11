@@ -119,13 +119,14 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (require-package 'ac-math)
 (require-package 'latex-extra)
 (require-package 'latex-pretty-symbols)
-(require-package 'latex-preview-pane)
 ;; (require-package 'gnuplot)
 (require-package 'markdown-mode)
 ;; org
 (require-package 'cdlatex)
 (require-package 'org-plus-contrib)
 (require-package 'htmlize)
+
+(require-package 'graphviz-dot-mode)
 
 ;;------------------------------------------------------------------------------
 ;; development

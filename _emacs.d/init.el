@@ -25,16 +25,16 @@
 
 ;; basic settings
 (require 'init-elpa)
-(require 'my-utils)
 (require 'init-misc)
+(require 'my-utils)
 (require 'init-dired)
 (require 'init-display)
 (require 'init-ibuffer)
 (require 'init-minibuffer)
 (require 'init-sessions)
-(require 'init-editing-utils)
+(require 'init-editing)
 (require 'init-git)
-(require 'init-linum-mode)
+(require 'init-linum)
 (require 'init-evil)
 (require 'init-auto-insert)
 (require 'init-modeline)
@@ -56,8 +56,8 @@
 (require 'init-cc-mode)
 (require 'init-cmake)
 
-(require 'init-python-mode)
-;; (require 'init-ruby-mode)
+(require 'init-python)
+;; (require 'init-ruby)
 
 (require 'init-lisp)
 ;; (require 'init-clojure)
