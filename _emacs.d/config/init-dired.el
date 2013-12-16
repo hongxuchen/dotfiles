@@ -16,7 +16,7 @@
 (require 'dired-x)
 (setq-default dired-omit-files-p t)
 (setq dired-omit-verbose nil)
-(setq dired-omit-files "^\\.$\\|^\\.\\.$\\|^GTAGS$\\|^GSYMS$\\|^GRTAGS$\\|^GPATH$\\|\\.bc$|\\.o$\\|\\.out$")
+(setq dired-omit-files "^\\.$\\|^\\.\\.$\\|^GTAGS$\\|^GSYMS$\\|^GRTAGS$\\|^GPATH$\\|\\.bc$|\\.o$\\|\\.out$\\|\\.aux$\\|\\.log$\\|\\.fdb_latexmk$\\|\\.fls$")
 
 (require 'openwith)
 (openwith-mode t)

@@ -21,7 +21,6 @@ export LESSCLOSE='/usr/bin/lesspipe %s %s'
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 
-# system related; the first one is only used for llvm shared library testing
 export PATH=/usr/local/texlive/2013/bin/x86_64-linux:~/.bin:~/.local/bin:~/.bin/builds/llvm/build/bin:~/.bin/builds/rtags/build/bin:~/moonbox/dryrun/bin:~/moonbox/dryrun/utils:~/moonbox/dryrun/utils/wllvm:~/moonbox/llvm-obj/Release+Asserts/bin:~/moonbox/llvm-gcc4.2-2.9-x86_64-linux/bin:~/moonbox/klee-install/bin:~/moonbox/klee/scripts:/usr/local/texlive/2012/bin/i386-linux:$PATH
 export LLVM_COMPILER=llvm-gcc   # for wllvm
 export WLLVM_OUTPUT=DEBUG

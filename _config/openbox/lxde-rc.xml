@@ -710,6 +710,9 @@ and back in -->
     <application name="skype">
       <decor>yes</decor>
     </application>
+    <application name="chromium-browser">
+      <decor>no</decor>
+    </application>
     <application name="xterm">
       <skip_pager>yes</skip_pager>
       <focus>yes</focus>

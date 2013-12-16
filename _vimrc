@@ -1,3 +1,4 @@
+" -*- mode: vimrc; -*-
 " vim: set ft=vim ts=4 sw=2 tw=78 et :
 " =====================================================
 " AUTHOR: Hongxu Chen

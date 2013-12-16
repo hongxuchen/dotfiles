@@ -35,7 +35,7 @@
 	pager = less
 	autocrlf = input
 	whitespace = trailing-space,space-before-tab
-	; excludesfile = /home/hongxuchen/.gitignore_global
+	excludesfile = /home/hongxuchen/.gitignore_global
 
 [alias]
 	# ls

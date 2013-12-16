@@ -24,6 +24,7 @@ alias ll='ls -lh'
 alias whatg++='g++ -E -x c++  /dev/null -dM'
 alias whatgcc='gcc -E -x c  /dev/null -dM'
 alias clang-analyze='clang -cc1 -analyzer-checker-help |less'
+alias dl='axle -n 8'
 #Google style
 alias indent="command indent -kr -ci2 -cli2 -i2 -l80 -nut"
 

@@ -4,44 +4,17 @@ CLOSED: [2013-03-30 Sat 16:10]
 - State "DONE"       from "TODO"           [2013-03-30 Sat 16:10]
 * STARTED Add customed scripts for daily usage in _~/.customed_
 * TODO tmux window index problem
-* SOMEDAY vim statusline needs dimmer
-* TODO in vim when _e newfile_, the cursor should be focused on it so that "null buffer" problem would disappear
 * TODO coloscheme highlight issues when openning markdown
-* TODO NERDTree buffer auto flush when deleting some file
 * SOMEDAY ~/.config cannot be modified when chromium is running
 * STARTED git-submodule-rm.sh cannot rm multiple files
 * TODO escreen should be customized for myself heavily
 * PROJECT The big problem:some keys are not right in emacs+xterm
 - State "PROJECT"    from ""           [2013-03-30 Sat 16:15] \\
   there might due to the keymaps with paredit, but more keybinding problems still exist.
-* TODO markdown css cannot take effect(so is syntax highlight)
-* TODO markdown mode preview always opened in a newtab other then refresh
-* TODO markdown has no instant preview yet(https://github.com/yukihr/Warp/blob/master/warp.el)
-
-* PROJECT emacs auto-complete-clang go-to-definition
-- State "PROJECT"    from ""           [2013-03-30 Sat 16:18] \\
-  There are great demands for this, I might have to write some plugins for this! Treat this problem seriously!
-* DONE vim clang_complete libclang cannot find builtin
-CLOSED: [2013-03-30 Sat 16:20]
-- State "DONE"       from ""           [2013-03-30 Sat 16:20]
-  Solved by using CLIC configurations(see in ~/.vimrc)
-* emacs highlight problem when one is matched
 * PROJECT visual mode comments problem when brackets is in several lines 
 - State "PROJECT"    from ""           [2013-03-30 Sat 16:21] \\
   This is really a problem, but it now can be avoid to use linewise evil visual mode and emacs built-in comment keybindings M-;
 * TODO brackets doesn't autopair for some cases in cpp
 * STARTED emacs openwith enhatncement
-* DONE transfer this todo list to org file
-CLOSED: [2013-03-30 Sat 16:54]
-State "DONE"       from "STARTED"       [2013-04-06 Sat 20:02]
-* DONE split some private settings into another repo.
-CLOSED: [2013-03-30 Sat 16:57]
 * TODO org mode table keymaps has conflicts with LXDE
-* TODO check whether clang_complete has special complete settings
-* TODO try to solve the relative css path in org-mode
-* TODO solve the escreen issues
-* TODO fix flymake/splint support in Emacs
-* TODO finish clang-lookup issues in Emacs
-* TODO write a vim-commentary like for in Emacs
-* TODO emacs bbdb import google contacts and fully use gnus as my email client
-* TODO clang flags easy
+* TODO write a vim-commentary like tool in Emacs

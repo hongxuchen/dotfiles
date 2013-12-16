@@ -1,27 +1,4 @@
-# -*- mode: gitginore; -*-
-
-## ------- Archives.gitignore
-*.7z
-*.jar
-*.rar
-*.zip
-*.gz
-*.bzip
-*.bz2
-*.xz
-*.lzma
-
-#packing-only formats
-*.iso
-*.tar
-
-#package management formats
-*.dmg
-*.xpi
-*.gem
-*.egg
-*.deb
-*.rpm
+# -*- mode: gitignore; -*-
 
 ## ------- CVS.gitignore
 /CVS/*
@@ -117,11 +94,11 @@ cscope.*
 
 ## ------- VirtualEnv.gitignore
 # http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
-.Python
-[Bb]in
-[Ii]nclude
-[Ll]ib
-[Ss]cripts
+# .Python
+# [Bb]in
+# [Ii]nclude
+# [Ll]ib
+# [Ss]cripts
 
 ## ------- Windows.gitignore
 # Windows image file caches
