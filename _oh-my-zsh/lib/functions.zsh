@@ -2,15 +2,6 @@ function zsh_stats() {
     history | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n20
 }
 
-# snatch stdout of existing process
-# see http://subtech.g.hatena.ne.jp/cho45/20091118/1258554176
-function snatch() {
-    gdb -p $1 -batch -n -x \
-        =(echo "p (int)open(\"/proc/$$/fd/1\", 1)
-p (int)dup2(\$1, 1)
-p (int)dup2(\$1, 2)")
-}
-
 function watchdir () {
     if [[ "$1" != "" ]]; then
         local dir="$1"; shift
@@ -25,19 +16,6 @@ function watchdir () {
     else
         echo "Usage: $0 <dir> [-e event1 -e event2 ...]"
     fi
-}
-
-function git-set-remote () {
-    if [[ "$1" == '-h'  || "$1" == '--help' || "$1" == 'help' ]]; then
-        echo "Usage: $0 branch remote"
-        return
-    fi
-    local branch=$1
-    local remote=$2
-    [[ -z "$branch" ]] &&  branch=master
-    [[ -z "$remote" ]] && remote=origin
-    git config --add branch.$branch.remote $remote
-    git config --add branch.$branch.merge refs/heads/$branch
 }
 
 function mv(){
@@ -93,10 +71,6 @@ function sub() {
     cd $cd
 }
 
-function rdm() {
-    command rdm &>/dev/null &
-}
-
 function sudo() {
 
     if [ "$1" = init ] && [ -n "$SSH_CLIENT" ]; then
@@ -136,4 +110,18 @@ function build_and_run_klee(){
     bc_file=${1%.*}.bc
     llvm-gcc $1 -c -emit-llvm -o ${bc_file}
     klee --max-time=120. -watchdog ${bc_file}
+}
+
+# Open the node api for your current version to the optional section.
+function node-docs {
+    open "http://nodejs.org/docs/$(node --version)/api/all.html#all_$1"
+}
+
+# get the name of the ruby version
+function rvm_prompt_info() {
+  [ -f $HOME/.rvm/bin/rvm-prompt ] || return
+  local rvm_prompt
+  rvm_prompt=$($HOME/.rvm/bin/rvm-prompt ${ZSH_THEME_RVM_PROMPT_OPTIONS} 2>/dev/null)
+  [[ "${rvm_prompt}x" == "x" ]] && return
+  echo "${ZSH_THEME_RVM_PROMPT_PREFIX:=(}${rvm_prompt}${ZSH_THEME_RVM_PROMPT_SUFFIX:=)}"
 }

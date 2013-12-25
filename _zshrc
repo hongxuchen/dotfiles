@@ -15,7 +15,7 @@ ZSH_THEME="nanotech"
 #ZSH_THEME="steeef"
 
 # ~/.oh-my-zsh/plugins/
-plugins=(debian vi-mode command-not-found)
+plugins=(debian vi-mode perl python npm)
 
 source $ZSH/oh-my-zsh.sh
 

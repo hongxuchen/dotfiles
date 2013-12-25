@@ -28,6 +28,7 @@ alias clang-analyze='clang -cc1 -analyzer-checker-help |less'
 alias dl='axel -a -n 8'
 #Google style
 alias indent="command indent -kr -ci2 -cli2 -i2 -l80 -nut"
+alias rdm="command rdm &>/dev/null &"
 
 alias sudo='sudo '
 alias sl='ls' # so there would be no *sl train*
