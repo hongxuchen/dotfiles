@@ -12,7 +12,7 @@
               compilation-scroll-output t
               ediff-split-window-function 'split-window-horizontally
               ediff-window-setup-function 'ediff-setup-windows-plain
-              max-mini-window-height 3
+              max-mini-window-height 1
               indent-tabs-mode nil
               line-spacing 0.2
               set-mark-command-repeat-pop t

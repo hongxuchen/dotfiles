@@ -63,3 +63,13 @@ _ninja() {
   reply=(`(ninja -t targets all 2&>/dev/null) | awk -F: '{print $1}'`)
 }
 compctl -K _ninja ninja
+
+_stp() {
+    reply=(`(stp --help) | awk '/-/ {print $1}'`)
+}
+compctl -K _stp stp
+
+_rc() {
+    reply=(`(rc --help) | awk -F'[/|]+' '/-/ {print $1}'`)
+}
+compctl -K _rc rc

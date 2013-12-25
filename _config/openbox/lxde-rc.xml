@@ -708,6 +708,8 @@ and back in -->
       <fullscreen>yes</fullscreen>
     </application>
     <application name="skype">
+      <fullscreen>no</fullscreen>
+      <maximized>no</maximized>
       <decor>yes</decor>
     </application>
     <application name="chromium-browser">

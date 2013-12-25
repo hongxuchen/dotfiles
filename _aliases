@@ -14,7 +14,8 @@ alias synaptic='sudo synaptic &>/dev/null & disown'
 alias chromium-browser="chromium-browser &>/dev/null & disown"
 alias firefox="firefox &>/dev/null & disown"
 alias pyhttpd='python -m SimpleHTTPServer'
-alias rdp_lab='rdesktop -f -u hongxu -r sound:local -r clipboard:PRIMARYCLIPBOARD -r disk:home=/home/hongxuchen 202.120.40.98:62240  &>/dev/null & disown'
+# alias rdp_lab='rdesktop -f -u hongxu -r sound:local -r clipboard:PRIMARYCLIPBOARD -r disk:home=/home/hongxuchen 202.120.40.98:62240  &>/dev/null & disown'
+alias rdp_lab='rdesktop -g 1024x768 -f -u pub -p 123 -r sound:local -r clipboard:PRIMARYCLIPBOARD -r disk:home=/home/hongxu 192.168.1.108 &>/dev/null & disown'
 alias gdb='gdb -q'
 alias grt='cd $(git rev-parse --show-toplevel)'
 alias la='ls -a'
@@ -24,7 +25,7 @@ alias ll='ls -lh'
 alias whatg++='g++ -E -x c++  /dev/null -dM'
 alias whatgcc='gcc -E -x c  /dev/null -dM'
 alias clang-analyze='clang -cc1 -analyzer-checker-help |less'
-alias dl='axle -n 8'
+alias dl='axel -a -n 8'
 #Google style
 alias indent="command indent -kr -ci2 -cli2 -i2 -l80 -nut"
 
