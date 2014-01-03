@@ -1,16 +1,5 @@
-if [[ -e $( which aptitude 2>&1 ) ]]; then
-    apt_pref='aptitude'
-else
-    apt_pref='apt-get'
-fi
-
-alias as="aptitude -F \"* %p -> %d \n(%v/%V)\" \
-                --no-gui --disable-columns search"      # search package
-alias abd='sudo $apt_pref build-dep'
-alias ads='sudo apt-get dselect-upgrade'
-alias allpkgs='aptitude search -F "%p" --disable-columns ~i'
-# Create a basic .deb package
 alias mydeb='time dpkg-buildpackage -rfakeroot -us -uc'
+alias belong='apt-file search'
 
 apt-copy() {
     print '#!/usr/bin/zsh'"\n" > apt-copy.sh

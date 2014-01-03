@@ -1,0 +1,2 @@
+# -*- mode: conf-unix; -*-
+$clean_ext = 'synctex.gz synctex.gz(busy) run.xml tex.bak nav aux bbl bcf fdb_latexmk run tdo snm xdv %R-blx.bib auto'

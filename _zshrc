@@ -4,23 +4,54 @@
 ZSH=$HOME/.oh-my-zsh
 ALIAS=$HOME/.aliases
 
-# Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
-#"random"
-#ZSH_THEME="bira"
-#ZSH_THEME="candy"
-#ZSH_THEME="dst"
-#ZSH_THEME="imajes"
+# ZSH_THEME="bira"
+# ZSH_THEME="candy"
+# ZSH_THEME="dst"
+# ZSH_THEME="imajes"
 ZSH_THEME="nanotech"
-#ZSH_THEME="steeef"
+# ZSH_THEME="steeef"
 
 # ~/.oh-my-zsh/plugins/
-plugins=(debian vi-mode perl python npm)
+plugins=(debian pip svn vi-mode perl python npm)
 
-source $ZSH/oh-my-zsh.sh
+fpath=($ZSH/functions $ZSH/completions $fpath)
 
-if [[ -e $ALIAS ]];then
+for config_file ($ZSH/lib/*.zsh); do
+  source $config_file
+done
+unset config_file
+
+is_plugin() {
+  local base_dir=$1
+  local name=$2
+  test -f $base_dir/plugins/$name/$name.plugin.zsh \
+    || test -f $base_dir/plugins/$name/_$name
+}
+
+# Add all defined plugins to fpath. This must be done
+# before running compinit.
+for plugin ($plugins); do
+  if is_plugin $ZSH $plugin; then
+    fpath=($ZSH/plugins/$plugin $fpath)
+  fi
+done
+
+# Load and run compinit
+autoload -U compinit
+compinit -i
+
+for plugin ($plugins); do
+  if [ -f $ZSH/plugins/$plugin/$plugin.plugin.zsh ]; then
+    source $ZSH/plugins/$plugin/$plugin.plugin.zsh
+  fi
+done
+
+source "$ZSH/themes/$ZSH_THEME.zsh-theme"
+
+if [ -e $ALIAS ]; then
     source $ALIAS
 fi
 
+# load executable
 ps -C rdm >/dev/null || rdm

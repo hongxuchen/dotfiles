@@ -46,6 +46,7 @@
 (require 'init-org)
 (require 'init-markdown)
 (require 'init-yasnippet)
+(require 'init-tex)
 
 ;;----------------------------------------------------------------------------
 ;; development

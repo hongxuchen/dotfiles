@@ -4,8 +4,8 @@ bindkey -e
 bindkey '\ew' kill-region
 bindkey -s '\el' "ls\n"
 bindkey '^r' history-incremental-search-backward
-bindkey "^[[5~" up-line-or-history
-bindkey "^[[6~" down-line-or-history
+bindkey "^[[5~" up-line-or-history # Ctrl-p
+bindkey "^[[6~" down-line-or-history # Ctrl-n
 
 # make search up and down work, so partially type and hit up/down to find relevant stuff
 bindkey '^[[A' up-line-or-search

@@ -9,7 +9,7 @@ bindkey "^[m" copy-prev-shell-word
 setopt long_list_jobs
 
 ## directories
-setopt auto_name_dirs
+# setopt auto_name_dirs
 setopt auto_pushd
 setopt pushd_ignore_dups
 

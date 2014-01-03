@@ -62,15 +62,6 @@ function emacs() {
     fi
 }
 
-function sub() {
-    local cd="$PWD"
-    while [ $1 ]; do
-        cd="$(echo $cd | sed "s/$1/$2/")"
-        shift; shift
-    done
-    cd $cd
-}
-
 function sudo() {
 
     if [ "$1" = init ] && [ -n "$SSH_CLIENT" ]; then
@@ -106,6 +97,10 @@ function evince(){
     command evince $@ &>/dev/null &
 }
 
+function okular(){
+    command okular $@ &>/dev/null &
+}
+
 function build_and_run_klee(){
     bc_file=${1%.*}.bc
     llvm-gcc $1 -c -emit-llvm -o ${bc_file}
@@ -124,4 +119,16 @@ function rvm_prompt_info() {
   rvm_prompt=$($HOME/.rvm/bin/rvm-prompt ${ZSH_THEME_RVM_PROMPT_OPTIONS} 2>/dev/null)
   [[ "${rvm_prompt}x" == "x" ]] && return
   echo "${ZSH_THEME_RVM_PROMPT_PREFIX:=(}${rvm_prompt}${ZSH_THEME_RVM_PROMPT_SUFFIX:=)}"
+}
+
+pdf-merge() {
+  tomerge="";
+  for file in "$@"; do
+    tomerge=$tomerge" "$file;
+  done
+  pdftk $tomerge cat output mergd.pdf;
+}
+
+function mcd() {
+  mkdir -p "$1" && cd "$1";
 }

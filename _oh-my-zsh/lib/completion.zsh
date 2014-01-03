@@ -2,7 +2,7 @@
 
 unsetopt menu_complete   # do not autoselect the first completion entry
 unsetopt flowcontrol
-setopt auto_menu         # show completion menu on succesive tab press
+setopt auto_menu  # show completion menu on succesive tab press
 setopt complete_in_word
 setopt always_to_end
 
@@ -14,7 +14,6 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 
 zstyle ':completion:*' list-colors ''
 
-# should this be in keybindings?
 bindkey -M menuselect '^o' accept-and-infer-next-history
 
 zstyle ':completion:*:*:*:*:*' menu select
@@ -27,8 +26,6 @@ zstyle ':completion:*:cd:*' tag-order local-directories directory-stack
 zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
 cdpath=(.)
 
-# use /etc/hosts and known_hosts for hostname completion
-[ -r /etc/ssh/ssh_known_hosts ] && _global_ssh_hosts=(${${${${(f)"$(</etc/ssh/ssh_known_hosts)"}:#[\|]*}%%\ *}%%,*}) || _global_ssh_hosts=()
 [ -r ~/.ssh/known_hosts ] && _ssh_hosts=(${${${${(f)"$(<$HOME/.ssh/known_hosts)"}:#[\|]*}%%\ *}%%,*}) || _ssh_hosts=()
 [ -r /etc/hosts ] && : ${(A)_etc_hosts:=${(s: :)${(ps:\t:)${${(f)~~"$(</etc/hosts)"}%%\#*}##[:blank:]#[^[:blank:]]#}}} || _etc_hosts=()
 hosts=(

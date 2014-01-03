@@ -12,6 +12,8 @@
         ("Evince" "evince %o")
         ("Firefox" "firefox %o")))
 
+(setq TeX-engine 'pdflatex)
+
 (setq LaTeX-section-hook
       '(LaTeX-section-heading
         LaTeX-section-title
@@ -21,7 +23,7 @@
 
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
-(setq-default TeX-master "main")
+(setq-default TeX-master t)
 
 (add-hook 'LaTeX-mode-hook
           (lambda ()
