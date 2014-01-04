@@ -28,9 +28,6 @@ local.properties
 # Locally stored "Eclipse launch configurations"
 *.launch
 
-# CDT-specific
-.cproject
-
 # PDT-specific
 .buildpath
 
@@ -48,22 +45,10 @@ tramp
 .org-id-locations
 *_archive
 
-# linux
-*~
-
 ## ------- Mercurial.gitignore
 /.hg/*
 */.hg/*
 .hgignore
-
-## ------- NetBeans.gitignore
-nbproject/private/
-build/
-nbbuild/
-dist/
-nbdist/
-nbactions.xml
-nb-configuration.xml
 
 # Thumbnails
 ._*
@@ -92,14 +77,6 @@ GSYMS
 GPATH
 cscope.*
 
-## ------- VirtualEnv.gitignore
-# http://iamzed.com/2009/05/07/a-primer-on-virtualenv/
-# .Python
-# [Bb]in
-# [Ii]nclude
-# [Ll]ib
-# [Ss]cripts
-
 ## ------- Windows.gitignore
 # Windows image file caches
 Thumbs.db
@@ -121,3 +98,28 @@ Session.vim
 *.o
 
 *.class
+
+# latex, auctex
+*.bak
+*.fls
+*.aux
+*.log
+*.lot
+*.out
+*.toc
+*.blg
+*.bbl
+*.lof
+*.swp
+*.swo
+*.xdv
+*.synctex.gz
+*~
+*.fdb_latexmk
+main.pdf
+auto/
+_*_.tex
+_*_.pdf
+auto/
+_region_.*
+prv_*.fmt

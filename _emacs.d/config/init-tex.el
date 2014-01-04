@@ -5,11 +5,13 @@
             'turn-on-reftex
             'linum-mode))
 
+(setq reftex-plug-into-AUCTeX t)
+
 (setq TeX-view-program-list
       '(("SumatraPDF" "SumatraPDF.exe %o")
         ("Gsview" "gsview32.exe %o")
         ("Okular" "okular --unique %o")
-        ("Evince" "evince %o")
+        ("Evince" "evince --page-index=%(outpage) %o")
         ("Firefox" "firefox %o")))
 
 (setq TeX-engine 'pdflatex)
@@ -20,18 +22,25 @@
         LaTeX-section-toc
         LaTeX-section-section
         LaTeX-section-label))
+(define-key minibuffer-local-map [escape] 'keyboard-quit)
+
+(define-key LaTeX-mode-map (kbd "C-c C-p") 'preview-buffer)
+(define-key LaTeX-mode-map (kbd "C-c p") 'preview-clearout-buffer)
+
+(setq TeX-byte-compile t)
+(setq TeX-math-close-double-dollar t)
+(setq TeX-fold-type-list '(env macro math comment))
 
 (setq TeX-auto-save t)
 (setq TeX-parse-self t)
-(setq-default TeX-master t)
+(setq-default TeX-master nil)
 
 (add-hook 'LaTeX-mode-hook
           (lambda ()
             (setq TeX-auto-untabify t     ; remove all tabs before saving
-                  TeX-engine 'xetex       ; use xelatex default
+                  TeX-engine 'default    ; use pdflatex default
                   TeX-show-compilation t) ; display compilation windows
             (TeX-global-PDF-mode t)       ; PDF mode enable, not plain
-            (setq TeX-save-query nil)
             (tex-fold-mode 1)
             (imenu-add-menubar-index)
             (define-key LaTeX-mode-map (kbd "TAB") 'TeX-complete-symbol)))
@@ -49,7 +58,17 @@
 (global-auto-complete-mode t)
 
 (setq ac-math-unicode-in-math-p t)
+(setq TeX-debug-bad-boxes t
+      TeX-debug-warnings t)
 
-(require 'preview)
+(setq TeX-source-correlate-mode t
+      TeX-source-correlate-start-server t)
+
+;; (require 'preview)
+(setq preview-auto-cache-preamble t)
+
+(setq TeX-fold-unfold-around-mark nil)
+(setq TeX-fold-auto t)
+(setq TeX-save-query nil)
 
 (provide 'init-tex)
