@@ -7,14 +7,19 @@
 
 (setq reftex-plug-into-AUCTeX t)
 
+(setq TeX-view-program-selection
+      '((output-pdf "Evince")))
+
+(setq LaTeX-command "latex -synctex=1")
+
 (setq TeX-view-program-list
       '(("SumatraPDF" "SumatraPDF.exe %o")
         ("Gsview" "gsview32.exe %o")
-        ("Okular" "okular --unique %o")
         ("Evince" "evince --page-index=%(outpage) %o")
+        ("Okular" "okular --unique %o#src:%n%b")
         ("Firefox" "firefox %o")))
 
-(setq TeX-engine 'pdflatex)
+(setq-default TeX-engine 'pdflatex)
 
 (setq LaTeX-section-hook
       '(LaTeX-section-heading
@@ -24,8 +29,6 @@
         LaTeX-section-label))
 (define-key minibuffer-local-map [escape] 'keyboard-quit)
 
-(define-key LaTeX-mode-map (kbd "C-c C-p") 'preview-buffer)
-(define-key LaTeX-mode-map (kbd "C-c p") 'preview-clearout-buffer)
 
 (setq TeX-byte-compile t)
 (setq TeX-math-close-double-dollar t)
@@ -42,6 +45,8 @@
                   TeX-show-compilation t) ; display compilation windows
             (TeX-global-PDF-mode t)       ; PDF mode enable, not plain
             (tex-fold-mode 1)
+            (define-key LaTeX-mode-map (kbd "C-c C-p") 'preview-buffer)
+            (define-key LaTeX-mode-map (kbd "C-c p") 'preview-clearout-buffer)
             (imenu-add-menubar-index)
             (define-key LaTeX-mode-map (kbd "TAB") 'TeX-complete-symbol)))
 
@@ -59,7 +64,7 @@
 
 (setq ac-math-unicode-in-math-p t)
 (setq TeX-debug-bad-boxes t
-      TeX-debug-warnings t)
+      TeX-debug-warnings nil)
 
 (setq TeX-source-correlate-mode t
       TeX-source-correlate-start-server t)

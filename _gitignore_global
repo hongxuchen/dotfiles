@@ -80,6 +80,7 @@ cscope.*
 ## ------- Windows.gitignore
 # Windows image file caches
 Thumbs.db
+Thumbs.db:encryptable
 ehthumbs.db
 Desktop.ini
 $RECYCLE.BIN/
