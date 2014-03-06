@@ -116,6 +116,7 @@ __pycache__
 *.swo
 *.xdv
 *.synctex.gz
+missfont.log
 *~
 *.fdb_latexmk
 main.pdf
