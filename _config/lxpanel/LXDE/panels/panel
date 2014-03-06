@@ -46,6 +46,15 @@ Plugin {
 }
 
 Plugin {
+    type = launchbar
+    Config {
+        Button {
+            id=/usr/share/applications/chromium-browser.desktop
+        }
+    }
+}
+
+Plugin {
     type = taskbar
     expand=1
     Config {

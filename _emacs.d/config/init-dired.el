@@ -16,7 +16,7 @@
 (require 'dired-x)
 (setq-default dired-omit-files-p t)
 (setq dired-omit-verbose nil)
-(setq dired-omit-files "^\\.$\\|^\\.\\.$\\|^GTAGS$\\|^Thumbs.db$\\|^Thumbs.db:encryptable$\\|^GSYMS$\\|^GRTAGS$\\|^GPATH$\\|\\.bc$|\\.o$\\|\\.out$\\|\\.aux$\\|\\.log$\\|\\.fdb_latexmk$\\|\\.fls$")
+(setq dired-omit-files "^\\.$\\|^\\.\\.$\\|^GTAGS$\\|^Thumbs.db$\\|^Thumbs.db:encryptable$\\|^GSYMS$\\|^GRTAGS$\\|^GPATH$\\|\\.bc$|\\.o$\\|\\.out$\\|\\.aux$\\|\\.log$\\|\\.fdb_latexmk$\\|\\.synctex.gz$\\|\\.fls$")
 
 (require 'openwith)
 (openwith-mode t)

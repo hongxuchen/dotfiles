@@ -9,7 +9,7 @@
 (evil-define-key 'normal python-mode-map "\C-]" 'elpy-rgrep-symbol)
 (setq elpy-default-minor-modes '(eldoc-mode flymake-mode yas-minor-mode auto-complete-mode))
 ;; (setq elpy-default-minor-modes '(eldoc-mode flymake-mode auto-complete-mode))
-(eval-after-load 'python '(elpy-enable))
+;; (eval-after-load 'python '(elpy-enable))
 (setq python-shell-interpreter "python3")
 (setq elpy-rpc-python-command "python3")
 (setq elpy-rpc-backend "jedi")

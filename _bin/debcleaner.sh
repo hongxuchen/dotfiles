@@ -70,7 +70,7 @@ then
     return
 fi
 
-if [ $? != 0 ]; then printf "getopt error"; fi
+if [ $# != 0 ]; then printf "getopt error"; fi
 eval set -- "$OPTIONS"
 printf "${RED}--------------------------------------------------\n$ENDCOLOR"
 while true

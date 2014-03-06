@@ -44,7 +44,7 @@
                   TeX-engine 'default    ; use pdflatex default
                   TeX-show-compilation t) ; display compilation windows
             (TeX-global-PDF-mode t)       ; PDF mode enable, not plain
-            (tex-fold-mode 1)
+            ;; (tex-fold-mode -1)
             (define-key LaTeX-mode-map (kbd "C-c C-p") 'preview-buffer)
             (define-key LaTeX-mode-map (kbd "C-c p") 'preview-clearout-buffer)
             (imenu-add-menubar-index)
