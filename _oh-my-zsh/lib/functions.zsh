@@ -135,7 +135,7 @@ function mcd() {
 
 function git-dl(){
     git_url=$1
-    folder=${git_url##*/}
+    folder=${${git_url##*/}%%.*}
     git clone --depth 1 $1 $folder
     rm -rf $folder/.git
 }

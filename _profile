@@ -1,6 +1,5 @@
 # -*- mode:sh -*-
 # vim:ft=sh
-
 #for emacsclient
 export ALTERNATE_EDITOR=""
 

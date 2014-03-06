@@ -27,7 +27,7 @@ export LLVM_COMPILER=llvm-gcc   # for wllvm
 export WLLVM_OUTPUT=DEBUG
 # export C_INCLUDE_PATH
 # export CPLUS_INCLUDE_PATH
-export LD_LIBRARY_PATH=/usr/lib/llvm-3.4/lib
+export LD_LIBRARY_PATH=/usr/lib/llvm-3.4/lib:/usr/local/lib
 # export PYTHONPATH
 # export GTAGSLIBPATH
 
