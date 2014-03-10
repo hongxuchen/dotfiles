@@ -11,8 +11,8 @@
 
 ;; llvm related
 (add-to-list 'load-path (expand-file-name "~/moonbox/dryrun/utils/emacs"))
-(require 'llvmize)
-(require 'dryrun)
+;; (require 'llvmize)
+;; (require 'dryrun)
 (setq auto-mode-alist (append '(("\\.pc$" . klee-pc-mode)) auto-mode-alist))
 (autoload 'klee-pc-mode "klee-pc-mode" "klee pc mode" t)
 (setq auto-mode-alist (append '(("\\.ll$" . llvm-mode)) auto-mode-alist))

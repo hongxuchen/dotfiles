@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<application>
+  <component name="StatisticsApplicationUsages">
+    <group name="file-type">
+      <project id="py_scripts" values="ReST,XML,Images,PLAIN_TEXT,HTML,Python,UNKNOWN,C++" />
+    </group>
+    <group name="py-interpreter">
+      <project id="py_scripts" values="Python 2.7.5+" />
+    </group>
+    <group name="vcs">
+      <project id="py_scripts" values="Git" />
+    </group>
+    <group name="run-configuration-type-temp">
+      <project id="py_scripts" values="PythonConfigurationType" />
+    </group>
+    <group name="module type">
+      <project id="py_scripts" values="PYTHON_MODULE" />
+    </group>
+  </component>
+  <component name="UsageTrigger">
+    <counts>
+      <entry feature="execute.PythonConfigurationType.Run" count="8" />
+    </counts>
+  </component>
+</application>
+

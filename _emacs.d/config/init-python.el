@@ -2,7 +2,8 @@
 
 (setq auto-mode-alist
       (append '(("SConstruct\\'" . python-mode)
-                ("SConscript\\'" . python-mode))
+                ("SConscript\\'" . python-mode)
+                ("\\.pyw\\'" . python-mode))
               auto-mode-alist))
 
 (evil-define-key 'normal python-mode-map "gd" 'elpy-goto-definition)

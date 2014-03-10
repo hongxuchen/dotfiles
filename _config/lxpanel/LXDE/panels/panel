@@ -51,6 +51,9 @@ Plugin {
         Button {
             id=/usr/share/applications/chromium-browser.desktop
         }
+        Button {
+            id=/home/hongxu/.local/share/applications/jetbrains-pycharm.desktop
+        }
     }
 }
 
