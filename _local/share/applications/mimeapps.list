@@ -44,9 +44,10 @@ video/mp4=gnome-mplayer.desktop;
 text/x-csrc=emacs24.desktop;
 video/x-msvideo=gnome-mplayer.desktop;
 text/x-makefile=emacs24.desktop;
+x-scheme-handler/http=chromium-browser.desktop;
 
 [Default Applications]
-x-scheme-handler/http=firefox.desktop
+x-scheme-handler/http=chromium-browser.desktop
 application/pdf=evince.desktop
 image/png=gpicview.desktop
 image/gif=gpicview.desktop

@@ -2,6 +2,7 @@
 <application>
   <component name="CodeInsightSettings">
     <option name="REFORMAT_ON_PASTE" value="1" />
+    <option name="HIGHLIGHT_SCOPE" value="true" />
   </component>
   <component name="DaemonCodeAnalyzerSettings" profile="Default">
     <option name="NEXT_ERROR_ACTION_GOES_TO_ERRORS_FIRST" value="true" />

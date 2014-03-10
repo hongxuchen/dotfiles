@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application>
   <component name="DimensionService">
+    <location key="#Editor.0.0.1600.900" x="397" y="86" />
+    <location key="RollbackChangesDialog.0.0.1600.900" x="582" y="190" />
     <location key="#Browse_Repositories.0.0.1600.900" x="-2" y="25" />
     <location key="#Inspections.0.0.1600.900" x="430" y="139" />
     <location key="ProcessPopupWindow.0.0.1600.900" x="1097" y="682" />
@@ -11,8 +13,10 @@
     <location key="OptionsEditor.0.0.1600.900" x="0" y="23" />
     <location key="#Browse_JetBrains_Plugins_.0.0.1600.900" x="0" y="23" />
     <location key="CommitChangelistDialog2.0.0.1600.900" x="449" y="0" />
-    <location key="WELCOME_SCREEN.0.0.1600.900" x="796" y="226" />
+    <location key="WELCOME_SCREEN.0.0.1600.900" x="796" y="301" />
     <location key="FileChooserDialogImpl.0.0.1600.900" x="579" y="126" />
+    <size key="#Editor.0.0.1600.900" width="800" height="750" />
+    <size key="RollbackChangesDialog.0.0.1600.900" width="430" height="542" />
     <size key="#Browse_Repositories.0.0.1600.900" width="1604" height="877" />
     <size key="javadoc.popup.0.0.1600.900" width="602" height="420" />
     <size key="#Inspections.0.0.1600.900" width="728" height="638" />
@@ -43,12 +47,12 @@
     <property name="PyCharm.InitialConfiguration.V5" value="true" />
     <property name="PyCharm.initialConfigurationShown" value="true" />
     <property name="installation.uid" value="bd837286-ca48-403e-9af4-ec01c91877ce" />
-    <property name="file.chooser.recent.files" value="$USER_HOME$/data_backup/py_scripts" />
+    <property name="file.chooser.recent.files" value="/usr/bin/chromium-browser&#10;/home/hongxu/data_backup/py_scripts" />
     <property name="toolwindow.stripes.buttons.info.shown" value="true" />
     <property name="file.colors.enable.non.project" value="Yellow" />
     <property name="Non-Project Files" value="Yellow" />
     <property name="CommitChangeListDialog.SPLITTER_PROPORTION_2" value="0.5" />
-    <property name="CommitChangeListDialog.DETAILS_SPLITTER_PROPORTION_2" value="0.59617835" />
+    <property name="CommitChangeListDialog.DETAILS_SPLITTER_PROPORTION_2" value="0.5745223" />
     <property name="CommitChangeListDialog.DETAILS_SHOW_OPTION_" value="true" />
     <property name="FindSplitterProportion" value="0.25" />
     <property name="LayoutCode.optimizeImports" value="false" />
@@ -56,10 +60,11 @@
     <property name="SingleInspectionProfilePanel.VERTICAL_DIVIDER_PROPORTION" value="0.5" />
     <property name="SingleInspectionProfilePanel.HORIZONTAL_DIVIDER_PROPORTION" value="0.5" />
     <property name="PACKAGE_FILTER" value="" />
-    <property name="KEYMAP" value="emacs&#10;open&#10;font&#10;tab" />
+    <property name="KEYMAP" value="acs&#10;emacs&#10;open&#10;font&#10;tab" />
     <property name="Copy.OpenInEditor" value="true" />
     <property name="power.save.mode" value="true" />
     <property name="ChangesViewManager.DETAILS_SPLITTER_PROPORTION" value="0.5" />
+    <property name="ExpandEnvironmentPanel" value="true" />
   </component>
 </application>
 

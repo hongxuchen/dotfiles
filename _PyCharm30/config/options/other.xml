@@ -25,16 +25,25 @@
     <option name="FILE_MASK" />
     <option name="RECENT_FIND_STRINGS">
       <value>
-        <list size="9">
+        <list size="18">
           <item index="0" class="java.lang.String" itemvalue="beautifulsoup" />
-          <item index="1" class="java.lang.String" itemvalue="p class=&quot;abstract&quot;" />
-          <item index="2" class="java.lang.String" itemvalue="table cellpadding=&quot;5&quot;" />
-          <item index="3" class="java.lang.String" itemvalue="show" />
-          <item index="4" class="java.lang.String" itemvalue="choose the" />
-          <item index="5" class="java.lang.String" itemvalue="downloa" />
-          <item index="6" class="java.lang.String" itemvalue="-3" />
-          <item index="7" class="java.lang.String" itemvalue="print" />
-          <item index="8" class="java.lang.String" itemvalue="is_first_song" />
+          <item index="1" class="java.lang.String" itemvalue="table cellpadding=&quot;5&quot;" />
+          <item index="2" class="java.lang.String" itemvalue="show" />
+          <item index="3" class="java.lang.String" itemvalue="choose the" />
+          <item index="4" class="java.lang.String" itemvalue="downloa" />
+          <item index="5" class="java.lang.String" itemvalue="-3" />
+          <item index="6" class="java.lang.String" itemvalue="print" />
+          <item index="7" class="java.lang.String" itemvalue="is_first_song" />
+          <item index="8" class="java.lang.String" itemvalue="p class=&quot;abstract&quot;" />
+          <item index="9" class="java.lang.String" itemvalue="&lt;p class=&quot;abstract&quot;" />
+          <item index="10" class="java.lang.String" itemvalue="cellpadding" />
+          <item index="11" class="java.lang.String" itemvalue="cellpadding=&quot;5&quot;" />
+          <item index="12" class="java.lang.String" itemvalue="termed" />
+          <item index="13" class="java.lang.String" itemvalue="termcolor" />
+          <item index="14" class="java.lang.String" itemvalue="colored" />
+          <item index="15" class="java.lang.String" itemvalue="class=&quot;abstract&quot;" />
+          <item index="16" class="java.lang.String" itemvalue="bt" />
+          <item index="17" class="java.lang.String" itemvalue="citation" />
         </list>
       </value>
     </option>
@@ -45,7 +54,9 @@
     </option>
     <option name="RECENT_DIR_STRINGS">
       <value>
-        <list size="0" />
+        <list size="1">
+          <item index="0" class="java.lang.String" itemvalue="$USER_HOME$/data_backup/py_scripts/acm_dl" />
+        </list>
       </value>
     </option>
     <option name="RECENT_FILE_MASKS">

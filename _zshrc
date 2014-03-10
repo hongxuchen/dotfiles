@@ -13,9 +13,9 @@ ZSH_THEME="nanotech"
 # ZSH_THEME="steeef"
 
 # ~/.oh-my-zsh/plugins/
-plugins=(debian pip svn vi-mode perl python npm)
+plugins=(pip debian svn vi-mode perl python npm)
 
-fpath=($ZSH/functions $ZSH/completions $fpath)
+# fpath=($ZSH/functions $ZSH/completions $fpath)
 
 for config_file ($ZSH/lib/*.zsh); do
   source $config_file

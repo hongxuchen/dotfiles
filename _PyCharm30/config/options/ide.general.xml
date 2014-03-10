@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application>
   <component name="GeneralSettings">
-    <option name="browserPath" value="" />
-    <option name="lastTip" value="7" />
+    <option name="browserPath" value="/usr/bin/chromium-browser" />
+    <option name="lastTip" value="13" />
     <option name="showTipsOnStartup" value="true" />
     <option name="showOccupiedMemory" value="false" />
     <option name="reopenLastProject" value="true" />
@@ -11,7 +11,7 @@
     <option name="autoSaveIfInactive" value="false" />
     <option name="inactiveTimeout" value="15" />
     <option name="useSafeWrite" value="true" />
-    <option name="useDefaultBrowser" value="true" />
+    <option name="useDefaultBrowser" value="false" />
     <option name="confirmExtractFiles" value="true" />
     <option name="searchInBackground" value="false" />
     <option name="confirmExit" value="false" />

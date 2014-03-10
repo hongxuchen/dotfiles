@@ -2,10 +2,10 @@
 <application>
   <component name="StatisticsApplicationUsages">
     <group name="file-type">
-      <project id="py_scripts" values="ReST,XML,Images,PLAIN_TEXT,HTML,Python,UNKNOWN,C++" />
+      <project id="py_scripts" values="ReST,UNKNOWN,HTML,Images,XML,C++,Python,PLAIN_TEXT" />
     </group>
     <group name="py-interpreter">
-      <project id="py_scripts" values="Python 2.7.5+" />
+      <project id="py_scripts" values="Python 3.3.2+" />
     </group>
     <group name="vcs">
       <project id="py_scripts" values="Git" />

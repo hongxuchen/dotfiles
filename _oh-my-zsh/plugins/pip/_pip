@@ -1,9 +1,4 @@
-# -*- mode: shell-script; -*-
-
 #compdef pip
-#autoload
-
-# pip zsh completion, based on homebrew completion
 
 _pip_all() {
   # we cache the list of packages (originally from the macports plugin)
