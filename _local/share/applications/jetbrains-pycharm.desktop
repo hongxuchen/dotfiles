@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=PyCharm Community Edition
+Icon=/home/hongxu/Downloads/pycharm-community-3.1.1/bin/pycharm.png
+Exec="/home/hongxu/Downloads/pycharm-community-3.1.1/bin/pycharm.sh" %f
+Comment=Develop with pleasure!
+Categories=Development;IDE;
+Terminal=false
+StartupWMClass=jetbrains-pycharm
