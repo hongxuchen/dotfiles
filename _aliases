@@ -14,7 +14,6 @@ alias synaptic='sudo synaptic &>/dev/null & disown'
 alias chromium-browser="chromium-browser &>/dev/null & disown"
 alias firefox="firefox &>/dev/null & disown"
 alias pyhttpd='python -m SimpleHTTPServer'
-alias eclipse='/home/hongxu/data_backup/eclipse/eclipse &>/dev/null & disown'
 # alias rdp_lab='rdesktop -f -u hongxu -r sound:local -r clipboard:PRIMARYCLIPBOARD -r disk:home=/home/hongxuchen 202.120.40.98:62240  &>/dev/null & disown'
 alias rdp_lab='rdesktop -g 1024x768 -f -u pub -p 123 -r sound:local -r clipboard:PRIMARYCLIPBOARD -r disk:home=/home/hongxu 192.168.1.108 &>/dev/null & disown'
 alias gdb='gdb -q'

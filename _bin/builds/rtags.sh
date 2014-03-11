@@ -24,7 +24,7 @@ fi
 rm $ELISP
 git checkout master
 
-# INSTALL_DIR=$HOME/data_backup/llvm/install
+# INSTALL_DIR=$HOME//llvm/install
 # PATH=${INSTALL_DIR}/bin:$PATH
 rm -rf $BUILD && mkdir -p $BUILD && cd $BUILD
 # cmake -GNinja -DCLANG_ROOT=${INSTALL_DIR}  $SRC  && ninja
