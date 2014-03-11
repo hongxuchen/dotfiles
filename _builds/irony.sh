@@ -1,9 +1,9 @@
 #!/bin/bash
 
-BASEDIR="`dirname $0`"
+BASEDIR="`dirname $0`"/repos
 cd $BASEDIR
 
-SRC=$(pwd)/irony-mode
+SRC=$PWD/irony-mode
 BUILD=$SRC/build
 
 if ! [ -d $BUILD ]; then

@@ -2,7 +2,7 @@
 
 # We'd better use a deb package of libclang/llvm; clang isn't necessary
 
-BASEDIR="`dirname $0`"
+BASEDIR="`dirname $0`"/repos
 cd $BASEDIR
 SRC=$(pwd)/rtags
 BUILD=$SRC/build

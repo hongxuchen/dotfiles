@@ -29,7 +29,7 @@
     <feature id="navigation.goto.declaration" count="32" last-shown="0" last-used="1394467714340" shown-count="0" />
     <feature id="editing.completion.cancelByControlArrows" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="editing.completion.basic" count="73" last-shown="0" last-used="1394469113665" shown-count="0" />
-    <feature id="codeassists.quickdefinition" count="16" last-shown="0" last-used="1394467695810" shown-count="0" />
+    <feature id="codeassists.quickdefinition" count="20" last-shown="0" last-used="1394557057932" shown-count="0" />
     <feature id="ui.scheme.quickswitch" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="find.recent.search" count="0" last-shown="0" last-used="0" shown-count="0" />
     <feature id="navigation.recent.files" count="0" last-shown="0" last-used="0" shown-count="0" />

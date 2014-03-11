@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application>
   <component name="DimensionService">
-    <location key="WELCOME_SCREEN.0.0.1366.768" x="679" y="301" />
+    <location key="FileChooserDialogImpl.0.0.1366.768" x="462" y="83" />
+    <location key="WELCOME_SCREEN.0.0.1366.768" x="679" y="226" />
     <location key="FileChooserDialogImpl.0.0.1600.900" x="579" y="126" />
     <location key="WELCOME_SCREEN.0.0.1600.900" x="796" y="301" />
     <location key="CommitChangelistDialog2.0.0.1600.900" x="449" y="0" />
@@ -16,6 +17,8 @@
     <location key="#Browse_Repositories.0.0.1600.900" x="-2" y="25" />
     <location key="RollbackChangesDialog.0.0.1600.900" x="582" y="190" />
     <location key="#Editor.0.0.1600.900" x="397" y="86" />
+    <size key="javadoc.popup.0.0.1366.768" width="602" height="420" />
+    <size key="FileChooserDialogImpl.0.0.1366.768" width="428" height="488" />
     <size key="FileChooserDialogImpl.0.0.1600.900" width="428" height="490" />
     <size key="CommitChangelistDialog2.0.0.1600.900" width="695" height="900" />
     <size key="#Browse_JetBrains_Plugins_.0.0.1600.900" width="1600" height="877" />
@@ -48,7 +51,7 @@
     <property name="PyCharm.InitialConfiguration.V5" value="true" />
     <property name="PyCharm.initialConfigurationShown" value="true" />
     <property name="installation.uid" value="bd837286-ca48-403e-9af4-ec01c91877ce" />
-    <property name="file.chooser.recent.files" value="/usr/bin/chromium-browser&#10;/home/hongxu/data_backup/py_scripts" />
+    <property name="file.chooser.recent.files" value="$USER_HOME$/repos/py_scripts&#10;/usr/bin/chromium-browser&#10;/home/hongxu/data_backup/py_scripts" />
     <property name="toolwindow.stripes.buttons.info.shown" value="true" />
     <property name="file.colors.enable.non.project" value="Yellow" />
     <property name="Non-Project Files" value="Yellow" />

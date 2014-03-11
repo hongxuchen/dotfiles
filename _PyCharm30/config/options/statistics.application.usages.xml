@@ -11,7 +11,7 @@
       <project id="py_scripts" values="PythonConfigurationType" />
     </group>
     <group name="file-type">
-      <project id="py_scripts" values="HTML,ReST,Images,XML,C++,Native,PLAIN_TEXT,UNKNOWN,Python" />
+      <project id="py_scripts" values="ReST,Images,PLAIN_TEXT,UNKNOWN,HTML,Python,XML,Native,C++" />
     </group>
     <group name="py-interpreter">
       <project id="py_scripts" values="Python 3.3.2+" />

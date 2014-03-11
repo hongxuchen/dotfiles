@@ -33,6 +33,8 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
 
-export COMMAND_NOT_FOUND_INSTALL_PROMPT=1
+export COMMAND_NOT_FOUND_INSTALL_PROMPT=3
+
+~/.bin/toggle-touchpad.sh 1
 
 # [ `hostname` != 'HongxuChen' ] || ps -C fetchmail >/dev/null || fetchmail -d 300

@@ -7,7 +7,7 @@ alias rsync-synchronize="rsync -avu --delete --progress -h"
 alias rsync-cpv="rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --"
 alias release-memory='sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"'
 alias dstat='dstat -cdlmnpsy'
-alias goagent="~/data_backup/goagent/local/goagent-gtk.py &>/dev/null &disown"
+alias goagent="~/tools/goagent/local/goagent-gtk.py &>/dev/null &disown"
 alias telnet="luit -encoding gb18030 telnet"
 alias v6='sudo isatapd -d isatap.sjtu.edu.cn'
 alias synaptic='sudo synaptic &>/dev/null & disown'
