@@ -105,11 +105,6 @@
         <option value="$USER_HOME$/data_backup/py_scripts" />
       </list>
     </option>
-    <option name="names">
-      <map>
-        <entry key="$USER_HOME$/data_backup/py_scripts" value="" />
-      </map>
-    </option>
     <option name="lastPath" value="$USER_HOME$/data_backup/py_scripts" />
   </component>
   <component name="Registry">
@@ -156,7 +151,7 @@
       </value>
     </option>
     <option name="CHECK_NEEDED" value="true" />
-    <option name="LAST_TIME_CHECKED" value="1394435577521" />
+    <option name="LAST_TIME_CHECKED" value="1394523775210" />
     <option name="LAST_BUILD_CHECKED" value="PC-133.881" />
     <option name="UPDATE_CHANNEL_TYPE" value="release" />
   </component>

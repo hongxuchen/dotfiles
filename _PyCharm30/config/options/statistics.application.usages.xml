@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application>
   <component name="StatisticsApplicationUsages">
-    <group name="file-type">
-      <project id="py_scripts" values="ReST,UNKNOWN,HTML,Images,XML,C++,Python,PLAIN_TEXT" />
-    </group>
-    <group name="py-interpreter">
-      <project id="py_scripts" values="Python 3.3.2+" />
+    <group name="module type">
+      <project id="py_scripts" values="PYTHON_MODULE" />
     </group>
     <group name="vcs">
       <project id="py_scripts" values="Git" />
@@ -13,8 +10,11 @@
     <group name="run-configuration-type-temp">
       <project id="py_scripts" values="PythonConfigurationType" />
     </group>
-    <group name="module type">
-      <project id="py_scripts" values="PYTHON_MODULE" />
+    <group name="file-type">
+      <project id="py_scripts" values="HTML,ReST,Images,XML,C++,Native,PLAIN_TEXT,UNKNOWN,Python" />
+    </group>
+    <group name="py-interpreter">
+      <project id="py_scripts" values="Python 3.3.2+" />
     </group>
   </component>
   <component name="UsageTrigger">

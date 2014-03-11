@@ -1,7 +1,7 @@
 # -*- mode: sh -*-
 # vim: ft=sh
-alias rsync-copy="rsync -av --progress -h"
-alias rsync-move="rsync -av --progress -h --remove-source-files"
+alias rsync-copy="rsync -a --progress -h"
+alias rsync-move="rsync -a --progress -h --remove-source-files"
 alias rsync-update="rsync -avu --progress -h"
 alias rsync-synchronize="rsync -avu --delete --progress -h"
 alias rsync-cpv="rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --"

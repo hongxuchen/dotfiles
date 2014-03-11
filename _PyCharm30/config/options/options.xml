@@ -1,38 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application>
   <component name="DimensionService">
-    <location key="#Editor.0.0.1600.900" x="397" y="86" />
-    <location key="RollbackChangesDialog.0.0.1600.900" x="582" y="190" />
-    <location key="#Browse_Repositories.0.0.1600.900" x="-2" y="25" />
-    <location key="#Inspections.0.0.1600.900" x="430" y="139" />
-    <location key="ProcessPopupWindow.0.0.1600.900" x="1097" y="682" />
-    <location key="Github.CreateGistDialog.0.0.1600.900" x="619" y="351" />
-    <location key="com.intellij.ide.passwordSafe.impl.providers.masterKey.MasterPasswordDialog.0.0.1600.900" x="488" y="394" />
-    <location key="findTextDialog.0.0.1600.900" x="588" y="201" />
-    <location key="com.intellij.ide.passwordSafe.impl.providers.masterKey.ResetPasswordDialog.0.0.1600.900" x="588" y="396" />
-    <location key="OptionsEditor.0.0.1600.900" x="0" y="23" />
-    <location key="#Browse_JetBrains_Plugins_.0.0.1600.900" x="0" y="23" />
-    <location key="CommitChangelistDialog2.0.0.1600.900" x="449" y="0" />
-    <location key="WELCOME_SCREEN.0.0.1600.900" x="796" y="301" />
+    <location key="WELCOME_SCREEN.0.0.1366.768" x="679" y="301" />
     <location key="FileChooserDialogImpl.0.0.1600.900" x="579" y="126" />
-    <size key="#Editor.0.0.1600.900" width="800" height="750" />
-    <size key="RollbackChangesDialog.0.0.1600.900" width="430" height="542" />
-    <size key="#Browse_Repositories.0.0.1600.900" width="1604" height="877" />
-    <size key="javadoc.popup.0.0.1600.900" width="602" height="420" />
-    <size key="#Inspections.0.0.1600.900" width="728" height="638" />
-    <size key="ProcessPopupWindow.0.0.1600.900" width="497" height="174" />
-    <size key="GridCell.Tab.0.bottom.0.0.1600.900" width="1573" height="235" />
-    <size key="GridCell.Tab.0.right.0.0.1600.900" width="1573" height="235" />
-    <size key="GridCell.Tab.0.center.0.0.1600.900" width="1573" height="235" />
-    <size key="GridCell.Tab.0.left.0.0.1600.900" width="1573" height="235" />
-    <size key="Github.CreateGistDialog.0.0.1600.900" width="349" height="215" />
-    <size key="com.intellij.ide.passwordSafe.impl.providers.masterKey.MasterPasswordDialog.0.0.1600.900" width="611" height="129" />
-    <size key="findTextDialog.0.0.1600.900" width="412" height="514" />
-    <size key="com.intellij.ide.passwordSafe.impl.providers.masterKey.ResetPasswordDialog.0.0.1600.900" width="433" height="171" />
-    <size key="OptionsEditor.0.0.1600.900" width="1600" height="877" />
-    <size key="#Browse_JetBrains_Plugins_.0.0.1600.900" width="1600" height="877" />
-    <size key="CommitChangelistDialog2.0.0.1600.900" width="695" height="900" />
+    <location key="WELCOME_SCREEN.0.0.1600.900" x="796" y="301" />
+    <location key="CommitChangelistDialog2.0.0.1600.900" x="449" y="0" />
+    <location key="#Browse_JetBrains_Plugins_.0.0.1600.900" x="0" y="23" />
+    <location key="OptionsEditor.0.0.1600.900" x="0" y="23" />
+    <location key="com.intellij.ide.passwordSafe.impl.providers.masterKey.ResetPasswordDialog.0.0.1600.900" x="588" y="396" />
+    <location key="findTextDialog.0.0.1600.900" x="588" y="201" />
+    <location key="com.intellij.ide.passwordSafe.impl.providers.masterKey.MasterPasswordDialog.0.0.1600.900" x="488" y="394" />
+    <location key="Github.CreateGistDialog.0.0.1600.900" x="619" y="351" />
+    <location key="ProcessPopupWindow.0.0.1600.900" x="1097" y="682" />
+    <location key="#Inspections.0.0.1600.900" x="430" y="139" />
+    <location key="#Browse_Repositories.0.0.1600.900" x="-2" y="25" />
+    <location key="RollbackChangesDialog.0.0.1600.900" x="582" y="190" />
+    <location key="#Editor.0.0.1600.900" x="397" y="86" />
     <size key="FileChooserDialogImpl.0.0.1600.900" width="428" height="490" />
+    <size key="CommitChangelistDialog2.0.0.1600.900" width="695" height="900" />
+    <size key="#Browse_JetBrains_Plugins_.0.0.1600.900" width="1600" height="877" />
+    <size key="OptionsEditor.0.0.1600.900" width="1600" height="877" />
+    <size key="com.intellij.ide.passwordSafe.impl.providers.masterKey.ResetPasswordDialog.0.0.1600.900" width="433" height="171" />
+    <size key="findTextDialog.0.0.1600.900" width="412" height="514" />
+    <size key="com.intellij.ide.passwordSafe.impl.providers.masterKey.MasterPasswordDialog.0.0.1600.900" width="611" height="129" />
+    <size key="Github.CreateGistDialog.0.0.1600.900" width="349" height="215" />
+    <size key="GridCell.Tab.0.left.0.0.1600.900" width="1573" height="235" />
+    <size key="GridCell.Tab.0.center.0.0.1600.900" width="1573" height="235" />
+    <size key="GridCell.Tab.0.right.0.0.1600.900" width="1573" height="235" />
+    <size key="GridCell.Tab.0.bottom.0.0.1600.900" width="1573" height="235" />
+    <size key="ProcessPopupWindow.0.0.1600.900" width="497" height="174" />
+    <size key="#Inspections.0.0.1600.900" width="728" height="638" />
+    <size key="javadoc.popup.0.0.1600.900" width="602" height="420" />
+    <size key="#Browse_Repositories.0.0.1600.900" width="1604" height="877" />
+    <size key="RollbackChangesDialog.0.0.1600.900" width="430" height="542" />
+    <size key="#Editor.0.0.1600.900" width="800" height="750" />
   </component>
   <component name="LafManager">
     <laf class-name="idea.dark.laf.classname" />

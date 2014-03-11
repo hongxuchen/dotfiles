@@ -45,7 +45,10 @@
   :group 'processes)
 
 (defcustom openwith-associations
-  '(("\\.pdf\\'" "xdg-open" (file))
+  '(("\\.pdf\\'" "evince" (file))
+    ("\\.docx\\'" "libreoffice" (file))
+    ("\\.pptx\\'" "libreoffice" (file))
+    ("\\.xlsx\\'" "libreoffice" (file))
     ("\\.mp3\\'" "xmms" (file))
     ("\\.\\(?:mpe?g\\|avi\\|wmv\\)\\'" "mplayer" ("-idx" file))
     ("\\.\\(?:jp?g\\|png\\)\\'" "display" (file)))
