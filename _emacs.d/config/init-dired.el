@@ -1,5 +1,9 @@
 (provide 'init-dired)
 
+(eval-after-load "dired-aux"
+   '(add-to-list 'dired-compress-file-suffixes 
+                 '("\\.zip\\'" ".zip" "unzip")))
+
 (setq dired-recursive-copies t               ;copy recursively
       dired-recursive-deletes t              ;delete recursively
       dired-recursive-deletes 'always        ;delete confirm once

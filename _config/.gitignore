@@ -6,7 +6,6 @@
 !fcitx/*
 !feh/*
 !gpicview/*
-!gtk-2.0/*
 !inkscape/*
 !leafpad/*
 !libfm/*
@@ -25,3 +24,4 @@
 
 !.gitignore
 
+gtk-2.0/*
