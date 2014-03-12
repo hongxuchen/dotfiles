@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application>
   <component name="StatisticsApplicationUsages">
-    <group name="module type">
-      <project id="py_scripts" values="PYTHON_MODULE" />
-    </group>
     <group name="vcs">
       <project id="py_scripts" values="Git" />
     </group>
-    <group name="run-configuration-type-temp">
-      <project id="py_scripts" values="PythonConfigurationType" />
+    <group name="module type">
+      <project id="py_scripts" values="PYTHON_MODULE" />
     </group>
     <group name="file-type">
-      <project id="py_scripts" values="ReST,Images,PLAIN_TEXT,UNKNOWN,HTML,Python,XML,Native,C++" />
+      <project id="py_scripts" values="PLAIN_TEXT,Native,XML,UNKNOWN,Images,ReST,HTML,C++,Python" />
+    </group>
+    <group name="run-configuration-type-temp">
+      <project id="py_scripts" values="PythonConfigurationType" />
     </group>
     <group name="py-interpreter">
       <project id="py_scripts" values="Python 3.3.2+" />

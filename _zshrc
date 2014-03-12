@@ -52,6 +52,3 @@ source "$ZSH/themes/$ZSH_THEME.zsh-theme"
 if [ -e $ALIAS ]; then
     source $ALIAS
 fi
-
-# load executable
-ps -C rdm >/dev/null || rdm

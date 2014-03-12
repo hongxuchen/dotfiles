@@ -1,5 +1,8 @@
 #!/bin/bash
 
+BASEDIR="`dirname $0`"
+cd $BASEDIR
+
 # llvm
 svn co http://llvm.org/svn/llvm-project/llvm/trunk llvm-svn
 
@@ -14,6 +17,6 @@ svn co http://llvm.org/svn/llvm-project/clang-tools-extra/trunk extra
 cd ../../../..
 
 # compiler-rt
-# cd llvm-svn/projects
-# svn co http://llvm.org/svn/llvm-project/compiler-rt/trunk compiler-rt
-# cd ../..
+cd llvm-svn/projects
+svn co http://llvm.org/svn/llvm-project/compiler-rt/trunk compiler-rt
+cd ../..

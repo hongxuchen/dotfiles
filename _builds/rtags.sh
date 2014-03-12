@@ -27,7 +27,7 @@ git checkout master
 # INSTALL_DIR=$HOME//llvm/install
 # PATH=${INSTALL_DIR}/bin:$PATH
 rm -rf $BUILD && mkdir -p $BUILD && cd $BUILD
-# cmake -GNinja -DCLANG_ROOT=${INSTALL_DIR}  $SRC  && ninja
+# cmake -GNnja -DCLANG_ROOT=${INSTALL_DIR}  $SRC  && ninja
 cmake -GNinja $SRC  && ninja
 
 ln -sf $SRC/bin/gcc-rtags-wrapper.sh ~/.bin/g++

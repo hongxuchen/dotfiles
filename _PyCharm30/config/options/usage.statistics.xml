@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application>
-  <component name="UsagesStatistic" time="0" allowed="false" show-notification="true" period="weekly" />
+  <component name="UsagesStatistic" time="1394611749750" allowed="true" show-notification="false" period="weekly">
+    <group id="Look and Feel" priority="0.0" data="Linux - Darcula=1" />
+    <group id="UI Features" priority="0.0" data="Toolbar hidden=1,Line Numbers=1,Tabs Top=1,Nav Bar floating=1,Tool Window buttons visible=1,Recent Files (30  50]=1,Status bar visible=1,Toolbar and NavBar hidden=1" />
+    <group id="features counts" priority="0.0" data="execute.PythonConfigurationType.Run=8" />
+    <group id="file-type" priority="0.0" data="Python=1,Native=1,HTML=1,ReST=1,XML=1,Images=1,PLAIN_TEXT=1,C++=1,UNKNOWN=1" />
+    <group id="module type" priority="0.0" data="PYTHON_MODULE=1" />
+    <group id="non-bundled-plugins" priority="0.0" data="com.intellij=1" />
+    <group id="productivity" priority="0.0" data="editing.select.word=142,SearchEverywhere=2,navigation.popup.camelprefix=2,navigation.goto.declaration=32,codeassists.comment.line=23,codeassists.quickdefinition=20,navigation.popup.file=30,editing.completion.basic=73,ui.tree.speedsearch=2,refactoring.rename=17,navigation.popup.class=2,editing.completion.finishByControlEnter=2,editing.completion.replace=14" />
+    <group id="py-interpreter" priority="0.0" data="Python 3.3.2+=1" />
+    <group id="run-configuration-type-temp" priority="0.0" data="PythonConfigurationType=1" />
+    <group id="user.os.name" priority="0.0" data="Linux=1" />
+    <group id="user.os.version" priority="0.0" data="Linux 3.11.0-18-generic=1" />
+    <group id="vcs" priority="0.0" data="Git=1" />
+  </component>
 </application>
 

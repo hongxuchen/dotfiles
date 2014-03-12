@@ -22,7 +22,8 @@ export TEXMFHOME=~/.texmf
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 
-export PATH=/usr/local/texlive/2013/bin/x86_64-linux:~/.bin:~/.local/bin:~/.bin/builds/llvm/build/bin:~/.builds/repos/rtags/build/bin:~/moonbox/dryrun/bin:~/moonbox/dryrun/utils:~/moonbox/dryrun/utils/wllvm:~/moonbox/llvm-obj/Release+Asserts/bin:~/moonbox/llvm-gcc4.2-2.9-x86_64-linux/bin:~/moonbox/klee-install/bin:~/moonbox/klee/scripts:/usr/local/texlive/2012/bin/i386-linux:$PATH
+export PATH=~/moonbox/dryrun/bin:~/moonbox/dryrun/utils:~/moonbox/dryrun/utils/wllvm:~/moonbox/llvm-obj/Release+Asserts/bin:~/moonbox/llvm-gcc4.2-2.9-x86_64-linux/bin:~/moonbox/klee-install/bin:~/moonbox/klee/scripts:$PATH
+PATH=/usr/local/texlive/2013/bin/x86_64-linux:~/.bin:~/.local/bin:~/llvm/install/bin:~/.builds/repos/rtags/build/bin:$PATH
 export LLVM_COMPILER=llvm-gcc   # for wllvm
 export WLLVM_OUTPUT=DEBUG
 # export C_INCLUDE_PATH
@@ -33,3 +34,7 @@ export LD_LIBRARY_PATH=/usr/lib/llvm-3.4/lib:/usr/local/lib
 
 stty ixany
 stty ixoff -ixon
+
+# load executable
+# pgrep rdm
+(ps -C rdm >/dev/null || rdm)
