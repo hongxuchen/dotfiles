@@ -24,6 +24,7 @@
 ;;----------------------------------------------------------------------------
 
 ;; basic settings
+;; (require 'scala-mode)
 (require 'init-elpa)
 (require 'init-misc)
 (require 'my-utils)

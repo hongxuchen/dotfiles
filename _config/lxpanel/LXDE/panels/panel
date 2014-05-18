@@ -46,30 +46,18 @@ Plugin {
 }
 
 Plugin {
-    type = launchbar
-    Config {
-        Button {
-            id=/usr/share/applications/chromium-browser.desktop
-        }
-        Button {
-            id=/home/hongxu/.local/share/applications/jetbrains-pycharm.desktop
-        }
-    }
-}
-
-Plugin {
     type = taskbar
     expand=1
     Config {
-        tooltips=0
+        tooltips=1
         IconsOnly=0
         ShowAllDesks=0
-        UseMouseWheel=0
+        UseMouseWheel=1
         UseUrgencyHint=1
         FlatButton=0
-        MaxTaskWidth=150
+        MaxTaskWidth=200
         spacing=1
-        GroupedTasks=1
+        GroupedTasks=0
     }
 }
 
@@ -79,6 +67,17 @@ Plugin {
 
 Plugin {
     type = tray
+}
+
+Plugin {
+    type = dclock
+    Config {
+        ClockFmt=%R
+        TooltipFmt=%A %x
+        BoldFont=0
+        IconOnly=0
+        CenterText=0
+    }
 }
 
 Plugin {

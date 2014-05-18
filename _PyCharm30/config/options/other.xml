@@ -21,29 +21,41 @@
     <option name="REGULAR_EXPRESSIONS" value="false" />
     <option name="LOCAL_REGULAR_EXPRESSIONS" value="false" />
     <option name="WITH_SUBDIRECTORIES" value="true" />
-    <option name="SEARCH_SCOPE" value="All Project Classes" />
+    <option name="SEARCH_SCOPE" value="Project 'cfe_py'" />
     <option name="FILE_MASK" />
     <option name="RECENT_FIND_STRINGS">
       <value>
-        <list size="18">
-          <item index="0" class="java.lang.String" itemvalue="beautifulsoup" />
-          <item index="1" class="java.lang.String" itemvalue="table cellpadding=&quot;5&quot;" />
-          <item index="2" class="java.lang.String" itemvalue="show" />
-          <item index="3" class="java.lang.String" itemvalue="choose the" />
-          <item index="4" class="java.lang.String" itemvalue="downloa" />
-          <item index="5" class="java.lang.String" itemvalue="-3" />
-          <item index="6" class="java.lang.String" itemvalue="print" />
-          <item index="7" class="java.lang.String" itemvalue="is_first_song" />
-          <item index="8" class="java.lang.String" itemvalue="p class=&quot;abstract&quot;" />
-          <item index="9" class="java.lang.String" itemvalue="&lt;p class=&quot;abstract&quot;" />
-          <item index="10" class="java.lang.String" itemvalue="cellpadding" />
-          <item index="11" class="java.lang.String" itemvalue="cellpadding=&quot;5&quot;" />
-          <item index="12" class="java.lang.String" itemvalue="termed" />
-          <item index="13" class="java.lang.String" itemvalue="termcolor" />
-          <item index="14" class="java.lang.String" itemvalue="colored" />
-          <item index="15" class="java.lang.String" itemvalue="class=&quot;abstract&quot;" />
-          <item index="16" class="java.lang.String" itemvalue="bt" />
-          <item index="17" class="java.lang.String" itemvalue="citation" />
+        <list size="30">
+          <item index="0" class="java.lang.String" itemvalue="visit" />
+          <item index="1" class="java.lang.String" itemvalue="cursor_vis" />
+          <item index="2" class="java.lang.String" itemvalue="cursor_visit" />
+          <item index="3" class="java.lang.String" itemvalue="displayname" />
+          <item index="4" class="java.lang.String" itemvalue="newline" />
+          <item index="5" class="java.lang.String" itemvalue="LexToken" />
+          <item index="6" class="java.lang.String" itemvalue="CodeCompletionResult" />
+          <item index="7" class="java.lang.String" itemvalue="completionString" />
+          <item index="8" class="java.lang.String" itemvalue="clang_getNumCompletionChunks" />
+          <item index="9" class="java.lang.String" itemvalue="completionresults" />
+          <item index="10" class="java.lang.String" itemvalue="result" />
+          <item index="11" class="java.lang.String" itemvalue="CompletionString" />
+          <item index="12" class="java.lang.String" itemvalue="results" />
+          <item index="13" class="java.lang.String" itemvalue="location" />
+          <item index="14" class="java.lang.String" itemvalue="isKindInformative" />
+          <item index="15" class="java.lang.String" itemvalue="clang" />
+          <item index="16" class="java.lang.String" itemvalue="folder" />
+          <item index="17" class="java.lang.String" itemvalue="folder9803857" />
+          <item index="18" class="java.lang.String" itemvalue="# folder" />
+          <item index="19" class="java.lang.String" itemvalue="onefolder" />
+          <item index="20" class="java.lang.String" itemvalue="arg_onefolder" />
+          <item index="21" class="java.lang.String" itemvalue="os.system" />
+          <item index="22" class="java.lang.String" itemvalue="song" />
+          <item index="23" class="java.lang.String" itemvalue="beautifulsoup" />
+          <item index="24" class="java.lang.String" itemvalue="BeautifulSoup" />
+          <item index="25" class="java.lang.String" itemvalue="validate" />
+          <item index="26" class="java.lang.String" itemvalue="axel_opts" />
+          <item index="27" class="java.lang.String" itemvalue="axel" />
+          <item index="28" class="java.lang.String" itemvalue="-a" />
+          <item index="29" class="java.lang.String" itemvalue="vim" />
         </list>
       </value>
     </option>
@@ -94,24 +106,57 @@
     </option>
     <option name="PROXY_EXCEPTIONS" value="" />
   </component>
+  <component name="PyCodeInsightSettings">
+    <option name="SHOW_IMPORT_POPUP" value="true" />
+  </component>
+  <component name="PyTestFrameworkService">
+    <option name="SDK_TO_PYTEST">
+      <map>
+        <entry key="/usr/bin/python2" value="false" />
+        <entry key="/usr/bin/python3m" value="false" />
+      </map>
+    </option>
+    <option name="SDK_TO_NOSETEST">
+      <map>
+        <entry key="/usr/bin/python2" value="true" />
+        <entry key="/usr/bin/python3m" value="true" />
+      </map>
+    </option>
+    <option name="SDK_TO_ATTEST">
+      <map>
+        <entry key="/usr/bin/python2" value="false" />
+        <entry key="/usr/bin/python3m" value="false" />
+      </map>
+    </option>
+  </component>
   <component name="RecentDirectoryProjectsManager">
     <option name="recentPaths">
       <list>
+        <option value="$USER_HOME$/repos/cfe_py" />
         <option value="$USER_HOME$/repos/py_scripts" />
+        <option value="$USER_HOME$/repos/ply" />
+        <option value="$USER_HOME$/repos/legion" />
+        <option value="$USER_HOME$/repos/pyclang" />
+        <option value="$USER_HOME$/repos/glade" />
         <option value="$USER_HOME$/data_backup/py_scripts" />
       </list>
     </option>
     <option name="openPaths">
       <list>
-        <option value="$USER_HOME$/repos/py_scripts" />
+        <option value="$USER_HOME$/repos/cfe_py" />
       </list>
     </option>
     <option name="names">
       <map>
+        <entry key="$USER_HOME$/repos/cfe_py" value="clang_bindings, py_scripts" />
+        <entry key="$USER_HOME$/repos/glade" value="" />
+        <entry key="$USER_HOME$/repos/legion" value="" />
+        <entry key="$USER_HOME$/repos/ply" value="" />
         <entry key="$USER_HOME$/repos/py_scripts" value="" />
+        <entry key="$USER_HOME$/repos/pyclang" value="pyclang, clang_bindings" />
       </map>
     </option>
-    <option name="lastPath" value="$USER_HOME$/repos/py_scripts" />
+    <option name="lastPath" value="$USER_HOME$/repos/cfe_py" />
   </component>
   <component name="Registry">
     <entry key="ide.firstStartup" value="false" />
@@ -157,7 +202,7 @@
       </value>
     </option>
     <option name="CHECK_NEEDED" value="true" />
-    <option name="LAST_TIME_CHECKED" value="1394611714495" />
+    <option name="LAST_TIME_CHECKED" value="1394872225080" />
     <option name="LAST_BUILD_CHECKED" value="PC-133.881" />
     <option name="UPDATE_CHANNEL_TYPE" value="release" />
   </component>

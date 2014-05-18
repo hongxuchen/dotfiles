@@ -1,25 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application>
   <component name="StatisticsApplicationUsages">
-    <group name="vcs">
-      <project id="py_scripts" values="Git" />
-    </group>
-    <group name="module type">
-      <project id="py_scripts" values="PYTHON_MODULE" />
-    </group>
     <group name="file-type">
-      <project id="py_scripts" values="PLAIN_TEXT,Native,XML,UNKNOWN,Images,ReST,HTML,C++,Python" />
-    </group>
-    <group name="run-configuration-type-temp">
-      <project id="py_scripts" values="PythonConfigurationType" />
+      <project id="pyclang" values="C++,UNKNOWN,PLAIN_TEXT,XML,Python" />
+      <project id="legion" values="UNKNOWN,C++,PLAIN_TEXT,Native,Python,XML" />
+      <project id="glade" values="Python,PLAIN_TEXT,DTD,UNKNOWN,XML" />
+      <project id="cfe_py" values="C++,ReST,PLAIN_TEXT,Images,ARCHIVE,Python,XML,UNKNOWN,HTML,Native" />
+      <project id="ply" values="UNKNOWN,XML,Python,HTML,PLAIN_TEXT" />
+      <project id="py_scripts" values="C++,PLAIN_TEXT,UNKNOWN,XML,Images,ReST,HTML,Python,Native" />
     </group>
     <group name="py-interpreter">
-      <project id="py_scripts" values="Python 3.3.2+" />
+      <project id="pyclang" values="Python 3.3.2+,Python 2.7.5+" />
+      <project id="legion" values="Python 2.7.5+" />
+      <project id="glade" values="Python 3.3.2+" />
+      <project id="cfe_py" values="Python 2.7.5+,Python 2.7.5+" />
+      <project id="ply" values="Python 2.7.5+" />
+      <project id="py_scripts" values="Python 2.7.5+" />
+    </group>
+    <group name="vcs">
+      <project id="pyclang" values="Git" />
+      <project id="legion" values="Git" />
+      <project id="cfe_py" values="Git" />
+      <project id="ply" values="Git" />
+      <project id="py_scripts" values="Git" />
+    </group>
+    <group name="run-configuration-type-temp">
+      <project id="glade" values="PythonConfigurationType" />
+      <project id="py_scripts" values="PythonConfigurationType" />
+    </group>
+    <group name="module type">
+      <project id="pyclang" values="PYTHON_MODULE" />
+      <project id="legion" values="PYTHON_MODULE" />
+      <project id="glade" values="PYTHON_MODULE" />
+      <project id="cfe_py" values="PYTHON_MODULE" />
+      <project id="ply" values="PYTHON_MODULE" />
+      <project id="py_scripts" values="PYTHON_MODULE" />
     </group>
   </component>
   <component name="UsageTrigger">
     <counts>
-      <entry feature="execute.PythonConfigurationType.Run" count="8" />
+      <entry feature="CreateFile.CreateFileAction" count="4" />
+      <entry feature="NewDirectoryProjectAction.empty" count="1" />
+      <entry feature="execute.PythonConfigurationType.Debug" count="1" />
+      <entry feature="execute.PythonConfigurationType.Run" count="11" />
     </counts>
   </component>
 </application>

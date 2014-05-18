@@ -86,7 +86,8 @@ end
 # pretty STL printer
 python
 import sys
-sys.path.insert(0, '/home/hongxuchen/.gdb/gdb_printer')
+from os import path
+sys.path.insert(0, path.join(path.expanduser('~'), '.gdb/gdb_printer'))
 from libstdcxx.v6.printers import register_libstdcxx_printers
 register_libstdcxx_printers (None)
 end

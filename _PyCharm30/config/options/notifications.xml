@@ -14,8 +14,12 @@
     <notification groupId="Reformat Code" />
     <notification groupId="Packaging" />
     <notification groupId="ideavim" />
+    <notification groupId="Debugger messages" displayType="TOOL_WINDOW" shouldLog="false" />
+    <notification groupId="Inspection Results" displayType="TOOL_WINDOW" />
     <toolWindow group="Git Messages" />
     <toolWindow group="FindInPath" />
+    <toolWindow group="Debugger messages" />
+    <toolWindow group="Inspection Results" />
   </component>
 </application>
 

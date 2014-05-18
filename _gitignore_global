@@ -96,6 +96,7 @@ Session.vim
 *.pyd
 *.pyo
 __pycache__
+*.idea/
 
 *.o
 

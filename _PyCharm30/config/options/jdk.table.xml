@@ -47,6 +47,7 @@
             <root type="simple" url="file:///usr/lib/python2.7/dist-packages/wx-2.8-gtk2-unicode" />
             <root type="simple" url="file://$APPLICATION_HOME_DIR$/helpers/python-skeletons" />
             <root type="simple" url="file://$USER_HOME$/.PyCharm30/system/python_stubs/-2066100796" />
+            <root type="simple" url="file:///usr/lib/python2.7/dist-packages/ubuntu-sso-client" />
           </root>
         </classPath>
         <sourcePath>

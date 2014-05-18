@@ -41,10 +41,13 @@ XTerm*faceSize6: 13
 XTerm*fontMenu*fontdefault*Label: Default
 !use fc-list to see installed fonts(~/.fonts,...)
 !generally used:sans-serif
-xterm*faceName: Dejavu Sans Mono Book
-XTerm*faceNameDoublesize:WenQuanYi Micro Hei
-XTerm*cjkWidth:false
-XTerm*internalBorder: 0
+! xterm*faceName: Dejavu Sans Mono Book
+! XTerm*faceNameDoublesize:WenQuanYi Micro Hei
+! XTerm*cjkWidth:false
+! XTerm*internalBorder: 0
+xterm*faceName: DejaVu Sans Mono:style=Book:antialias=false
+xterm*faceNameDoublesize: WenQuanYi Bitmap Song
+xterm*faceSize: 12 
 
 XTerm*cursorBlink: false
 XTerm*visualBell: false
