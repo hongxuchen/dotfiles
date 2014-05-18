@@ -47,7 +47,6 @@ XTerm*fontMenu*fontdefault*Label: Default
 ! XTerm*internalBorder: 0
 xterm*faceName: DejaVu Sans Mono:style=Book:antialias=false
 xterm*faceNameDoublesize: WenQuanYi Bitmap Song
-xterm*faceSize: 12 
 
 XTerm*cursorBlink: false
 XTerm*visualBell: false
