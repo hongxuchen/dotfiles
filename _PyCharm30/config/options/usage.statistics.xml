@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application>
-  <component name="UsagesStatistic" time="1398905715633" allowed="true" show-notification="false" period="weekly">
-    <group id="Look and Feel" priority="0.0" data="Linux - Darcula=1" />
+  <component name="UsagesStatistic" time="1404547887283" allowed="true" show-notification="false" period="weekly">
+    <group id="Look and Feel" priority="0.0" data="Linux - Darcula=0,Linux - gnome - Darcula=1" />
     <group id="UI Features" priority="0.0" data="Toolbar hidden=1,Line Numbers=1,Tabs Top=1,Nav Bar floating=1,Tool Window buttons visible=0,Recent Files (30  50]=1,Status bar visible=1,Toolbar and NavBar hidden=1,Tool Window buttons hidden=1" />
-    <group id="features counts" priority="0.0" data="execute.PythonConfigurationType.Run=11,CreateFile.CreateFileAction=4,NewDirectoryProjectAction.empty=1,execute.PythonConfigurationType.Debug=1" />
-    <group id="file-type" priority="0.0" data="Python=6,Native=3,HTML=3,ReST=2,XML=6,Images=2,PLAIN_TEXT=6,C++=4,UNKNOWN=6,DTD=1,ARCHIVE=1" />
-    <group id="module type" priority="0.0" data="PYTHON_MODULE=6" />
-    <group id="non-bundled-plugins" priority="0.0" data="com.intellij=1" />
-    <group id="productivity" priority="0.0" data="editing.select.word=856,SearchEverywhere=2,navigation.popup.camelprefix=30,navigation.goto.declaration=182,codeassists.comment.line=103,codeassists.quickdefinition=46,navigation.popup.file=122,editing.completion.basic=519,ui.tree.speedsearch=3,refactoring.rename=27,navigation.popup.class=2,editing.completion.finishByControlEnter=255,editing.completion.replace=35,codeassists.quickjavadoc=38,editing.completion.finishByDotEtc=2,navigation.popup.action=1" />
-    <group id="py-interpreter" priority="0.0" data="Python 3.3.2+=2,Python 2.7.5+=6" />
+    <group id="features counts" priority="0.0" data="execute.PythonConfigurationType.Run=11,CreateFile.CreateFileAction=8,NewDirectoryProjectAction.empty=2,execute.PythonConfigurationType.Debug=1" />
+    <group id="file-type" priority="0.0" data="Python=9,Native=5,HTML=4,ReST=4,XML=9,Images=3,PLAIN_TEXT=9,C++=6,UNKNOWN=9,DTD=1,ARCHIVE=2,Markdown=3" />
+    <group id="module type" priority="0.0" data="PYTHON_MODULE=9" />
+    <group id="non-bundled-plugins" priority="0.0" data="com.intellij=1,net.nicoulaj.idea.markdown=1,Org4Idea=1" />
+    <group id="productivity" priority="0.0" data="editing.select.word=4650,SearchEverywhere=2,navigation.popup.camelprefix=30,navigation.goto.declaration=606,codeassists.comment.line=436,codeassists.quickdefinition=48,navigation.popup.file=140,editing.completion.basic=1854,ui.tree.speedsearch=3,refactoring.rename=128,navigation.popup.class=2,editing.completion.finishByControlEnter=1413,editing.completion.replace=35,codeassists.quickjavadoc=90,editing.completion.finishByDotEtc=2,navigation.popup.action=1,navigation.popup.file.structure=1,editing.completion.camelHumps=15" />
+    <group id="py-interpreter" priority="0.0" data="Python 3.3.2+=2,Python 2.7.5+=18" />
     <group id="run-configuration-type-temp" priority="0.0" data="PythonConfigurationType=2" />
     <group id="user.os.name" priority="0.0" data="Linux=1" />
-    <group id="user.os.version" priority="0.0" data="Linux 3.11.0-18-generic=1" />
-    <group id="vcs" priority="0.0" data="Git=5" />
+    <group id="user.os.version" priority="0.0" data="Linux 3.11.0-18-generic=0,Linux 3.13.0-27-generic=0,Linux 3.13.0-29-generic=0,Linux 3.13.0-31-generic=1" />
+    <group id="vcs" priority="0.0" data="Git=8" />
   </component>
 </application>
 

@@ -16,10 +16,15 @@
     <notification groupId="ideavim" />
     <notification groupId="Debugger messages" displayType="TOOL_WINDOW" shouldLog="false" />
     <notification groupId="Inspection Results" displayType="TOOL_WINDOW" />
+    <notification groupId="Update Checker" displayType="STICKY_BALLOON" />
+    <notification groupId="Common Version Control Messages" displayType="TOOL_WINDOW" />
+    <notification groupId="Plugins Lifecycle Group" displayType="STICKY_BALLOON" />
+    <notification groupId="File type recognized" />
     <toolWindow group="Git Messages" />
     <toolWindow group="FindInPath" />
     <toolWindow group="Debugger messages" />
     <toolWindow group="Inspection Results" />
+    <toolWindow group="Common Version Control Messages" />
   </component>
 </application>
 

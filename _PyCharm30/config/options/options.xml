@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application>
   <component name="DimensionService">
+    <location key="git4idea.push.GitPushDialog.0.0.1366.768" x="339" y="130" />
+    <location key="CommitChangelistDialog2.0.0.1366.768" x="333" y="116" />
+    <location key="DiffWindow.0.0.1366.768" x="100" y="126" />
     <location key="StructurePopup.0.0.1366.768" x="447" y="166" />
     <location key="com.intellij.openapi.editor.actions.MultiplePasteAction$1.0.0.1366.768" x="516" y="0" />
     <location key="vcs.readOnlyHandler.ReadOnlyStatusDialog.0.0.1366.768" x="796" y="240" />
@@ -20,26 +23,32 @@
     <location key="CommitChangelistDialog2.0.0.1600.900" x="449" y="0" />
     <location key="WELCOME_SCREEN.0.0.1600.900" x="796" y="301" />
     <location key="FileChooserDialogImpl.0.0.1600.900" x="579" y="126" />
-    <location key="WELCOME_SCREEN.0.0.1366.768" x="679" y="226" />
+    <location key="WELCOME_SCREEN.0.0.1366.768" x="679" y="301" />
     <location key="FileChooserDialogImpl.0.0.1366.768" x="462" y="83" />
     <location key="OptionsEditor.0.0.1366.768" x="66" y="0" />
     <location key="findTextDialog.0.0.1366.768" x="474" y="114" />
     <location key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog.0.0.1366.768" x="117" y="152" />
-    <location key="com.intellij.history.integration.ui.views.FileHistoryDialog.0.0.1366.768" x="-2" y="25" />
+    <location key="com.intellij.history.integration.ui.views.FileHistoryDialog.0.0.1366.768" x="100" y="126" />
+    <location key="#Browse_JetBrains_Plugins_.0.0.1366.768" x="263" y="35" />
+    <location key="#Inspections.0.0.1366.768" x="314" y="98" />
+    <location key="#Intentions.0.0.1366.768" x="264" y="73" />
+    <size key="git4idea.push.GitPushDialog.0.0.1366.768" width="679" height="575" />
+    <size key="CommitChangelistDialog2.0.0.1366.768" width="691" height="603" />
+    <size key="DiffWindow.0.0.1366.768" width="1164" height="588" />
     <size key="StructurePopup.0.0.1366.768" width="478" height="392" />
     <size key="com.intellij.openapi.editor.actions.MultiplePasteAction$1.0.0.1366.768" width="328" height="763" />
-    <size key="vcs.readOnlyHandler.ReadOnlyStatusDialog.0.0.1366.768" width="450" height="308" />
+    <size key="vcs.readOnlyHandler.ReadOnlyStatusDialog.0.0.1366.768" width="456" height="308" />
     <size key="replaceTextDialog.0.0.1366.768" width="421" height="567" />
     <size key="GridCell.Tab.1.bottom.0.0.1366.768" width="1366" height="248" />
     <size key="GridCell.Tab.1.right.0.0.1366.768" width="1366" height="248" />
     <size key="GridCell.Tab.1.center.0.0.1366.768" width="1366" height="248" />
     <size key="GridCell.Tab.1.left.0.0.1366.768" width="1366" height="248" />
-    <size key="GridCell.Tab.0.bottom.0.0.1366.768" width="1366" height="248" />
-    <size key="GridCell.Tab.0.right.0.0.1366.768" width="1366" height="248" />
-    <size key="GridCell.Tab.0.center.0.0.1366.768" width="1366" height="248" />
-    <size key="GridCell.Tab.0.left.0.0.1366.768" width="1366" height="248" />
+    <size key="GridCell.Tab.0.bottom.0.0.1366.768" width="1339" height="192" />
+    <size key="GridCell.Tab.0.right.0.0.1366.768" width="1339" height="192" />
+    <size key="GridCell.Tab.0.center.0.0.1366.768" width="1339" height="192" />
+    <size key="GridCell.Tab.0.left.0.0.1366.768" width="1339" height="192" />
     <size key="GotoFile_FileTypePopup.0.0.1366.768" width="200" height="200" />
-    <size key="#com.intellij.fileTypes.FileTypeChooser.0.0.1366.768" width="565" height="404" />
+    <size key="#com.intellij.fileTypes.FileTypeChooser.0.0.1366.768" width="583" height="399" />
     <size key="#Editor.0.0.1600.900" width="800" height="750" />
     <size key="RollbackChangesDialog.0.0.1600.900" width="430" height="542" />
     <size key="#Browse_Repositories.0.0.1600.900" width="1604" height="877" />
@@ -61,13 +70,17 @@
     <size key="FileChooserDialogImpl.0.0.1366.768" width="470" height="488" />
     <size key="javadoc.popup.0.0.1366.768" width="602" height="420" />
     <size key="OptionsEditor.0.0.1366.768" width="1228" height="763" />
-    <size key="findTextDialog.0.0.1366.768" width="412" height="514" />
+    <size key="findTextDialog.0.0.1366.768" width="412" height="542" />
     <size key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog.0.0.1366.768" width="1170" height="545" />
-    <size key="com.intellij.history.integration.ui.views.FileHistoryDialog.0.0.1366.768" width="1370" height="745" />
-    <extendedState key="com.intellij.history.integration.ui.views.FileHistoryDialog" state="6" />
-    <extendedState key="com.intellij.history.integration.ui.views.FileHistoryDialog.0" state="300" />
+    <size key="com.intellij.history.integration.ui.views.FileHistoryDialog.0.0.1366.768" width="1157" height="583" />
+    <size key="#Browse_JetBrains_Plugins_.0.0.1366.768" width="828" height="688" />
+    <size key="#Inspections.0.0.1366.768" width="728" height="638" />
+    <size key="#Intentions.0.0.1366.768" width="828" height="688" />
+    <extendedState key="com.intellij.history.integration.ui.views.FileHistoryDialog" state="0" />
     <extendedState key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog.0" state="300" />
+    <extendedState key="DiffWindow" state="0" />
     <extendedState key="com.intellij.history.integration.ui.views.FileHistoryDialog.1" state="500" />
+    <extendedState key="com.intellij.history.integration.ui.views.FileHistoryDialog.0" state="300" />
     <extendedState key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog" state="0" />
   </component>
   <component name="LafManager">
@@ -83,12 +96,12 @@
     <property name="PyCharm.InitialConfiguration.V5" value="true" />
     <property name="PyCharm.initialConfigurationShown" value="true" />
     <property name="installation.uid" value="bd837286-ca48-403e-9af4-ec01c91877ce" />
-    <property name="file.chooser.recent.files" value="$USER_HOME$/repos/py_scripts&#10;/home/hongxu/repos/clang_complete&#10;/home/hongxu/repos/cfe_py&#10;/home/hongxu/repos/ply&#10;/home/hongxu/repos/legion&#10;/home/hongxu/repos/clang_bindings&#10;/home/hongxu/repos/pyclang&#10;/home/hongxu/repos/glade&#10;/usr/bin/chromium-browser&#10;/home/hongxu/data_backup/py_scripts" />
+    <property name="file.chooser.recent.files" value="$USER_HOME$/google.play/google_play_dl&#10;/home/hongxu/repos/py_scripts&#10;/home/hongxu/repos/idapython_ext&#10;/home/hongxu/google.play/google-play-crawler&#10;/home/hongxu/.local/lib/python2.7/site-packages/djgpa&#10;/home/hongxu/google.play/mysite&#10;/home/hongxu/google.play/album-downloader&#10;/home/hongxu/google.play/my_scrapy&#10;/home/hongxu/repos/clang_complete&#10;/home/hongxu/repos/cfe_py&#10;/home/hongxu/repos/ply&#10;/home/hongxu/repos/legion&#10;/home/hongxu/repos/clang_bindings&#10;/home/hongxu/repos/pyclang&#10;/home/hongxu/repos/glade&#10;/usr/bin/chromium-browser&#10;/home/hongxu/data_backup/py_scripts" />
     <property name="toolwindow.stripes.buttons.info.shown" value="true" />
     <property name="file.colors.enable.non.project" value="Yellow" />
     <property name="Non-Project Files" value="Yellow" />
     <property name="CommitChangeListDialog.SPLITTER_PROPORTION_2" value="0.5" />
-    <property name="CommitChangeListDialog.DETAILS_SPLITTER_PROPORTION_2" value="0.5745223" />
+    <property name="CommitChangeListDialog.DETAILS_SPLITTER_PROPORTION_2" value="0.45286885" />
     <property name="CommitChangeListDialog.DETAILS_SHOW_OPTION_" value="true" />
     <property name="FindSplitterProportion" value="0.25" />
     <property name="LayoutCode.optimizeImports" value="true" />
@@ -104,6 +117,8 @@
     <property name="OpenOrAttachDialog.OpenMode" value="attach" />
     <property name="com.intellij.openapi.editor.actions.MultiplePasteAction$1.splitter" value="0.3" />
     <property name="FileStructurePopup.narrowDown" value="true" />
+    <property name="FileTemplates.CurrentTab" value="Templates" />
+    <property name="FileTemplates.SelectedTemplate" value="Setup Script" />
   </component>
 </application>
 

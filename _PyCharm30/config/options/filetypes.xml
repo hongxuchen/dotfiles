@@ -4,6 +4,9 @@
     <ignoreFiles list="CVS;SCCS;RCS;rcs;.DS_Store;.svn;.pyc;.pyo;*.pyc;*.pyo;.git;*.hprof;_svn;.hg;*.lib;*~;__pycache__;.bundle;*.rbc;*$py.class;" />
     <extensionMap>
       <mapping ext="glade" type="DTD" />
+      <removed_mapping ext="org" approved="true" type="OrgMode" />
+      <mapping ext="master" type="PLAIN_TEXT" />
+      <mapping ext="org" type="PLAIN_TEXT" />
       <mapping ext="json" type="PLAIN_TEXT" />
     </extensionMap>
   </component>

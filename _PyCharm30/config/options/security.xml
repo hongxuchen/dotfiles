@@ -14,5 +14,8 @@
       </array>
     </option>
   </component>
+  <component name="SSHConnectionSettings">
+    <successfulAuthentication user="git@bitbucket.org" method="publickey" />
+  </component>
 </application>
 

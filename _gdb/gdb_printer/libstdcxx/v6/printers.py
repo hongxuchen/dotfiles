@@ -1,6 +1,6 @@
 # Pretty-printers for libstc++.
 
-# Copyright (C) 2008-2013 Free Software Foundation, Inc.
+# Copyright (C) 2008-2014 Free Software Foundation, Inc.
 
 # This program is free software; you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -375,6 +375,22 @@ class RbtreeIterator:
             self.node = node
         return result
 
+def get_value_from_Rb_tree_node(node):
+    """Returns the value held in an _Rb_tree_node<_Val>"""
+    try:
+        member = node.type.fields()[1].name
+        if member == '_M_value_field':
+            # C++03 implementation, node contains the value as a member
+            return node['_M_value_field']
+        elif member == '_M_storage':
+            # C++11 implementation, node stores value in __aligned_buffer
+            p = node['_M_storage']['_M_storage'].address
+            p = p.cast(node.type.template_argument(0).pointer())
+            return p.dereference()
+    except:
+        pass
+    raise ValueError("Unsupported implementation for %s" % str(node.type))
+
 # This is a pretty printer for std::_Rb_tree_iterator (which is
 # std::map::iterator), and has nothing to do with the RbtreeIterator
 # class above.
@@ -387,7 +403,8 @@ class StdRbtreeIteratorPrinter:
     def to_string (self):
         typename = str(self.val.type.strip_typedefs()) + '::_Link_type'
         nodetype = gdb.lookup_type(typename).strip_typedefs()
-        return self.val.cast(nodetype).dereference()['_M_value_field']
+        node = self.val.cast(nodetype).dereference()
+        return get_value_from_Rb_tree_node(node)
 
 class StdDebugIteratorPrinter:
     "Print a debug enabled version of an iterator"
@@ -417,7 +434,8 @@ class StdMapPrinter:
         def next(self):
             if self.count % 2 == 0:
                 n = self.rbiter.next()
-                n = n.cast(self.type).dereference()['_M_value_field']
+                n = n.cast(self.type).dereference()
+                n = get_value_from_Rb_tree_node(n)
                 self.pair = n
                 item = n['first']
             else:
@@ -458,7 +476,8 @@ class StdSetPrinter:
 
         def next(self):
             item = self.rbiter.next()
-            item = item.cast(self.type).dereference()['_M_value_field']
+            item = item.cast(self.type).dereference()
+            item = get_value_from_Rb_tree_node(item)
             # FIXME: this is weird ... what to do?
             # Maybe a 'set' display hint?
             result = ('[%d]' % self.count, item)
@@ -652,7 +671,7 @@ class Tr1HashtableIterator:
 
 class StdHashtableIterator:
     def __init__(self, hash):
-        self.node = hash['_M_bbegin']['_M_node']['_M_nxt']
+        self.node = hash['_M_before_begin']['_M_nxt']
         self.node_type = find_type(hash.type, '__node_type').pointer()
 
     def __iter__(self):
@@ -786,6 +805,11 @@ class RxPrinter(object):
     def invoke(self, value):
         if not self.enabled:
             return None
+
+        if value.type.code == gdb.TYPE_CODE_REF:
+            if hasattr(gdb.Value,"referenced_value"):
+                value = value.referenced_value()
+
         return self.function(self.name, value)
 
 # A pretty-printer that conforms to the "PrettyPrinter" protocol from
@@ -841,6 +865,11 @@ class Printer(object):
             return None
 
         basename = match.group(1)
+
+        if val.type.code == gdb.TYPE_CODE_REF:
+            if hasattr(gdb.Value,"referenced_value"):
+                val = val.referenced_value()
+
         if basename in self.lookup:
             return self.lookup[basename].invoke(val)
 

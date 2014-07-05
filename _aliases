@@ -18,6 +18,7 @@ alias pyhttpd='python -m SimpleHTTPServer'
 alias pysh3='ipython3 --profile=pysh'
 alias pysh3='ipython3 --profile=pysh'
 alias boogie='mono ~/repos/boogie/boogie/Binaries/Boogie.exe'
+alias idaq='~/idademo65/idaq&'
 # alias rdp_lab='rdesktop -f -u hongxu -r sound:local -r clipboard:PRIMARYCLIPBOARD -r disk:home=/home/hongxuchen 202.120.40.98:62240  &>/dev/null & disown'
 alias rdp_lab='rdesktop -g 1024x768 -f -u pub -p 123 -r sound:local -r clipboard:PRIMARYCLIPBOARD -r disk:home=/home/hongxu 192.168.1.108 &>/dev/null & disown'
 alias gdb='gdb -q'
@@ -32,7 +33,8 @@ alias cc-clang++='clang -E -x c /dev/null -v'
 alias cc-clang='clang -E -x c++ /dev/null -v'
 alias clang-analyze='clang -cc1 -analyzer-checker-help |less'
 alias dl='axel -a -n 8'
-alias ssh_lab='ssh stap.sjtu.edu.cn -p 2210'
+# alias ssh_stap='ssh stap.sjtu.edu.cn -p 2210'
+alias ssh_lab="ssh -X hongxu@172.21.241.193"
 #Google style
 alias indent="command indent -kr -ci2 -cli2 -i2 -l80 -nut"
 alias rdm-null="command rdm &>/dev/null &"
