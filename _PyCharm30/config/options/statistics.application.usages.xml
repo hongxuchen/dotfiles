@@ -3,17 +3,17 @@
   <component name="StatisticsApplicationUsages">
     <group name="file-type">
       <project id="pyclang" values="PLAIN_TEXT,C++,XML,UNKNOWN,Python" />
-      <project id="legion" values="UNKNOWN,C++,Python,Native,XML,PLAIN_TEXT" />
-      <project id="glade" values="DTD,Python,PLAIN_TEXT,XML,UNKNOWN" />
-      <project id="cfe_py" values="PLAIN_TEXT,ReST,C++,Python,UNKNOWN,XML,Native" />
-      <project id="google_play_dl" values="ReST,Native,HTML,ARCHIVE,C++,UNKNOWN,XML,Python,PLAIN_TEXT,Markdown,Images" />
-      <project id="ply" values="XML,PLAIN_TEXT,UNKNOWN,Python,HTML" />
-      <project id="my_scrapy" values="UNKNOWN,XML,PLAIN_TEXT,Python,Markdown" />
-      <project id="idapython_ext" values="C++,ReST,ARCHIVE,Native,PLAIN_TEXT,Images,Markdown,HTML,Python,XML,UNKNOWN" />
-      <project id="py_scripts" values="ReST,Native,UNKNOWN,PLAIN_TEXT,XML,Python,HTML,Images,C++" />
+      <project id="legion" values="PLAIN_TEXT,Native,C++,Python,XML,UNKNOWN" />
+      <project id="glade" values="XML,Python,UNKNOWN,PLAIN_TEXT,DTD" />
+      <project id="cfe_py" values="Python,Native,UNKNOWN,XML,C++,PLAIN_TEXT,ReST" />
+      <project id="google_play_dl" values="Markdown,UNKNOWN,ARCHIVE,Native,PLAIN_TEXT,XML,C++,HTML,ReST,Python,Images" />
+      <project id="ply" values="UNKNOWN,PLAIN_TEXT,XML,Python,HTML" />
+      <project id="my_scrapy" values="UNKNOWN,PLAIN_TEXT,Markdown,XML,Python" />
+      <project id="idapython_ext" values="ARCHIVE,C++,HTML,Python,UNKNOWN,ReST,Images,Markdown,XML,Native,PLAIN_TEXT" />
+      <project id="py_scripts" values="HTML,C++,Python,Native,ReST,UNKNOWN,PLAIN_TEXT,XML,Images" />
     </group>
     <group name="py-interpreter">
-      <project id="pyclang" values="Python 2.7.5+,Python 3.3.2+" />
+      <project id="pyclang" values="Python 3.3.2+,Python 2.7.5+" />
       <project id="legion" values="Python 2.7.5+" />
       <project id="glade" values="Python 3.3.2+" />
       <project id="cfe_py" values="Python 2.7.5+,Python 2.7.5+" />
@@ -55,7 +55,7 @@
       <entry feature="CreateFile.CreateFileAction" count="8" />
       <entry feature="NewDirectoryProjectAction.empty" count="2" />
       <entry feature="execute.PythonConfigurationType.Debug" count="1" />
-      <entry feature="execute.PythonConfigurationType.Run" count="13" />
+      <entry feature="execute.PythonConfigurationType.Run" count="16" />
     </counts>
   </component>
 </application>

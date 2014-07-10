@@ -175,6 +175,7 @@
     </option>
     <option name="names">
       <map>
+        <entry key="$USER_HOME$/google.play/google_play_dl" value="mysite, google-play-crawler..." />
         <entry key="$USER_HOME$/google.play/my_scrapy" value="my_scrapy, album-downloader..." />
         <entry key="$USER_HOME$/repos/cfe_py" value="clang_bindings, idapython" />
         <entry key="$USER_HOME$/repos/glade" value="" />
@@ -231,7 +232,7 @@
       </value>
     </option>
     <option name="CHECK_NEEDED" value="true" />
-    <option name="LAST_TIME_CHECKED" value="1404547239753" />
+    <option name="LAST_TIME_CHECKED" value="1404719531483" />
     <option name="LAST_BUILD_CHECKED" value="PC-133.881" />
     <option name="UPDATE_CHANNEL_TYPE" value="release" />
   </component>
