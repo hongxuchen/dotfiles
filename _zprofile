@@ -1,9 +1,9 @@
 # -*- mode:sh -*-
 # vim:ft=sh
 
-if ! [ $DISPLAY ]; then
-    source ~/.profile
-fi
+# if ! [ $DISPLAY ]; then
+source ~/.profile
+# fi
 
 export PAGER="less"
 export LESS="-R -i -g -c -W"
@@ -24,7 +24,7 @@ export GREP_COLOR='1;32'
 
 # export PATH=~/moonbox/dryrun/bin:~/moonbox/dryrun/utils:~/moonbox/dryrun/utils/wllvm:~/moonbox/llvm-obj/Release+Asserts/bin:~/moonbox/llvm-gcc4.2-2.9-x86_64-linux/bin:~/moonbox/klee-install/bin:~/moonbox/klee/scripts:$PATH
 export PATH=$PATH:~/llvm/install/bin
-PATH=/usr/local/texlive/2013/bin/x86_64-linux:~/.bin:~/.local/bin::~/.builds/repos/rtags/build/bin:~/tools/FSharp-2.0.0.0/bin:$PATH
+PATH=/usr/local/texlive/2014/bin/x86_64-linux:~/.bin:~/.local/bin::~/.builds/repos/rtags/build/bin:~/tools/FSharp-2.0.0.0/bin:$PATH
 export MONO_PATH=~/tools/FSharp-2.0.0.0:$MONO_PATH
 # export LLVM_COMPILER=llvm-gcc   # for wllvm
 # export WLLVM_OUTPUT=DEBUG

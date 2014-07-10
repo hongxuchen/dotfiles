@@ -1,15 +1,16 @@
 #!/bin/sh
 
-git clone git://git.savannah.gnu.org/emacs.git
+# git clone --depth 1 git://git.savannah.gnu.org/emacs.git
 
 build_emacs(){
     set -ex
     BASEDIR="`dirname $0`"
     cd ${BASEDIR}/emacs
-    ./configure --disable-largefile --program-suffix='-chx' --without-xpm --without-jpeg --without-tiff --without-gif --without-png --without-imagemagick  --without-gconf --without-selinux --without-gsettings --without-gpm --without-makeinfo --with-x-toolkit=no CC=/usr/bin/clang CXX=/usr/bin/clang++ CXXFLAGS=-O3 CFLAGS=-O3
-    make -j
-    sudo checkinstall
+    ./configure --disable-largefile  --without-xpm --without-jpeg --without-tiff --without-gif --without-png --without-imagemagick  --without-gconf --without-selinux --without-gsettings --without-gpm --without-makeinfo --with-x-toolkit=yes CC=/usr/bin/clang CXX=/usr/bin/clang++ CXXFLAGS=-O3 CFLAGS=-O3
+# --program-suffix='-chx'
+    make -j$(nproc)
+    sudo  make install
     cd ${BASEDIR}
 }
 # --without-toolkit-scroll-bars  --without-xaw3d
-# build_emacs 2>&1 |tee BUILD_LOG
+build_emacs 2>&1 |tee BUILD_LOG

@@ -6,7 +6,7 @@ export ALTERNATE_EDITOR=""
 #supress locale and TZ
 export LANG=en_US.UTF-8
 export LANGUAGE=en_US:en
-export LC_CTYPE=zh_CN.UTF-8
+export LC_CTYPE=zh_SG.UTF-8
 export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"

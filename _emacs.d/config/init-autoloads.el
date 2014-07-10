@@ -40,7 +40,7 @@
 (eval-after-load "info" '(require 'info+))
 
 ;; apt-utils
-(eval-after-load "apt-utils" '(require 'apt-utils-ido))
+;; (eval-after-load "apt-utils" '(require 'apt-utils-ido))
 
 ;; ffap
 ;; FIXME it's a redefine rather than defadvice

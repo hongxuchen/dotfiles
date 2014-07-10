@@ -31,13 +31,13 @@ Emacs24.toolBar: off
 Emacs24*font:    Consolas:antialias=true
 
 !font and size
-XTerm*faceSize: 13
-XTerm*faceSize1: 13
-XTerm*faceSize2: 13
-XTerm*faceSize3: 13
-XTerm*faceSize4: 13
-XTerm*faceSize5: 13
-XTerm*faceSize6: 13
+XTerm*faceSize: 16
+XTerm*faceSize1: 16
+XTerm*faceSize2: 16
+XTerm*faceSize3: 16
+XTerm*faceSize4: 16
+XTerm*faceSize5: 16
+XTerm*faceSize6: 16
 XTerm*fontMenu*fontdefault*Label: Default
 !use fc-list to see installed fonts(~/.fonts,...)
 !generally used:sans-serif
@@ -45,7 +45,9 @@ XTerm*fontMenu*fontdefault*Label: Default
 ! XTerm*faceNameDoublesize:WenQuanYi Micro Hei
 ! XTerm*cjkWidth:false
 ! XTerm*internalBorder: 0
-xterm*faceName: DejaVu Sans Mono:style=Book:antialias=false
+! xterm*faceName: DejaVu Sans Mono:style=Book:antialias=false
+xterm*faceName: Consolas:antialias=true
+!
 xterm*faceNameDoublesize: WenQuanYi Bitmap Song
 
 XTerm*cursorBlink: false

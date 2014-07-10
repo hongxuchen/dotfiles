@@ -1,7 +1,7 @@
 (setq emacs-load-start-time (current-time))
 
 (require 'cl)
-(add-to-list 'load-path (expand-file-name "~/.emacs.d"))
+;; (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/config"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/elisp"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/site-lisp/doxymacs/share/emacs/site-lisp"))

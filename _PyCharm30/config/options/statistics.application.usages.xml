@@ -1,53 +1,53 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application>
   <component name="StatisticsApplicationUsages">
-    <group name="file-type">
-      <project id="pyclang" values="PLAIN_TEXT,C++,XML,UNKNOWN,Python" />
-      <project id="legion" values="PLAIN_TEXT,Native,C++,Python,XML,UNKNOWN" />
-      <project id="glade" values="XML,Python,UNKNOWN,PLAIN_TEXT,DTD" />
-      <project id="cfe_py" values="Python,Native,UNKNOWN,XML,C++,PLAIN_TEXT,ReST" />
-      <project id="google_play_dl" values="Markdown,UNKNOWN,ARCHIVE,Native,PLAIN_TEXT,XML,C++,HTML,ReST,Python,Images" />
-      <project id="ply" values="UNKNOWN,PLAIN_TEXT,XML,Python,HTML" />
-      <project id="my_scrapy" values="UNKNOWN,PLAIN_TEXT,Markdown,XML,Python" />
-      <project id="idapython_ext" values="ARCHIVE,C++,HTML,Python,UNKNOWN,ReST,Images,Markdown,XML,Native,PLAIN_TEXT" />
-      <project id="py_scripts" values="HTML,C++,Python,Native,ReST,UNKNOWN,PLAIN_TEXT,XML,Images" />
-    </group>
-    <group name="py-interpreter">
-      <project id="pyclang" values="Python 3.3.2+,Python 2.7.5+" />
-      <project id="legion" values="Python 2.7.5+" />
-      <project id="glade" values="Python 3.3.2+" />
-      <project id="cfe_py" values="Python 2.7.5+,Python 2.7.5+" />
-      <project id="google_play_dl" values="Python 2.7.5+,Python 2.7.5+,Python 2.7.5+,Python 2.7.5+" />
-      <project id="ply" values="Python 2.7.5+" />
-      <project id="my_scrapy" values="Python 2.7.5+,Python 2.7.5+,Python 2.7.5+" />
-      <project id="idapython_ext" values="Python 2.7.5+,Python 2.7.5+,Python 2.7.5+,Python 2.7.5+,Python 2.7.5+" />
-      <project id="py_scripts" values="Python 2.7.5+" />
+    <group name="module type">
+      <project id="google_play_dl" values="PYTHON_MODULE" />
+      <project id="glade" values="PYTHON_MODULE" />
+      <project id="idapython_ext" values="PYTHON_MODULE" />
+      <project id="cfe_py" values="PYTHON_MODULE" />
+      <project id="my_scrapy" values="PYTHON_MODULE" />
+      <project id="pyclang" values="PYTHON_MODULE" />
+      <project id="ply" values="PYTHON_MODULE" />
+      <project id="legion" values="PYTHON_MODULE" />
+      <project id="py_scripts" values="PYTHON_MODULE" />
     </group>
     <group name="vcs">
-      <project id="pyclang" values="Git" />
-      <project id="legion" values="Git" />
-      <project id="cfe_py" values="Git" />
       <project id="google_play_dl" values="Git" />
-      <project id="ply" values="Git" />
-      <project id="my_scrapy" values="Git" />
       <project id="idapython_ext" values="Git" />
+      <project id="cfe_py" values="Git" />
+      <project id="my_scrapy" values="Git" />
+      <project id="pyclang" values="Git" />
+      <project id="ply" values="Git" />
+      <project id="legion" values="Git" />
       <project id="py_scripts" values="Git" />
     </group>
     <group name="run-configuration-type-temp">
-      <project id="glade" values="PythonConfigurationType" />
       <project id="google_play_dl" values="PythonConfigurationType" />
+      <project id="glade" values="PythonConfigurationType" />
       <project id="py_scripts" values="PythonConfigurationType" />
     </group>
-    <group name="module type">
-      <project id="pyclang" values="PYTHON_MODULE" />
-      <project id="legion" values="PYTHON_MODULE" />
-      <project id="glade" values="PYTHON_MODULE" />
-      <project id="cfe_py" values="PYTHON_MODULE" />
-      <project id="google_play_dl" values="PYTHON_MODULE" />
-      <project id="ply" values="PYTHON_MODULE" />
-      <project id="my_scrapy" values="PYTHON_MODULE" />
-      <project id="idapython_ext" values="PYTHON_MODULE" />
-      <project id="py_scripts" values="PYTHON_MODULE" />
+    <group name="file-type">
+      <project id="google_play_dl" values="PLAIN_TEXT,ARCHIVE,ReST,Images,UNKNOWN,HTML,C++,Python,Native,XML,Markdown" />
+      <project id="glade" values="XML,Python,DTD,PLAIN_TEXT,UNKNOWN" />
+      <project id="idapython_ext" values="Native,Markdown,PLAIN_TEXT,UNKNOWN,Python,HTML,ARCHIVE,C++,XML,ReST,Images" />
+      <project id="cfe_py" values="ReST,PLAIN_TEXT,UNKNOWN,Python,XML,Native,C++" />
+      <project id="my_scrapy" values="UNKNOWN,Markdown,XML,Python,PLAIN_TEXT" />
+      <project id="pyclang" values="Python,PLAIN_TEXT,C++,XML,UNKNOWN" />
+      <project id="ply" values="XML,Python,PLAIN_TEXT,UNKNOWN,HTML" />
+      <project id="legion" values="XML,C++,UNKNOWN,PLAIN_TEXT,Python,Native" />
+      <project id="py_scripts" values="ReST,UNKNOWN,Python,Images,PLAIN_TEXT,Native,XML,C++,HTML" />
+    </group>
+    <group name="py-interpreter">
+      <project id="google_play_dl" values="Python 2.7.5+,Python 2.7.5+,Python 2.7.5+,Python 2.7.5+" />
+      <project id="glade" values="Python 3.3.2+" />
+      <project id="idapython_ext" values="Python 2.7.5+,Python 2.7.5+,Python 2.7.5+,Python 2.7.5+,Python 2.7.5+" />
+      <project id="cfe_py" values="Python 2.7.5+,Python 2.7.5+" />
+      <project id="my_scrapy" values="Python 2.7.5+,Python 2.7.5+,Python 2.7.5+" />
+      <project id="pyclang" values="Python 2.7.5+,Python 3.3.2+" />
+      <project id="ply" values="Python 2.7.5+" />
+      <project id="legion" values="Python 2.7.5+" />
+      <project id="py_scripts" values="Python 2.7.5+" />
     </group>
   </component>
   <component name="UsageTrigger">

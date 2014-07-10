@@ -38,10 +38,13 @@ ARCHIVE is the string name of the package archive.")
   (around filter-packages (package archive) activate)
   "Add filtering of available packages using `package-filter-function', if non-nil."
   (when (or (null package-filter-function)
-            (funcall package-filter-function
-                     (car package)
-                     (package-desc-vers (cdr package))
-                     archive))
+	    (funcall package-filter-function
+		     (car package)
+		     (funcall (if (fboundp 'package-desc-version)
+				  'package--ac-desc-version
+				'package-desc-vers)
+			      (cdr package))
+		     archive))
     ad-do-it))
 
 (defun require-package (package &optional min-version no-refresh)
@@ -114,8 +117,8 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 ;;------------------------------------------------------------------------------
 ;; writings
 ;;------------------------------------------------------------------------------
-(require-package 'auctex)
-(require-package 'auctex-latexmk)
+;; (require-package 'auctex)
+;; (require-package 'auctex-latexmk)
 (require-package 'ac-math)
 (require-package 'latex-extra)
 (require-package 'latex-pretty-symbols)
@@ -123,7 +126,7 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (require-package 'markdown-mode)
 ;; org
 (require-package 'cdlatex)
-(require-package 'org-plus-contrib)
+;; (require-package 'org-plus-contrib)
 (require-package 'htmlize)
 
 (require-package 'graphviz-dot-mode)

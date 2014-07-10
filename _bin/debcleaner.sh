@@ -23,8 +23,10 @@ RED="\033[0;31m"
 ENDCOLOR="\033[0m"
 
 clean_packages(){
-printf "${YELLOW}\nRemoving old kernels...$ENDCOLOR"
-aptitude purge $OLDKERNELS
+# printf "current kernel: $CURKERNEL"
+# printf "OLD kernel: $OLDKERNELS"
+# printf "${YELLOW}\nRemoving old kernels...$ENDCOLOR"
+# aptitude purge $OLDKERNELS
 printf "${YELLOW}\nRemoving unused config files...\n$ENDCOLOR"
 aptitude purge $OLDCONF
 printf "${YELLOW}Removing orphan packages\n$ENDCOLOR"

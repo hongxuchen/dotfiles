@@ -78,7 +78,7 @@
 (eval-after-load 'org
   '(progn
      (require 'htmlize)
-     (require 'org-exp)
+     ;; (require 'org-exp)
      (require 'org-clock)
      (setq org-src-fontify-natively t)
      (setq org-src-tab-acts-natively t)

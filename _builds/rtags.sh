@@ -28,7 +28,8 @@ git checkout master
 # PATH=${INSTALL_DIR}/bin:$PATH
 rm -rf $BUILD && mkdir -p $BUILD && cd $BUILD
 # cmake -GNnja -DCLANG_ROOT=${INSTALL_DIR}  $SRC  && ninja
-cmake -GNinja $SRC  && ninja
+# cmake -GNinja $SRC  && ninja
+cmake $SRC && make -j$(nproc)
 
 ln -sf $SRC/bin/gcc-rtags-wrapper.sh ~/.bin/g++
 ln -sf $SRC/bin/gcc-rtags-wrapper.sh ~/.bin/gcc
