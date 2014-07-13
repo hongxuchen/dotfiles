@@ -27,7 +27,7 @@ function unlink_file {
 # never use it with submodule since vundle needs to manage itself
 function init_vim {
     if ! [ -d ~/.vim/bundle/vundle ]; then
-        git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+        git clone --depth 1 https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
         vim -c 'BundleInstall' -c 'qa'
     fi
 }
