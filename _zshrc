@@ -9,8 +9,8 @@ ALIAS=$HOME/.aliases
 # ZSH_THEME="candy"
 # ZSH_THEME="dst"
 # ZSH_THEME="imajes"
-ZSH_THEME="nanotech"
 # ZSH_THEME="steeef"
+ZSH_THEME="nanotech"
 
 # ~/.oh-my-zsh/plugins/
 plugins=(pip debian svn vi-mode perl python npm)
