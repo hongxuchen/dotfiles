@@ -2,4 +2,3 @@
 !*.sh
 !.gitignore
 !llvm
-!debs

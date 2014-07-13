@@ -3,6 +3,7 @@
 # We'd better use a deb package of libclang/llvm; clang isn't necessary
 
 BASEDIR="`dirname $0`"/repos
+mkdir -p repos
 cd $BASEDIR
 SRC=$(pwd)/rtags
 BUILD=$SRC/build
@@ -23,7 +24,7 @@ fi
 
 rm $ELISP
 git checkout master
-
+ 
 # INSTALL_DIR=$HOME//llvm/install
 # PATH=${INSTALL_DIR}/bin:$PATH
 rm -rf $BUILD && mkdir -p $BUILD && cd $BUILD
