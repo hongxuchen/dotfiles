@@ -35,6 +35,6 @@ export QT_IM_MODULE=ibus
 
 export COMMAND_NOT_FOUND_INSTALL_PROMPT=3
 
-~/.bin/toggle-touchpad.sh 1
+# ~/.bin/toggle-touchpad.sh 1
 
 # [ `hostname` != 'HongxuChen' ] || ps -C fetchmail >/dev/null || fetchmail -d 300

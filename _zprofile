@@ -23,9 +23,10 @@ export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 
 # export PATH=~/moonbox/dryrun/bin:~/moonbox/dryrun/utils:~/moonbox/dryrun/utils/wllvm:~/moonbox/llvm-obj/Release+Asserts/bin:~/moonbox/llvm-gcc4.2-2.9-x86_64-linux/bin:~/moonbox/klee-install/bin:~/moonbox/klee/scripts:$PATH
-export PATH=$PATH:/sbin:~/llvm/install/bin
-PATH=/usr/local/texlive/2014/bin/x86_64-linux:~/.bin:~/.local/bin::~/.builds/repos/rtags/build/bin:~/tools/FSharp-2.0.0.0/bin:$PATH
+export PATH=/sbin:~/marple-llvm/llvm-obj/bin:$PATH
+export PATH=/usr/local/texlive/2014/bin/x86_64-linux:~/.bin:~/.local/bin::~/.builds/repos/rtags/build/bin:~/tools/FSharp-2.0.0.0/bin:$PATH
 export MONO_PATH=~/tools/FSharp-2.0.0.0:$MONO_PATH
+export PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/site-packages
 # export LLVM_COMPILER=llvm-gcc   # for wllvm
 # export WLLVM_OUTPUT=DEBUG
 # export C_INCLUDE_PATH=~/llvm/install/include
@@ -40,4 +41,4 @@ stty ixoff -ixon
 
 # load executable
 # pgrep rdm
-(ps -C rdm >/dev/null || rdm &>/dev/null &)
+(ps -C rdm >/dev/null || rdm &>/tmp/rdm_answer &)

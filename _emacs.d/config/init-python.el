@@ -11,8 +11,8 @@
 (setq elpy-default-minor-modes '(eldoc-mode flymake-mode yas-minor-mode auto-complete-mode))
 ;; (setq elpy-default-minor-modes '(eldoc-mode flymake-mode auto-complete-mode))
 (eval-after-load 'python '(elpy-enable))
-(setq python-shell-interpreter "python3")
-(setq elpy-rpc-python-command "python3")
+(setq python-shell-interpreter "python")
+(setq elpy-rpc-python-command "python")
 (setq elpy-rpc-backend "jedi")
 
 (provide 'init-python)

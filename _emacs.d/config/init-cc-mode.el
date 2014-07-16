@@ -50,6 +50,7 @@
 ;; (eval-after-load "cc-mode"
 ;;   '(progn
 ;;      (defun c-invalidate-state-cache (here) " " nil)))
+(eval-after-load "llvm-mode" '(require 'llvmize))
 
 ;; -----------------------------------------------------------------------------
 ;; includes and flags

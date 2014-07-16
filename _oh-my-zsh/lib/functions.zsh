@@ -82,7 +82,7 @@ function clang-ll() {
 
 # -debug-buffer-size=1024
 function opt() {
-    command opt -load ~/moonbox/dryrun/bin/test.so -load ~/moonbox/dryrun/bin/slice.so $@
+    command opt -load /home/hongxu/marple-llvm/marple/bin/marple.so $@
 }
 
 function clean_llvm(){
