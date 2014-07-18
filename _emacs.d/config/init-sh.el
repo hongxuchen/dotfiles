@@ -12,6 +12,6 @@
        auto-mode-alist))
 
 (require 'flymake-shell)
-(add-hook 'sh-set-shell-hook 'flymake-shell-load)
+(add-hook 'sh-mode-hook 'flymake-shell-load)
 
 (provide 'init-sh)

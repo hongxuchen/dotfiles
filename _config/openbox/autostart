@@ -1,5 +1,4 @@
 #!/bin/sh
 # feh --bg-scale /usr/share/backgrounds/Twilight_Frost_by_Phil_Jackson.jpg
 #xrdb -merge ~/.Xresources
-trayer --edge bottom  --align right --SetDockType true --SetPartialStrut true --expand true --width 8 --transparent true --alpha 255 &
 nm-applet &

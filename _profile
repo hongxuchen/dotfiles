@@ -23,9 +23,9 @@ export LC_ALL=
 export EMAIL="leftcopy.chx@gmail.com"
 export TZ='Asia/Shanghai'
 
-export GTK_IM_MODULE=ibus
 export XMODIFIERS=@im=ibus
 export QT_IM_MODULE=ibus
+export GTK_IM_MODULE=ibus
 
 # export XIM=fcitx
 # export XIM_PROGRAM=fcitx
@@ -33,7 +33,9 @@ export QT_IM_MODULE=ibus
 # export QT_IM_MODULE=fcitx
 # export XMODIFIERS="@im=fcitx"
 
-export COMMAND_NOT_FOUND_INSTALL_PROMPT=3
+export COMMAND_NOT_FOUND_INSTALL_PROMPT=1
+
+#~/.screenlayout/dual.sh
 
 # ~/.bin/toggle-touchpad.sh 1
 

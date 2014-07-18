@@ -18,6 +18,8 @@
 (global-set-key (kbd "<f1>") 'gnus)
 (global-set-key (kbd "<f5>") 'normal-mode)
 
+(global-set-key (kbd "<f11>") 'switch-full-screen)
+
 (global-set-key (kbd "C-h C-l") 'dict-lookup-definition)
 (global-set-key (kbd "C-h C-s") 'my-goto-scratch-buffer)
 (global-set-key (kbd "<f2>") 'repeat-complex-command)

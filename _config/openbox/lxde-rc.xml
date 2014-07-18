@@ -285,6 +285,17 @@ and back in -->
     <keybind key="A-S-Tab">
       <action name="PreviousWindow"/>
     </keybind>
+    <!-- Keybindings for single/dual monitor switching -->
+    <keybind key="W-1">
+      <action name="Execute">
+        <command>sh ~/.screenlayout/single.sh</command>
+      </action>
+    </keybind>
+    <keybind key="W-2">
+      <action name="Execute">
+        <command>sh ~/.screenlayout/dual.sh</command>
+      </action>
+    </keybind>
     <!-- Keybindings for running applications -->
     <keybind key="W-e">
       <action name="Execute">
