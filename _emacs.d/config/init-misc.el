@@ -39,7 +39,7 @@
                                  'kill-buffer-query-functions
                                  'server-kill-buffer-query-function)))
 (fset 'yes-or-no-p 'y-or-n-p)
-(setq suggest-key-bindings nil
+(setq suggest-key-bindings t
       confirm-nonexistent-file-or-buffer nil)
 (setq kill-buffer-query-functions
       (remq 'process-kill-buffer-query-function

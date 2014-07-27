@@ -64,6 +64,7 @@
 (require 'init-lisp)
 ;; (require 'init-clojure)
 ;; (require 'init-common-lisp)
+(require 'init-smt)
 
 ;; (require 'init-moz)
 ;; (require 'init-javascript)

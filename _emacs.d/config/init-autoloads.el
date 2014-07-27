@@ -66,7 +66,7 @@
 (eval-after-load 'esh-opt '(progn (require 'init-eshell)))
 
 ;; smex
-(eval-after-load 'smex '(defun smex-show-key-advice (command) ()))
+;; (eval-after-load 'smex '(defun smex-show-key-advice (command) ()))
 
 ;;ffip
 (eval-after-load "find-file-in-project"

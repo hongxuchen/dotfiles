@@ -34,7 +34,7 @@ alias cc-clang='clang -E -x c++ /dev/null -v'
 alias clang-analyze='clang -cc1 -analyzer-checker-help |less'
 alias dl='axel -a -n 8'
 # alias ssh_stap='ssh stap.sjtu.edu.cn -p 2210'
-alias ssh_lab="ssh -X hongxu@172.21.241.193"
+alias ssh_lab="ssh -X root@pat.sce.ntu.edu.sg"
 #Google style
 alias indent="command indent -kr -ci2 -cli2 -i2 -l80 -nut"
 alias rdm-null="command rdm &>/dev/null &"
@@ -49,3 +49,4 @@ alias vim='emacs'
 
 alias ...='cd ../..'
 alias d='dirs -v | head -10'
+alias make='make -j8'
