@@ -28,6 +28,7 @@
 (ac-flyspell-workaround)
 ;; (setq ac-ignore-case 'smart) ;;default
 
+
 (defun add-ac-trigger-command (command)
   (if (functionp command)
       (setq ac-trigger-commands (cons command ac-trigger-commands))))

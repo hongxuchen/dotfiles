@@ -33,6 +33,7 @@ alias cc-clang++='clang -E -x c /dev/null -v'
 alias cc-clang='clang -E -x c++ /dev/null -v'
 alias clang-analyze='clang -cc1 -analyzer-checker-help |less'
 alias dl='axel -a -n 8'
+alias pycharm='~/tools/pycharm/bin/pycharm.sh &>/dev/null &'
 # alias ssh_stap='ssh stap.sjtu.edu.cn -p 2210'
 alias ssh_lab="ssh -X root@pat.sce.ntu.edu.sg"
 #Google style

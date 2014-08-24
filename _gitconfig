@@ -88,3 +88,5 @@
 	reflogexpireunreachable = 3
 [diff "exif"]
 	textconv = exiftool
+[github]
+	user = leftcopy.chx@gmail.com

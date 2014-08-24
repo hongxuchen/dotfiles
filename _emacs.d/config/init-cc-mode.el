@@ -58,13 +58,4 @@
 
 (add-hook 'cc-mode-hook 'turn-on-auto-fill)
 
-;; (dir-locals-set-class-variables 'llvm-3.4-directory
-;;                                 '((nil . ((irony-compile-flags. ("-I/usr/lib/llvm-3.4/include"   "/usr/include/c++/4.6" "/usr/include/c++/4.6/backward" "/usr/include/c++/4.6/x86_64-linux-gnu" "/usr/include/c++/4.6/i686-linux-gnu" "/usr/lib/gcc/x86_64-linux-gnu/4.6/include"))))
-;;                                   (nil . ((irony-compile-flags . ("/usr/lib/llvm-3.4/include" "/usr/include" "/usr/include/linux" "/usr/local/include" "/usr/include/c++/4.6/"))))))
-;; (dir-locals-set-directory-class
-;;  "/usr/lib/llvm-3.4/include/clang-c/" 'llvm-3.4-directory)
-
-;; (dir-locals-set-directory-class
-;;  "/usr/lib/llvm-3.4/include/clang" 'llvm-3.4-directory)
-
 (provide 'init-cc-mode)

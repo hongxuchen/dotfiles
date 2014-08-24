@@ -28,6 +28,12 @@ function mv(){
     fi
 }
 
+function rc-make(){
+    rc -W $1
+    make clean
+    make -j$(nproc)
+}
+
 function dict(){
     word=$1
     TEMP="/tmp/dict.${word}"

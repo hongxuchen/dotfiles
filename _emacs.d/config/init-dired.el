@@ -1,8 +1,12 @@
 (provide 'init-dired)
 
 (eval-after-load "dired-aux"
-   '(add-to-list 'dired-compress-file-suffixes 
-                 '("\\.zip\\'" ".zip" "unzip")))
+  '(add-to-list 'dired-compress-file-suffixes
+                '("\\.zip\\'" ".zip" "unzip")))
+
+(eval-after-load "dired-aux"
+  '(add-to-list 'dired-compress-file-suffixes
+                '("\\.rar\\'" ".rar" "unrar")))
 
 (setq dired-recursive-copies t               ;copy recursively
       dired-recursive-deletes t              ;delete recursively

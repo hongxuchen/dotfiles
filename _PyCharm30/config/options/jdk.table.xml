@@ -54,6 +54,7 @@
             <root type="simple" url="file://$USER_HOME$/.PyCharm30/system/python_stubs/-2066100796" />
             <root type="simple" url="file:///usr/lib/python2.7/dist-packages/ubuntu-sso-client" />
             <root type="simple" url="file:///usr/lib/python2.7/plat-linux2" />
+            <root type="simple" url="file:///usr/lib/python2.7/site-packages" />
           </root>
         </classPath>
         <sourcePath>
