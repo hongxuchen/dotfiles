@@ -8,7 +8,7 @@
 (setq display-time-24hr-format nil
       display-time-day-and-date t)
 
-(setq global-mode-string '((vc-mode vc-mode))) ;; to make it updated
+(setq global-mode-string '((vc-mode vc-mode))) ;; to make it up-to-date
 
 (setq minor-mode-alist
       '((dired-omit-mode
@@ -65,58 +65,58 @@
         ))
 
 ;; use setq-default to set it for all modes
-(setq-default mode-line-format
-              (list
+(setq-default
+ mode-line-format
+ (list
+  '(:eval (propertize "%b " 'face 'font-lock-keyword-face
+                      'help-echo (buffer-file-name)))
+  ;; column, row
+  "(" (propertize "%02l" 'face 'font-lock-type-face) ","
+  (propertize "%02c" 'face 'font-lock-type-face) ") "
 
-               '(:eval (propertize "%b " 'face 'font-lock-keyword-face
-                                   'help-echo (buffer-file-name)))
-               ;; column, row
-               "(" (propertize "%02l" 'face 'font-lock-type-face) ","
-               (propertize "%02c" 'face 'font-lock-type-face) ") "
+  ;; percent, size
+  "[" (propertize "%p" 'face 'font-lock-constant-face)
+  "/" (propertize "%I" 'face 'font-lock-constant-face) "] "
 
-               ;; percent, size
-               "[" (propertize "%p" 'face 'font-lock-constant-face)
-               "/" (propertize "%I" 'face 'font-lock-constant-face) "] "
-
-               "[" '(:eval (propertize "%m" 'face 'font-lock-string-face
-                                       'help-echo buffer-file-coding-system)) "] "
+  "[" '(:eval (propertize "%m" 'face 'font-lock-string-face
+                          'help-echo buffer-file-coding-system)) "] "
 
 
-                                       '(:eval (when evil-mode
-                                                 (propertize evil-mode-line-tag
+                          '(:eval (when evil-mode
+                                    (propertize evil-mode-line-tag
+                                                'face 'font-lock-type-face
+                                                'help-echo "Evil Mode")))
+
+                          "["
+                          '(:eval (propertize (if overwrite-mode "Ovr" "Ins")
+                                              'face 'font-lock-preprocessor-face
+                                              'help-echo (concat "Buffer "
+                                                                 (if overwrite-mode "overwrite" "insert"))))
+
+                          '(:eval (when (buffer-modified-p)
+                                    (concat ","  (propertize "Mod"
+                                                             'face 'font-lock-warning-face
+                                                             'help-echo "Buffer Modified"))))
+
+
+                          '(:eval (when buffer-read-only
+                                    (concat ","  (propertize "RO"
                                                              'face 'font-lock-type-face
-                                                             'help-echo "Evil Mode")))
+                                                             'help-echo "Buffer is read-only"))))
+                          "] "
 
-                                       "["
-                                       '(:eval (propertize (if overwrite-mode "Ovr" "Ins")
-                                                           'face 'font-lock-preprocessor-face
-                                                           'help-echo (concat "Buffer "
-                                                                              (if overwrite-mode "overwrite" "insert"))))
+                          mode-line-misc-info
 
-                                       '(:eval (when (buffer-modified-p)
-                                                 (concat ","  (propertize "Mod"
-                                                                          'face 'font-lock-warning-face
-                                                                          'help-echo "Buffer Modified"))))
+                          '(:eval (propertize (format-time-string "%D %R")
+                                              'face 'font-lock-type-face
+                                              'help-echo
+                                              (concat (format-time-string "%c; ")
+                                                      (emacs-uptime "Uptime:%hh"))))
 
 
-                                       '(:eval (when buffer-read-only
-                                                 (concat ","  (propertize "RO"
-                                                                          'face 'font-lock-type-face
-                                                                          'help-echo "Buffer is read-only"))))
-                                       "] "
-
-                                       mode-line-misc-info
-
-                                       '(:eval (propertize (format-time-string "%D %R")
-                                                           'face 'font-lock-type-face
-                                                           'help-echo
-                                                           (concat (format-time-string "%c; ")
-                                                                   (emacs-uptime "Uptime:%hh"))))
-
-
-                                       " {"
-                                       minor-mode-alist  ;; list of minor modes
-                                       " } %-" ;; fill with '-'
-                                       ))
+                          " {"
+                          minor-mode-alist  ;; list of minor modes
+                          " } %-" ;; fill with '-'
+                          ))
 
 (provide 'init-modeline)

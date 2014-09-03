@@ -15,7 +15,8 @@
 (defun my-terminal ()
   (interactive)
   (terminal default-directory))
-(global-set-key (kbd "<f10>") 'my-terminal)
+
+(setq explicit-bash-args "-i -l")
 
 (setq term-scroll-to-bottom-on-output t)
 

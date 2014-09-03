@@ -53,4 +53,29 @@
 
 (setq magithub-use-ssl t)
 
+;; -----------------------------------------------------------------------------
+;; reverting issues
+;; -----------------------------------------------------------------------------
+(defvar my-vc-reverting nil
+  "Whether or not VC or Magit is currently reverting buffers.")
+
+(defadvice revert-buffer (after my-maybe-remove-elc activate)
+  "If reverting from VC, delete any .elc file that will now be out of sync."
+  (when my-vc-reverting
+    (when (and (eq 'emacs-lisp-mode major-mode)
+               buffer-file-name
+               (string= "el" (file-name-extension buffer-file-name)))
+      (let ((elc (concat buffer-file-name "c")))
+        (when (file-exists-p elc)
+          (message "Removing out-of-sync elc file %s" (file-name-nondirectory elc))
+          (delete-file elc))))))
+
+(defadvice magit-revert-buffers (around my-reverting activate)
+  (let ((my-vc-reverting t))
+    ad-do-it))
+
+(defadvice vc-revert-buffer-internal (around my-reverting activate)
+  (let ((my-vc-reverting t))
+    ad-do-it))
+
 (provide 'init-git)

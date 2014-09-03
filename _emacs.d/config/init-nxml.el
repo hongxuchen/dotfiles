@@ -1,6 +1,7 @@
-(add-to-list 'auto-mode-alist
-              (cons (concat "\\." (regexp-opt '("cshtml" "aspx" "xml" "xsd" "sch" "rng" "xslt" "svg" "rss" "bkl" "bkgen" "tpl" "inc") t) "\\'")
-                    'nxml-mode))
+(add-to-list
+ 'auto-mode-alist
+ (cons (concat "\\." (regexp-opt '("cshtml" "aspx" "xml" "xsd" "sch" "rng" "xslt" "svg" "rss" "bkl" "bkgen" "tpl" "inc" "jsp" "tmpl") t) "\\'") 'nxml-mode))
+
 (setq magic-mode-alist (cons '("<\\?xml " . nxml-mode) magic-mode-alist))
 (fset 'html-mode 'nxml-mode)
 (fset 'xml-mode 'nxml-mode)
@@ -15,12 +16,10 @@ between them.  It then indents the markup by using nxml's
 indentation rules."
   (interactive "r")
   (save-excursion
-      (nxml-mode)
-      (goto-char begin)
-      (while (search-forward-regexp "\>[ \\t]*\<" nil t)
-        (backward-char) (insert "\n"))
-      (indent-region begin end)))
-
-(add-auto-mode 'html-mode "\\.(jsp|tmpl)\\'")
+    (nxml-mode)
+    (goto-char begin)
+    (while (search-forward-regexp "\>[ \\t]*\<" nil t)
+      (backward-char) (insert "\n"))
+    (indent-region begin end)))
 
 (provide 'init-nxml)

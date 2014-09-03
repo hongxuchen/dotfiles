@@ -89,6 +89,7 @@
   (with-current-buffer (get-buffer-create youdao-return-xml) (erase-buffer))
   (call-process "curl" nil (list youdao-return-xml nil) nil (format search-url (url-hexify-string (read-word))))
   (pos-tip-show (youdao-dict-parse-xml) nil nil nil 0)
+  ;; (popup-tip (youdao-dict-parse-xml))
   (unwind-protect
       (push (read-event) unread-command-events)
     (pos-tip-hide))

@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: operator[]_dc
-# key: dc[]
-# --
-const ${1:Type}& operator[](${2:int index}) const;

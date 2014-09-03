@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: operator<<_d
-# key: d<<
-# --
-friend std::ostream& operator<<(std::ostream&, const ${1:Class}&);

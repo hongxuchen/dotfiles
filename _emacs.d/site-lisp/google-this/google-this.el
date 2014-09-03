@@ -23,16 +23,15 @@ opposite happens."
 
 (define-prefix-command 'google-this-mode-submap)
 (define-key google-this-mode-submap [return] 'google-search)
-(define-key google-this-mode-submap "t" 'google-this) 
-(define-key google-this-mode-submap "r" 'google-region) 
+(define-key google-this-mode-submap "t" 'google-this)
+(define-key google-this-mode-submap "r" 'google-region)
 (define-key google-this-mode-submap "w" 'google-word)
 (define-key google-this-mode-submap "s" 'google-symbol)
-(define-key google-this-mode-submap "e" 'google-error) 
-(define-key google-this-mode-submap "c" 'google-cpp-reference) 
+(define-key google-this-mode-submap "e" 'google-error)
+(define-key google-this-mode-submap "c" 'google-cpp-reference)
 (define-key google-this-mode-submap "L" 'google-translate-query-or-region)
 (define-key google-this-mode-submap "g" 'google-github)
 (define-key google-this-mode-submap "l" 'google-llvm)
-(define-key google-this-mode-submap "f" 'google-file)
 (define-key google-this-mode-submap "S" 'google-SO)
 
 (defun google-translate-query-or-region ()
@@ -103,7 +102,7 @@ for some reason, contact me and let me know."
   "Convert illegal characters in TEXT to their %XX versions, and then google."
   (unless url-decider (setq url-decider 'google-decide-url))
   (browse-url (replace-regexp-in-string
-               "%s" 
+               "%s"
                (dolist (rp url-parser-regexps text)
                  (setq text (replace-regexp-in-string
                              (car rp) (car (cdr rp)) text)))
@@ -115,7 +114,7 @@ for some reason, contact me and let me know."
 (defun google-string (prefix &optional TEXT NOCONFIRM)
   "Google given TEXT, but ask the user first if NOCONFIRM is nil."
   (unless NOCONFIRM
-    (setq TEXT (read-string "Googling: " 
+    (setq TEXT (read-string "Googling: "
                             (if (stringp TEXT) (replace-regexp-in-string "^[[:blank:]]*" "" TEXT)))))
   (if (stringp TEXT)
       (parse-and-google-string TEXT prefix)
@@ -167,7 +166,7 @@ in the minibuffer to be edited."
       (unless (compilation-buffer-internal-p)
         (set-buffer buffer-name))
       (google-string prefix
-                     (google-this-clean-error-string 
+                     (google-this-clean-error-string
                       (buffer-substring (line-beginning-position) (line-end-position)))))))
 
 
@@ -182,16 +181,16 @@ Uses replacements in `google-error-regexp' and stops at the first match."
   (interactive)
   (dolist (cur google-error-regexp out)
     (when (string-match (car cur) s)
-        (setq out 
-              (replace-regexp-in-string  (car cur)
-                                         (car (cdr cur))
-                                         s))
-        (return out))))
+      (setq out
+            (replace-regexp-in-string  (car cur)
+                                       (car (cdr cur))
+                                       s))
+      (return out))))
 
 ;;;###autoload
 (defun google-cpp-reference ()
   (interactive)
-  (parse-and-google-string (concat "site:cppreference.com " (thing-at-point 'symbol)) nil 'google-feeling-lucky-decider))
+  (parse-and-google-string (concat "site:cppreference.com " (thing-at-point 'symbol)) nil ))
 
 ;;;###autoload
 (defun google-github ()
@@ -217,14 +216,6 @@ Uses replacements in `google-error-regexp' and stops at the first match."
 (defun google-feeling-lucky-decider (prefix)
   "Just returns the feeling lucky url."
   (concat "https://www.google." google-location-suffix "/search?btnI=I'm Feeling Lucky&q=%s"))
-
-(defun google-file (file)
-  "Use google to search for a file named FILE."
-  (interactive "sSearch for file: ")
-  (browse-url
-   (concat "http://www.google.com/search?q="
-            (concat "+intitle:\"index+of\" -inurl:htm -inurl:html -inurl:php "
-                    file))))
 
 ;;;###autoload
 (define-minor-mode google-this-mode nil nil " Google"

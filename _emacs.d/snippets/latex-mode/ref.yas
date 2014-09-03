@@ -1,5 +1,0 @@
-# key: ref
-# group: references
-# name : \ref
-# --
-\ref{${1:label$(unless yas/modified-p (reftex-reference nil 'dont-insert))}}$0

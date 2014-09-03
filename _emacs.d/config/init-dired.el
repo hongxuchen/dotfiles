@@ -1,12 +1,14 @@
 (provide 'init-dired)
 
 (eval-after-load "dired-aux"
-  '(add-to-list 'dired-compress-file-suffixes
-                '("\\.zip\\'" ".zip" "unzip")))
-
-(eval-after-load "dired-aux"
-  '(add-to-list 'dired-compress-file-suffixes
-                '("\\.rar\\'" ".rar" "unrar")))
+  '(progn
+     (add-to-list 'dired-compress-file-suffixes
+                  '("\\.zip\\'" ".zip" "unzip"))
+     (add-to-list 'dired-compress-file-suffixes
+                  '("\\.rar\\'" ".rar" "unrar"))
+     (require 'openwith)
+     (openwith-mode t)
+     ))
 
 (setq dired-recursive-copies t               ;copy recursively
       dired-recursive-deletes t              ;delete recursively
@@ -25,9 +27,6 @@
 (setq-default dired-omit-files-p t)
 (setq dired-omit-verbose nil)
 (setq dired-omit-files "^\\.$\\|^\\.\\.$\\|^GTAGS$\\|^Thumbs.db$\\|^Thumbs.db:encryptable$\\|^GSYMS$\\|^GRTAGS$\\|^GPATH$\\|\\.bc$|\\.o$\\|\\.out$\\|\\.aux$\\|\\.log$\\|\\.fdb_latexmk$\\|\\.synctex.gz$\\|\\.fls$")
-
-(require 'openwith)
-(openwith-mode t)
 
 (define-key dired-mode-map "W" 'wdired-change-to-wdired-mode)
 (setq list-directory-brief-switches (purecopy "-ACF"))

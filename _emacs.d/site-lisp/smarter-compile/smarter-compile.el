@@ -138,7 +138,6 @@
     ("[Mm]akefile\\'"   . smart-compile-get-make-program)
 
     (smart-compile-consider-makefile . nil)
-    (smart-compile-consider-projfile . "msbuild.exe ")
     (smart-compile-command-in-header-comments . nil)
 
     ("\\.cs\\'"         . "csc /t:exe /debug+ %f")
@@ -148,20 +147,13 @@
     (html-mode          . (browse-url-of-buffer))
     (nxhtml-mode        . (browse-url-of-buffer))
     (html-helper-mode   . (browse-url-of-buffer))
-    (octave-mode        . (run-octave))
 
     ("\\.c\\'"          . "clang -Wall -Wextra -Wshadow -Wbad-function-cast -Wcast-align %f -lm -lpthread -o %n -std=c99 -O0")
-    ("\\.[Cc]+[Pp]*\\'" . "clang++ -Wall -Wextra %f -lm -lpthread -o %n -std=c++11 -O0")
+    ("\\.[Cc]+[Pp]*\\'" . "clang++ -Wall -Wextra %f -lm -lpthread -o %n -std=c++1y -O0")
     ("\\.m\\'"          . "clang %f -lobjc -lpthread -o %n -std=c99 -O0")
-    ("\\.java\\'"       . "javac %f")
     ("\\.php\\'"        . "php -l %f")
-    ("\\.f90\\'"        . "gfortran %f -o %n")
-    ("\\.[Ff]\\'"       . "gfortran %f -o %n")
-    ("\\.cron\\(tab\\)?\\'" . "crontab %f")
-    ("\\.tex\\'"        . (tex-file))
     ("\\.texi\\'"       . "makeinfo %f")
     ("\\.mp\\'"         . "mptopdf %f")
-    ("\\.pl\\'"         . "perl -cw %f")
     ("\\.rb\\'"         . "ruby -cw %f")
     )
 
@@ -245,7 +237,7 @@ COMMAND can be:
                                         ("%F" . (buffer-file-name))
                                         ("%f" . (file-name-nondirectory (buffer-file-name)))
                                         ("%n" . (concat (file-name-sans-extension
-                                                 (file-name-nondirectory (buffer-file-name))) ".out"))
+                                                         (file-name-nondirectory (buffer-file-name))) ".out"))
                                         ("%e" . (or (file-name-extension (buffer-file-name)) ""))
                                         ))
 (put 'smart-compile-expando-alist 'risky-local-variable t)

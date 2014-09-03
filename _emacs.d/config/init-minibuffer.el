@@ -19,10 +19,6 @@
 (setq ido-ignore-directories (append ido-ignore-directories '("^auto/$" "\\.prv/" "_region_")))
 (setq ido-ignore-files (append ido-ignore-files '("^auto/$" "_region_")))
 
-;; (flx-ido-mode 1)
-;; (require 'flx-ido)
-;; (setq flx-ido-use-faces nil)
-
 (smex-initialize)
 
 (setq imenu-use-popup-ml)
@@ -30,5 +26,18 @@
 (setq imenu-auto-rescan t)
 
 (setq echo-keystrokes 0)
+
+(defvar paredit-minibuffer-commands
+  '(eval-expression
+    pp-eval-expression
+    eval-expression-with-eldoc
+    ibuffer-do-eval
+    ibuffer-do-view-and-eval))
+(defun conditionally-enable-paredit-mode ()
+  "Enable paredit during lisp-related minibuffer commands."
+  (if (memq this-command paredit-minibuffer-commands)
+      (enable-paredit-mode)))
+(add-hook 'minibuffer-setup-hook 'conditionally-enable-paredit-mode)
+
 
 (provide 'init-minibuffer)

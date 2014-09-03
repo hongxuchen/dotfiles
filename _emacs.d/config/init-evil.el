@@ -91,6 +91,7 @@
 
 (require 'evil-leader)
 (global-evil-leader-mode t)
+(defun show-file-name () (interactive) (message (buffer-file-name)))
 (evil-leader/set-key
   "c" 'flymake-mode
   "r" 'review-fixme-comment
@@ -99,7 +100,6 @@
   "s" 'show-file-name
   "b" 'magit-blame-mode
   "v" 'eval-buffer
-  "p" 'paste-mode
-  "t" 'taglist)
+  "p" 'paste-mode)
 
 (provide 'init-evil)

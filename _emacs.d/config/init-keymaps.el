@@ -14,8 +14,6 @@
 ;; (global-set-key (kbd "<C-tab>") 'yas-expand)
 (global-set-key (kbd "C-c l") 'yas-insert-snippet)
 
-(global-unset-key (kbd "<f1>"))
-(global-set-key (kbd "<f1>") 'gnus)
 (global-set-key (kbd "<f5>") 'normal-mode)
 
 (global-set-key (kbd "<f11>") 'switch-full-screen)
@@ -26,10 +24,11 @@
 
 (global-set-key (kbd "<C-f9>") 'smarter-compile)
 (global-set-key (kbd "<f9>") 'smarter-compile)
+
+(global-set-key (kbd "<f10>") 'my-terminal)
 (global-set-key (kbd "M-<f1>")
                 (lambda () (interactive)
                   (start-process "XTerm" nil "xterm")))
-(global-set-key (kbd "<M-f3>") 'eshell)
 
 (global-set-key (kbd "C-c e") 'my-eval-and-replace)
 
@@ -68,12 +67,12 @@
 (global-set-key (kbd "C-c M-x") 'smex-update)
 (global-set-key "\C-ci" 'idomenu)
 
+;;; more hijk
 (defun find-loadfile-by-map (map)
   "Find load file by MAP."
   (case map
     ('Info-mode-map "info")
     ('ebrowse-tree-mode-map "Tree")))
-
 (dolist (map `(Info-mode-map ebrowse-tree-mode-map))
   (let ((file (find-loadfile-by-map map)))
     (eval-after-load file

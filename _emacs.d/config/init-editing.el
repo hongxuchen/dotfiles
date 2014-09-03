@@ -1,5 +1,3 @@
-(provide 'init-editing)
-
 (setq-default blink-cursor-delay 0
               fill-column 80
               blink-cursor-interval 0.4
@@ -88,3 +86,35 @@
       '(("all" . "* .*") ("*.l" . "*.l *.y *.[ch] *.hpp *.cc *.cpp") ("*.y" . "*.l *.y *.[ch] *.hpp *.cc *.cpp") ("el" . "*.el") ("ch" . "*.[ch] *.hpp *.cc *.cxx *.cpp *.C *.CC *.c++") ("c" . "*.c") ("cc" . "*.cc *.cxx *.cpp *.C *.CC *.c++ *.c *.h *.hpp") ("cchh" . "*.cc *.[ch]xx *.[ch]pp *.[CHh] *.CC *.HH *.[ch]++") ("hh" . "*.hxx *.hpp *.[Hh] *.HH *.h++") ("h" . "*.h") ("l" . "[Cc]hange[Ll]og*") ("m" . "[Mm]akefile*") ("tex" . "*.tex") ("texi" . "*.texi") ("asm" . "*.[sS]")))
 
 (setq ispell-personal-dictionary "~/.emacs.d/dict-spell/.aspell.en.pws")
+
+
+;; ------------------------------------------------------------------------------
+;; line number
+;; ------------------------------------------------------------------------------
+(global-linum-mode t)
+(unless (window-system)
+  (setq linum-format "%3d "))
+(setq linum-mode-inhibit-modes-list
+      '(eshell-mode
+        help-mode
+        Man-mode
+        woman-mode
+        compilation-mode
+        calc-mode
+        calc-trail-mode
+        comint-mode
+        inf-ruby-mode
+        gud-mode
+        term-mode
+        gnus-group-mode
+        gnus-summary-mode
+        gnus-article-mode
+        calendar-mode
+        ))
+
+(defadvice linum-on (around linum-on-inhibit-for-modes activate)
+  "Stop the load of linum-mode for some major modes."
+  (unless (member major-mode linum-mode-inhibit-modes-list)
+    ad-do-it))
+
+(provide 'init-editing)

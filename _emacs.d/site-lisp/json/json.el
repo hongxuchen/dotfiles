@@ -252,26 +252,26 @@ KEYWORD is the keyword expected."
 ;; Number parsing
 
 (defun json-read-number (&optional sign)
- "Read the JSON number following point.
+  "Read the JSON number following point.
 The optional SIGN argument is for internal use.
 
 N.B.: Only numbers which can fit in Emacs Lisp's native number
 representation will be parsed correctly."
- ;; If SIGN is non-nil, the number is explicitly signed.
- (let ((number-regexp
-        "\\([0-9]+\\)?\\(\\.[0-9]+\\)?\\([Ee][+-]?[0-9]+\\)?"))
-   (cond ((and (null sign) (char-equal (json-peek) ?-))
-          (json-advance)
-          (- (json-read-number t)))
-         ((and (null sign) (char-equal (json-peek) ?+))
-          (json-advance)
-          (json-read-number t))
-         ((and (looking-at number-regexp)
-               (or (match-beginning 1)
-                   (match-beginning 2)))
-          (goto-char (match-end 0))
-          (string-to-number (match-string 0)))
-         (t (signal 'json-number-format (list (point)))))))
+  ;; If SIGN is non-nil, the number is explicitly signed.
+  (let ((number-regexp
+         "\\([0-9]+\\)?\\(\\.[0-9]+\\)?\\([Ee][+-]?[0-9]+\\)?"))
+    (cond ((and (null sign) (char-equal (json-peek) ?-))
+           (json-advance)
+           (- (json-read-number t)))
+          ((and (null sign) (char-equal (json-peek) ?+))
+           (json-advance)
+           (json-read-number t))
+          ((and (looking-at number-regexp)
+                (or (match-beginning 1)
+                    (match-beginning 2)))
+           (goto-char (match-end 0))
+           (string-to-number (match-string 0)))
+          (t (signal 'json-number-format (list (point)))))))
 
 ;; Number encoding
 
@@ -475,16 +475,16 @@ Please see the documentation of `json-object-type' and `json-key-type'."
   "Return a JSON representation of PLIST."
   (let (result)
     (json--with-indentation
-      (while plist
-        (push (concat
-               json--encoding-current-indentation
-               (json-encode-key (car plist))
-               (if json-encoding-pretty-print
-                   ": "
-                 ":")
-               (json-encode (cadr plist)))
-              result)
-        (setq plist (cddr plist))))
+     (while plist
+       (push (concat
+              json--encoding-current-indentation
+              (json-encode-key (car plist))
+              (if json-encoding-pretty-print
+                  ": "
+                ":")
+              (json-encode (cadr plist)))
+             result)
+       (setq plist (cddr plist))))
     (concat "{"
             (json-join (nreverse result) json-encoding-separator)
             (if (and json-encoding-pretty-print
@@ -534,11 +534,11 @@ become JSON objects."
            (> (length array) 0))
       (concat
        (json--with-indentation
-         (concat (format "[%s" json--encoding-current-indentation)
-                 (json-join (mapcar 'json-encode array)
-                            (format "%s%s"
-                                    json-encoding-separator
-                                    json--encoding-current-indentation))))
+        (concat (format "[%s" json--encoding-current-indentation)
+                (json-join (mapcar 'json-encode array)
+                           (format "%s%s"
+                                   json-encoding-separator
+                                   json--encoding-current-indentation))))
        (format "%s]"
                (if json-encoding-lisp-style-closings
                    ""

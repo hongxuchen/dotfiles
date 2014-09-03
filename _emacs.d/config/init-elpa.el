@@ -1,7 +1,6 @@
-(provide 'init-elpa)
-;;------------------------------------------------------------------------------
+;; ------------------------------------------------------------------------------
 ;; ~/.emacs.d/site-lisp
-;;------------------------------------------------------------------------------
+;; ------------------------------------------------------------------------------
 (if (fboundp 'normal-top-level-add-to-load-path)
     (let* ((my-lisp-dir "~/.emacs.d/site-lisp/")
            (default-directory my-lisp-dir))
@@ -13,9 +12,9 @@
                      collecting (expand-file-name dir))
                load-path)))))
 (require 'bytecomp)
-;;------------------------------------------------------------------------------
+;; ------------------------------------------------------------------------------
 ;; package.el configuration
-;;------------------------------------------------------------------------------
+;; ------------------------------------------------------------------------------
 (require 'package)
 
 ;; Patch up annoying package.el quirks
@@ -38,13 +37,13 @@ ARCHIVE is the string name of the package archive.")
   (around filter-packages (package archive) activate)
   "Add filtering of available packages using `package-filter-function', if non-nil."
   (when (or (null package-filter-function)
-	    (funcall package-filter-function
-		     (car package)
-		     (funcall (if (fboundp 'package-desc-version)
-				  'package--ac-desc-version
-				'package-desc-vers)
-			      (cdr package))
-		     archive))
+            (funcall package-filter-function
+                     (car package)
+                     (funcall (if (fboundp 'package-desc-version)
+                                  'package--ac-desc-version
+                                'package-desc-vers)
+                              (cdr package))
+                     archive))
     ad-do-it))
 
 (defun require-package (package &optional min-version no-refresh)
@@ -75,7 +74,7 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
          (or (not (string-equal archive "melpa"))
              (not (memq package melpa-exclude-packages))))))
 
-;;------------------------------------------------------------------------------
+;; ------------------------------------------------------------------------------
 ;; Fire up package.el and ensure the following packages are installed.
 ;;------------------------------------------------------------------------------
 
@@ -95,9 +94,9 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 ;; (require-package 'xml-rpc)
 ;; (require-package 'regex-tool)
 
-;;------------------------------------------------------------------------------
+;; ------------------------------------------------------------------------------
 ;; vim like editing
-;;------------------------------------------------------------------------------
+;; ------------------------------------------------------------------------------
 (require-package 'evil)
 (require-package 'evil-leader)
 (require-package 'surround)
@@ -107,7 +106,7 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 ;;------------------------------------------------------------------------------
 ;; git
 ;; (require-package 'magit)
-;; (require-package 'github-browse-file)
+(require-package 'github-browse-file)
 (require-package 'git-commit-mode)
 (require-package 'gitignore-mode)
 (require-package 'gitconfig-mode)
@@ -117,8 +116,8 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 ;;------------------------------------------------------------------------------
 ;; writings
 ;;------------------------------------------------------------------------------
-;; (require-package 'auctex)
-;; (require-package 'auctex-latexmk)
+(require-package 'auctex)
+(require-package 'auctex-latexmk)
 (require-package 'ac-math)
 (require-package 'latex-extra)
 (require-package 'latex-pretty-symbols)
@@ -126,7 +125,7 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (require-package 'markdown-mode)
 ;; org
 (require-package 'cdlatex)
-;; (require-package 'org-plus-contrib)
+(require-package 'org-plus-contrib)
 (require-package 'htmlize)
 
 (require-package 'graphviz-dot-mode)
@@ -158,9 +157,6 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 
 ;; python
 (require-package 'elpy)
-
-;; go
-;; (require-package 'go-mode)
 
 ;; javascript
 ;; (require-package 'json)
@@ -235,6 +231,6 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 
 (require-package 's)
 
-;;scala
-;; (require-package 'scala-mode2)
 (byte-recompile-directory "~/.emacs.d/site-lisp" 0)
+
+(provide 'init-elpa)

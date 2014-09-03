@@ -9,21 +9,14 @@
 ;; youdao-dict
 (autoload 'youdao-dict "youdao-dict" "look up words via youdao dictionary" t)
 
-;; llvm related
-(add-to-list 'load-path (expand-file-name "~/moonbox/dryrun/utils/emacs"))
-;; (require 'llvmize)
-;; (require 'dryrun)
+;;; llvm
 (setq auto-mode-alist (append '(("\\.pc$" . klee-pc-mode)) auto-mode-alist))
 (autoload 'klee-pc-mode "klee-pc-mode" "klee pc mode" t)
 (setq auto-mode-alist (append '(("\\.ll$" . llvm-mode)) auto-mode-alist))
 (autoload 'llvm-mode "llvm-mode" "major mode for ll files" t)
 (setq auto-mode-alist (append '(("\\.td$" . tablegen-mode)) auto-mode-alist))
 (autoload 'tablegen-mode "tablegen-mode" "major mode for tg files" t)
-
-;; cc-mode related, doxymacs and cc-lookup
-(autoload 'doxymacs-mode "doxymacs"
-  "Minor mode for using/creating Doxygen documentation." t nil)
-(autoload 'cc-lookup "cc-lookup" "look up definitions in c/c++ mode" t)
+(eval-after-load "llvm-mode" '(require 'llvmize))
 
 ;; file-template
 (autoload 'file-template-find-file-not-found-hook "file-template" nil t)
@@ -40,7 +33,7 @@
 (eval-after-load "info" '(require 'info+))
 
 ;; apt-utils
-;; (eval-after-load "apt-utils" '(require 'apt-utils-ido))
+(eval-after-load "apt-utils" '(require 'apt-utils-ido))
 
 ;; ffap
 ;; FIXME it's a redefine rather than defadvice
@@ -63,7 +56,7 @@
        guess)))
 
 ;; eshell
-(eval-after-load 'esh-opt '(progn (require 'init-eshell)))
+;; (eval-after-load 'esh-opt '(progn (require 'init-eshell)))
 
 ;; smex
 ;; (eval-after-load 'smex '(defun smex-show-key-advice (command) ()))

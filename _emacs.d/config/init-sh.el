@@ -1,17 +1,18 @@
-(setq-default sh-basic-offset 4
-              sh-indentation 4
-              sh-indent-for-case-label 0
-              sh-indent-for-case-alt '+)
-(setq auto-mode-alist
-      (append
-       '(("\\.sh$" . sh-mode)
-         ("\\.csh$" . sh-mode)
-         ("\\.tcsh$" . sh-mode)
-         ("\\.bash$" . sh-mode)
-         ("\\.zsh$" . sh-mode))
-       auto-mode-alist))
+(add-to-list
+ 'auto-mode-alist
+ (cons (concat "\\." (regexp-opt '("sh" "csh" "tcsh" "bash" "zsh") t) "\\'") 'sh-mode))
 
-(require 'flymake-shell)
+(defun my-sh-mode-setup ()
+  (setq-default sh-basic-offset 4
+                sh-indentation 4
+                sh-indent-for-case-label 0
+                sh-indent-for-case-alt '+)
+  )
+
+(eval-after-load 'sh
+  '(my-sh-mode-setup)
+  )
+
 (add-hook 'sh-mode-hook 'flymake-shell-load)
 
 (provide 'init-sh)

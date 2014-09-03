@@ -1,6 +1,0 @@
-# key : cha*
-# group: sections
-# name : \chapter*
-# --
-\chapter*{${1:name}}
-$0
