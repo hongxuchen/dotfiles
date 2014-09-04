@@ -31,6 +31,7 @@
                   (start-process "XTerm" nil "xterm")))
 
 (global-set-key (kbd "C-c e") 'my-eval-and-replace)
+(global-set-key (kbd "C-x j") 'recentf-open-files)
 
 (global-set-key "\C-x\C-z" nil) ;;origin is transpose-lines
 (global-set-key "\C-x\C-t" nil) ;;origin is transpose-lines
@@ -57,9 +58,9 @@
 (global-set-key [M-up] 'windmove-up)              ; move to upper window
 (global-set-key [M-down] 'windmove-down)          ; move to downer window
 
-(global-set-key (kbd "C-x C-d") 'ido-dired)
-(global-set-key (kbd "C-x f") 'ido-find-file)
 (global-set-key (kbd "C-x d") 'ido-dired)
+(global-set-key (kbd "C-x C-d") 'find-name-dired)
+(global-set-key (kbd "C-x f") 'ido-find-file)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
 (global-set-key "\M-x" 'smex)
@@ -72,8 +73,12 @@
   "Find load file by MAP."
   (case map
     ('Info-mode-map "info")
-    ('ebrowse-tree-mode-map "Tree")))
-(dolist (map `(Info-mode-map ebrowse-tree-mode-map))
+    ('ebrowse-tree-mode-map "Tree")
+    ))
+(dolist (map
+         `(Info-mode-map
+           ebrowse-tree-mode-map
+           ))
   (let ((file (find-loadfile-by-map map)))
     (eval-after-load file
       `(progn

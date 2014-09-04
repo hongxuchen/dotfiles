@@ -1,17 +1,3 @@
-;;; monokai-dark-theme.el --- REQUIRES EMACS 24: monokai-dark Color Theme for Emacs.
-
-;; This program is free software: you can redistribute it and/or modify
-;; it under the terms of the GNU General Public License as published by
-;; the Free Software Foundation, version 3 of the License.
-;;
-;; This file is distributed in the hope that it will be useful,
-;; but WITHOUT ANY WARRANTY; without even the implied warranty of
-;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-;; GNU General Public License for more details.
-;;
-;; You should have received a copy of the GNU General Public License
-;; along with GNU Emacs.
-
 (defvar monokai-colors
   '((((class color) (min-colors 65535))
      (monokai-bg-1      . "#000000")
@@ -176,6 +162,13 @@ Each element has the form (NAME . HEX).
  `(ac-completion-face ((((class color) (min-colors ,THRESHOLD)) (:background "navy" :foreground "white")) (t :background "blue" :foreground "white")))
  ;;
  `(eldoc-highlight-function-argument ((((class color) (min-colors ,THRESHOLD)) (:inherit bold)) (t :foreground "green")))
+ `(hl-sexp-face ((((class color) (min-colors ,THRESHOLD)) (:background "black")) (t (:background "black" :underline nil))))
+ `(popup-isearch-match ((t (:background "sky blue"))))
+ `(popup-menu-face ((t (:background "lightgray" :foreground "black"))))
+ `(popup-menu-selection-face ((t (:background "steelblue" :foreground "white"))))
+ `(popup-scroll-bar-background-face ((t (:background "gray"))))
+ `(popup-scroll-bar-foreground-face ((t (:background "black"))))
+ `(popup-tip-face ((t (:background "khaki1" :foreground "black"))))
  )
 
 ;;;###autoload

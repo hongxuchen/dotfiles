@@ -17,7 +17,7 @@
       ;; evil-lookup-func 'woman
       )
 (require 'evil)
-(evil-mode t)
+(evil-mode 1)
 (evil-set-initial-state 'text-mode 'normal)
 (evil-set-initial-state 'prog-mode 'normal)
 (evil-set-initial-state 'comint-mode 'emacs)
@@ -38,7 +38,7 @@
 (evil-set-initial-state 'shell-mode 'emacs)
 (evil-set-initial-state 'speedbar-mode 'emacs)
 (evil-set-initial-state 'Info-mode 'emacs)
-(evil-set-initial-state 'recentf-dialog-mode 'normal)
+(evil-set-initial-state 'recentf-dialog-mode 'emacs)
 
 ;; derived from special-mode
 (evil-set-initial-state 'ebrowse-tree-mode 'emacs)
@@ -49,11 +49,6 @@
 (evil-set-initial-state 'ert-results-mode 'emacs)
 (evil-set-initial-state 'rtags-mode 'emacs)
 (evil-set-initial-state 'rtags-taglist-mode 'emacs)
-
-;; others
-;; (evil-set-initial-state 'help-mode 'normal)
-;; (evil-set-initial-state 'inf-ruby-mode 'emacs)
-;; (evil-set-initial-state 'yari-mode 'emacs)
 
 ;; (when (display-graphic-p)
 ;;   (keyboard-translate ?\C-i ?\H-i)
@@ -90,7 +85,7 @@
 (global-surround-mode 1)
 
 (require 'evil-leader)
-(global-evil-leader-mode t)
+(global-evil-leader-mode 1)
 (defun show-file-name () (interactive) (message (buffer-file-name)))
 (evil-leader/set-key
   "c" 'flymake-mode
@@ -100,6 +95,8 @@
   "s" 'show-file-name
   "b" 'magit-blame-mode
   "v" 'eval-buffer
-  "p" 'paste-mode)
+  "p" 'paste-mode
+  "k" 'popup-kill-ring
+  )
 
 (provide 'init-evil)

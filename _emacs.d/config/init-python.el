@@ -6,10 +6,10 @@
 
 (defun my-python-mode-elpy-setup ()
   (require 'elpy)
-  (setq elpy-default-minor-modes '(eldoc-mode flymake-mode yas-minor-mode auto-complete-mode))
-  (setq python-shell-interpreter "python")
-  (setq elpy-rpc-python-command "python")
-  (setq elpy-rpc-backend "jedi")
+  (setq elpy-default-minor-modes '(eldoc-mode flymake-mode yas-minor-mode auto-complete-mode)
+        python-shell-interpreter "python"
+        elpy-rpc-python-command "python"
+        elpy-rpc-backend "jedi")
   (if (fboundp 'evil-mode)
       (progn
         (evil-define-key 'normal python-mode-map "gd" 'elpy-goto-definition)

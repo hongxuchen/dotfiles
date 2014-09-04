@@ -1,3 +1,15 @@
+;; comint
+(setq comint-scroll-to-bottom-on-input t
+      comint-scroll-to-bottom-on-output t)
+
+(setq explicit-shell-file-name "/bin/zsh")
+;; shell settings
+(fset 'shell 'my-terminal)
+(fset 'eshell 'my-terminal)
+
+;; ------------------------------------------------------------------------------
+;; term
+;; ------------------------------------------------------------------------------
 (defvar my-terminal-process)
 (defconst my-terminal-name " *terminal*")
 (autoload 'term-send-string "term" nil t)
@@ -28,4 +40,4 @@
             (yas-minor-mode -1)
             (autopair-mode -1)))
 
-(provide 'init-term)
+(provide 'init-comint)

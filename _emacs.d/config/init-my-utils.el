@@ -1,3 +1,47 @@
+;; ------------------------------------------------------------------------------
+;; helper functions
+;; ------------------------------------------------------------------------------
+(defun add-auto-mode (mode &rest patterns)
+  "Add entries to `auto-mode-alist' to use `MODE' for all given file `PATTERNS'."
+  (dolist (pattern patterns)
+    (add-to-list 'auto-mode-alist (cons pattern mode))))
+
+(defun string-all-matches (regex str &optional group)
+  "Find all matches for `REGEX' within `STR', returning the full match string or group `GROUP'."
+  (let ((result nil)
+        (pos 0)
+        (group (or group 0)))
+    (while (string-match regex str pos)
+      (push (match-string group str) result)
+      (setq pos (match-end group)))
+    result))
+
+(defun current-date-time-string ()
+  "Returns current date-time string in full ISO 8601 format.
+Example: 「2012-04-05T21:08:24-07:00」.
+
+Note, for the time zone offset, both the formats 「hhmm」 and 「hh:mm」 are valid ISO 8601. However, Atom Webfeed spec seems to require 「hh:mm」."
+  (concat
+   (format-time-string "%Y-%m-%dT%T")
+   ((lambda (x) (format "%s:%s" (substring x 0 3) (substring x 3 5))) (format-time-string "%z")) ))
+
+(defun count-string-matches (strn)
+  "Return number of matches STRING following the point.
+    Continues until end of buffer. Also display the count as a message."
+  (interactive (list (read-string "Enter string: ")))
+  (save-excursion
+    (let ((count -1))
+      (while
+          (progn
+            (setq count (1+ count))
+            (search-forward strn nil t)))
+      (message "%d matches" count)
+      count)))
+
+;; ------------------------------------------------------------------------------
+;; commands
+;; ------------------------------------------------------------------------------
+
 (defun delete-this-file ()
   "Delete the current file, and kill the buffer."
   (interactive)
@@ -20,10 +64,10 @@
     (set-buffer-modified-p nil)
     (message "new file: [%s]" new-name)))
 
-;;; ----------------------------------------------
+;; "paste-mode"
 (defvar paste-mode nil)
-(add-to-list 'minor-mode-alist '(paste-mode " Paste"))
-(defun paste-mode ()
+(add-to-list 'minor-mode-alist '(my-paste-mode " Paste"))
+(defun my-paste-mode ()
   (interactive)
   (let ((buf (current-buffer))
         (paste-mode t))
@@ -56,7 +100,7 @@
       (insert initial-scratch-message))
     (emacs-lisp-mode)))
 
-(defun autopep8-buffer ()
+(defun my-autopep8-buffer ()
   (interactive)
   "auto format python buffer to be consistent with pep8 style"
   (basic-save-buffer)
@@ -70,15 +114,15 @@
   (cond ((member major-mode '(makefile-mode makefile-gmake-mode org-mode))
          (message "will not cleanup buffer when major mode is %s" major-mode))
         ((member major-mode '(c-mode c++-mode))(clang-format-buffer))
-        ((member major-mode '(python-mode)) (autopep8-buffer))
+        ((member major-mode '(python-mode)) (my-autopep8-buffer))
         (t (progn
              (untabify (point-min) (point-max))
              (indent-region (point-min) (point-max))
              )))
   (when (and (buffer-file-name) (buffer-modified-p)) (basic-save-buffer)))
 
-(defvar switch-major-mode-history nil)
-(defun switch-major-mode (mode)
+(defvar my-switch-major-mode-history nil)
+(defun my-switch-major-mode-fn (mode)
   "Switch major mode.
 It contains minor mode, but autoloads need to be included"
   (interactive
@@ -88,11 +132,11 @@ It contains minor mode, but autoloads need to be included"
                       obarray (lambda (s)
                                 (and (fboundp s)
                                      (string-match "-mode$" (symbol-name s))))
-                      t nil 'switch-major-mode-history))))
-  (setq switch-major-mode-history (cons (symbol-name major-mode) switch-major-mode-history))
+                      t nil 'my-switch-major-mode-history))))
+  (setq switch-major-mode-history (cons (symbol-name major-mode) my-switch-major-mode-history))
   (funcall mode))
 
-(defun kill-process-interactive ()
+(defun my-kill-process-interactive ()
   (interactive)
   (let ((pname (ido-completing-read "Process Name: "
                                     (mapcar 'process-name (process-list)))))
@@ -111,28 +155,6 @@ See also `current-date-time-string'."
   (cond
    ((equal addTimeStamp-p nil ) (insert (format-time-string "%Y-%m-%d")))
    (t (insert (current-date-time-string))) ) )
-
-(defun current-date-time-string ()
-  "Returns current date-time string in full ISO 8601 format.
-Example: 「2012-04-05T21:08:24-07:00」.
-
-Note, for the time zone offset, both the formats 「hhmm」 and 「hh:mm」 are valid ISO 8601. However, Atom Webfeed spec seems to require 「hh:mm」."
-  (concat
-   (format-time-string "%Y-%m-%dT%T")
-   ((lambda (ξx) (format "%s:%s" (substring ξx 0 3) (substring ξx 3 5))) (format-time-string "%z")) ))
-
-(defun count-string-matches (strn)
-  "Return number of matches STRING following the point.
-    Continues until end of buffer. Also display the count as a message."
-  (interactive (list (read-string "Enter string: ")))
-  (save-excursion
-    (let ((count -1))
-      (while
-          (progn
-            (setq count (1+ count))
-            (search-forward strn nil t)))
-      (message "%d matches" count)
-      count)))
 
 (defun my-indent-accoding-to-paren ()
   (interactive)
@@ -215,7 +237,7 @@ FEATURE may be a named feature or a file name, see
   (goto-char (point-min))
   (while (search-forward "\n" nil t) (replace-match "\r\n")))
 
-(defun backward-kill-path-element ()
+(defun my-backward-kill-path-element ()
   (interactive)
   (let ((pt (point)))
     (when (not (bolp))

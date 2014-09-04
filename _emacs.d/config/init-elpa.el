@@ -81,7 +81,6 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (package-initialize)
 (require-package 'session)
 (require-package 'smex)
-;; (require-package 'w3m)
 (require-package 'autopair)
 (require-package 'ibuffer-vc)
 (require-package 'pointback)
@@ -89,7 +88,7 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (require-package 'ido-ubiquitous)
 (require-package 'info+)
 (require-package 'wgrep)
-;; (require-package 'smartparens)
+(require-package 'popup-kill-ring)
 ;; (require-package 'crontab-mode)
 ;; (require-package 'xml-rpc)
 ;; (require-package 'regex-tool)
@@ -105,7 +104,7 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 ;; version control
 ;;------------------------------------------------------------------------------
 ;; git
-;; (require-package 'magit)
+(require-package 'magit)
 (require-package 'github-browse-file)
 (require-package 'git-commit-mode)
 (require-package 'gitignore-mode)
@@ -127,7 +126,6 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (require-package 'cdlatex)
 (require-package 'org-plus-contrib)
 (require-package 'htmlize)
-
 (require-package 'graphviz-dot-mode)
 
 ;;------------------------------------------------------------------------------
@@ -143,14 +141,10 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (require-package 'dropdown-list)
 (require-package 'yasnippet)
 
-;; tags related
-
 ;; auto-complete
 (require-package 'fuzzy) ;auto-complete depends on fuzzy
 (require-package 'auto-complete)
 (require-package 'pos-tip)
-
-;; c/c++
 
 ;; shell
 (require-package 'flymake-shell) ;; require flymake-easy
@@ -169,10 +163,6 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 ;; (require-package 'coffee-mode)
 ;; (require-package 'flymake-coffee)
 
-;; php
-;; (require-package 'php-mode)
-;; (require-package 'flymake-php)
-
 ;; pages and styles
 ;; (require-package 'haml-mode)
 ;; (require-package 'flymake-haml)
@@ -189,45 +179,12 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (require-package 'rainbow-mode)
 (require-package 'rainbow-delimiters)
 
-;;lua
-;; (require-package 'lua-mode)
-;; (require-package 'flymake-lua)
-
-;; clojure
-;; (require-package 'project-local-variables) ;;for clojure
-;; (require-package 'elein)  ;;leiningen
-;; (require-package 'clojure-mode)
-;; (require-package 'clojure-test-mode)
-;; (require-package 'slamhound) ;;clojure
-;; (require-package 'cljsbuild-mode)
-;; (require-package 'nrepl)
-;; (require-package 'ac-nrepl)
-
-;; ruby
 (require-package 'yaml-mode)
-;; (require-package 'ruby-mode)
-;; (require-package 'robe)
-;; (require-package 'inf-ruby)
-;; (prequire-package 'yari)
-;; (require-package 'rvm)   ;; rvm-open-gem to get gem's code
-;; (require-package 'rinari) ; use latest rinari
-;; (require-package 'ruby-compilation)
-;; (require-package 'flymake-ruby)
-
-;; erlang
-;; (require-package 'erlang)
-
-;; haskell
-;; (require-package 'haskell-mode)
 
 ;; lisp
+(require-package 'hl-sexp)
 (require-package 'paredit)
-(require-package 'slime)
-(require-package 'slime-fuzzy)
-(require-package 'slime-repl)
 (require-package 'ac-slime)
-
-;; (require-package 'sicp)
 
 (require-package 's)
 

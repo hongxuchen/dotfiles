@@ -1,5 +1,3 @@
-(provide 'init-gnus)
-
 (require 'gnus-cite)
 (require 'gnus-setup)
 (require 'supercite)
@@ -274,3 +272,5 @@
 
 (add-hook 'gnus-switch-on-after-hook 'gnus-group-first-unread-group)
 (add-hook 'gnus-summary-exit-hook 'gnus-group-first-unread-group)
+
+(provide 'init-gnus)

@@ -78,4 +78,8 @@
   (let ((my-vc-reverting t))
     ad-do-it))
 
-(provide 'init-git)
+(remove-hook 'find-file-hook  'vc-find-file-hook)
+(setq vc-follow-symlinks t
+      vc-stay-local t)
+
+(provide 'init-vc)

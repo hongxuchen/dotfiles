@@ -1,11 +1,10 @@
-(setq ido-ubiquitous-enable-old-style-default nil)
-(require 'ido-ubiquitous)
-(ido-mode t)
-(ido-everywhere t)
-(ido-ubiquitous-mode t)
+(ido-mode 1)
+(ido-everywhere 1)
+(ido-ubiquitous-mode 1)
 (setq ido-enable-flex-matching t
       ido-use-filename-at-point nil
       ido-ubiquitous-enable-compatibility nil
+      ido-ubiquitous-enable-old-style-default nil
       ido-auto-merge-work-directories-length -1
       ido-enable-regexp nil
       ido-max-prospects 12
@@ -15,15 +14,17 @@
       ido-save-directory-list-file "~/.emacs.d/.ido.last"
       ido-use-faces t
       ;; allow same buffer opened in different frames
-      ido-default-buffer-method 'selected-window)
-(setq ido-ignore-directories (append ido-ignore-directories '("^auto/$" "\\.prv/" "_region_")))
-(setq ido-ignore-files (append ido-ignore-files '("^auto/$" "_region_")))
+      ido-default-buffer-method 'selected-window
+      ido-ignore-directories (append ido-ignore-directories '("^auto/$" "\\.prv/" "_region_"))
+      ido-ignore-files (append ido-ignore-files '("^auto/$" "_region_"))
+      ido-ignore-buffers (append ido-ignore-buffers '("*Messages*" "*scratch*" "*IBuffer*"))
+      )
 
 (smex-initialize)
 
-(setq imenu-use-popup-ml)
-(setq imenu-eager-completion-buffer nil)
-(setq imenu-auto-rescan t)
+(setq imenu-use-popup-menu t
+      imenu-eager-completion-buffer nil
+      imenu-auto-rescan t)
 
 (setq echo-keystrokes 0)
 

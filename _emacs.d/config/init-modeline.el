@@ -1,7 +1,7 @@
 ;; which-func
 (progn
   (require 'which-func)
-  (which-function-mode t)
+  (which-function-mode 1)
   (setq which-func-modes '(c-mode c++-mode python-mode makefile-mode sh-mode org-mode)))
 
 ;; display time

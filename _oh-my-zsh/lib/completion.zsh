@@ -69,3 +69,8 @@ _rc() {
     reply=(`(rc --help) | awk -F'[/|]+' '/-/ {print $1}'`)
 }
 compctl -K _rc rc
+
+_rdm() {
+    reply=(`(rdm --help) | awk -F'[/|]+' '/-/ {print $1}'`)
+}
+compctl -K _rdm rdm

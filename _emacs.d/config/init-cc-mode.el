@@ -1,6 +1,6 @@
-;;----------------------------------------------------------------------------
+;; ----------------------------------------------------------------------------
 ;; c/c++ files
-;;----------------------------------------------------------------------------
+;; ----------------------------------------------------------------------------
 
 (defun my-rtags-setup ()
   (require 'rtags)
@@ -38,7 +38,7 @@
 
   (turn-on-auto-fill)
 
-  (doxymacs-mode t)
+  (doxymacs-mode 1)
   (doxymacs-font-lock)
   )
 
@@ -74,6 +74,25 @@
 (add-hook 'c++-mode-hook 'my-cc-mode-hook)
 
 ;;----------------------------------------------------------------------------
+;; llvm
+;;----------------------------------------------------------------------------
+(setq auto-mode-alist (append '(("\\.pc$" . klee-pc-mode)) auto-mode-alist))
+(autoload 'klee-pc-mode "klee-pc-mode" "klee pc mode" t)
+(setq auto-mode-alist (append '(("\\.ll$" . llvm-mode)) auto-mode-alist))
+(autoload 'llvm-mode "llvm-mode" "major mode for ll files" t)
+(setq auto-mode-alist (append '(("\\.td$" . tablegen-mode)) auto-mode-alist))
+(autoload 'tablegen-mode "tablegen-mode" "major mode for tg files" t)
+(eval-after-load "llvm-mode" '(require 'llvmize))
+
+;;----------------------------------------------------------------------------
+;; flex & bison
+;;----------------------------------------------------------------------------
+(autoload 'bison-mode "bison-mode")
+(add-to-list 'auto-mode-alist '("\\.y$" . bison-mode))
+(autoload 'flex-mode "flex-mode")
+(add-to-list 'auto-mode-alist '("\\.l$" . flex-mode))
+
+;;----------------------------------------------------------------------------
 ;; gdb issues
 ;;----------------------------------------------------------------------------
 
@@ -97,7 +116,7 @@
 (setq gud-mode-hook nil)
 (add-hook 'gud-mode-hook (lambda ()
                            ;; (tooltip-mode 1)
-                           ;; (gud-tooltip-mode t)
+                           ;; (gud-tooltip-mode 1)
                            (autopair-mode -1)))
 
 (defadvice gdb-display-source-buffer

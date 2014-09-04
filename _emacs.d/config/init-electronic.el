@@ -2,6 +2,7 @@
 ;; autoinsert
 ;; ------------------------------------------------------------------------------
 (require 'autoinsert)
+(autoload 'file-template-find-file-not-found-hook "file-template" nil t)
 (setq auto-insert-query nil)
 (setq file-template-insert-automatically t)
 (add-hook 'find-file-not-found-hooks 'file-template-find-file-not-found-hook 'append)
@@ -34,19 +35,19 @@
 ;; ------------------------------------------------------------------------------
 ;; @see http://cx4a.org/software/auto-complete/manual.html
 (require 'auto-complete-config)
-(global-auto-complete-mode t)
-(setq ac-expand-on-auto-complete t)
-(setq popup-use-optimized-column-computation nil)
-(setq ac-auto-start 2)
-(setq ac-dwim t)
-(setq ac-auto-show-menu t)
-(setq ac-use-fuzzy nil)
-(setq ac-use-comphist nil)
-(setq ac-comphist-threshold 0.5)
-(setq ac-use-quick-help nil)
-(setq ac-quick-help-delay 0.1)
-(setq ac-ignore-case nil)
-(setq ac-quick-help-prefer-pos-tip nil)
+(global-auto-complete-mode 1)
+(setq ac-expand-on-auto-complete t
+      popup-use-optimized-column-computation nil
+      ac-auto-start 2
+      ac-dwim t
+      ac-auto-show-menu t
+      ac-use-fuzzy nil
+      ac-use-comphist nil
+      ac-comphist-threshold 0.5
+      ac-use-quick-help nil
+      ac-quick-help-delay 0.1
+      ac-ignore-case nil
+      ac-quick-help-prefer-pos-tip nil)
 (define-key ac-mode-map (kbd "C-c h") 'ac-last-quick-help)
 (define-key ac-mode-map (kbd "C-c H") 'ac-last-help)
 (add-to-list 'ac-dictionary-directories '"~/.emacs.d/.dict")
@@ -81,4 +82,4 @@
         try-complete-file-name))
 (global-set-key (kbd "M-/") 'hippie-expand)
 
-(provide 'init-electroic)
+(provide 'init-electronic)
