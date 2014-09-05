@@ -1,12 +1,3 @@
-(defun my-tex-mode-ac-setup ()
-  (require 'ac-math)
-  (add-to-list 'ac-modes 'latex-mode)
-  (setq ac-math-unicode-in-math-p t)
-  (setq ac-sources
-        (append
-         '(ac-source-math-unicode ac-source-math-latex ac-source-latex-commands) ac-sources))
-  )
-
 (defun my-tex-mode-view-setup ()
   (require 'preview)
   (setq preview-auto-cache-preamble t)

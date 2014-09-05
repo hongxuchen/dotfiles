@@ -40,5 +40,11 @@
       (enable-paredit-mode)))
 (add-hook 'minibuffer-setup-hook 'conditionally-enable-paredit-mode)
 
+(define-key minibuffer-local-map [escape] 'keyboard-quit)
+(define-key minibuffer-local-ns-map [escape] 'keyboard-quit)
+(define-key minibuffer-local-completion-map [escape] 'keyboard-quit)
+(define-key minibuffer-local-must-match-map [escape] 'keyboard-quit)
+(define-key minibuffer-local-isearch-map [escape] 'keyboard-quit)
+(define-key minibuffer-local-map (kbd "<tab>") 'minibuffer-complete)
 
 (provide 'init-minibuffer)

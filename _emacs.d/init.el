@@ -1,18 +1,22 @@
 (require 'cl)
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/config"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/config/doxymacs/share/emacs/site-lisp"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/config/irony-mode/elisp"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/config/rtags/src"))
 
 ;; ------------------------------------------------------------------------------
 ;; general utilities
 ;; ------------------------------------------------------------------------------
-(setq *is-a-mac* (eq system-type 'darwin))
-(setq *is-carbon-emacs* (and *is-a-mac* (eq window-system 'mac)))
-(setq *is-cocoa-emacs* (and *is-a-mac* (eq window-system 'ns)))
-(setq *linux* (or (eq system-type 'gnu/linux) (eq system-type 'linux)) )
-(setq *unix* (or *linux* (eq system-type 'usg-unix-v) (eq system-type 'berkeley-unix)) )
-(setq *linux-x* (and window-system *linux*) )
+(dolist (path '("~/.emacs.d/config"
+                "~/.emacs.d/config/doxymacs/share/emacs/site-lisp"
+                "~/.emacs.d/config/irony-mode/elisp"
+                "~/.emacs.d/config/rtags/src"
+                ))
+  (add-to-list 'load-path (expand-file-name path)))
+
+(setq *is-a-mac* (eq system-type 'darwin)
+      *is-carbon-emacs* (and *is-a-mac* (eq window-system 'mac))
+      *is-cocoa-emacs* (and *is-a-mac* (eq window-system 'ns))
+      *linux* (or (eq system-type 'gnu/linux) (eq system-type 'linux))
+      *unix* (or *linux* (eq system-type 'usg-unix-v) (eq system-type 'berkeley-unix))
+      *linux-x* (and window-system *linux*)
+      )
 
 ;; ------------------------------------------------------------------------------
 ;; configurations for specific features and modes
@@ -32,6 +36,7 @@
 (require 'init-electronic)
 (require 'init-comint)
 (require 'init-compile)
+(require 'init-keymaps)
 
 ;; major modes for editing
 (require 'init-lisp)
@@ -45,10 +50,9 @@
 ;; ------------------------------------------------------------------------------
 ;; Other issues
 ;; ------------------------------------------------------------------------------
-(require 'init-keymaps)
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
-(require 'time-date)
+;; (require 'time-date)
 ;; (load-persistent-scratch)
 (server-start)
 (setenv "LC_CTYPE" "zh_CN.UTF-8")

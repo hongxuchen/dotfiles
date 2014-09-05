@@ -80,7 +80,7 @@ Argument SYM-NAME thing to find."
   (paredit-mode 1)
   (eldoc-mode 1)
   (yas-minor-mode -1)
-  (ac-emacs-lisp-mode-setup)
+  (my-elisp-mode-ac-setup)
   )
 
 (if (fboundp 'evil-mode)

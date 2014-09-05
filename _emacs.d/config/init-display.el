@@ -51,10 +51,6 @@
     (scroll-bar-mode -1))
   )
 
-(defun switch-full-screen ()
-  (interactive)
-  (shell-command "wmctrl -r :ACTIVE: -btoggle,fullscreen"))
-
 ;; WoMan settings
 (setq woman-fill-column 90
       woman-use-own-frame nil)

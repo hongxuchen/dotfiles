@@ -24,7 +24,8 @@
               help-window-select t
               truncate-partial-width-windows nil
               visible-bell nil
-              indicate-empty-lines t
+              indicate-empty-lines nil
+              indicate-buffer-boundaries nil
               global-auto-revert-non-file-buffers t
               revert-without-query t
               auto-revert-verbose nil
@@ -99,6 +100,8 @@
   (setq ispell-program-name "aspell"
         ispell-personal-dictionary "~/.emacs.d/dict-spell/.aspell.en.pws"
         ispell-extra-args '("--sug-mode=ultra" "--lang=en_US")
+        ispell-quietly t
+        ispell-silently-savep t
         ))
 
 ;; kill/yank/paste

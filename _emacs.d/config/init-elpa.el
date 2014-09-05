@@ -184,7 +184,6 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 ;; lisp
 (require-package 'hl-sexp)
 (require-package 'paredit)
-(require-package 'ac-slime)
 
 (require-package 's)
 

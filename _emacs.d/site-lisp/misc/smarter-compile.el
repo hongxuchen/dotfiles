@@ -148,9 +148,9 @@
     (nxhtml-mode        . (browse-url-of-buffer))
     (html-helper-mode   . (browse-url-of-buffer))
 
-    ("\\.c\\'"          . "clang -Wall -Wextra -Wshadow -Wbad-function-cast -Wcast-align %f -lm -lpthread -o %n -std=c99 -O0")
-    ("\\.[Cc]+[Pp]*\\'" . "clang++ -Wall -Wextra %f -lm -lpthread -o %n -std=c++1y -O0")
-    ("\\.m\\'"          . "clang %f -lobjc -lpthread -o %n -std=c99 -O0")
+    ("\\.c\\'"          . "clang -Wall -Wextra -Wshadow -Wbad-function-cast -Wcast-align %f -lm -lpthread -o %n -std=c99 -O3")
+    ("\\.[Cc]+[Pp]*\\'" . "clang++ -Wall -Wextra %f -lm -lpthread -o %n -std=c++1y -O3")
+    ("\\.m\\'"          . "clang %f -lobjc -lpthread -o %n -std=c99 -O3")
     ("\\.php\\'"        . "php -l %f")
     ("\\.texi\\'"       . "makeinfo %f")
     ("\\.mp\\'"         . "mptopdf %f")

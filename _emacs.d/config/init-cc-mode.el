@@ -13,9 +13,9 @@
              (evil-define-key 'normal c-mode-base-map "\C-]" 'rtags-find-references-at-point)
              ))
   ;; (setq rtags-completions-timer-interval .5 )
-  ;; (setq rtags-tracking t)
-  ;; (setq rtags-error-timer-interval .5 )
-  ;; (setq rtags-index-js-files t)
+  (setq rtags-tracking t)
+  (setq rtags-error-timer-interval .5 )
+  (setq rtags-index-js-files t)
   (rtags-enable-standard-keybindings)
   (setq rtags-rc-log-enabled nil)
   (setq rtags-completions-enabled t)
@@ -40,19 +40,6 @@
 
   (doxymacs-mode 1)
   (doxymacs-font-lock)
-  )
-
-(defun my-cc-mode-ac-setup ()
-  (interactive)
-  (make-local-variable 'ac-auto-start)
-  (setq ac-auto-start 2)
-  ;; (require 'irony)
-  ;; (irony-mode 1)
-  ;; (irony-ac-enable)
-  ;; (require 'rtags-ac)
-  ;; (setq ac-sources '(ac-source-rtags))
-  (setq ac-sources
-        '(ac-source-words-in-same-mode-buffers ac-source-dictionary ac-source-yasnippet))
   )
 
 (defun my-cc-mode-hook ()

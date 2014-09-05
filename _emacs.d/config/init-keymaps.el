@@ -1,16 +1,15 @@
 (provide 'init-keymaps)
 
-(define-key minibuffer-local-map [escape] 'keyboard-quit)
-(define-key minibuffer-local-ns-map [escape] 'keyboard-quit)
-(define-key minibuffer-local-completion-map [escape] 'keyboard-quit)
-(define-key minibuffer-local-must-match-map [escape] 'keyboard-quit)
-(define-key minibuffer-local-isearch-map [escape] 'keyboard-quit)
 (global-set-key "\C-x\C-g" 'keyboard-quit)
+
+;; (global-set-key (kbd "<tab>") 'company-complete-comon)
+(global-set-key (kbd "M-/") 'hippie-expand)
 
 (global-set-key [mouse-2] 'mouse-yank-at-click)
 
-(define-key global-map (kbd "RET") 'newline-and-indent)
-(define-key global-map (kbd "C-w") 'backward-kill-word)
+(global-set-key (kbd "RET") 'newline-and-indent)
+(global-set-key (kbd "C-w") 'backward-kill-word)
+
 ;; (global-set-key (kbd "<C-tab>") 'yas-expand)
 (global-set-key (kbd "C-c l") 'yas-insert-snippet)
 

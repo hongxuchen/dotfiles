@@ -52,8 +52,6 @@
 (define-key ac-mode-map (kbd "C-c H") 'ac-last-help)
 (add-to-list 'ac-dictionary-directories '"~/.emacs.d/.dict")
 
-(setq ac-modes (append ac-modes '(makefile-gmake-mode makefile-automake-mode)))
-
 ;; (define-key ac-mode-map  [(control tab)] 'auto-complete)
 (ac-set-trigger-key "TAB") ; after input prefix, press TAB key ASAP
 ;; Use C-n/C-p to select candidate ONLY when completion menu is displayed
@@ -63,23 +61,86 @@
 (ac-flyspell-workaround)
 ;; (setq ac-ignore-case 'smart) ;;default
 
+(dolist (command '(
+                   backward-delete-char-untabify
+                   autopair-backspace
+                   ))
+  (add-to-list 'ac-trigger-commands command))
 
-(defun add-ac-trigger-command (command)
-  (if (functionp command)
-      (setq ac-trigger-commands (cons command ac-trigger-commands))))
-(add-ac-trigger-command 'backward-delete-char-untabify)
-(add-ac-trigger-command 'autopair-backspace)
+(dolist (mode '(cmake-mode
+                latex-mode
+                makefile-gmake-mode
+                makefile-automake-mode
+                ))
+  (add-to-list 'ac-modes mode))
 
-(global-set-key (kbd "M-/") 'ac-complete-filename)
-(set-default
- 'ac-sources
- (append  '(ac-source-filename ac-source-files-in-current-dir) ac-sources))
+(set-default 'ac-source
+             '(ac-source-filename
+               ac-source-files-in-current-dir
+               ac-source-features
+               ac-source-functions
+               ac-source-yasnippet
+               ac-source-variables
+               ac-source-symbols
+               ac-source-features
+               ac-source-functions
+               ac-source-yasnippet
+               ac-source-variables
+               ac-source-symbols
+               ac-source-abbrev
+               ac-source-dictionary
+               ac-source-words-in-same-mode-buffers
+               ))
 
-(setq dabbrev-case-fold-search nil)
+(defun my-tex-mode-ac-setup ()
+  (require 'ac-math)
+  (add-to-list 'ac-modes 'latex-mode)
+  (setq ac-math-unicode-in-math-p t)
+  (setq ac-sources
+        (append
+         '(ac-source-math-unicode ac-source-math-latex ac-source-latex-commands) ac-sources))
+  )
+
+(defun my-elisp-mode-ac-setup ()
+  (ac-emacs-lisp-mode-setup)
+  )
+
+(defun my-cc-mode-ac-setup ()
+  (interactive)
+  (make-local-variable 'ac-auto-start)
+  (setq ac-auto-start 3)
+  (require 'irony)
+  (irony-mode 1)
+  (irony-ac-enable)
+  ;; (require 'company-rtags)
+  ;; (require 'rtags-ac)
+  ;; (setq ac-sources '(ac-source-rtags))
+  (setq ac-sources
+        '(
+          ac-source-irony
+          ac-source-words-in-same-mode-buffers
+          ac-source-dictionary
+          ac-source-yasnippet
+          ))
+  )
+
+;; ------------------------------------------------------------------------------
+;; company-mode
+;; ------------------------------------------------------------------------------
+;; (global-company-mode 1)
+;; (setq company-idle-delay 0)
+;; (setq company-dabbrev-other-buffers t)
+;; (setq company-dabbrev-downcase nil)
+;; (setq company-dabbrev-minimum-length 2)
+;; (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
+;; (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
+
+;; ------------------------------------------------------------------------------
 ;; hippie-expand
+;; ------------------------------------------------------------------------------
+(setq dabbrev-case-fold-search nil)
 (setq hippie-expand-try-functions-list
       '(try-complete-file-name-partially
         try-complete-file-name))
-(global-set-key (kbd "M-/") 'hippie-expand)
 
 (provide 'init-electronic)
