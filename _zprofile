@@ -36,6 +36,9 @@ export C_INCLUDE_PATH=~/qemu/panda/distorm/include
 # export PYTHONPATH=$PYTHONPATH:~/llvm/llvm-svn/tools/clang/bindings/python
 # export GTAGSLIBPATH
 
+export CXX=clang++
+export CC=clang
+
 stty ixany
 stty ixoff -ixon
 

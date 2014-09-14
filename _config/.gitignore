@@ -18,6 +18,7 @@
 !ranger/*
 !xarchiver/*
 !zathura/*
+!QtProject/*/*
 
 !user-dirs.dirs
 !user-dirs.locale

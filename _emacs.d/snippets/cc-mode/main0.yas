@@ -1,5 +1,5 @@
 # name: int main(void) { ... }
-# key: main0
+# key: mm1
 # --
 int main(void) {
     $0

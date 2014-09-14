@@ -1,8 +1,9 @@
 ;; ----------------------------------------------------------------------------
 ;; c/c++ files
 ;; ----------------------------------------------------------------------------
-
+(add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
 (defun my-rtags-setup ()
+  (interactive)
   (require 'rtags)
   (if (fboundp 'evil-mode)
       (progn (evil-define-key 'normal c-mode-base-map "gd" 'rtags-find-symbol-at-point)
@@ -13,12 +14,31 @@
              (evil-define-key 'normal c-mode-base-map "\C-]" 'rtags-find-references-at-point)
              ))
   ;; (setq rtags-completions-timer-interval .5 )
+  ;; (rtags-diagnostics-mode 1)
   (setq rtags-tracking t)
   (setq rtags-error-timer-interval .5 )
   (setq rtags-index-js-files t)
-  (rtags-enable-standard-keybindings)
   (setq rtags-rc-log-enabled nil)
   (setq rtags-completions-enabled t)
+  )
+
+(defun my-cc-mode-keymap-setup ()
+  (define-key c-mode-base-map "\C-c\C-\\" nil)
+  (define-key c-mode-base-map "\C-c\C-a"  nil)
+  (define-key c-mode-base-map "\C-c\C-b"  nil)
+  (define-key c-mode-base-map "\C-c\C-c"  nil)
+  (define-key c-mode-base-map "\C-c\C-l"  nil)
+  (define-key c-mode-base-map "\C-c\C-o"  nil)
+  (define-key c-mode-base-map "\C-c\C-q"  nil)
+  (define-key c-mode-base-map "\C-c\C-s"  'yas-insert-snippet)
+  (define-key c-mode-base-map "\C-c\C-d"  nil)
+  (define-key c-mode-base-map "\C-c\C-n"  nil)
+  (define-key c-mode-base-map "\C-c\C-p"  nil)
+  (define-key c-mode-base-map "\C-c\C-u"  nil)
+  (define-key c-mode-base-map "\C-c\C-w"  nil)
+  (define-key c-mode-base-map "\C-c\C-e"  nil)
+  (define-key c-mode-map "\C-c\C-e"  nil)
+  (rtags-enable-standard-keybindings c-mode-base-map "\C-c")
   )
 
 (defun my-cc-mode-edit-setup ()
@@ -40,6 +60,8 @@
 
   (doxymacs-mode 1)
   (doxymacs-font-lock)
+
+  (subword-mode 1)
   )
 
 (defun my-cc-mode-hook ()
@@ -47,6 +69,7 @@
     (progn
       (my-cc-mode-edit-setup)
       (my-cc-mode-ac-setup)
+      (my-cc-mode-keymap-setup)
       )))
 
 (eval-after-load 'cc-mode

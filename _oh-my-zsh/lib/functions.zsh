@@ -62,7 +62,8 @@ function emacs() {
         fi
     else
         if [ $DISPLAY ];
-        then (nohup emacs -fs $@  >~/.nohup.out) & disown
+        # then (nohup emacs -fs $@  >~/.nohup.out) & disown
+        then command emacs -fs $@ &>/dev/null & disown
         else command emacs
         fi
     fi

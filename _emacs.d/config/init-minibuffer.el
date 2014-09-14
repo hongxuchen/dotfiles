@@ -45,6 +45,6 @@
 (define-key minibuffer-local-completion-map [escape] 'keyboard-quit)
 (define-key minibuffer-local-must-match-map [escape] 'keyboard-quit)
 (define-key minibuffer-local-isearch-map [escape] 'keyboard-quit)
-(define-key minibuffer-local-map (kbd "<tab>") 'minibuffer-complete)
+;; (define-key minibuffer-local-map (kbd "<tab>") 'ido-complete)
 
 (provide 'init-minibuffer)

@@ -105,6 +105,7 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 ;;------------------------------------------------------------------------------
 ;; git
 (require-package 'magit)
+(require-package 'magit-svn)
 (require-package 'github-browse-file)
 (require-package 'git-commit-mode)
 (require-package 'gitignore-mode)

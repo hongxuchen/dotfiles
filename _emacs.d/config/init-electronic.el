@@ -31,66 +31,88 @@
     ad-do-it))
 
 ;; ------------------------------------------------------------------------------
-;; auto-complete
+;; auto-complete & company-mode
 ;; ------------------------------------------------------------------------------
-;; @see http://cx4a.org/software/auto-complete/manual.html
-(require 'auto-complete-config)
-(global-auto-complete-mode 1)
-(setq ac-expand-on-auto-complete t
-      popup-use-optimized-column-computation nil
-      ac-auto-start 2
-      ac-dwim t
-      ac-auto-show-menu t
-      ac-use-fuzzy nil
-      ac-use-comphist nil
-      ac-comphist-threshold 0.5
-      ac-use-quick-help nil
-      ac-quick-help-delay 0.1
-      ac-ignore-case nil
-      ac-quick-help-prefer-pos-tip nil)
-(define-key ac-mode-map (kbd "C-c h") 'ac-last-quick-help)
-(define-key ac-mode-map (kbd "C-c H") 'ac-last-help)
-(add-to-list 'ac-dictionary-directories '"~/.emacs.d/.dict")
+(defun my-autocomplete-setup ()
+  ;; @see http://cx4a.org/software/auto-complete/manual.html
+  (require 'auto-complete-config)
+  (global-auto-complete-mode 1)
+  (setq ac-expand-on-auto-complete t
+        popup-use-optimized-column-computation nil
+        ac-auto-start 2
+        ac-dwim t
+        ac-auto-show-menu t
+        ac-use-fuzzy nil
+        ac-use-comphist nil
+        ac-comphist-threshold 0.5
+        ac-use-quick-help nil
+        ac-quick-help-delay 0.1
+        ac-ignore-case nil
+        ac-quick-help-prefer-pos-tip nil)
+  (define-key ac-mode-map (kbd "C-c h") 'ac-last-quick-help)
+  (define-key ac-mode-map (kbd "C-c H") 'ac-last-help)
+  (add-to-list 'ac-dictionary-directories '"~/.emacs.d/.dict")
 
-;; (define-key ac-mode-map  [(control tab)] 'auto-complete)
-(ac-set-trigger-key "TAB") ; after input prefix, press TAB key ASAP
-;; Use C-n/C-p to select candidate ONLY when completion menu is displayed
-(setq ac-use-menu-map t)
-;; (setq ac-fuzzy-enable nil)
-(ac-config-default)
-(ac-flyspell-workaround)
-;; (setq ac-ignore-case 'smart) ;;default
+  (ac-set-trigger-key "TAB") ; after input prefix, press TAB key ASAP
+  ;; Use C-n/C-p to select candidate ONLY when completion menu is displayed
+  (setq ac-use-menu-map t)
+  ;; (setq ac-fuzzy-enable nil)
+  (ac-config-default)
+  (ac-flyspell-workaround)
+  ;; (setq ac-ignore-case 'smart) ;;default
 
-(dolist (command '(
-                   backward-delete-char-untabify
-                   autopair-backspace
-                   ))
-  (add-to-list 'ac-trigger-commands command))
+  (dolist (command '(
+                     backward-delete-char-untabify
+                     autopair-backspace
+                     ))
+    (add-to-list 'ac-trigger-commands command))
 
-(dolist (mode '(cmake-mode
-                latex-mode
-                makefile-gmake-mode
-                makefile-automake-mode
-                ))
-  (add-to-list 'ac-modes mode))
+  (dolist (mode '(cmake-mode
+                  latex-mode
+                  makefile-gmake-mode
+                  makefile-automake-mode
+                  ))
+    (add-to-list 'ac-modes mode))
 
-(set-default 'ac-source
-             '(ac-source-filename
-               ac-source-files-in-current-dir
-               ac-source-features
-               ac-source-functions
-               ac-source-yasnippet
-               ac-source-variables
-               ac-source-symbols
-               ac-source-features
-               ac-source-functions
-               ac-source-yasnippet
-               ac-source-variables
-               ac-source-symbols
-               ac-source-abbrev
-               ac-source-dictionary
-               ac-source-words-in-same-mode-buffers
-               ))
+  (set-default 'ac-source
+               '(ac-source-filename
+                 ac-source-files-in-current-dir
+                 ac-source-features
+                 ac-source-functions
+                 ac-source-yasnippet
+                 ac-source-variables
+                 ac-source-symbols
+                 ac-source-features
+                 ac-source-functions
+                 ac-source-yasnippet
+                 ac-source-variables
+                 ac-source-symbols
+                 ac-source-abbrev
+                 ac-source-dictionary
+                 ac-source-words-in-same-mode-buffers
+                 ))
+  (message "auto-complete-mode setup")
+  )
+
+(defun my-company-setup ()
+  (global-company-mode 1)
+  (setq company-idle-delay 0)
+  (setq company-dabbrev-other-buffers t)
+  (setq company-dabbrev-downcase nil)
+  (setq company-dabbrev-minimum-length 2)
+  (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
+  (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
+  (message "company-mode setup")
+  )
+
+(defvar my-prefer-ac-or-company t)
+(defun my-switch-ac-engine ()
+  (interactive)
+  (if my-prefer-ac-or-company
+      (my-autocomplete-setup)
+    (my-company-setup))
+  )
+(my-switch-ac-engine)
 
 (defun my-tex-mode-ac-setup ()
   (require 'ac-math)
@@ -107,33 +129,32 @@
 
 (defun my-cc-mode-ac-setup ()
   (interactive)
-  (make-local-variable 'ac-auto-start)
-  (setq ac-auto-start 3)
-  (require 'irony)
-  (irony-mode 1)
-  (irony-ac-enable)
-  ;; (require 'company-rtags)
-  ;; (require 'rtags-ac)
-  ;; (setq ac-sources '(ac-source-rtags))
-  (setq ac-sources
-        '(
-          ac-source-irony
-          ac-source-words-in-same-mode-buffers
-          ac-source-dictionary
-          ac-source-yasnippet
-          ))
-  )
-
-;; ------------------------------------------------------------------------------
-;; company-mode
-;; ------------------------------------------------------------------------------
-;; (global-company-mode 1)
-;; (setq company-idle-delay 0)
-;; (setq company-dabbrev-other-buffers t)
-;; (setq company-dabbrev-downcase nil)
-;; (setq company-dabbrev-minimum-length 2)
-;; (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
-;; (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
+  (if my-prefer-ac-or-company
+      (progn
+        (company-mode -1)
+        (auto-complete-mode 1)
+        (require 'rtags-ac)
+        ;; (require 'irony)
+        ;; (irony-mode 1)
+        ;; (irony-ac-enable)
+        (make-local-variable 'ac-auto-start)
+        (setq ac-auto-start 2)
+        ;; ac-source-words-in-same-mode-buffers
+        ;; ac-source-dictionary
+        (setq ac-sources '(
+                           ac-source-rtags
+                           ac-source-yasnippet
+                           ;; ac-source-irony
+                           ))
+        )
+    (progn
+      (auto-complete-mode -1)
+      (company-mode 1)
+      (require 'company-rtags)
+      (make-local-variable 'company-frontends)
+      (setq company-frontends '(company-rtags))
+      )
+    ))
 
 ;; ------------------------------------------------------------------------------
 ;; hippie-expand

@@ -1,7 +1,7 @@
 # name: int main(argc, argv) { ... }
-# key: main1
+# key: mm0
 # --
-int main(int argc, char *argv[]) {
+int main(int argc, char **argv) {
     $0
     return 0;
 }

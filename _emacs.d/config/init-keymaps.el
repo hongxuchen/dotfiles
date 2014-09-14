@@ -57,6 +57,7 @@
 (global-set-key [M-up] 'windmove-up)              ; move to upper window
 (global-set-key [M-down] 'windmove-down)          ; move to downer window
 
+(global-set-key "\C-x\C-k" 'ido-kill-buffer)
 (global-set-key (kbd "C-x d") 'ido-dired)
 (global-set-key (kbd "C-x C-d") 'find-name-dired)
 (global-set-key (kbd "C-x f") 'ido-find-file)
