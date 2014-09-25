@@ -11,7 +11,6 @@
                      unless (string-match "^\\." dir)
                      collecting (expand-file-name dir))
                load-path)))))
-(require 'bytecomp)
 ;; ------------------------------------------------------------------------------
 ;; package.el configuration
 ;; ------------------------------------------------------------------------------
@@ -90,9 +89,6 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (require-package 'wgrep)
 (require-package 'popup-kill-ring)
 (require-package 's)
-;; (require-package 'crontab-mode)
-;; (require-package 'xml-rpc)
-;; (require-package 'regex-tool)
 
 ;; ------------------------------------------------------------------------------
 ;; vim like editing
@@ -111,8 +107,6 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (require-package 'git-commit-mode)
 (require-package 'gitignore-mode)
 (require-package 'gitconfig-mode)
-;; svn
-;; (require-package 'dsvn)
 
 ;;------------------------------------------------------------------------------
 ;; writings
@@ -122,7 +116,6 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (require-package 'ac-math)
 (require-package 'latex-extra)
 (require-package 'latex-pretty-symbols)
-;; (require-package 'gnuplot)
 (require-package 'markdown-mode)
 ;; org
 (require-package 'cdlatex)
@@ -143,10 +136,11 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (require-package 'dropdown-list)
 (require-package 'yasnippet)
 
-;; auto-complete
-(require-package 'fuzzy) ;auto-complete depends on fuzzy
-(require-package 'auto-complete)
+;; ac
 (require-package 'pos-tip)
+; company-mode
+;; (require-package 'company-mode)
+(require-package 'company-c-headers)
 
 ;; shell
 (require-package 'flymake-shell) ;; require flymake-easy
@@ -155,30 +149,8 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (require-package 'elpy)
 (require-package 'py-autopep8)
 
-;; javascript
-;; (require-package 'json)
-;; (require-package 'js3-mode)
-;; (require-package 'js2-mode)
-;; (require-package 'js-comint)
-;; (require-package 'flymake-jslint)
-
-;; coffeescript
-;; (require-package 'coffee-mode)
-;; (require-package 'flymake-coffee)
-
-;; pages and styles
-;; (require-package 'haml-mode)
-;; (require-package 'flymake-haml)
-;; (require-package 'sass-mode)
-;; (require-package 'flymake-sass)
-;; (require-package 'scss-mode)
-;; (require-package 'less-css-mode)
 (require-package 'pretty-mode)
-;; (require-package 'smarty-mode) ;; html templates
-;; (require-package 'zencoding-mode)
 
-;; (require-package 'tidy)
-;; (require-package 'flymake-css)
 (require-package 'rainbow-mode)
 (require-package 'rainbow-delimiters)
 

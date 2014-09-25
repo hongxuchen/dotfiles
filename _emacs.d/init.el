@@ -5,7 +5,6 @@
 ;; ------------------------------------------------------------------------------
 (dolist (path '("~/.emacs.d/config"
                 "~/.emacs.d/config/doxymacs/share/emacs/site-lisp"
-                "~/.emacs.d/config/irony-mode/elisp"
                 "~/.emacs.d/config/rtags/src"
                 ))
   (add-to-list 'load-path (expand-file-name path)))

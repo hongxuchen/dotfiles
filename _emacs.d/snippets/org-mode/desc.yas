@@ -1,4 +1,4 @@
 #name : DESCRIPTION
-#key : des
+#key : DES
 # --
-#+DESCRIPTION: ${0}
+#+DESCRIPTION: $0

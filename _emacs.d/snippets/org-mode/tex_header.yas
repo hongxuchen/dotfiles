@@ -1,5 +1,0 @@
-# name: LaTeX header
-# key: texh
-# condition: (= (current-column) 3)
-# --
-#+LATEX_HEADER: ${1:\usepackage{$2}}

@@ -1,8 +1,0 @@
-# name: theorem
-# key: thm
-# --
-# <<$1>>
-#+BEGIN_THEOREM
-#+latex: \label{${1:"waiting"$(unless yas/modified-p (reftex-label "theorem" 'dont-insert))}}%
-$0
-#+END_THEOREM

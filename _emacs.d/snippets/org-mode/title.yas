@@ -1,4 +1,4 @@
 #name : Title Block
-#key : tit
+#key : TIT
 # --
 #+TITLE: ${1:title}

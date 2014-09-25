@@ -1,5 +1,5 @@
 #name : HTML
-#key :htm
+#key : HTM
 # --
 #+BEGIN_HTML
 ${0}

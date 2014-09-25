@@ -1,5 +1,5 @@
 #name : \begin{...} ... \end{...}
-#key : be
+#key : BE
 # expand-env: ((yas/indent-line 'fixed) (yas/wrap-around-region 'nil))
 # --
 \begin{$1}

@@ -1,4 +1,4 @@
 #name : include
-#key : inc
+#key : INC
 # --
 #+INCLUDE: "${1:file}" ${2:src-example-quote} ${3:mode}

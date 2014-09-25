@@ -1,4 +1,4 @@
 #name : Startup
-#key : st
+#key : ST
 # --
 #+STARTUP: ${1:options}

@@ -1,5 +1,5 @@
 #name : #+begin_...#+end_
-#key : blk
+#key : BLK
 # expand-env: ((yas/indent-line 'fixed) (yas/wrap-around-region 'nil))
 # --
 #+BEGIN_$1 $2

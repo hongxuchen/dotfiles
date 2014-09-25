@@ -1,5 +1,5 @@
 # name : OPTIONS
-# key : opts
+# key : OPT
 # condition: (= (current-column) 1)
 # --
 #+OPTIONS: ${0}

@@ -1,9 +1,0 @@
-# name: equation
-# key: eqn
-# condition: (or (= (current-column) 3) (= (current-column) 0))
-# --
-# <<$1>>
-\begin{equation}
-\label{${1:"waiting for reftex-label call..."$(unless yas/modified-p (reftex-label nil 'dont-insert))}}%
-$0
-\end{equation}

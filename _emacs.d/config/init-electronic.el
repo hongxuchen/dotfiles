@@ -30,73 +30,16 @@
   (let ((yas-prompt-functions '(yas-completing-prompt)))
     ad-do-it))
 
-
-;; ------------------------------------------------------------------------------
-;; auto-complete & company-mode
-;; ------------------------------------------------------------------------------
-(defun my-autocomplete-setup ()
-  ;; @see http://cx4a.org/software/auto-complete/manual.html
-  (require 'auto-complete-config)
-  (global-auto-complete-mode 1)
-  (setq ac-expand-on-auto-complete t
-        popup-use-optimized-column-computation nil
-        ac-auto-start 2
-        ac-dwim t
-        ac-auto-show-menu t
-        ac-use-fuzzy nil
-        ac-use-comphist nil
-        ac-comphist-threshold 0.5
-        ac-use-quick-help nil
-        ac-quick-help-delay 0.1
-        ac-ignore-case nil
-        ac-quick-help-prefer-pos-tip nil)
-  (define-key ac-mode-map (kbd "C-c h") 'ac-last-quick-help)
-  (define-key ac-mode-map (kbd "C-c H") 'ac-last-help)
-  (add-to-list 'ac-dictionary-directories '"~/.emacs.d/.dict")
-
-  (ac-set-trigger-key "TAB") ; after input prefix, press TAB key ASAP
-  ;; Use C-n/C-p to select candidate ONLY when completion menu is displayed
-  (setq ac-use-menu-map t)
-  ;; (setq ac-fuzzy-enable nil)
-  (ac-config-default)
-  (ac-flyspell-workaround)
-  ;; (setq ac-ignore-case 'smart) ;;default
-
-  (dolist (command '(
-                     backward-delete-char-untabify
-                     autopair-backspace
-                     ))
-    (add-to-list 'ac-trigger-commands command))
-
-  (dolist (mode '(cmake-mode
-                  latex-mode
-                  makefile-gmake-mode
-                  makefile-automake-mode
-                  ))
-    (add-to-list 'ac-modes mode))
-
-  (set-default 'ac-source
-               '(ac-source-filename
-                 ac-source-files-in-current-dir
-                 ac-source-features
-                 ac-source-functions
-                 ac-source-yasnippet
-                 ac-source-variables
-                 ac-source-symbols
-                 ac-source-features
-                 ac-source-functions
-                 ac-source-yasnippet
-                 ac-source-variables
-                 ac-source-symbols
-                 ac-source-abbrev
-                 ac-source-dictionary
-                 ac-source-words-in-same-mode-buffers
-                 ))
-  (message "auto-complete-mode setup")
-  )
-
 (defun my-company-setup ()
   (make-local-variable 'company-c-headers-path-user)
+  (setq company-c-headers-path-system
+        '("/usr/include"
+          "/usr/local/include"
+          "/usr/include/c++/4.9"
+          "/usr/include/x86_64-linux-gnu/c++/4.9"
+          "/home/hongxu/marple-llvm/llvm-obj/lib/clang/3.6.0/include"
+          "/usr/include/x86_64-linux-gnu"
+          ))
   (global-company-mode 1)
   (setq company-minimum-prefix-length 2)
   (setq company-idle-delay 0)
@@ -113,90 +56,49 @@
           ;; company-bbdb
           company-nxml
           company-css
-          company-eclim
+          ;; company-eclim
           ;; company-semantic
           ;; company-clang
           ;; company-xcode
           ;; company-ropemacs
           company-cmake
-          company-capf (company-dabbrev-code company-gtags company-etags company-keywords)
+          company-capf (company-dabbrev-code
+                        ;; company-gtags
+                        ;; company-etags
+                        company-keywords)
           ;; company-oddmuse
           company-files
           company-dabbrev
-          ))
-  )
+          ;; company-yasnippet
+          )))
 
-(defvar my-prefer-ac-or-company nil)
-(defun my-switch-ac-engine ()
-  (interactive)
-  (if my-prefer-ac-or-company
-      (my-autocomplete-setup)
-    (my-company-setup))
-  )
-(my-switch-ac-engine)
+(my-company-setup)
 
 (defun my-tex-mode-ac-setup ()
-  (if my-prefer-ac-or-company
-      (progn
-        (require 'ac-math)
-        (add-to-list 'ac-modes 'latex-mode)
-        (setq ac-math-unicode-in-math-p t)
-        (setq ac-sources
-              (append
-               '(
-                 ac-source-math-unicode
-                 ac-source-math-latex
-                 ac-source-latex-commands)
-               ac-sources)))
-    (progn
-      (require 'company-auctex)
-      (company-auctex-init))
-    ))
+  (require 'company-auctex)
+  (company-auctex-init))
 
 (defun my-elisp-mode-ac-setup ()
-  (when my-prefer-ac-or-company
-    (ac-emacs-lisp-mode-setup))
   )
 
 (defun my-cc-mode-ac-setup ()
-  (if my-prefer-ac-or-company
-      (progn
-        (company-mode -1)
-        (auto-complete-mode 1)
-        (require 'rtags-ac)
-        (require 'irony)
-        (irony-mode 1)
-        (irony-ac-enable)
-        (make-local-variable 'ac-auto-start)
-        (setq ac-auto-start 2)
-        ;; ac-source-words-in-same-mode-buffers
-        ;; ac-source-dictionary
-        (setq ac-sources '(
-                           ac-source-rtags
-                           ac-source-yasnippet
-                           ac-source-irony
-                           ))
-        )
-    (progn
-      (auto-complete-mode -1)
-      (company-mode 1)
-      (require 'company-rtags)
-      (make-local-variable 'company-frontends)
-      ;; (setq company-frontends '(company-rtags))
-      (setq company-frontends '(
-                                company-pseudo-tooltip-unless-just-one-frontend
-                                company-echo-metadata-frontend
-                                company-preview-if-just-one-frontend
-                                company-rtags
-                                )))
-    ))
+  (company-mode 1)
+  (require 'company-rtags)
+  (make-local-variable 'company-frontends)
+  (setq company-frontends
+        '(
+          company-rtags
+          company-pseudo-tooltip-unless-just-one-frontend
+          company-echo-metadata-frontend
+          company-preview-if-just-one-frontend
+          )))
 
 ;; ------------------------------------------------------------------------------
 ;; hippie-expand
 ;; ------------------------------------------------------------------------------
-(setq dabbrev-case-fold-search nil)
-(setq hippie-expand-try-functions-list
-      '(try-complete-file-name-partially
-        try-complete-file-name))
+;; (setq dabbrev-case-fold-search nil)
+;; (setq hippie-expand-try-functions-list
+;;       '(try-complete-file-name-partially
+;;         try-complete-file-name))
 
 (provide 'init-electronic)

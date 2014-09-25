@@ -1,5 +1,5 @@
 # name: attr_latex
-# key: atl
+# key: ATL
 # condition: (= (current-column) 3)
 # --
-#+attr_latex: ${1:width=$2\textwidth}
+#+attr_latex: $1
