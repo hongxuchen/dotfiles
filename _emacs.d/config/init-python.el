@@ -5,11 +5,14 @@
               auto-mode-alist))
 
 (defun my-python-mode-elpy-setup ()
+  (require 'py-autopep8)
   (require 'elpy)
+  (elpy-enable)
   (setq elpy-default-minor-modes '(eldoc-mode flymake-mode yas-minor-mode auto-complete-mode)
         python-shell-interpreter "python"
         elpy-rpc-python-command "python"
         elpy-rpc-backend "jedi")
+  (add-hook 'before-save-hook 'py-autopep8-before-save)
   (if (fboundp 'evil-mode)
       (progn
         (evil-define-key 'normal python-mode-map "gd" 'elpy-goto-definition)

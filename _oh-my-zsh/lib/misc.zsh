@@ -33,5 +33,23 @@ setopt hist_ignore_space
 setopt hist_verify
 setopt inc_append_history
 setopt share_history # share command history data
+setopt hist_ignore_all_dups
+setopt hist_no_store
 
 [[ -e /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found
+
+if [[ $OSTYPE == "linux-gnu" ]]; then
+	for s in mp3 wav aac \
+		ogg avi mp4 m4v mov qt mpg mpeg \
+		jpg jpeg png psd bmp gif tif tiff \
+		eps ps pdf html dmg; do
+		alias -s $s=xdg-open
+	done
+fi
+
+autoload -U age
+
+alias -g ND='*(/om[1])' # newest directory
+alias -g NF='*(.om[1])' # newest file
+alias -g L='| less'
+TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S'

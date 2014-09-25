@@ -79,17 +79,13 @@ function sudo() {
     fi
 }
 
-function llvmgcc() {
-    llvm-gcc -std=c99 -emit-llvm -S $1 -o ${1%.*}.ll ${*:2} -I$HOME/moonbox/klee-install/include
-}
-
 function clang-ll() {
     clang -std=c99 -emit-llvm -S $1 -o ${1%.*}.ll ${*:2}
 }
 
 # -debug-buffer-size=1024
 function opt() {
-    command opt -load /home/hongxu/marple-llvm/marple/bin/marple.so $@
+    command opt -load $HOME/marple-llvm/marple/build/bin/marple.so $@
 }
 
 function clean_llvm(){

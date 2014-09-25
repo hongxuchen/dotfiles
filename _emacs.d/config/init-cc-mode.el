@@ -2,6 +2,8 @@
 ;; c/c++ files
 ;; ----------------------------------------------------------------------------
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.PH\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.TLH\\'" . c++-mode))
 (defun my-rtags-setup ()
   (interactive)
   (require 'rtags)
@@ -78,6 +80,11 @@
      (require 'doxymacs)
      (require 'google-c-style)
      (my-rtags-setup)
+     (defun my-clang-format-before-save ()
+       (when (member major-mode '(c-mode c++-mode))
+         (condition-case err (clang-format-buffer)
+           (error (message "%s" (error-message-string err))))))
+     (add-hook 'before-save-hook 'my-clang-format-before-save)
      ))
 
 (add-hook 'c-mode-hook 'my-cc-mode-hook)

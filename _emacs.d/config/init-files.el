@@ -15,6 +15,7 @@
      ))
 
 (require 'dired-x)
+(require 'dired-k)
 (setq-default dired-omit-files-p t)
 (setq dired-recursive-copies t               ;copy recursively
       dired-recursive-deletes t              ;delete recursively
@@ -42,6 +43,9 @@
 (define-key my-dired-sort-map "?" (lambda () "sort help" (interactive) (message "s Size; x eXtension; t Time; n Name")))
 
 (setq find-ls-option '("-ls" . "-dilsbh"))
+
+;; (add-hook 'dired-mode-hook 'dired-k--highlight)
+(define-key dired-mode-map (kbd "K") 'dired-k)
 
 ;; ------------------------------------------------------------------------------
 ;; session & recentf

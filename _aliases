@@ -27,7 +27,9 @@ alias grt='cd $(git rev-parse --show-toplevel)'
 alias la='ls -a'
 alias q="exit"
 alias l='ls -F'
+# alias ll='k'
 alias ll='ls -lh'
+alias kl='k | less'
 alias whatg++='g++ -E -x c++  /dev/null -dM'
 alias whatgcc='gcc -E -x c  /dev/null -dM'
 alias cc-clang++='clang -E -x c /dev/null -v'
@@ -50,5 +52,7 @@ alias info='man'                # NEVER use `info' in the terminal
 alias vim='emacs'
 
 alias ...='cd ../..'
+alias ..='cd ../'
 alias d='dirs -v | head -10'
 alias make='make -j8'
+alias open='xdg-open'

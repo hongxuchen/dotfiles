@@ -23,7 +23,8 @@ export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 
 # export PATH=~/moonbox/dryrun/bin:~/moonbox/dryrun/utils:~/moonbox/dryrun/utils/wllvm:~/moonbox/llvm-obj/Release+Asserts/bin:~/moonbox/llvm-gcc4.2-2.9-x86_64-linux/bin:~/moonbox/klee-install/bin:~/moonbox/klee/scripts:$PATH
-export PATH=~/marple-llvm/llvm-obj/bin:/usr/sbin:/sbin:$PATH
+PIN_ROOT=/home/hongxu/repos/pintool/pin
+export PATH=~/marple-llvm/llvm-obj/bin:/usr/sbin:/sbin:${PIN_ROOT}:$PATH
 export PATH=/usr/local/texlive/2014/bin/x86_64-linux:~/.bin:~/.local/bin::~/.builds/repos/rtags/build/bin:~/tools/FSharp-2.0.0.0/bin:$PATH
 export MONO_PATH=~/tools/FSharp-2.0.0.0:$MONO_PATH
 export PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/site-packages
@@ -32,7 +33,7 @@ export PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/site-packages
 # export C_INCLUDE_PATH=~/llvm/install/include
 export C_INCLUDE_PATH=~/qemu/panda/distorm/include
 # export CPLUS_INCLUDE_PATH
-# export LD_LIBRARY_PATH=~/llvm/install/lib:/usr/lib/llvm-3.4/lib:/usr/local/lib
+export LD_LIBRARY_PATH=~/marple-llvm/llvm-obj/lib
 # export PYTHONPATH=$PYTHONPATH:~/llvm/llvm-svn/tools/clang/bindings/python
 # export GTAGSLIBPATH
 

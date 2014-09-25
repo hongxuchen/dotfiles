@@ -34,6 +34,7 @@
     <location key="CommitChangelistDialog2.0.0.1366.768" x="333" y="116" />
     <location key="git4idea.push.GitPushDialog.0.0.1366.768" x="339" y="130" />
     <location key="OptionsEditor.0.1080.1920.1200" x="343" y="1238" />
+    <location key="WELCOME_SCREEN.0.1080.1920.1200" x="1018" y="302" />
     <size key="#Intentions.0.0.1366.768" width="828" height="688" />
     <size key="#Inspections.0.0.1366.768" width="728" height="638" />
     <size key="#Browse_JetBrains_Plugins_.0.0.1366.768" width="828" height="688" />

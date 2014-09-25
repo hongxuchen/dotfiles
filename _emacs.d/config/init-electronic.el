@@ -30,6 +30,7 @@
   (let ((yas-prompt-functions '(yas-completing-prompt)))
     ad-do-it))
 
+
 ;; ------------------------------------------------------------------------------
 ;; auto-complete & company-mode
 ;; ------------------------------------------------------------------------------
@@ -95,7 +96,9 @@
   )
 
 (defun my-company-setup ()
+  (make-local-variable 'company-c-headers-path-user)
   (global-company-mode 1)
+  (setq company-minimum-prefix-length 2)
   (setq company-idle-delay 0)
   (setq company-dabbrev-other-buffers t)
   (setq company-dabbrev-downcase nil)
@@ -103,9 +106,27 @@
   (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
   (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
   (message "company-mode setup")
+  (setq company-backends
+        '(
+          company-c-headers
+          company-elisp
+          ;; company-bbdb
+          company-nxml
+          company-css
+          company-eclim
+          ;; company-semantic
+          ;; company-clang
+          ;; company-xcode
+          ;; company-ropemacs
+          company-cmake
+          company-capf (company-dabbrev-code company-gtags company-etags company-keywords)
+          ;; company-oddmuse
+          company-files
+          company-dabbrev
+          ))
   )
 
-(defvar my-prefer-ac-or-company t)
+(defvar my-prefer-ac-or-company nil)
 (defun my-switch-ac-engine ()
   (interactive)
   (if my-prefer-ac-or-company
@@ -115,28 +136,37 @@
 (my-switch-ac-engine)
 
 (defun my-tex-mode-ac-setup ()
-  (require 'ac-math)
-  (add-to-list 'ac-modes 'latex-mode)
-  (setq ac-math-unicode-in-math-p t)
-  (setq ac-sources
-        (append
-         '(ac-source-math-unicode ac-source-math-latex ac-source-latex-commands) ac-sources))
-  )
+  (if my-prefer-ac-or-company
+      (progn
+        (require 'ac-math)
+        (add-to-list 'ac-modes 'latex-mode)
+        (setq ac-math-unicode-in-math-p t)
+        (setq ac-sources
+              (append
+               '(
+                 ac-source-math-unicode
+                 ac-source-math-latex
+                 ac-source-latex-commands)
+               ac-sources)))
+    (progn
+      (require 'company-auctex)
+      (company-auctex-init))
+    ))
 
 (defun my-elisp-mode-ac-setup ()
-  (ac-emacs-lisp-mode-setup)
+  (when my-prefer-ac-or-company
+    (ac-emacs-lisp-mode-setup))
   )
 
 (defun my-cc-mode-ac-setup ()
-  (interactive)
   (if my-prefer-ac-or-company
       (progn
         (company-mode -1)
         (auto-complete-mode 1)
         (require 'rtags-ac)
-        ;; (require 'irony)
-        ;; (irony-mode 1)
-        ;; (irony-ac-enable)
+        (require 'irony)
+        (irony-mode 1)
+        (irony-ac-enable)
         (make-local-variable 'ac-auto-start)
         (setq ac-auto-start 2)
         ;; ac-source-words-in-same-mode-buffers
@@ -144,7 +174,7 @@
         (setq ac-sources '(
                            ac-source-rtags
                            ac-source-yasnippet
-                           ;; ac-source-irony
+                           ac-source-irony
                            ))
         )
     (progn
@@ -152,8 +182,13 @@
       (company-mode 1)
       (require 'company-rtags)
       (make-local-variable 'company-frontends)
-      (setq company-frontends '(company-rtags))
-      )
+      ;; (setq company-frontends '(company-rtags))
+      (setq company-frontends '(
+                                company-pseudo-tooltip-unless-just-one-frontend
+                                company-echo-metadata-frontend
+                                company-preview-if-just-one-frontend
+                                company-rtags
+                                )))
     ))
 
 ;; ------------------------------------------------------------------------------

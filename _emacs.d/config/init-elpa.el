@@ -89,6 +89,7 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (require-package 'info+)
 (require-package 'wgrep)
 (require-package 'popup-kill-ring)
+(require-package 's)
 ;; (require-package 'crontab-mode)
 ;; (require-package 'xml-rpc)
 ;; (require-package 'regex-tool)
@@ -152,6 +153,7 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 
 ;; python
 (require-package 'elpy)
+(require-package 'py-autopep8)
 
 ;; javascript
 ;; (require-package 'json)
