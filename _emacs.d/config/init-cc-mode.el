@@ -79,6 +79,7 @@
      (require 'clang-format)
      (require 'doxymacs)
      (require 'google-c-style)
+     (require 'company-rtags)
      (my-rtags-setup)
      (defun my-clang-format-before-save ()
        (when (member major-mode '(c-mode c++-mode))

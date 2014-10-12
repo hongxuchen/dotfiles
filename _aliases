@@ -42,6 +42,7 @@ alias ssh_lab="ssh -X root@pat.sce.ntu.edu.sg"
 #Google style
 alias indent="command indent -kr -ci2 -cli2 -i2 -l80 -nut"
 alias rdm-null="command rdm &>/dev/null &"
+alias scan-build="command scan-build --use-analyzer=${HOME}/marple-llvm/llvm-obj/bin/clang"
 
 alias sudo='sudo '
 alias sl='ls' # so there would be no *sl train*

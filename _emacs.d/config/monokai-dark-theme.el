@@ -100,7 +100,7 @@ Each element has the form (NAME . HEX).
  `(grep-error-face ((t (:foreground "#f92672" :weight bold :underline t))))
  `(grep-hit-face ((t (:foreground "#fd5ff0"))))
  `(grep-match-face ((t (:foreground "#fd971f" :weight bold))))
- `(match ((t (:foreground "#a6e22e" :background "171a0b" :weight bold))))
+ `(match ((t (:foreground "#a6e22e" :background "170a0b" :weight bold))))
  ;; only works for x
  `(linum ((((class color) (min-colors ,THRESHOLD)) (:foreground "#ae81ff" :background "#202020")) (t (:foreground "#cd00cd"))))
  `(cursor ( (((class color) (min-colors ,THRESHOLD)) (:background "#e0e0e0"))) (t (:background "#eee")))

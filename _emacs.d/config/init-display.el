@@ -10,7 +10,7 @@
 ;; Window size and features
 ;; ------------------------------------------------------------------------------
 (setq tool-bar-style 'image)
-(fringe-mode '(1 . 1))
+;; (fringe-mode '(1 . 1))
 (blink-cursor-mode -1) ;; orginal enabled
 (column-number-mode 1)
 (setq winner-ring-size 20)
@@ -45,10 +45,10 @@
                           (font-spec :family "文泉驿等宽微米黑"
                                      :size 12
                                      :weight 'light))))
-  (progn
-    (menu-bar-mode -1)
-    (tool-bar-mode -1)
-    (scroll-bar-mode -1))
+    ;; (progn
+    ;; (menu-bar-mode -1)
+    ;; (tool-bar-mode -1)
+    ;; (scroll-bar-mode -1))
   )
 
 ;; WoMan settings

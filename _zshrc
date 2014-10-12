@@ -52,3 +52,5 @@ source "$ZSH/themes/$ZSH_THEME.zsh-theme"
 if [ -e $ALIAS ]; then
     source $ALIAS
 fi
+
+source ~/.linuxbrew/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh

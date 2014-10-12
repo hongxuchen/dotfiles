@@ -33,11 +33,14 @@
 (defun my-company-setup ()
   (make-local-variable 'company-c-headers-path-user)
   (setq company-c-headers-path-system
-        '("/usr/include"
+        '(
+          "/home/hongxu/marple-llvm/llvm/include"
+          "/usr/include"
           "/usr/local/include"
           "/usr/include/c++/4.9"
           "/usr/include/x86_64-linux-gnu/c++/4.9"
           "/home/hongxu/marple-llvm/llvm-obj/lib/clang/3.6.0/include"
+          "/home/hongxu/.linuxbrew/include"
           "/usr/include/x86_64-linux-gnu"
           ))
   (global-company-mode 1)
@@ -48,10 +51,10 @@
   (setq company-dabbrev-minimum-length 2)
   (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
   (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
-  (message "company-mode setup")
   (setq company-backends
         '(
           company-c-headers
+          ;; company-rtags
           company-elisp
           ;; company-bbdb
           company-nxml
@@ -82,16 +85,8 @@
   )
 
 (defun my-cc-mode-ac-setup ()
-  (company-mode 1)
-  (require 'company-rtags)
-  (make-local-variable 'company-frontends)
-  (setq company-frontends
-        '(
-          company-rtags
-          company-pseudo-tooltip-unless-just-one-frontend
-          company-echo-metadata-frontend
-          company-preview-if-just-one-frontend
-          )))
+  (add-to-list 'company-frontends 'company-rtags)
+  )
 
 ;; ------------------------------------------------------------------------------
 ;; hippie-expand

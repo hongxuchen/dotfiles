@@ -52,4 +52,5 @@ autoload -U age
 alias -g ND='*(/om[1])' # newest directory
 alias -g NF='*(.om[1])' # newest file
 alias -g L='| less'
+alias -g LL='2>&1 | less'
 TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S'

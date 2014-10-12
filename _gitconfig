@@ -90,3 +90,5 @@
 	textconv = exiftool
 [github]
 	user = leftcopy.chx@gmail.com
+[clangFormat]
+	style = Google

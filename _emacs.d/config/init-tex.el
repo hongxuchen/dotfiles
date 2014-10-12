@@ -22,9 +22,9 @@
   (linum-mode 1)
   (TeX-fold-mode -1)
   (TeX-global-PDF-mode 1)
-  (imenu-add-menubar-index)
+  ;; (imenu-add-menubar-index)
 
-  (setq-default TeX-engine 'pdflatex
+  (setq-default TeX-engine 'default
                 TeX-master nil)
 
   (setq reftex-plug-into-AUCTeX t
@@ -48,5 +48,11 @@
   (setq TeX-auto-untabify t
         TeX-show-compilation t)
   )
+
+(add-hook 'LaTex-mode-hook
+          (progn
+            (my-tex-mode-view-setup)
+            (my-tex-mode-basic-setup)
+            ))
 
 (provide 'init-tex)
