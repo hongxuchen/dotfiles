@@ -12,7 +12,7 @@ See ~install.sh~ for detailed information.
 ***  Congurations
 
 - tmux
-- Zsh/Bash
-- Vim7.4/Emacs24
-- LXDE/openbox
-- Ubuntu/Debian
+- Zsh
+- Emacs
+- LXDE
+- Debian
