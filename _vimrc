@@ -1,3 +1,5 @@
+" vim: set ft=vim ts=4 sw=2 tw=78 et :
+" vim: set ft=vim ts=4 sw=2 tw=78 et :
 " -*- mode: vimrc; -*-
 " vim: set ft=vim ts=4 sw=2 tw=78 et :
 " =====================================================
@@ -172,8 +174,7 @@ set matchpairs+=<:>           " show matching <> (html mainly) as well
 set foldmethod=syntax         " allow us to fold on indents
 set foldlevel=99              " don't fold by default
 set history=200               " up/down can also be used when some words have been inserted
-colorscheme default           " koehler,elflord,murphy,torte,evening,delek
-" colorscheme delek
+" colorscheme delek           " koehler,elflord,murphy,torte,evening,delek
 " Reading/Writing
 set noautowrite               " Never write a file unless I request it.
 set noautowriteall            " NEVER.
@@ -231,36 +232,15 @@ Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-surround'
 Bundle 'Tagbar'
 Bundle 'jiangmiao/auto-pairs'
-" Bundle 'Valloric/YouCompleteMe'
+Bundle 'davidhalter/jedi-vim'
 Bundle 'Superbil/llvm.vim'
-" Bundle 'Cpp11-Syntax-Support'
-" Bundle 'chrisbra/csv.vim'
-" Bundle 'ack.vim'
-"
-" colorscheme valloric
-
-" ycm
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_global_ycm_extra_conf = '~/.bin/.ycm_extra_conf.py'
-let g:ycm_complete_in_strings = 1
-" clang_complete
-" let g:clang_auto_select=0
-" let g:clang_complete_auto=1
-" let g:clang_complete_copen=1
-" let g:clang_hl_errors=1
-" let g:clang_periodic_quickfix=0
-" let g:clang_snippets=1
-" let g:clang_snippets_engine="clang_complete"
-" let g:clang_conceal_snippets=1
-" let g:clang_exec="clang"
-" let g:clang_user_options=""
-" let g:clang_auto_user_options=".clang_complete,path"
-" let g:clang_use_library=1
-" let g:clang_library_path="/usr/lib/llvm-3.4/lib/"
-" let g:clang_sort_algo="priority"
-" let g:clang_complete_macros=1
-" let g:clang_complete_patterns=0
-" nnoremap <Leader>q :call g:ClangUpdateQuickFix()<CR>
+Bundle 'Cpp11-Syntax-Support'
+Bundle 'scrooloose/nerdtree'
+Bundle 'Lokaltog/powerline'
+Bundle 'nanotech/jellybeans.vim'
+Bundle 'ack.vim'
+Bundle 'tomasr/molokai'
+colorscheme molokai
 
 " tagbar
 noremap <leader>t :TagbarToggle<CR>
@@ -277,68 +257,10 @@ let g:tagbar_autoshowtag = 0
 let g:tagbar_updateonsave_maxlines = 10000
 let g:tagbar_systemenc = 'encoding'
 
-" gf issues; set suffixesadd+=
-set includeexpr=GuessFilename(v:fname)
-"if gf cannot find the path, strip starting '.' or '..'
-function! GuessFilename(filename)
-   let ret = ''
-   if a:filename =~ '^\.\/\.\.\/'
-     let ret = strpart(a:filename, 5)
-   elseif a:filename =~ '^\.\.\/'
-     let ret = strpart(a:filename, 3)
-   elseif a:filename =~ '^\.\/'
-     let ret = strpart(a:filename, 2)
-   endif
-   if len(ret)
-     return ret
-   else
-     return a:filename
-   endif
-endfunction 
-
-"append modeline
-function! AppendModeline()
-  let l:modeline = printf(" vim: set ft=%s ts=%d sw=%d tw=%d %set :",
-        \ &filetype, &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
-  let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
-  call append(line("0"), l:modeline)
-endfunction
-nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
-
-" http://clang.llvm.org/docs/HowToSetupToolingForLLVM.html#using-clang-tools
-function! ClangCheckImpl(cmd)
-  if &autowrite | wall | endif
-  echo "Running " . a:cmd . " ..."
-  let l:output = system(a:cmd)
-  cexpr l:output
-  cwindow
-  let w:quickfix_title = a:cmd
-  if v:shell_error != 0
-    cc
-  endif
-  let g:clang_check_last_cmd = a:cmd
-endfunction
-
-" cannot work since an additional -- is needed
-function! ClangCheck()
-  let l:filename = expand('%')
-  if l:filename =~ '\.\(cpp\|cxx\|cc\|c\)$'
-    call ClangCheckImpl("clang-check " . l:filename)
-  elseif exists("g:clang_check_last_cmd")
-    call ClangCheckImpl(g:clang_check_last_cmd)
-  else
-    echo "Can't detect file's compilation arguments and no previous clang-check invocation!"
-  endif
-endfunction
-
-nmap <silent> <F5> :call ClangCheck()<CR>
-
 " =====================================================
 " filetype settings
 " =====================================================
-autocmd FileType c,cpp setl path+=/usr/lib/llvm-2.9/include,/usr/include/c++/4.6,~/moonbox/klee/include
-autocmd FileType c,cpp setl cms=//%s
-autocmd FileType c,cpp nnoremap <silent> <C-]>: YcmCompleter GoToDefinitionElseDeclaration<CR>
-autocmd FileType python nnoremap <silent> <C-]>: YcmCompleter GoToDefinitionElseDeclaration<CR>
 autocmd FileType lisp setl cms=;;%s
 autocmd FileType cmake setl cms=#%s
+
+let g:Powerline_symbols = 'fancy'

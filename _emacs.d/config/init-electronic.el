@@ -103,7 +103,7 @@
   (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
   )
 
-(defvar my-prefer-ac-or-company t)
+(defvar my-prefer-ac-or-company nil)
 (defun my-switch-ac-engine ()
   (interactive)
   (if my-prefer-ac-or-company
@@ -122,8 +122,8 @@
   )
 
 (defun my-elisp-mode-ac-setup ()
-  (ac-emacs-lisp-mode-setup)
-  )
+  (if my-prefer-ac-or-company
+      (ac-emacs-lisp-mode-setup)))
 
 (defun my-irony-ac-setup ()
   (add-to-list 'load-path (expand-file-name "~/.emacs.d/config/irony-mode/elisp"))
@@ -145,10 +145,10 @@
         (make-local-variable 'ac-auto-start)
         (setq ac-auto-start 2)
         ;; ac-source-words-in-same-mode-buffers
-        ;; ac-source-dictionary
         (setq ac-sources '(
                            ac-source-rtags
                            ac-source-yasnippet
+                           ac-source-dictionary
                            ))
         (my-irony-ac-setup)
         )
