@@ -22,18 +22,25 @@ export TEXMFHOME=~/.texmf
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 
-# export PATH=~/moonbox/dryrun/bin:~/moonbox/dryrun/utils:~/moonbox/dryrun/utils/wllvm:~/moonbox/llvm-obj/Release+Asserts/bin:~/moonbox/llvm-gcc4.2-2.9-x86_64-linux/bin:~/moonbox/klee-install/bin:~/moonbox/klee/scripts:$PATH
-PIN_ROOT=/home/hongxu/repos/pintool/pin
-export PATH=~/marple-llvm/llvm-obj/bin:~/marple-llvm/llvm/tools/clang/tools/scan-build:~/marple-llvm/llvm/tools/clang/tools/scan-view:/usr/sbin:/sbin:~/.linuxbrew/bin:${PIN_ROOT}:$PATH
-export PATH=/usr/local/texlive/2014/bin/x86_64-linux:~/.bin:~/.local/bin::~/.builds/repos/rtags/build/bin:~/tools/FSharp-2.0.0.0/bin:$PATH
+PIN_ROOT=~/repos/pintool/pin
+LLVM_ROOT=~/marple-llvm
+KLEE_ROOT=~/klee_setup
+KLEE_LLVM_ROOT=${KLEE_ROOT}/llvm-install/bin
+alias klee-clang='${KLEE_LLVM_ROOT}/clang -emit-llvm -c'
+
+export PATH=/usr/local/texlive/2014/bin/x86_64-linux:/usr/sbin:/sbin:$PATH
+export PATH=${LLVM_ROOT}/llvm-obj/bin:${LLVM_ROOT}/llvm/tools/clang/tools/scan-build:${LLVM_ROOT}/llvm/tools/clang/tools/scan-view:$PATH
+export PATH=${KLEE_ROOT}/klee-install/bin:${KLEE_ROOT}/wllvm:${KLEE_ROOT}/stp-install/bin:$PATH
+export PATH=~/.builds/repos/rtags/build/bin:~/.bin:~/.local/bin:~/.linuxbrew/bin:${PIN_ROOT}:~/tools/FSharp-2.0.0.0/bin:$PATH
+
 export MONO_PATH=~/tools/FSharp-2.0.0.0:$MONO_PATH
 export PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/site-packages
-# export LLVM_COMPILER=clang # for wllvm
-# export WLLVM_OUTPUT=DEBUG
+export LLVM_COMPILER=clang # for wllvm
+export WLLVM_OUTPUT=ERROR
 # export C_INCLUDE_PATH=
 # export CPLUS_INCLUDE_PATH
-export CPLUS_INCLUDE_PATH=~/qemu/panda/distorm/include:~/marple-llvm/llvm/tools/clang/include:~/marple-llvm/llvm-obj/tools/clang/include:~/.linuxbrew/include
-export LD_LIBRARY_PATH=~/marple-llvm/llvm-obj/lib:~/.linuxbrew/lib
+export CPLUS_INCLUDE_PATH=~/qemu/panda/distorm/include:${LLVM_ROOT}/llvm/tools/clang/include:${LLVM_ROOT}/llvm-obj/tools/clang/include:~/.linuxbrew/include
+export LD_LIBRARY_PATH=${LLVM_ROOT}/llvm-obj/lib:~/.linuxbrew/lib:${KLEE_ROOT}/stp-install/lib
 # export PYTHONPATH=$PYTHONPATH:~/llvm/llvm-svn/tools/clang/bindings/python
 # export GTAGSLIBPATH
 

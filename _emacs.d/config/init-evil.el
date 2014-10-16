@@ -1,22 +1,49 @@
-(setq evil-auto-indent t
-      evil-cross-lines t
+(setq evil-cross-lines t
       evil-echo-state nil
       evil-ex-search-vim-style-regexp t
-      evil-flash-delay 5
-      evil-complete-all-buffers nil
+      evil-ex-interactive-search-highlight 'all-windows
       evil-ex-substitute-global t
+      evil-ex-search-case 'smart
+      evil-ex-search-interactive t
+      evil-ex-search-highlight-all t
+      evil-ex-substitute-highlight-all t
+      evil-ex-substitute-interactive-replace t
+      evil-ex-complete-emacs-commands 'in-turn
+      evil-ex-visual-char-range nil
+      evil-flash-delay 5
+      evil-fold-level 0
+      evil-auto-balance-windows t
+      evil-esc-delay 0.01
+      evil-command-window-height 0
+      evil-complete-all-buffers nil
       evil-want-visual-char-semi-exclusive nil
       evil-move-cursor-back t
+      evil-default-cursor t
+      evil-repeat-move-cursor t
+      evil-cjk-emacs-word-boundary nil
+      evil-backspace-join-lines t
+      evil-repeat-find-to-skip-next t
+      evil-kbd-macro-suppress-motion-error nil
+      evil-track-eol t
+      evil-magic 'very-magic
+      evil-mode-line-format 'before
+      evil-mouse-word 'evil-move-word
+      evil-digraphs-table-user nil
+      evil-toggle-key "C-z"
+      evil-visual-newline-commands '(LaTeX-section TeX-font)
       ;; evil-search-module 'isearch
-      ;; evil-move-cursor-back t
       ;; evil-want-C-i-jump t
       ;; evil-want-fine-undo nil
       ;; evil-repeat-move-cursor t
       ;; evil-want-C-u-scroll nil
-      ;; evil-shift-width 4
       ;; evil-lookup-func 'woman
       )
 (require 'evil)
+(setq-default evil-symbol-word-search t
+              evil-shift-width 4
+              evil-shift-round t
+              evil-auto-indent t
+              )
 (evil-mode 1)
 (evil-set-initial-state 'text-mode 'normal)
 (evil-set-initial-state 'prog-mode 'normal)
@@ -79,10 +106,10 @@
 (define-key evil-normal-state-map (kbd "<tab>") 'evil-undefine)
 
 ;; vim-surround like, @see https://github.com/timcharper/evil-surround
-(require 'surround)
+(require 'evil-surround)
+(global-evil-surround-mode 1)
 ;; (add-hook 'org-mode-hook (lambda ()
 ;;                            (push '(?~ . ("~" . "~")) surround-pairs-alist)))
-(global-surround-mode 1)
 
 (require 'evil-leader)
 (global-evil-leader-mode 1)
@@ -91,7 +118,7 @@
   "c" 'flymake-mode
   "r" 'review-fixme-comment
   "g" 'rgrep
-  "f" 'my-format-buffer
+  "f" nil
   "s" 'show-file-name
   "b" 'magit-blame-mode
   "v" 'eval-buffer

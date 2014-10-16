@@ -74,3 +74,8 @@ _rdm() {
     reply=(`(rdm --help) | awk -F'[/|]+' '/-/ {print $1}'`)
 }
 compctl -K _rdm rdm
+
+_llvm-config() {
+    reply=(`(llvm-config --help 2>&1) | awk '/  \-/ {print $1}'`)
+}
+compctl -K _llvm-config llvm-config

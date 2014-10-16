@@ -152,13 +152,15 @@
                            ))
         (my-irony-ac-setup)
         )
-    (progn
+    (unless buffer-read-only
       (auto-complete-mode -1)
       (company-mode 1)
       (require 'company-rtags)
+      (require 'company-c-headers)
+      (rtags-diagnostics)
       (make-local-variable 'company-backends)
-      (setq company-backends '(company-rtags))
-      )
+      (setq company-rtags-max-wait 50)
+      (setq company-backends '(company-rtags company-c-headers)))
     ))
 
 ;; ------------------------------------------------------------------------------

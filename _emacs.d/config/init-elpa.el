@@ -95,7 +95,7 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 ;; ------------------------------------------------------------------------------
 (require-package 'evil)
 (require-package 'evil-leader)
-(require-package 'surround)
+(require-package 'evil-surround)
 
 ;;------------------------------------------------------------------------------
 ;; version control

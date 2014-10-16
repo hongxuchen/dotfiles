@@ -4,7 +4,7 @@
 ;; general utilities
 ;; ------------------------------------------------------------------------------
 (dolist (path '("~/.emacs.d/config"
-                "~/.emacs.d/config/doxymacs/share/emacs/site-lisp"
+                "~/.linuxbrew/share/emacs/site-lisp"
                 "~/.emacs.d/config/rtags/src"
                 ))
   (add-to-list 'load-path (expand-file-name path)))

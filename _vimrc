@@ -1,10 +1,9 @@
 " vim: set ft=vim ts=4 sw=2 tw=78 et :
-" vim: set ft=vim ts=4 sw=2 tw=78 et :
 " -*- mode: vimrc; -*-
-" vim: set ft=vim ts=4 sw=2 tw=78 et :
 " =====================================================
 " AUTHOR: Hongxu Chen
 " EMAIL:  leftcopy.chx@gmail.com
+"
 " =====================================================
 
 " =====================================================
@@ -18,6 +17,7 @@
 "       endif
 
 " Set working directory
+set autochdir
 nnoremap <leader>. :lcd %:p:h<CR>
 " save and reload vimrc
 nnoremap <silent> <leader>v :w<CR>:source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
@@ -36,7 +36,7 @@ set clipboard=unnamed "Use system clipboard ("*)
 nnoremap <leader>s :%s/\s\+$//<cr>:let @/=''<CR>
 
 " auto-save whenever leaving insert mode
-autocmd  InsertLeave *  write
+" autocmd  InsertLeave *  write
 
 " C-j to insert a newline
 nnoremap <NL> i<CR><ESC>
@@ -149,6 +149,7 @@ set background=dark           " We are using dark background in vim
 set title                     " show title in console title bar
 set wildmenu                  " Menu completion in command mode on <Tab>
 set wildmode=list:longest     " list and match longest
+set wildmode=longest:full,list:full
 set nocursorline              " have a line indicate the cursor location
 set nostartofline             " Avoid moving cursor to BOL when jumping around
 set virtualedit=block         " Let cursor move past the last char in <C-v> mode
@@ -190,7 +191,7 @@ set showcmd                   " Show incomplete normal mode commands as I type.
 set report=0                  " : commands always print changed line count.
 set shortmess+=atI            " Use [+]/[RO]/[w] for modified/readonly/written.
 set laststatus=2              " Always show statusline, even if only 1 window.
-set statusline=[%l,%v\ %P%M]\ %f\ %r%h%w\ (%{&ff})
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%y%=%-16(\ %l,%c-%v\ %)%P
 set listchars=tab:>-,eol:$,trail:-,precedes:<,extends:> " when list needed
 set lcs=tab:>\ ,trail:_,precedes:<,extends:\
 " encoding
@@ -205,6 +206,7 @@ set smarttab                  " Handle tabs more intelligently
 set hlsearch                  " Highlight searches by default.
 set incsearch                 " Incrementally search while typing a /regex
 " ignore these files when completing
+set wildignore+=*/tmp/*,*.swp,*.zip     " MacOSX/Linux"
 set wildignore+=*.o,*.obj,*.so,*.a,*.bc
 set wildignore+=.git,*.elc
 set wildignore+=eggs/**,*.egg-info/**,*.pyc,*.pyo,*pyd
@@ -212,7 +214,7 @@ set wildignore+=*.class,*.jar
 set wildignore+=*.aux,*.toc,*.out
 set wildignore+=*.bak,*.exe,*.chm,*.png,*.jpg,*.jpeg,*.gif,*.avi,*.rm,*.rmvb
 " completion
-set completeopt=menu,longest
+" set completeopt=menu,longest
 set pumheight=8
 let g:acp_completeoptPreview=1
 
@@ -224,19 +226,38 @@ runtime macros/matchit.vim
 " VUNDLE rtp, @see https://github.com/gmarik/vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+Bundle 'kien/ctrlp.vim'
+Bundle 'Valloric/YouCompleteMe'
+autocmd FileType c++ nnoremap <buffer> gd :YcmCompleter GoTo<CR>
+autocmd FileType c nnoremap <buffer> gd :YcmCompleter GoTo<CR>
+nnoremap <leader>jd :YcmCompleter GoTo<CR>
+let g:ycm_confirm_extra_conf = 0
 Bundle 'rdavison/clavim'
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-commentary'
 " git syntax, indent, and filetypes
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-rhubarb'
+Bundle 'tpope/vim-markdown'
+Bundle 'tpope/vim-tbone'
+Bundle 'tpope/vim-eunuch'
+Bundle 'tpope/vim-jdaddy'
 Bundle 'Tagbar'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'davidhalter/jedi-vim'
 Bundle 'Superbil/llvm.vim'
 Bundle 'Cpp11-Syntax-Support'
 Bundle 'scrooloose/nerdtree'
+function! StartUp()
+    if 0 == argc()
+        NERDTree
+    end
+endfunction
+autocmd VimEnter * call StartUp()
 Bundle 'Lokaltog/powerline'
+" Bundle 'bling/vim-airline'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'ack.vim'
 Bundle 'tomasr/molokai'
@@ -257,10 +278,32 @@ let g:tagbar_autoshowtag = 0
 let g:tagbar_updateonsave_maxlines = 10000
 let g:tagbar_systemenc = 'encoding'
 
+" nerdtree
+noremap <leader>T :NERDTree<CR>
+
 " =====================================================
 " filetype settings
 " =====================================================
 autocmd FileType lisp setl cms=;;%s
 autocmd FileType cmake setl cms=#%s
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-let g:Powerline_symbols = 'fancy'
+" append modeline
+function! AppendModeline()
+  let l:modeline = printf(" vim: set ft=%s ts=%d sw=%d tw=%d %set :",
+        \ &filetype, &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
+  let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
+  call append(line("0"), l:modeline)
+endfunction
+nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
+
+let g:ctrlp_map = '<c-p>'
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
+let g:ctrlp_working_path_mode = 'ra'
+
+autocmd BufRead,BufNewFile /usr/include/* set ft=cpp
+set completeopt=longest
+let g:ycm_add_preview_to_completeopt=1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1

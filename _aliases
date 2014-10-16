@@ -43,6 +43,8 @@ alias ssh_lab="ssh -X root@pat.sce.ntu.edu.sg"
 alias indent="command indent -kr -ci2 -cli2 -i2 -l80 -nut"
 alias rdm-null="command rdm &>/dev/null &"
 alias scan-build="command scan-build --use-analyzer=${HOME}/marple-llvm/llvm-obj/bin/clang"
+alias brews='brew list -1'
+alias bubu="brew update && brew upgrade && brew cleanup"
 
 alias sudo='sudo '
 alias sl='ls' # so there would be no *sl train*
@@ -50,10 +52,8 @@ alias more='less'               #`less` is more than `more`
 alias info='man'                # NEVER use `info' in the terminal
 # alias rm='trash-put'           #not the rude `rm`
 
-alias vim='emacs'
-
 alias ...='cd ../..'
 alias ..='cd ../'
 alias d='dirs -v | head -10'
-alias make='make -j8'
+alias make='bear -- make -j$(nproc)'
 alias open='xdg-open'
