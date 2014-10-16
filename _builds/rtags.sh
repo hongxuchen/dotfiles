@@ -11,18 +11,17 @@ rm -f ~/.bin/clang++
 rm -f ~/.bin/gcc
 rm -f ~/.bin/g++
 
-# if ! [ -d $SRC ]; then
-#     git clone --recursive git@github.com:Andersbakken/rtags.git  $SRC
-# else
-#     cd $SRC
-#     git pull --all
-#     git submodule update --recursive
-# fi
+if ! [ -d $SRC ]; then
+    git clone --recursive git@github.com:Andersbakken/rtags.git  $SRC
+else
+    cd $SRC
+    git pull --all
+    git submodule update --recursive
+fi
 
-# rm $ELISP
-# git checkout master
- 
-# PATH=${INSTALL_DIR}/bin:$PATH
+rm $ELISP
+git checkout master
+
 rm -rf $BUILD && mkdir -p $BUILD && cd $BUILD
 C_INCLUDE_PATH=
 CPLUS_INCLUDE_PATH=

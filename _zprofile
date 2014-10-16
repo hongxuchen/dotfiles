@@ -28,10 +28,14 @@ KLEE_ROOT=~/klee_setup
 KLEE_LLVM_ROOT=${KLEE_ROOT}/llvm-install/bin
 alias klee-clang='${KLEE_LLVM_ROOT}/clang -emit-llvm -c'
 
-export PATH=/usr/local/texlive/2014/bin/x86_64-linux:/usr/sbin:/sbin:$PATH
+export PATH=/usr/sbin:/sbin:$PATH
+export PATH=/usr/local/texlive/2014/Bin/x86_64-linux:$PATH
 export PATH=${LLVM_ROOT}/llvm-obj/bin:${LLVM_ROOT}/llvm/tools/clang/tools/scan-build:${LLVM_ROOT}/llvm/tools/clang/tools/scan-view:$PATH
 export PATH=${KLEE_ROOT}/klee-install/bin:${KLEE_ROOT}/wllvm:${KLEE_ROOT}/stp-install/bin:$PATH
-export PATH=~/.builds/repos/rtags/build/bin:~/.bin:~/.local/bin:~/.linuxbrew/bin:${PIN_ROOT}:~/tools/FSharp-2.0.0.0/bin:$PATH
+export PATH=:~/.bin:~/.local/bin:~/.linuxbrew/bin:$PATH
+export PATH=${PIN_ROOT}:$PATH
+export PATH=~/tools/FSharp-2.0.0.0/bin:$PATH
+export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
 
 export MONO_PATH=~/tools/FSharp-2.0.0.0:$MONO_PATH
 export PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/site-packages
