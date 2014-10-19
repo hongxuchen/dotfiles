@@ -19,6 +19,14 @@
         (evil-define-key 'normal python-mode-map "\C-]" 'elpy-rgrep-symbol)
         )))
 
+
+(setq elpy-modules '(elpy-module-sane-defaults
+                          elpy-module-company
+                          elpy-module-eldoc
+                          elpy-module-highlight-indentation
+                          elpy-module-pyvenv
+                          elpy-module-yasnippet))
+
 (eval-after-load "python"
   '(progn
      (my-python-mode-elpy-setup)

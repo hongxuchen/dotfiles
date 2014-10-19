@@ -29,7 +29,7 @@ MY_LLVM_OBJ=${MY_LLVM_ROOT}/obj/Release+Asserts
 MY_CLANG_TOOLS=${MY_LLVM_ROOT}/src/tools/clang/tools
 MY_STP_INSTALL=${MY_ROOT}/stp/install
 MY_KLEE_INSTALL=${MY_ROOT}/klee/install
-MY_KLEE_INCLUDE=${MY_ROOT}/klee/include
+MY_KLEE_INCLUDE=${MY_ROOT}/klee/src/include
 MY_WLLVM_ROOT=${MY_ROOT}/wllvm
 
 export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
@@ -56,6 +56,7 @@ export CPLUS_INCLUDE_PATH=${MY_KLEE_INCLUDE}:${CPLUS_INCLUDE_PATH}
 # export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/tools/clang/include:${MY_LLVM_ROOT}/obj/tools/clang/include:${CPLUS_INCLUDE_PATH}
 export C_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}
 
+export LD_LIBRARY_PATH=
 export LD_LIBRARY_PATH=${MY_LLVM_OBJ}/lib:~/.linuxbrew/lib:${MY_STP_INSTALL}/lib
 
 export CXX=clang++

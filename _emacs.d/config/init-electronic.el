@@ -114,14 +114,14 @@
 
 (setq company-c-headers-path-system
       '(
-        "/home/hongxu/marple-llvm/llvm/include"
         "/usr/include"
         "/usr/local/include"
         "/usr/include/c++/4.9"
         "/usr/include/x86_64-linux-gnu/c++/4.9"
-        "/home/hongxu/marple-llvm/llvm-obj/lib/clang/3.6.0/include"
         "/home/hongxu/.linuxbrew/include"
         "/usr/include/x86_64-linux-gnu"
+        "/home/hongxu/RESEARCH/klee/src/include"
+        "/home/hongxu/RESEARCH/llvm-3.4/obj/Release+Asserts/bin/../lib/clang/3.4.2/include"
         ))
 
 (defun my-tex-mode-ac-setup ()

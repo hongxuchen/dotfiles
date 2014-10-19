@@ -79,3 +79,8 @@ _llvm-config() {
     reply=(`(llvm-config --help 2>&1) | awk '/  \-/ {print $1}'`)
 }
 compctl -K _llvm-config llvm-config
+
+# _klee() {
+#     # reply=(`klee --help | awk '/-/ {print $1}'`)
+# }
+# compctl -K _klee klee

@@ -67,8 +67,8 @@ map <silent> <leader>3 :diffget 3<CR> :diffupdate<CR>
 map <silent> <leader>4 :diffget 4<CR> :diffupdate<CR>
 
 " navigate faster by remap SPC/BS
-nnoremap <space> 10jzz
-nnoremap <backspace> 10kzz
+" nnoremap <space> 10jzz
+" nnoremap <backspace> 10kzz
 
 " refresh if file in Vim is updated by external program,TODO
 noremap <silent><F5> :checktime<CR>:exe ":echo 'file refreshed'"<CR>
@@ -217,8 +217,8 @@ set wildignore+=*.aux,*.toc,*.out
 set wildignore+=*.bak,*.exe,*.chm,*.png,*.jpg,*.jpeg,*.gif,*.avi,*.rm,*.rmvb
 " completion
 " set completeopt=menu,longest
+set completeopt=longest
 set pumheight=8
-let g:acp_completeoptPreview=1
 
 " =====================================================
 " tool and plugin settings
@@ -229,8 +229,6 @@ runtime macros/matchit.vim
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'kien/ctrlp.vim'
-Bundle 'Valloric/YouCompleteMe'
-let g:ycm_confirm_extra_conf = 0
 Bundle 'rdavison/clavim'
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-commentary'
@@ -249,6 +247,7 @@ Bundle 'davidhalter/jedi-vim'
 Bundle 'Superbil/llvm.vim'
 Bundle 'Cpp11-Syntax-Support'
 Bundle 'scrooloose/nerdtree'
+Bundle 'Valloric/YouCompleteMe'
 function! StartUp()
     if 0 == argc()
         NERDTree
@@ -278,7 +277,8 @@ let g:tagbar_updateonsave_maxlines = 10000
 let g:tagbar_systemenc = 'encoding'
 
 " nerdtree
-noremap <leader>T :NERDTree<CR>
+noremap <leader>T :NERDTreeToggle<CR>
+let NERDTreeIgnore = ['\.pyc$']
 
 " =====================================================
 " filetype settings
@@ -302,7 +302,17 @@ let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_working_path_mode = 'ra'
 
 autocmd BufRead,BufNewFile /usr/include/* set ft=cpp
-set completeopt=longest
+
+let g:syntastic_python_checkers = ['pylint']
+
+let g:ycm_confirm_extra_conf = 0
 let g:ycm_add_preview_to_completeopt=1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_min_num_of_chars_for_completion = 99 
+let g:ycm_min_num_identifier_candidate_chars = 2
+let g:ycm_auto_trigger = 0
+let g:ycm_collect_identifiers_from_tags_files = 0 " Let YCM read tags from Ctags file
+let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+let g:ycm_complete_in_comments = 1 " Completion in comments
+let g:ycm_complete_in_strings = 1 " Completion in string
