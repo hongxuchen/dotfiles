@@ -4,6 +4,8 @@ V1=4.9
 V2=4.8
 VD=$V2
 
+CLANG_DIR=${HOME}/.bin
+
 update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-$V1 50
 update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-$V1 50
 update-alternatives --install /usr/bin/cpp cpp-bin /usr/bin/cpp-$V1 50

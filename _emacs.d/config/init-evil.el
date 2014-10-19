@@ -118,7 +118,7 @@
   "c" 'flymake-mode
   "r" 'review-fixme-comment
   "g" 'rgrep
-  "f" nil
+  "f" 'my-format-buffer
   "s" 'show-file-name
   "b" 'magit-blame-mode
   "v" 'eval-buffer

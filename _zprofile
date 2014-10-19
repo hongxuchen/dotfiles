@@ -23,15 +23,20 @@ export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 
 PIN_ROOT=~/repos/pintool/pin
-LLVM_ROOT=~/marple-llvm
-KLEE_ROOT=~/klee_setup
-KLEE_LLVM_ROOT=${KLEE_ROOT}/llvm-install/bin
-alias klee-clang='${KLEE_LLVM_ROOT}/clang -emit-llvm -c'
+MY_ROOT=~/RESEARCH
+MY_LLVM_ROOT=${MY_ROOT}/llvm-3.4
+MY_LLVM_OBJ=${MY_LLVM_ROOT}/obj/Release+Asserts
+MY_CLANG_TOOLS=${MY_LLVM_ROOT}/src/tools/clang/tools
+MY_STP_INSTALL=${MY_ROOT}/stp/install
+MY_KLEE_INSTALL=${MY_ROOT}/klee/install
+MY_KLEE_INCLUDE=${MY_ROOT}/klee/include
+MY_WLLVM_ROOT=${MY_ROOT}/wllvm
 
-export PATH=/usr/sbin:/sbin:$PATH
+export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 export PATH=/usr/local/texlive/2014/Bin/x86_64-linux:$PATH
-export PATH=${LLVM_ROOT}/llvm-obj/bin:${LLVM_ROOT}/llvm/tools/clang/tools/scan-build:${LLVM_ROOT}/llvm/tools/clang/tools/scan-view:$PATH
-export PATH=${KLEE_ROOT}/klee-install/bin:${KLEE_ROOT}/wllvm:${KLEE_ROOT}/stp-install/bin:$PATH
+export PATH=${MY_LLVM_OBJ}/bin:${MY_CLANG_TOOLS}/scan-build:${MY_CLANG_TOOLS}/scan-view:${MY_STP_INSTALL}/bin:$PATH
+export PATH=${MY_WLLVM_ROOT}:$PATH
+export PATH=${MY_KLEE_INSTALL}/bin:$PATH
 export PATH=:~/.bin:~/.local/bin:~/.linuxbrew/bin:$PATH
 export PATH=${PIN_ROOT}:$PATH
 export PATH=~/tools/FSharp-2.0.0.0/bin:$PATH
@@ -39,17 +44,22 @@ export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
 
 export MONO_PATH=~/tools/FSharp-2.0.0.0:$MONO_PATH
 export PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/site-packages
-export LLVM_COMPILER=clang # for wllvm
-export WLLVM_OUTPUT=ERROR
-# export C_INCLUDE_PATH=
-# export CPLUS_INCLUDE_PATH
-export CPLUS_INCLUDE_PATH=~/qemu/panda/distorm/include:${LLVM_ROOT}/llvm/tools/clang/include:${LLVM_ROOT}/llvm-obj/tools/clang/include:~/.linuxbrew/include
-export LD_LIBRARY_PATH=${LLVM_ROOT}/llvm-obj/lib:~/.linuxbrew/lib:${KLEE_ROOT}/stp-install/lib
-# export PYTHONPATH=$PYTHONPATH:~/llvm/llvm-svn/tools/clang/bindings/python
-# export GTAGSLIBPATH
 
-# export CXX=clang++
-# export CC=clang
+ # for wllvm
+export LLVM_COMPILER=clang
+export WLLVM_OUTPUT=ERROR
+
+export CPLUS_INCLUDE_PATH=
+export CPLUS_INCLUDE_PATH=~/.linuxbrew/include:${CPLUS_INCLUDE_PATH}
+export CPLUS_INCLUDE_PATH=~/qemu/panda/distorm/include:${CPLUS_INCLUDE_PATH}
+export CPLUS_INCLUDE_PATH=${MY_KLEE_INCLUDE}:${CPLUS_INCLUDE_PATH}
+# export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/tools/clang/include:${MY_LLVM_ROOT}/obj/tools/clang/include:${CPLUS_INCLUDE_PATH}
+export C_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}
+
+export LD_LIBRARY_PATH=${MY_LLVM_OBJ}/lib:~/.linuxbrew/lib:${MY_STP_INSTALL}/lib
+
+export CXX=clang++
+export CC=clang
 
 stty ixany
 stty ixoff -ixon

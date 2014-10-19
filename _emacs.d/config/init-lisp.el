@@ -45,7 +45,7 @@ Argument SYM-NAME thing to find."
                                  (local-set-key (kbd "RET") 'paredit-newline)
                                  (local-set-key (kbd "C-k") 'paredit-kill))
                                (local-set-key (kbd "C-x C-a") 'pp-macroexpand-last-sexp)
-                               (surround-mode -1)))
+                               (evil-surround-mode -1)))
 
 (defun suspend-mode-during-cua-rect-selection (mode-name)
   "Add an advice to suspend `MODE-NAME' while selecting a CUA rectangle."

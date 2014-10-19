@@ -156,20 +156,20 @@ fi
 export PYTHONSTARTUP=$HOME/.pythonrc.py
 
 # Add git and svn branch names
-parse_git_branch ()
-{
-  git branch 2> /dev/null | grep '*' | sed 's#*\ \(.*\)#(git::\1)#'
-}
-parse_svn_branch() {
-  parse_svn_url | sed -e 's#^'"$(parse_svn_repository_root)"'##g' | awk -F / '{print "(svn::"$1 "/" $2 ")"}'
-}
-parse_svn_url() {
-  svn info 2>/dev/null | sed -ne 's#^URL: ##p'
-}
-parse_svn_repository_root() {
-  svn info 2>/dev/null | sed -ne 's#^Repository Root: ##p'
-}
-export PS1="$PS1\$(parse_git_branch)\$(parse_svn_branch) "
+# parse_git_branch ()
+# {
+#   git branch 2> /dev/null | grep '*' | sed 's#*\ \(.*\)#(git::\1)#'
+# }
+# parse_svn_branch() {
+#   parse_svn_url | sed -e 's#^'"$(parse_svn_repository_root)"'##g' | awk -F / '{print "(svn::"$1 "/" $2 ")"}'
+# }
+# parse_svn_url() {
+#   svn info 2>/dev/null | sed -ne 's#^URL: ##p'
+# }
+# parse_svn_repository_root() {
+#   svn info 2>/dev/null | sed -ne 's#^Repository Root: ##p'
+# }
+# export PS1="$PS1\$(parse_git_branch)\$(parse_svn_branch) "
 
 export HISTIGNORE="&:ls:ls *:[bf]g:exit"
 

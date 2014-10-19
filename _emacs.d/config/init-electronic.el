@@ -112,6 +112,18 @@
   )
 (my-switch-ac-engine)
 
+(setq company-c-headers-path-system
+      '(
+        "/home/hongxu/marple-llvm/llvm/include"
+        "/usr/include"
+        "/usr/local/include"
+        "/usr/include/c++/4.9"
+        "/usr/include/x86_64-linux-gnu/c++/4.9"
+        "/home/hongxu/marple-llvm/llvm-obj/lib/clang/3.6.0/include"
+        "/home/hongxu/.linuxbrew/include"
+        "/usr/include/x86_64-linux-gnu"
+        ))
+
 (defun my-tex-mode-ac-setup ()
   (require 'ac-math)
   (add-to-list 'ac-modes 'latex-mode)
@@ -160,7 +172,7 @@
       (rtags-diagnostics)
       (make-local-variable 'company-backends)
       (setq company-rtags-max-wait 50)
-      (setq company-backends '(company-rtags company-c-headers)))
+      (setq company-backends '(company-c-headers company-rtags company-capf (company-dabbrev-code) company-dabbrev)))
     ))
 
 ;; ------------------------------------------------------------------------------

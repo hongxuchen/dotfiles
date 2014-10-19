@@ -31,6 +31,8 @@ cnoremap W! w !sudo tee % >/dev/null
 
 " Paste from clipboard
 set clipboard=unnamed "Use system clipboard ("*)
+nnoremap <leader>p :set paste! <CR>
+
 
 " Remove trailing whitespace
 nnoremap <leader>s :%s/\s\+$//<cr>:let @/=''<CR>
@@ -228,9 +230,6 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'kien/ctrlp.vim'
 Bundle 'Valloric/YouCompleteMe'
-autocmd FileType c++ nnoremap <buffer> gd :YcmCompleter GoTo<CR>
-autocmd FileType c nnoremap <buffer> gd :YcmCompleter GoTo<CR>
-nnoremap <leader>jd :YcmCompleter GoTo<CR>
 let g:ycm_confirm_extra_conf = 0
 Bundle 'rdavison/clavim'
 Bundle 'gmarik/vundle'

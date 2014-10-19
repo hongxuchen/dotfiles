@@ -10,7 +10,7 @@
   (if (fboundp 'evil-mode)
       (progn (evil-define-key 'normal c-mode-base-map "gd" 'rtags-find-symbol-at-point)
              (evil-define-key 'normal c-mode-base-map "gs" 'rtags-set-current-project)
-             (evil-define-key 'normal c-mode-base-map "gh" 'rtags-display-summary)
+             (evil-define-key 'normal c-mode-base-map "gh" 'rtags-display-cursorinfo)
              (evil-define-key 'normal c-mode-base-map "M-`" 'rtags-cycle-overlays-on-screen)
              (evil-define-key 'normal c-mode-base-map "\C-o" 'rtags-location-stack-back)
              (evil-define-key 'normal c-mode-base-map "\C-i" 'rtags-location-stack-forward)
@@ -226,6 +226,11 @@
           (lambda ()
             (gdb-restore-breakpoints)
             (local-set-key (kbd "C-x k") 'gud-kill)))
+
+(defun my-add-current-compile-commands ()
+  (interactive)
+  (add-file-local-variable-prop-line 'compile-command compile-command)
+  )
 
 
 (provide 'init-cc-mode)
