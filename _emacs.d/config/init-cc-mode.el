@@ -96,6 +96,7 @@
 ;;----------------------------------------------------------------------------
 ;; llvm
 ;;----------------------------------------------------------------------------
+(add-to-list 'load-path "~/RESEARCH/klee/src/utils/emacs")
 (setq auto-mode-alist (append '(("\\.pc$" . klee-pc-mode)) auto-mode-alist))
 (autoload 'klee-pc-mode "klee-pc-mode" "klee pc mode" t)
 (setq auto-mode-alist (append '(("\\.ll$" . llvm-mode)) auto-mode-alist))

@@ -1,0 +1,3 @@
+- get project(user-defined) include directories, if system-headers are easy to generate, also add that; this is used for header completion
+- company-rtags should consider about whether it's indexed/managed/unknown
+- tags sync

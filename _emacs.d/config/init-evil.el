@@ -76,6 +76,7 @@
 (evil-set-initial-state 'ert-results-mode 'emacs)
 (evil-set-initial-state 'rtags-mode 'emacs)
 (evil-set-initial-state 'rtags-taglist-mode 'emacs)
+(evil-set-initial-state 'ag-mode 'emacs)
 
 ;; (when (display-graphic-p)
 ;;   (keyboard-translate ?\C-i ?\H-i)

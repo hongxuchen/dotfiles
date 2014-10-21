@@ -14,28 +14,30 @@ ZSH_THEME="nanotech"
 
 # ~/.oh-my-zsh/plugins/
 # perl npm
-plugins=(pip debian svn vi-mode python brew git-extras gem)
+plugins=(ag pip debian svn vi-mode python brew git-extras gem)
 
 # fpath=($ZSH/functions $ZSH/completions $fpath)
 
 for config_file ($ZSH/lib/*.zsh); do
-  source $config_file
+    source $config_file
 done
 unset config_file
 
 is_plugin() {
-  local base_dir=$1
-  local name=$2
-  test -f $base_dir/plugins/$name/$name.plugin.zsh \
-    || test -f $base_dir/plugins/$name/_$name
+    local base_dir=$1
+    local name=$2
+    test -f $base_dir/plugins/$name/$name.plugin.zsh \
+        || test -f $base_dir/plugins/$name/_$name
 }
 
 # Add all defined plugins to fpath. This must be done
 # before running compinit.
 for plugin ($plugins); do
-  if is_plugin $ZSH $plugin; then
-    fpath=($ZSH/plugins/$plugin $fpath)
-  fi
+    if is_plugin $ZSH $plugin; then
+        fpath=($ZSH/plugins/$plugin $fpath)
+    else
+        printf "$ZSH/plugins/$plugin not plugin\n"
+    fi
 done
 
 # Load and run compinit
@@ -43,9 +45,9 @@ autoload -U compinit
 compinit -i
 
 for plugin ($plugins); do
-  if [ -f $ZSH/plugins/$plugin/$plugin.plugin.zsh ]; then
-    source $ZSH/plugins/$plugin/$plugin.plugin.zsh
-  fi
+    if [ -f $ZSH/plugins/$plugin/$plugin.plugin.zsh ]; then
+        source $ZSH/plugins/$plugin/$plugin.plugin.zsh
+    fi
 done
 
 source "$ZSH/themes/$ZSH_THEME.zsh-theme"

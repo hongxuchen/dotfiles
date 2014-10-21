@@ -248,12 +248,6 @@ Bundle 'Superbil/llvm.vim'
 Bundle 'Cpp11-Syntax-Support'
 Bundle 'scrooloose/nerdtree'
 Bundle 'Valloric/YouCompleteMe'
-function! StartUp()
-    if 0 == argc()
-        NERDTree
-    end
-endfunction
-autocmd VimEnter * call StartUp()
 Bundle 'Lokaltog/powerline'
 " Bundle 'bling/vim-airline'
 Bundle 'nanotech/jellybeans.vim'
@@ -303,7 +297,12 @@ let g:ctrlp_working_path_mode = 'ra'
 
 autocmd BufRead,BufNewFile /usr/include/* set ft=cpp
 
-let g:syntastic_python_checkers = ['pylint']
+function! StartUp()
+    if 0 == argc()
+        NERDTree
+    end
+endfunction
+autocmd VimEnter * call StartUp()
 
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_add_preview_to_completeopt=1
