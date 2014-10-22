@@ -34,8 +34,6 @@ MY_KLEE_OBJ=${MY_ROOT}/klee/obj
 MY_KLEE_INCLUDE=${MY_ROOT}/klee/src/include
 MY_WLLVM_ROOT=${MY_ROOT}/wllvm
 
-export MY_BREW_PREFIX=$(brew --prefix)
-
 export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/opt/local/bin
 export PATH=/usr/local/texlive/2014/Bin/x86_64-linux:$PATH
 export PATH=${MY_LLVM_OBJ}/bin:${MY_CLANG_TOOLS}/scan-build:${MY_CLANG_TOOLS}/scan-view:${MY_STP_INSTALL}/bin:$PATH
@@ -45,9 +43,16 @@ export PATH=:~/.bin:~/.local/bin:$PATH
 export PATH=${PIN_ROOT}:$PATH
 export PATH=~/tools/FSharp-2.0.0.0/bin:$PATH
 export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
-export PATH=${MY_BREW_PREFIX}/bin:$PATH
-
 export PATH=~/Library/Python/2.7/bin:$PATH
+
+export MY_UNAME=$(uname)
+if [ "${MY_UNAME}" = "Darwin" ];then
+  export MY_BREW_PREFIX=/usr/local
+else
+  export MY_BREW_PREFIX=$HOME/.linuxbrew
+  export PATH=${MY_BREW_PREFIX}/bin:$PATH
+fi
+
 
 # export MONO_PATH=~/tools/FSharp-2.0.0.0:$MONO_PATH
 export PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/site-packages
