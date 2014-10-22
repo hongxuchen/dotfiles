@@ -10,7 +10,7 @@ function link_file {
     elif [ -e "${softlink}" ] && [ -L "${softlink}" ]; then
         rm $softlink
     fi
-    ln -sfT ${original} ${softlink}
+    ln -sf ${original} ${softlink}
 }
 
 

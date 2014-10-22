@@ -247,13 +247,11 @@ Bundle 'davidhalter/jedi-vim'
 Bundle 'Superbil/llvm.vim'
 Bundle 'Cpp11-Syntax-Support'
 Bundle 'scrooloose/nerdtree'
-Bundle 'Valloric/YouCompleteMe'
-Bundle 'Lokaltog/powerline'
 " Bundle 'bling/vim-airline'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'ack.vim'
 Bundle 'tomasr/molokai'
-colorscheme molokai
+Bundle 'Valloric/YouCompleteMe'
 
 " tagbar
 noremap <leader>t :TagbarToggle<CR>
@@ -303,6 +301,8 @@ function! StartUp()
     end
 endfunction
 autocmd VimEnter * call StartUp()
+
+colorscheme molokai
 
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_add_preview_to_completeopt=1

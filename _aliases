@@ -20,6 +20,7 @@ alias pysh3='ipython3 --profile=pysh'
 alias boogie='mono ~/repos/boogie/boogie/Binaries/Boogie.exe'
 alias idaq='~/idademo65/idaq&'
 alias pprof='google-pprof'
+alias svn='colorsvn'
 # alias rdp_lab='rdesktop -f -u hongxu -r sound:local -r clipboard:PRIMARYCLIPBOARD -r disk:home=/home/hongxuchen 202.120.40.98:62240  &>/dev/null & disown'
 alias rdp_lab='rdesktop -g 1024x768 -f -u pub -p 123 -r sound:local -r clipboard:PRIMARYCLIPBOARD -r disk:home=/home/hongxu 192.168.1.108 &>/dev/null & disown'
 alias gdb='gdb -q'
@@ -55,7 +56,9 @@ alias info='man'                # NEVER use `info' in the terminal
 alias ...='cd ../..'
 alias ..='cd ../'
 alias d='dirs -v | head -10'
-# alias make='bear -- make -j$(nproc)'
-alias open='xdg-open'
 
 alias rdm-res="tail -f /tmp/rdm_answer"
+
+# for mac
+alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
+alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'

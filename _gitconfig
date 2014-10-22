@@ -35,7 +35,7 @@
 	pager = less
 	autocrlf = input
 	whitespace = trailing-space,space-before-tab
-	excludesfile = /home/hongxu/.gitignore_global
+	excludesfile = /Users/hongxu/.gitignore_global
 
 [alias]
 	# ls
@@ -96,3 +96,9 @@
 	browser = google-chrome
 [gui]
 	editor = vim
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

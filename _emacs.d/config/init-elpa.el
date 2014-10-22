@@ -17,11 +17,11 @@
 (require 'package)
 
 ;; Patch up annoying package.el quirks
-(defadvice package-generate-autoloads (after close-autoloads (name pkg-dir) activate)
-  "Stop package.el from leaving open autoload files lying around."
-  (let ((path (expand-file-name (concat name "-autoloads.el") pkg-dir)))
-    (with-current-buffer (find-file-existing path)
-      (kill-buffer))))
+;;package-generate-autoloads (after close-autoloads (name pkg-dir) activate)
+;;  "Stop package.el from leaving open autoload files lying around."
+;;  (let ((path (expand-file-name (concat name "-autoloads.el") pkg-dir)))
+;;    (with-current-buffer (find-file-existing path)
+;;      (kill-buffer))))
 
 ;; Add support to package.el for pre-filtering available packages
 
@@ -119,7 +119,7 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (require-package 'markdown-mode)
 ;; org
 (require-package 'cdlatex)
-(require-package 'org-plus-contrib)
+;; (require-package 'org-plus-contrib)
 (require-package 'htmlize)
 (require-package 'graphviz-dot-mode)
 

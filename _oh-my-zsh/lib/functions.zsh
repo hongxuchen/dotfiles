@@ -53,7 +53,7 @@ function encode64(){ echo -n $1 | base64 }
 function decode64(){ echo -n $1 | base64 -D }
 
 function emacs() {
-    ps -C emacs >/dev/null
+    pgrep emacs >/dev/null
     if [ $? -eq 0 ];
     then
         if [ $DISPLAY ];
@@ -141,4 +141,9 @@ function git-dl(){
     folder=${${git_url##*/}%%.*}
     git clone --depth 1 $1 $folder
     rm -rf $folder/.git
+}
+
+function pyclean() {
+    ZSH_PYCLEAN_PLACES=${*:-'.'}
+    find ${ZSH_PYCLEAN_PLACES} -type f -name "*.py[co]" -delete
 }

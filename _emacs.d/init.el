@@ -53,6 +53,6 @@
 (load custom-file)
 ;; (require 'time-date)
 ;; (load-persistent-scratch)
-(server-start)
+;; (server-start)
 (setenv "LC_CTYPE" "zh_CN.UTF-8")
 (recentf-open-files)
