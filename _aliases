@@ -46,6 +46,7 @@ alias scan-build="command scan-build --use-analyzer=$(which clang)"
 alias brews='brew list -1'
 alias bubu="brew update && brew upgrade && brew cleanup"
 alias grep="ag"
+alias diff='colordiff'
 
 alias sudo='sudo '
 alias sl='ls' # so there would be no *sl train*
