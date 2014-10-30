@@ -1,5 +1,3 @@
-(provide 'init-keymaps)
-
 (global-set-key "\C-x\C-g" 'keyboard-quit)
 
 ;; (global-set-key (kbd "<tab>") 'company-complete-comon)
@@ -15,7 +13,8 @@
 
 (global-set-key (kbd "<f5>") 'normal-mode)
 
-(global-set-key (kbd "<f11>") 'switch-full-screen)
+(global-set-key (kbd "<f11>") 'toggle-fullscreen)
+(global-set-key (kbd "C-M-f") 'toggle-fullscreen)
 
 (global-set-key (kbd "C-h C-l") 'dict-lookup-definition)
 (global-set-key (kbd "C-h C-s") 'my-goto-scratch-buffer)
@@ -86,3 +85,5 @@
          (define-key ,map "l" 'forward-char)
          (define-key ,map "j" 'next-line)
          (define-key ,map "k" 'previous-line)))))
+
+(provide 'init-keymaps)

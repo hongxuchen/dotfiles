@@ -48,6 +48,7 @@ export PATH=~/Library/Python/2.7/bin:$PATH
 export MY_UNAME=$(uname)
 if [ "${MY_UNAME}" = "Darwin" ];then
   export MY_BREW_PREFIX=/usr/local
+  export PATH=/usr/texbin:$PATH
 else
   export MY_BREW_PREFIX=$HOME/.linuxbrew
   export PATH=${MY_BREW_PREFIX}/bin:$PATH

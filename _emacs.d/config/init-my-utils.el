@@ -241,8 +241,18 @@ FEATURE may be a named feature or a file name, see
       (when (= (point) pt) (call-interactively 'move-beginning-of-line))
       (kill-region (point) pt))))
 
-(defun switch-full-screen ()
+(defun toggle-fullscreen (&optional f)
   (interactive)
-  (shell-command "wmctrl -r :ACTIVE: -btoggle,fullscreen"))
+  (let ((current-value (frame-parameter nil 'fullscreen)))
+    (set-frame-parameter nil 'fullscreen
+      (if (equal 'fullboth current-value)
+        (if (boundp 'old-fullscreen) old-fullscreen nil)
+        (progn (setq old-fullscreen current-value)
+          'fullboth)))))
+
+
+;; (defun switch-full-screen ()
+;;   (interactive)
+;;   (shell-command "wmctrl -r :ACTIVE: -btoggle,fullscreen"))
 
 (provide 'init-my-utils)

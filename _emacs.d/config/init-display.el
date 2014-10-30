@@ -40,16 +40,18 @@
       ;; (set-face-attribute 'default nil :font "HelveticaNeueLT Std Lt:style=45 Light")
       (set-face-attribute 'default nil :font "DejaVu Sans Mono 13")
       (dolist (charset '(kana han symbol cjk-misc bopomofo))
-        (set-fontset-font (frame-parameter nil 'font)
-                          charset
-                          (font-spec :family "文泉驿等宽微米黑"
-                                     :size 12
-                                     :weight 'light))))
-    ;; (progn
-    ;; (menu-bar-mode -1)
-    ;; (tool-bar-mode -1)
-    ;; (scroll-bar-mode -1))
+        ;; (set-fontset-font (frame-parameter nil 'font)
+        ;;                   charset
+        ;;                   (font-spec :family "文泉驿等宽微米黑"
+        ;;                              :size 12
+        ;;                              :weight 'light))
+	))
   )
+
+(progn
+    (menu-bar-mode -1)
+    (tool-bar-mode -1)
+    (scroll-bar-mode -1))
 
 ;; WoMan settings
 (setq woman-fill-column 90
