@@ -1,14 +1,13 @@
 # -- mode:sh -*-
 
-ZSH=$HOME/.oh-my-zsh
+ZSH=${HOME}/.oh-my-zsh
 
-# ~/.oh-my-zsh/themes/
 # ZSH_THEME="bira"
 # ZSH_THEME="dst"
 ZSH_THEME="nanotech"
 
 # ~/.oh-my-zsh/plugins/
-plugins=(ag pip debian svn vi-mode brew git-extras gem)
+plugins=(ag pip debian svn brew git-extras gem vi-mode)
 
 source ~/.aliases
 source ~/.zprofile
@@ -44,7 +43,7 @@ for plugin ($plugins); do
     fi
 done
 
-source "$ZSH/themes/$ZSH_THEME.zsh-theme"
+source "$ZSH/themes/${ZSH_THEME}.zsh-theme"
 
 source ${MY_BREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ${MY_BREW_PREFIX}/Cellar/zsh-history-substring-search/1.0.0/zsh-history-substring-search.zsh
@@ -54,3 +53,6 @@ bindkey -M emacs '^N' history-substring-search-down
 # bind k and j for VI mode
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
+
+bindkey -M vicmd '^f' vi-forward-word
+bindkey -M vicmd '^f' vi-forward-blank-word

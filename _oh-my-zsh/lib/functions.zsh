@@ -84,9 +84,9 @@ function clang-ll() {
 }
 
 # -debug-buffer-size=1024
-function opt() {
-    command opt -load $HOME/marple-llvm/marple/build/bin/marple.so $@
-}
+# function opt() {
+#     command opt -load $HOME/marple-llvm/marple/build/bin/marple.so $@
+# }
 
 function clean_llvm(){
     rm -rf klee-* LOG* *.bc *.ll
