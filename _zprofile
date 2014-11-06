@@ -34,49 +34,59 @@ MY_KLEE_OBJ=${MY_ROOT}/klee/obj
 MY_KLEE_INCLUDE=${MY_ROOT}/klee/src/include
 MY_WLLVM_ROOT=${MY_ROOT}/wllvm
 
-export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games:/opt/local/bin
-export PATH=/usr/local/texlive/2014/Bin/x86_64-linux:$PATH
-export PATH=${MY_LLVM_OBJ}/bin:${MY_CLANG_TOOLS}/scan-build:${MY_CLANG_TOOLS}/scan-view:${MY_STP_INSTALL}/bin:$PATH
-export PATH=${MY_WLLVM_ROOT}:$PATH
-export PATH=${MY_KLEE_INSTALL}/bin:$PATH
-export PATH=${PIN_ROOT}:$PATH
-export PATH=~/tools/FSharp-2.0.0.0/bin:$PATH
-export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
-export PATH=~/Library/Python/2.7/bin:$PATH
-
 export MY_UNAME=$(uname)
-if [ "${MY_UNAME}" = "Darwin" ];then
+
+mac_set_up(){
   export MY_BREW_PREFIX=/usr/local
+  export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/opt/local/bin
   export PATH=/usr/texbin:/usr/local/opt/llvm/bin:$PATH
-else
+  export PATH=~/Library/Python/2.7/bin:$PATH
+}
+
+linux_set_up(){
+
   export MY_BREW_PREFIX=$HOME/.linuxbrew
   export PATH=${MY_BREW_PREFIX}/bin:$PATH
+
+  export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+  export PATH=/usr/local/texlive/2014/Bin/x86_64-linux:$PATH
+  export PATH=${MY_LLVM_OBJ}/bin:${MY_CLANG_TOOLS}/scan-build:${MY_CLANG_TOOLS}/scan-view:${MY_STP_INSTALL}/bin:$PATH
+  export PATH=${MY_WLLVM_ROOT}:$PATH
+  export PATH=${MY_KLEE_INSTALL}/bin:$PATH
+  export PATH=${PIN_ROOT}:$PATH
+  export PATH=~/tools/FSharp-2.0.0.0/bin:$PATH
+  export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
+  export PATH=:~/.bin:~/.local/bin:$PATH
+
+  export CPLUS_INCLUDE_PATH=
+  export CPLUS_INCLUDE_PATH=${MY_BREW_PREFIX}/include:${CPLUS_INCLUDE_PATH}
+  export CPLUS_INCLUDE_PATH=~/qemu/panda/distorm/include:${CPLUS_INCLUDE_PATH}
+  export CPLUS_INCLUDE_PATH=${MY_KLEE_INCLUDE}:${MY_KLEE_INCLUDE}/../../obj/include:${CPLUS_INCLUDE_PATH}
+  export C_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}
+  # export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/tools/clang/include:${MY_LLVM_ROOT}/obj/tools/clang/include:${CPLUS_INCLUDE_PATH}
+
+  export LD_LIBRARY_PATH=
+  export LD_LIBRARY_PATH=${MY_LLVM_OBJ}/lib:${MY_BREW_PREFIX}:${MY_STP_INSTALL}/lib
+
+  # export MONO_PATH=~/tools/FSharp-2.0.0.0:$MONO_PATH
+  export PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/site-packages
+
+  # for wllvm
+  export LLVM_COMPILER=clang
+  export WLLVM_OUTPUT=ERROR
+
+  export CXX=clang++
+  export CC=clang
+
+  stty ixany
+  stty ixoff -ixon
+
+  # load executable
+  (pgrep rdm >/dev/null || rdm &>/tmp/rdm_answer &)
+
+}
+if [ "${MY_UNAME}" = "Darwin" ];then
+  mac_set_up
+else
+  linux_set_up
 fi
-export PATH=:~/.bin:~/.local/bin:$PATH
-
-
-# export MONO_PATH=~/tools/FSharp-2.0.0.0:$MONO_PATH
-export PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/site-packages
-
- # for wllvm
-export LLVM_COMPILER=clang
-export WLLVM_OUTPUT=ERROR
-
-export CPLUS_INCLUDE_PATH=
-export CPLUS_INCLUDE_PATH=~/.linuxbrew/include:${CPLUS_INCLUDE_PATH}
-export CPLUS_INCLUDE_PATH=~/qemu/panda/distorm/include:${CPLUS_INCLUDE_PATH}
-export CPLUS_INCLUDE_PATH=${MY_KLEE_INCLUDE}:${MY_KLEE_INCLUDE}/../../obj/include:${CPLUS_INCLUDE_PATH}
-# export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/tools/clang/include:${MY_LLVM_ROOT}/obj/tools/clang/include:${CPLUS_INCLUDE_PATH}
-export C_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}
-
-export LD_LIBRARY_PATH=
-export LD_LIBRARY_PATH=${MY_LLVM_OBJ}/lib:~/.linuxbrew/lib:${MY_STP_INSTALL}/lib
-
-export CXX=clang++
-export CC=clang
-
-stty ixany
-stty ixoff -ixon
-
-# load executable
-# (pgrep rdm >/dev/null || rdm &>/tmp/rdm_answer &)
