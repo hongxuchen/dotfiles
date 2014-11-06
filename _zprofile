@@ -39,7 +39,6 @@ export PATH=/usr/local/texlive/2014/Bin/x86_64-linux:$PATH
 export PATH=${MY_LLVM_OBJ}/bin:${MY_CLANG_TOOLS}/scan-build:${MY_CLANG_TOOLS}/scan-view:${MY_STP_INSTALL}/bin:$PATH
 export PATH=${MY_WLLVM_ROOT}:$PATH
 export PATH=${MY_KLEE_INSTALL}/bin:$PATH
-export PATH=:~/.bin:~/.local/bin:$PATH
 export PATH=${PIN_ROOT}:$PATH
 export PATH=~/tools/FSharp-2.0.0.0/bin:$PATH
 export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
@@ -48,11 +47,12 @@ export PATH=~/Library/Python/2.7/bin:$PATH
 export MY_UNAME=$(uname)
 if [ "${MY_UNAME}" = "Darwin" ];then
   export MY_BREW_PREFIX=/usr/local
-  export PATH=/usr/texbin:$PATH
+  export PATH=/usr/texbin:/usr/local/opt/llvm/bin:$PATH
 else
   export MY_BREW_PREFIX=$HOME/.linuxbrew
   export PATH=${MY_BREW_PREFIX}/bin:$PATH
 fi
+export PATH=:~/.bin:~/.local/bin:$PATH
 
 
 # export MONO_PATH=~/tools/FSharp-2.0.0.0:$MONO_PATH

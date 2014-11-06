@@ -32,9 +32,9 @@ export CXX=g++
 cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -GNinja $SRC  
 ninja
 
-ln -sfT $SRC/bin/gcc-rtags-wrapper.sh ~/.bin/g++
-ln -sfT $SRC/bin/gcc-rtags-wrapper.sh ~/.bin/gcc
-ln -sfT $SRC/bin/gcc-rtags-wrapper.sh ~/.bin/clang++
-ln -sfT $SRC/bin/gcc-rtags-wrapper.sh ~/.bin/clang
+ln -sf $SRC/bin/gcc-rtags-wrapper.sh ~/.bin/g++
+ln -sf $SRC/bin/gcc-rtags-wrapper.sh ~/.bin/gcc
+ln -sf $SRC/bin/gcc-rtags-wrapper.sh ~/.bin/clang++
+ln -sf $SRC/bin/gcc-rtags-wrapper.sh ~/.bin/clang
 
-ln -sfT $SRC $ELISP
+ln -sf $SRC $ELISP
