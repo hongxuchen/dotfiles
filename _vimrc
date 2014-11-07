@@ -295,12 +295,12 @@ let g:ctrlp_working_path_mode = 'ra'
 
 autocmd BufRead,BufNewFile /usr/include/* set ft=cpp
 
-function! StartUp()
-    if 0 == argc()
-        NERDTree
-    end
-endfunction
-autocmd VimEnter * call StartUp()
+" function! StartUp()
+"     if 0 == argc()
+"         NERDTree
+"     end
+" endfunction
+" autocmd VimEnter * call StartUp()
 
 colorscheme molokai
 

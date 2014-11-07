@@ -32,3 +32,7 @@ _emacs.keyfreq
 
 # links
 _emacs.d/elisp/rtags
+_emacs.d/recentf
+
+.DS_Store
+

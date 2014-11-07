@@ -125,6 +125,7 @@
   "v" 'eval-buffer
   "p" 'paste-mode
   "k" 'popup-kill-ring
+  "m" 'dash-at-point
   )
 
 (provide 'init-evil)

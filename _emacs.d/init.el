@@ -1,5 +1,3 @@
-(require 'cl)
-
 ;; ------------------------------------------------------------------------------
 ;; general utilities
 ;; ------------------------------------------------------------------------------
@@ -20,9 +18,10 @@
 ;; ------------------------------------------------------------------------------
 ;; configurations for specific features and modes
 ;; ------------------------------------------------------------------------------
-
+(require 'cl)
 ;; basics
 (require 'init-elpa)
+
 (require 'init-my-utils)
 (require 'init-misc)
 (require 'init-files)
@@ -55,4 +54,10 @@
 ;; (load-persistent-scratch)
 ;; (server-start)
 (setenv "LC_CTYPE" "zh_CN.UTF-8")
+(let ((path (shell-command-to-string ". ~/.zprofile; echo -n $PATH")))
+  (setenv "PATH" path)
+  (setq exec-path 
+        (append
+         (split-string-and-unquote path ":")
+         exec-path)))
 (recentf-open-files)

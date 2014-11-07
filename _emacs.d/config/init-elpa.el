@@ -11,75 +11,33 @@
                      unless (string-match "^\\." dir)
                      collecting (expand-file-name dir))
                load-path)))))
+
 ;; ------------------------------------------------------------------------------
 ;; package.el configuration
 ;; ------------------------------------------------------------------------------
 (require 'package)
+(package-initialize)
 
-;; Patch up annoying package.el quirks
-;;package-generate-autoloads (after close-autoloads (name pkg-dir) activate)
-;;  "Stop package.el from leaving open autoload files lying around."
-;;  (let ((path (expand-file-name (concat name "-autoloads.el") pkg-dir)))
-;;    (with-current-buffer (find-file-existing path)
-;;      (kill-buffer))))
-
-;; Add support to package.el for pre-filtering available packages
-
-(defvar package-filter-function nil
-  "Optional predicate function used to internally filter packages used by package.el.
-
-The function is called with the arguments PACKAGE VERSION ARCHIVE, where
-PACKAGE is a symbol, VERSION is a vector as produced by `version-to-list', and
-ARCHIVE is the string name of the package archive.")
-
-(defadvice package--add-to-archive-contents
-  (around filter-packages (package archive) activate)
-  "Add filtering of available packages using `package-filter-function', if non-nil."
-  (when (or (null package-filter-function)
-            (funcall package-filter-function
-                     (car package)
-                     (funcall (if (fboundp 'package-desc-version)
-                                  'package--ac-desc-version
-                                'package-desc-vers)
-                              (cdr package))
-                     archive))
-    ad-do-it))
-
-(defun require-package (package &optional min-version no-refresh)
-  "Ask elpa to install given PACKAGE.
-If the version is older than MIN-VERSION, update PACKAGE; if NO-REFRESH is
-non-nil, refresh package contents to get the latest `package-archive-contents'"
-  (if (package-installed-p package min-version)
+(defun require-package (package &optional no-refresh)
+  (if (package-installed-p package)
       t
     (if (or (assoc package package-archive-contents) no-refresh)
         (package-install package)
       (progn
         (package-refresh-contents)
-        (require-package package min-version t)))))
+        (require-package package t)))))
 
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 
-(defvar melpa-exclude-packages
-  '(slime)
-  "Don't install Melpa versions of these packages.")
-
-;; Don't take Melpa versions of certain packages
-(setq package-filter-function
-      (lambda (package version archive)
-        (and
-         (not (memq package '(eieio)))
-         (or (not (string-equal archive "melpa"))
-             (not (memq package melpa-exclude-packages))))))
-
 ;; ------------------------------------------------------------------------------
-;; Fire up package.el and ensure the following packages are installed.
-;;------------------------------------------------------------------------------
+;; general
+;; ------------------------------------------------------------------------------
 
-(package-initialize)
 (require-package 'session)
 (require-package 'smex)
+(require-package 'dired-k)
 (require-package 'autopair)
 (require-package 'ibuffer-vc)
 (require-package 'pointback)
@@ -107,6 +65,8 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 (require-package 'git-commit-mode)
 (require-package 'gitignore-mode)
 (require-package 'gitconfig-mode)
+
+(require-package 'dash-at-point)
 
 ;;------------------------------------------------------------------------------
 ;; writings
@@ -138,7 +98,7 @@ non-nil, refresh package contents to get the latest `package-archive-contents'"
 
 ;; ac
 (require-package 'pos-tip)
-; company-mode
+                                        ; company-mode
 ;; (require-package 'company-mode)
 (require-package 'company-c-headers)
 

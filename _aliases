@@ -63,3 +63,6 @@ alias rdm-res="tail -f /tmp/rdm_answer"
 # for mac
 alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+
+# locally remote to pc
+alias lab-ssh "ssh 155.69.149.37"

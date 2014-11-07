@@ -1,7 +1,6 @@
 # -*- mode:sh -*-
 # vim:ft=sh
 
-
 # if ! [ $DISPLAY ]; then
 source ~/.profile
 # fi
@@ -38,9 +37,21 @@ export MY_UNAME=$(uname)
 
 mac_set_up(){
   export MY_BREW_PREFIX=/usr/local
-  export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/opt/local/bin
-  export PATH=/usr/texbin:/usr/local/opt/llvm/bin:$PATH
+  export PATH=/usr/sbin:/sbin:/usr/bin:/bin:/opt/local/bin
+  export PATH=${MY_BREW_PREFIX}/bin:$PATH
+  export PATH=/usr/texbin:$PATH
+  export PATH=${MY_BREW_PREFIX}/opt/llvm/bin:$PATH
   export PATH=~/Library/Python/2.7/bin:$PATH
+  export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
+
+  export LD_LIBRARY_PATH=
+  export LD_LIBRARY_PATH=/usr/local/Cellar/llvm/3.5.0/lib
+
+  export CPLUS_INCLUDE_PATH=
+  export CPLUS_INCLUDE_PATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1
+  export CPLUS_INCLUDE_PATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include:${CPLUS_INCLUDE_PATH}
+  export C_INCLUDE_PATH=
+
 }
 
 linux_set_up(){
@@ -54,8 +65,8 @@ linux_set_up(){
   export PATH=${MY_WLLVM_ROOT}:$PATH
   export PATH=${MY_KLEE_INSTALL}/bin:$PATH
   export PATH=${PIN_ROOT}:$PATH
-  export PATH=~/tools/FSharp-2.0.0.0/bin:$PATH
   export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
+  export PATH=~/tools/FSharp-2.0.0.0/bin:$PATH
   export PATH=:~/.bin:~/.local/bin:$PATH
 
   export CPLUS_INCLUDE_PATH=
@@ -66,7 +77,8 @@ linux_set_up(){
   # export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/tools/clang/include:${MY_LLVM_ROOT}/obj/tools/clang/include:${CPLUS_INCLUDE_PATH}
 
   export LD_LIBRARY_PATH=
-  export LD_LIBRARY_PATH=${MY_LLVM_OBJ}/lib:${MY_BREW_PREFIX}:${MY_STP_INSTALL}/lib
+  export LD_LIBRARY_PATH=${MY_LLVM_OBJ}/lib:${MY_STP_INSTALL}/lib
+  export LD_LIBRARY_PATH=${MY_BREW_PREFIX}:${LD_LIBRARY_PATH}
 
   # export MONO_PATH=~/tools/FSharp-2.0.0.0:$MONO_PATH
   export PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/site-packages
@@ -75,14 +87,8 @@ linux_set_up(){
   export LLVM_COMPILER=clang
   export WLLVM_OUTPUT=ERROR
 
-  export CXX=clang++
-  export CC=clang
-
   stty ixany
   stty ixoff -ixon
-
-  # load executable
-  (pgrep rdm >/dev/null || rdm &>/tmp/rdm_answer &)
 
 }
 if [ "${MY_UNAME}" = "Darwin" ];then
@@ -90,3 +96,11 @@ if [ "${MY_UNAME}" = "Darwin" ];then
 else
   linux_set_up
 fi
+
+###
+
+export CC=clang
+export CXX=clang++
+
+# load executable
+(pgrep -x rdm >/dev/null || rdm &>/tmp/rdm_answer &)
