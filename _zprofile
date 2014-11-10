@@ -56,10 +56,11 @@ mac_set_up(){
 
 linux_set_up(){
 
+  export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+
   export MY_BREW_PREFIX=$HOME/.linuxbrew
   export PATH=${MY_BREW_PREFIX}/bin:$PATH
 
-  export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
   export PATH=/usr/local/texlive/2014/Bin/x86_64-linux:$PATH
   export PATH=${MY_LLVM_OBJ}/bin:${MY_CLANG_TOOLS}/scan-build:${MY_CLANG_TOOLS}/scan-view:${MY_STP_INSTALL}/bin:$PATH
   export PATH=${MY_WLLVM_ROOT}:$PATH
