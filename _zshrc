@@ -45,6 +45,33 @@ done
 
 source "$ZSH/themes/${ZSH_THEME}.zsh-theme"
 
+###
+DIRSTACKSIZE=16
+DIRSTACKFILE="${HOME}"/.zdirs
+
+autoload -U is-at-least
+# Keep dirstack across logouts
+if [[ -f ${DIRSTACKFILE} ]] && [[ ${#dirstack[*]} -eq 0 ]] ; then
+    dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
+    dirstack=( ${(u)dirstack} )
+fi
+
+# Make sure there are no duplicates
+typeset -U dirstack
+
+# Share dirstack between multiple zsh instances
+function chpwd() {
+    if is-at-least 4.1; then # dirs -p needs 4.1
+        # Get the dirstack from the file and add it to the current dirstack
+        dirstack+=( ${(f)"$(< $DIRSTACKFILE)"} )
+        dirstack=( ${(u)dirstack} )
+        dirs -pl |sort -u >! ${DIRSTACKFILE}
+    fi
+}
+
+alias d='dirs -v | head -$DIRSTACKSIZE'
+###
+
 source ${MY_BREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ${MY_BREW_PREFIX}/Cellar/zsh-history-substring-search/1.0.0/zsh-history-substring-search.zsh
 # bind Ctrl-P/Ctrl-N for Emacs mode

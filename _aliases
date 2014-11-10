@@ -36,7 +36,6 @@ alias whatgcc='gcc -E -x c  /dev/null -dM'
 alias cc-clang++='clang -E -x c /dev/null -v'
 alias cc-clang='clang -E -x c++ /dev/null -v'
 alias clang-analyze='clang -cc1 -analyzer-checker-help |less'
-alias dl='axel -a -n 8'
 alias pycharm='~/tools/pycharm/bin/pycharm.sh &>/dev/null &'
 # alias ssh_stap='ssh stap.sjtu.edu.cn -p 2210'
 alias ssh_lab="ssh -X root@pat.sce.ntu.edu.sg"
@@ -54,9 +53,11 @@ alias more='less'               #`less` is more than `more`
 alias info='man'                # NEVER use `info' in the terminal
 # alias rm='trash-put'           #not the rude `rm`
 
+# alias dl='axel -a -n 8'
+alias dl='axel -a -n 8 -U "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.6) Gecko/20070725 Firefox/2.0.0.6" -H "Accept:text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5 Accept-Language: en-us,en;q=0.5 Accept-Encoding: gzip,deflate Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7 Keep-Alive: 300"'
+
 alias ...='cd ../..'
 alias ..='cd ../'
-alias d='dirs -v | head -10'
 
 alias rdm-res="tail -f /tmp/rdm_answer"
 
@@ -65,4 +66,4 @@ alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall 
 alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 
 # locally remote to pc
-alias lab-ssh "ssh 155.69.149.37"
+alias lab-ssh="ssh -X 155.69.149.37"

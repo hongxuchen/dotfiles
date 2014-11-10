@@ -3,6 +3,7 @@ set altformat_current= %F
 set altformat_playlist= %f%= %d 
 set altformat_title=%f
 set altformat_trackwin= %f%= %d 
+set auto_expand_albums=true
 set auto_reshuffle=true
 set buffer_seconds=10
 set color_cmdline_attr=default
@@ -42,13 +43,11 @@ set confirm_run=true
 set continue=true
 set device=/dev/cdrom
 set display_artist_sort_name=false
-set dsp.alsa.device=default
 set dsp.ao.buffer_size=16384
 set dsp.ao.driver=
 set dsp.ao.wav_counter=1
 set dsp.ao.wav_dir=/home/nonoob
-set dsp.roar.role=
-set dsp.roar.server=
+set follow=false
 set format_current= %a - %l -%3n. %t%= %y 
 set format_playlist= %-25%a %3n. %t%= %y %d 
 set format_playlist_va= %-25%A %3n. %t (%a)%= %y %d 
@@ -57,12 +56,8 @@ set format_trackwin=%3n. %t%= %y %d
 set format_trackwin_va=%3n. %t (%a)%= %y %d 
 set icecast_default_charset=ISO-8859-1
 set id3_default_charset=ISO-8859-1
-set input.cdio.cddb_url=freedb.freedb.org:8880
 set lib_sort=albumartist date album discnumber tracknumber title filename
-set mixer.alsa.channel=default
-set mixer.alsa.device=default
-set mixer.pulse.restore_volume=1
-set output_plugin=alsa
+set output_plugin=
 set passwd=
 set pl_sort=
 set play_library=false
@@ -73,10 +68,13 @@ set replaygain=disabled
 set replaygain_limit=true
 set replaygain_preamp=6.000000
 set resume=false
+set rewind_offset=5
 set scroll_offset=2
 set set_term_title=true
+set show_all_tracks=true
 set show_current_bitrate=false
 set show_hidden=false
+set show_playback_position=true
 set show_remaining_time=true
 set shuffle=false
 set skip_track_info=false
