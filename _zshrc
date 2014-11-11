@@ -46,7 +46,7 @@ done
 source "$ZSH/themes/${ZSH_THEME}.zsh-theme"
 
 ###
-DIRSTACKSIZE=16
+DIRSTACKSIZE=10
 DIRSTACKFILE="${HOME}"/.zdirs
 
 autoload -U is-at-least
@@ -60,13 +60,11 @@ fi
 typeset -U dirstack
 
 # Share dirstack between multiple zsh instances
-function chpwd() {
-    if is-at-least 4.1; then # dirs -p needs 4.1
-        # Get the dirstack from the file and add it to the current dirstack
-        dirstack+=( ${(f)"$(< $DIRSTACKFILE)"} )
-        dirstack=( ${(u)dirstack} )
-        dirs -pl |sort -u >! ${DIRSTACKFILE}
-    fi
+chpwd() {
+  # Get the dirstack from the file and add it to the current dirstack
+  dirstack+=( ${(f)"$(< $DIRSTACKFILE)"} )
+  dirstack=( ${(u)dirstack} )
+  dirs -pl |sort -u >! ${DIRSTACKFILE}
 }
 
 # alias d='dirs -v | head -$DIRSTACKSIZE'
