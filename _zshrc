@@ -49,26 +49,29 @@ source "$ZSH/themes/${ZSH_THEME}.zsh-theme"
 DIRSTACKSIZE=10
 DIRSTACKFILE="${HOME}"/.zdirs
 
-autoload -U is-at-least
-# Keep dirstack across logouts
-if [[ -f ${DIRSTACKFILE} ]] && [[ ${#dirstack[*]} -eq 0 ]] ; then
-    dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
-    dirstack=( ${(u)dirstack} )
-fi
-
-# Make sure there are no duplicates
-typeset -U dirstack
-
-# Share dirstack between multiple zsh instances
-chpwd() {
-  # Get the dirstack from the file and add it to the current dirstack
-  dirstack+=( ${(f)"$(< $DIRSTACKFILE)"} )
-  dirstack=( ${(u)dirstack} )
-  dirs -pl |sort -u >! ${DIRSTACKFILE}
-}
+# autoload -U is-at-least
+# # Keep dirstack across logouts
+# if [[ -f ${DIRSTACKFILE} ]] && [[ ${#dirstack[*]} -eq 0 ]] ; then
+#     dirstack=( ${(f)"$(< $DIRSTACKFILE)"} )
+#     dirstack=( ${(u)dirstack} )
+# fi
+# 
+# # Make sure there are no duplicates
+# typeset -U dirstack
+# 
+# # Share dirstack between multiple zsh instances
+# chpwd() {
+#   # Get the dirstack from the file and add it to the current dirstack
+#   dirstack+=( ${(f)"$(< $DIRSTACKFILE)"} )
+#   dirstack=( ${(u)dirstack} )
+#   # dirs -pl |sort -u >! ${DIRSTACKFILE}
+#   dirs -pl >! ${DIRSTACKFILE}
+# }
 
 # alias d='dirs -v | head -$DIRSTACKSIZE'
 ###
+#
+setopt AUTO_PUSHD
 
 source ${MY_BREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ${MY_BREW_PREFIX}/Cellar/zsh-history-substring-search/1.0.0/zsh-history-substring-search.zsh

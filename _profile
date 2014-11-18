@@ -17,7 +17,7 @@ export LC_ADDRESS="en_US.UTF-8"
 export LC_TELEPHONE="en_US.UTF-8"
 export LC_MEASUREMENT="en_US.UTF-8"
 export LC_IDENTIFICATION="en_US.UTF-8"
-export LC_ALL=
+# export LC_ALL="C"
 
 export EMAIL="leftcopy.chx@gmail.com"
 export TZ='Asia/Shanghai'

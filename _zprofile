@@ -44,6 +44,8 @@ mac_set_up(){
   export PATH=~/Library/Python/2.7/bin:$PATH
   export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
 
+  export PATH=$PATH:~/src/whole-program-llvm
+
   export LD_LIBRARY_PATH=
   export LD_LIBRARY_PATH=/usr/local/Cellar/llvm/3.5.0/lib
 
@@ -84,10 +86,6 @@ linux_set_up(){
   # export MONO_PATH=~/tools/FSharp-2.0.0.0:$MONO_PATH
   export PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/site-packages
 
-  # for wllvm
-  export LLVM_COMPILER=clang
-  export WLLVM_OUTPUT=ERROR
-
   stty ixany
   stty ixoff -ixon
 
@@ -99,6 +97,10 @@ else
 fi
 
 ###
+
+# for wllvm
+export LLVM_COMPILER=clang
+export WLLVM_OUTPUT=DEBUG
 
 export CC=clang
 export CXX=clang++
