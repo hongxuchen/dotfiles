@@ -2,19 +2,21 @@
 <application>
   <component name="StatisticsApplicationUsages">
     <group name="file-type">
-      <project id="pyclang" values="Python,XML,PLAIN_TEXT,C++,UNKNOWN" />
-      <project id="legion" values="UNKNOWN,C++,Python,XML,PLAIN_TEXT,Native" />
-      <project id="glade" values="XML,UNKNOWN,Python,PLAIN_TEXT,DTD" />
-      <project id="cfe_py" values="UNKNOWN,C++,Python,XML,Native,PLAIN_TEXT,ReST" />
-      <project id="google_play_dl" values="XML,PLAIN_TEXT,ReST,C++,Native,ARCHIVE,Markdown,Images,UNKNOWN,Python,HTML" />
-      <project id="my_scrapy" values="Python,XML,UNKNOWN,Markdown,PLAIN_TEXT" />
-      <project id="ply" values="UNKNOWN,HTML,PLAIN_TEXT,Python,XML" />
-      <project id="idapython_ext" values="PLAIN_TEXT,Native,Markdown,Python,C++,Images,HTML,UNKNOWN,XML,ARCHIVE,ReST" />
-      <project id="py_scripts" values="C++,PLAIN_TEXT,ARCHIVE,UNKNOWN,XML,Images,Python,HTML,ReST" />
+      <project id="pyclang" values="UNKNOWN,Python,XML,C++,PLAIN_TEXT" />
+      <project id="legion" values="Python,Native,UNKNOWN,PLAIN_TEXT,XML,C++" />
+      <project id="wllvm" values="Python,Markdown,XML,UNKNOWN,PLAIN_TEXT" />
+      <project id="glade" values="Python,PLAIN_TEXT,UNKNOWN,XML,DTD" />
+      <project id="cfe_py" values="Native,Python,ReST,C++,UNKNOWN,XML,PLAIN_TEXT" />
+      <project id="google_play_dl" values="Images,ARCHIVE,Native,HTML,C++,PLAIN_TEXT,Markdown,Python,ReST,UNKNOWN,XML" />
+      <project id="my_scrapy" values="PLAIN_TEXT,UNKNOWN,XML,Python,Markdown" />
+      <project id="ply" values="XML,Python,PLAIN_TEXT,HTML,UNKNOWN" />
+      <project id="idapython_ext" values="Native,ARCHIVE,UNKNOWN,Images,C++,PLAIN_TEXT,Markdown,Python,ReST,HTML,XML" />
+      <project id="py_scripts" values="Images,PLAIN_TEXT,ARCHIVE,ReST,UNKNOWN,C++,Python,HTML,XML" />
     </group>
     <group name="py-interpreter">
-      <project id="pyclang" values="Python 3.3.2+,Python 2.7.5+" />
+      <project id="pyclang" values="Python 2.7.5+,Python 3.3.2+" />
       <project id="legion" values="Python 2.7.5+" />
+      <project id="wllvm" values="Python 3.3.2+" />
       <project id="glade" values="Python 3.3.2+" />
       <project id="cfe_py" values="Python 2.7.5+,Python 2.7.5+" />
       <project id="google_play_dl" values="Python 2.7.5+,Python 2.7.5+,Python 2.7.5+,Python 2.7.5+" />
@@ -26,6 +28,7 @@
     <group name="vcs">
       <project id="pyclang" values="Git" />
       <project id="legion" values="Git" />
+      <project id="wllvm" values="Git" />
       <project id="cfe_py" values="Git" />
       <project id="google_play_dl" values="Git" />
       <project id="my_scrapy" values="Git" />
@@ -41,6 +44,7 @@
     <group name="module type">
       <project id="pyclang" values="PYTHON_MODULE" />
       <project id="legion" values="PYTHON_MODULE" />
+      <project id="wllvm" values="PYTHON_MODULE" />
       <project id="glade" values="PYTHON_MODULE" />
       <project id="cfe_py" values="PYTHON_MODULE" />
       <project id="google_play_dl" values="PYTHON_MODULE" />
@@ -56,7 +60,7 @@
       <entry feature="NewDirectoryProjectAction.empty" count="2" />
       <entry feature="execute.PythonConfigurationType.Debug" count="1" />
       <entry feature="execute.PythonConfigurationType.Run" count="16" />
-      <entry feature="ideaapp.started" count="3" />
+      <entry feature="ideaapp.started" count="5" />
     </counts>
   </component>
 </application>

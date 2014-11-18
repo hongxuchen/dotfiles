@@ -34,7 +34,10 @@
     <location key="CommitChangelistDialog2.0.0.1366.768" x="333" y="116" />
     <location key="git4idea.push.GitPushDialog.0.0.1366.768" x="339" y="130" />
     <location key="OptionsEditor.0.1080.1920.1200" x="343" y="1238" />
-    <location key="WELCOME_SCREEN.0.1080.1920.1200" x="1018" y="302" />
+    <location key="WELCOME_SCREEN.0.1080.1920.1200" x="956" y="301" />
+    <location key="FileChooserDialogImpl.0.1080.1920.1200" x="660" y="1482" />
+    <location key="FileChooserDialogImpl.0.0.1920.1080" x="739" y="212" />
+    <location key="findTextDialog.0.1080.1920.1200" x="751" y="1410" />
     <size key="#Intentions.0.0.1366.768" width="828" height="688" />
     <size key="#Inspections.0.0.1366.768" width="728" height="638" />
     <size key="#Browse_JetBrains_Plugins_.0.0.1366.768" width="828" height="688" />
@@ -81,6 +84,9 @@
     <size key="git4idea.push.GitPushDialog.0.0.1366.768" width="679" height="575" />
     <size key="OptionsEditor.0.1080.1920.1200" width="1228" height="858" />
     <size key="javadoc.popup.0.1080.1920.1200" width="502" height="127" />
+    <size key="FileChooserDialogImpl.0.1080.1920.1200" width="428" height="488" />
+    <size key="FileChooserDialogImpl.0.0.1920.1080" width="428" height="488" />
+    <size key="findTextDialog.0.1080.1920.1200" width="412" height="514" />
     <extendedState key="com.intellij.history.integration.ui.views.FileHistoryDialog" state="0" />
     <extendedState key="com.intellij.history.integration.ui.views.DirectoryHistoryDialog.0" state="300" />
     <extendedState key="DiffWindow" state="0" />
@@ -101,7 +107,7 @@
     <property name="PyCharm.InitialConfiguration.V5" value="true" />
     <property name="PyCharm.initialConfigurationShown" value="true" />
     <property name="installation.uid" value="bd837286-ca48-403e-9af4-ec01c91877ce" />
-    <property name="file.chooser.recent.files" value="$USER_HOME$/google.play/google_play_dl&#10;/home/hongxu/repos/py_scripts&#10;/home/hongxu/repos/idapython_ext&#10;/home/hongxu/google.play/google-play-crawler&#10;/home/hongxu/.local/lib/python2.7/site-packages/djgpa&#10;/home/hongxu/google.play/mysite&#10;/home/hongxu/google.play/album-downloader&#10;/home/hongxu/google.play/my_scrapy&#10;/home/hongxu/repos/clang_complete&#10;/home/hongxu/repos/cfe_py&#10;/home/hongxu/repos/ply&#10;/home/hongxu/repos/legion&#10;/home/hongxu/repos/clang_bindings&#10;/home/hongxu/repos/pyclang&#10;/home/hongxu/repos/glade&#10;/usr/bin/chromium-browser&#10;/home/hongxu/data_backup/py_scripts" />
+    <property name="file.chooser.recent.files" value="$USER_HOME$/RESEARCH/wllvm&#10;/home/hongxu/RESEARCH&#10;/home/hongxu/google.play/google_play_dl&#10;/home/hongxu/repos/py_scripts&#10;/home/hongxu/repos/idapython_ext&#10;/home/hongxu/google.play/google-play-crawler&#10;/home/hongxu/.local/lib/python2.7/site-packages/djgpa&#10;/home/hongxu/google.play/mysite&#10;/home/hongxu/google.play/album-downloader&#10;/home/hongxu/google.play/my_scrapy&#10;/home/hongxu/repos/clang_complete&#10;/home/hongxu/repos/cfe_py&#10;/home/hongxu/repos/ply&#10;/home/hongxu/repos/legion&#10;/home/hongxu/repos/clang_bindings&#10;/home/hongxu/repos/pyclang&#10;/home/hongxu/repos/glade&#10;/usr/bin/chromium-browser&#10;/home/hongxu/data_backup/py_scripts" />
     <property name="toolwindow.stripes.buttons.info.shown" value="true" />
     <property name="file.colors.enable.non.project" value="Yellow" />
     <property name="Non-Project Files" value="Yellow" />
