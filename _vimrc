@@ -320,3 +320,5 @@ let g:ycm_collect_identifiers_from_tags_files = 0 " Let YCM read tags from Ctags
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
+
+set paste

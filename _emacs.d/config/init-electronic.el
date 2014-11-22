@@ -8,7 +8,8 @@
 (add-hook 'find-file-not-found-hooks 'file-template-find-file-not-found-hook 'append)
 (add-hook 'find-file-hooks 'auto-insert)
 (define-auto-insert 'sh-mode '(nil "#!/bin/bash\n\n"))
-(define-auto-insert 'python-mode '(nil "#!/usr/bin/python3\n\n"))
+(define-auto-insert 'python-mode '(nil "#!/usr/bin/env python3\n\n"))
+(define-auto-insert 'ruby-mode '(nil "#!/usr/bin/env ruby\n\n"))
 
 ;; ------------------------------------------------------------------------------
 ;; yasnippet
@@ -101,7 +102,25 @@
   (setq company-dabbrev-minimum-length 2)
   (define-key company-active-map (kbd "C-n") 'company-select-next-or-abort)
   (define-key company-active-map (kbd "C-p") 'company-select-previous-or-abort)
+  (setq company-backends
+        '(company-bbdb
+          company-nxml
+          company-css
+          ;; company-eclim
+          company-semantic
+          company-robe
+          ;; company-clang
+          ;; company-xcode
+          company-ropemacs
+          company-cmake
+          company-capf (company-dabbrev-code company-gtags company-etags company-keywords)
+          ;; company-oddmuse
+          company-files
+          company-dabbrev
+          ))
   )
+
+
 
 (defvar my-prefer-ac-or-company nil)
 (defun my-switch-ac-engine ()

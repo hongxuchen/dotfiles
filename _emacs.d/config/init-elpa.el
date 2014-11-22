@@ -47,6 +47,8 @@
 (require-package 'wgrep)
 (require-package 'popup-kill-ring)
 (require-package 's)
+(require-package 'robe)
+(require-package 'inf-ruby)
 
 ;; ------------------------------------------------------------------------------
 ;; vim like editing

@@ -42,6 +42,7 @@
 (require 'init-tex)
 (require 'init-cc-mode)
 (require 'init-python)
+(require 'init-ruby)
 (require 'init-nxml)
 (require 'init-sh)
 

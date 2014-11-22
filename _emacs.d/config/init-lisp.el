@@ -101,18 +101,18 @@ Argument SYM-NAME thing to find."
     (add-hook hook 'my-elisp-mode-setup))
   )
 
-(defun my-byte-compile-on-save ()
-  (add-hook 'after-save-hook
-            (lambda ()
-              (when
-                  (and
-                   (buffer-file-name)
-                   (not (member (file-name-nondirectory (buffer-file-name)) '(".dir-locals.el" "init-elpa.el")))
-                   (string= major-mode 'emacs-lisp-mode))
-                (and (file-exists-p (concat buffer-file-name "c")) (byte-compile-file buffer-file-name))
-                (eval-buffer)))
-            t))
-(add-hook 'emacs-lisp-mode-hook 'my-byte-compile-on-save)
+;; (defun my-byte-compile-on-save ()
+;;   (add-hook 'after-save-hook
+;;             (lambda ()
+;;               (when
+;;                   (and
+;;                    (buffer-file-name)
+;;                    (not (member (file-name-nondirectory (buffer-file-name)) '(".dir-locals.el" "init-elpa.el")))
+;;                    (string= major-mode 'emacs-lisp-mode))
+;;                 ;; (and (file-exists-p (concat buffer-file-name "c")) (byte-compile-file buffer-file-name))
+;;                 (eval-buffer)))
+;;             t))
+;; (add-hook 'emacs-lisp-mode-hook 'my-byte-compile-on-save)
 
 (setq source-directory (expand-file-name "~/.bin/builds/emacs"))
 
