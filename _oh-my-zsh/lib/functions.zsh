@@ -93,7 +93,7 @@ function clean_llvm(){
 }
 
 function cmake-ninja(){
-    cmake -GNinja $@ && ninja
+    cmake -GNinja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON $@ && ninja
 }
 
 function evince(){

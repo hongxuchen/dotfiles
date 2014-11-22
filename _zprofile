@@ -43,8 +43,7 @@ mac_set_up(){
   export PATH=${MY_BREW_PREFIX}/opt/llvm/bin:$PATH
   export PATH=~/Library/Python/2.7/bin:$PATH
   export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
-
-  export PATH=$PATH:~/src/whole-program-llvm
+  export PATH=${MY_WLLVM_ROOT}:$PATH
 
   export LD_LIBRARY_PATH=
   export LD_LIBRARY_PATH=/usr/local/Cellar/llvm/3.5.0/lib
@@ -100,7 +99,7 @@ fi
 
 # for wllvm
 export LLVM_COMPILER=clang
-export WLLVM_OUTPUT=DEBUG
+export WLLVM_OUTPUT=INFO
 
 export CC=clang
 export CXX=clang++

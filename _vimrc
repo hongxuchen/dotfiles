@@ -15,6 +15,9 @@
 "       if line("'\"") > 1 && line("'\"") <= line("$") |
 "         exe "normal! g`\"" |
 "       endif
+"
+
+autocmd BufNewFile,BufRead *.ipynb setfiletype javascript
 
 " Set working directory
 set autochdir
@@ -229,9 +232,11 @@ runtime macros/matchit.vim
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'kien/ctrlp.vim'
+" Bundle 'vim-scripts/applescript.vim'
 Bundle 'rdavison/clavim'
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-commentary'
+" Bundle 'vim-ruby/vim-ruby'
 " git syntax, indent, and filetypes
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-surround'
