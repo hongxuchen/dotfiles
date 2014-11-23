@@ -53,6 +53,8 @@ mac_set_up(){
     export CPLUS_INCLUDE_PATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include:${CPLUS_INCLUDE_PATH}
     export C_INCLUDE_PATH=
 
+    export PYTHONPATH=/usr/local/Cellar/llvm/3.5.0/lib/python2.7/site-packages
+
 }
 
 linux_set_up(){
@@ -82,7 +84,7 @@ linux_set_up(){
     export LD_LIBRARY_PATH=${MY_BREW_PREFIX}:${LD_LIBRARY_PATH}
 
     # export MONO_PATH=~/tools/FSharp-2.0.0.0:$MONO_PATH
-    export PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/site-packages
+    export PYTHONPATH=/usr/lib/python2.7/site-packages
 
     stty ixany
     stty ixoff -ixon

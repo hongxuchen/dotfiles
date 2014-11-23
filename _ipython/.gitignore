@@ -1,2 +1,4 @@
 /profile_default/
+/profile_nb/security/
+/profile_nb/startup/.ipynb_checkpoints/
 *.sqlite
