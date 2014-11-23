@@ -8,11 +8,6 @@ bindkey "^[m" copy-prev-shell-word
 ## jobs
 setopt long_list_jobs
 
-## directories
-# setopt auto_name_dirs
-setopt auto_pushd
-setopt pushd_ignore_dups
-
 ## edit command line
 autoload -U edit-command-line
 zle -N edit-command-line
@@ -22,9 +17,27 @@ bindkey '\C-x\C-e' edit-command-line
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
-
 alias history='fc -l 1'  #fc is a zshbuiltin
 
+# ls colors
+autoload colors; colors;
+export LSCOLORS="Gxfxcxdxbxegedabagacad"
+export LS_COLORS
+
+# setopt cdablevarS
+
+# Apply theming defaults
+PS1="%n@%m:%~%# "
+
+# git theming default: Variables for theming the git info prompt
+ZSH_THEME_GIT_PROMPT_PREFIX="git:("         # Prefix at the very beginning of the prompt, before the branch name
+ZSH_THEME_GIT_PROMPT_SUFFIX=")"             # At the very end of the prompt
+ZSH_THEME_GIT_PROMPT_DIRTY="*"              # Text to display if the branch is dirty
+ZSH_THEME_GIT_PROMPT_CLEAN=""               # Text to display if the branch is clean
+
+setopt no_beep
+setopt multios
+setopt prompt_subst # Setup the prompt with pretty colors
 setopt append_history
 setopt extended_history
 setopt hist_expire_dups_first
@@ -38,119 +51,56 @@ setopt hist_no_store
 setopt hist_reduce_blanks
 setopt hist_verify
 setopt hist_beep
-
-setopt pushdminus
-setopt extended_glob
-setopt auto_pushd
+# setopt extended_glob
+setopt nohashdirs #immediately $PATH executables
 
 [[ -e /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found
 
-if [[ $OSTYPE == "linux-gnu" ]]; then
-    for s in mp3 wav aac \
-                 ogg avi mp4 m4v mov qt mpg mpeg \
-                 jpg jpeg png psd bmp gif tif tiff \
-                 eps ps pdf html dmg; do
-        alias -s $s=xdg-open
-    done
-fi
+alias -g ND="*(/om[1])" # newest directory
+alias -g NF="*(.om[1])" # newest file
+alias -g L='| less'
+alias -g LL='2>&1 | less'
+alias -g GG='grep -i'
+alias -g HH='|& head -n 20'
+alias -g TT='| tail -20'
+TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S'
 
 autoload -U age
 
-alias -g ND='*(/om[1])' # newest directory
-alias -g NF='*(.om[1])' # newest file
-alias -g L='| less'
-alias -g LL='2>&1 | less'
-alias -g gp 'grep -i'
-TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S'
+##### files and directories
+setopt auto_cd
+alias ...='cd ../..'
+# alias ..='cd ../'
+# setopt auto_name_dirs
+setopt pushd_ignore_dups
+setopt pushdminus
+setopt auto_pushd
 
-##### suffix aliases (mostly mapped to open which runs the gnome/kde default app)
+for s in mp3 wav aac ogg avi mp4 m4v mov qt mpg mpeg\
+             jpg jpeg png psd bmp gif tif tiff\
+             eps ps pdf epub dmg\
+             html htm md markdown log\
+             ods xls xlsx csv ppt pptx odp pot odt doc docx rtf ;
+do
+    if [[ $OSTYPE == "linux-gnu" ]]; then
+        alias -s $s=xdg-open
+    elif [[ $OSTYPE == "darwin"* ]];then
+        alias -s $s=open
+    fi
+done
 
-alias -s Dockerfile="docker build - < "
-alias -s tex="rubber --inplace --maxerr -1 --short --force --warn all --pdf"
+for s in py rb pl sh js zsh tex cpp cc c h hh hpp conf vim txt;
+do
+    alias -s $s=vim
+done
 
-alias -s 1="man -l"
-alias -s 2="man -l"
-alias -s 3="man -l"
-alias -s 4="man -l"
-alias -s 5="man -l"
-alias -s 6="man -l"
-alias -s 7="man -l"
-alias -s epub="open"
-alias -s pdf="open"
-alias -s PDF="open"
-alias -s xoj="xournal"
+for s in 1 2 3 4 5 6 7;
+do
+    alias -s $s="man -l"
+done
+alias -s deb="sudo gdebi"
 
-alias -s md="open"
-alias -s markdown="open"
-alias -s htm="$BROWSER"
-alias -s html="$BROWSER"
 alias -s jar="java -jar"
-alias -s deb="sudo dpkg -i"
-alias -s gpg="gpg"
-
-alias -s iso="vlc"
-alias -s avi=" open"
-alias -s AVI=" open"
-alias -s mov=" open"
-alias -s mpg=" open"
-alias -s m4v=" open"
-alias -s mp4=" open"
-alias -s rmvb=" open"
-alias -s MP4=" open"
-alias -s ogg=" open"
-alias -s ogv=" open"
-alias -s flv=" open"
-alias -s mkv=" open"
-alias -s wav=" open"
-alias -s mp3=" open"
-alias -s webm=" open"
-
-alias -s tif="open"
-alias -s tiff="open"
-alias -s png="open"
-alias -s jpg="open"
-alias -s jpeg="open"
-alias -s JPG="open"
-alias -s gif="open"
-alias -s svg="open"
-alias -s psd="open"
-
-alias -s com="open"
-alias -s de="open"
-alias -s org="open"
-
-alias -s rdf="rapper --count"
-alias -s owl="rapper --count"
-alias -s ttl="rapper -i turtle --count"
-alias -s tt="rapper -i turtle --count"
-alias -s n3="rapper -i turtle --count"
-alias -s nt="rapper -i ntriples --count"
-alias -s ntriples="rapper -i ntriples --count"
-alias -s ntriple="rapper -i ntriples --count"
-
-alias -s ods="open"
-alias -s xls="open"
-alias -s xlsx="open"
-alias -s csv="open"
-
-alias -s pot="open"
-alias -s odt="open"
-alias -s doc="open"
-alias -s docx="open"
-alias -s rtf="open"
 alias -s dot="dot -Tpng -O"
-
-alias -s ppt="open"
-alias -s pptx="open"
-alias -s odp="open"
-
 alias -s plist="plutil"
-alias -s log="open"
-
-alias -s sla="open"
-
-alias -s exe="open"
-
-alias -s tjp="tj3"
-alias -s asc="gpg"
-alias -s pem="openssl x509 -noout -text -in "
+alias -s Dockerfile="docker build - < "

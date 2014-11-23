@@ -1,72 +1,67 @@
 # -*- mode: sh -*-
 # vim: ft=sh
-alias rsync-copy="rsync -a --progress -h"
-alias rsync-move="rsync -a --progress -h --remove-source-files"
-alias rsync-update="rsync -avu --progress -h"
-alias rsync-synchronize="rsync -avu --delete --progress -h"
-alias rsync-cpv="rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --"
-alias release-memory='sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"'
-alias dstat='dstat -cdlmnpsy'
-alias goagent="~/tools/goagent/local/goagent-gtk.py &>/dev/null &disown"
-alias idea='~/tools/idea-IC-133.696/bin/idea.sh &>/dev/null &disown'
-alias telnet="luit -encoding gb18030 telnet"
-alias v6='sudo isatapd -d isatap.sjtu.edu.cn'
-alias synaptic='sudo synaptic &>/dev/null & disown'
-alias chrome="google-chrome-stable &>/dev/null & disown"
-alias firefox="firefox &>/dev/null & disown"
-alias pyhttpd='python -m SimpleHTTPServer'
-alias pysh3='ipython3 --profile=pysh'
-alias pysh3='ipython3 --profile=pysh'
-alias boogie='mono ~/repos/boogie/boogie/Binaries/Boogie.exe'
-alias idaq='~/idademo65/idaq&'
+
+## linux only
+if [[ $OSTYPE == "linux-gnu" ]];then
+    alias ls='ls --color=tty'
+    alias gdb='gdb -q'
+    alias dstat='dstat -cdlmnpsy'
+    alias release_memory='sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"'
+    ## no .desktop file
+    alias boogie='mono ~/repos/boogie/boogie/Binaries/Boogie.exe'
+    alias idaq='~/idademo65/idaq&'
+    alias pycharm='~/tools/pycharm/bin/pycharm.sh &>/dev/null &'
+    alias goagent="~/tools/goagent/local/goagent-gtk.py &>/dev/null &disown"
+fi
+
+if [[ $OSTYPE == "darwin"* ]];then
+    alias ls='ls -G'
+    alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
+    alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+fi
+
+alias r_cp='rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --'
+alias r_mv='rsync -a --progress -h --remove-source-files'
+alias r_update='rsync -avu --progress -h'
+alias r_sync='rsync -avu --delete --progress -h'
+
+alias p_httpd='python -m SimpleHTTPServer'
+alias p_sh='ipython --profile=sh'
 alias pprof='google-pprof'
-alias svn='colorsvn'
-# alias rdp_lab='rdesktop -f -u hongxu -r sound:local -r clipboard:PRIMARYCLIPBOARD -r disk:home=/home/hongxuchen 202.120.40.98:62240  &>/dev/null & disown'
-alias rdp_lab='rdesktop -g 1024x768 -f -u pub -p 123 -r sound:local -r clipboard:PRIMARYCLIPBOARD -r disk:home=/home/hongxu 192.168.1.108 &>/dev/null & disown'
-alias gdb='gdb -q'
 alias grt='cd $(git rev-parse --show-toplevel)'
-ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=tty' || alias ls='ls -G'
-alias la='ls -a'
-alias q="exit"
-alias l='ls -F'
-# alias ll='k'
-alias ll='ls -lh'
-alias kl='k | less'
-alias whatg++='g++ -E -x c++  /dev/null -dM'
-alias whatgcc='gcc -E -x c  /dev/null -dM'
-alias cc-clang++='clang -E -x c /dev/null -v'
-alias cc-clang='clang -E -x c++ /dev/null -v'
-alias clang-analyze='clang -cc1 -analyzer-checker-help |less'
-alias pycharm='~/tools/pycharm/bin/pycharm.sh &>/dev/null &'
-# alias ssh_stap='ssh stap.sjtu.edu.cn -p 2210'
-alias ssh_lab="ssh -X root@pat.sce.ntu.edu.sg"
-#Google style
-alias indent="command indent -kr -ci2 -cli2 -i2 -l80 -nut"
-alias scan-build="command scan-build --use-analyzer=$(which clang)"
-alias brews='brew list -1'
-alias bubu="brew update && brew upgrade && brew cleanup"
+alias indent='command indent -kr -ci2 -cli2 -i2 -l80 -nut' #Google style
 alias grep="ag"
 alias diff='colordiff'
-
+alias svn='colorsvn'
 alias sudo='sudo '
-alias sl='ls' # so there would be no *sl train*
-alias more='less'               #`less` is more than `more`
-alias info='man'                # NEVER use `info' in the terminal
-# alias rm='trash-put'           #not the rude `rm`
-
-# alias dl='axel -a -n 8'
+alias more='less'
+alias info='man'
+alias q='exit'
 alias dl='axel -a -n 8 -U "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.6) Gecko/20070725 Firefox/2.0.0.6" -H "Accept:text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5 Accept-Language: en-us,en;q=0.5 Accept-Encoding: gzip,deflate Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7 Keep-Alive: 300"'
 
-alias ...='cd ../..'
-alias ..='cd ../'
+alias d_gcc='gcc -E -x c  /dev/null -dM'
+alias v_gcc='gcc -E -x c /dev/null -v'
+alias d_clang='clang -E -x c  /dev/null -dM'
+alias v_clang='clang -E -x c /dev/null -v'
+alias d_g++='g++ -E -x c++  /dev/null -dM'
+alias v_g++='gcc -E -x c++ /dev/null -v'
+alias d_clang++='clang++ -E -x c++  /dev/null -dM'
+alias v_clang++='clang++ -E -x c++ /dev/null -v'
+alias help_cc1='clang -cc1 -analyzer-checker-help |less'
+alias scan_build='scan-build --use-analyzer=$(which clang)'
 
-alias axel2='axel --user-agent="Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.6) Gecko/20070725 Firefox/2.0.0.6" --header="Accept:text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5 Accept-Language: en-us,en;q=0.5 Accept-Encoding: gzip,deflate Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7 Keep-Alive: 300"'
+alias brews='brew list'
+alias buuc='echo "brew update" && brew update && echo "brew upgrade" && brew upgrade && "brew cleanup" brew cleanup'
 
-alias rdm-res="tail -f /tmp/rdm_answer"
+alias rdm_res='tail -f /tmp/rdm_answer'
 
-# for mac
-alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
-alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+# remote to pc
+alias lab_rdp='rdesktop -g 1024x768 -f -u pub -p 123 -r sound:local -r clipboard:PRIMARYCLIPBOARD -r disk:home=/home/hongxu 192.168.1.108 &>/dev/null & disown'
+alias pat_ssh='ssh -X root@pat.sce.ntu.edu.sg'
+alias lab_ssh='ssh -X 155.69.149.37'
 
-# locally remote to pc
-alias lab-ssh="ssh -X 155.69.149.37"
+alias la='ls -a'
+alias l='ls -F'
+alias ll='ls -lh'
+alias kl='k | less'
+alias sl='ls'

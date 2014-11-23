@@ -113,9 +113,48 @@ function homebrew-backup () {
     echo '[ ! -z $failed_items ] && echo The following items were failed to install: && echo $failed_items'
 }
 
+function git_prompt_info() {
+  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+    echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
+}
+
+# get the difference between the local and remote branches
+git_remote_status() {
+    remote=${$(git rev-parse --verify ${hook_com[branch]}@{upstream} --symbolic-full-name 2>/dev/null)/refs\/remotes\/}
+    if [[ -n ${remote} ]] ; then
+        ahead=$(git rev-list ${hook_com[branch]}@{upstream}..HEAD 2>/dev/null | wc -l)
+        behind=$(git rev-list HEAD..${hook_com[branch]}@{upstream} 2>/dev/null | wc -l)
+
+        if [ $ahead -eq 0 ] && [ $behind -gt 0 ]
+        then
+            echo "$ZSH_THEME_GIT_PROMPT_BEHIND_REMOTE"
+        elif [ $ahead -gt 0 ] && [ $behind -eq 0 ]
+        then
+            echo "$ZSH_THEME_GIT_PROMPT_AHEAD_REMOTE"
+        elif [ $ahead -gt 0 ] && [ $behind -gt 0 ]
+        then
+            echo "$ZSH_THEME_GIT_PROMPT_DIVERGED_REMOTE"
+        fi
+    fi
+}
+
+# Formats prompt string for current git commit short SHA
+function git_prompt_short_sha() {
+  SHA=$(git rev-parse --short HEAD 2> /dev/null) && echo "$ZSH_THEME_GIT_PROMPT_SHA_BEFORE$SHA$ZSH_THEME_GIT_PROMPT_SHA_AFTER"
+}
+
+# Formats prompt string for current git commit long SHA
+function git_prompt_long_sha() {
+  SHA=$(git rev-parse HEAD 2> /dev/null) && echo "$ZSH_THEME_GIT_PROMPT_SHA_BEFORE$SHA$ZSH_THEME_GIT_PROMPT_SHA_AFTER"
+}
+
 ##########################################################################################
 ## linux only
 ##########################################################################################
+
+function help(){
+    man zshbuiltins | sed -ne "/^       $1 /,/^\$/{s/       //; p}"
+}
 
 function watchdir () {
     if [[ "$1" != "" ]]; then

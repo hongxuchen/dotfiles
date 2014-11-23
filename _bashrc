@@ -12,6 +12,8 @@ HISTCONTROL=$HISTCONTROL${HISTCONTROL+,}ignoredups
 # ... or force ignoredups and ignorespace
 HISTCONTROL=ignoreboth
 
+SHELL=$(which bash)
+
 # append to the history file, don't overwrite it
 shopt -s histappend
 # check the window size after each command and, if necessary,
