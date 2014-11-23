@@ -25,6 +25,7 @@ alias svn='colorsvn'
 alias rdp_lab='rdesktop -g 1024x768 -f -u pub -p 123 -r sound:local -r clipboard:PRIMARYCLIPBOARD -r disk:home=/home/hongxu 192.168.1.108 &>/dev/null & disown'
 alias gdb='gdb -q'
 alias grt='cd $(git rev-parse --show-toplevel)'
+ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=tty' || alias ls='ls -G'
 alias la='ls -a'
 alias q="exit"
 alias l='ls -F'

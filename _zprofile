@@ -36,63 +36,62 @@ MY_WLLVM_ROOT=${MY_ROOT}/wllvm
 export MY_UNAME=$(uname)
 
 mac_set_up(){
-  export MY_BREW_PREFIX=/usr/local
-  export PATH=/usr/sbin:/sbin:/usr/bin:/bin:/opt/local/bin
-  export PATH=${MY_BREW_PREFIX}/bin:$PATH
-  export PATH=/usr/texbin:$PATH
-  export PATH=${MY_BREW_PREFIX}/opt/llvm/bin:$PATH
-  export PATH=~/Library/Python/2.7/bin:$PATH
-  export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
-  export PATH=${MY_WLLVM_ROOT}:$PATH
+    export MY_BREW_PREFIX=/usr/local
+    export PATH=/usr/sbin:/sbin:/usr/bin:/bin:/opt/local/bin
+    export PATH=${MY_BREW_PREFIX}/bin:$PATH
+    export PATH=/usr/texbin:$PATH
+    export PATH=${MY_BREW_PREFIX}/opt/llvm/bin:$PATH
+    export PATH=~/Library/Python/2.7/bin:$PATH
+    export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
+    export PATH=${MY_WLLVM_ROOT}:$PATH
 
-  export LD_LIBRARY_PATH=
-  export LD_LIBRARY_PATH=/usr/local/Cellar/llvm/3.5.0/lib
+    export LD_LIBRARY_PATH=
+    export LD_LIBRARY_PATH=/usr/local/Cellar/llvm/3.5.0/lib
 
-  export CPLUS_INCLUDE_PATH=
-  export CPLUS_INCLUDE_PATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1
-  export CPLUS_INCLUDE_PATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include:${CPLUS_INCLUDE_PATH}
-  export C_INCLUDE_PATH=
+    export CPLUS_INCLUDE_PATH=
+    export CPLUS_INCLUDE_PATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1
+    export CPLUS_INCLUDE_PATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include:${CPLUS_INCLUDE_PATH}
+    export C_INCLUDE_PATH=
 
 }
 
 linux_set_up(){
+    export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 
-  export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+    export MY_BREW_PREFIX=$HOME/.linuxbrew
+    export PATH=${MY_BREW_PREFIX}/bin:$PATH
 
-  export MY_BREW_PREFIX=$HOME/.linuxbrew
-  export PATH=${MY_BREW_PREFIX}/bin:$PATH
+    export PATH=/usr/local/texlive/2014/Bin/x86_64-linux:$PATH
+    export PATH=${MY_LLVM_OBJ}/bin:${MY_CLANG_TOOLS}/scan-build:${MY_CLANG_TOOLS}/scan-view:${MY_STP_INSTALL}/bin:$PATH
+    export PATH=${MY_WLLVM_ROOT}:$PATH
+    export PATH=${MY_KLEE_INSTALL}/bin:$PATH
+    export PATH=${PIN_ROOT}:$PATH
+    export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
+    export PATH=~/tools/FSharp-2.0.0.0/bin:$PATH
+    export PATH=:~/.bin:~/.local/bin:$PATH
 
-  export PATH=/usr/local/texlive/2014/Bin/x86_64-linux:$PATH
-  export PATH=${MY_LLVM_OBJ}/bin:${MY_CLANG_TOOLS}/scan-build:${MY_CLANG_TOOLS}/scan-view:${MY_STP_INSTALL}/bin:$PATH
-  export PATH=${MY_WLLVM_ROOT}:$PATH
-  export PATH=${MY_KLEE_INSTALL}/bin:$PATH
-  export PATH=${PIN_ROOT}:$PATH
-  export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
-  export PATH=~/tools/FSharp-2.0.0.0/bin:$PATH
-  export PATH=:~/.bin:~/.local/bin:$PATH
+    export CPLUS_INCLUDE_PATH=
+    export CPLUS_INCLUDE_PATH=${MY_BREW_PREFIX}/include:${CPLUS_INCLUDE_PATH}
+    export CPLUS_INCLUDE_PATH=~/qemu/panda/distorm/include:${CPLUS_INCLUDE_PATH}
+    export CPLUS_INCLUDE_PATH=${MY_KLEE_INCLUDE}:${MY_KLEE_INCLUDE}/../../obj/include:${CPLUS_INCLUDE_PATH}
+    export C_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}
+    # export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/tools/clang/include:${MY_LLVM_ROOT}/obj/tools/clang/include:${CPLUS_INCLUDE_PATH}
 
-  export CPLUS_INCLUDE_PATH=
-  export CPLUS_INCLUDE_PATH=${MY_BREW_PREFIX}/include:${CPLUS_INCLUDE_PATH}
-  export CPLUS_INCLUDE_PATH=~/qemu/panda/distorm/include:${CPLUS_INCLUDE_PATH}
-  export CPLUS_INCLUDE_PATH=${MY_KLEE_INCLUDE}:${MY_KLEE_INCLUDE}/../../obj/include:${CPLUS_INCLUDE_PATH}
-  export C_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}
-  # export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/tools/clang/include:${MY_LLVM_ROOT}/obj/tools/clang/include:${CPLUS_INCLUDE_PATH}
+    export LD_LIBRARY_PATH=
+    export LD_LIBRARY_PATH=${MY_LLVM_OBJ}/lib:${MY_STP_INSTALL}/lib
+    export LD_LIBRARY_PATH=${MY_BREW_PREFIX}:${LD_LIBRARY_PATH}
 
-  export LD_LIBRARY_PATH=
-  export LD_LIBRARY_PATH=${MY_LLVM_OBJ}/lib:${MY_STP_INSTALL}/lib
-  export LD_LIBRARY_PATH=${MY_BREW_PREFIX}:${LD_LIBRARY_PATH}
+    # export MONO_PATH=~/tools/FSharp-2.0.0.0:$MONO_PATH
+    export PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/site-packages
 
-  # export MONO_PATH=~/tools/FSharp-2.0.0.0:$MONO_PATH
-  export PYTHONPATH=$PYTHONPATH:/usr/lib/python2.7/site-packages
-
-  stty ixany
-  stty ixoff -ixon
-
+    stty ixany
+    stty ixoff -ixon
 }
-if [ "${MY_UNAME}" = "Darwin" ];then
-  mac_set_up
-else
-  linux_set_up
+
+if [[ $OSTYPE == "linux-gnu" ]];then
+    linux_set_up
+elif [[ $OSTYPE == "darwin"* ]];then
+    mac_set_up
 fi
 
 ###

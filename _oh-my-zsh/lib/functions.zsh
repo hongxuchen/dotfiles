@@ -2,22 +2,6 @@ function zsh_stats() {
     history | awk '{CMD[$2]++;count++;}END { for (a in CMD)print CMD[a] " " CMD[a]/count*100 "% " a;}' | grep -v "./" | column -c3 -s " " -t | sort -nr | nl |  head -n20
 }
 
-function watchdir () {
-    if [[ "$1" != "" ]]; then
-        local dir="$1"; shift
-        if [[ -x "`which inotifywait`" ]]; then
-            ls $dir
-            while true; do
-                inotifywait -q $@ $dir
-            done
-        else
-            echo "$0: inotifywait not found" > /dev/stderr
-        fi
-    else
-        echo "Usage: $0 <dir> [-e event1 -e event2 ...]"
-    fi
-}
-
 function mv() {
     FILE="${@: -1}" # bash or ksh,zsh
     if [ -f $FILE ];
@@ -95,23 +79,6 @@ function node-docs() {
     open "http://nodejs.org/docs/$(node --version)/api/all.html#all_$1"
 }
 
-# get the name of the ruby version
-function rvm_prompt_info() {
-    [ -f $HOME/.rvm/bin/rvm-prompt ] || return
-    local rvm_prompt
-    rvm_prompt=$($HOME/.rvm/bin/rvm-prompt ${ZSH_THEME_RVM_PROMPT_OPTIONS} 2>/dev/null)
-    [[ "${rvm_prompt}x" == "x" ]] && return
-    echo "${ZSH_THEME_RVM_PROMPT_PREFIX:=(}${rvm_prompt}${ZSH_THEME_RVM_PROMPT_SUFFIX:=)}"
-}
-
-pdf-merge() {
-    tomerge="";
-    for file in "$@"; do
-        tomerge=$tomerge" "$file;
-    done
-    pdftk $tomerge cat output mergd.pdf;
-}
-
 function mcd() {
     mkdir -p "$1" && cd "$1";
 }
@@ -144,4 +111,32 @@ function homebrew-backup () {
                     echo "install_package $item '$(brew info $item | /usr/bin/grep 'Built from source with:' | /usr/bin/sed 's/^[ \t]*Built from source with:/ /g; s/\,/ /g')'"
                 done
     echo '[ ! -z $failed_items ] && echo The following items were failed to install: && echo $failed_items'
+}
+
+##########################################################################################
+## linux only
+##########################################################################################
+
+function watchdir () {
+    if [[ "$1" != "" ]]; then
+        local dir="$1"; shift
+        if [[ -x "`which inotifywait`" ]]; then
+            ls $dir
+            while true; do
+                inotifywait -q $@ $dir
+            done
+        else
+            echo "$0: inotifywait not found" > /dev/stderr
+        fi
+    else
+        echo "Usage: $0 <dir> [-e event1 -e event2 ...]"
+    fi
+}
+
+pdf-merge() {
+    tomerge="";
+    for file in "$@"; do
+        tomerge=$tomerge" "$file;
+    done
+    pdftk $tomerge cat output mergd.pdf;
 }

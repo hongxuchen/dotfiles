@@ -3,15 +3,12 @@
 # ls colors
 autoload colors; colors;
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
-#export LS_COLORS
+export LS_COLORS
 
-# Find the option for using colors in ls, depending on the version: Linux or BSD
-ls --color -d . &>/dev/null 2>&1 && alias ls='ls --color=tty' || alias ls='ls -G'
-
-#setopt no_beep
+setopt no_beep
 # setopt auto_cd
 setopt multios
-setopt cdablevarS
+# setopt cdablevarS
 
 if [[ x$WINDOW != x ]]
 then
