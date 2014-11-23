@@ -89,7 +89,8 @@ do
     fi
 done
 
-for s in py rb pl sh js zsh tex cpp cc c h hh hpp conf vim txt;
+### we cannot make runnable script to be opened with vim
+for s in tex cpp cc c h hh hpp conf vim txt;
 do
     alias -s $s=vim
 done
