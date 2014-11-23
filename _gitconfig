@@ -33,9 +33,9 @@
 [core]
 	editor = vim -c ':normal gg'
 	pager = less
-	autocrlf = true
 	whitespace = trailing-space,space-before-tab
 	excludesfile = /Users/hongxu/.gitignore_global
+	autocrlf = input
 
 [alias]
 	# ls

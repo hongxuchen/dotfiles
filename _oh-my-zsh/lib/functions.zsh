@@ -18,7 +18,7 @@ function watchdir () {
     fi
 }
 
-function mv(){
+function mv() {
     FILE="${@: -1}" # bash or ksh,zsh
     if [ -f $FILE ];
     then
@@ -26,12 +26,6 @@ function mv(){
     else
         command mv $@
     fi
-}
-
-function rc-make(){
-    rc -W $1
-    make clean
-    make -j$(nproc)
 }
 
 function dict(){
@@ -62,7 +56,7 @@ function emacs() {
         fi
     else
         if [ $DISPLAY ];
-        # then (nohup emacs -fs $@  >~/.nohup.out) & disown
+           # then (nohup emacs -fs $@  >~/.nohup.out) & disown
         then command emacs -fs $@ &>/dev/null & disown
         else command emacs
         fi
@@ -70,7 +64,6 @@ function emacs() {
 }
 
 function sudo() {
-
     if [ "$1" = init ] && [ -n "$SSH_CLIENT" ]; then
         echo >&2 "Never use init when ssh"
         return 1
@@ -83,25 +76,12 @@ function clang-ll() {
     clang -std=c99 -emit-llvm -S $1 -o ${1%.*}.ll ${*:2}
 }
 
-# -debug-buffer-size=1024
-# function opt() {
-#     command opt -load $HOME/marple-llvm/marple/build/bin/marple.so $@
-# }
-
 function clean_llvm(){
     rm -rf klee-* LOG* *.bc *.ll
 }
 
 function cmake-ninja(){
     cmake -GNinja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON $@ && ninja
-}
-
-function evince(){
-    command evince $@ &>/dev/null &
-}
-
-function okular(){
-    command okular $@ &>/dev/null &
 }
 
 function build_and_run_klee(){
@@ -111,29 +91,29 @@ function build_and_run_klee(){
 }
 
 # Open the node api for your current version to the optional section.
-function node-docs {
+function node-docs() {
     open "http://nodejs.org/docs/$(node --version)/api/all.html#all_$1"
 }
 
 # get the name of the ruby version
 function rvm_prompt_info() {
-  [ -f $HOME/.rvm/bin/rvm-prompt ] || return
-  local rvm_prompt
-  rvm_prompt=$($HOME/.rvm/bin/rvm-prompt ${ZSH_THEME_RVM_PROMPT_OPTIONS} 2>/dev/null)
-  [[ "${rvm_prompt}x" == "x" ]] && return
-  echo "${ZSH_THEME_RVM_PROMPT_PREFIX:=(}${rvm_prompt}${ZSH_THEME_RVM_PROMPT_SUFFIX:=)}"
+    [ -f $HOME/.rvm/bin/rvm-prompt ] || return
+    local rvm_prompt
+    rvm_prompt=$($HOME/.rvm/bin/rvm-prompt ${ZSH_THEME_RVM_PROMPT_OPTIONS} 2>/dev/null)
+    [[ "${rvm_prompt}x" == "x" ]] && return
+    echo "${ZSH_THEME_RVM_PROMPT_PREFIX:=(}${rvm_prompt}${ZSH_THEME_RVM_PROMPT_SUFFIX:=)}"
 }
 
 pdf-merge() {
-  tomerge="";
-  for file in "$@"; do
-    tomerge=$tomerge" "$file;
-  done
-  pdftk $tomerge cat output mergd.pdf;
+    tomerge="";
+    for file in "$@"; do
+        tomerge=$tomerge" "$file;
+    done
+    pdftk $tomerge cat output mergd.pdf;
 }
 
 function mcd() {
-  mkdir -p "$1" && cd "$1";
+    mkdir -p "$1" && cd "$1";
 }
 
 function git-dl(){
@@ -146,4 +126,22 @@ function git-dl(){
 function pyclean() {
     ZSH_PYCLEAN_PLACES=${*:-'.'}
     find ${ZSH_PYCLEAN_PLACES} -type f -name "*.py[co]" -delete
+}
+
+function homebrew-backup () {
+    echo '#!/bin/bash'
+    echo ''
+    echo 'failed_items=""'
+    echo 'function install_package() {'
+    echo 'echo EXECUTING: brew install $1 $2'
+    echo 'brew install $1 $2'
+    echo '[ $? -ne 0 ] && $failed_items="$failed_items $1"  # package failed to install.'
+    echo '}'
+
+    brew tap | while read tap; do echo "brew tap $tap"; done
+    brew list | while read item;
+                do
+                    echo "install_package $item '$(brew info $item | /usr/bin/grep 'Built from source with:' | /usr/bin/sed 's/^[ \t]*Built from source with:/ /g; s/\,/ /g')'"
+                done
+    echo '[ ! -z $failed_items ] && echo The following items were failed to install: && echo $failed_items'
 }

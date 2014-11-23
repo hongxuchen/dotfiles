@@ -31,4 +31,6 @@ export TZ='Asia/Shanghai'
 
 export COMMAND_NOT_FOUND_INSTALL_PROMPT=1
 
+export PYTHONPATH=$PYTHONPATH:/usr/local/Cellar/llvm/3.5.0/lib/python2.7/site-packages/
+
 #~/.screenlayout/dual.sh
