@@ -27,7 +27,7 @@ alias r_sync='rsync -avu --delete --progress -h'
 
 alias p_httpd='python -m SimpleHTTPServer'
 alias p_sh='ipython --profile=sh'
-alias p_nb='ipython notebook --pylab inline --profile nb'
+alias p_nb='ipython notebook --matplotlib inline --profile nb'
 alias pprof='google-pprof'
 alias grt='cd $(git rev-parse --show-toplevel)'
 alias indent='command indent -kr -ci2 -cli2 -i2 -l80 -nut' #Google style
@@ -57,7 +57,7 @@ alias buuc='echo "brew update" && brew update && echo "brew upgrade" && brew upg
 alias rdm_res='tail -f /tmp/rdm_answer'
 
 # remote to pc
-alias lab_rdp='rdesktop -g 1024x768 -f -u pub -p 123 -r sound:local -r clipboard:PRIMARYCLIPBOARD -r disk:home=/home/hongxu 192.168.1.108 &>/dev/null & disown'
+# alias lab_rdp='rdesktop -g 1024x768 -f -u pub -p 123 -r sound:local -r clipboard:PRIMARYCLIPBOARD -r disk:home=/home/hongxu 192.168.1.108 &>/dev/null & disown'
 alias pat_ssh='ssh -X root@pat.sce.ntu.edu.sg'
 alias lab_ssh='ssh -X 155.69.149.37'
 
