@@ -62,7 +62,7 @@
 (global-set-key (kbd "C-x f") 'ido-find-file)
 (global-set-key (kbd "C-x C-b") 'ibuffer)
 
-(global-set-key (kbd "s-x") 'smex)
+(global-set-key (kbd "M-x") 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 (global-set-key (kbd "C-c M-x") 'smex-update)
 (global-set-key "\C-ci" 'idomenu)

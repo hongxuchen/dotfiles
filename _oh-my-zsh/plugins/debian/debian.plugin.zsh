@@ -1,5 +1,4 @@
 alias mydeb='time dpkg-buildpackage -rfakeroot -us -uc'
-alias belong='apt-file search'
 
 apt-copy() {
     print '#!/usr/bin/zsh'"\n" > apt-copy.sh

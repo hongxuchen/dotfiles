@@ -83,8 +83,8 @@ linux_set_up(){
     export LD_LIBRARY_PATH=${MY_LLVM_OBJ}/lib:${MY_STP_INSTALL}/lib
     export LD_LIBRARY_PATH=${MY_BREW_PREFIX}:${LD_LIBRARY_PATH}
 
-    # export MONO_PATH=~/tools/FSharp-2.0.0.0:$MONO_PATH
-    export PYTHONPATH=/usr/lib/python2.7/site-packages
+    export PYTHONPATH=
+    export PYTHONPATH=/usr/lib/python2.7/site-packages:${MY_LLVM_ROOT}/src/tools/clang/bindings/python:$PYTHONPATH
 
     stty ixany
     stty ixoff -ixon

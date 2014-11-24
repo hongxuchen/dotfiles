@@ -78,7 +78,7 @@ setopt auto_pushd
 
 for s in mp3 wav aac ogg avi mp4 m4v mov qt mpg mpeg\
              jpg jpeg png psd bmp gif tif tiff\
-             eps ps pdf epub dmg\
+             eps ps pdf epub dmg chm\
              html htm md markdown log\
              ods xls xlsx csv ppt pptx odp pot odt doc docx rtf ;
 do
@@ -87,6 +87,10 @@ do
     elif [[ $OSTYPE == "darwin"* ]];then
         alias -s $s=open
     fi
+done
+
+for z in zip gz; do
+  alias -s $z="less"
 done
 
 ### we cannot make runnable script to be opened with vim

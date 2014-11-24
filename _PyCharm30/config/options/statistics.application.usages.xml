@@ -2,16 +2,17 @@
 <application>
   <component name="StatisticsApplicationUsages">
     <group name="file-type">
-      <project id="pyclang" values="UNKNOWN,Python,XML,C++,PLAIN_TEXT" />
-      <project id="legion" values="Python,Native,UNKNOWN,PLAIN_TEXT,XML,C++" />
-      <project id="wllvm" values="Python,Markdown,XML,UNKNOWN,PLAIN_TEXT" />
-      <project id="glade" values="Python,PLAIN_TEXT,UNKNOWN,XML,DTD" />
-      <project id="cfe_py" values="Native,Python,ReST,C++,UNKNOWN,XML,PLAIN_TEXT" />
-      <project id="google_play_dl" values="Images,ARCHIVE,Native,HTML,C++,PLAIN_TEXT,Markdown,Python,ReST,UNKNOWN,XML" />
-      <project id="my_scrapy" values="PLAIN_TEXT,UNKNOWN,XML,Python,Markdown" />
-      <project id="ply" values="XML,Python,PLAIN_TEXT,HTML,UNKNOWN" />
-      <project id="idapython_ext" values="Native,ARCHIVE,UNKNOWN,Images,C++,PLAIN_TEXT,Markdown,Python,ReST,HTML,XML" />
-      <project id="py_scripts" values="Images,PLAIN_TEXT,ARCHIVE,ReST,UNKNOWN,C++,Python,HTML,XML" />
+      <project id="pyclang" values="PLAIN_TEXT,UNKNOWN,Python,C++,XML" />
+      <project id="legion" values="PLAIN_TEXT,Python,Native,UNKNOWN,C++,XML" />
+      <project id="wllvm" values="Python,PLAIN_TEXT,XML,Markdown,UNKNOWN" />
+      <project id="glade" values="XML,Python,DTD,UNKNOWN,PLAIN_TEXT" />
+      <project id="cfe_py" values="XML,Python,C++,UNKNOWN,Native,ReST,PLAIN_TEXT" />
+      <project id="google_play_dl" values="UNKNOWN,ReST,ARCHIVE,C++,Native,Images,PLAIN_TEXT,Markdown,Python,HTML,XML" />
+      <project id="my_scrapy" values="Markdown,PLAIN_TEXT,XML,UNKNOWN,Python" />
+      <project id="ply" values="UNKNOWN,PLAIN_TEXT,HTML,Python,XML" />
+      <project id="idapython_ext" values="Native,PLAIN_TEXT,ARCHIVE,UNKNOWN,Python,C++,HTML,Markdown,ReST,Images,XML" />
+      <project id="snippets_py2" values="PLAIN_TEXT,XML,Images,UNKNOWN,ReST,C++,Python,Markdown" />
+      <project id="py_scripts" values="C++,ARCHIVE,HTML,ReST,Images,Python,UNKNOWN,XML,PLAIN_TEXT" />
     </group>
     <group name="py-interpreter">
       <project id="pyclang" values="Python 2.7.5+,Python 3.3.2+" />
@@ -23,6 +24,7 @@
       <project id="my_scrapy" values="Python 2.7.5+,Python 2.7.5+,Python 2.7.5+" />
       <project id="ply" values="Python 2.7.5+" />
       <project id="idapython_ext" values="Python 2.7.5+,Python 2.7.5+,Python 2.7.5+,Python 2.7.5+,Python 2.7.5+" />
+      <project id="snippets_py2" values="Python 2.7.8" />
       <project id="py_scripts" values="Python 2.7.5+" />
     </group>
     <group name="vcs">
@@ -34,11 +36,13 @@
       <project id="my_scrapy" values="Git" />
       <project id="ply" values="Git" />
       <project id="idapython_ext" values="Git" />
+      <project id="snippets_py2" values="Git" />
       <project id="py_scripts" values="Git" />
     </group>
     <group name="run-configuration-type-temp">
       <project id="glade" values="PythonConfigurationType" />
       <project id="google_play_dl" values="PythonConfigurationType" />
+      <project id="snippets_py2" values="PythonConfigurationType" />
       <project id="py_scripts" values="PythonConfigurationType" />
     </group>
     <group name="module type">
@@ -51,6 +55,7 @@
       <project id="my_scrapy" values="PYTHON_MODULE" />
       <project id="ply" values="PYTHON_MODULE" />
       <project id="idapython_ext" values="PYTHON_MODULE" />
+      <project id="snippets_py2" values="PYTHON_MODULE" />
       <project id="py_scripts" values="PYTHON_MODULE" />
     </group>
   </component>
@@ -59,8 +64,9 @@
       <entry feature="CreateFile.CreateFileAction" count="8" />
       <entry feature="NewDirectoryProjectAction.empty" count="2" />
       <entry feature="execute.PythonConfigurationType.Debug" count="1" />
-      <entry feature="execute.PythonConfigurationType.Run" count="16" />
-      <entry feature="ideaapp.started" count="5" />
+      <entry feature="execute.PythonConfigurationType.Run" count="18" />
+      <entry feature="ide.settings.Project_Interpreter" count="1" />
+      <entry feature="ideaapp.started" count="8" />
     </counts>
   </component>
 </application>

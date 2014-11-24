@@ -279,10 +279,10 @@ and back in -->
       <action name="Unfocus"/>
     </keybind>
     <!-- Keybindings for window switching -->
-    <keybind key="A-Tab">
+    <keybind key="W-Tab">
       <action name="NextWindow"/>
     </keybind>
-    <keybind key="A-S-Tab">
+    <keybind key="W-S-Tab">
       <action name="PreviousWindow"/>
     </keybind>
     <!-- Keybindings for single/dual monitor switching -->
