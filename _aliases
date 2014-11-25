@@ -25,6 +25,12 @@ alias r_mv='rsync -a --progress -h --remove-source-files'
 alias r_update='rsync -avu --progress -h'
 alias r_sync='rsync -avu --delete --progress -h'
 
+alias pscpu10='ps -e -o pcpu,cpu,nice,state,cputime,args|sort -k1 -nr | head -10'
+alias psmem10='ps -e -orss=,args= | sort -b -k1,1n| head -10'
+alias path='echo -e ${PATH//:/\\n}'
+
+alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1])"'
+alias urldecode='python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])"'
 alias p_httpd='python -m SimpleHTTPServer'
 alias p_sh='ipython --profile=sh'
 alias p_nb='ipython notebook --matplotlib inline --profile nb'
@@ -66,3 +72,15 @@ alias l='ls -F'
 alias ll='ls -lh'
 alias kl='k | less'
 alias sl='ls'
+
+## docker related
+# Get container IP
+alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
+# Run deamonized container, e.g., $dkd base /bin/echo hello
+alias dkd="docker run -d -P"
+# Run interactive container, e.g., $dki base /bin/bash
+alias dki="docker run -i -t -P"
+# Stop all containers
+dstop() { docker stop $(docker ps -a -q); }
+# Dockerfile build, e.g., $dbu tcnksm/test 
+dbu() { docker build -t=$1 .; }

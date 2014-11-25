@@ -34,6 +34,7 @@ import processing
 import operator
 import yaml
 import sqlalchemy
+import inspect
 
 # import clang.index
 # import pwd

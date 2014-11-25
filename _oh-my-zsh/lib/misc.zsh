@@ -76,7 +76,7 @@ setopt pushd_ignore_dups
 setopt pushdminus
 setopt auto_pushd
 
-for s in mp3 wav aac ogg avi mp4 m4v mov qt mpg mpeg\
+for s in mp3 wav aac ogg avi mp4 m4v mov qt mpg mpeg f4v flv\
              jpg jpeg png psd bmp gif tif tiff\
              eps ps pdf epub dmg chm\
              html htm md markdown log\

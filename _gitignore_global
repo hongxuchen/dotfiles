@@ -127,3 +127,7 @@ _*_.pdf
 auto/
 _region_.*
 prv_*.fmt
+
+# llvm
+*.bc
+*.bca
