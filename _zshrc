@@ -11,7 +11,7 @@ plugins=(ag pip brew git-extras gem vi-mode docker)
 if [[ $OSTYPE == "linux-gnu" ]]; then
     plugins=($plugins debian svn)
 elif [[ $OSTYPE == "darwin"* ]]; then
-    plugins=(ag pip brew git-extras gem vi-mode)
+    plugins=($plugins vagrant)
 fi
 
 source ~/.aliases
