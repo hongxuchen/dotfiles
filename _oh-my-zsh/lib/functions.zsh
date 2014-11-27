@@ -31,20 +31,11 @@ function encode64(){ echo -n $1 | base64 }
 function decode64(){ echo -n $1 | base64 -D }
 
 function emacs() {
-    pgrep emacs >/dev/null
-    if [ $? -eq 0 ];
-    then
-        if [ $DISPLAY ];
-        then emacsclient -c $@ &
-        else emacsclient -c $@
+        if [[ $OSTYPE == "gnu-linux" ]] && [ $DISPLAY ]; then 
+          command emacs -fs $@ &>/dev/null & disown
+        else 
+          command emacs -nw
         fi
-    else
-        if [ $DISPLAY ];
-           # then (nohup emacs -fs $@  >~/.nohup.out) & disown
-        then command emacs -fs $@ &>/dev/null & disown
-        else command emacs
-        fi
-    fi
 }
 
 function sudo() {

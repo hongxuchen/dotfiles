@@ -35,10 +35,12 @@ import operator
 import yaml
 import sqlalchemy
 import inspect
+import math
 import magic
 import ast
 
 from itertools import *
+from collections import *
 
 from glob import *
 from optparse import *
@@ -55,9 +57,9 @@ if env_clang_tool_dir:
 if platform.system() == 'Darwin':
     import appscript
     import macholib
+    import ds_store
 elif platform.system() == 'Linux':
     pass
     # import elftools
 
-
-#%alias l ls -F
+%alias l ls -F

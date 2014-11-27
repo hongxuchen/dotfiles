@@ -1,0 +1,37 @@
+# pyglet
+# pygobject
+# pyinotify
+# pylint
+# pyparsing
+# pyserial
+# pysmbc
+# python-Levenshtein
+# python-apt
+# python-cloudfiles
+# python-dateutil
+# python-libtorrent
+# python-magic
+# pytz
+# pyxdg
+# pyzmq
+# remuco
+# reportbug
+# reportlab
+# requests
+# roman
+# rope
+# scikit-learn
+# scipy
+# service-identity
+# simplegeneric
+# six
+# sqlalchemy-migrate
+# sympy
+# tabulate
+# tornado
+urllib3
+watchdog
+wheel
+wsgiref
+wstools
+zope.interface

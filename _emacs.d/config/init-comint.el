@@ -28,7 +28,7 @@
   (interactive)
   (terminal default-directory))
 
-(setq explicit-bash-args "-i -l")
+(setq explicit-bash-args '("-i" "-l"))
 
 (setq term-scroll-to-bottom-on-output t)
 
