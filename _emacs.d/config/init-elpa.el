@@ -49,6 +49,7 @@
 (require-package 's)
 (require-package 'robe)
 (require-package 'inf-ruby)
+(require-package 'pcre2el)
 
 ;; ------------------------------------------------------------------------------
 ;; vim like editing
