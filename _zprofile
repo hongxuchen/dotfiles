@@ -33,6 +33,8 @@ MY_KLEE_OBJ=${MY_ROOT}/klee/obj
 MY_KLEE_INCLUDE=${MY_ROOT}/klee/src/include
 MY_WLLVM_ROOT=${MY_ROOT}/wllvm
 
+export MY_CLANG_TOOLS
+
 export MY_UNAME=$(uname)
 
 mac_set_up(){

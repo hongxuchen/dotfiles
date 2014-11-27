@@ -35,14 +35,29 @@ import operator
 import yaml
 import sqlalchemy
 import inspect
-
-# import clang.index
-# import pwd
+import magic
+import ast
 
 from itertools import *
 
 from glob import *
 from optparse import *
+from cffi import *
+
+env_clang_tool_dir=os.environ.get('MY_CLANG_TOOLS')
+if env_clang_tool_dir:
+    clang_pybinding=os.path.join(env_clang_tool_dir, '..', 'bindings/python')
+    binding_file = os.path.normpath(os.path.join(clang_pybinding, 'clang/cindex.py'))
+    if os.path.isfile(binding_file):
+        sys.path.append(clang_pybinding)
+        import clang.cindex
 
 if platform.system() == 'Darwin':
     import appscript
+    import macholib
+elif platform.system() == 'Linux':
+    pass
+    # import elftools
+
+
+#%alias l ls -F
