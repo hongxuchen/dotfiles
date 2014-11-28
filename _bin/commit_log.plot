@@ -1,4 +1,4 @@
-#!/usr/bin/gnuplot
+#!/usr/bin/env gnuplot
 # cd to git checkout repository
 # git log --author=HongxuChen --date=short | grep ^Date: | cut  -c 9- | uniq -c | cut -c 7- > commit_log.txt
 # gnuplot commit_log.plot

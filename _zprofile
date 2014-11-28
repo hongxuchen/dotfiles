@@ -24,11 +24,12 @@ export GREP_COLOR='1;32'
 
 MY_ROOT=~/RESEARCH
 MY_WLLVM_ROOT=${MY_ROOT}/wllvm
+MY_HOME_BIN=~/.bin
 
 mac_set_up() {
     export MY_BREW_PREFIX=/usr/local
     export PATH=/usr/sbin:/sbin:/usr/bin:/bin:/opt/local/bin
-    export PATH=~/.bin:$PATH
+    export PATH=${MY_HOME_BIN}:${MY_HOME_BIN}/git-scripts:${MY_HOME_BIN}/mac:$PATH
     export PATH=${MY_BREW_PREFIX}/bin:$PATH
     export PATH=/usr/texbin:$PATH
     export PATH=${MY_BREW_PREFIX}/opt/llvm/bin:$PATH
@@ -60,7 +61,7 @@ linux_set_up(){
 
     export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 
-    export MY_BREW_PREFIX=$HOME/.linuxbrew
+    export MY_BREW_PREFIX=~/.linuxbrew
     export PATH=${MY_BREW_PREFIX}/bin:$PATH
 
     export PATH=/usr/local/texlive/2014/Bin/x86_64-linux:$PATH
@@ -70,7 +71,7 @@ linux_set_up(){
     export PATH=${MY_PIN_ROOT}:$PATH
     export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
     export PATH=~/tools/FSharp-2.0.0.0/bin:$PATH
-    export PATH=:~/.bin:~/.local/bin:$PATH
+    export PATH=:${MY_HOME_BIN}:${MY_HOME_BIN}/git-scripts:${MY_HOME_BIN}/linux:~/.local/bin:$PATH
 
     export CPLUS_INCLUDE_PATH=
     export CPLUS_INCLUDE_PATH=${MY_BREW_PREFIX}/include:${CPLUS_INCLUDE_PATH}

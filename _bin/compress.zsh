@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 emulate -L zsh
 ename=$0
 usage () {
