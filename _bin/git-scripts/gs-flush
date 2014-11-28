@@ -22,4 +22,4 @@ if [ "$1" = "-f" ]; then
     git stash clear
 fi
 
-git maxpack
+gs-maxpack
