@@ -1,5 +1,4 @@
 " vim: set ft=vim ts=4 sw=2 tw=78 et :
-" -*- mode: vimrc; -*-
 " =====================================================
 " AUTHOR: Hongxu Chen
 " EMAIL:  leftcopy.chx@gmail.com
@@ -28,20 +27,12 @@ nnoremap <silent> <leader>v :w<CR>:source ~/.vimrc<CR>:filetype detect<CR>:exe "
 " sudo write this
 cnoremap W! w !sudo tee % >/dev/null
 
-
-"read pdf files using pdftotext; used with :tabnew!
-:command! -complete=file -nargs=1 Rpdf :r !pdftotext -nopgbrk <q-args> - |fmt -csw78
-
 " Paste from clipboard
 set clipboard=unnamed "Use system clipboard ("*)
 nnoremap <leader>p :set paste! <CR>
 
-
 " Remove trailing whitespace
 nnoremap <leader>s :%s/\s\+$//<cr>:let @/=''<CR>
-
-" auto-save whenever leaving insert mode
-" autocmd  InsertLeave *  write
 
 " C-j to insert a newline
 nnoremap <NL> i<CR><ESC>
@@ -68,10 +59,6 @@ map <silent> <leader>1 :diffget 1<CR> :diffupdate<CR>
 map <silent> <leader>2 :diffget 2<CR> :diffupdate<CR>
 map <silent> <leader>3 :diffget 3<CR> :diffupdate<CR>
 map <silent> <leader>4 :diffget 4<CR> :diffupdate<CR>
-
-" navigate faster by remap SPC/BS
-" nnoremap <space> 10jzz
-" nnoremap <backspace> 10kzz
 
 " refresh if file in Vim is updated by external program,TODO
 noremap <silent><F5> :checktime<CR>:exe ":echo 'file refreshed'"<CR>
@@ -107,7 +94,7 @@ inoremap <C-x>k <C-o>:bd<CR>
 nnoremap <C-x><C-s> :w<CR>
 inoremap <C-x><C-s> <C-o>:w<CR>
 " FIXME seems wrong
-nnoremap <C-x>s :wall<CR>
+nnoremap <C-x>s :wall<CR>:exe ":echo 'vimrc reloaded'"<CR>
 inoremap <C-x>s <C-o>:wall<CR>
 nnoremap <C-x>i :read<Space>
 inoremap <C-x>i <C-o>:read<Space>
@@ -231,6 +218,7 @@ runtime macros/matchit.vim
 " VUNDLE rtp, @see https://github.com/gmarik/vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+Bundle 'szw/vim-g'
 Bundle 'kien/ctrlp.vim'
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-commentary'
@@ -290,7 +278,7 @@ function! AppendModeline()
 endfunction
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
-let g:ctrlp_map = '<c-p>'
+" let g:ctrlp_map = '<c-p>'
 let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_working_path_mode = 'ra'
@@ -318,4 +306,6 @@ let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
 
-set paste
+"vim-g
+let g:vim_g_f_command = "Gf"
+let g:vim_g_command = "Go"

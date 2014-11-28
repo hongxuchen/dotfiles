@@ -1,12 +1,13 @@
 #!/usr/bin/python3
 
+# for small python scripts, simply load them into memory then write back
+
 import sys
 from tempfile import mkstemp
-from shutil import move
 import os
+import shutil
 import re
 import stat
-
 
 def change_shebang(file_path, old, new):
     fh, abs_path = mkstemp()
@@ -23,10 +24,13 @@ def change_shebang(file_path, old, new):
     new_file.close()
     os.close(fh)
     old_file.close()
-    move(abs_path, file_path)
+    shutil.move(abs_path, file_path)
     os.chmod( file_path, os.stat(file_path).st_mode | stat.S_IEXEC )
 
 if __name__ == '__main__':
-    assert(len(sys.argv) > 1)
+    if len(sys.argv) < 2:
+        print("usage: {0} pyfile1 [pyfile2]".format(__file__))
+        sys.exit(1)
     pat = re.compile(r'\bpython(2|(2\.[0-9]))?\b')
+    pylist = sys.argv[1:]
     change_shebang(sys.argv[1], pat, 'python3')
