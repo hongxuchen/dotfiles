@@ -36,7 +36,6 @@ import yaml
 import sqlalchemy
 import inspect
 import math
-import magic
 import ast
 
 from itertools import *
@@ -46,20 +45,27 @@ from glob import *
 from optparse import *
 from cffi import *
 
-env_clang_tool_dir=os.environ.get('MY_CLANG_TOOLS')
-if env_clang_tool_dir:
-    clang_pybinding=os.path.join(env_clang_tool_dir, '..', 'bindings/python')
-    binding_file = os.path.normpath(os.path.join(clang_pybinding, 'clang/cindex.py'))
-    if os.path.isfile(binding_file):
-        sys.path.append(clang_pybinding)
-        import clang.cindex
+def load_clang_binding(plt ):
+    if plt == 'Darwin':
+        pass
+        # sys.path.append('/usr/local/Cellar/llvm/3.5.0/lib/python2.7/site-packages')
+    elif plt == 'Linux':
+        env_clang_tool_dir=os.environ.get('MY_CLANG_TOOLS')
+        if env_clang_tool_dir:
+            clang_pybinding=os.path.join(env_clang_tool_dir, '..', 'bindings/python')
+            binding_file = os.path.normpath(os.path.join(clang_pybinding, 'clang/cindex.py'))
+            if os.path.isfile(binding_file):
+                sys.path.append(clang_pybinding)
+                import clang.cindex
 
-if platform.system() == 'Darwin':
+plt = platform.system()
+if plt == 'Darwin':
     import appscript
     import macholib
     import ds_store
-elif platform.system() == 'Linux':
+elif plt == 'Linux':
     pass
-    # import elftools
+# import elftools
+load_clang_binding(plt)
 
 %alias l ls -F

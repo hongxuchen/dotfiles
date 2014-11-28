@@ -232,8 +232,6 @@ runtime macros/matchit.vim
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'kien/ctrlp.vim'
-" Bundle 'vim-scripts/applescript.vim'
-Bundle 'rdavison/clavim'
 Bundle 'gmarik/vundle'
 Bundle 'tpope/vim-commentary'
 " Bundle 'vim-ruby/vim-ruby'
