@@ -45,7 +45,25 @@ from glob import *
 from optparse import *
 from cffi import *
 
-def load_clang_binding(plt ):
+def my_trim_whitespace(s):
+    """
+    Returns a string that has at most one whitespace
+    character between non-whitespace characters.
+    >>> trim_whitespace(' hi   there')
+    'hi there'
+    """
+    buffer = ''
+    for i, letter in enumerate(s):
+        if letter.isspace():
+            try:
+                if s[i + 1].isspace():
+                    continue
+            except IndexError:
+                pass
+        buffer = buffer + letter
+    return buffer.strip()
+
+def my_load_clang_binding(plt ):
     if plt == 'Darwin':
         pass
         # sys.path.append('/usr/local/Cellar/llvm/3.5.0/lib/python2.7/site-packages')
@@ -66,6 +84,6 @@ if plt == 'Darwin':
 elif plt == 'Linux':
     pass
 # import elftools
-load_clang_binding(plt)
+my_load_clang_binding(plt)
 
 %alias l ls -F

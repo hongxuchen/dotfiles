@@ -31,7 +31,7 @@ function encode64(){ echo -n $1 | base64 }
 function decode64(){ echo -n $1 | base64 -D }
 
 function emacs() {
-        if [[ $OSTYPE == "gnu-linux" ]] && [ $DISPLAY ]; then 
+        if [[ $OSTYPE == "linux-gnu" ]] && [ $DISPLAY ]; then 
           command emacs -fs $@ &>/dev/null & disown
         else 
           command emacs -nw

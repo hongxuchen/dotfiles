@@ -3,7 +3,6 @@
 import sys
 import os
 
-
 def which(program):
 
     def is_exe(fpath):
@@ -27,7 +26,7 @@ for exe_name in ["scan-build", "scan-view", "clang-3.6"]:
     if which(exe_name) is None:
         print("{:s} cannot be found".format(exe_name))
         sys.exit(1)
-clang_exe = which("clang-3.6") + " "
+clang_exe = which("clang") + " "
 scan_build_exe = which("scan-build")
 cmd_str = scan_build_exe + " --use-analyzer " + clang_exe + \
     " -load-plugin ~/repos/snippets_clang/build/bin/libplugin.so -disable-checker core.DivideZero -enable-checker hello.DZChecker -enable-checker security.awr.NetworkTaint"
