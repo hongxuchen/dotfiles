@@ -1,3 +1,0 @@
-#!/bin/sh -xe
-git checkout --detach HEAD
-git merge --no-edit -- "$@"
