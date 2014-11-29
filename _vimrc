@@ -235,7 +235,6 @@ Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-jdaddy'
 Bundle 'Tagbar'
 Bundle 'jiangmiao/auto-pairs'
-Bundle 'davidhalter/jedi-vim'
 Bundle 'Superbil/llvm.vim'
 Bundle 'Cpp11-Syntax-Support'
 Bundle 'scrooloose/nerdtree'
@@ -301,7 +300,7 @@ let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_min_num_of_chars_for_completion = 99 
 let g:ycm_min_num_identifier_candidate_chars = 2
-let g:ycm_auto_trigger = 0
+let g:ycm_auto_trigger = 1
 let g:ycm_collect_identifiers_from_tags_files = 0 " Let YCM read tags from Ctags file
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 let g:ycm_complete_in_comments = 1 " Completion in comments

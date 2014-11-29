@@ -1,3 +1,5 @@
+#!/bin/sh
+
 #################################################################
 #debian based cleaner
 #1. purge unused packages
@@ -7,9 +9,6 @@
 #aptitude
 #trash-cli(optional)
 #################################################################
-
-
-#!/bin/sh
 
 PROG=$0
 OPTIONS=`getopt -o pth -l package,trash,help -- $*`

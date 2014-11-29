@@ -1,6 +1,4 @@
-#!/usr/bin/python3
-
-__version__ = "20131022"
+#!/usr/bin/env python
 
 import getopt
 import sys
