@@ -208,6 +208,7 @@ set wildignore+=*.bak,*.exe,*.chm,*.png,*.jpg,*.jpeg,*.gif,*.avi,*.rm,*.rmvb
 " completion
 " set completeopt=menu,longest
 set completeopt=longest
+set completeopt=longest,menuone
 set pumheight=8
 
 " =====================================================
