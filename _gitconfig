@@ -39,39 +39,35 @@
 
 [alias]
 	# ls
-	ls-ignored = ls-files --exclude-standard --ignored --others
-	lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    bclean = "!f() { git branch --merged ${1-master} | grep -v " ${1-master}$" | xargs -r git branch -d;  }; f"
+    bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master};  }; f"
+	li = ls-files --exclude-standard --ignored --others
 	wc = whatchanged -p --abbrev-commit --pretty=medium
-	dv= !zsh -c 'git diff -w "$@" | view -'
-	lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-	lp = log --decorate --pretty=\"%h %ce [%ar] : %s\"
-	last =  log --pretty=\"%h %ce [%ar] : %s\" -1 HEAD
+	s = status --short --branch --ignore-submodules=untracked
+    up = !git pull --rebase --prune $@ && git submodule update --init --recursive
+    # log
+    lola = log --pretty=\"%Cred%h%Creset [%Cgreen%an %Creset %C(cyan)%ar%Creset]: %Cred%d%Creset %C(yellow)%s%Creset\" --graph --all
+    rct = log -8 HEAD
 	lm = !git log --decorate --pretty=format:'%an <%ae>' $1 | sort | uniq -c
-	up = !zsh -c 'git pull --rebase --prune && git log --pretty=format:\"%Cred%ae %Creset- %C(yellow)%s %Creset(%ar)\" HEAD@{1}..'
-	# [b]ranch
-	bd = !zsh -c 'diff -u <(git rev-list --first-parent "${1}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -1' -
 	# [c]ommit
-	cl = !git log --decorate --graph --abbrev-commit --date=relative --pretty='tformat:%C(yellow)%h%Creset}%Cgreen(%ar)%Creset}%C(bold blue)<%an>%Creset}%C(red)%d%Creset %s' $* | sed -Ee 's/(^[^<]*) ago)/\\1)/' | sed -Ee 's/(^[^<]*), [[:digit:]]+ .*months?)/\\1)/' | column -t -s '}' | less -FXRS
 	cp = cherry-pick -x
 	cr = reset --hard HEAD^
-	# [f]ile
-	faa = !git add -A && git ws
+	undo = reset HEAD@{1}
 	# [r]emote
 	rp = !git push && git push --tags
 	rfp = !git add -A && git commit --amend -C HEAD && git push -f
 	rup = !git add -A && git commit && git push -u
 	# [s]ubmodule
 	scm = submodule foreach --recursive git checkout master
-	sl = submodule --quiet foreach --recursive echo $path on $(git rev-parse --abbrev-ref HEAD)
 	ss = !git submodule sync && git submodule update --init --recursive # [s]ync
 	su = submodule foreach --recursive git pull # [u]pdate
 	# [t]ag
 	tl = tag -n1 --list
 	tr = tag -d
-	# [w]orking copy
-	wd = diff --color-words --cached
-	ws = status --short --branch --ignore-submodules=untracked
-	undo = reset HEAD@{1}
+    # [d]iff
+	dw = diff --color-words --cached
+	db = !zsh -c 'diff -u <(git rev-list --first-parent "${1}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -1' -
+	dv= !zsh -c 'git diff -w "$@" | view -'
 
 [diff]
 	tool = vimdiff

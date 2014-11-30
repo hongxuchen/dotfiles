@@ -56,12 +56,13 @@ setopt nohashdirs #immediately $PATH executables
 
 [[ -e /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found
 
-alias -g ND="*(/om[1])" # newest directory
-alias -g NF="*(.om[1])" # newest file
+alias -g ND="*(/om[10])" # newest directory
+alias -g NF="*(.om[10])" # newest file
 alias -g L='| less'
 alias -g LL='2>&1 | less'
+alias -g VV='| view -'
 alias -g GG='| ag'
-alias -g HH='|& head -n 20'
+alias -g HH='| head -n 20'
 alias -g TT='| tail -20'
 TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S'
 

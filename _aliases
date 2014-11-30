@@ -70,6 +70,7 @@ alias lab_ssh='ssh -X 155.69.149.37'
 alias la='ls -a'
 alias l='ls -F'
 alias ll='ls -lh'
+alias lrt'ls -lrth'
 alias kl='k | less'
 alias sl='ls'
 
