@@ -125,7 +125,7 @@ filetype on                   " try to detect filetypes
 filetype plugin on            " recognize filetype
 filetype plugin indent on     " enable loading indent file for filetype
 "set textwidth=80              " TODO
-set viminfo+=!                " global variables
+" set viminfo+=!               " global variables
 set grepprg=grep\ -nH\ $*     "grep always displays filename
 set ttyfast
 set splitright                " 
