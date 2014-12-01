@@ -65,7 +65,7 @@
 	tl = tag -n1 --list
 	tr = tag -d
     # [d]iff
-	dw = diff --color-words --cached
+	dc = diff --cached
 	db = !zsh -c 'diff -u <(git rev-list --first-parent "${1}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -1' -
 	dv= !zsh -c 'git diff -w "$@" | view -'
 

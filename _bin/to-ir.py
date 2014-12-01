@@ -4,36 +4,75 @@ from __future__ import print_function
 import sys
 import subprocess
 from colorama import *
+from argparse import *
 
 init()
 
-src=sys.argv[1]
-src_prefix, src_suffix = tuple(src.rsplit('.', 1))
-ir=src_prefix+'.ll'
+parser = ArgumentParser(description="compile c/c++ into llvm IR")
+parser.add_argument("file", metavar="FILE", action="store", help="FILE to be proprecessed")
+parser.add_argument("-compiler", default="clang", help="llvm compatible compiler(default: clang)")
+parser.add_argument("-c", action="store_true", help="generate bitcode rather than IR")
+parser.add_argument("--nostd", action="store_true", help="if in arglist, don't add -std=c99/-std=c++11")
+parser.add_argument("-cs", action="store_true", help="when in arglist, -print-stats for compilation")
+parser.add_argument("--cf",metavar="\"COMPILATION_FLAGS\"", help="extra compilation flags(string)")
+parser.add_argument("--of", metavar="\"OPT_FLAGS\"", help="extra optimization flags(string)")
+if len(sys.argv) == 1:
+    parser.print_help()
+    sys.exit(1)
 
-if src_suffix in ('.cc', '.cpp', 'cxx'):
-    compiler='clang++'
-elif src_suffix in ('.c'):
-    compiler='clang'
+args = parser.parse_args()
+if args.file is None:
+    print(Fore.RED, "file not specified, exit", file=sys.stderr)
+    sys.exit(1)
+inputfile=args.file
+src_prefix, src_suffix = tuple(inputfile.rsplit('.', 1))
+compiler_flags = [args.compiler, inputfile]
+
+if src_suffix in ['cc', 'cpp', 'cxx']:
+    compile_type = 'c++'
+elif src_suffix == 'c':
+    compile_type = 'c'
+
+if compile_type == 'c':
+    compiler_flags.extend(['-xc'])
+    if not args.nostd:
+        compiler_flags.append('-std=c99')
+elif compile_type == 'c++':
+    compiler_flags.extend(['-xc++'])
+    if not args.nostd:
+        compiler_flags.append('-std=c++11')
+
+compiler_flags.extend(['-c', '-emit-llvm'])
+
+if args.cs:
+    compiler_flags.extend(['-Xclang', '-print-stats'])
+
+if args.cf:
+    compiler_flags.extend(args.cf.split())
+
+compiler_flags.extend(['-o', '-'])
+
+print(Style.BRIGHT, ' '.join(compiler_flags), Style.NORMAL)
+
+opt_flags=['opt']
+
+if args.of is None:
+    opt_flags.append('-mem2reg')
 else:
-    print("should be c/c++ file", file=sys.stderr)
-    exit(1)
+    opt_flags.extend(args.of.split())
 
-if compiler=='clang':
-    standard='-std=c99'
-elif compiler=='clang++':
-    standard='-std=c++11'
+if args.c:
+    outfile=src_prefix+'.bc'
+else:
+    opt_flags.append('-S')
+    outfile=src_prefix+'.ll'
+opt_flags.extend(['-o', outfile])
 
-opt_pass=['-mem2reg']
-
-p1_call_str='{0} {1} -emit-llvm -S {2} -o - '.format(compiler, standard, src)
-p2_call_str='opt -S -o {0} '.format(ir) + ' '.join(opt_pass)
-print(Fore.MAGENTA, p1_call_str)
-print(Fore.MAGENTA, p2_call_str)
+print(Style.BRIGHT, ' '.join(opt_flags), Style.NORMAL)
 
 try:
-    p1 = subprocess.Popen(p1_call_str.split(' '), stdout=subprocess.PIPE)
-    p2 = subprocess.Popen(p2_call_str.split(' '), stdin=p1.stdout, stdout=subprocess.PIPE)
+    p1 = subprocess.Popen(compiler_flags, stdout=subprocess.PIPE)
+    p2 = subprocess.Popen(opt_flags, stdin=p1.stdout, stdout=subprocess.PIPE)
 except Exception as e:
     print(Fore.RED, e, file=sys.stderr)
     exit(1)

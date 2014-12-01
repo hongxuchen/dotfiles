@@ -43,7 +43,7 @@ from itertools import *
 from collections import *
 
 from glob import *
-from optparse import *
+from argparse import *
 from cffi import *
 
 def my_trim_whitespace(s):
@@ -87,4 +87,7 @@ elif plt == 'Linux':
 # import elftools
 my_load_clang_binding(plt)
 
-%alias l ls -F
+if plt == 'Darwin':
+    %alias l ls -GF
+elif plt == 'Linux':
+    %alias l ls -F --color=tty

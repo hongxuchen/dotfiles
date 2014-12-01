@@ -29,7 +29,7 @@ def change_shebang(fpath, target, chmod):
         os.chmod( fpath, os.stat(fpath).st_mode | stat.S_IEXEC )
 
 if __name__ == '__main__':
-    parser = ArgumentParser(description="A snippt to add or change shebang")
+    parser = ArgumentParser(description="A snippet to add or change shebang")
     parser.add_argument("-t,", "--target", metavar="EXE", default='python', required=False, help="the target interpreter(default: python)")
     parser.add_argument("file_list", metavar="FILE", nargs="+", action="store", help="FILEs to be processed")
     parser.add_argument("-x", action="store_false", required=False, help="also change FILEs to be executable(default: True, when specified with no arg:False)")
