@@ -76,6 +76,7 @@ linux_set_up(){
     export CPLUS_INCLUDE_PATH=
     export CPLUS_INCLUDE_PATH=${MY_BREW_PREFIX}/include:${CPLUS_INCLUDE_PATH}
     export CPLUS_INCLUDE_PATH=~/qemu/panda/distorm/include:${CPLUS_INCLUDE_PATH}
+    export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/include:${CPLUS_INCLUDE_PATH}
     export CPLUS_INCLUDE_PATH=${MY_KLEE_INCLUDE}:${MY_KLEE_INCLUDE}/../../obj/include:${CPLUS_INCLUDE_PATH}
     export C_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}
     # export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/tools/clang/include:${MY_LLVM_ROOT}/obj/tools/clang/include:${CPLUS_INCLUDE_PATH}

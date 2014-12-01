@@ -10,11 +10,6 @@
 " =====================================================
 
 " When editing a file, always jump to the last known cursor position.
-" autocmd BufReadPost *
-"       if line("'\"") > 1 && line("'\"") <= line("$") |
-"         exe "normal! g`\"" |
-"       endif
-"
 
 autocmd BufNewFile,BufRead *.ipynb setfiletype javascript
 
@@ -32,7 +27,9 @@ set clipboard=unnamed "Use system clipboard ("*)
 nnoremap <leader>p :set paste! <CR>
 
 " Remove trailing whitespace
-nnoremap <leader>s :%s/\s\+$//<cr>:let @/=''<CR>
+" nnoremap <leader>s :%s/\s\+$//<cr>:let @/=''<CR>
+
+nnoremap <leader>s :pwd <CR>
 
 " C-j to insert a newline
 nnoremap <NL> i<CR><ESC>
@@ -85,35 +82,36 @@ cabbrev hh tab help
 " emacs like settings
 " =====================================================
 " both insert and normal
-nnoremap <C-x>0 :hide<CR>
-inoremap <C-x>0 <C-o>:hide<CR>
-nnoremap <C-x>1 :hide :only<CR>
-inoremap <C-x>1 <C-o>:hide :only<CR>
-nnoremap <C-x>k :bd<CR>
-inoremap <C-x>k <C-o>:bd<CR>
-nnoremap <C-x><C-s> :w<CR>
-inoremap <C-x><C-s> <C-o>:w<CR>
-" FIXME seems wrong
-nnoremap <C-x>s :wall<CR>:exe ":echo 'vimrc reloaded'"<CR>
-inoremap <C-x>s <C-o>:wall<CR>
-nnoremap <C-x>i :read<Space>
-inoremap <C-x>i <C-o>:read<Space>
-nnoremap <C-x><C-w> :write<Space>
-inoremap <C-x><C-w> <C-o>:write<Space>
-nnoremap <C-x><C-q> :set invreadonly<CR>
-inoremap <C-x><C-q> <C-o>:set invreadonly<CR>
-nnoremap <C-x><C-c> :qall<CR>
-inoremap <C-x><C-c> <C-o>:qall<CR>
-nnoremap <C-x>d :E<CR>
-inoremap <C-x>d <C-o>:E<CR>
-nnoremap <C-x>b :CtrlPMRUFiles<CR>
-inoremap <C-x>b <C-o>:CtrlPMRUFiles<CR>
+nnoremap <silent><C-x>0 :hide<CR>
+inoremap <silent><C-x>0 <C-o>:hide<CR>
+nnoremap <silent><C-x>1 :hide :only<CR>
+inoremap <silent><C-x>1 <C-o>:hide :only<CR>
+nnoremap <silent><C-x>k :bd<CR>
+inoremap <silent><C-x>k <C-o>:bd<CR>
+nnoremap <silent><C-x><C-s> :w<CR>:exe ":echo 'saved' bufname(\"%\")"<CR>
+inoremap <silent><C-x><C-s> <C-o>:w<CR><C-o>:exe ":echo 'saved' bufname(\"%\")"<CR>
+nnoremap <silent><C-x>s :wall<CR>:exe ":echo 'saved all buffers'"<CR>
+inoremap <silent><C-x>s <C-o>:wall<CR>
+nnoremap <silent><C-x>i :read<Space>
+inoremap <silent><C-x>i <C-o>:read<Space>
+nnoremap <silent><C-x><C-w> :write<Space>
+inoremap <silent><C-x><C-w> <C-o>:write<Space>
+nnoremap <silent><C-x><C-q> :set invreadonly<CR>
+inoremap <silent><C-x><C-q> <C-o>:set invreadonly<CR>
+nnoremap <silent><C-x><C-c> :wqall<CR>
+inoremap <silent><C-x><C-c> <C-o>:wqall<CR>
+nnoremap <silent><C-x><C-j> :E<CR>
+inoremap <silent><C-x><C-J> <C-o>:E<CR>
+nnoremap <silent><C-x>b :CtrlPMRUFiles<CR>
+inoremap <silent><C-x>b <C-o>:CtrlPMRUFiles<CR>
+inoremap <C-e> <C-o>$
+inoremap <C-a> <C-o>0
 
 inoremap <silent><C-f> <Right>
 inoremap <silent><C-b> <Left>
-inoremap <C-d> <Del>
-inoremap <M-n> <C-o>:cnext<CR>
-inoremap <M-p> <C-o>:cprevious<CR>
+inoremap <silent><C-d> <Del>
+inoremap <silent><M-n> <C-o>:cnext<CR>
+inoremap <silent><M-p> <C-o>:cprevious<CR>
 
 cnoremap <C-g> <ESC><ESC>
 

@@ -143,7 +143,7 @@ function git_prompt_long_sha() {
 ## linux only
 ##########################################################################################
 
-function help(){
+function zshbuiltin-help(){
     man zshbuiltins | sed -ne "/^       $1 /,/^\$/{s/       //; p}"
 }
 
