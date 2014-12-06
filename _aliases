@@ -24,6 +24,7 @@ alias r_cp='rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --'
 alias r_mv='rsync -a --progress -h --remove-source-files'
 alias r_update='rsync -avu --progress -h'
 alias r_sync='rsync -avu --delete --progress -h'
+alias trash-empty='rm -rf ~/.local/share/Trash'
 
 alias pscpu10='ps -e -o pcpu,cpu,nice,state,cputime,args|sort -k1 -nr | head -10'
 alias psmem10='ps -e -orss=,args= | sort -b -k1,1n| head -10'
@@ -43,7 +44,6 @@ alias svn='colorsvn'
 alias sudo='sudo '
 alias more='less'
 alias info='man'
-alias q='exit'
 alias dl='axel -a -n 8 -U "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.6) Gecko/20070725 Firefox/2.0.0.6" -H "Accept:text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5 Accept-Language: en-us,en;q=0.5 Accept-Encoding: gzip,deflate Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7 Keep-Alive: 300"'
 alias adl="aria2c -s8 -x8"
 
@@ -72,11 +72,12 @@ alias la='ls -a'
 alias l='ls -F'
 alias ll='ls -lh'
 alias lrt='ls -lrth'
-alias kl='k | less'
+alias kl='k.zsh | less'
 alias sl='ls'
 
 alias v=view
 alias e=vi
+alias q='exit'
 
 ## docker related
 # Get container IP
@@ -87,5 +88,5 @@ alias dkd="docker run -d -P"
 alias dki="docker run -i -t -P"
 # Stop all containers
 dstop() { docker stop $(docker ps -a -q); }
-# Dockerfile build, e.g., $dbu tcnksm/test 
+# Dockerfile build, e.g., $dbu tcnksm/test
 dbu() { docker build -t=$1 .; }

@@ -1,4 +1,5 @@
-#compdef vagrant 
+# -*- mode: sh; -*-
+#compdef vagrant
 #autoload
 
 # vagrant zsh completion
@@ -69,19 +70,19 @@ __vagrant-box ()
         ':command:->command' \
         '*::options:->options'
 
-   case $state in
-       (command)
-           _describe -t commands "gem subcommand" _box_arguments
-           return
-       ;;
+    case $state in
+        (command)
+            _describe -t commands "gem subcommand" _box_arguments
+            return
+            ;;
 
-       (options)
-           case $line[1] in
-               (repackage|remove)
-                   _arguments ':feature:__box_list' 
-               ;;
-           esac
-       ;;
+        (options)
+            case $line[1] in
+                (repackage|remove)
+                    _arguments ':feature:__box_list'
+                    ;;
+            esac
+            ;;
     esac
 }
 
@@ -99,22 +100,22 @@ _arguments -C \
     '*::options:->options'
 
 case $state in
-  (command)
-      _describe -t commands "gem subcommand" _1st_arguments
-      return
-  ;;
+    (command)
+        _describe -t commands "gem subcommand" _1st_arguments
+        return
+        ;;
 
-  (options)
-    case $line[1] in
-      (help)
-         _arguments ':feature:__task_list' 
-      ;;
+    (options)
+        case $line[1] in
+            (help)
+                _arguments ':feature:__task_list'
+                ;;
 
-      (box)
-          __vagrant-box
-      ;;
-      (up|provision|package|destroy|reload|ssh|halt|resume|status)
-	_arguments ':feature:__vm_list'
-    esac
-  ;;
+            (box)
+                __vagrant-box
+                ;;
+            (up|provision|package|destroy|reload|ssh|halt|resume|status)
+                _arguments ':feature:__vm_list'
+        esac
+        ;;
 esac

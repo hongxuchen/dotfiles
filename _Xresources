@@ -22,13 +22,15 @@ Emacs.fontBackend: xft
 Emacs.menuBar: off
 Emacs.verticalScrollBars: off
 Emacs.toolBar: off
-Emacs*font:    Consolas:antialias=true
+!Emacs*font:    Consolas:antialias=true
+Emacs*font: Monaco:style=bold:size=13:antialias=true:pixelsize=16:autohint=true:hinting=true
 
 Emacs24.fontBackend: xft
 Emacs24.menuBar: off
 Emacs24.verticalScrollBars: off
 Emacs24.toolBar: off
-Emacs24*font:    Consolas:antialias=true
+!Emacs24*font:    Consolas:antialias=true
+Emacs24*font: Monaco:style=bold:size=13:antialias=true:pixelsize=16:autohint=true:hinting=true
 
 !font and size
 XTerm*faceSize: 16
@@ -39,21 +41,21 @@ XTerm*faceSize4: 16
 XTerm*faceSize5: 16
 XTerm*faceSize6: 16
 XTerm*fontMenu*fontdefault*Label: Default
+
 !use fc-list to see installed fonts(~/.fonts,...)
 !generally used:sans-serif
-! xterm*faceName: Dejavu Sans Mono Book
+XTerm*cjkWidth:false
+!xterm*faceName: DejaVu Sans Mono:style=Book:antialias=true
+xterm*faceName: xft:Monaco:style=bold:size=13:antialias=true:pixelsize=16:autohint=true:hinting=true
 ! XTerm*faceNameDoublesize:WenQuanYi Micro Hei
-! XTerm*cjkWidth:false
-! XTerm*internalBorder: 0
-! xterm*faceName: DejaVu Sans Mono:style=Book:antialias=false
-xterm*faceName: Consolas:antialias=true
-!
-xterm*faceNameDoublesize: WenQuanYi Bitmap Song
+!xterm*faceNameDoublesize:xft:Microsoft Yahei:antialias=True:pixelsize=16:style=Regular
+xterm*faceNameDoublesize:xft:.HeitiUI TC Ultra Light:antialias=True:pixelsize=16:style=Regular
 
 XTerm*cursorBlink: false
 XTerm*visualBell: false
 XTerm*locale: true
 XTerm*utf8Title: true
+! XTerm*internalBorder: 0
 
 XTerm*background: #000000
 XTerm*foreground: #AAAAAA

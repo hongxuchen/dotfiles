@@ -1,4 +1,4 @@
-alias mydeb='time dpkg-buildpackage -rfakeroot -us -uc'
+# -*- mode: sh; -*-
 
 apt-copy() {
     print '#!/usr/bin/zsh'"\n" > apt-copy.sh

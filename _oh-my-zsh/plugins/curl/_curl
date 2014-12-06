@@ -1,3 +1,4 @@
+# -*- mode: sh; -*-
 #compdef curl
 
 # based on curl 7.24.0
