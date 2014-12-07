@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function link_file {
+link_file {
     original="${PWD}/$1"
     softlink="${HOME}/${1/_/.}"
     #backup original file if exists and not a symbolic link
@@ -13,8 +13,7 @@ function link_file {
     ln -sf ${original} ${softlink}
 }
 
-
-function unlink_file {
+unlink_file {
     original="${PWD}/$1"
     softlink="${HOME}/${1/_/.}"
     #if current rc file is symbolic link and original file exists
@@ -25,7 +24,7 @@ function unlink_file {
 }
 
 # never use it with submodule since vundle needs to manage itself
-function init_vim {
+init_vim {
     if ! [ -d ~/.vim/bundle/vundle ]; then
         git clone --depth 1 https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
         vim -c 'BundleInstall' -c 'qa'
@@ -48,7 +47,3 @@ else
 fi
 
 init_vim
-
-# find ~ -maxdepth 1 -xtype l -delete
-# doxymacs
-# emacs

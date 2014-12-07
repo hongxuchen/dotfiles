@@ -132,7 +132,6 @@ plt = platform.system()
 if plt == 'Darwin':
     import appscript
     import plistlib
-    import EasyDialogs
     import macholib
     import ds_store
 elif plt == 'Linux':

@@ -7,7 +7,6 @@ import shutil
 import stat
 from argparse import *
 import sys
-import logging
 import colorama
 
 def change_shebang(fpath, target, chmod):
