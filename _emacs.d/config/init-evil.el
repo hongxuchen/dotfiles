@@ -123,7 +123,7 @@
   "s" 'show-file-name
   "b" 'magit-blame-mode
   "v" 'eval-buffer
-  "p" 'paste-mode
+  "p" 'my-paste-mode
   "k" 'popup-kill-ring
   "m" 'dash-at-point
   )
