@@ -34,8 +34,8 @@
 (if (display-graphic-p)
     (progn
       ;; (set-face-attribute 'default nil :font "Consolas 14")
-      ;; (set-face-attribute 'default nil :family "Monaco")
-      (set-face-attribute 'default nil :font "DejaVu Sans Mono 13")
+      (set-face-attribute 'default nil :family "Monaco" :weight 'bold)
+      ;; (set-face-attribute 'default nil :font "DejaVu Sans Mono 13")
       (dolist (charset '(kana han symbol cjk-misc bopomofo))
         ;; (set-fontset-font (frame-parameter nil 'font)
         ;;                   charset

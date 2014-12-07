@@ -18,9 +18,6 @@ dict(){
     fi
 }
 
-encode64(){ echo -n $1 | base64 }
-decode64(){ echo -n $1 | base64 -D }
-
 emacs() {
     if [[ $OSTYPE == "linux-gnu" ]] && [ $DISPLAY ]; then
         command emacs -fs $@ &>/dev/null & disown
