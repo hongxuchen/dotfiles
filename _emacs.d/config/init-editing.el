@@ -124,7 +124,7 @@
 
 ;; file content
 (setq backup-by-coping t ; don't clobber symlinks
-      backup-directory-alist '(("." . "~/.backups"))
+      backup-directory-alist `(("." . ,temporary-file-directory))
       delete-old-versions t
       kept-new-versions 3
       kept-old-versions 2

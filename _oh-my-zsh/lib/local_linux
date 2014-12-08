@@ -1,5 +1,32 @@
 # -*- mode: sh; -*-
 
+## docker related
+# Get container IP
+alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
+# Run deamonized container, e.g., $dkd base /bin/echo hello
+alias dkd="docker run -d -P"
+# Run interactive container, e.g., $dki base /bin/bash
+alias dki="docker run -i -t -P"
+# Stop all containers
+dstop() { docker stop $(docker ps -a -q); }
+# Dockerfile build, e.g., $dbu tcnksm/test
+dbu() { docker build -t=$1 .; }
+
+my_dict() {
+    word=$1
+    TEMP="/tmp/dict.${word}"
+    MEMO=~/.dict/`date +%G%m`
+    command dict $word 1>$TEMP
+    if [ -s $TEMP ]
+    then
+        less $TEMP
+        echo $word >> $MEMO
+        sort -u $MEMO -o $MEMO
+    else
+        echo 'spell error?'
+    fi
+}
+
 my_debclean(){
 
     OLDCONF=$(dpkg -l|grep "^rc"|awk '{print $2}')
@@ -59,7 +86,7 @@ my_apt_history () {
     esac
 }
 
-my_watchdir () {
+my_watchdir() {
     if [[ "$1" != "" ]]; then
         local dir="$1"; shift
         if [[ -x "`which inotifywait`" ]]; then
@@ -89,4 +116,16 @@ my_zeal(){
     else
         ~/tools/zeal/zeal/zeal &>/dev/null &
     fi
+}
+
+my_locales() {
+    locale -a |
+        grep _ | #don't show nationalities
+        uniq -w5 | #merge available charmaps
+        while read lang; do
+            echo -ne "$lang\t";
+            locale_info=`LANG=$lang locale territory language 2>/dev/null`
+            echo $locale_info | sed 's/\(.*\) \(.*\)/\1 (\2)/'
+        done |
+        sort -k2
 }

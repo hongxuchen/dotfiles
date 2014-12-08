@@ -10,7 +10,7 @@ zle -N edit-command-line
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
-alias history='fc -l 1'  #fc is a zshbuiltin
+alias history='fc -l 1 | less'  #fc is a zshbuiltin
 
 # ls colors
 autoload colors; colors;
@@ -28,7 +28,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN=""               # Text to display if the branch is c
 setopt long_list_jobs
 setopt no_beep
 setopt multios
-setopt prompt_subst # Setup the prompt with pretty colors
+setopt prompt_subst
 setopt append_history
 setopt extended_history
 setopt hist_expire_dups_first
@@ -43,7 +43,7 @@ setopt hist_reduce_blanks
 setopt hist_verify
 setopt hist_beep
 # setopt extended_glob
-# setopt cdablevarS
+setopt cdablevarS
 setopt nohashdirs #immediately $PATH executables
 
 [[ -e /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found

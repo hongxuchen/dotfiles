@@ -1,20 +1,19 @@
 # -*- mode: sh -*-
 # vim: ft=sh
 
-## linux only
-if [[ $OSTYPE == "linux-gnu" ]];then
+if [[ $OSTYPE == "linux-gnu" ]]; then
     alias ls='ls --color=tty'
     alias gdb='gdb -q'
     alias dstat='dstat -cdlmnpsy'
     alias release_memory='sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"'
-    ## no .desktop file
+    ## since there are  no .desktop files for them
     alias boogie='mono ~/repos/boogie/boogie/Binaries/Boogie.exe'
     alias idaq='~/idademo65/idaq&'
     alias pycharm='~/tools/pycharm/bin/pycharm.sh &>/dev/null &'
     alias goagent="~/tools/goagent/local/goagent-gtk.py &>/dev/null &disown"
 fi
 
-if [[ $OSTYPE == "darwin"* ]];then
+if [[ $OSTYPE == "darwin"* ]]; then
     alias ls='ls -G'
     alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
     alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
@@ -58,15 +57,12 @@ alias v_clang++='clang++ -E -x c++ /dev/null -v'
 alias help_cc1='clang -cc1 -analyzer-checker-help |less'
 alias scan_build='scan-build --use-analyzer=$(which clang)'
 
-alias brews='brew list'
 alias buuc='echo "brew update" && brew update && echo "brew upgrade" && brew upgrade && "brew cleanup" brew cleanup'
 
 alias rdm_res='tail -f /tmp/rdm_answer'
 
-# remote to pc
 # alias lab_rdp='rdesktop -g 1024x768 -f -u pub -p 123 -r sound:local -r clipboard:PRIMARYCLIPBOARD -r disk:home=/home/hongxu 192.168.1.108 &>/dev/null & disown'
 alias pat_ssh='ssh -X root@pat.sce.ntu.edu.sg'
-alias lab_ssh='ssh -X 155.69.149.37'
 
 alias la='ls -a'
 alias l='ls -F'
@@ -77,17 +73,4 @@ alias sl='ls'
 
 alias v=view
 alias e=vi
-alias em='command emacs -nw'
 alias q='exit'
-
-## docker related
-# Get container IP
-alias dip="docker inspect --format '{{ .NetworkSettings.IPAddress }}'"
-# Run deamonized container, e.g., $dkd base /bin/echo hello
-alias dkd="docker run -d -P"
-# Run interactive container, e.g., $dki base /bin/bash
-alias dki="docker run -i -t -P"
-# Stop all containers
-dstop() { docker stop $(docker ps -a -q); }
-# Dockerfile build, e.g., $dbu tcnksm/test
-dbu() { docker build -t=$1 .; }
