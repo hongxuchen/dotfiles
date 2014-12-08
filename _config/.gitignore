@@ -2,9 +2,13 @@
 !*/
 !autostart/*
 !bleachbit/*
+!cppman/*
 !Doxygen.org/*
+!evince/*
 !fcitx/*
 !feh/*
+!gtk-2.0/*
+!gtk-3.0/*
 !gpicview/*
 !inkscape/*
 !leafpad/*
@@ -17,11 +21,9 @@
 !ranger/*
 !xarchiver/*
 !zathura/*
-!QtProject/*/*
+!htop/htoprc
 
 !user-dirs.dirs
 !user-dirs.locale
 
 !.gitignore
-
-gtk-2.0/*
