@@ -1,3 +1,5 @@
+# -*- mode: sh; -*-
+
 my_debclean(){
 
     OLDCONF=$(dpkg -l|grep "^rc"|awk '{print $2}')
@@ -25,35 +27,35 @@ my_apt_copy() {
     for p in ${(f)"$(aptitude search -F "%p" --disable-columns \~i)"}; {
         cmd="${cmd} ${p}"
     }
-    print $cmd "\n" >> apt-copy.sh
-    chmod +x apt-copy.sh
+             print $cmd "\n" >> apt-copy.sh
+             chmod +x apt-copy.sh
 }
 
 my_apt_history () {
     case "$1" in
-    install)
-        zgrep --no-filename 'install ' $(ls -rt /var/log/dpkg*)
-        ;;
-    upgrade|remove)
-        zgrep --no-filename $1 $(ls -rt /var/log/dpkg*)
-        ;;
-    rollback)
-        zgrep --no-filename upgrade $(ls -rt /var/log/dpkg*) | \
-            grep "$2" -A10000000 | \
-            grep "$3" -B10000000 | \
-            awk '{print $4"="$5}'
-        ;;
-    list)
-        zcat $(ls -rt /var/log/dpkg*)
-        ;;
-    *)
-        echo "Parameters:"
-        echo " install - Lists all packages that have been installed."
-        echo " upgrade - Lists all packages that have been upgraded."
-        echo " remove - Lists all packages that have been removed."
-        echo " rollback - Lists rollback information."
-        echo " list - Lists all contains of dpkg logs."
-        ;;
+        install)
+            zgrep --no-filename 'install ' $(ls -rt /var/log/dpkg*)
+            ;;
+        upgrade|remove)
+            zgrep --no-filename $1 $(ls -rt /var/log/dpkg*)
+            ;;
+        rollback)
+            zgrep --no-filename upgrade $(ls -rt /var/log/dpkg*) | \
+                grep "$2" -A10000000 | \
+                grep "$3" -B10000000 | \
+                awk '{print $4"="$5}'
+            ;;
+        list)
+            zcat $(ls -rt /var/log/dpkg*)
+            ;;
+        *)
+            echo "Parameters:"
+            echo " install - Lists all packages that have been installed."
+            echo " upgrade - Lists all packages that have been upgraded."
+            echo " remove - Lists all packages that have been removed."
+            echo " rollback - Lists rollback information."
+            echo " list - Lists all contains of dpkg logs."
+            ;;
     esac
 }
 
@@ -79,4 +81,12 @@ my_pdf_merge() {
         tomerge=$tomerge" "$file;
     done
     pdftk $tomerge cat output mergd.pdf;
+}
+
+my_zeal(){
+    if pgrep -x zeal &>/dev/null; then
+        printf "already on\n"
+    else
+        ~/tools/zeal/zeal/zeal &>/dev/null &
+    fi
 }

@@ -1,9 +1,9 @@
 git_prompt_info() {
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
+    ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+    echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
-dict(){
+dict() {
     word=$1
     TEMP="/tmp/dict.${word}"
     MEMO=~/.dict/`date +%G%m`
@@ -54,34 +54,26 @@ my_brew_backup () {
 
     brew tap | while read tap; do echo "brew tap $tap"; done
     brew list | while read item;
-    do
-        echo "install_package $item '$(brew info $item | grep 'Built from source with:' | sed 's/^[ \t]*Built from source with:/ /g; s/\,/ /g')'"
-    done
+                do
+                    echo "install_package $item '$(brew info $item | grep 'Built from source with:' | sed 's/^[ \t]*Built from source with:/ /g; s/\,/ /g')'"
+                done
     echo '[ ! -z $failed_items ] && echo The following items were failed to install: && echo $failed_items'
-}
-
-my_zeal(){
-    if pgrep -x zeal &>/dev/null; then
-        printf "already on\n"
-    else
-        ~/tools/zeal/zeal/zeal &>/dev/null &
-    fi
 }
 
 my_locals(){
     locale -a |
-    grep _ | #don't show nationalities
-    uniq -w5 | #merge available charmaps
-    while read lang; do
-        echo -ne "$lang\t";
-        locale_info=`LANG=$lang locale territory language 2>/dev/null`
-        echo $locale_info | sed 's/\(.*\) \(.*\)/\1 (\2)/'
-    done |
-    sort -k2
+        grep _ | #don't show nationalities
+        uniq -w5 | #merge available charmaps
+        while read lang; do
+            echo -ne "$lang\t";
+            locale_info=`LANG=$lang locale territory language 2>/dev/null`
+            echo $locale_info | sed 's/\(.*\) \(.*\)/\1 (\2)/'
+        done |
+        sort -k2
 }
 
 if [[ $OSTYPE == "linux-gnu" ]];then
-    source $(dirname $0)/local_linux.zsh
+    source $(dirname $0)/local_linux
 elif [[ $OSTYPE == "darwin"* ]];then
-    source $(dirname $0)/local_darwin.zsh
+    source $(dirname $0)/local_darwin
 fi

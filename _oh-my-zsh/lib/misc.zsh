@@ -82,7 +82,7 @@ do
 done
 
 for z in zip gz; do
-  alias -s $z="less"
+    alias -s $z="less"
 done
 
 ### we cannot make runnable script to be opened with vim
