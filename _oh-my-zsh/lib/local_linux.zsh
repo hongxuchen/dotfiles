@@ -5,22 +5,55 @@ my_debclean(){
     RED="\033[0;31m"
     ENDCOLOR="\033[0m"
 
-    if [ $USER != root ]; then
-        printf $RED"Error: must be root,exiting...\n$ENDCOLOR"
-        exit 1
-    fi
-
     printf "${YELLOW}\nRemoving unused config files...\n$ENDCOLOR"
-    apt-get purge $OLDCONF
+    sudo aptitude purge $OLDCONF
     printf "${YELLOW}Removing orphan packages\n$ENDCOLOR"
-    deborphan | xargs apt-get -y purge
+    deborphan | sudo xargs aptitude -y purge
 
     # in /var/cache/apt/archives
     printf "${YELLOW}remove local packages...\n1) old(default)\n2) all\n3) do nothing\n${RED}Your choice:$ENDCOLOR";read opt;
     case "$opt" in
-        "2" ) printf "${YELLOW}remove ${RED}all ${YELLOW}cached packages$ENDCOLOR\n";apt-get clean;;
+        "2" ) printf "${YELLOW}remove ${RED}all ${YELLOW}cached packages$ENDCOLOR\n";sudo aptitude clean;;
         "3" ) printf "${YELLOW}no debs would be removed$ENDCOLOR\n";;
-        * ) printf "${YELLOW}remove ${RED}old ${YELLOW}cached packages$ENDCOLOR\n";apt-get autoclean;;
+        * ) printf "${YELLOW}remove ${RED}old ${YELLOW}cached packages$ENDCOLOR\n";sudo aptitude autoclean;;
+    esac
+}
+
+my_apt_copy() {
+    print '#!/usr/bin/zsh'"\n" > apt-copy.sh
+    cmd='sudo apt-get install -y'
+    for p in ${(f)"$(aptitude search -F "%p" --disable-columns \~i)"}; {
+        cmd="${cmd} ${p}"
+    }
+    print $cmd "\n" >> apt-copy.sh
+    chmod +x apt-copy.sh
+}
+
+my_apt_history () {
+    case "$1" in
+    install)
+        zgrep --no-filename 'install ' $(ls -rt /var/log/dpkg*)
+        ;;
+    upgrade|remove)
+        zgrep --no-filename $1 $(ls -rt /var/log/dpkg*)
+        ;;
+    rollback)
+        zgrep --no-filename upgrade $(ls -rt /var/log/dpkg*) | \
+            grep "$2" -A10000000 | \
+            grep "$3" -B10000000 | \
+            awk '{print $4"="$5}'
+        ;;
+    list)
+        zcat $(ls -rt /var/log/dpkg*)
+        ;;
+    *)
+        echo "Parameters:"
+        echo " install - Lists all packages that have been installed."
+        echo " upgrade - Lists all packages that have been upgraded."
+        echo " remove - Lists all packages that have been removed."
+        echo " rollback - Lists rollback information."
+        echo " list - Lists all contains of dpkg logs."
+        ;;
     esac
 }
 

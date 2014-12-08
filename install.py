@@ -45,7 +45,7 @@ parser.add_argument("--recover", dest="recover", action="store_true", required=F
                     help="restore the original dotfiles")
 parser.add_argument("-n", dest="dryrun", action="store_true", required=False,
                     help="do not actually run, only print the effect")
-parser.add_argument("-d", dest="bakdir", default=CUR_DIR, required=False, help="restore directory, default:BAK dir(the same directory as this script)")
+parser.add_argument("-d", dest="bakdir", default=BAK_DIR, required=False, help="restore directory, default:BAK dir(the same directory as this script)")
 
 args = parser.parse_args()
 

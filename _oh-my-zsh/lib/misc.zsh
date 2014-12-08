@@ -2,19 +2,12 @@
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
 
-## file rename magick
-bindkey "^[m" copy-prev-shell-word
-
-## jobs
-setopt long_list_jobs
-
 ## edit command line
 autoload -U edit-command-line
 zle -N edit-command-line
-bindkey '\C-x\C-e' edit-command-line
 
 ## Command history configuration
-HISTFILE=$HOME/.zsh_history
+HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 alias history='fc -l 1'  #fc is a zshbuiltin
@@ -22,9 +15,6 @@ alias history='fc -l 1'  #fc is a zshbuiltin
 # ls colors
 autoload colors; colors;
 export LSCOLORS="Gxfxcxdxbxegedabagacad"
-export LS_COLORS
-
-# setopt cdablevarS
 
 # Apply theming defaults
 PS1="%n@%m:%~%# "
@@ -35,6 +25,7 @@ ZSH_THEME_GIT_PROMPT_SUFFIX=")"             # At the very end of the prompt
 ZSH_THEME_GIT_PROMPT_DIRTY="*"              # Text to display if the branch is dirty
 ZSH_THEME_GIT_PROMPT_CLEAN=""               # Text to display if the branch is clean
 
+setopt long_list_jobs
 setopt no_beep
 setopt multios
 setopt prompt_subst # Setup the prompt with pretty colors
@@ -52,6 +43,7 @@ setopt hist_reduce_blanks
 setopt hist_verify
 setopt hist_beep
 # setopt extended_glob
+# setopt cdablevarS
 setopt nohashdirs #immediately $PATH executables
 
 [[ -e /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found
@@ -71,7 +63,6 @@ autoload -U age
 ##### files and directories
 setopt auto_cd
 alias ...='cd ../..'
-# alias ..='cd ../'
 # setopt auto_name_dirs
 setopt pushd_ignore_dups
 setopt pushdminus
