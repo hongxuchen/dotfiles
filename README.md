@@ -1,15 +1,10 @@
 Installation
 ============
 
-See **install.sh** for detailed information, the basics are:
-
-- Installing source files: ~./install.sh~
-- Restore old source files: ~./install.sh restore~
+Use **./install.py -h** for detailed information
 
 Configurations
 ==============
-
-Currently mainly contains:  
 
 - Tmux
 - Zsh
@@ -19,11 +14,10 @@ Currently mainly contains:
 - MacOS-10.10
 
 
-TODOs
-=====
+Issues
+======
 
 - ~/.config cannot be modified when chromium is running
-- git-submodule-rm.sh cannot rm multiple files
 - The big problem:some keys are not right in emacs+xterm
 - visual mode comments problem when brackets is in several lines 
 - brackets doesn't autopair for some cases in cpp

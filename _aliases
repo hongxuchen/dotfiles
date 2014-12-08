@@ -1,25 +1,6 @@
 # -*- mode: sh -*-
 # vim: ft=sh
 
-## linux only
-if [[ $OSTYPE == "linux-gnu" ]];then
-    alias ls='ls --color=tty'
-    alias gdb='gdb -q'
-    alias dstat='dstat -cdlmnpsy'
-    alias release_memory='sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"'
-    ## no .desktop file
-    alias boogie='mono ~/repos/boogie/boogie/Binaries/Boogie.exe'
-    alias idaq='~/idademo65/idaq&'
-    alias pycharm='~/tools/pycharm/bin/pycharm.sh &>/dev/null &'
-    alias goagent="~/tools/goagent/local/goagent-gtk.py &>/dev/null &disown"
-fi
-
-if [[ $OSTYPE == "darwin"* ]];then
-    alias ls='ls -G'
-    alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
-    alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
-fi
-
 alias r_cp='rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --'
 alias r_mv='rsync -a --progress -h --remove-source-files'
 alias r_update='rsync -avu --progress -h'

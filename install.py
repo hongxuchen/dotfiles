@@ -20,6 +20,7 @@ def _find_files(d, files):
 
 
 CUR_DIR = os.path.abspath(os.path.dirname(__file__))
+BAK_DIR = os.path.join(CUR_DIR, "BAK")
 PLT = platform.system()  # Darwin/Linux
 DST_DIR = os.path.expandvars("$HOME")
 VUNDLE_PATH = os.path.join(DST_DIR, '.vim/bundle/vundle')
@@ -44,7 +45,7 @@ parser.add_argument("--recover", dest="recover", action="store_true", required=F
                     help="restore the original dotfiles")
 parser.add_argument("-n", dest="dryrun", action="store_true", required=False,
                     help="do not actually run, only print the effect")
-parser.add_argument("-d", dest="bakdir", default=DST_DIR, required=False, help="restore directory, default:$HOME")
+parser.add_argument("-d", dest="bakdir", default=CUR_DIR, required=False, help="restore directory, default:BAK dir(the same directory as this script)")
 
 args = parser.parse_args()
 
