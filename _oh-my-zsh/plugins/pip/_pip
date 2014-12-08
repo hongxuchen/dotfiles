@@ -1,5 +1,5 @@
-# -*- mode: sh; -*-
 #compdef pip
+#autoload
 
 _pip_all() {
     # we cache the list of packages (originally from the macports plugin)

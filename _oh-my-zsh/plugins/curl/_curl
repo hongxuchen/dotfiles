@@ -1,5 +1,5 @@
-# -*- mode: sh; -*-
 #compdef curl
+#autoload
 
 # based on curl 7.24.0
 

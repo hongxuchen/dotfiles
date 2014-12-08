@@ -1,5 +1,5 @@
-# -*- mode: sh; -*-
 #compdef docker
+#autoload
 
 # Docker autocompletion for oh-my-zsh
 # Requires: Docker installed

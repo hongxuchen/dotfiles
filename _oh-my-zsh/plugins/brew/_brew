@@ -1,4 +1,3 @@
-# -*- mode: sh; -*-
 #compdef brew
 #autoload
 
