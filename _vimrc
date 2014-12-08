@@ -122,7 +122,7 @@ syntax on                     " syntax highlighing
 filetype on                   " try to detect filetypes
 filetype plugin on            " recognize filetype
 filetype plugin indent on     " enable loading indent file for filetype
-"set textwidth=80              " TODO
+" set textwidth=80              "TODO
 " set viminfo+=!               " global variables
 set grepprg=grep\ -nH\ $*     "grep always displays filename
 set ttyfast
@@ -132,6 +132,7 @@ set nrformats=                " treat all numberals as decimal
 set tabpagemax=5              " only 5 tabs
 set gdefault                  " substitute globally
 set nocompatible              " Don't be compatible with vi
+set colorcolumn=120
 set tabpagemax=15             " max number of tabs
 set number                    " Display line numbers
 set numberwidth=1             " using only 1 column (and 1 space) while possible
@@ -259,6 +260,7 @@ let g:tagbar_systemenc = 'encoding'
 " nerdtree
 noremap <leader>T :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$']
+let g:NERDTreeDirArrows=0
 
 " =====================================================
 " filetype settings

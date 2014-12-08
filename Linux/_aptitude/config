@@ -4,4 +4,4 @@ aptitude::Suppress-Read-Only-Warning "true";
 aptitude::Recommends-Important "false";
 aptitude::Ignore-Recommends-Important "true";
 APT "";
-APT::Install-Recommends "false";
+APT::Install-Recommends "true";

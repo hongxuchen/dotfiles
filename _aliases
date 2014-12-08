@@ -77,7 +77,7 @@ alias sl='ls'
 
 alias v=view
 alias e=vi
-alias em='emacs -nw'
+alias em='command emacs -nw'
 alias q='exit'
 
 ## docker related

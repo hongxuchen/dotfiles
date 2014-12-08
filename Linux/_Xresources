@@ -25,13 +25,6 @@ Emacs.toolBar: off
 !Emacs*font:    Consolas:antialias=true
 Emacs*font: Monaco:style=bold:size=13:antialias=true:pixelsize=16:autohint=true:hinting=true
 
-Emacs24.fontBackend: xft
-Emacs24.menuBar: off
-Emacs24.verticalScrollBars: off
-Emacs24.toolBar: off
-!Emacs24*font:    Consolas:antialias=true
-Emacs24*font: Monaco:style=bold:size=13:antialias=true:pixelsize=16:autohint=true:hinting=true
-
 !font and size
 XTerm*faceSize: 16
 XTerm*faceSize1: 16
@@ -57,8 +50,27 @@ XTerm*locale: true
 XTerm*utf8Title: true
 ! XTerm*internalBorder: 0
 
-XTerm*background: #000000
-XTerm*foreground: #AAAAAA
+! Monokai color theme
+XTerm*background: #101010
+XTerm*foreground: #d0d0d0
+XTerm*cursorColor: #d0d0d0
+XTerm*color0: #101010
+XTerm*color1: #960050
+XTerm*color2: #66aa11
+XTerm*color3: #c47f2c
+XTerm*color4: #30309b
+XTerm*color5: #7e40a5
+XTerm*color6: #3579a8
+XTerm*color7: #9999aa
+XTerm*color8: #303030
+XTerm*color9: #ff0090
+XTerm*color10: #80ff00
+XTerm*color11: #ffba68
+XTerm*color12: #5f5fee
+XTerm*color13: #bb88dd
+XTerm*color14: #4eb4fa
+XTerm*color15: #d0d0d0
+
 XTerm*scrollBar: false
 XTerm*rightScrollBar: false
 XTerm*toolBar: false
@@ -66,6 +78,39 @@ XTerm*jumpScroll: true
 XTerm*SaveLines: 3000
 xterm*termName: xterm-256color
 xterm*trimSelection: true
-xterm*borderWidth: 0 
+xterm*borderWidth: 0
 !so that both select and ctrl-c contents are put into CLIPBOARD
 XTerm*selectToClipboard: true
+
+URxvt.scrollBar: False
+URxvt.scrollstyle: rxvt
+URxvt.termName: xterm-256color
+URxvt.urgentOnBell: False
+URxvt.cursorBlink: False
+URxvt.font: xft:Monaco:style=bold:size=13:antialias=true:pixelsize=16:autohint=true:hinting=true
+URxvt.boldFont: xft:Monaco:style=bold:size=13:antialias=true:pixelsize=16:autohint=true:hinting=true
+URxvt.letterSpace: -2
+URxvt.lineSpace: -2
+URxvt.scrollKey: true
+URxvt.depth: 32
+URxvt.loginShell: true
+URxvt.geometry: 100x30
+URxvt.saveLines: 10000
+URxvt*background: #101010
+URxvt*foreground: #d0d0d0
+URxvt*color0: #101010
+URxvt*color1: #960050
+URxvt*color2: #66aa11
+URxvt*color3: #c47f2c
+URxvt*color4: #30309b
+URxvt*color5: #7e40a5
+URxvt*color6: #3579a8
+URxvt*color7: #9999aa
+URxvt*color8: #303030
+URxvt*color9: #ff0090
+URxvt*color10: #80ff00
+URxvt*color11: #ffba68
+URxvt*color12: #5f5fee
+URxvt*color13: #bb88dd
+URxvt*color14: #4eb4fa
+URxvt*color15: #d0d0d0
