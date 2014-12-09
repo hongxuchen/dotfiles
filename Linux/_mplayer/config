@@ -1,9 +1,3 @@
-################################################################################
-# author: HongxuChen<leftcopy.chx@gmail.com>, 
-# modified from mutantmonkey <mutantmonkey@gmail.com>
-# ~/.mplayer/config
-################################################################################
-
 # General options {{{
 nolirc=1
 nojoystick=1

@@ -1,26 +1,196 @@
+> This repository contains my dotfiles settings for Linux(Debian Jessie) and Mac OSX(10.10).
+
 Installation
 ============
 
-Use **./install.py -h** for detailed information
+  ```bash
+  # my dotfiles are located in ~/tools/dotfiles
+  git clone --recursive git@github.com:HongxuChen/dotfiles.git /path/to/dotfiles
+  # or https://github.com/HongxuChen/dotfiles.git
+  
+  ## close other applications for a safe/smooth installation
+  cd /path/to/dotfiles
+  
+  # see its usage
+  ./install.py -h
+  
+  # dryrun to see whether there are dangerous operations
+  ./install.py -n
+  
+  # actual installation
+  ./install.py
+  
+  ```
 
-Configurations
-==============
+1. Use `install.py` to setup the environment; basically this simplily adds symlinks to `$HOME` directory as well as backups your original settings.
+It's better to *dryrun* it with `install.py -n`(more details with `install.py -h`) firstly to see the effects.
+It is suggested to close other applications(e.g., google-chrome, emacs) when setting up(especially on Linux).
 
-- Tmux
-- Zsh
-- Vim7.4
-- Emacs24.3
-- Debian(Jessie)+LXDE
-- MacOS-10.10
+1. Some of my personal information should be changed,
+you can `grep`or `ag`(see [the\_silver\_searcher](https://github.com/ggreer/the_silver_searcher)) and replace them.
+The personal information includes:
+
+    - username: Hongxu, hongxuchen, HongxuChen, etc
+    - email: leftcopy.chx@gmail.com
+    - (to be listed...)
+
+1. Additional fonts are available [on dropbox](https://www.dropbox.com/sh/1er7al26qjsjdeg/AACoU5BQ6Ijq_vnBrqLemrRwa?dl=0).
+
+    - can be used by XTerm, etc
 
 
-Issues
-======
+Package managers
+================
 
-- ~/.config cannot be modified when chromium is running
-- The big problem:some keys are not right in emacs+xterm
-- visual mode comments problem when brackets is in several lines 
+Apart from [editors](http://en.wikipedia.org/wiki/Editor_war)'s plugin managers(see [below](#fundamentals)), other package managers are used and the lists are inside [misc](https://github.com/HongxuChen/dotfiles/tree/master/misc): 
+
+1. **Debian** -- [debian package management](https://www.debian.org/doc/manuals/debian-faq/ch-pkgtools.en.html), [linuxbrew](https://github.com/Homebrew/linuxbrew)
+
+    - linuxbrew is less mature than homebrew, however can be used as an alternative for deb packages.
+
+1. **MacOS** -- [homebrew](http://brew.sh/)
+
+    - homebrew should be used anywhere if possible, otherwise it's better to compile from source code yourself
+
+1. **python** -- [pip/pip3](https://pip.pypa.io/en/latest/)
+
+1. **Ruby** -- [gem](https://rubygems.org/)
+
+1. **Node.js** -- [npm](https://www.npmjs.org/)
+
+
+dotfile settings
+================
+
+Fundamentals
+------------
+
+1. **Vim**(managed with [vundle](https://github.com/gmarik/Vundle.vim))(`~/.vimrc`, `~/.vim`)
+
+    - to install vim plugins, **./install --vim**
+
+1. **Emacs**(24+, based on [puremell](https://github.com/purcell/emacs.d)'s settings, 
+managed with [package.el](http://www.emacswiki.org/emacs/ELPA))(`~/.emacs.d`)
+
+    - start emacs, elisp extensions should be installed automatically for the first time
+    - Configured with [company-mode](http://company-mode.github.io/) and [auto-complete](https://github.com/auto-complete/auto-complete) for completions
+    - C++ development is preferred, using [rtags](https://github.com/Andersbakken/rtags)
+    - note: there are some configurations for org and an additional *git submodule* for [reavel.js](https://github.com/hakimel/reveal.js/) for org-reavel(although it's NOT advised to use that)
+
+1. [Zsh](http://www.zsh.org/)(modified from [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh))
+
+    - the related files are
+        - `~/.profile`
+        - `~/.aliases`
+        - `~/.zshenv`
+        - `~/.zprofile`
+        - `~/.zshrc`
+        - `~/.oh-my-zsh/`
+
+    - `brew install zsh-history-substring-search  zsh-syntax-highlighting` and change login shell to zsh to make it really work; enjoy it!
+
+1. [**IPython**](http://ipython.org/)(especially for [sh](http://ipython.org/ipython-doc/dev/interactive/shell.html)/[nb](http://ipython.org/notebook.html) profile)(`~/.ipython/`)
+
+    - for **sh** profile, LOTS of packages are pre-imported(installation from pip is needed)
+    - ipython-notebook is BASED on sh profile, a few [extensions](https://github.com/ipython-contrib/IPython-notebook-extensions/wiki) are in `~/.ipython/extensions/`
+
+1. [**pry**](http://pryrepl.org/)(`~/.pryrc`)
+
+    - plugins can be seen at https://github.com/pry/pry/wiki/Available-plugins
+
+1. **git**(`~/.gitconfig`)
+
+    - `_gitignore_global` is available at [misc](https://github.com/HongxuChen/dotfiles/tree/master/misc)
+    - [git-extras](https://github.com/tj/git-extras) is awesome
+
+1. [**tmux**](http://tmux.sourceforge.net/)(`~/.tmux.conf`)
+
+other RCs
+---------
+
+1. [**ack**](http://beyondgrep.com/)(`~/.ackrc`)
+
+    - prefer `ag` to `ack-grep`
+
+1. [**hg**](http://mercurial.selenic.com/)(mercurial)(`~/.hgrc`)
+1. [**irb**](http://www.tutorialspoint.com/ruby/interactive_ruby.htm)(`~/.irbrc`)
+
+    - irb also support tab completion, but inferior to pry
+
+1. [**htop**](http://hisham.hm/htop/)
+
+    - `~/config/.htoprc` on Linux 
+    - `~/.htoprc` on Mac
+
+1. [**vimperator**](http://www.vimperator.org/vimperator)(`~/.vimperatorrc`, `~/.vimperator/`)
+
+    - limited to firefox
+
+1. **curl**(`~/.curlrc`)
+
+
+Linux Specific
+--------------
+
+They are NOT exact linux-only, but I don't wanna use them for Mac; currently put them inside [Linux/](https://github.com/HongxuChen/dotfiles/tree/master/Linux) and they are symlinked to `$HOME` by `install.py`; ditto for [Darwin](https://github.com/HongxuChen/dotfiles/tree/master/Darwin)
+
+- **gdb**(`~/.gdbinit`, `~/.gdb`)
+
+    - gdb is replaced with [lldb](http://lldb.llvm.org) on newer Mac OSX
+
+- [**lftp**](http://lftp.yar.ru/)(`~/.lftp/`)
+
+- **X11** settings
+    - `~/.Xresources`: for XTerm, URxvt, Emacs; should run `xrdb -merge ~/.Xresources` firstly
+    - `~/.xscreensaver`
+
+- **wget**(~/.wgetrc)
+    - since wget is GPL
+
+- **svn**(`~/.subversion/`)
+    - Mac has better GUI clients
+
+- **mplayer**(`~/.mplayer`)
+    - Mac has better players
+
+- [**Valgrind**](http://valgrind.org/)(`~/.valgrindrc`)
+
+- [**aptitude**](https://wiki.debian.org/Aptitude)(`~/.aptitude/`)
+
+- **bash**(`~/.bashrc`)
+
+    - share `~/.profile`, `~/.aliases` with zsh
+    - used when there's no other choice
+
+- [**Freedesktop**](http://www.freedesktop.org/wiki/) configs(`~/.config/`)
+
+    - [**LXDE**](http://lxde.org/)(`autostart/`, `gtk-2.0/`, `gtk-3.0/`, `lxpanel/`, `lxsession/`, `lxterminal/`, `openbox/`, `pcmanfm/`, `user-dirs.dirs`, `user-dirs.locale`)
+    - **Evince**(envince/)
+    - [**Fcitx**](https://fcitx-im.org/wiki/Fcitx)(`fcitx/`)
+    - [**Zathura**](https://pwmt.org/projects/zathura/)(`zathura/`)
+
+Mac OSX Specific
+------------
+
+- **gvim**(`~/.gvimrc`)
+
+    - for brewed [**MacVim**](https://code.google.com/p/macvim/)
+    - Linux Vim doesn't need GUI
+
+- [**slate**](https://github.com/jigish/slate)(`~/.slate`)
+
+
+Known Issues
+============
+
+- `~/.config` cannot be modified when google-chrome is running
+- some keys are not right in emacs+xterm
 - brackets doesn't autopair for some cases in cpp
 - emacs openwith enhatncement
 - org mode table keymaps has conflicts with LXDE
-- vim-commentary like tool in Emacs
+- need [vim-commentary](git@github.com:tpope/vim-commentary.git) like tool in Emacs
+
+Bonus
+=====
+
+You may find that [several awesomeness](https://github.com/sindresorhus/awesome) on github helpful.
