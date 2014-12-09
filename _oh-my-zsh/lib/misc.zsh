@@ -43,8 +43,8 @@ setopt hist_reduce_blanks
 setopt hist_verify
 setopt hist_beep
 # setopt extended_glob
-setopt cdablevarS
-setopt nohashdirs #immediately $PATH executables
+# setopt cdablevarS
+# setopt nohashdirs #immediately $PATH executables
 
 [[ -e /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found
 
@@ -62,11 +62,11 @@ autoload -U age
 
 ##### files and directories
 setopt auto_cd
-alias ...='cd ../..'
 # setopt auto_name_dirs
 setopt pushd_ignore_dups
 setopt pushdminus
 setopt auto_pushd
+alias ...='cd ../..'
 
 for s in mp3 wav aac ogg avi mp4 m4v mov qt mpg mpeg f4v flv\
              jpg jpeg png psd bmp gif tif tiff\
