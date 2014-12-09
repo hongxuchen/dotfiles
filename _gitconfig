@@ -34,7 +34,6 @@
 	editor = vim -c ':normal gg'
 	pager = less
 	whitespace = trailing-space,space-before-tab
-	excludesfile = /Users/hongxu/.gitignore_global
 	autocrlf = input
 
 [alias]
@@ -98,5 +97,5 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
-[ghgrep]
-	token = e0b3268d3f3b865578e95955e38f41044f206f48
+[pretty]
+	custom = %C(magenta)%h%C(red)%d %C(yellow)%ar %C(green)%s %C(yellow)(%an)

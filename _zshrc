@@ -8,7 +8,7 @@ ZSH_THEME="nanotech"
 source ~/.aliases
 
 # ~/.oh-my-zsh/plugins/
-plugins=(ag brew gem git-extras pip svn vi-mode)
+plugins=(ag brew gem git-extras pip svn vi-mode z)
 if [[ $OSTYPE == "linux-gnu" ]];then
     plugins=(${plugins} docker)
 elif [[ $OSTYPE == "darwin"* ]];then
