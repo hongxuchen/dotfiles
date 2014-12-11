@@ -3,11 +3,12 @@
   (setq preview-auto-cache-preamble t)
   (define-key LaTeX-mode-map (kbd "C-c C-p") 'preview-buffer)
   (define-key LaTeX-mode-map (kbd "C-c p") 'preview-clearout-buffer)
-  (setq TeX-view-program-selection '((output-pdf "Evince"))
+  (setq TeX-view-program-selection '((output-pdf "Open"))
         TeX-view-program-list
         '(("SumatraPDF" "SumatraPDF.exe %o")
           ("Gsview" "gsview32.exe %o")
           ("Evince" "evince --page-index=%(outpage) %o")
+          ("Open" "Open %o")
           ("Okular" "okular --unique %o#src:%n%b")
           ("Firefox" "firefox %o")))
   (setq TeX-fold-unfold-around-mark nil
