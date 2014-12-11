@@ -12,6 +12,11 @@ except ImportError as e:
     print("{0},\t use 'pip' to install that package".format(e.message), file=sys.stderr)
     sys.exit(1)
 
+try:
+    from subprocess import DEVNULL # py3k
+except ImportError:
+    DEVNULL = open(os.devnull, 'wb')
+
 
 def _find_files(d, files):
     for src in os.listdir(d):
@@ -23,24 +28,36 @@ CUR_DIR = os.path.abspath(os.path.dirname(__file__))
 BAK_DIR = os.path.join(CUR_DIR, "BAK")
 PLT = platform.system()  # Darwin/Linux
 DST_DIR = os.path.expandvars("$HOME")
-VUNDLE_PATH = os.path.join(DST_DIR, '.vim/bundle/vundle')
+
 VUNDLE_REPO = "https://github.com/gmarik/vundle.git"
+VUNDLE_PATH = os.path.join(DST_DIR, '.vim/bundle/vundle')
+TPM_REPO = "https://github.com/tmux-plugins/tpm.git"
+TPM_PATH = os.path.expanduser("~/.tmux/plugins/tpm")
+
 
 SUFFIX = '.DOTBAK'
 M_SAFE = '*'
 M_UNSAFE = '!'
 
-
-def _init_vim():
-    if not os.path.isdir(VUNDLE_PATH):
-        cmd_str = "git clone --depth 1 {} {}".format(VUNDLE_REPO, VUNDLE_PATH)
+def _git_get(git_repo, dst):
+    if not os.path.isdir(dst):
+        cmd_str = "git clone --depth 1 {} {}".format(git_repo, dst)
         subprocess.call(cmd_str.split())
+
+
+def _config_vim():
+    _git_get(VUNDLE_REPO, VUNDLE_PATH)
     cmd_str = "vim -c BundleInstall -c qa"
     subprocess.call(cmd_str.split())
 
+def _config_tmux():
+    _git_get(TPM_REPO, TPM_PATH)
+    cmd_str = "tmux source-file " + os.path.expanduser("~/.tmux.conf")
+    subprocess.Popen(cmd_str.split(), stdout=DEVNULL)
+
 
 parser = ArgumentParser(description="install scripts for all the dotfiles")
-parser.add_argument("--vim", dest="vim", action="store_true", help="setup vim environment with vundle")
+parser.add_argument("--config", dest="config", nargs="+", choices=["vim", "tmux"], help="some special configurations")
 parser.add_argument("--recover", dest="recover", action="store_true", required=False,
                     help="restore the original dotfiles")
 parser.add_argument("-n", dest="dryrun", action="store_true", required=False,
@@ -49,8 +66,9 @@ parser.add_argument("-d", dest="bakdir", default=BAK_DIR, required=False, help="
 
 args = parser.parse_args()
 
-if args.vim:
-    _init_vim()
+if args.config:
+    for config in args.config:
+        eval('_config_'+config)()
     sys.exit(0)
 
 if not os.path.exists(args.bakdir):

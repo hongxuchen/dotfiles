@@ -11,6 +11,9 @@ if len(sys.argv) < 2:
     print("usage: {:s} github_url".format(sys.argv[0]))
     exit(1)
 url = sys.argv[1]
+if web_prefix not in url:
+    print("should be github url")
+    sys.exit(1)
 raw_url = url.replace(web_prefix, raw_prefix).replace('blob/', '')
 print("downloading from: " + raw_url)
 idx = url.rfind('/')

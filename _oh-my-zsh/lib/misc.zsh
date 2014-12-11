@@ -50,10 +50,10 @@ setopt hist_beep
 
 alias -g ND="*(/om[10])" # newest directory
 alias -g NF="*(.om[10])" # newest file
-alias -g L='| less'
-alias -g LL='2>&1 | less'
-alias -g VV='| view -'
-alias -g GG='| ag'
+# alias -g L='| less'
+# alias -g LL='2>&1 | less'
+alias -g L='| v -'
+alias -g LL='2>&1 | v -'
 alias -g HH='| head -n 20'
 alias -g TT='| tail -20'
 TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S'

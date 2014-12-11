@@ -16,7 +16,7 @@ elif [[ $OSTYPE == "darwin"* ]];then
 fi
 
 for plugin (${plugins}); do
-    base_dir=${ZSH}/plugins/${plugin}
+    local base_dir=${ZSH}/plugins/${plugin}
     if [[ -f ${base_dir}/${plugin}.plugin.zsh ]] || [[ -f ${base_dir}/_${plugin} ]]; then
         fpath=(${base_dir} ${fpath})
     else

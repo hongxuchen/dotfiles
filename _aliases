@@ -71,6 +71,9 @@ alias lrt='ls -lrth'
 alias kl='k.zsh | less'
 alias sl='ls'
 
-alias v=view
-alias e=vi
+alias v='vim -c ":noremap q :qall!<cr>" -c ":set nomodifiable"'
+alias e=vim
 alias q='exit'
+
+### personal use
+alias opt='opt -load ~/src/snippets_llvm/build/bin/libsnippets.so'
