@@ -1,6 +1,6 @@
-# -*- mode: sh; -*-
 #compdef vagrant
 #autoload
+# -*- mode: sh; -*-
 
 # vagrant zsh completion
 

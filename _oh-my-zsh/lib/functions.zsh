@@ -5,7 +5,7 @@ git_prompt_info() {
 
 # handy operations
 
-my_emacs() {
+em() {
     if [[ $OSTYPE == "linux-gnu" ]] && [ $DISPLAY ]; then
         command emacs -fs $@ &>/dev/null & disown
     else

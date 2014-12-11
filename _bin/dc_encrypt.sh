@@ -1,7 +1,9 @@
-#! /bin/bash
+#!/bin/bash
+
+# TODO: use python script
+
 script_name=$(basename $0) #script name
-usage ()
-{
+usage () {
     echo
     echo "USAGE: $script_name your_words"
     echo

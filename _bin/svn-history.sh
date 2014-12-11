@@ -6,7 +6,7 @@
 # logentry/diff pairs.  The first revision of the file is emitted as
 # full text since there's not previous version to compare it to.
 
-function history_of_file() {
+history_of_file() {
     url=$1 # current url of file
     svn log -q $url | grep -E -e "^r[[:digit:]]+" -o | cut -c2- | sort -n | {
 

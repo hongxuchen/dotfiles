@@ -14,24 +14,7 @@
 autocmd BufNewFile,BufRead *.ipynb setfiletype javascript
 
 " Set working directory
-set autochdir
-" save and reload vimrc
-nnoremap <silent> <leader>v :w<CR>:source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
-
-" sudo write this
-cnoremap W! w !sudo tee % >/dev/null
-
-" Paste from clipboard
-set clipboard=unnamed "Use system clipboard ("*)
-nnoremap <leader>p :set paste! <CR>
-
-" Remove trailing whitespace
-" nnoremap <leader>s :%s/\s\+$//<cr>:let @/=''<CR>
-
-nnoremap <leader>s :pwd <CR>
-
-" C-j to insert a newline
-nnoremap <NL> i<CR><ESC>
+" set autochdir
 
 " remap j,k
 nnoremap j gj
@@ -39,26 +22,9 @@ nnoremap k gk
 nnoremap gj j
 noremap gk k
 
-" don't use macro
-nnoremap q :bN<CR>
-
-" remap D to remove line without x register, anyway I have cc
-nnoremap D "_dd
-vnoremap D "_d
-
 " history scrolls in Ex mode
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
-
-" used for git diff
-map <silent> <leader>1 :diffget 1<CR> :diffupdate<CR>
-map <silent> <leader>2 :diffget 2<CR> :diffupdate<CR>
-map <silent> <leader>3 :diffget 3<CR> :diffupdate<CR>
-map <silent> <leader>4 :diffget 4<CR> :diffupdate<CR>
-
-" refresh if file in Vim is updated by external program,TODO
-noremap <silent><F5> :checktime<CR>:exe ":echo 'file refreshed'"<CR>
-inoremap <silent><F5> <C-O>:checktime<CR>:exe ":echo 'file refreshed'"<CR>
 
 " visual-star-search, makes * and # work on visual mode too.
 function! s:VSetSearch(cmdtype)
@@ -73,9 +39,6 @@ xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
 " recursively vimgrep for word under cursor or selection when hitting leader-star
 nnoremap <leader>* :execute 'noautocmd vimgrep /\V' . substitute(escape(expand("<cword>"), '\'), '\n', '\\n', 'g') . '/ **'<CR>
 vnoremap <leader>* :<C-u>call <SID>VSetSearch()<CR>:execute 'noautocmd vimgrep /' . @/ . '/ **'<CR>
-
-" open help:info in new tab
-cabbrev hh tab help
 
 " =====================================================
 " emacs like settings
@@ -121,17 +84,13 @@ syntax on                     " syntax highlighing
 filetype on                   " try to detect filetypes
 filetype plugin on            " recognize filetype
 filetype plugin indent on     " enable loading indent file for filetype
-" set textwidth=80              "TODO
-" set viminfo+=!               " global variables
 set grepprg=grep\ -nH\ $*     "grep always displays filename
-set ttyfast
 set splitright                " 
 set guioptions=               " simpler
 set nrformats=                " treat all numberals as decimal
 set tabpagemax=5              " only 5 tabs
 set gdefault                  " substitute globally
 set nocompatible              " Don't be compatible with vi
-set colorcolumn=120
 set tabpagemax=15             " max number of tabs
 set number                    " Display line numbers
 set numberwidth=1             " using only 1 column (and 1 space) while possible
@@ -165,7 +124,6 @@ set matchpairs+=<:>           " show matching <> (html mainly) as well
 set foldmethod=syntax         " allow us to fold on indents
 set foldlevel=99              " don't fold by default
 set history=200               " up/down can also be used when some words have been inserted
-" colorscheme delek           " koehler,elflord,murphy,torte,evening,delek
 " Reading/Writing
 set noautowrite               " Never write a file unless I request it.
 set noautowriteall            " NEVER.
@@ -180,8 +138,7 @@ set confirm                   " Y-N-C prompt if closing with unsaved changes.
 set showcmd                   " Show incomplete normal mode commands as I type.
 set report=0                  " : commands always print changed line count.
 set shortmess+=atI            " Use [+]/[RO]/[w] for modified/readonly/written.
-set laststatus=2              " Always show statusline, even if only 1 window.
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%y%=%-16(\ %l,%c-%v\ %)%P
+set laststatus=1              "
 set listchars=tab:>-,eol:$,trail:-,precedes:<,extends:> " when list needed
 set lcs=tab:>\ ,trail:_,precedes:<,extends:\
 " encoding
@@ -209,102 +166,25 @@ set completeopt=longest
 set completeopt=longest,menuone
 set pumheight=8
 
-" =====================================================
-" tool and plugin settings
-" =====================================================
-runtime ftplugin/man.vim
-runtime macros/matchit.vim
-" VUNDLE rtp, @see https://github.com/gmarik/vundle
+set readonly
+set nomodifiable
+nnoremap q :qall!<CR>
+
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-Bundle 'szw/vim-g'
-Bundle 'kien/ctrlp.vim'
 Bundle 'gmarik/vundle'
-Bundle 'tpope/vim-commentary'
-" Bundle 'vim-ruby/vim-ruby'
-" git syntax, indent, and filetypes
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-rhubarb'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-tbone'
-Bundle 'tpope/vim-eunuch'
-Bundle 'tpope/vim-jdaddy'
-Bundle 'Tagbar'
+Bundle 'szw/vim-g'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'Superbil/llvm.vim'
 Bundle 'Cpp11-Syntax-Support'
-Bundle 'scrooloose/nerdtree'
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'ack.vim'
-Bundle 'tomasr/molokai'
 Bundle 'endel/vim-github-colorscheme'
-Bundle 'Valloric/YouCompleteMe'
+colorscheme github
 
-" tagbar
-noremap <leader>t :TagbarToggle<CR>
-let g:tagbar_autoclose=0
-let g:tagbar_left = 0
-let g:tagbar_width = 31
-let g:tagbar_autofocus = 0
-let g:tagbar_sort = 1
-let g:tagbar_compact = 1
-let g:tagbar_expand = 0
-let g:tagbar_singleclick = 0
-let g:tagbar_foldlevel = 5
-let g:tagbar_autoshowtag = 0
-let g:tagbar_updateonsave_maxlines = 10000
-let g:tagbar_systemenc = 'encoding'
-
-" nerdtree
-noremap <leader>T :NERDTreeToggle<CR>
-let NERDTreeIgnore = ['\.pyc$']
-let g:NERDTreeDirArrows=0
-
-" =====================================================
-" filetype settings
-" =====================================================
 autocmd FileType lisp setl cms=;;%s
 autocmd FileType cmake setl cms=#%s
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 
-" append modeline
-function! AppendModeline()
-  let l:modeline = printf(" vim: set ft=%s ts=%d sw=%d tw=%d %set :",
-        \ &filetype, &tabstop, &shiftwidth, &textwidth, &expandtab ? '' : 'no')
-  let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
-  call append(line("0"), l:modeline)
-endfunction
-nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
-
-" let g:ctrlp_map = '<c-p>'
-let g:ctrlp_cmd = 'CtrlP'
-let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-let g:ctrlp_working_path_mode = 'ra'
-
 autocmd BufRead,BufNewFile /usr/include/* set ft=cpp
-
-" function! StartUp()
-"     if 0 == argc()
-"         NERDTree
-"     end
-" endfunction
-" autocmd VimEnter * call StartUp()
-
-colorscheme molokai
-
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_add_preview_to_completeopt=1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_min_num_of_chars_for_completion = 99 
-let g:ycm_min_num_identifier_candidate_chars = 2
-let g:ycm_auto_trigger = 1
-let g:ycm_collect_identifiers_from_tags_files = 0 " Let YCM read tags from Ctags file
-let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
-let g:ycm_complete_in_comments = 1 " Completion in comments
-let g:ycm_complete_in_strings = 1 " Completion in string
 
 "vim-g
 let g:vim_g_f_command = "Gf"

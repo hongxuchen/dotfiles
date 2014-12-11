@@ -1,4 +1,4 @@
-#!/usr/bin/zsh
+#!/usr/bin/env zsh
 
 zmodload zsh/datetime
 zmodload -F zsh/stat b:zstat

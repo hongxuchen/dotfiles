@@ -52,9 +52,8 @@ def _config_vim():
 
 def _config_tmux():
     _git_get(TPM_REPO, TPM_PATH)
-    cmd_str = "tmux source-file " + os.path.expanduser("~/.tmux.conf")
-    subprocess.Popen(cmd_str.split(), stdout=DEVNULL)
-
+    # cmd_str = "tmux source-file " + os.path.expanduser("~/.tmux.conf")
+    # subprocess.Popen(cmd_str.split(), stdout=DEVNULL)
 
 parser = ArgumentParser(description="install scripts for all the dotfiles")
 parser.add_argument("--config", dest="config", nargs="+", choices=["vim", "tmux"], help="some special configurations")

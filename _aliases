@@ -70,7 +70,8 @@ alias lrt='ls -lrth'
 alias kl='k.zsh | less'
 alias sl='ls'
 
-alias v='vim -c ":noremap q :qall!<cr>" -c ":set nomodifiable"'
+# alias v='vim -c ":noremap q :qall!<cr>" -c ":set nomodifiable" -c ":set laststatus=0"'
+alias v='vim -u ~/.vless'
 alias e=vim
 alias q='exit'
 

@@ -8,29 +8,27 @@ ZSH_THEME="nanotech"
 source ~/.aliases
 
 # ~/.oh-my-zsh/plugins/
-plugins=(ag brew gem git-extras pip svn vi-mode z)
+PLUGINS=(ag brew gem git-extras pip svn z)
 if [[ $OSTYPE == "linux-gnu" ]];then
-    plugins=(${plugins} docker)
+    PLUGINS=(${PLUGINS} docker)
 elif [[ $OSTYPE == "darwin"* ]];then
-    plugins=(${plugins} vagrant)
+    PLUGINS=(${PLUGINS} vagrant)
 fi
 
-for plugin (${plugins}); do
-    base_dir=${ZSH}/plugins/${plugin}
-    if [[ -f ${base_dir}/${plugin}.plugin.zsh ]] || [[ -f ${base_dir}/_${plugin} ]]; then
-        fpath=(${base_dir} ${fpath})
+for plugin (${PLUGINS}); do
+    base_dir=${ZSH}/PLUGINS/${plugin}
+    if [[ -f ${base_dir}/${plugin}.plugin.zsh ]] || [[ -f ${base_dir}/_${plugin} ]];then
+        if [[ -f ${base_dir}/${plugin}.plugin.zsh ]];then
+            source ${base_dir}/${plugin}.plugin.zsh
+        fi
+        if [[ -f ${base_dir}/_${plugin} ]];then
+            fpath=(${fpath} ${base_dir})
+        fi
     else
         printf "${base_dir} not plugin\n"
     fi
 done
-unset base_dir
-
-for plugin (${plugins}); do
-    if [ -f $ZSH/plugins/$plugin/$plugin.plugin.zsh ]; then
-        source $ZSH/plugins/$plugin/$plugin.plugin.zsh
-    fi
-done
-
+unset plugin base_dir
 
 autoload -Uz compinit
 compinit -i
@@ -48,16 +46,14 @@ source "$ZSH/themes/${ZSH_THEME}.zsh-theme"
 source ${MY_BREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ${MY_BREW_PREFIX}/Cellar/zsh-history-substring-search/1.0.0/zsh-history-substring-search.zsh
 ## bind Ctrl-P/Ctrl-N for Emacs mode
-bindkey -M emacs '^P' history-substring-search-up
-bindkey -M emacs '^N' history-substring-search-down
+bindkey -M emacs '^p' history-substring-search-up
+bindkey -M emacs '^n' history-substring-search-down
 ## bind k and j for VI mode
-bindkey -M vicmd 'k' history-substring-search-up
-bindkey -M vicmd 'j' history-substring-search-down
-bindkey -M vicmd '^f' vi-forward-word
-bindkey -M vicmd '^f' vi-forward-blank-word
+bindkey -M viins '^p' history-substring-search-up
+bindkey -M viins '^n' history-substring-search-down
+bindkey -M vicmd 'k'  history-substring-search-up
+bindkey -M vicmd 'j'  history-substring-search-down
 
-unset plugin
-unset plugins
 unset ZSH
 
 # load executable
