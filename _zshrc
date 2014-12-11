@@ -16,13 +16,21 @@ elif [[ $OSTYPE == "darwin"* ]];then
 fi
 
 for plugin (${plugins}); do
-    local base_dir=${ZSH}/plugins/${plugin}
+    base_dir=${ZSH}/plugins/${plugin}
     if [[ -f ${base_dir}/${plugin}.plugin.zsh ]] || [[ -f ${base_dir}/_${plugin} ]]; then
         fpath=(${base_dir} ${fpath})
     else
         printf "${base_dir} not plugin\n"
     fi
 done
+unset base_dir
+
+for plugin (${plugins}); do
+    if [ -f $ZSH/plugins/$plugin/$plugin.plugin.zsh ]; then
+        source $ZSH/plugins/$plugin/$plugin.plugin.zsh
+    fi
+done
+
 
 autoload -Uz compinit
 compinit -i
@@ -32,12 +40,6 @@ for config_file (${ZSH}/lib/*.zsh); do
 done
 unset config_file
 
-
-for plugin (${plugins}); do
-    if [ -f $ZSH/plugins/$plugin/$plugin.plugin.zsh ]; then
-        source $ZSH/plugins/$plugin/$plugin.plugin.zsh
-    fi
-done
 
 # sources
 
@@ -53,6 +55,10 @@ bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down
 bindkey -M vicmd '^f' vi-forward-word
 bindkey -M vicmd '^f' vi-forward-blank-word
+
+unset plugin
+unset plugins
+unset ZSH
 
 # load executable
 (pgrep -x rdm >/dev/null || rdm &>/tmp/rdm_answer &)

@@ -5,7 +5,7 @@ git_prompt_info() {
 
 # handy operations
 
-em() {
+my_emacs() {
     if [[ $OSTYPE == "linux-gnu" ]] && [ $DISPLAY ]; then
         command emacs -fs $@ &>/dev/null & disown
     else
@@ -13,7 +13,7 @@ em() {
     fi
 }
 
-cn(){
+my_cmake_ninja() {
     cmake -GNinja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON $@ && ninja
 }
 
@@ -21,7 +21,7 @@ my_node_docs() {
     open "http://nodejs.org/docs/$(node --version)/api/all.html#all_$1"
 }
 
-my_git_dl(){
+my_git_dl() {
     git_url=$1
     folder=${${git_url##*/}%%.*}
     git clone --depth 1 $1 $folder
