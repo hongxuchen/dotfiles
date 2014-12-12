@@ -1,79 +1,85 @@
 # -*- mode: conf-unix; -*-
+#  vim: set ft=readline ts=4 sw=2 tw=0 et :
 
-# Use vi editing mode
 set editing-mode vi
+"\C-x\C-r": re-read-init-file
 
-# Set visible bell
-set bell-style visible                   # Options: none, visible, audible
-
-# Adds punctuation as word delimiters
-set bind-tty-special-chars off
+set bell-style none                      # Options: none, visible, audible
+set bind-tty-special-chars off           # Adds punctuation as word delimiters
 
 # Completion Options
-set page-completions on                  # Page completions more like.
+set page-completions on                  # Page completions like "more/less"
 set completion-ignore-case on            # Ignore case
-set print-completion-horizontally off    # Don't print horizontally
 set completion-query-items 200           # Show double the number of default completions.
 set match-hidden-files off               # Don't match hidden files
 set show-all-if-ambiguous on             # Enable single tab completion
 set show-all-if-unmodified on            # List immediately, don't bell if ambigous.
 set visible-stats on                     # Show item type like 'ls -F', displays /,*,@ next to name
+set history-size 1000
+set menu-complete-display-prefix on
+set show-all-if-ambiguous on
+set show-all-if-unmodified on
+set skip-completed-text on
+set completion-display-width -1          # default -1, no limit
+set print-completion-horizontally off    # Don't print horizontally
 
 # Fix for accents input with UTF-8.
-set meta-flag on
 set input-meta on
 set output-meta on
 set convert-meta off
 
 $if mode=emacs
-# Readline specific functions
-"\e[1~": beginning-of-line           # CTRL + A
-"\e[4~": end-of-line                 # CTRL + E
-"\e[5C": forward-word                # Control + Right
-"\e[5D": backward-word               # Control + Left
-"\e[3~": delete-char                 # Delete
-"\e[2~": quoted-insert               # CTRL + v
-"\e[5~": history-search-backward     # Page Up
-"\e[6~": history-search-forward      # Page Down
-#"\t": menu-complete                 # Tab cycles through completions
-
-# If the above prevents Left and Right from working, try this:
-#"\e[C": forward-char                # Move forward one character.
-#"\e[D": backward-char               # Move backwards one character.
+"\C-k":  kill-line
+"\C-a":  beginning-of-line
+"\C-e":  end-of-line
+"\C-p":  history-search-backward
+"\C-n":  history-search-forward
+"\C-f":  forward-char
+"\C-b":  backward-char
+"\e-f":  forward-word
+"\e-b":  backward-word
+# "\t":    complete
 $endif
 
-# Avoid binding ^J, ^M,  ^C, ^?, ^S, ^Q, etc.
 $if mode=vi
-set keymap vi-command
-"gg": beginning-of-history
-"G": end-of-history
-"k": history-search-backward
-"j": history-search-forward
-"?": reverse-search-history
-"/": forward-search-history
 
 set keymap vi-insert
-"\C-l": clear-screen
-"\C-w": backward-kill-word
-"\C-a": beginning-of-line
-"\C-e": end-of-line
-# "\C-p": previous-history
-# "\C-n": next-history
-"\C-p": history-search-backward
-"\C-n": history-search-forward
-"\C-f": forward-char
-"\C-b": backward-char
-"\M-f": forward-word
-"\M-b": backward-word
+"\C-k":  kill-line
+"\C-l":  clear-screen
+#"\C-w":  unix-word-rubout
+"\C-w":  backward-kill-word
+"\C-a":  beginning-of-line
+"\C-m":  accept-line
+"\C-d":  delete-char
+"\C-h":  backward-delete-char
+"\C-v":  quoted-insert
+"\C-y":  yank
+"\C-e":  end-of-line
+"\C-p":  history-search-backward
+"\C-n":  history-search-forward
+"\C-f":  forward-char
+"\C-b":  backward-char
+"\e-f":  forward-word
+"\e-b":  backward-word
+# "\t":   complete
+
+set keymap vi-command
+"k":     history-search-backward
+"j":     history-search-forward
+"guw":   downcase-word
+"gUw":   upcase-word
+"\C-f":  forward-char
+"\C-b":  backward-char
+"\e-f":  forward-word
+"\e-b":  backward-word
+
 $endif
 
 $if Bash
-Space: magic-space
+Space:  magic-space
 $endif
 
 $if Python
 $endif
 
-# IPython needs this to appear at the bottom of the
-# file for clear-screen to work
-set keymap vi
+# set keymap vi

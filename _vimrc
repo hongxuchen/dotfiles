@@ -26,7 +26,7 @@ set clipboard=unnamed "Use system clipboard ("*)
 nnoremap <leader>p :set paste! <CR>
 
 " Remove trailing whitespace
-" nnoremap <leader>s :%s/\s\+$//<cr>:let @/=''<CR>
+nnoremap <leader>f :%s/\s\+$//<cr>:let @/=''<CR>
 
 nnoremap <leader>s :pwd <CR>
 

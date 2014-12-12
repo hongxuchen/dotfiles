@@ -1,18 +1,24 @@
-
+#  vim: set ft=python ts=8 sw=4 tw=0 et :
 # Note: If you put paths relative to the home directory, do not forget os.path.expanduser
 
 import os
+import platform
+
+my_emscripten_prefix='/usr/local'
+plt = platform.system()
+if plt == 'Linux':
+    my_emscripten_prefix = os.path.join(os.path.expanduser('~'), '.linuxbrew')
+
 
 # this helps projects using emscripten find it
-EMSCRIPTEN_ROOT = os.path.expanduser(os.getenv('EMSCRIPTEN') or '/usr/local/Cellar/emscripten/1.27.0/libexec') # directory
-# LLVM_ROOT = os.path.expanduser(os.getenv('LLVM') or '/usr/local/opt/llvm/bin') # directory
-LLVM_ROOT = os.path.expanduser(os.getenv('LLVM') or '/usr/local/opt/emscripten/libexec/llvm/bin') # directory
+EMSCRIPTEN_ROOT = os.path.join(my_emscripten_prefix, 'Cellar/emscripten/1.26.0/libexec')
+LLVM_ROOT = os.path.join(my_emscripten_prefix, 'opt/emscripten/libexec/llvm/bin')
 
 # If not specified, defaults to sys.executable.
 #PYTHON = 'python'
 
 # See below for notes on which JS engine(s) you need
-NODE_JS = os.path.expanduser(os.getenv('NODE') or '/usr/local/bin/node') # executable
+NODE_JS = os.path.join(my_emscripten_prefix, 'bin/node')
 SPIDERMONKEY_ENGINE = [os.path.expanduser(os.getenv('SPIDERMONKEY') or 'js')] # executable
 V8_ENGINE = os.path.expanduser(os.getenv('V8') or 'd8') # executable
 

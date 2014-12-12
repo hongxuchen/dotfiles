@@ -27,7 +27,7 @@ alias trash-empty='rm -rf ~/.local/share/Trash'
 
 alias pscpu10='ps -e -o pcpu,cpu,nice,state,cputime,args|sort -k1 -nr | head -10'
 alias psmem10='ps -e -orss=,args= | sort -b -k1,1n| head -10'
-alias path='echo -e ${PATH//:/\\n}'
+# alias path='echo -e ${PATH//:/\\n}'
 
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1])"'
 alias urldecode='python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])"'

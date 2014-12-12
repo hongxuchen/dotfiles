@@ -1,3 +1,0 @@
-"\C-]": menu-complete
-"\C-[": dynamic-complete-history
-"\C-p": history-search-backward

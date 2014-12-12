@@ -29,7 +29,7 @@
 
 (eval-after-load "python"
   '(progn
-     (my-python-mode-elpy-setup)
+     ;; (my-python-mode-elpy-setup)
      (autoload 'doctest-mode "doctest-mode" "Python doctest editing mode." t)
      ))
 
