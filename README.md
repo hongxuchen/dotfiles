@@ -67,8 +67,6 @@ Fundamentals
 
 1. **Vim**(managed with [vundle](https://github.com/gmarik/Vundle.vim))(`~/.vimrc`, `~/.vim`)
 
-    - to install vim plugins, **./install --vim**
-
 1. **Emacs**(24+, based on [puremell](https://github.com/purcell/emacs.d)'s settings, 
 managed with [package.el](http://www.emacswiki.org/emacs/ELPA))(`~/.emacs.d`)
 

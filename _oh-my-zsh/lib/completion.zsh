@@ -9,7 +9,7 @@ set auto_param_slash
 
 WORDCHARS=''
 
-zmodload -i zsh/complist
+zmodload zsh/complist
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 

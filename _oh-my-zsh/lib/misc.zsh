@@ -48,8 +48,6 @@ setopt hist_beep
 
 [[ -e /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found
 
-alias -g ND="*(/om[10])" # newest directory
-alias -g NF="*(.om[10])" # newest file
 # alias -g L='| less'
 # alias -g LL='2>&1 | less'
 alias -g L='| v -'

@@ -16,7 +16,7 @@ elif [[ $OSTYPE == "darwin"* ]];then
 fi
 
 for plugin (${PLUGINS}); do
-    base_dir=${ZSH}/PLUGINS/${plugin}
+    base_dir=${ZSH}/plugins/${plugin}
     if [[ -f ${base_dir}/${plugin}.plugin.zsh ]] || [[ -f ${base_dir}/_${plugin} ]];then
         if [[ -f ${base_dir}/${plugin}.plugin.zsh ]];then
             source ${base_dir}/${plugin}.plugin.zsh
@@ -38,19 +38,19 @@ for config_file (${ZSH}/lib/*.zsh); do
 done
 unset config_file
 
-
 # sources
 
 source "$ZSH/themes/${ZSH_THEME}.zsh-theme"
 
 source ${MY_BREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 source ${MY_BREW_PREFIX}/Cellar/zsh-history-substring-search/1.0.0/zsh-history-substring-search.zsh
-## bind Ctrl-P/Ctrl-N for Emacs mode
+
+## Ctrl-p/Ctrl-n for Emacs/viins mode
 bindkey -M emacs '^p' history-substring-search-up
 bindkey -M emacs '^n' history-substring-search-down
-## bind k and j for VI mode
 bindkey -M viins '^p' history-substring-search-up
 bindkey -M viins '^n' history-substring-search-down
+## k and j for VI mode
 bindkey -M vicmd 'k'  history-substring-search-up
 bindkey -M vicmd 'j'  history-substring-search-down
 
