@@ -103,7 +103,7 @@ managed with [package.el](http://www.emacswiki.org/emacs/ELPA))(`~/.emacs.d`)
 
 1. [**tmux**](http://tmux.sourceforge.net/)(`~/.tmux.conf`)
 
-other RCs
+Other RCs
 ---------
 
 1. [**ack**](http://beyondgrep.com/)(`~/.ackrc`)
@@ -163,7 +163,6 @@ They are NOT exact linux-only, but I don't wanna use them for Mac; currently put
 - [**Freedesktop**](http://www.freedesktop.org/wiki/) configs(`~/.config/`)
 
     - [**LXDE**](http://lxde.org/)(`autostart/`, `gtk-2.0/`, `gtk-3.0/`, `lxpanel/`, `lxsession/`, `lxterminal/`, `openbox/`, `pcmanfm/`, `user-dirs.dirs`, `user-dirs.locale`)
-    - **Evince**(envince/)
     - [**Fcitx**](https://fcitx-im.org/wiki/Fcitx)(`fcitx/`)
     - [**Zathura**](https://pwmt.org/projects/zathura/)(`zathura/`)
 

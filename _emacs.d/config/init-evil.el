@@ -118,7 +118,7 @@
 (evil-leader/set-key
   "c" 'flymake-mode
   "r" 'review-fixme-comment
-  "g" 'rgrep
+  "g" 'ag
   "f" 'my-format-buffer
   "s" 'show-file-name
   "b" 'magit-blame-mode

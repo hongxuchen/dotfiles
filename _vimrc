@@ -237,10 +237,10 @@ Bundle 'Superbil/llvm.vim'
 Bundle 'Cpp11-Syntax-Support'
 Bundle 'scrooloose/nerdtree'
 Bundle 'nanotech/jellybeans.vim'
-Bundle 'ack.vim'
 Bundle 'tomasr/molokai'
 Bundle 'endel/vim-github-colorscheme'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'rking/ag.vim'
 
 " tagbar
 noremap <leader>t :TagbarToggle<CR>

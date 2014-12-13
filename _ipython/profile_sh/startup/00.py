@@ -2,6 +2,7 @@
 from __future__ import print_function
 import atexit
 import os
+import signal
 import sys
 import linecache
 import mmap

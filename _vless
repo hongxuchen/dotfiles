@@ -178,6 +178,7 @@ Bundle 'jiangmiao/auto-pairs'
 Bundle 'Superbil/llvm.vim'
 Bundle 'Cpp11-Syntax-Support'
 Bundle 'endel/vim-github-colorscheme'
+Bundle 'rking/ag.vim'
 colorscheme github
 
 autocmd FileType lisp setl cms=;;%s
