@@ -239,8 +239,8 @@ Bundle 'scrooloose/nerdtree'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'tomasr/molokai'
 Bundle 'endel/vim-github-colorscheme'
-Bundle 'Valloric/YouCompleteMe'
 Bundle 'rking/ag.vim'
+Bundle 'Valloric/YouCompleteMe'
 
 " tagbar
 noremap <leader>t :TagbarToggle<CR>
