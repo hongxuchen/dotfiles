@@ -11,6 +11,7 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
     alias idaq='~/idademo65/idaq&'
     alias pycharm='~/tools/pycharm/bin/pycharm.sh &>/dev/null &'
     alias goagent="~/tools/goagent/local/goagent-gtk.py &>/dev/null &disown"
+    alias open="xdg-open"
 fi
 
 if [[ $OSTYPE == "darwin"* ]]; then

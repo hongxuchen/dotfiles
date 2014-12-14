@@ -13,10 +13,11 @@ except ImportError:
 if len(sys.argv) < 2:
     percent = 10
 else:
+    arg = sys.argv[1]
     try:
-        percent = int(sys.argv[1])
+        percent = int(arg)
     except:
-        print("{:d} should be an int".format(percent), file=sys.stderr)
+        print("error: {} should be an int".format(argv), file=sys.stderr)
         sys.exit(1)
 
 direction = '+'
