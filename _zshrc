@@ -5,6 +5,8 @@ ZSH=~/.oh-my-zsh
 # ZSH_THEME="bira"
 ZSH_THEME="nanotech"
 
+source ~/.profile
+source ~/.zlocal
 source ~/.aliases
 
 # ~/.oh-my-zsh/plugins/

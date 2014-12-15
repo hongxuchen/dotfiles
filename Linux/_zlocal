@@ -1,8 +1,6 @@
 # -*- mode:sh -*-
 # vim:ft=sh
 
-source ~/.profile
-
 # PATH
 
 MY_ROOT=~/RESEARCH

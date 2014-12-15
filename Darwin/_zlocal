@@ -1,8 +1,6 @@
 # -*- mode:sh -*-
 # vim:ft=sh
 
-source ~/.profile
-
 MY_ROOT=~/RESEARCH
 MY_WLLVM_ROOT=${MY_ROOT}/wllvm
 MY_HOME_BIN=~/.bin
