@@ -3,6 +3,31 @@ git_prompt_info() {
     echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
+function svn_prompt_info() {
+    if [ -d .svn ]; then
+        rev=$(svn info 2> /dev/null | sed -n 's/Revision:\ //p')
+        echo -n "${ZSH_THEME_SVN_PROMPT_PREFIX}${rev}${ZSH_THEME_SVN_PROMPT_SUFFIX}"
+    fi
+}
+
+function llvmopts() {
+    if [ $# -lt 1 ]; then
+        opt_flag="-std-link-opts"
+    elif [[ $1 == "-O0" ]]; then
+        opt_flag=""
+    else
+        opt_flag="$1"
+    fi
+    printf "optimization flags is set to: ${opt_flag}\n"
+    response=$(llvm-as < /dev/null -o - | opt ${opt_flag} -disable-output -debug-pass=Arguments 2>&1)
+    if [[ ${response} == "opt: Unknown command line argument"* ]]; then
+      printf "${response}"
+    else
+      printf ${response} | sed 's/Pass Arguments:  /====== /' | tr " " "\n"
+    fi
+}
+
+
 # handy operations
 
 em() {

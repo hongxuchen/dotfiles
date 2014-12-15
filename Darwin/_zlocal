@@ -16,7 +16,7 @@ export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
 export PATH=${MY_WLLVM_ROOT}:$PATH
 
 export LD_LIBRARY_PATH=
-export LD_LIBRARY_PATH=/usr/local/Cellar/llvm/3.5.0/lib
+export LD_LIBRARY_PATH=/usr/local/opt/llvm/lib
 
 export CPLUS_INCLUDE_PATH=
 export CPLUS_INCLUDE_PATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1
