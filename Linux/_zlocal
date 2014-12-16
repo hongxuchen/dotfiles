@@ -7,7 +7,7 @@ MY_ROOT=~/RESEARCH
 MY_WLLVM_ROOT=${MY_ROOT}/wllvm
 MY_HOME_BIN=~/.bin
 
-MY_LLVM_ROOT=${MY_ROOT}/llvm-3.4
+MY_LLVM_ROOT=${MY_ROOT}/llvm-git
 MY_LLVM_OBJ=${MY_LLVM_ROOT}/obj/Release+Asserts
 MY_CLANG_TOOLS=${MY_LLVM_ROOT}/src/tools/clang/tools
 MY_STP_INSTALL=${MY_ROOT}/stp/install
