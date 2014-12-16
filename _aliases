@@ -12,6 +12,8 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
     alias pycharm='~/tools/pycharm/bin/pycharm.sh &>/dev/null &'
     alias goagent="~/tools/goagent/local/goagent-gtk.py &>/dev/null &disown"
     alias open="xdg-open"
+    ### personal use
+    alias opt='opt -load ~/src/snippets_llvm/build/bin/libsnippets.so'
 fi
 
 if [[ $OSTYPE == "darwin"* ]]; then
@@ -75,6 +77,3 @@ alias sl='ls'
 alias v='vim -u ~/.vless'
 alias e=vim
 alias q='exit'
-
-### personal use
-alias opt='opt -load ~/src/snippets_llvm/build/bin/libsnippets.so'
