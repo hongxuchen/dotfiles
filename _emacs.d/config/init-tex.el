@@ -5,25 +5,15 @@
   (define-key LaTeX-mode-map (kbd "C-c p") 'preview-clearout-buffer)
   (setq TeX-view-program-selection '((output-pdf "Open"))
         TeX-view-program-list
-        '(("SumatraPDF" "SumatraPDF.exe %o")
-          ("Gsview" "gsview32.exe %o")
-          ("Evince" "evince --page-index=%(outpage) %o")
+        '(("Evince" "evince --page-index=%(outpage) %o")
           ("Open" "Open %o")
-          ("Okular" "okular --unique %o#src:%n%b")
-          ("Firefox" "firefox %o")))
+          ))
   (setq TeX-fold-unfold-around-mark nil
         TeX-fold-auto t
         TeX-fold-type-list '(env macro math comment))
   )
 
 (defun my-tex-mode-basic-setup ()
-  (auto-fill-mode 1)
-  (LaTeX-math-mode 1)
-  (reftex-mode 1)
-  (linum-mode 1)
-  (TeX-fold-mode -1)
-  (TeX-global-PDF-mode 1)
-  ;; (imenu-add-menubar-index)
 
   (setq-default TeX-engine 'default
                 TeX-master nil)
@@ -38,6 +28,14 @@
         TeX-debug-warnings nil
         TeX-source-correlate-mode t
         TeX-source-correlate-start-server t)
+
+  (reftex-mode 1)
+  (auto-fill-mode 1)
+  (LaTeX-math-mode 1)
+  (linum-mode 1)
+  (TeX-fold-mode -1)
+  (TeX-global-PDF-mode 1)
+  ;; (imenu-add-menubar-index)
 
   (setq LaTeX-command "latex -synctex=1")
   (setq LaTeX-section-hook

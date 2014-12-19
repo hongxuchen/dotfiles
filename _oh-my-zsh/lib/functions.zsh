@@ -3,14 +3,14 @@ git_prompt_info() {
     echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
-function svn_prompt_info() {
+svn_prompt_info() {
     if [ -d .svn ]; then
         rev=$(svn info 2> /dev/null | sed -n 's/Revision:\ //p')
         echo -n "${ZSH_THEME_SVN_PROMPT_PREFIX}${rev}${ZSH_THEME_SVN_PROMPT_SUFFIX}"
     fi
 }
 
-function llvmopts() {
+llvmopts() {
     if [ $# -lt 1 ]; then
         opt_flag="-std-link-opts"
     elif [[ $1 == "-O0" ]]; then
@@ -27,15 +27,41 @@ function llvmopts() {
     fi
 }
 
-
-# handy operations
-
 em() {
     if [[ $OSTYPE == "linux-gnu" ]] && [ $DISPLAY ]; then
         command emacs -fs $@ &>/dev/null & disown
     else
         command emacs -nw
     fi
+}
+
+# Create a new directory and enter it
+mkd() {
+  mkdir -p "$@" && cd "$@"
+}
+
+# Credit: http://nparikh.org/notes/zshrc.txt
+extract () {
+  if [ -f $1 ]; then
+    case $1 in
+      *.tar.bz2) tar -jxvf $1 ;;
+      *.tar.gz) tar -zxvf $1 ;;
+      *.bz2) bunzip2 $1 ;;
+      *.dmg) hdiutil mount $1 ;;
+      *.gz) gunzip $1 ;;
+      *.tar) tar -xvf $1 ;;
+      *.tbz2) tar -jxvf $1 ;;
+      *.tgz) tar -zxvf $1 ;;
+      *.zip) unzip $1 ;;
+      *.ZIP) unzip $1 ;;
+      *.pax) cat $1 | pax -r ;;
+      *.pax.Z) uncompress $1 —stdout | pax -r ;;
+      *.Z) uncompress $1 ;;
+      *) echo "'$1' cannot be extracted/mounted via extract()";;
+   esac
+ else
+   echo "'$1' is not a valid file to extract"
+ fi
 }
 
 my_cmake_ninja() {

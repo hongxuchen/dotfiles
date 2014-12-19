@@ -4,6 +4,7 @@
 MY_ROOT=~/RESEARCH
 MY_WLLVM_ROOT=${MY_ROOT}/wllvm
 MY_HOME_BIN=~/.bin
+export GOPATH=~/gocode
 
 export MY_BREW_PREFIX=/usr/local
 export PATH=/usr/sbin:/sbin:/usr/bin:/bin:/opt/local/bin
@@ -14,6 +15,7 @@ export PATH=${MY_HOME_BIN}:${MY_HOME_BIN}/git-scripts:${MY_HOME_BIN}/mac:$PATH
 export PATH=~/Library/Python/2.7/bin:$PATH
 export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
 export PATH=${MY_WLLVM_ROOT}:$PATH
+export PATH=${GOPATH}/bin:$PATH
 
 export LD_LIBRARY_PATH=
 export LD_LIBRARY_PATH=/usr/local/opt/llvm/lib

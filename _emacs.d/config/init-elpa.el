@@ -46,6 +46,7 @@
 (require-package 'info+)
 (require-package 'wgrep)
 (require-package 'popup-kill-ring)
+(require-package 'ag)
 (require-package 's)
 (require-package 'robe)
 (require-package 'inf-ruby)
