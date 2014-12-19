@@ -45,17 +45,18 @@ unset config_file
 
 source "$ZSH/themes/${ZSH_THEME}.zsh-theme"
 
-source ${MY_BREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-source ${MY_BREW_PREFIX}/Cellar/zsh-history-substring-search/1.0.0/zsh-history-substring-search.zsh
-
-## Ctrl-p/Ctrl-n for Emacs/viins mode
-bindkey -M emacs '^p' history-substring-search-up
-bindkey -M emacs '^n' history-substring-search-down
-bindkey -M viins '^p' history-substring-search-up
-bindkey -M viins '^n' history-substring-search-down
-## k and j for VI mode
-bindkey -M vicmd 'k'  history-substring-search-up
-bindkey -M vicmd 'j'  history-substring-search-down
+if [[ -d ${MY_BREW_PREFIX} ]];then
+    source ${MY_BREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+    source ${MY_BREW_PREFIX}/Cellar/zsh-history-substring-search/1.0.0/zsh-history-substring-search.zsh
+    ## Ctrl-p/Ctrl-n for Emacs/viins mode
+    bindkey -M emacs '^p' history-substring-search-up
+    bindkey -M emacs '^n' history-substring-search-down
+    bindkey -M viins '^p' history-substring-search-up
+    bindkey -M viins '^n' history-substring-search-down
+    ## k and j for VI mode
+    bindkey -M vicmd 'k'  history-substring-search-up
+    bindkey -M vicmd 'j'  history-substring-search-down
+fi
 
 unset ZSH
 

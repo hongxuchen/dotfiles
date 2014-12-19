@@ -27,7 +27,7 @@ def _find_files(d, files):
 CUR_DIR = os.path.abspath(os.path.dirname(__file__))
 BAK_DIR = os.path.join(CUR_DIR, "BAK")
 PLT = platform.system()  # Darwin/Linux
-DST_DIR = os.path.expandvars("$HOME")
+DST_DIR = os.path.realpath(os.path.expandvars("$HOME")) # FreeBSD /home is a symlink to /usr/home
 
 VUNDLE_REPO = "https://github.com/gmarik/vundle.git"
 VUNDLE_PATH = os.path.join(DST_DIR, '.vim/bundle/vundle')

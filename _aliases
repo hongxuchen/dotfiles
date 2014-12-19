@@ -16,10 +16,12 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
     alias opt='opt -load ~/src/snippets_llvm/build/bin/libsnippets.so'
 fi
 
-if [[ $OSTYPE == "darwin"* ]]; then
+if [[ $OSTYPE == "darwin"* ]] || [[ $OSTYPE == "freebsd"* ]]; then
     alias ls='ls -G'
-    alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
-    alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+    if [[ $OSTYPE == "darwin"* ]]; then
+        alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
+        alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+    fi
 fi
 
 alias r_cp='rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --'
@@ -73,7 +75,7 @@ alias lrt='ls -lrth'
 alias kl='k.zsh | less'
 alias sl='ls'
 
-# alias v='vim -c ":noremap q :qall!<cr>" -c ":set nomodifiable" -c ":set laststatus=0"'
+alias vi='vim'
 alias v='vim -u ~/.vless'
 alias e=vim
 alias q='exit'
