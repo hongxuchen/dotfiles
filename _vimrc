@@ -2,19 +2,12 @@
 " =====================================================
 " AUTHOR: Hongxu Chen
 " EMAIL:  leftcopy.chx@gmail.com
-"
 " =====================================================
 
 " =====================================================
 " dirty tricks
 " =====================================================
 
-" When editing a file, always jump to the last known cursor position.
-
-autocmd BufNewFile,BufRead *.ipynb setfiletype javascript
-
-" Set working directory
-set autochdir
 " save and reload vimrc
 nnoremap <silent> <leader>v :w<CR>:source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 
@@ -165,6 +158,7 @@ set matchpairs+=<:>           " show matching <> (html mainly) as well
 set foldmethod=syntax         " allow us to fold on indents
 set foldlevel=99              " don't fold by default
 set history=200               " up/down can also be used when some words have been inserted
+set autochdir
 " colorscheme delek           " koehler,elflord,murphy,torte,evening,delek
 " Reading/Writing
 set noautowrite               " Never write a file unless I request it.
@@ -196,16 +190,13 @@ set smarttab                  " Handle tabs more intelligently
 set hlsearch                  " Highlight searches by default.
 set incsearch                 " Incrementally search while typing a /regex
 " ignore these files when completing
-set wildignore+=*/tmp/*,*.swp,*.zip     " MacOSX/Linux"
+set wildignore+=*/tmp/*,*.swp,*.zip     " MacOSX/Linux
 set wildignore+=*.o,*.obj,*.so,*.a,*.bc
 set wildignore+=.git,*.elc
 set wildignore+=eggs/**,*.egg-info/**,*.pyc,*.pyo,*pyd
 set wildignore+=*.class,*.jar
 set wildignore+=*.aux,*.toc,*.out
 set wildignore+=*.bak,*.exe,*.chm,*.png,*.jpg,*.jpeg,*.gif,*.avi,*.rm,*.rmvb
-" completion
-" set completeopt=menu,longest
-set completeopt=longest
 set completeopt=longest,menuone
 set pumheight=8
 
@@ -231,6 +222,7 @@ Bundle 'tpope/vim-markdown'
 Bundle 'tpope/vim-tbone'
 Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-jdaddy'
+Bundle 'tpope/vim-dispatch'
 Bundle 'Tagbar'
 Bundle 'jiangmiao/auto-pairs'
 Bundle 'Superbil/llvm.vim'
@@ -241,6 +233,7 @@ Bundle 'tomasr/molokai'
 Bundle 'endel/vim-github-colorscheme'
 Bundle 'rking/ag.vim'
 Bundle 'Valloric/YouCompleteMe'
+Bundle 'toyamarinyon/vim-swift'
 
 " tagbar
 noremap <leader>t :TagbarToggle<CR>
@@ -268,6 +261,8 @@ let g:NERDTreeDirArrows=0
 autocmd FileType lisp setl cms=;;%s
 autocmd FileType cmake setl cms=#%s
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufRead,BufNewFile /usr/include/* set ft=cpp
+autocmd BufRead,BufNewFile *.ipynb setfiletype javascript
 
 " append modeline
 function! AppendModeline()
@@ -283,7 +278,6 @@ let g:ctrlp_cmd = 'CtrlP'
 let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 let g:ctrlp_working_path_mode = 'ra'
 
-autocmd BufRead,BufNewFile /usr/include/* set ft=cpp
 
 " function! StartUp()
 "     if 0 == argc()

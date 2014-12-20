@@ -37,7 +37,7 @@ em() {
 
 # Create a new directory and enter it
 mkd() {
-  mkdir -p "$@" && cd "$@"
+  mkdir -p "$@" && cd "$1"
 }
 
 # Credit: http://nparikh.org/notes/zshrc.txt
