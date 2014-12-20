@@ -1,3 +1,4 @@
+#  vim: set ft=ruby ts=4 sw=2 tw=0 et :
 # === EDITOR ===
 Pry.editor = 'vim'
 

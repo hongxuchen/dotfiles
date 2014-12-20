@@ -1,0 +1,145 @@
+" vim: set ft=vim ts=3 sw=2 tw=78 et :
+" 
+" remap j,k
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+noremap gk k
+
+" history scrolls in Ex mode
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
+" visual-star-search, makes * and # work on visual mode too.
+function! s:VSetSearch(cmdtype)
+  let temp = @s
+  norm! gv"sy
+  let @/ = '\V' . substitute(escape(@s, a:cmdtype.'\'), '\n', '\\n', 'g')
+  let @s = temp
+endfunction
+xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
+xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
+
+" recursively vimgrep for word under cursor or selection when hitting leader-star
+nnoremap <leader>* :execute 'noautocmd vimgrep /\V' . substitute(escape(expand("<cword>"), '\'), '\n', '\\n', 'g') . '/ **'<CR>
+vnoremap <leader>* :<C-u>call <SID>VSetSearch()<CR>:execute 'noautocmd vimgrep /' . @/ . '/ **'<CR>
+
+" display pwd
+nnoremap <leader>s :pwd <CR>
+" open help:info in new tab
+cabbrev hh tab help
+
+" emacs like settings
+nnoremap <silent><C-x>0 :hide<CR>
+nnoremap <silent><C-x>1 :hide :only<CR>
+nnoremap <silent><C-x>k :bd<CR>
+nnoremap <silent><C-x><C-s> :w<CR>:exe ":echo 'saved' bufname(\"%\")"<CR>
+nnoremap <silent><C-x>s :wall<CR>:exe ":echo 'saved all buffers'"<CR>
+nnoremap <silent><C-x>i :read<Space>
+nnoremap <silent><C-x><C-w> :write<Space>
+nnoremap <silent><C-x><C-q> :set invreadonly<CR>
+nnoremap <silent><C-x><C-c> :wqall<CR>
+nnoremap <silent><C-x><C-j> :E<CR>
+cnoremap <C-g> <ESC><ESC>
+
+
+" =====================================================
+" general settings
+" =====================================================
+syntax on                     " syntax highlighing
+filetype on                   " try to detect filetypes
+filetype plugin on            " recognize filetype
+filetype plugin indent on     " enable loading indent file for filetype
+set grepprg=grep\ -nH\ $*     "grep always displays filename
+set splitright                " 
+set guioptions=               " simpler
+set nrformats=                " treat all numberals as decimal
+set tabpagemax=5              " only 5 tabs
+set gdefault                  " substitute globally
+set nocompatible              " Don't be compatible with vi
+set tabpagemax=15             " max number of tabs
+set number                    " Display line numbers
+set numberwidth=1             " using only 1 column (and 1 space) while possible
+set background=dark           " We are using dark background in vim
+set title                     " show title in console title bar
+set wildmenu                  " Menu completion in command mode on <Tab>
+set wildmode=list:longest     " list and match longest
+set wildmode=longest:full,list:full
+set nocursorline              " have a line indicate the cursor location
+set nostartofline             " Avoid moving cursor to BOL when jumping around
+set virtualedit=block         " Let cursor move past the last char in <C-v> mode
+set iskeyword+=$,@,%,#,-      " don't allow to be separated by line break
+set foldmethod=manual         " TODO
+set hidden                    " set buffer hidden
+set whichwrap=b,s,h,l,<,>,[,]
+set winaltkeys=no             " do not use ALT as menu trigger
+set sel=exclusive
+set scrolloff=5               " Keep 5 context lines above and below the cursor
+set backspace=2               " Allow backspacing over autoindent, EOL, and BOL
+set showmatch                 " Briefly jump to a paren once it's balanced
+set wrap                      " wrap text
+set linebreak                 " don't wrap textin the middle of a word
+set autoindent                " always set autoindenting on
+set smartindent               " use smart indent if there is no indent file
+set tabstop=4                 " <tab> inserts 4 spaces
+set shiftwidth=4              " but an indent level is 2 spaces wide.
+set softtabstop=4             " <BS> over an autoindent deletes both spaces.
+set expandtab                 " Use spaces, not tabs, for autoindent/tab key.
+set shiftround                " rounds indent to a multiple of shiftwidth
+set matchpairs+=<:>           " show matching <> (html mainly) as well
+set foldmethod=syntax         " allow us to fold on indents
+set foldlevel=99              " don't fold by default
+set history=200               " up/down can also be used when some words have been inserted
+set modeline                  " Allow vim options to be embedded in files;
+set modelines=5               " they must be within the first or last 5 lines.
+set ffs=unix,dos,mac          " Try recognizing dos, unix, and mac line endings.
+" Messages, Info, Status
+set vb t_vb=                  " Disable all bells
+set noerrorbells
+set showcmd                   " Show incomplete normal mode commands as I type.
+set report=0                  " commands always print changed line count.
+set shortmess=atI            " Use [+]/[RO]/[w] for modified/readonly/written.
+set listchars=tab:>-,eol:$,trail:-,precedes:<,extends:> " when list needed
+set lcs=tab:>\ ,trail:_,precedes:<,extends:\
+set cmdheight=1
+" encoding
+set fileencodings=utf-8,ucs-bom,gbk,cp936,gb18030
+set fileencoding=utf-8
+set termencoding=utf-8
+set encoding=utf-8
+" searching and Patterns
+set ignorecase                " Default to using case insensitive searches,
+set smartcase                 " unless uppercase letters are used in the regex.
+set smarttab                  " Handle tabs more intelligently
+set hlsearch                  " Highlight searches by default.
+set incsearch                 " Incrementally search while typing a /regex
+" ignore these files when completing
+set wildignore+=*/tmp/*,*.swp,*.zip     " MacOSX/Linux
+set wildignore+=*.o,*.obj,*.so,*.a,*.bc
+set wildignore+=.git,*.elc
+set wildignore+=eggs/**,*.egg-info/**,*.pyc,*.pyo,*pyd
+set wildignore+=*.class,*.jar
+set wildignore+=*.aux,*.toc,*.out
+set wildignore+=*.bak,*.exe,*.chm,*.png,*.jpg,*.jpeg,*.gif,*.avi,*.rm,*.rmvb
+set completeopt=longest,menuone
+set pumheight=8
+
+autocmd FileType lisp setl cms=;;%s
+autocmd FileType cmake setl cms=#%s
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufRead,BufNewFile /usr/include/* set ft=cpp
+autocmd BufRead,BufNewFile *.ipynb setfiletype javascript
+
+"vim-g
+let g:vim_g_f_command = "Gf"
+let g:vim_g_command = "Go"
+
+" VUNDLE rtp, @see https://github.com/gmarik/vundle
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+Bundle 'gmarik/vundle'
+Bundle 'szw/vim-g'
+Bundle 'Superbil/llvm.vim'
+Bundle 'Cpp11-Syntax-Support'
+Bundle 'endel/vim-github-colorscheme'
+Bundle 'rking/ag.vim'
