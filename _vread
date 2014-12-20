@@ -1,15 +1,7 @@
-" vim: set ft=vim ts=3 sw=2 tw=78 et :
-" 
-" remap j,k
-nnoremap j gj
-nnoremap k gk
-nnoremap gj j
-noremap gk k
+" vim: set ft=vim ts=3 sw=2 tw=8 et :
 
-" history scrolls in Ex mode
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
-
+" Handle 'read' settings for vim, used by ~/.vless and ~/.vimrc
+ 
 " visual-star-search, makes * and # work on visual mode too.
 function! s:VSetSearch(cmdtype)
   let temp = @s
@@ -20,16 +12,20 @@ endfunction
 xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
 
-" recursively vimgrep for word under cursor or selection when hitting leader-star
-nnoremap <leader>* :execute 'noautocmd vimgrep /\V' . substitute(escape(expand("<cword>"), '\'), '\n', '\\n', 'g') . '/ **'<CR>
-vnoremap <leader>* :<C-u>call <SID>VSetSearch()<CR>:execute 'noautocmd vimgrep /' . @/ . '/ **'<CR>
-
 " display pwd
 nnoremap <leader>s :pwd <CR>
 " open help:info in new tab
 cabbrev hh tab help
+" remap j,k
+nnoremap j gj
+nnoremap k gk
+nnoremap gj j
+noremap gk k
+" history scrolls in Ex mode
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
 
-" emacs like settings
+" emacs like settings(non-insert mode)
 nnoremap <silent><C-x>0 :hide<CR>
 nnoremap <silent><C-x>1 :hide :only<CR>
 nnoremap <silent><C-x>k :bd<CR>
@@ -40,12 +36,9 @@ nnoremap <silent><C-x><C-w> :write<Space>
 nnoremap <silent><C-x><C-q> :set invreadonly<CR>
 nnoremap <silent><C-x><C-c> :wqall<CR>
 nnoremap <silent><C-x><C-j> :E<CR>
-cnoremap <C-g> <ESC><ESC>
+cnoremap <silent><C-g> <ESC><ESC>
 
-
-" =====================================================
 " general settings
-" =====================================================
 syntax on                     " syntax highlighing
 filetype on                   " try to detect filetypes
 filetype plugin on            " recognize filetype
@@ -93,7 +86,6 @@ set history=200               " up/down can also be used when some words have be
 set modeline                  " Allow vim options to be embedded in files;
 set modelines=5               " they must be within the first or last 5 lines.
 set ffs=unix,dos,mac          " Try recognizing dos, unix, and mac line endings.
-" Messages, Info, Status
 set vb t_vb=                  " Disable all bells
 set noerrorbells
 set showcmd                   " Show incomplete normal mode commands as I type.
@@ -113,8 +105,10 @@ set smartcase                 " unless uppercase letters are used in the regex.
 set smarttab                  " Handle tabs more intelligently
 set hlsearch                  " Highlight searches by default.
 set incsearch                 " Incrementally search while typing a /regex
-" ignore these files when completing
-set wildignore+=*/tmp/*,*.swp,*.zip     " MacOSX/Linux
+" completions
+set pumheight=8               " maximum items of popup window
+"" ignore these files when completing
+set wildignore+=*/tmp/*,*.swp,*.zip
 set wildignore+=*.o,*.obj,*.so,*.a,*.bc
 set wildignore+=.git,*.elc
 set wildignore+=eggs/**,*.egg-info/**,*.pyc,*.pyo,*pyd
@@ -122,7 +116,6 @@ set wildignore+=*.class,*.jar
 set wildignore+=*.aux,*.toc,*.out
 set wildignore+=*.bak,*.exe,*.chm,*.png,*.jpg,*.jpeg,*.gif,*.avi,*.rm,*.rmvb
 set completeopt=longest,menuone
-set pumheight=8
 
 autocmd FileType lisp setl cms=;;%s
 autocmd FileType cmake setl cms=#%s
@@ -130,16 +123,16 @@ autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufRead,BufNewFile /usr/include/* set ft=cpp
 autocmd BufRead,BufNewFile *.ipynb setfiletype javascript
 
-"vim-g
-let g:vim_g_f_command = "Gf"
-let g:vim_g_command = "Go"
-
 " VUNDLE rtp, @see https://github.com/gmarik/vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Bundle 'gmarik/vundle'
-Bundle 'szw/vim-g'
 Bundle 'Superbil/llvm.vim'
 Bundle 'Cpp11-Syntax-Support'
 Bundle 'endel/vim-github-colorscheme'
 Bundle 'rking/ag.vim'
+
+"vim-g
+Bundle 'szw/vim-g'
+let g:vim_g_f_command = "Gf"
+let g:vim_g_command = "Go"

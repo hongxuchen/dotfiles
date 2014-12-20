@@ -4,31 +4,25 @@ source ~/.vread
 
 " save and reload ~/.vimrc
 nnoremap <silent> <leader>v :w<CR>:source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
-
 " sudo write this
 cnoremap W! w !sudo tee % >/dev/null
-
 " Paste from clipboard
 set clipboard=unnamed "Use system clipboard ("*)
 nnoremap <leader>p :set paste! <CR>
-
 " Remove trailing whitespace
 nnoremap <leader>f :%s/\s\+$//<cr>:let @/=''<CR>
-
 " C-j to insert a newline
 nnoremap <NL> i<CR><ESC>
-
+" q for next buffer
 nnoremap q :bN<CR>
-
 " remap D to remove line without x register, anyway I have cc
 nnoremap D "_dd
 vnoremap D "_d
-
 " refresh if file in Vim is updated by external program,TODO
 noremap <silent><F5> :checktime<CR>:exe ":echo 'file refreshed'"<CR>
 inoremap <silent><F5> <C-O>:checktime<CR>:exe ":echo 'file refreshed'"<CR>
 
-" emacs like settings(for insert mode)
+" emacs like settings(insert mode)
 inoremap <silent><C-x>0 <C-o>:hide<CR>
 inoremap <silent><C-x>1 <C-o>:hide :only<CR>
 inoremap <silent><C-x>k <C-o>:bd<CR>
@@ -47,8 +41,6 @@ inoremap <silent><C-d> <Del>
 inoremap <silent><M-n> <C-o>:cnext<CR>
 inoremap <silent><M-p> <C-o>:cprevious<CR>
 
-cnoremap <C-g> <ESC><ESC>
-
 set ttyfast
 set colorcolumn=120
 set autochdir
@@ -59,12 +51,9 @@ set confirm                   " Y-N-C prompt if closing with unsaved changes.
 set laststatus=2              " Always show statusline, even if only 1 window.
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%y%=%-16(\ %l,%c-%v\ %)%P
 
-" =====================================================
-" tool and plugin settings(with vundle)
-" =====================================================
 " runtime ftplugin/man.vim
 runtime macros/matchit.vim
-
+" additional plugins
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-surround'

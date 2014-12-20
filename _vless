@@ -1,6 +1,9 @@
 " vim: set ft=vim ts=3 sw=2 tw=78 et :
 " =====================================================
-" the configuration for vim as a lightweight pager
+" the configuration for vim as a pager, usage:
+" alias v='vim -u ~/.vless'
+" => v your_file
+" => xxx | v -
 " =====================================================
  
 source ~/.vread
