@@ -96,6 +96,7 @@
 (dolist (hook
          '(message-mode-hook
            org-mode-hook
+           text-mode-hook
            ))
   (add-hook hook 'flyspell-mode))
 (when (executable-find "aspell")

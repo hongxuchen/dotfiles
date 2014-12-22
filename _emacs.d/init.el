@@ -56,7 +56,7 @@
 ;; (load-persistent-scratch)
 ;; (server-start)
 (setenv "LC_CTYPE" "zh_CN.UTF-8")
-(let ((path (shell-command-to-string ". ~/.zprofile; echo -n $PATH")))
+(let ((path (shell-command-to-string ". ~/.zlocal; echo -n $PATH")))
   (setenv "PATH" path)
   (setq exec-path 
         (append
