@@ -99,3 +99,7 @@
 	trustExitCode = true
 [pretty]
 	custom = %C(magenta)%h%C(red)%d %C(yellow)%ar %C(green)%s %C(yellow)(%an)
+[filter "media"]
+	clean = git media clean %f
+	smudge = git media smudge %f
+	required = true
