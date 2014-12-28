@@ -1,3 +1,5 @@
+# vim: set ft=gdb ts=4 sw=4 tw=0 et :
+
 define enablesolib
   set stop-on-solib-events 1
   printf "Stop-on-solib-events is enabled!\n"

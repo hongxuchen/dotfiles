@@ -39,7 +39,7 @@ XTerm*fontMenu*fontdefault*Label: Default
 !use fc-list to see installed fonts(~/.fonts,...)
 !generally used:sans-serif
 XTerm*cjkWidth:false
-!xterm*faceName: DejaVu Sans Mono:style=Book:antialias=true
+! xterm*faceName: DejaVu Sans Mono:style=regular:antialias=true:size=13
 xterm*faceName: xft:Monaco:style=bold:size=13:antialias=true:pixelsize=16:autohint=true:hinting=true
 ! XTerm*faceNameDoublesize:WenQuanYi Micro Hei
 !xterm*faceNameDoublesize:xft:Microsoft Yahei:antialias=True:pixelsize=16:style=Regular

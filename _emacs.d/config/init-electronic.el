@@ -167,6 +167,7 @@
 (defun my-cc-mode-ac-setup ()
   (interactive)
   (if my-prefer-ac-or-company
+      ;; ac
       (progn
         (company-mode -1)
         (auto-complete-mode 1)
@@ -183,6 +184,7 @@
                            ))
         (my-irony-ac-setup)
         )
+    ;; company
     (unless buffer-read-only
       (auto-complete-mode -1)
       (company-mode 1)

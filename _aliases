@@ -13,7 +13,7 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
     alias goagent="~/tools/goagent/local/goagent-gtk.py &>/dev/null &disown"
     alias open="xdg-open"
     ### personal use
-    alias opt='opt -load ~/src/snippets_llvm/build/bin/libsnippets.so'
+    alias opt='opt -load ~/RESEARCH/snippets_llvm/build/bin/libsnippets.so'
 fi
 
 if [[ $OSTYPE == "darwin"* ]] || [[ $OSTYPE == "freebsd"* ]]; then

@@ -1,3 +1,5 @@
+# vim: set ft=gdb ts=4 sw=4 tw=0 et :
+
 source ~/.gdb/cpu-x86.gdb
 
 define flags

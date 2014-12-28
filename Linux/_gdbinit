@@ -1,5 +1,6 @@
-# set to 0 if you have problems with the colorized prompt - reported by Plouj with Ubuntu gdb 7.2
-set $COLOUREDPROMPT = 0
+# vim: set ft=gdb ts=4 sw=4 tw=0 et :
+# set to 0 if you have problems with the colorized prompt
+set $COLOUREDPROMPT = 1
 # Colour the first line of the disassembly - default is green, if you want to change it search for
 # SETCOLOUR1STLINE and modify it :-)
 set $SETCOLOUR1STLINE = 0
@@ -56,6 +57,7 @@ source ~/.gdb/misc.gdb
 source ~/.gdb/tips.gdb
 source ~/.gdb/profile.gdb
 source ~/.gdb/helper.gdb
+# source ~/.gdb/colors.gdb
 
 define hook-run
   setup-detect-target

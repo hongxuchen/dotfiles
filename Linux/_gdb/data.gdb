@@ -1,3 +1,4 @@
+# vim: set ft=gdb ts=4 sw=4 tw=0 et :
 # __________hex/ascii dump an address_________
 define ascii_char
   if $argc != 1

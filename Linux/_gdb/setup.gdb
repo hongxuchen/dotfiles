@@ -1,3 +1,5 @@
+# vim: set ft=gdb ts=4 sw=4 tw=0 et :
+
 define setup-detect-target
   set $ARM = 0
   set $X86 = 0

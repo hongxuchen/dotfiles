@@ -1,3 +1,4 @@
+# vim: set ft=gdb ts=4 sw=4 tw=0 et :
 # Initialize these variables else comparisons will fail for colouring
 set $oldrax = 0
 set $oldrbx = 0

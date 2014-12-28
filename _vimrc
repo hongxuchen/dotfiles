@@ -70,6 +70,11 @@ Bundle 'toyamarinyon/vim-swift'
 Bundle 'tomasr/molokai'
 colorscheme molokai
 
+autocmd FileType lisp setl cms=;;%s
+autocmd FileType cmake setl cms=#%s
+autocmd FileType xdefaults setl cms=!%s
+autocmd FileType gdb setl cms=#%s
+
 " tagbar
 Bundle 'Tagbar'
 noremap <leader>t :TagbarToggle<CR>

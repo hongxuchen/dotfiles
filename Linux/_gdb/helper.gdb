@@ -1,3 +1,5 @@
+# vim: set ft=gdb ts=4 sw=4 tw=0 et :
+
 define cls
   shell clear
 end

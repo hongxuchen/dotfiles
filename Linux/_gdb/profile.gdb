@@ -1,3 +1,5 @@
+# vim: set ft=gdb ts=4 sw=4 tw=0 et :
+
 set $rusage = 0
 set $rusagebuffer = 0
 
