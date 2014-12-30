@@ -10,23 +10,6 @@ svn_prompt_info() {
     fi
 }
 
-llvmopts() {
-    if [ $# -lt 1 ]; then
-        opt_flag="-std-link-opts"
-    elif [[ $1 == "-O0" ]]; then
-        opt_flag=""
-    else
-        opt_flag="$@"
-    fi
-    printf "optimization flags is set to: ${opt_flag}\n"
-    response=$(llvm-as < /dev/null -o - | opt ${opt_flag} -disable-output -debug-pass=Arguments 2>&1)
-    if [[ ${response} == "opt: Unknown command line argument"* ]]; then
-      printf "${response}"
-    else
-      printf ${response} | sed 's/Pass Arguments:  /====== /' | tr " " "\n"
-    fi
-}
-
 em() {
     if [[ $OSTYPE == "linux-gnu" ]] && [ $DISPLAY ]; then
         command emacs -fs $@ &>/dev/null & disown
