@@ -140,7 +140,7 @@
         "/home/hongxu/.linuxbrew/include"
         "/usr/include/x86_64-linux-gnu"
         "/home/hongxu/RESEARCH/klee/src/include"
-        "/home/hongxu/RESEARCH/llvm-3.4/obj/Release+Asserts/bin/../lib/clang/3.4.2/include"
+        "/home/hongxu/RESEARCH/llvm-git/obj/Release+Asserts/bin/../lib/clang/3.6.0/include"
         ))
 
 (defun my-tex-mode-ac-setup ()

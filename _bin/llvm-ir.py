@@ -49,6 +49,8 @@ if args.cs:
 
 if args.cf:
     compiler_flags.extend(args.cf.split())
+else:
+    compiler_flags.append('-O1')
 
 compiler_flags.extend(['-o', '-'])
 
@@ -57,7 +59,7 @@ print(Style.BRIGHT, ' '.join(compiler_flags), Style.NORMAL)
 opt_flags=['opt']
 
 if args.of is None:
-    opt_flags.append('-mem2reg')
+    opt_flags.extend(['-mem2reg', '-instnamer'])
 else:
     opt_flags.extend(args.of.split())
 

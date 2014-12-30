@@ -50,5 +50,4 @@ export GREP_COLOR='1;32'
 export SVN_EDITOR=vim
 
 
-
 #~/.screenlayout/dual.sh

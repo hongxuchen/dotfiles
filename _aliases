@@ -13,7 +13,8 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
     alias goagent="~/tools/goagent/local/goagent-gtk.py &>/dev/null &disown"
     alias open="xdg-open"
     ### personal use
-    alias opt='opt -load ~/RESEARCH/snippets_llvm/build/bin/libsnippets.so'
+    alias opt='opt -load ~/RESEARCH/snippets_llvm/build/bin/libsnippets.so -load ~/RESEARCH/marple/build/bin/libmyaa.so'
+    alias lit='${MY_LLVM_ROOT}/src/utils/lit/lit.py'
 fi
 
 if [[ $OSTYPE == "darwin"* ]] || [[ $OSTYPE == "freebsd"* ]]; then
@@ -60,6 +61,14 @@ alias d_clang++='clang++ -E -x c++  /dev/null -dM'
 alias v_clang++='clang++ -E -x c++ /dev/null -v'
 alias help_cc1='clang -cc1 -analyzer-checker-help |less'
 alias scan_build='scan-build --use-analyzer=$(which clang)'
+alias v_cc1_o0='clang /dev/null -xc -O0 - -o /dev/null -\#\#\# 2>&1 | tr " " "\n"'
+alias v_cc1_o1='clang /dev/null -xc -O1 - -o /dev/null -\#\#\# 2>&1 | tr " " "\n"'
+alias v_cc1_o2='clang /dev/null -xc -O2 - -o /dev/null -\#\#\# 2>&1 | tr " " "\n"'
+alias v_cc1_o3='clang /dev/null -xc -O3 - -o /dev/null -\#\#\# 2>&1 | tr " " "\n"'
+alias v_cc1_os='clang /dev/null -xc -Os - -o /dev/null -\#\#\# 2>&1 | tr " " "\n"'
+alias v_cc1_oz='clang /dev/null -xc -Oz - -o /dev/null -\#\#\# 2>&1 | tr " " "\n"'
+alias v_cc1_ofast='clang /dev/null -xc -Ofast - -o /dev/null -\#\#\# 2>&1 | tr " " "\n"'
+alias v_clang_llvm='clang -xc /dev/null -c -mllvm -print-all-options'
 
 alias buuc='echo "brew update" && brew update && echo "brew upgrade" && brew upgrade && "brew cleanup" brew cleanup'
 

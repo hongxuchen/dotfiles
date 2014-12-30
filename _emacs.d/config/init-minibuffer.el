@@ -13,6 +13,7 @@
       ido-create-new-buffer 'always
       ido-save-directory-list-file "~/.emacs.d/.ido.last"
       ido-use-faces t
+      ido-case-fold t
       ;; allow same buffer opened in different frames
       ido-default-buffer-method 'selected-window
       ido-ignore-directories (append ido-ignore-directories '("^auto/$" "\\.prv/" "_region_"))

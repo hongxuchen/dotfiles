@@ -16,7 +16,7 @@ llvmopts() {
     elif [[ $1 == "-O0" ]]; then
         opt_flag=""
     else
-        opt_flag="$1"
+        opt_flag="$@"
     fi
     printf "optimization flags is set to: ${opt_flag}\n"
     response=$(llvm-as < /dev/null -o - | opt ${opt_flag} -disable-output -debug-pass=Arguments 2>&1)
