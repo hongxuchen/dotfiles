@@ -2,7 +2,6 @@
 # vim: ft=sh
 
 if [[ $OSTYPE == "linux-gnu" ]]; then
-    alias ls='ls --color=tty'
     alias gdb='gdb -q'
     alias dstat='dstat -cdlmnpsy'
     alias release_memory='sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"'
@@ -18,12 +17,15 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
 fi
 
 if [[ $OSTYPE == "darwin"* ]] || [[ $OSTYPE == "freebsd"* ]]; then
-    alias ls='ls -G'
+    # alias ls='ls -G'
     if [[ $OSTYPE == "darwin"* ]]; then
         alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
         alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
     fi
 fi
+
+# GNU-coreutils ls
+alias ls='ls --color=tty'
 
 alias r_cp='rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --'
 alias r_mv='rsync -a --progress -h --remove-source-files'
