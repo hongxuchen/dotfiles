@@ -52,7 +52,7 @@
    c-auto-newline nil
    ;; do not impose restriction that all lines not top-level be indented at least 1
    c-label-minimum-indentation 0)
-  (setq comment-start "/// " comment-end "")
+  (setq comment-start "// " comment-end "")
 
   (c-toggle-hungry-state 1)
 

@@ -54,7 +54,6 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockSt
 " runtime ftplugin/man.vim
 runtime macros/matchit.vim
 " additional plugins
-Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
@@ -70,10 +69,13 @@ Bundle 'toyamarinyon/vim-swift'
 Bundle 'tomasr/molokai'
 colorscheme molokai
 
+Bundle 'tpope/vim-commentary'
 autocmd FileType lisp setl cms=;;%s
 autocmd FileType cmake setl cms=#%s
 autocmd FileType xdefaults setl cms=!%s
 autocmd FileType gdb setl cms=#%s
+autocmd FileType c setl cms=//%s
+autocmd FileType cpp setl cms=//%s
 
 " tagbar
 Bundle 'Tagbar'

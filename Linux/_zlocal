@@ -42,7 +42,7 @@ export C_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}
 
 export LD_LIBRARY_PATH=
 export LD_LIBRARY_PATH=${MY_LLVM_OBJ}/lib:${MY_STP_INSTALL}/lib
-export LD_LIBRARY_PATH=${MY_BREW_PREFIX}:${LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=${MY_BREW_PREFIX}/lib:${LD_LIBRARY_PATH}
 
 export PYTHONPATH=
 export PYTHONPATH=/usr/lib/python2.7/site-packages:${MY_LLVM_ROOT}/src/tools/clang/bindings/python:$PYTHONPATH
@@ -52,7 +52,7 @@ stty ixoff -ixon
 
 # for wllvm
 export LLVM_COMPILER=clang
-export WLLVM_OUTPUT=INFO
+export WLLVM_OUTPUT=WARNING
 
 export CC=clang
 export CXX=clang++

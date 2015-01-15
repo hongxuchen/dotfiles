@@ -19,10 +19,18 @@ temp_dir = tempfile.gettempdir()
 
 os.chdir(temp_dir)
 
+if len(sys.argv) == 3:
+    more_args = sys.argv[2]
+else:
+    more_args = ""
+
 temp_file = os.path.join(temp_dir, ir_name)
 shutil.copy2(ir_file, temp_file)
 
-opt_str= "opt -dot-callgraph {} -disable-output".format(temp_file)
+opt_plugin_args="-load {} -load {}".format(os.path.expanduser("~/RESEARCH/snippets_llvm/build/bin/libsnippets.so"), os.path.expanduser("~/RESEARCH/marple/build/bin/libmyaa.so"))
+# opt_plugin_args = ""
+
+opt_str= "opt {} {} -dot-callgraph {} -disable-output".format(opt_plugin_args, more_args, temp_file)
 print(opt_str)
 p1 = subprocess.call(opt_str.split())
 
