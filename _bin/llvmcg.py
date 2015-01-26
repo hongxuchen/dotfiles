@@ -40,5 +40,5 @@ dot_str = "dot -Tpdf {} -o {}".format(dot_fname, out_pdf)
 print(dot_str)
 subprocess.call(dot_str.split())
 
-open_cmd = "open" if platform.platform()=="Darwin" else "xdg-open"
+open_cmd = "open" if platform.system()=="Darwin" else "xdg-open"
 os.system("{} {} &".format(open_cmd, out_pdf))
