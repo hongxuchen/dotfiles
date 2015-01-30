@@ -54,6 +54,7 @@ set statusline=[%n]\ %<%.99f\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockSt
 " runtime ftplugin/man.vim
 runtime macros/matchit.vim
 " additional plugins
+Bundle 'indentpython.vim--nianyang'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'

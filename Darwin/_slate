@@ -26,13 +26,13 @@ alias bottomHalf move ${sox};${soy}+${ssy}/2 ${ssx};${ssy}/2
 alias topHalf move ${sox};${soy} ${ssx};${ssy}/2
 alias rightHalf move ${sox}+${ssx}/2;${soy} ${ssx}/2;${ssy}
 
-bind left:ctrl;cmd  ${leftHalf}
-bind up:ctrl;cmd  ${fullscreen}
-bind down:ctrl;cmd  ${centered}
-bind right:ctrl;cmd  ${rightHalf}
+bind left:ctrl;alt  ${leftHalf}
+bind up:ctrl;alt  ${fullscreen}
+bind down:ctrl;alt  ${centered}
+bind right:ctrl;alt  ${rightHalf}
 
-bind ;:cmd;ctrl hint ASDFGHJKL
+bind ;:alt;ctrl hint ASDFGHJKL
 
-# bind 1:ctrl;cmd         throw 0 resize
-# bind 2:ctrl;cmd         throw 1 resize
-# bind 3:ctrl;cmd         throw 2 resize
+# bind 1:ctrl;alt         throw 0 resize
+# bind 2:ctrl;alt         throw 1 resize
+# bind 3:ctrl;alt         throw 2 resize
