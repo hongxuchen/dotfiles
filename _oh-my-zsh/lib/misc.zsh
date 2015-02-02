@@ -59,6 +59,7 @@ TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S'
 autoload -U age
 
 ##### files and directories
+DIRSTACKSIZE=10
 setopt auto_cd
 # setopt auto_name_dirs
 setopt pushd_ignore_dups
@@ -91,7 +92,11 @@ done
 
 for s in 1 2 3 4 5 6 7;
 do
-    alias -s $s="man -l"
+    if [[ $OSTYPE == "linux-gnu" ]]; then
+        alias -s $s="man -l"
+    elif [[ $OSTYPE == "darwin"* ]];then
+        alias -s $s="man"
+    fi
 done
 alias -s deb="sudo gdebi"
 
