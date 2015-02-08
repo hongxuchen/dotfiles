@@ -42,7 +42,7 @@ alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.ar
 alias urldecode='python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])"'
 alias p_httpd='python -m SimpleHTTPServer'
 alias p_sh='ipython --profile=sh'
-alias p_nb='ipython notebook --matplotlib inline --profile nb'
+alias p_nb='cd ~/src/ipynb && ipython notebook --matplotlib inline --profile nb'
 alias pprof='google-pprof'
 alias grt='cd $(git rev-parse --show-toplevel)'
 alias indent='command indent -kr -ci2 -cli2 -i2 -l80 -nut' #Google style

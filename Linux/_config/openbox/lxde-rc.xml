@@ -303,7 +303,8 @@ and back in -->
       </action>
     </keybind>
     <!--keybindings for LXPanel -->
-    <keybind key="W-r">
+    <!-- <keybind key="W-r"> -->
+    <keybind key="A-space">
       <action name="Execute">
         <command>kupfer</command>
       </action>
