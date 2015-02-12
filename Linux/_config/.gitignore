@@ -24,3 +24,4 @@
 !user-dirs.locale
 
 !.gitignore
+!flake8
