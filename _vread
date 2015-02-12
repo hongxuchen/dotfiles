@@ -134,3 +134,5 @@ Bundle 'rking/ag.vim'
 Bundle 'szw/vim-g'
 let g:vim_g_f_command = "Gf"
 let g:vim_g_command = "Go"
+
+" command! -nargs=* -bar -bang -count=0 -complete=dir E Explore <args> #:e. is OK

@@ -9,13 +9,35 @@ from argparse import *
 init()
 
 parser = ArgumentParser(description="compile c/c++ into llvm IR")
-parser.add_argument("file", metavar="FILE", action="store", help="FILE to be proprecessed")
-parser.add_argument("-compiler", default="clang", help="llvm compatible compiler(default: clang)")
-parser.add_argument("-c", action="store_true", help="generate bitcode rather than IR")
-parser.add_argument("--nostd", action="store_true", help="if in arglist, don't add -std=c99/-std=c++11")
-parser.add_argument("-cs", action="store_true", help="when in arglist, -print-stats for compilation")
-parser.add_argument("--cf",metavar="\"COMPILATION_FLAGS\"", help="extra compilation flags(string)")
-parser.add_argument("--of", metavar="\"OPT_FLAGS\"", help="extra optimization flags(string)")
+parser.add_argument(
+    "file",
+    metavar="FILE",
+    action="store",
+    help="FILE to be proprecessed")
+parser.add_argument(
+    "-compiler",
+    default="clang",
+    help="llvm compatible compiler(default: clang)")
+parser.add_argument(
+    "-c",
+    action="store_true",
+    help="generate bitcode rather than IR")
+parser.add_argument(
+    "--nostd",
+    action="store_true",
+    help="if in arglist, don't add -std=c99/-std=c++11")
+parser.add_argument(
+    "-cs",
+    action="store_true",
+    help="when in arglist, -print-stats for compilation")
+parser.add_argument(
+    "--cf",
+    metavar="\"COMPILATION_FLAGS\"",
+    help="extra compilation flags(string)")
+parser.add_argument(
+    "--of",
+    metavar="\"OPT_FLAGS\"",
+    help="extra optimization flags(string)")
 if len(sys.argv) == 1:
     parser.print_help()
     sys.exit(1)
@@ -24,7 +46,7 @@ args = parser.parse_args()
 if args.file is None:
     print(Fore.RED, "file not specified, exit", file=sys.stderr)
     sys.exit(1)
-inputfile=args.file
+inputfile = args.file
 src_prefix, src_suffix = tuple(inputfile.rsplit('.', 1))
 compiler_flags = [args.compiler, inputfile]
 
@@ -56,7 +78,7 @@ compiler_flags.extend(['-o', '-'])
 
 print(Style.BRIGHT, ' '.join(compiler_flags), Style.NORMAL)
 
-opt_flags=['opt']
+opt_flags = ['opt']
 
 if args.of is None:
     opt_flags.extend(['-mem2reg'])
@@ -64,10 +86,10 @@ else:
     opt_flags.extend(args.of.split())
 
 if args.c:
-    outfile=src_prefix+'.bc'
+    outfile = src_prefix + '.bc'
 else:
     opt_flags.append('-S')
-    outfile=src_prefix+'.ll'
+    outfile = src_prefix + '.ll'
 opt_flags.extend(['-o', outfile])
 
 print(Style.BRIGHT, ' '.join(opt_flags), Style.NORMAL)

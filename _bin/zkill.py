@@ -4,14 +4,17 @@ import os
 import re
 import sys
 
+
 def _write_message(kind, message):
-    import inspect, os, sys
+    import inspect
+    import os
+    import sys
 
     # Get the file/line where this message was generated.
     f = inspect.currentframe()
     # Step out of _write_message, and then out of wrapper.
     f = f.f_back.f_back
-    file,line,_,_,_ = inspect.getframeinfo(f)
+    file, line, _, _, _ = inspect.getframeinfo(f)
     location = '%s:%d' % (os.path.basename(file), line)
 
     print >>sys.stderr, '%s: %s: %s' % (location, kind, message)
@@ -20,19 +23,22 @@ note = lambda message: _write_message('note', message)
 warning = lambda message: _write_message('warning', message)
 error = lambda message: (_write_message('error', message), sys.exit(1))
 
+
 def re_full_match(pattern, str):
     m = re.match(pattern, str)
     if m and m.end() != len(str):
         m = None
     return m
 
+
 def parse_time(value):
-    minutes,value = value.split(':',1)
+    minutes, value = value.split(':', 1)
     if '.' in value:
-        seconds,fseconds = value.split('.',1)
+        seconds, fseconds = value.split('.', 1)
     else:
         seconds = value
-    return int(minutes) * 60 + int(seconds) + float('.'+fseconds)
+    return int(minutes) * 60 + int(seconds) + float('.' + fseconds)
+
 
 def extractExecutable(command):
     """extractExecutable - Given a string representing a command line, attempt
@@ -43,7 +49,7 @@ def extractExecutable(command):
 
     # Scanning from the beginning, try to see if the first N args, when joined,
     # exist. If so that's probably the executable.
-    for i in range(1,len(args)):
+    for i in range(1, len(args)):
         cmd = ' '.join(args[:i])
         if os.path.exists(cmd):
             return cmd
@@ -51,13 +57,15 @@ def extractExecutable(command):
     # Otherwise give up and return the first "argument".
     return args[0]
 
+
 class Struct:
+
     def __init__(self, **kwargs):
         self.fields = kwargs.keys()
         self.__dict__.update(kwargs)
 
     def __repr__(self):
-        return 'Struct(%s)' % ', '.join(['%s=%r' % (k,getattr(self,k))
+        return 'Struct(%s)' % ', '.join(['%s=%r' % (k, getattr(self, k))
                                          for k in self.fields])
 
 kExpectedPSFields = [('PID', int, 'pid'),
@@ -67,11 +75,13 @@ kExpectedPSFields = [('PID', int, 'pid'),
                      ('TIME', parse_time, 'cpu_time'),
                      ('VSZ', int, 'vmem_size'),
                      ('RSS', int, 'rss')]
+
+
 def getProcessTable():
     import subprocess
     p = subprocess.Popen(['ps', 'aux'], stdout=subprocess.PIPE,
                          stderr=subprocess.PIPE)
-    out,err = p.communicate()
+    out, err = p.communicate()
     res = p.wait()
     if p.wait():
         error('unable to get process table')
@@ -94,7 +104,7 @@ def getProcessTable():
             error('unable to get process table, no %r field.' % field[0])
 
     table = []
-    for i,ln in enumerate(it):
+    for i, ln in enumerate(it):
         if not ln.strip():
             continue
 
@@ -104,7 +114,7 @@ def getProcessTable():
             continue
 
         record = {}
-        for field,idx in zip(kExpectedPSFields, indexes):
+        for field, idx in zip(kExpectedPSFields, indexes):
             value = fields[idx]
             try:
                 record[field[2]] = field[1](value)
@@ -120,6 +130,7 @@ def getProcessTable():
 
     return table
 
+
 def getSignalValue(name):
     import signal
     if name.startswith('SIG'):
@@ -133,6 +144,7 @@ kSignals = {}
 for name in dir(signal):
     if name.startswith('SIG') and name == name.upper() and name.isalpha():
         kSignals[name[3:]] = getattr(signal, name)
+
 
 def main():
     global opts
@@ -165,55 +177,54 @@ def main():
     inf = float('inf')
     group = OptionGroup(parser, "Process Filters")
     group.add_option("", "--name", dest="execName", metavar="REGEX",
-                      help="Kill processes whose name matches the given regexp",
-                      action="store", default=None)
+                     help="Kill processes whose name matches the given regexp",
+                     action="store", default=None)
     group.add_option("", "--exec", dest="execPath", metavar="REGEX",
-                      help="Kill processes whose executable matches the given regexp",
-                      action="store", default=None)
+                     help="Kill processes whose executable matches the given regexp",
+                     action="store", default=None)
     group.add_option("", "--user", dest="userName", metavar="REGEX",
-                      help="Kill processes whose user matches the given regexp",
-                      action="store", default=None)
+                     help="Kill processes whose user matches the given regexp",
+                     action="store", default=None)
     group.add_option("", "--min-cpu", dest="minCPU", metavar="PCT",
-                      help="Kill processes with CPU usage >= PCT",
-                      action="store", type=float, default=None)
+                     help="Kill processes with CPU usage >= PCT",
+                     action="store", type=float, default=None)
     group.add_option("", "--max-cpu", dest="maxCPU", metavar="PCT",
-                      help="Kill processes with CPU usage <= PCT",
-                      action="store", type=float, default=inf)
+                     help="Kill processes with CPU usage <= PCT",
+                     action="store", type=float, default=inf)
     group.add_option("", "--min-mem", dest="minMem", metavar="N",
-                      help="Kill processes with virtual size >= N (MB)",
-                      action="store", type=float, default=None)
+                     help="Kill processes with virtual size >= N (MB)",
+                     action="store", type=float, default=None)
     group.add_option("", "--max-mem", dest="maxMem", metavar="N",
-                      help="Kill processes with virtual size <= N (MB)",
-                      action="store", type=float, default=inf)
+                     help="Kill processes with virtual size <= N (MB)",
+                     action="store", type=float, default=inf)
     group.add_option("", "--min-rss", dest="minRSS", metavar="N",
-                      help="Kill processes with RSS >= N",
-                      action="store", type=float, default=None)
+                     help="Kill processes with RSS >= N",
+                     action="store", type=float, default=None)
     group.add_option("", "--max-rss", dest="maxRSS", metavar="N",
-                      help="Kill processes with RSS <= N",
-                      action="store", type=float, default=inf)
+                     help="Kill processes with RSS <= N",
+                     action="store", type=float, default=inf)
     group.add_option("", "--min-time", dest="minTime", metavar="N",
-                      help="Kill processes with CPU time >= N (seconds)",
-                      action="store", type=float, default=None)
+                     help="Kill processes with CPU time >= N (seconds)",
+                     action="store", type=float, default=None)
     group.add_option("", "--max-time", dest="maxTime", metavar="N",
-                      help="Kill processes with CPU time <= N (seconds)",
-                      action="store", type=float, default=inf)
+                     help="Kill processes with CPU time <= N (seconds)",
+                     action="store", type=float, default=inf)
     parser.add_option_group(group)
 
     (opts, args) = parser.parse_args()
 
     if opts.listSignals:
-        items = [(v,k) for k,v in kSignals.items()]
-        items.sort()
+        items = sorted([(v, k) for k, v in kSignals.items()])
         for i in range(0, len(items), 4):
-            print '\t'.join(['%2d) SIG%s' % (k,v)
-                             for k,v in items[i:i+4]])
+            print '\t'.join(['%2d) SIG%s' % (k, v)
+                             for k, v in items[i:i + 4]])
         sys.exit(0)
 
     # Figure out the signal to use.
     signal = kSignals[opts.signalName]
     signalValueName = str(signal)
     if opts.verbose:
-        name = dict((v,k) for k,v in kSignals.items()).get(signal,None)
+        name = dict((v, k) for k, v in kSignals.items()).get(signal, None)
         if name:
             signalValueName = name
             note('using signal %d (SIG%s)' % (signal, name))
@@ -247,7 +258,7 @@ def main():
     filtered = [p for p in filtered
                 if opts.minCPU <= p.cpu_percent <= opts.maxCPU]
     filtered = [p for p in filtered
-                if opts.minMem <= float(p.vmem_size) / (1<<20) <= opts.maxMem]
+                if opts.minMem <= float(p.vmem_size) / (1 << 20) <= opts.maxMem]
     filtered = [p for p in filtered
                 if opts.minRSS <= p.rss <= opts.maxRSS]
     filtered = [p for p in filtered

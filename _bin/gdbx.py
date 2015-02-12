@@ -62,14 +62,14 @@ On invalid encoding name, it returns False.  Otherwise returns True."""
             encoding = encoding.upper()
 
     if (encoding and defenc != encoding and
-       defenc.find(encoding) < 0 and encoding.find(defenc) < 0):
+            defenc.find(encoding) < 0 and encoding.find(defenc) < 0):
         # If the new encoding 'encoding' is different from the default
         # encoding 'defenc',
         reload(sys)
         try:
             sys.setdefaultencoding(encoding)
             debug("Default encoding is changed to: %s" % encoding)
-        except LookupError as e:
+        except LookupError:
             error("unrecoginized encoding, '%s'" % encoding)
             return False
     else:
@@ -106,7 +106,7 @@ one or more string values."""
 
     def execute(self, filename, args):
         cmdline = self.commandline(filename, args)
-        if type(cmdline) != list:
+        if not isinstance(cmdline, list):
             use_shell = True
         else:
             use_shell = False
@@ -133,8 +133,8 @@ one or more string values."""
 
     def invoke(self, args, from_tty):
         with tempfile.NamedTemporaryFile(prefix="gdb-") as tmp:
-        #tmp = tempfile.NamedTemporaryFile(prefix="gdb-")
-        # if True:
+            #tmp = tempfile.NamedTemporaryFile(prefix="gdb-")
+            # if True:
             try:
                 (dump_args, exec_args) = self.parse_arguments(args)
                 debug("dump_args: |%s|" % dump_args)
@@ -309,7 +309,7 @@ class IconvEncodings(object):
         return ret
 
     def __init__(self):
-        if IconvEncodings.encodings == None:
+        if IconvEncodings.encodings is None:
             IconvEncodings.encodings = IconvEncodings.supported_encodings()
             reload(sys)
 
@@ -358,10 +358,10 @@ Python runtime."""
             print(sys.getdefaultencoding())
         else:
             enc = self.encodings.name(arg)
-            if enc != None:
+            if enc is not None:
                 try:
                     sys.setdefaultencoding(enc)
-                except LookupError as e:
+                except LookupError:
                     error("encoding %s is not supported by Python" % enc)
             else:
                 error("invalid encoding alias, %s." % arg)
@@ -379,7 +379,7 @@ class IconvImpl(object):
 
     def partition(self, args):
         m = self.re_encoding.search(args)
-        if m == None:
+        if m is None:
             return (args, "")
         else:
             idx = m.start()
@@ -399,7 +399,7 @@ Currently, capture the only first line, removing iconv pathname"""
         encodings = list()
         for e in args.split():
             realname = self.encodings.name(e)
-            if realname != None:
+            if realname is not None:
                 debug("  target encoding: %s" % self.encodings.name(e))
                 encodings.append(realname)
             else:
@@ -418,7 +418,7 @@ Currently, capture the only first line, removing iconv pathname"""
                                  stdout=subprocess.PIPE,
                                  stderr=subprocess.PIPE)
             (out, err) = p.communicate()
-            status = p.wait()
+            p.wait()
 
             try:
                 sys.stdout.write("%*s: " % (width, enc))

@@ -1,5 +1,5 @@
 " vim: set ft=vim ts=4 sw=2 tw=78 et :
- 
+
 source ~/.vread
 
 " save and reload ~/.vimrc
@@ -65,7 +65,7 @@ Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-jdaddy'
 Bundle 'tpope/vim-dispatch'
 Bundle 'jiangmiao/auto-pairs'
-Bundle 'toyamarinyon/vim-swift'
+Bundle 'toya\arinyon/vim-swift'
 
 Bundle 'tomasr/molokai'
 colorscheme molokai
@@ -116,15 +116,20 @@ nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 " let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 " let g:ctrlp_working_path_mode = 'ra'
 
+Bundle 'scrooloose/syntastic'
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+let g:syntastic_python_checkers = ['flake8']
+
 " YouCompleteMe
 Bundle 'Valloric/YouCompleteMe'
-let g:vim_g_f_command = "Gf"
-let g:vim_g_command = "Go"
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_add_preview_to_completeopt=1
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_min_num_of_chars_for_completion = 99 
+let g:ycm_min_num_of_chars_for_completion = 99
 let g:ycm_min_num_identifier_candidate_chars = 2
 let g:ycm_auto_trigger = 1
 let g:ycm_collect_identifiers_from_tags_files = 0 " Let YCM read tags from Ctags file
