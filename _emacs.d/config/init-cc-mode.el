@@ -2,6 +2,7 @@
 ;; c/c++ files
 ;; ----------------------------------------------------------------------------
 (add-to-list 'auto-mode-alist '("\\.h\\'" . c++-mode))
+(add-to-list 'auto-mode-alist '("\\.ixx\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.PH\\'" . c++-mode))
 (add-to-list 'auto-mode-alist '("\\.TLH\\'" . c++-mode))
 (defun my-rtags-setup ()
@@ -141,7 +142,7 @@
                            (autopair-mode -1)))
 
 (defadvice gdb-display-source-buffer
-  (after ad-hl-line-source-buffer (buffer) activate)
+    (after ad-hl-line-source-buffer (buffer) activate)
   (with-current-buffer buffer (hl-line-mode 1)))
 
 (eval-after-load "gdb-mi"
