@@ -1,0 +1,59 @@
+#!/usr/bin/env python3
+# vim:fileencoding=utf-8
+
+from __future__ import print_function
+
+import sys
+import argparse
+import subprocess
+
+from pygments import highlight
+import pygments.util
+from pygments.lexers import get_lexer_by_name
+from pygments.formatters import TerminalFormatter
+from pygments.lexers import guess_lexer, guess_lexer_for_filename
+
+
+def is_text(fname):
+    out = subprocess.check_output(
+        ['file', '-b', fname], universal_newlines=True)
+    return 'text' in out
+
+
+def has_color_support():
+    return sys.stdout.isatty()
+
+
+def main(fname, lang):
+    color_output = False
+    if is_text(fname) and has_color_support():
+        color_output = True
+    if not color_output:
+        subprocess.call('cat {}'.format(fname).split())
+        sys.exit(1)
+    if fname == '-':
+        code = sys.stdin.read()
+    else:
+        code = open(fname).read()
+    if lang:
+        lexer = get_lexer_by_name(lang)
+    else:
+        try:
+            lexer = guess_lexer_for_filename(fname, code)
+        except pygments.util.ClassNotFound:
+            lexer = guess_lexer(code)
+    print(highlight(code, lexer, TerminalFormatter()), file=sys.stdout)
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='color output "cat"')
+    parser.add_argument('files', metavar='FILE', nargs='*',
+                        help='file to be paged')
+    parser.add_argument('-l', '--lang', dest='lang', default=None,
+                        help='explicitly specify language')
+
+    args = parser.parse_args()
+    if args.files:
+        for l in args.files:
+            main(l, args.lang)
+    else:
+        main('-', args.lang)
