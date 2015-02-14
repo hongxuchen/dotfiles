@@ -49,7 +49,8 @@ set noautowriteall            " NEVER.
 set autoread                  " automatically re-read changed files.
 set confirm                   " Y-N-C prompt if closing with unsaved changes.
 set laststatus=2              " Always show statusline, even if only 1 window.
-set statusline=[%n]\ %<%.99f\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%y%=%-16(\ %l,%c-%v\ %)%P
+" set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P
+" set statusline+=%#warningmsg#%{SyntasticStatuslineFlag()}%*
 
 " runtime ftplugin/man.vim
 runtime macros/matchit.vim
@@ -65,7 +66,11 @@ Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-jdaddy'
 Bundle 'tpope/vim-dispatch'
 Bundle 'jiangmiao/auto-pairs'
-Bundle 'toya\arinyon/vim-swift'
+
+Bundle 'bling/vim-airline'
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
 
 Bundle 'tomasr/molokai'
 colorscheme molokai
