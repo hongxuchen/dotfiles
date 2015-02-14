@@ -7,7 +7,7 @@ import platform
 import subprocess
 
 try:
-    from argparse import *
+    import argparse
 except ImportError as e:
     print(
         "{0},\t use 'pip' to install that package".format(
@@ -61,7 +61,7 @@ def _config_tmux():
     # cmd_str = "tmux source-file " + os.path.expanduser("~/.tmux.conf")
     # subprocess.Popen(cmd_str.split(), stdout=DEVNULL)
 
-parser = ArgumentParser(description="install scripts for all the dotfiles")
+parser = argparse.ArgumentParser(description="install scripts for all the dotfiles")
 parser.add_argument(
     "--config",
     dest="config",

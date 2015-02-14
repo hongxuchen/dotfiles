@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # vim:fileencoding=utf-8
 # @author: lilydjwg <http://lilydjwg.is-programmer.com/>
-# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>
+# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
