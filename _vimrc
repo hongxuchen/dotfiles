@@ -22,6 +22,9 @@ vnoremap D "_d
 noremap <silent><F5> :checktime<CR>:exe ":echo 'file refreshed'"<CR>
 inoremap <silent><F5> <C-O>:checktime<CR>:exe ":echo 'file refreshed'"<CR>
 
+autocmd FileType c,cpp,java,markdown autocmd BufWritePre <buffer> :%s/\s\+$//e
+nnoremap gO :!open <cfile><CR>
+
 " emacs like settings(insert mode)
 inoremap <silent><C-x>0 <C-o>:hide<CR>
 inoremap <silent><C-x>1 <C-o>:hide :only<CR>
@@ -82,6 +85,7 @@ autocmd FileType xdefaults setl cms=!%s
 autocmd FileType gdb setl cms=#%s
 autocmd FileType c setl cms=//%s
 autocmd FileType cpp setl cms=//%s
+autocmd FileType unix setl cms=#%s
 
 " tagbar
 Bundle 'Tagbar'
