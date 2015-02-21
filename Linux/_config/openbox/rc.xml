@@ -299,7 +299,7 @@ and back in -->
     <!-- Keybindings for running applications -->
     <keybind key="W-e">
       <action name="Execute">
-        <command>pcmanfm </command>
+        <command>pcmanfm-qt </command>
       </action>
     </keybind>
     <!--keybindings for LXPanel -->
@@ -687,7 +687,7 @@ and back in -->
     <!-- You can specify more than one menu file in here and they are all loaded,
          just don't make menu ids clash or, well, it'll be kind of pointless -->
     <!-- default menu file (or custom one in $HOME/.config/openbox/) -->
-    <file>/usr/share/lxde/openbox/menu.xml</file>
+    <file>/usr/share/lxqt/openbox/menu.xml</file>
     <hideDelay>200</hideDelay>
     <!-- if a press-release lasts longer than this setting (in milliseconds), the
          menu is hidden again -->
