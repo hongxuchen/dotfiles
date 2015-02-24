@@ -52,14 +52,6 @@ my_pdf_merge() {
     pdftk $tomerge cat output mergd.pdf;
 }
 
-my_zeal(){
-    if pgrep -x zeal &>/dev/null; then
-        printf "already on\n"
-    else
-        ~/tools/zeal/zeal/zeal &>/dev/null &
-    fi
-}
-
 my_locales() {
     locale -a |
         grep _ | #don't show nationalities

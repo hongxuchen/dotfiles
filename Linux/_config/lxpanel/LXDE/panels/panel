@@ -2,97 +2,79 @@
 # Use preference dialog in lxpanel to adjust config when you can.
 
 Global {
-    edge=top
-    allign=left
-    margin=0
-    widthtype=percent
-    width=100
-    height=26
-    transparent=0
-    tintcolor=#000000
-    alpha=0
-    autohide=0
-    heightwhenhidden=2
-    setdocktype=1
-    setpartialstrut=1
-    usefontcolor=1
-    fontsize=10
-    fontcolor=#ffffff
-    usefontsize=0
-    background=1
-    backgroundfile=/usr/share/lxpanel/images/background.png
-    iconsize=24
-    loglevel=2
+  edge=top
+  allign=left
+  margin=0
+  widthtype=percent
+  width=100
+  height=26
+  transparent=0
+  tintcolor=#000000
+  alpha=0
+  autohide=0
+  heightwhenhidden=2
+  setdocktype=1
+  setpartialstrut=1
+  usefontcolor=1
+  fontsize=10
+  fontcolor=#ffffff
+  usefontsize=0
+  background=1
+  backgroundfile=/usr/share/lxpanel/images/background.png
+  iconsize=24
+  loglevel=2
 }
-
 Plugin {
-    type = menu
-    Config {
-        image=/usr/share/lxde/images/lxde-icon.png
-        system {
-        }
-        separator {
-        }
-        item {
-            command=run
-        }
-        separator {
-        }
-        item {
-            image=gnome-logout
-            command=logout
-        }
+  type=menu
+  Config {
+    image=/usr/share/lxde/images/lxde-icon.png
+    system {
     }
-}
-
-Plugin {
-    type = taskbar
-    expand=1
-    Config {
-        tooltips=1
-        IconsOnly=0
-        ShowAllDesks=0
-        UseMouseWheel=1
-        UseUrgencyHint=1
-        FlatButton=0
-        MaxTaskWidth=200
-        spacing=1
-        GroupedTasks=0
+    separator {
     }
-}
-
-Plugin {
-    type = volumealsa
-}
-
-Plugin {
-    type = tray
-}
-
-Plugin {
-    type = dclock
-    Config {
-        ClockFmt=%R
-        TooltipFmt=%A %x
-        BoldFont=0
-        IconOnly=0
-        CenterText=0
+    item {
+      command=run
     }
-}
-
-Plugin {
-    type = batt
-    Config {
-        HideIfNoBattery=0
-        AlarmCommand=xmessage Battery low
-        AlarmTime=5
-        BackgroundColor=black
-        BorderWidth=1
-        ChargingColor1=#28f200
-        ChargingColor2=#22cc00
-        DischargingColor1=#ffee00
-        DischargingColor2=#d9ca00
-        Size=8
+    separator {
     }
+    item {
+      image=gnome-logout
+      command=logout
+    }
+  }
 }
-
+Plugin {
+  type=taskbar
+  expand=1
+  Config {
+    tooltips=1
+    IconsOnly=0
+    ShowAllDesks=0
+    UseMouseWheel=1
+    UseUrgencyHint=1
+    FlatButton=0
+    MaxTaskWidth=200
+    spacing=1
+    GroupedTasks=0
+  }
+}
+Plugin {
+  type=volumealsa
+  Config {
+  }
+}
+Plugin {
+  type=tray
+  Config {
+  }
+}
+Plugin {
+  type=dclock
+  Config {
+    ClockFmt=%R
+    TooltipFmt=%A %x
+    BoldFont=0
+    IconOnly=0
+    CenterText=0
+  }
+}

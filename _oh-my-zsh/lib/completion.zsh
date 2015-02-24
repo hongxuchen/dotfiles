@@ -17,7 +17,7 @@ zstyle ':completion:*' list-colors ''
 
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
-zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
+zstyle ':completion:*:*:*:*:processes' command "ps -u $(whoami) -o pid,user,comm -w -w"
 
 # disable named-directories autocompletion
 zstyle ':completion:*:cd:*' tag-order local-directories directory-stack
@@ -68,3 +68,21 @@ _llvm-config() {
     reply=(`(llvm-config --help 2>&1) | awk '/  \-/ {print $1}'`)
 }
 compctl -K _llvm-config llvm-config
+
+_dropbox() {
+  reply=(`python <<END
+import subprocess
+help_msg = subprocess.check_output(['dropbox', 'help'])
+i1 = help_msg.find('Note:')
+i2= help_msg[i1:].find('.')
+cli_msg = help_msg[i1+i2+1:]
+cmd = []
+for line in cli_msg.splitlines():
+  line = line.strip()
+  if line:
+    cmd.append(line.split(None, 1)[0])
+res = '\n'.join(cmd)
+print res
+END`)
+}
+compctl -K _dropbox dropbox

@@ -32,6 +32,7 @@
     <!-- with Smart placement on a multi-monitor system, try to place new windows
          on: 'Any' - any monitor, 'Mouse' - where the mouse is, 'Active' - where
          the active window is -->
+    <primaryMonitor/>
   </placement>
   <theme>
     <name>Onyx</name>
@@ -708,6 +709,10 @@ and back in -->
       <fullscreen>no</fullscreen>
     </application>
     <application name="evince">
+      <fullscreen>no</fullscreen>
+      <maximized>yes</maximized>
+    </application>
+    <application name="pcmanfm-qt">
       <fullscreen>no</fullscreen>
       <maximized>yes</maximized>
     </application>

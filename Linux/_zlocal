@@ -43,8 +43,11 @@ export CPLUS_INCLUDE_PATH=${MY_KLEE_INCLUDE}:${MY_KLEE_INCLUDE}/../../obj/includ
 export C_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}
 # export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/tools/clang/include:${MY_LLVM_ROOT}/obj/tools/clang/include:${CPLUS_INCLUDE_PATH}
 
+# export CMAKE_PREFIX_PATH=/usr/share/cmake/qt5xdg
+
 export LD_LIBRARY_PATH=
 export LD_LIBRARY_PATH=/usr/local/lib
+export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=${MY_LLVM_OBJ}/lib:${MY_STP_INSTALL}/lib:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=${MY_BREW_PREFIX}/lib:${LD_LIBRARY_PATH}
 
