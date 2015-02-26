@@ -84,6 +84,15 @@ image/x-psd=gpicview.desktop
 image/x-webp=gpicview.desktop
 inode/directory=nautilus.desktop
 application/pdf=okular.desktop
+image/jpg=gpicview.desktop
+image/x-bmp=gpicview.desktop
+image/x-pcx=gpicview.desktop
+image/x-tga=gpicview.desktop
+image/x-targa=gpicview.desktop
+image/x-portable-greymap=gpicview.desktop
+application/pcx=gpicview.desktop
+image/svg+xml=gpicview.desktop
+image/svg-xml=gpicview.desktop
 
 [Added Associations]
 x-scheme-handler/http=google-chrome.desktop;
