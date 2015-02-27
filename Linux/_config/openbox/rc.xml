@@ -336,17 +336,20 @@ and back in -->
       </action>
     </keybind>
     <!-- Keybinding for Volume management -->
-    <keybind key="XF86AudioRaiseVolume">
+    <!-- <keybind key="XF86AudioRaiseVolume"> -->
+    <keybind key="C-F10">
       <action name="Execute">
         <command>amixer -q sset Master 3%+</command>
       </action>
     </keybind>
-    <keybind key="XF86AudioLowerVolume">
+    <!-- <keybind key="XF86AudioLowerVolume"> -->
+    <keybind key="C-F9">
       <action name="Execute">
         <command>amixer -q sset Master 3%-</command>
       </action>
     </keybind>
-    <keybind key="XF86AudioMute">
+    <!-- <keybind key="XF86AudioMute"> -->
+    <keybind key="C-F11">
       <action name="Execute">
         <command>amixer -q sset Master toggle</command>
       </action>
