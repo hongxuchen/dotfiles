@@ -33,6 +33,7 @@ for plugin (${PLUGINS}); do
 done
 unset plugin base_dir
 
+### should be loaded before source ${ZSH}/lib
 autoload -Uz compinit
 compinit -i
 

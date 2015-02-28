@@ -327,11 +327,6 @@ and back in -->
     <!-- Keybinding for PrintScreen Key -->
     <keybind key="Print">
       <action name="Execute">
-        <execute>scrot</execute>
-      </action>
-    </keybind>
-    <keybind key="A-Print">
-      <action name="Execute">
         <execute>scrot -s</execute>
       </action>
     </keybind>

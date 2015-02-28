@@ -86,3 +86,11 @@ print res
 END`)
 }
 compctl -K _dropbox dropbox
+
+
+### TODO should use zsh features
+### for argcomplete: https://github.com/kislyuk/argcomplete
+autoload -Uz bashcompinit
+bashcompinit
+eval "$(register-python-argcomplete ~/.bin/shebang.py)"
+###

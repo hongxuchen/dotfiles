@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# PYTHON_ARGCOMPLETE_OK
 
 from __future__ import print_function
 from tempfile import mkstemp
@@ -8,6 +9,7 @@ import stat
 from argparse import *
 import sys
 import colorama
+import argcomplete
 
 
 def change_shebang(fpath, target, chmod):
@@ -31,7 +33,7 @@ def change_shebang(fpath, target, chmod):
 if __name__ == '__main__':
     parser = ArgumentParser(description="A snippet to add or change shebang")
     parser.add_argument(
-        "-t,",
+        "-t",
         "--target",
         metavar="EXE",
         default='python',
@@ -53,6 +55,7 @@ if __name__ == '__main__':
         "--verbose",
         action="store_true",
         help="print verbose info")
+    argcomplete.autocomplete(parser)
     if len(sys.argv) == 1:
         parser.print_help()
         sys.exit(1)
