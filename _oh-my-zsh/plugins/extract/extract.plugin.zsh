@@ -52,7 +52,7 @@ function extract() {
       (*.xz) unxz "$1" ;;
       (*.lzma) unlzma "$1" ;;
       (*.Z) uncompress "$1" ;;
-      (*.zip|*.war|*.jar|*.sublime-package) unzip "$1" -d $extract_dir ;;
+      (*.zip|*.war|*.jar|*.sublime-package) unzip "$1" -d "$extract_dir" ;;
       (*.rar) unrar x -ad "$1" ;;
       (*.7z) 7za x "$1" ;;
       (*.deb)
@@ -61,7 +61,7 @@ function extract() {
         cd "$extract_dir"; ar vx "../${1}" > /dev/null
         cd control; tar xzvf ../control.tar.gz
         cd ../data; tar xzvf ../data.tar.gz
-        cd ..; rm *.tar.gz debian-binary
+        cd ..; rm ./*.tar.gz debian-binary
         cd ..
       ;;
       (*) 

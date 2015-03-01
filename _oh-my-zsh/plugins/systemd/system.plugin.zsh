@@ -9,5 +9,5 @@ sudo_commands=(
     reset-failed enable disable reenable preset mask unmask
     link load cancel set-environment unset-environment)
 
-for c in $user_commands; do; alias sc-$c="systemctl $c"; done
-for c in $sudo_commands; do; alias sc-$c="sudo systemctl $c"; done
+for c in $user_commands; do; alias sc_$c="systemctl $c"; done
+for c in $sudo_commands; do; alias sc_$c="sudo systemctl $c"; done

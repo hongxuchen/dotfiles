@@ -1,5 +1,6 @@
 # -*- mode:sh -*-
 # vim:ft=sh
+export EDITOR=vim
 export ALTERNATE_EDITOR=""
 
 #supress locale and TZ
@@ -47,7 +48,5 @@ export TEXMFHOME=~/.texmf
 #grep
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
-export EDITOR=vim
-
 
 #~/.screenlayout/dual.sh

@@ -87,8 +87,8 @@ alias pat_ssh='ssh -X root@pat.sce.ntu.edu.sg'
 
 alias dud='du -d 1 -h'
 alias duf='du -sh *'
-alias fd='find . -type d -name'
-alias ff='find . -type f -name'
+alias sane_f='find . -type d -print0 | xargs -0 chmod 755'
+alias sane_d='find . -type f -print0 | xargs -0 chmod 644'
 
 alias la='ls -Ah'
 alias l='ls -F'

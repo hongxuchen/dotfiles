@@ -5,7 +5,6 @@
 # \e Meta
 
 #standard widigets: http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Standard-Widgets
-#
 
 # Ensures that $terminfo values are valid and updates editor information when keymap changes.
 function zle-keymap-select zle-line-init zle-line-finish {
@@ -25,9 +24,9 @@ zle -N zle-line-init
 zle -N zle-line-finish
 zle -N zle-keymap-select
 
+bindkey ' ' magic-space    # also do history expansion on space
 #------------------------------------------------------------------------------
 # bindkey -e
-bindkey -M emacs ' ' magic-space    # also do history expansion on space
 
 bindkey -M emacs '^[[Z' reverse-menu-complete
 

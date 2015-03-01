@@ -18,7 +18,6 @@ em() {
     fi
 }
 
-# Create a new directory and enter it
 mkd() {
   mkdir -p "$@" && cd "$1"
 }
@@ -57,17 +56,8 @@ my_brew_backup () {
 
 }
 
-###
+### TODO change with python
 colorize_via_pygmentize() {
-    if [ ! -x "$(which pygmentize)" ]; then
-        echo "package \'pygmentize\' is not installed!"
-        return -1
-    fi
-
-    if [ $# -eq 0 ]; then
-        pygmentize -g "$@"
-    fi
-
     for FNAME in "$@"
     do
         filename=$(basename "$FNAME")
@@ -80,8 +70,7 @@ colorize_via_pygmentize() {
     done
 }
 alias -g L='| colorize_via_pygmentize | command less'
-less () {
-# TODO deal with lesspipe
+colorless () {
   fname="$1"
   suffix="${fname#*.}"
   pipe_suffix=(a arj tar.bz2 bz bz2 deb udeb ddeb doc gif jpeg jpg pcd png tga tiff tif iso bin raw lha lzh tar.lz tlz lz tar.lzma lzma pdf rar rpm tar.gz tgz tar.z tar.dz tar.xz txz xz gz z dz tar jar war ear xpi zip 7z zoo)
@@ -93,7 +82,7 @@ less () {
 }
 ###
 
-### git ignore issuesd
+### git ignore issues
 my_gi() { curl -sL https://www.gitignore.io/api/$@ ;}
 _gitignoreio_get_command_list() {
   curl -sL https://www.gitignore.io/api/list | tr "," "\n"
@@ -102,7 +91,7 @@ _gitignoreio () {
   compset -P '*,'
   compadd -S '' `_gitignoreio_get_command_list`
 }
-compdef _gitignoreio gi
+compdef _gitignoreio my_gi
 ###
 
 ### zsh reload
@@ -121,6 +110,8 @@ my_zshreload() {
 pgs() { # [find] [replace] [filename]
     perl -i.orig -pe 's/'"$1"'/'"$2"'/g' "$3"
 }
+
+# TODO locale issues
 
 if [[ $OSTYPE == "linux-gnu" ]];then
     source $(dirname "$0")/local_linux

@@ -1,5 +1,5 @@
 # -*- mode: sh; -*-
-#  vim: set ft=zsh ts=4 sw=2 tw=0 et :
+#  vim: set ft=sh ts=4 sw=2 tw=0 et :
 
 ## docker related
 # Get container IP
@@ -11,55 +11,19 @@ alias dki="docker run -i -t -P"
 # Stop all containers
 dstop() { docker stop $(docker ps -a -q); }
 # Dockerfile build, e.g., $dbu tcnksm/test
-dbu() { docker build -t=$1 .; }
+dbu() { docker build -t="$1" .; }
 
 my_dict() {
     word=$1
     TEMP="/tmp/dict.${word}"
-    MEMO=~/.dict/`date +%G%m`
-    command dict $word 1>$TEMP
-    if [ -s $TEMP ]
+    MEMO=~/.dict/$(date +%G%m)
+    command dict "$word" 1>"$TEMP"
+    if [ -s "$TEMP" ]
     then
-        less $TEMP
-        echo $word >> $MEMO
-        sort -u $MEMO -o $MEMO
+        less "$TEMP"
+        echo "$word" >> "$MEMO"
+        sort -u "$MEMO" -o "$MEMO"
     else
         echo 'spell error?'
     fi
-}
-
-my_watchdir() {
-    if [[ "$1" != "" ]]; then
-        local dir="$1"; shift
-        if [[ -x "`which inotifywait`" ]]; then
-            ls $dir
-            while true; do
-                inotifywait -q $@ $dir
-            done
-        else
-            echo "$0: inotifywait not found" > /dev/stderr
-        fi
-    else
-        echo "Usage: $0 <dir> [-e event1 -e event2 ...]"
-    fi
-}
-
-my_pdf_merge() {
-    tomerge="";
-    for file in "$@"; do
-        tomerge=$tomerge" "$file;
-    done
-    pdftk $tomerge cat output mergd.pdf;
-}
-
-my_locales() {
-    locale -a |
-        grep _ | #don't show nationalities
-        uniq -w5 | #merge available charmaps
-        while read lang; do
-            echo -ne "$lang\t";
-            locale_info=`LANG=$lang locale territory language 2>/dev/null`
-            echo $locale_info | sed 's/\(.*\) \(.*\)/\1 (\2)/'
-        done |
-        sort -k2
 }

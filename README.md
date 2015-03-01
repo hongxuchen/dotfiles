@@ -7,19 +7,19 @@ Installation
   # my dotfiles are located in ~/tools/dotfiles
   git clone --recursive git@github.com:HongxuChen/dotfiles.git /path/to/dotfiles
   # or https://github.com/HongxuChen/dotfiles.git
-  
+
   ## close other applications for a safe/smooth installation
   cd /path/to/dotfiles
-  
+
   # see its usage
   ./install.py -h
-  
+
   # dryrun to see whether there are dangerous operations
   ./install.py -n
-  
+
   # actual installation
   ./install.py
-  
+
   ```
 
 1. Use `install.py` to setup the environment; basically this simplily adds symlinks to `$HOME` directory as well as backups your original settings.
@@ -42,7 +42,7 @@ The personal information includes:
 Package managers
 ================
 
-Apart from [editors](http://en.wikipedia.org/wiki/Editor_war)'s plugin managers(see [below](#fundamentals)), other package managers are used and the lists are inside [misc](https://github.com/HongxuChen/dotfiles/tree/master/misc): 
+Apart from [editors](http://en.wikipedia.org/wiki/Editor_war)'s plugin managers(see [below](#fundamentals)), other package managers are used and the lists are inside [misc](https://github.com/HongxuChen/dotfiles/tree/master/misc):
 
 1. **Debian** -- [debian package management](https://www.debian.org/doc/manuals/debian-faq/ch-pkgtools.en.html), [linuxbrew](https://github.com/Homebrew/linuxbrew)
 
@@ -67,7 +67,7 @@ Fundamentals
 
 1. **Vim**(managed with [vundle](https://github.com/gmarik/Vundle.vim))(`~/.vimrc`, `~/.vim`)
 
-1. **Emacs**(24+, based on [puremell](https://github.com/purcell/emacs.d)'s settings, 
+1. **Emacs**(24+, based on [puremell](https://github.com/purcell/emacs.d)'s settings,
 managed with [package.el](http://www.emacswiki.org/emacs/ELPA))(`~/.emacs.d`)
 
     - start emacs, elisp extensions should be installed automatically for the first time
@@ -117,7 +117,7 @@ Other RCs
 
 1. [**htop**](http://hisham.hm/htop/)
 
-    - `~/config/.htoprc` on Linux 
+    - `~/config/.htoprc` on Linux
     - `~/.htoprc` on Mac
 
 1. [**vimperator**](http://www.vimperator.org/vimperator)(`~/.vimperatorrc`, `~/.vimperator/`)
@@ -183,7 +183,7 @@ Known Issues
 - `~/.config` cannot be modified when google-chrome is running
 - some keys are not right in emacs+xterm
 - brackets doesn't autopair for some cases in cpp
-- emacs openwith enhatncement
+- emacs openwith enhancement
 - org mode table keymaps has conflicts with LXDE
 - need [vim-commentary](git@github.com:tpope/vim-commentary.git) like tool in Emacs
 
