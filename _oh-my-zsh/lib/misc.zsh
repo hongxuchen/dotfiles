@@ -48,9 +48,7 @@ setopt hist_beep
 
 [[ -e /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found
 
-# alias -g L='| less'
-# alias -g LL='2>&1 | less'
-alias -g L='| v -'
+# alias -g L='| colorize_via_pygmentize' in functions.zsh
 alias -g LL='2>&1 | v -'
 alias -g HH='| head -n 20'
 alias -g TT='| tail -20'

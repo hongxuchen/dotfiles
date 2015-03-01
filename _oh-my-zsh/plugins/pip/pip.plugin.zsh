@@ -1,6 +1,3 @@
-# Usage:
-# Just add pip to your installed plugins.
-
 # If you would like to change the cheeseshops used for autocomplete set
 # ZSH_PIP_INDEXES in your zshrc. If one of your indexes are bogus you won't get
 # any kind of error message, pip will just not autocomplete from them. Double

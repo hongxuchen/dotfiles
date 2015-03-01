@@ -11,11 +11,15 @@ source ~/.zlocal
 source ~/.aliases
 
 # ~/.oh-my-zsh/plugins/
-PLUGINS=(ag brew gem git-extras pip z)
+PLUGINS=(ag brew gem git-extras pip z extract golang)
 if [[ $OSTYPE == "linux-gnu" ]];then
     PLUGINS=(${PLUGINS} docker)
 elif [[ $OSTYPE == "darwin"* ]];then
     PLUGINS=(${PLUGINS} vagrant)
+fi
+
+if [[ -z "$ZSH_CACHE_DIR"  ]]; then
+  ZSH_CACHE_DIR="$ZSH/cache"
 fi
 
 for plugin (${PLUGINS}); do

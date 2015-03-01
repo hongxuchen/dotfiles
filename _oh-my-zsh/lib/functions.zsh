@@ -23,30 +23,6 @@ mkd() {
   mkdir -p "$@" && cd "$1"
 }
 
-# Credit: http://nparikh.org/notes/zshrc.txt
-extract () {
-  if [ -f $1 ]; then
-    case $1 in
-      *.tar.bz2) tar -jxvf $1 ;;
-      *.tar.gz) tar -zxvf $1 ;;
-      *.bz2) bunzip2 $1 ;;
-      *.dmg) hdiutil mount $1 ;;
-      *.gz) gunzip $1 ;;
-      *.tar) tar -xvf $1 ;;
-      *.tbz2) tar -jxvf $1 ;;
-      *.tgz) tar -zxvf $1 ;;
-      *.zip) unzip $1 ;;
-      *.ZIP) unzip $1 ;;
-      *.pax) cat $1 | pax -r ;;
-      *.pax.Z) uncompress $1 —stdout | pax -r ;;
-      *.Z) uncompress $1 ;;
-      *) echo "'$1' cannot be extracted/mounted via extract()";;
-   esac
- else
-   echo "'$1' is not a valid file to extract"
- fi
-}
-
 my_cmake_ninja() {
     cmake -GNinja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON $@ && ninja
 }
@@ -81,8 +57,73 @@ my_brew_backup () {
 
 }
 
+###
+colorize_via_pygmentize() {
+    if [ ! -x "$(which pygmentize)" ]; then
+        echo "package \'pygmentize\' is not installed!"
+        return -1
+    fi
+
+    if [ $# -eq 0 ]; then
+        pygmentize -g "$@"
+    fi
+
+    for FNAME in "$@"
+    do
+        filename=$(basename "$FNAME")
+        lexer=$(pygmentize -N "$filename")
+        if [ "Z$lexer" != "Ztext" ]; then
+            pygmentize -l "$lexer" "$FNAME"
+        else
+            pygmentize -g "$FNAME"
+        fi
+    done
+}
+alias -g L='| colorize_via_pygmentize | command less'
+less () {
+# TODO deal with lesspipe
+  fname="$1"
+  suffix="${fname#*.}"
+  pipe_suffix=(a arj tar.bz2 bz bz2 deb udeb ddeb doc gif jpeg jpg pcd png tga tiff tif iso bin raw lha lzh tar.lz tlz lz tar.lzma lzma pdf rar rpm tar.gz tgz tar.z tar.dz tar.xz txz xz gz z dz tar jar war ear xpi zip 7z zoo)
+  if (( ${pipe_suffix[(I)${suffix}]} )) || ! [ -e "$fname" ]; then
+    command less "$fname"
+  else
+    colorize_via_pygmentize "$1" | command less
+  fi
+}
+###
+
+### git ignore issuesd
+my_gi() { curl -sL https://www.gitignore.io/api/$@ ;}
+_gitignoreio_get_command_list() {
+  curl -sL https://www.gitignore.io/api/list | tr "," "\n"
+}
+_gitignoreio () {
+  compset -P '*,'
+  compadd -S '' `_gitignoreio_get_command_list`
+}
+compdef _gitignoreio gi
+###
+
+### zsh reload
+my_zshreload() {
+  local cache=$ZSH_CACHE_DIR
+  autoload -U compinit zrecompile
+  compinit -d "$cache/zcomp-$HOST"
+
+  for f in ~/.zshrc "$cache/zcomp-$HOST"; do
+    zrecompile -p $f && command rm -f $f.zwc.old
+  done
+
+  source ~/.zshrc
+}
+
+pgs() { # [find] [replace] [filename]
+    perl -i.orig -pe 's/'"$1"'/'"$2"'/g' "$3"
+}
+
 if [[ $OSTYPE == "linux-gnu" ]];then
-    source $(dirname $0)/local_linux
+    source $(dirname "$0")/local_linux
 elif [[ $OSTYPE == "darwin"* ]];then
-    source $(dirname $0)/local_darwin
+    source $(dirname "$0")/local_darwin
 fi

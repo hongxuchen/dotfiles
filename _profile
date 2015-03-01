@@ -47,7 +47,7 @@ export TEXMFHOME=~/.texmf
 #grep
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
-export SVN_EDITOR=vim
+export EDITOR=vim
 
 
 #~/.screenlayout/dual.sh
