@@ -25,6 +25,7 @@ if [[ $OSTYPE == "darwin"* ]] || [[ $OSTYPE == "freebsd"* ]]; then
         alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
         alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
         alias my_lab="ssh hongxu@155.69.142.46 -t -- /bin/sh -c 'tmux has-session && exec tmux attach || exec tmux'"
+        alias sudo='sudo -H '
     fi
 fi
 
@@ -54,7 +55,6 @@ alias more='less'
 # alias less='colorless'
 alias diff='colordiff'
 alias svn='colorsvn'
-alias sudo='sudo '
 alias info='man'
 alias dl='axel -a -n 8 -U "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.6) Gecko/20070725 Firefox/2.0.0.6" -H "Accept:text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5 Accept-Language: en-us,en;q=0.5 Accept-Encoding: gzip,deflate Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7 Keep-Alive: 300"'
 alias adl="aria2c -s16 -x16"

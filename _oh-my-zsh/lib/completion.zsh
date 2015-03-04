@@ -90,6 +90,7 @@ compctl -K _dropbox dropbox
 
 ### TODO should use zsh features
 ### for argcomplete: https://github.com/kislyuk/argcomplete
+# activate-global-python-argcomplete is not needed for zsh
 autoload -Uz bashcompinit
 bashcompinit
 eval "$(register-python-argcomplete ~/.bin/shebang.py)"

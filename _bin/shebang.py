@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 # PYTHON_ARGCOMPLETE_OK
 
+# TODO guess from extension
+
 from __future__ import print_function
 from tempfile import mkstemp
 import os
@@ -11,8 +13,26 @@ import sys
 import colorama
 import argcomplete
 
+ext_app_dict = {
+    '.py': 'python',
+    '.pl': 'perl',
+    '.sh': 'bash',
+    '.zsh': '.zsh',
+    '.rb': 'ruby',
+    '.applescript': 'osascript'
+}
 
 def change_shebang(fpath, target, chmod):
+    if not os.path.exists(fpath):
+        print('{} not exists'.format(fpath), file=sys.stderr)
+        sys.exit(1)
+    if target is None:
+        fext = os.path.splitext(fpath)[1]
+        try:
+            target = ext_app_dict[fext]
+        except KeyError as e:
+            print('No target interpreter for {} files'.format(e), file=sys.stderr)
+            sys.exit(1)
     tmp_fh, tmp_file = mkstemp()
     old_file = open(fpath, 'r')
     new_file = open(tmp_file, 'w')
@@ -36,9 +56,9 @@ if __name__ == '__main__':
         "-t",
         "--target",
         metavar="EXE",
-        default='python',
+        # default='python',
         required=False,
-        help="the target interpreter(default: python)")
+        help="the target interpreter (default: guess from file extension)")
     parser.add_argument(
         "file_list",
         metavar="FILE",
