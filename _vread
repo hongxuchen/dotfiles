@@ -128,6 +128,8 @@ Bundle 'gmarik/vundle'
 Bundle 'Superbil/llvm.vim'
 Bundle 'Cpp11-Syntax-Support'
 Bundle 'endel/vim-github-colorscheme'
+Bundle 'tpope/vim-vividchalk'
+Bundle 'altercation/vim-colors-solarized'
 Bundle 'rking/ag.vim'
 
 "vim-g

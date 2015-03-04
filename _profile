@@ -3,10 +3,10 @@
 export EDITOR=vim
 export ALTERNATE_EDITOR=""
 
-#supress locale and TZ
-export LANG="en_US.UTF-8"
-export LANGUAGE="en_US:en"
 export LC_CTYPE="en_US.UTF-8"
+export LANGUAGE="en_US"
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
 export LC_NUMERIC="en_US.UTF-8"
 export LC_TIME="en_US.UTF-8"
 export LC_COLLATE="en_US.UTF-8"
@@ -18,8 +18,6 @@ export LC_ADDRESS="en_US.UTF-8"
 export LC_TELEPHONE="en_US.UTF-8"
 export LC_MEASUREMENT="en_US.UTF-8"
 export LC_IDENTIFICATION="en_US.UTF-8"
-export LC_ALL="C"
-export LC_ALL="en_US.UTF-8"
 # export TZ='Asia/Shanghai'
 
 export EMAIL="leftcopy.chx@gmail.com"
@@ -34,6 +32,9 @@ export COMMAND_NOT_FOUND_INSTALL_PROMPT=1
 
 export PAGER="less"
 export LESS="-R -i -g -c -W"
+export LESSOPEN='|/usr/bin/lesspipe %s'
+export LESSCLOSE='/usr/bin/lesspipe %s %s'
+# color man
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
 export LESS_TERMCAP_me=$'\E[0m'
@@ -41,8 +42,6 @@ export LESS_TERMCAP_se=$'\E[0m'
 export LESS_TERMCAP_so=$'\E[01;44;33m'
 export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
-export LESSOPEN='|/usr/bin/lesspipe %s'
-export LESSCLOSE='/usr/bin/lesspipe %s %s'
 export TEXMFHOME=~/.texmf
 
 #grep

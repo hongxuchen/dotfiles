@@ -93,6 +93,17 @@ _gitignoreio () {
 }
 compdef _gitignoreio my_gi
 ###
+#
+my_docopt_compl(){
+  tmpdir="."
+  script_name=$1
+  compl_name="_${script_name}"
+  genfile="${tmpdir}/_${script_name}"
+  target_file="${ZSH_COMPLETIONS}/_${script_name}.zsh"
+  docopt-completion ${script_name} --manual-zsh
+  mv ${genfile} ${target_file}
+  source ~/.zshrc
+}
 
 ### zsh reload
 my_zshreload() {

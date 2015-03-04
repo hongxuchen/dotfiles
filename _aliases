@@ -78,7 +78,7 @@ alias v_cc1_oz='clang /dev/null -xc -Oz - -o /dev/null -\#\#\# 2>&1 | tr " " "\n
 alias v_cc1_ofast='clang /dev/null -xc -Ofast - -o /dev/null -\#\#\# 2>&1 | tr " " "\n"'
 alias v_clang_llvm='clang -xc /dev/null -c -mllvm -print-all-options'
 
-alias buuc='echo "brew update" && brew update && echo "brew upgrade" && brew upgrade && "brew cleanup" brew cleanup'
+alias buuc='(echo "brew update" && brew update && echo "brew upgrade" && brew upgrade && echo "brew cleanup" brew cleanup)'
 
 alias rdm_res='tail -f /tmp/rdm_answer'
 
@@ -97,6 +97,8 @@ alias lrt='ls -lrth'
 alias ldot='ls -ld .*'
 alias kl='k.zsh | less'
 alias sl='ls'
+
+alias deb_latest_installed='cat /var/log/dpkg.log | grep "\ install\ "'
 
 alias vi='vim'
 alias v='vim -u ~/.vless'

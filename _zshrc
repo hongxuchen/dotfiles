@@ -37,6 +37,9 @@ for plugin (${PLUGINS}); do
 done
 unset plugin base_dir
 
+ZSH_COMPLETIONS=${ZSH}/completions
+fpath=(${fpath} ${ZSH_COMPLETIONS})
+
 ### should be loaded before source ${ZSH}/lib
 autoload -Uz compinit
 compinit -i

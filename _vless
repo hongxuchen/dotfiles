@@ -14,4 +14,6 @@ set readonly
 set nomodifiable
 nnoremap q :qall!<CR>
 
-colorscheme github
+" set background=light
+" colorscheme github
+" colorscheme solarized
