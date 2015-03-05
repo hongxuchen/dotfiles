@@ -25,12 +25,12 @@ if [[ $OSTYPE == "darwin"* ]] || [[ $OSTYPE == "freebsd"* ]]; then
         alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
         alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
         alias my_lab="ssh hongxu@155.69.142.46 -t -- /bin/sh -c 'tmux has-session && exec tmux attach || exec tmux'"
-        alias sudo='sudo -H '
     fi
 fi
 
 # GNU-coreutils ls
 alias ls='ls --color=tty'
+alias sudo='sudo -H '
 
 alias r_cp='rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --'
 alias r_mv='rsync -a --progress -h --remove-source-files'
@@ -87,8 +87,8 @@ alias pat_ssh='ssh -X root@pat.sce.ntu.edu.sg'
 
 alias dud='du -d 1 -h'
 alias duf='du -sh *'
-alias sane_f='find . -type d -print0 | xargs -0 chmod 755'
-alias sane_d='find . -type f -print0 | xargs -0 chmod 644'
+alias sane_f='find . -type f -print0 | xargs -0 chmod 644'
+alias sane_d='find . -type d -print0 | xargs -0 chmod 755'
 
 alias la='ls -Ah'
 alias l='ls -F'
