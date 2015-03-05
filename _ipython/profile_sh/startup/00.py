@@ -39,7 +39,7 @@ import compiler
 import pycparser
 import ply.lex
 # import getopt
-import Levenshtein
+# import Levenshtein
 import leveldb
 import decimal
 import struct
