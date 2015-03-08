@@ -1,11 +1,8 @@
 #!/bin/bash
 
-# history_of_file
-#
 # Outputs the full history of a given file as a sequence of
 # logentry/diff pairs.  The first revision of the file is emitted as
 # full text since there's not previous version to compare it to.
-
 history_of_file() {
     url=$1 # current url of file
     svn log -q $url | grep -E -e "^r[[:digit:]]+" -o | cut -c2- | sort -n | {

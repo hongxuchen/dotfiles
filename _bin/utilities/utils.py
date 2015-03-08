@@ -1,14 +1,3 @@
-#!/usr/bin/env python3
-# vim:fileencoding=utf-8
-# @author: lilydjwg <http://lilydjwg.is-programmer.com/>
-# License GPLv3+: GNU GPL version 3 or later <http://gnu.org/licenses/gpl.html>.
-# This is free software: you are free to change and redistribute it.
-# There is NO WARRANTY, to the extent permitted by law.
-
-'''
-一些常用短小的函数/类
-'''
-
 import os
 import sys
 
@@ -29,7 +18,7 @@ def getpass(prompt="Password: "):
 
 
 def path_import(path):
-    '''指定路径来 import'''
+    '''import with "path"'''
     d, f = os.path.split(path)
     if d not in sys.path:
         sys.path[0:0] = [d]
@@ -39,7 +28,7 @@ def path_import(path):
 
 
 def filesize(size):
-    '''将 数字 转化为 xxKiB 的形式'''
+    '''transfer digits to the form of xxKiB'''
     units = 'KMGT'
     left = abs(size)
     unit = -1
@@ -55,13 +44,8 @@ def filesize(size):
 
 
 def input_t(timeout, prompt=''):
-    '''带有超时的输入，使用 select() 实现
-
-    超时返回 None'''
+    '''input with timeout (None is returned), implemented with selected()'''
     from select import select
-
-    # 也可以用多进程/signal 实现
-    # 但 signal 不能在非主线程中调用
     sys.stdout.write(prompt)
     sys.stdout.flush()
     if select([sys.stdin.fileno()], [], [], timeout)[0]:
@@ -69,7 +53,7 @@ def input_t(timeout, prompt=''):
 
 
 def getchar(prompt, hidden=False, end='\n'):
-    '''读取一个字符'''
+    '''read one char'''
     import termios
     sys.stdout.write(prompt)
     sys.stdout.flush()
@@ -98,9 +82,8 @@ def getchar(prompt, hidden=False, end='\n'):
 
 
 def loadso(fname):
-    '''ctypes.CDLL 的 wrapper，从 sys.path 中搜索文件'''
+    '''wrapper for ctypes.CDLL'''
     from ctypes import CDLL
-
     for d in sys.path:
         p = os.path.join(d, fname)
         if os.path.exists(p):

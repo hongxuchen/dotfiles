@@ -16,7 +16,7 @@ except ImportError as e:
     sys.exit(1)
 
 try:
-    from subprocess import DEVNULL  # py3k
+    from subprocess import DEVNULL
 except ImportError:
     DEVNULL = open(os.devnull, 'wb')
 
