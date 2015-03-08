@@ -83,21 +83,24 @@ for z in zip gz; do
 done
 
 ### we cannot make runnable script to be opened with vim
-for s in tex cpp cc c h hh hpp conf vim txt;
-do
+for s in tex conf vim txt; do
     alias -s $s=vim
 done
 
-for s in 1 2 3 4 5 6 7;
-do
+for s in 1 2 3 4 5 6 7; do
     if [[ $OSTYPE == "linux-gnu" ]]; then
         alias -s $s="man -l"
     elif [[ $OSTYPE == "darwin"* ]];then
         alias -s $s="man"
     fi
 done
-alias -s deb="sudo gdebi"
 
+# _c_c_(){echo "$1 == ${@:1}"; c "-std=c99 $1" ${@:1}}
+# _c_cxx_(){echo "$1 == ${@:1}"; c "-std=c++14 $1" ${@:1}}
+alias -s c=c
+alias -s cc=c
+
+alias -s deb="sudo gdebi"
 alias -s jar="java -jar"
 alias -s dot="dot -Tpng -O"
 alias -s plist="plutil"

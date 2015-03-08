@@ -21,6 +21,8 @@ vnoremap D "_d
 " refresh if file in Vim is updated by external program,TODO
 noremap <silent><F5> :checktime<CR>:exe ":echo 'file refreshed'"<CR>
 inoremap <silent><F5> <C-O>:checktime<CR>:exe ":echo 'file refreshed'"<CR>
+" substitute word under cursor with ...
+nnoremap <Leader>S :%s/\<<C-r><C-w>\>/
 
 autocmd FileType c,cpp,java,markdown autocmd BufWritePre <buffer> :%s/\s\+$//e
 nnoremap gO :!open <cfile><CR>
@@ -35,7 +37,7 @@ inoremap <silent><C-x>i <C-o>:read<Space>
 inoremap <silent><C-x><C-w> <C-o>:write<Space>
 inoremap <silent><C-x><C-q> <C-o>:set invreadonly<CR>
 inoremap <silent><C-x><C-c> <C-o>:wqall<CR>
-inoremap <silent><C-x><C-J> <C-o>:E<CR>
+inoremap <silent><C-x><C-J> <C-o>:e.<CR>
 inoremap <silent><C-e> <C-o>$
 inoremap <silent><C-a> <C-o>0
 inoremap <silent><C-f> <Right>
@@ -47,6 +49,7 @@ inoremap <silent><M-p> <C-o>:cprevious<CR>
 set ttyfast
 set colorcolumn=120
 set autochdir
+set formatoptions=tq
 set noautowrite               " Never write a file unless I request it.
 set noautowriteall            " NEVER.
 set autoread                  " automatically re-read changed files.

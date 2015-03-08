@@ -13,7 +13,7 @@ xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
 
 " display pwd
-nnoremap <leader>s :pwd <CR>
+nnoremap <leader>s :echo expand('%:p')<CR>
 " open help:info in new tab
 cabbrev hh tab help
 " remap j,k
@@ -35,7 +35,7 @@ nnoremap <silent><C-x>i :read<Space>
 nnoremap <silent><C-x><C-w> :write<Space>
 nnoremap <silent><C-x><C-q> :set invreadonly<CR>
 nnoremap <silent><C-x><C-c> :wqall<CR>
-nnoremap <silent><C-x><C-j> :E<CR>
+nnoremap <silent><C-x><C-j> :e.<CR>
 cnoremap <silent><C-g> <ESC><ESC>
 
 " general settings

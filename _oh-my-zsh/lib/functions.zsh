@@ -57,19 +57,6 @@ my_brew_backup () {
 }
 
 ### TODO change with python
-colorize_via_pygmentize() {
-    for FNAME in "$@"
-    do
-        filename=$(basename "$FNAME")
-        lexer=$(pygmentize -N "$filename")
-        if [ "Z$lexer" != "Ztext" ]; then
-            pygmentize -l "$lexer" "$FNAME"
-        else
-            pygmentize -g "$FNAME"
-        fi
-    done
-}
-alias -g L='| colorize_via_pygmentize | command less'
 colorless () {
   fname="$1"
   suffix="${fname#*.}"
@@ -77,7 +64,7 @@ colorless () {
   if (( ${pipe_suffix[(I)${suffix}]} )) || ! [ -e "$fname" ]; then
     command less "$fname"
   else
-    colorize_via_pygmentize "$1" | command less
+    pygmentize "$1" | less
   fi
 }
 ###
@@ -120,6 +107,10 @@ my_zshreload() {
 
 pgs() { # [find] [replace] [filename]
     perl -i.orig -pe 's/'"$1"'/'"$2"'/g' "$3"
+}
+
+json_pretty() {
+  echo "$1" | python -mjson.tool
 }
 
 # TODO locale issues

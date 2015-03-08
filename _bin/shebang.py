@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # PYTHON_ARGCOMPLETE_OK
 
-# TODO guess from extension
-
 from __future__ import print_function
 from tempfile import mkstemp
 import os
@@ -17,7 +15,7 @@ ext_app_dict = {
     '.py': 'python',
     '.pl': 'perl',
     '.sh': 'bash',
-    '.zsh': '.zsh',
+    '.zsh': 'zsh',
     '.rb': 'ruby',
     '.applescript': 'osascript'
 }

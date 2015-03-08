@@ -94,4 +94,5 @@ compctl -K _dropbox dropbox
 autoload -Uz bashcompinit
 bashcompinit
 eval "$(register-python-argcomplete ~/.bin/shebang.py)"
+# eval "$(register-python-argcomplete ~/src/snippets_py2/clang/helper.py)"
 ###
