@@ -1,119 +1,101 @@
 !-*- mode:conf -*-
+!
+! see /etc/X11/app-defaults, also 'xrdb -query', 'appres APPNAME'
+!
 
-!Xft settings
-Antialias             : 1
-Xft.dpi               : 86
-Xft.hinting           : 1
-Xft.hintstyle         : hintfull
+!-----------------------------------------------------------------------------
+! Xft
+!-----------------------------------------------------------------------------
+Xft.dpi               : 96
+Xft.lcdfilter         : lcddefault
 Xft.rgba              : rgb
-Xft*antialias         : true
-Xft*hinting           : full
+Xft.autohint          : false
+Xft.antialias         : true
+Xft.hinting           : true
+Xft.hintstyle         : hintslight
 
-!otherwise xterm would bind Alt-x to M-8
-XTerm*metaSendsEscape: true
-UXTerm*metaSendsEscape: true
+! DEFINEs
+! use fc-list to see installed fonts (~/.fonts,...)
+#define my_meslo           MesloLGMDZ-RegularForPowerline:size=13
+#define my_consolas        Consolas:size=14
+#define my_dejavu          DejaVuSansMono:size=13
+#define my_unifont         UnifontMedium:size=11
+#define my_monaco          Monaco:autohint=true:pixelsize=16:size=12
 
-!Emacs.pane.menubar.background: darkGrey
-!Emacs.pane.menubar.foreground: black
-!Emacs*menubar.margin: 0
-!Emacs*shadowThickness: 0
+!-----------------------------------------------------------------------------
+! Emacs
+!-----------------------------------------------------------------------------
+Emacs.pane.menubar.background: darkGrey
+Emacs.pane.menubar.foreground: black
+Emacs*menubar.margin: 0
+Emacs*shadowThickness: 0
 Emacs.fontBackend: xft
 Emacs.menuBar: off
 Emacs.verticalScrollBars: off
 Emacs.toolBar: off
-!Emacs*font:    Consolas:antialias=true
-Emacs*font: Monaco:style=bold:size=13:antialias=true:pixelsize=16:autohint=true:hinting=true
+Emacs*font: my_monaco
+
+!-----------------------------------------------------------------------------
+! xterm
+!-----------------------------------------------------------------------------
+!otherwise xterm would bind Alt-x to M-8
+xterm*metaSendsEscape: true
+!so that both select and ctrl-c contents are put into CLIPBOARD
+xterm*selectToClipboard: true
+
+xterm*scrollBar: false
+xterm*rightScrollBar: false
+xterm*toolBar: false
+xterm*jumpScroll: true
+xterm*SaveLines: 200
+xterm*termName: xterm-256color
+xterm*trimSelection: true
+xterm*borderWidth: 1
+xterm*cursorBlink: false
+xterm*visualBell: false
+xterm*utf8Title: true
+xterm*internalBorder: 0
+
+xterm*activeIcon: true
 
 !font and size
 xterm*utf8:  true
-XTerm*locale: zh_CN.UTF-8
-!xterm*VT100*font:  -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
-!xterm*VT100*wideFont:  -misc-fixed-medium-r-normal-ja-13-125-75-75-c-120-iso10646-1
-!xterm*VT100*boldFont:  -misc-fixed-bold-r-semicondensed--13-120-75-75-c-60-iso10646-1
-XTerm*faceSize: 16
-XTerm*faceSize1: 16
-XTerm*faceSize2: 16
-XTerm*faceSize3: 16
-XTerm*faceSize4: 16
-XTerm*faceSize5: 16
-XTerm*faceSize6: 16
-XTerm*fontMenu*fontdefault*Label: Default
+! xterm*locale: en_US.UTF-8
+xterm*locale: zh_CN.UTF-8
+xterm*faceSize: 16
+xterm*faceSize1: 16
+xterm*faceSize2: 16
+xterm*faceSize3: 16
+xterm*faceSize4: 16
+xterm*faceSize5: 16
+xterm*faceSize6: 16
+xterm*fontMenu*fontdefault*Label: Default
 
-!use fc-list to see installed fonts(~/.fonts,...)
-!generally used:sans-serif
-XTerm*cjkWidth:false
-! xterm*faceName: DejaVu Sans Mono:style=regular:antialias=true:size=13
-xterm*faceName: xft:Monaco:style=bold:size=13:antialias=true:pixelsize=16:autohint=true:hinting=true
-! XTerm*faceNameDoublesize:WenQuanYi Micro Hei
-!xterm*faceNameDoublesize:xft:Microsoft Yahei:antialias=True:pixelsize=16:style=Regular
-xterm*faceNameDoublesize:xft:.HeitiUI TC Ultra Light:antialias=True:pixelsize=16:style=Regular
+xterm*cjkWidth:false
+! xterm*faceName, default is sans-serif
+xterm*faceName: my_meslo
 
-XTerm*cursorBlink: false
-XTerm*visualBell: false
-XTerm*utf8Title: true
-! XTerm*internalBorder: 0
+! xterm*faceNameDoublesize:xft:Microsoft Yahei:antialias=True:pixelsize=16:style=Regular
+! xterm*faceNameDoublesize:xft:.HeitiUI TC Ultra Light:antialias=True:pixelsize=16:style=Regular
+xterm*faceNameDoublesize:WenQuanYi Micro Hei
 
 ! Monokai color theme
-XTerm*background: #101010
-XTerm*foreground: #d0d0d0
-XTerm*cursorColor: #d0d0d0
-XTerm*color0: #101010
-XTerm*color1: #960050
-XTerm*color2: #66aa11
-XTerm*color3: #c47f2c
-XTerm*color4: #30309b
-XTerm*color5: #7e40a5
-XTerm*color6: #3579a8
-XTerm*color7: #9999aa
-XTerm*color8: #303030
-XTerm*color9: #ff0090
-XTerm*color10: #80ff00
-XTerm*color11: #ffba68
-XTerm*color12: #5f5fee
-XTerm*color13: #bb88dd
-XTerm*color14: #4eb4fa
-XTerm*color15: #d0d0d0
-
-XTerm*scrollBar: false
-XTerm*rightScrollBar: false
-XTerm*toolBar: false
-XTerm*jumpScroll: true
-XTerm*SaveLines: 3000
-xterm*termName: xterm-256color
-xterm*trimSelection: true
-xterm*borderWidth: 0
-!so that both select and ctrl-c contents are put into CLIPBOARD
-XTerm*selectToClipboard: true
-
-URxvt.scrollBar: False
-URxvt.scrollstyle: rxvt
-URxvt.termName: xterm-256color
-URxvt.urgentOnBell: False
-URxvt.cursorBlink: False
-URxvt.font: xft:Monaco:style=bold:size=13:antialias=true:pixelsize=16:autohint=true:hinting=true
-URxvt.boldFont: xft:Monaco:style=bold:size=13:antialias=true:pixelsize=16:autohint=true:hinting=true
-URxvt.letterSpace: -2
-URxvt.lineSpace: -2
-URxvt.scrollKey: true
-URxvt.depth: 32
-URxvt.loginShell: true
-URxvt.geometry: 100x30
-URxvt.saveLines: 10000
-URxvt*background: #101010
-URxvt*foreground: #d0d0d0
-URxvt*color0: #101010
-URxvt*color1: #960050
-URxvt*color2: #66aa11
-URxvt*color3: #c47f2c
-URxvt*color4: #30309b
-URxvt*color5: #7e40a5
-URxvt*color6: #3579a8
-URxvt*color7: #9999aa
-URxvt*color8: #303030
-URxvt*color9: #ff0090
-URxvt*color10: #80ff00
-URxvt*color11: #ffba68
-URxvt*color12: #5f5fee
-URxvt*color13: #bb88dd
-URxvt*color14: #4eb4fa
-URxvt*color15: #d0d0d0
+xterm*background: #101010
+xterm*foreground: #d0d0d0
+xterm*cursorColor: #d0d0d0
+xterm*color0: #101010
+xterm*color1: #960050
+xterm*color2: #66aa11
+xterm*color3: #c47f2c
+xterm*color4: #30309b
+xterm*color5: #7e40a5
+xterm*color6: #3579a8
+xterm*color7: #9999aa
+xterm*color8: #303030
+xterm*color9: #ff0090
+xterm*color10: #80ff00
+xterm*color11: #ffba68
+xterm*color12: #5f5fee
+xterm*color13: #bb88dd
+xterm*color14: #4eb4fa
+xterm*color15: #d0d0d0

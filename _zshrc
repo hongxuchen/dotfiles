@@ -3,8 +3,8 @@
 
 ZSH=~/.oh-my-zsh
 
-# ZSH_THEME="bira"
-ZSH_THEME="nanotech"
+ZSH_THEME="bira"
+# ZSH_THEME="nanotech"
 
 source ~/.profile
 source ~/.zlocal
