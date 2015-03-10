@@ -35,7 +35,7 @@
     <primaryMonitor/>
   </placement>
   <theme>
-    <name>Onyx</name>
+    <name>Syscrash</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
         available characters are NDSLIMC, each can occur at most once.

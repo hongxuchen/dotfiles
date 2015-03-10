@@ -1,6 +1,4 @@
 !-*- mode:conf -*-
-!I do not use ~/.Xdefaults,see
-!<http://superuser.com/questions/243914/xresources-or-xdefaults/243916#243916>
 
 !Xft settings
 Antialias             : 1
@@ -27,11 +25,11 @@ Emacs.toolBar: off
 Emacs*font: Monaco:style=bold:size=13:antialias=true:pixelsize=16:autohint=true:hinting=true
 
 !font and size
-xterm*utf8:  true 
+xterm*utf8:  true
 XTerm*locale: zh_CN.UTF-8
-xterm*VT100*font:  -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
-xterm*VT100*wideFont:  -misc-fixed-medium-r-normal-ja-13-125-75-75-c-120-iso10646-1
-xterm*VT100*boldFont:  -misc-fixed-bold-r-semicondensed--13-120-75-75-c-60-iso10646-1
+!xterm*VT100*font:  -misc-fixed-medium-r-semicondensed--13-120-75-75-c-60-iso10646-1
+!xterm*VT100*wideFont:  -misc-fixed-medium-r-normal-ja-13-125-75-75-c-120-iso10646-1
+!xterm*VT100*boldFont:  -misc-fixed-bold-r-semicondensed--13-120-75-75-c-60-iso10646-1
 XTerm*faceSize: 16
 XTerm*faceSize1: 16
 XTerm*faceSize2: 16
