@@ -139,7 +139,7 @@ They are NOT exact linux-only, but I don't wanna use them for Mac; currently put
 - [**lftp**](http://lftp.yar.ru/)(`~/.lftp/`)
 
 - **X11** settings
-    - `~/.Xresources`: for XTerm, URxvt, Emacs; should run `xrdb -merge ~/.Xresources` firstly
+    - `~/.Xresources`: for XTerm, URxvt, Emacs; should run `xrdb -load ~/.Xresources` firstly
     - `~/.xscreensaver`
 
 - **wget**(~/.wgetrc)

@@ -5,6 +5,7 @@ import os
 import sys
 import platform
 import subprocess
+import colorama
 
 try:
     import argparse
@@ -35,8 +36,6 @@ DST_DIR = os.path.realpath(os.path.expandvars("$HOME"))
 
 VUNDLE_REPO = "https://github.com/gmarik/vundle.git"
 VUNDLE_PATH = os.path.join(DST_DIR, '.vim/bundle/vundle')
-TPM_REPO = "https://github.com/tmux-plugins/tpm.git"
-TPM_PATH = os.path.expanduser("~/.tmux/plugins/tpm")
 
 
 SUFFIX = '.DOTBAK'
@@ -51,24 +50,29 @@ def _git_get(git_repo, dst):
 
 
 def _config_vim():
+    print(
+        colorama.Fore.YELLOW,
+        'Press [ENTER] to ignore errors (if any) during install',
+        colorama.Fore.RESET)
     _git_get(VUNDLE_REPO, VUNDLE_PATH)
     cmd_str = "vim -c BundleInstall -c qa"
     subprocess.call(cmd_str.split())
 
 
-def _config_tmux():
-    _git_get(TPM_REPO, TPM_PATH)
-    # cmd_str = "tmux source-file " + os.path.expanduser("~/.tmux.conf")
-    # subprocess.Popen(cmd_str.split(), stdout=DEVNULL)
+def _config_emacs():
+    cmd_str = "emacs -f save-buffers-kill-emacs"
+    subprocess.call(cmd_str.split())
 
-parser = argparse.ArgumentParser(description="install scripts for all the dotfiles")
+# ----------------------------------------------------------------------------
+colorama.init()
+parser = argparse.ArgumentParser(
+    description="install scripts for all the dotfiles")
 parser.add_argument(
     "--config",
     dest="config",
     nargs="+",
     choices=[
-        "vim",
-        "tmux"],
+        "vim", "emacs"],
     help="some special configurations")
 parser.add_argument("--recover", dest="recover", action="store_true", required=False,
                     help="restore the original dotfiles")
@@ -89,10 +93,23 @@ if args.config:
     sys.exit(0)
 
 if not os.path.exists(args.bakdir):
-    print("backup dir [{}] doesn't exist".format(args.bakdir), file=sys.stderr)
-    sys.exit(1)
-else:
-    print("backup dir is: " + args.bakdir)
+    def yn_choice(message, default='y'):
+        choices = 'Y/n' if default.lower() in ('y', 'yes') else 'y/N'
+        choice = raw_input("{} ({}) " % (message, choices))
+        values = ('y', 'yes', '') if default == 'y' else ('y', 'yes')
+        return choice.strip().lower() in values
+    print("Backup dir [{}] doesn't exist".format(args.bakdir), file=sys.stderr)
+    choice = yn_choice("Would you like to create it?")
+    if choice is True:
+        try:
+            os.makedirs(args.bakdir)
+        except os.error as e:
+            print(e)
+            sys.exit(1)
+    else:
+        print("Backup aborted, exit", file=sys.stderr)
+        sys.exit(1)
+print("backup dir is: " + args.bakdir)
 
 src_files = []
 _find_files(CUR_DIR, src_files)
