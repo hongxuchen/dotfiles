@@ -1,7 +1,6 @@
 !-*- mode:conf -*-
 !
 ! see /etc/X11/app-defaults, also 'xrdb -query', 'appres APPNAME'
-!
 
 !-----------------------------------------------------------------------------
 ! Xft
@@ -13,14 +12,40 @@ Xft.autohint          : false
 Xft.antialias         : true
 Xft.hinting           : true
 Xft.hintstyle         : hintslight
-
-! DEFINEs
-! use fc-list to see installed fonts (~/.fonts,...)
-#define my_meslo           MesloLGMDZ-RegularForPowerline:size=13
+! DEFINEs; use fc-list to see installed fonts (~/.fonts,...)
 #define my_consolas        Consolas:size=14
 #define my_dejavu          DejaVuSansMono:size=13
 #define my_unifont         UnifontMedium:size=11
 #define my_monaco          Monaco:autohint=true:pixelsize=16:size=12
+#define my_wqyHei          WenQuanYiMicroHei:size=13
+#define my_MSYaHei         MicrosoftYaHei:size=13
+
+!-----------------------------------------------------------------------------
+! Monokai color theme
+!-----------------------------------------------------------------------------
+*background: #101010
+*foreground: #d0d0d0
+*cursorColor: #657b83
+*color0: #101010
+*color1: #960050
+*color2: #66aa11
+*color3: #c47f2c
+*color4: #30309b
+*color5: #7e40a5
+*color6: #3579a8
+*color7: #9999aa
+*color8: #303030
+*color9: #ff0090
+*color10: #80ff00
+*color11: #ffba68
+*color12: #5f5fee
+*color13: #bb88dd
+*color14: #4eb4fa
+*color15: #d0d0d0
+
+*colorBD:            #ffffff
+*colorIT:            #a761c2
+*colorUL:            #6d9cbe
 
 !-----------------------------------------------------------------------------
 ! Emacs
@@ -33,7 +58,7 @@ Emacs.fontBackend: xft
 Emacs.menuBar: off
 Emacs.verticalScrollBars: off
 Emacs.toolBar: off
-Emacs*font: my_monaco
+! Emacs*font: my_monaco
 
 !-----------------------------------------------------------------------------
 ! xterm
@@ -42,7 +67,7 @@ Emacs*font: my_monaco
 xterm*metaSendsEscape: true
 !so that both select and ctrl-c contents are put into CLIPBOARD
 xterm*selectToClipboard: true
-
+! misc
 xterm*scrollBar: false
 xterm*rightScrollBar: false
 xterm*toolBar: false
@@ -55,12 +80,9 @@ xterm*cursorBlink: false
 xterm*visualBell: false
 xterm*utf8Title: true
 xterm*internalBorder: 0
-
 xterm*activeIcon: true
-
 !font and size
 xterm*utf8:  true
-! xterm*locale: en_US.UTF-8
 xterm*locale: zh_CN.UTF-8
 xterm*faceSize: 16
 xterm*faceSize1: 16
@@ -69,33 +91,43 @@ xterm*faceSize3: 16
 xterm*faceSize4: 16
 xterm*faceSize5: 16
 xterm*faceSize6: 16
-xterm*fontMenu*fontdefault*Label: Default
-
 xterm*cjkWidth:false
-! xterm*faceName, default is sans-serif
-xterm*faceName: my_meslo
+xterm*faceName: my_monaco,my_unifont
 
-! xterm*faceNameDoublesize:xft:Microsoft Yahei:antialias=True:pixelsize=16:style=Regular
-! xterm*faceNameDoublesize:xft:.HeitiUI TC Ultra Light:antialias=True:pixelsize=16:style=Regular
-xterm*faceNameDoublesize:WenQuanYi Micro Hei
+!-----------------------------------------------------------------------------
+! rxvt-unicode-256color
+!-----------------------------------------------------------------------------
+URxvt.depth:  32
+URxvt.buffered: true
+URxvt.geometry:  80x24
+URxvt.transparent:  false
+URxvt.fading:  0
+URxvt.urgentOnBell:  true
+URxvt.visualBell:  false
+URxvt.loginShell:  false
+URxvt.saveLines:  0
+URxvt.internalBorder:  3
+URxvt.lineSpace:  0
+URxvt.iso14755_52:        false
+URxvt.iso14755:           false
 
-! Monokai color theme
-xterm*background: #101010
-xterm*foreground: #d0d0d0
-xterm*cursorColor: #d0d0d0
-xterm*color0: #101010
-xterm*color1: #960050
-xterm*color2: #66aa11
-xterm*color3: #c47f2c
-xterm*color4: #30309b
-xterm*color5: #7e40a5
-xterm*color6: #3579a8
-xterm*color7: #9999aa
-xterm*color8: #303030
-xterm*color9: #ff0090
-xterm*color10: #80ff00
-xterm*color11: #ffba68
-xterm*color12: #5f5fee
-xterm*color13: #bb88dd
-xterm*color14: #4eb4fa
-xterm*color15: #d0d0d0
+URxvt.termName: rxvt-unicode-256color
+URxvt.allow_bold:  false
+URxvt.font: xft:my_monaco,xft:my_dejavu,xft:my_wqyHei
+URxvt.boldFont: xft:my_monaco
+URxvt.letterSpace: -1
+
+URxvt.scrollStyle:  rxvt
+URxvt.scrollBar:  false
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+URxvt.borderless: true
+
+URxvt.cursorBlink:  false
+URxvt.cursorColor:  #657b83
+URxvt.cursorUnderline:  false
+
+URxvt.pointerBlank:  true
+
+URxvt.perl-ext:
+URxvt.perl-ext-common:

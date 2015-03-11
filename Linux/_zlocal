@@ -56,6 +56,8 @@ export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=${MY_LLVM_OBJ}/lib:${MY_STP_INSTALL}/lib:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=${MY_BREW_PREFIX}/lib:${LD_LIBRARY_PATH}
 
+export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
+
 export PYTHONPATH=
 export PYTHONPATH=/usr/lib/python2.7/site-packages:${MY_LLVM_ROOT}/src/tools/clang/bindings/python:$PYTHONPATH
 
