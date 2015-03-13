@@ -13,8 +13,9 @@ SAVEHIST=10000
 alias history='fc -l 1 | less'  #fc is a zshbuiltin
 
 # ls colors
-autoload colors; colors;
-export LSCOLORS="Gxfxcxdxbxegedabagacad"
+# autoload colors; colors;
+# export LSCOLORS="Gxfxcxdxbxegedabagacad"
+export LSCOLORS=${LS_COLORS}
 
 # Apply theming defaults
 PS1="%n@%m:%~%# "

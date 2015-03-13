@@ -9,6 +9,7 @@ ZSH_THEME="nanotech"
 source ~/.profile
 source ~/.zlocal
 source ~/.aliases
+eval $(dircolors ~/.LS_COLORS)
 
 # ~/.oh-my-zsh/plugins/
 PLUGINS=(ag brew gem git-extras pip z extract golang)

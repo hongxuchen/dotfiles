@@ -32,7 +32,6 @@ if [[ $OSTYPE == "darwin"* ]] || [[ $OSTYPE == "freebsd"* ]]; then
 fi
 
 # GNU-coreutils ls
-alias ls='ls --color=tty'
 alias sudo='sudo -H '
 
 alias r_cp='rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --'
@@ -93,10 +92,11 @@ alias duf='du -sh *'
 alias sane_f='find . -type f -print0 | xargs -0 chmod 644'
 alias sane_d='find . -type d -print0 | xargs -0 chmod 755'
 
-alias la='ls -Ah'
-alias l='ls -F'
-alias ll='ls -lh'
-alias lrt='ls -lrth'
+alias ls='ls -F --color=auto'
+alias la='ls -AhF'
+alias ll='ls -lhF'
+alias l='ls'
+alias lrt='ls -lrthF'
 alias ldot='ls -ld .*'
 alias kl='k.zsh | less'
 alias sl='ls'
