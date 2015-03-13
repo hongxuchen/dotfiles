@@ -130,7 +130,7 @@ and back in -->
   <resize>
     <drawContents>yes</drawContents>
     <popupShow>Nonpixel</popupShow>
-    <!-- 'Always', 'Never', or 'Nonpixel' (xterms and such) -->
+    <!-- 'Always', 'Never', or 'Nonpixel' (urxvts and such) -->
     <popupPosition>Center</popupPosition>
     <!-- 'Center', 'Top', or 'Fixed' -->
     <popupFixedPosition>
@@ -320,7 +320,7 @@ and back in -->
     <!-- Fast access to Terminal -->
     <keybind key="C-A-T">
       <action name="Execute">
-        <command>xterm -e tmux</command>
+        <command>urxvt -e tmux</command>
       </action>
     </keybind>
     <!-- Keybinding for PrintScreen Key -->
@@ -722,7 +722,7 @@ and back in -->
     <application name="chromium-browser">
       <decor>no</decor>
     </application>
-    <application name="xterm">
+    <application name="urxvt">
       <skip_pager>yes</skip_pager>
       <focus>yes</focus>
       <maximized>yes</maximized>

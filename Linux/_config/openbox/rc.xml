@@ -35,7 +35,7 @@
     <primaryMonitor/>
   </placement>
   <theme>
-    <name>Syscrash</name>
+    <name>Onyx-Citrus</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
         available characters are NDSLIMC, each can occur at most once.
@@ -131,7 +131,7 @@ and back in -->
   <resize>
     <drawContents>yes</drawContents>
     <popupShow>Nonpixel</popupShow>
-    <!-- 'Always', 'Never', or 'Nonpixel' (xterms and such) -->
+    <!-- 'Always', 'Never', or 'Nonpixel' (urxvts and such) -->
     <popupPosition>Center</popupPosition>
     <!-- 'Center', 'Top', or 'Fixed' -->
     <popupFixedPosition>
@@ -321,7 +321,7 @@ and back in -->
     <!-- Fast access to Terminal -->
     <!-- <keybind key="C-A-T"> -->
     <!--   <action name="Execute"> -->
-    <!--     <command>xterm -e tmux</command> -->
+    <!--     <command>urxvt -e tmux</command> -->
     <!--   </action> -->
     <!-- </keybind> -->
     <keybind key="C-A-T">
@@ -707,6 +707,7 @@ and back in -->
   </menu>
   <applications>
     <application class="*">
+      <skip_pager>yes</skip_pager>
       <decor>yes</decor>
       <maximized>no</maximized>
       <fullscreen>no</fullscreen>
@@ -730,10 +731,8 @@ and back in -->
     <application name="chromium-browser">
       <decor>no</decor>
     </application>
-    <application name="xterm">
-      <skip_pager>yes</skip_pager>
+    <application name="urxvt">
       <focus>yes</focus>
-      <maximized>yes</maximized>
       <fullscreen>yes</fullscreen>
     </application>
     <application name="urxvt">

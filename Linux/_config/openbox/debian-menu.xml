@@ -293,17 +293,17 @@
       </menu>
     </menu>
     <menu id='/Debian/Applications/Terminal Emulators' label='Terminal Emulators'>
-      <item label='LXTerminal' icon='/usr/share/pixmaps/lxterminal.xpm'>
-        <action name='Execute'><execute>/usr/bin/lxterminal</execute></action>
+      <item label='LXTerminal' icon='/usr/share/pixmaps/lurxvtinal.xpm'>
+        <action name='Execute'><execute>/usr/bin/lurxvtinal</execute></action>
       </item>
-      <item label='XTerm' icon='/usr/share/pixmaps/xterm-color_32x32.xpm'>
-        <action name='Execute'><execute>xterm</execute></action>
+      <item label='XTerm' icon='/usr/share/pixmaps/urxvt-color_32x32.xpm'>
+        <action name='Execute'><execute>urxvt</execute></action>
       </item>
       <item label='X-Terminal as root (GKsu)' icon='/usr/share/pixmaps/gksu-debian.xpm'>
         <action name='Execute'><execute>/usr/bin/gksu -u root /usr/bin/x-terminal-emulator</execute></action>
       </item>
-      <item label='XTerm (Unicode)' icon='/usr/share/pixmaps/xterm-color_32x32.xpm'>
-        <action name='Execute'><execute>uxterm</execute></action>
+      <item label='XTerm (Unicode)' icon='/usr/share/pixmaps/urxvt-color_32x32.xpm'>
+        <action name='Execute'><execute>uurxvt</execute></action>
       </item>
     </menu>
     <menu id='/Debian/Applications/Text' label='Text'>

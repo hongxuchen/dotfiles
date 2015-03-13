@@ -21,33 +21,6 @@ Xft.hintstyle         : hintslight
 #define my_MSYaHei         MicrosoftYaHei:size=13
 
 !-----------------------------------------------------------------------------
-! Monokai color theme
-!-----------------------------------------------------------------------------
-*background: #101010
-*foreground: #d0d0d0
-*cursorColor: #657b83
-*color0: #101010
-*color1: #960050
-*color2: #66aa11
-*color3: #c47f2c
-*color4: #30309b
-*color5: #7e40a5
-*color6: #3579a8
-*color7: #9999aa
-*color8: #303030
-*color9: #ff0090
-*color10: #80ff00
-*color11: #ffba68
-*color12: #5f5fee
-*color13: #bb88dd
-*color14: #4eb4fa
-*color15: #d0d0d0
-
-*colorBD:            #ffffff
-*colorIT:            #a761c2
-*colorUL:            #6d9cbe
-
-!-----------------------------------------------------------------------------
 ! Emacs
 !-----------------------------------------------------------------------------
 Emacs.pane.menubar.background: darkGrey
@@ -131,3 +104,27 @@ URxvt.pointerBlank:  true
 
 URxvt.perl-ext:
 URxvt.perl-ext-common:
+
+! Monokai color theme; DON'T use w/o prefix since that would affect Qt projects
+URxvt*background: #101010
+URxvt*foreground: #d0d0d0
+URxvt*cursorColor: #657b83
+URxvt*color0: #101010
+URxvt*color1: #960050
+URxvt*color2: #66aa11
+URxvt*color3: #c47f2c
+URxvt*color4: #30309b
+URxvt*color5: #7e40a5
+URxvt*color6: #3579a8
+URxvt*color7: #9999aa
+URxvt*color8: #303030
+URxvt*color9: #ff0090
+URxvt*color10: #80ff00
+URxvt*color11: #ffba68
+URxvt*color12: #5f5fee
+URxvt*color13: #bb88dd
+URxvt*color14: #4eb4fa
+URxvt*color15: #d0d0d0
+URxvt*colorBD:            #ffffff
+URxvt*colorIT:            #a761c2
+URxvt*colorUL:            #6d9cbe

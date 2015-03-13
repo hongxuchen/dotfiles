@@ -48,4 +48,6 @@ export TEXMFHOME=~/.texmf
 export GREP_OPTIONS='--color=auto'
 export GREP_COLOR='1;32'
 
+export QT_STYLE_OVERRIDE=oxygen
+
 #~/.screenlayout/dual.sh

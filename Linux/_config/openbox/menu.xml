@@ -9,7 +9,7 @@
 <!--     <command>pcmanfm-qt</command></action> -->
 <!--   </item> -->
 <!--   <item label="Xterm"> -->
-<!--     <action name="Execute"><command>xterm</command></action> -->
+<!--     <action name="Execute"><command>urxvt</command></action> -->
 <!--   </item> -->
 <!--   <item label="Browser"> -->
 <!--     <action name="Execute"><command>x-www-browser</command></action> -->

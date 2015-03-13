@@ -17,6 +17,7 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
     alias lit='${MY_LLVM_ROOT}/src/utils/lit/lit.py'
     alias pbcopy='xsel --clipboard --input'
     alias pbpaste='xsel --clipboard --output'
+    alias my_debian_install='cat /var/log/dpkg.log | grep "\ install\ "|less'
 fi
 
 if [[ $OSTYPE == "darwin"* ]] || [[ $OSTYPE == "freebsd"* ]]; then
