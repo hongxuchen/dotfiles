@@ -22,6 +22,12 @@ mkd() {
   mkdir -p "$@" && cd "$1"
 }
 
+cdp () {
+    cd "$(python -c "import os.path as _, ${1}; \
+            print(_.dirname(_.realpath(${1}.__file__[:-1])))"
+        )"
+}
+
 my_cmake_ninja() {
     cmake -GNinja -DCMAKE_EXPORT_COMPILE_COMMANDS=ON $@ && ninja
 }
