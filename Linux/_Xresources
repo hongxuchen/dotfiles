@@ -86,7 +86,7 @@ URxvt.iso14755:           false
 
 URxvt.termName: rxvt-unicode-256color
 URxvt.allow_bold:  false
-URxvt.font: xft:my_monaco,xft:my_dejavu,xft:my_wqyHei
+URxvt.font: xft:my_monaco,xft:my_wqyHei,xft:my_unifont
 URxvt.boldFont: xft:my_monaco
 URxvt.letterSpace: -1
 
@@ -105,7 +105,7 @@ URxvt.pointerBlank:  true
 URxvt.perl-ext:
 URxvt.perl-ext-common:
 
-! Monokai color theme; DON'T use w/o prefix since that would affect Qt projects
+! Monokai color theme, DONT use w/o prefix since that would affect Qt projects
 URxvt*background: #101010
 URxvt*foreground: #d0d0d0
 URxvt*cursorColor: #657b83

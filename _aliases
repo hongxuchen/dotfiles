@@ -42,10 +42,12 @@ alias trash-empty='rm -rf ~/.local/share/Trash'
 
 alias pscpu10='ps -e -o pcpu,cpu,nice,state,cputime,args|sort -k1 -nr | head -10'
 alias psmem10='ps -e -orss=,args= | sort -b -k1,1n| head -10'
-# alias path='echo -e ${PATH//:/\\n}'
+alias my_paths='echo -e ${PATH//:/\\n}'
+alias deleted_files='sudo lsof |grep "\(deleted\)"'
 
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1])"'
 alias urldecode='python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])"'
+alias yaml2json="python -c 'import sys, yaml, json; json.dump(yaml.load(open(sys.argv[1])), sys.stdout, indent=2)'"
 alias xml_pretty='xmllint --format'
 alias p_httpd='python -m SimpleHTTPServer'
 alias p_sh='ipython --profile=sh'

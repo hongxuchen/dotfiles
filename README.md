@@ -120,10 +120,6 @@ Other RCs
     - `~/config/.htoprc` on Linux
     - `~/.htoprc` on Mac
 
-1. [**vimperator**](http://www.vimperator.org/vimperator)(`~/.vimperatorrc`, `~/.vimperator/`)
-
-    - limited to firefox
-
 1. **curl**(`~/.curlrc`)
 
 
