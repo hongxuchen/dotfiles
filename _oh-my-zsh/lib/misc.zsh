@@ -96,10 +96,9 @@ for s in 1 2 3 4 5 6 7; do
     fi
 done
 
-# _c_c_(){echo "$1 == ${@:1}"; c "-std=c99 $1" ${@:1}}
-# _c_cxx_(){echo "$1 == ${@:1}"; c "-std=c++14 $1" ${@:1}}
 alias -s c=c
 alias -s cc=c
+alias -s js="traceur --experimental"
 
 alias -s deb="sudo gdebi"
 alias -s jar="java -jar"

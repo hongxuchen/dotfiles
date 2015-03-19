@@ -153,3 +153,18 @@ let g:ycm_collect_identifiers_from_tags_files = 0 " Let YCM read tags from Ctags
 let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'qf' : 1,
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'unite' : 1,
+      \ 'text' : 1,
+      \ 'vimwiki' : 1,
+      \ 'gitcommit' : 1,
+      \}
+
+" javascript tern
+Bundle 'marijnh/tern_for_vim'
+" let tern#is_show_argument_hints_enabled = 1
+" autocmd FileType javascript setlocal omnifunc=tern#Complete

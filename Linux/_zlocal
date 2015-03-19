@@ -23,6 +23,9 @@ MY_KLEE_INCLUDE=${MY_ROOT}/klee/src/include
 MY_PIN_ROOT=~/repos/pintool/pin
 export MY_CLANG_TOOLS
 
+export JAVA_HOME=/opt/jdk8
+export CLASSPATH=/usr/share/java/guava.jar:${CLASSPATH}
+
 export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 
 export MY_BREW_PREFIX=~/.linuxbrew
@@ -38,6 +41,7 @@ export PATH=~/tools/FSharp-2.0.0.0/bin:$PATH
 export PATH=~/tools/arcanist/bin:$PATH
 export PATH=${MY_HOME_BIN}:${MY_HOME_BIN}/git-scripts:${MY_HOME_BIN}/Linux:~/.local/bin:$PATH
 export PATH=${GOPATH}/bin:$PATH
+export PATH=${JAVA_HOME}/bin:$PATH
 
 export CPLUS_INCLUDE_PATH=
 export CPLUS_INCLUDE_PATH=${MY_BREW_PREFIX}/include:${CPLUS_INCLUDE_PATH}
@@ -61,6 +65,8 @@ export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 export PYTHONPATH=
 export PYTHONPATH=/usr/lib/python2.7/site-packages:${MY_LLVM_ROOT}/src/tools/clang/bindings/python:$PYTHONPATH
 export PYTHONPATH=${HOME}/.linuxbrew/share/google-app-engine:$PYTHONPATH
+
+export NODE_PATH=${MY_BREW_PREFIX}/lib/node_modules/
 
 stty ixany
 stty ixoff -ixon

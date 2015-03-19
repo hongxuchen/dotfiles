@@ -10,6 +10,8 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
     alias boogie='mono ~/repos/boogie/boogie/Binaries/Boogie.exe'
     alias idaq='~/idademo65/idaq&'
     alias pycharm='~/tools/pycharm/bin/pycharm.sh &>/dev/null &'
+    alias intellij='~/tools/intellij/bin/idea.sh &>/dev/null &'
+    alias eclipse='~/tools/eclipse/eclipse &>/dev/null &'
     alias goagent="~/tools/goagent/local/goagent-gtk.py &>/dev/null &disown"
     alias open="xdg-open"
     ### personal use
@@ -102,6 +104,9 @@ alias lrt='ls -lrthF'
 alias ldot='ls -ld .*'
 alias kl='k.zsh | less'
 alias sl='ls'
+
+alias my_node_install='npm install -g'
+alias node='env node --harmony --use-strict'
 
 alias deb_latest_installed='cat /var/log/dpkg.log | grep "\ install\ "'
 
