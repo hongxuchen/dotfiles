@@ -1,4 +1,5 @@
-> This repository contains my dotfiles settings for Linux(Debian Jessie) and Mac OSX(10.10), also a bit FreeBSD(10.0).
+> This repository contains my dotfiles settings for Linux(Debian Jessie) and Mac OSX(10.10), also a bit FreeBSD(10.0);
+See [Windots](https://github.com/HongxuChen/Windots) for some Windows settings.
 
 Installation
 ============
@@ -186,4 +187,4 @@ Known Issues
 Bonus
 =====
 
-You may find that [several awesomeness](https://github.com/sindresorhus/awesome) on github helpful.
+- You may find that [several awesomeness](https://github.com/sindresorhus/awesome) on github helpful.
