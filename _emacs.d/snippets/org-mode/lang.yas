@@ -1,4 +1,0 @@
-#name : LANGUAGE
-#key : LANG
-# --
-#+LANGUAGE: ${1:en}

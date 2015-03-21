@@ -1,6 +1,0 @@
-#name : HTML
-#key : HTM
-# --
-#+BEGIN_HTML
-${0}
-#+END_HTML

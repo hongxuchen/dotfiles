@@ -1,10 +1,6 @@
 *
 !*/
 !autostart/*
-!bleachbit/*
-!cppman/*
-!fcitx/*
-!inkscape/*
 !libfm/*
 !lxpanel/*
 !lxqt/*
@@ -12,9 +8,6 @@
 !lxsession/*/*
 !openbox/*
 !pcmanfm/*
-!ranger/*
-!xarchiver/*
-!zathura/*
 !htop/htoprc
 
 !user-dirs.dirs

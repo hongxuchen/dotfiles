@@ -1,7 +1,0 @@
-# name: emacs-lisp
-# key: EL
-# condition: (= (current-column) 2)
-# --
-#+BEGIN_SRC emacs-lisp
-$0
-#+END_SRC

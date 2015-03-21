@@ -8,6 +8,7 @@ import sys
 import platform
 from colorama import init, Fore
 
+# do not use pip module to deal with the list since it is limited to python2/python3
 list_cmd = [
     ['pip2', 'freeze', '='],
     ['pip3', 'freeze', '='],

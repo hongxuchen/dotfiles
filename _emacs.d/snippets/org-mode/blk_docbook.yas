@@ -1,6 +1,0 @@
-#name : DOCBOOK
-#key : DOCB
-# --
-#+BEGIN_DOCBOOK
-${0}
-#+END_DOCBOOK

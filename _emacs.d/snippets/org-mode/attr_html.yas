@@ -1,5 +1,0 @@
-# name : attr_html
-# key: ATH
-# condition: (= (current-column) 3)
-# --
-#+ATTR_HTML: $1

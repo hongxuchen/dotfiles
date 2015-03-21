@@ -1,5 +1,0 @@
-# name: attr_latex
-# key: ATL
-# condition: (= (current-column) 3)
-# --
-#+attr_latex: $1

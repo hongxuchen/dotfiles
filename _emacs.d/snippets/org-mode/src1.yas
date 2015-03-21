@@ -1,8 +1,0 @@
-#name : #+srcname:..#+begin_src...#+end_src
-#key : SRC1
-# expand-env: ((yas/indent-line 'fixed) (yas/wrap-around-region 'nil))
-# --
-#+SOURCE: ${1:NAME}
-#+BEGIN_SRC ${2:LANGUAGE}
-  $3
-#+END_SRC

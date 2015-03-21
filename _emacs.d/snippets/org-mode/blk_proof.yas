@@ -1,7 +1,0 @@
-# name: proof
-# key: PRF
-# condition: (or (= (current-column) 3) (= (current-column) 0))
-# --
-#+BEGIN_PROOF
-$0
-#+END_PROOF
