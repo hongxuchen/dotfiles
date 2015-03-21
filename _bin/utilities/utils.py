@@ -1,5 +1,6 @@
 import os
 import sys
+import stat
 
 
 def getpass(prompt="Password: "):
@@ -89,3 +90,12 @@ def loadso(fname):
         if os.path.exists(p):
             return CDLL(p)
     raise ImportError('%s not found' % fname)
+
+
+# which -a
+def which(name):
+    for path in os.getenv("PATH").split(os.path.pathsep):
+        full_path = path + os.sep + name
+        if os.path.exists(full_path):
+            if os.stat(full_path).st_mode & stat.S_IXUSR:
+                print(full_path)
