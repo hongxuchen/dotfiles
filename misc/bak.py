@@ -7,7 +7,6 @@ import os
 import sys
 import platform
 from colorama import init, Fore
-import apt_pkg
 
 list_cmd = [
     ['pip2', 'freeze', '='],
@@ -36,6 +35,7 @@ for l in list_cmd:
 if plt == 'Linux':
     dist = platform.dist()[0]
     if dist in ['debian', 'ubuntu']:
+        import apt_pkg
         apt_pkg.init()
         cache = apt_pkg.Cache()
         outfile = 'deb_' + dist
