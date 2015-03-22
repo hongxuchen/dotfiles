@@ -1,14 +1,15 @@
 # -*- mode:sh -*-
 # vim:ft=sh
 
-# PATH
+##############################################################################
+# self-defined variables
+##############################################################################
 
 MY_ROOT=~/RESEARCH
 MY_WLLVM_ROOT=${MY_ROOT}/wllvm
 MY_HOME_BIN=~/.bin
-export GOPATH=~/gocode
 
-MY_LLVM_VERSION="git"
+MY_LLVM_VERSION="3.4"
 MY_LLVM_ROOT=${MY_ROOT}/llvm-${MY_LLVM_VERSION}
 if [[ ${MY_LLVM_VERSION} == "git" ]];then
   MY_LLVM_OBJ=${MY_LLVM_ROOT}/obj
@@ -20,28 +21,21 @@ MY_STP_INSTALL=${MY_ROOT}/stp/install
 MY_KLEE_INSTALL=${MY_ROOT}/klee/install
 # MY_KLEE_OBJ=${MY_ROOT}/klee/obj
 MY_KLEE_INCLUDE=${MY_ROOT}/klee/src/include
-MY_PIN_ROOT=~/repos/pintool/pin
+MY_PIN_ROOT=${MY_ROOT}/pintool/pin
+MY_KINT_ROOT=${MY_ROOT}/kint
+MY_KINT_BIN=${MY_KINT_ROOT}/bin
+
+# variables that need to be exported
 export MY_CLANG_TOOLS
-
-export JAVA_HOME=/opt/jdk8
-export CLASSPATH=/usr/share/java/guava.jar:${CLASSPATH}
-
-export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
-
 export MY_BREW_PREFIX=~/.linuxbrew
-export PATH=${MY_BREW_PREFIX}/bin:$PATH
 
-export PATH=/usr/local/texlive/2014/Bin/x86_64-linux:$PATH
-export PATH=${MY_LLVM_OBJ}/bin:${MY_CLANG_TOOLS}/scan-build:${MY_CLANG_TOOLS}/scan-view:${MY_STP_INSTALL}/bin:$PATH
-export PATH=${MY_WLLVM_ROOT}:$PATH
-export PATH=${MY_KLEE_INSTALL}/bin:$PATH
-export PATH=${MY_PIN_ROOT}:$PATH
-export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
-export PATH=~/tools/FSharp-2.0.0.0/bin:$PATH
-export PATH=~/tools/arcanist/bin:$PATH
-export PATH=${MY_HOME_BIN}:${MY_HOME_BIN}/git-scripts:${MY_HOME_BIN}/Linux:~/.local/bin:$PATH
-export PATH=${GOPATH}/bin:$PATH
-export PATH=${JAVA_HOME}/bin:$PATH
+##############################################################################
+# core environment variables
+##############################################################################
+
+## C/C++
+export CC=clang
+export CXX=clang++
 
 export CPLUS_INCLUDE_PATH=
 export CPLUS_INCLUDE_PATH=${MY_BREW_PREFIX}/include:${CPLUS_INCLUDE_PATH}
@@ -52,28 +46,54 @@ export CPLUS_INCLUDE_PATH=${MY_KLEE_INCLUDE}:${MY_KLEE_INCLUDE}/../../obj/includ
 export C_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}
 # export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/tools/clang/include:${MY_LLVM_ROOT}/obj/tools/clang/include:${CPLUS_INCLUDE_PATH}
 
-# export CMAKE_PREFIX_PATH=/usr/share/cmake/qt5xdg
-
 export LD_LIBRARY_PATH=
 export LD_LIBRARY_PATH=/usr/local/lib:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=${MY_LLVM_OBJ}/lib:${MY_STP_INSTALL}/lib:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=${MY_BREW_PREFIX}/lib:${LD_LIBRARY_PATH}
 
+# export CMAKE_PREFIX_PATH=/usr/share/cmake/qt5xdg
+
 export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 
+## Java
+export JAVA_HOME=/opt/jdk8
+export CLASSPATH=/usr/share/java/guava.jar:${CLASSPATH}
+
+## Python
 export PYTHONPATH=
 export PYTHONPATH=${MY_LLVM_ROOT}/src/tools/clang/bindings/python:$PYTHONPATH
-export PYTHONPATH=${HOME}/.linuxbrew/share/google-app-engine:$PYTHONPATH
+export PYTHONPATH=${MY_BREW_PREFIX}/share/google-app-engine:$PYTHONPATH
 
+## nodejs
 export NODE_PATH=${MY_BREW_PREFIX}/lib/node_modules/
 
-stty ixany
-stty ixoff -ixon
+# golang
+export GOPATH=~/gocode
 
+export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+export PATH=${MY_BREW_PREFIX}/bin:$PATH
+export PATH=/usr/local/texlive/2014/Bin/x86_64-linux:$PATH
+export PATH=${MY_LLVM_OBJ}/bin:${MY_CLANG_TOOLS}/scan-build:${MY_CLANG_TOOLS}/scan-view:${MY_STP_INSTALL}/bin:$PATH
+export PATH=${MY_WLLVM_ROOT}:$PATH
+export PATH=${MY_KLEE_INSTALL}/bin:$PATH
+export PATH=${MY_HOME_BIN}:${MY_HOME_BIN}/git-scripts:${MY_HOME_BIN}/Linux:~/.local/bin:$PATH
+export PATH=${GOPATH}/bin:$PATH
+export PATH=${JAVA_HOME}/bin:$PATH
+export PATH=${MY_KINT_BIN}:$PATH
+# export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
+# export PATH=${MY_PIN_ROOT}:$PATH
+# export PATH=~/tools/FSharp-2.0.0.0/bin:$PATH
+
+##############################################################################
 # for wllvm
+##############################################################################
 export LLVM_COMPILER=clang
 export WLLVM_OUTPUT=WARNING
 
-export CC=clang
-export CXX=clang++
+
+##############################################################################
+# MISC
+##############################################################################
+stty ixany
+stty ixoff -ixon
