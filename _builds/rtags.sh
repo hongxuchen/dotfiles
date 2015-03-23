@@ -28,11 +28,12 @@ export CPLUS_INCLUDE_PATH=
 export LD_LIBRARY_PATH=
 export PATH=/usr/bin:$PATH
 # cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -GNinja "$SRC"
-# ninja
-# sudo ninja install
-cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 "$SRC"
-make
-sudo make install
+cmake -DCMAKE_BUILD_TYPE=Debug -GNinja "$SRC"
+ninja
+sudo ninja install
+# cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 "$SRC"
+# make -j$(nproc)
+# sudo make install
 
 ln -sf "$SRC"/bin/gcc-rtags-wrapper.sh ~/.bin/g++
 ln -sf "$SRC"/bin/gcc-rtags-wrapper.sh ~/.bin/gcc

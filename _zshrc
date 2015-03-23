@@ -70,4 +70,4 @@ fi
 unset ZSH
 
 # load executable
-(pgrep -x rdm >/dev/null || rdm &>/tmp/rdm_answer &)
+# (pgrep -x rdm >/dev/null || rdm &>/tmp/rdm_answer &)
