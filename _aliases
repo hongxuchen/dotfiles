@@ -55,7 +55,7 @@ alias yaml2json="python -c 'import sys, yaml, json; json.dump(yaml.load(open(sys
 alias xml_pretty='xmllint --format'
 alias p_httpd='python -m SimpleHTTPServer'
 alias p_sh='ipython --profile=sh'
-alias p_nb='cd ~/src/ipynb && ipython notebook --matplotlib=inline --profile=nb'
+alias p_nb='cd ~/src/ipynb && ipython notebook --matplotlib=inline --profile=nb --no-browser'
 alias pprof='google-pprof'
 alias grt='cd $(git rev-parse --show-toplevel)'
 alias indent='command indent -kr -ci2 -cli2 -i2 -l80 -nut' #Google style
