@@ -88,6 +88,7 @@ autocmd FileType xdefaults setl cms=!%s
 autocmd FileType gdb setl cms=#%s
 autocmd FileType c setl cms=//%s
 autocmd FileType cpp setl cms=//%s
+autocmd FileType tablegen setl cms=//%s
 autocmd FileType unix setl cms=#%s
 
 " tagbar
