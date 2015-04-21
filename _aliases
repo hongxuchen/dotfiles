@@ -57,7 +57,7 @@ alias p_httpd='python -m SimpleHTTPServer'
 alias p_sh='ipython --profile=sh'
 alias p_nb='cd ~/src/ipynb && ipython notebook --matplotlib=inline --profile=nb --no-browser'
 alias pprof='google-pprof'
-alias grt='cd $(git rev-parse --show-toplevel)'
+alias grt='cd "$(git rev-parse --show-toplevel)"'
 alias indent='command indent -kr -ci2 -cli2 -i2 -l80 -nut' #Google style
 alias more='less'
 # alias less='colorless'
@@ -85,6 +85,8 @@ alias v_cc1_os='clang /dev/null -xc -Os - -o /dev/null -\#\#\# 2>&1 | tr " " "\n
 alias v_cc1_oz='clang /dev/null -xc -Oz - -o /dev/null -\#\#\# 2>&1 | tr " " "\n"'
 alias v_cc1_ofast='clang /dev/null -xc -Ofast - -o /dev/null -\#\#\# 2>&1 | tr " " "\n"'
 alias v_clang_llvm='clang -xc /dev/null -c -mllvm -print-all-options'
+
+alias fuck='$(thefuck $(fc -ln -1))'
 
 alias buuc='(echo "brew update" && brew update && echo "brew upgrade" && brew upgrade && echo "brew cleanup" brew cleanup)'
 

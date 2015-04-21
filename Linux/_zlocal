@@ -5,11 +5,25 @@
 # self-defined variables
 ##############################################################################
 
+# deal with different llvm versions
+function _my_llvm_version() {
+    available=("3.3" "3.4" "3.5" "git")
+    USAGE="my_llvm_version 3.3|3.4|3.5|git"
+    if [ $# -ne 1 ] || ! (( ${available[(I)${1}]} )); then
+      echo "usage: $USAGE"
+    fi
+    MY_LLVM_VERSION="$1"
+}
+alias my_ll33='_my_llvm_version 3.3;source ~/.zlocal'
+alias my_ll34='_my_llvm_version 3.4;source ~/.zlocal'
+alias my_ll35='_my_llvm_version 3.5;source ~/.zlocal'
+alias my_llgit='_my_llvm_version git;source ~/.zlocal'
+: ${MY_LLVM_VERSION:=git}
+
 MY_ROOT=~/RESEARCH
 MY_WLLVM_ROOT=${MY_ROOT}/wllvm
 MY_HOME_BIN=~/.bin
 
-MY_LLVM_VERSION="git"
 MY_LLVM_ROOT=${MY_ROOT}/llvm-${MY_LLVM_VERSION}
 if [[ ${MY_LLVM_VERSION} == "git" ]];then
   MY_LLVM_OBJ=${MY_LLVM_ROOT}/obj
