@@ -24,6 +24,8 @@ MY_ROOT=~/RESEARCH
 MY_WLLVM_ROOT=${MY_ROOT}/wllvm
 MY_HOME_BIN=~/.bin
 
+LATTE_ROOT=${MY_ROOT}/LattE
+
 MY_LLVM_ROOT=${MY_ROOT}/llvm-${MY_LLVM_VERSION}
 if [[ ${MY_LLVM_VERSION} == "git" ]];then
   MY_LLVM_OBJ=${MY_LLVM_ROOT}/obj
@@ -39,9 +41,14 @@ MY_PIN_ROOT=${MY_ROOT}/pintool/pin
 MY_KINT_ROOT=${MY_ROOT}/kint
 MY_KINT_BIN=${MY_KINT_ROOT}/bin
 
+JPF_ROOT=${MY_ROOT}/jpf
+JPF_SYMBC=${JPF_ROOT}/jpf-symbc
+JPF_SYMBC_BUILD=${JPF_SYMBC}/build
+
 # variables that need to be exported
 export MY_CLANG_TOOLS
 export MY_BREW_PREFIX=~/.linuxbrew
+export MY_JAVA=/usr/lib/jvm/java-7-openjdk-amd64
 
 ##############################################################################
 # core environment variables
@@ -57,6 +64,8 @@ export CPLUS_INCLUDE_PATH=~/qemu/panda/distorm/include:${CPLUS_INCLUDE_PATH}
 export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/include:${CPLUS_INCLUDE_PATH}
 export CPLUS_INCLUDE_PATH=/usr/lib/odb/x86_64-linux-gnu/include:${CPLUS_INCLUDE_PATH}
 export CPLUS_INCLUDE_PATH=${MY_KLEE_INCLUDE}:${MY_KLEE_INCLUDE}/../../obj/include:${CPLUS_INCLUDE_PATH}
+export CPLUS_INCLUDE_PATH=${LATTE_ROOT}/include:${CPLUS_INCLUDE_PATH}
+export CPLUS_INCLUDE_PATH=${MY_JAVA}/include:${CPLUS_INCLUDE_PATH}
 export C_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}
 export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/tools/clang/include:${MY_LLVM_ROOT}/obj/tools/clang/include:${CPLUS_INCLUDE_PATH}
 
@@ -65,13 +74,18 @@ export LD_LIBRARY_PATH=/usr/local/lib:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=${MY_LLVM_OBJ}/lib:${MY_STP_INSTALL}/lib:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=${MY_BREW_PREFIX}/lib:${LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=${LATTE_ROOT}/lib:${LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=${JPF_SYMBC}/lib:${LD_LIBRARY_PATH}
 
 # export CMAKE_PREFIX_PATH=/usr/share/cmake/qt5xdg
 
 export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 
 ## Java
-export JAVA_HOME=/opt/jdk8
+# export JAVA_HOME=
+# export JAVA_HOME=/opt/jdk8
+export CLASSPATH=
+export CLASSPATH=${JPF_SYMBC_BUILD}/jpf-symbc.jar:${JPF_SYMBC_BUILD}/jpf-symbc-classes.jar:${JPF_SYMBC_BUILD}/jpf-symbc-annotations.jar:${CLASSPATH}
 export CLASSPATH=/usr/share/java/guava.jar:${CLASSPATH}
 
 ## Python
@@ -93,8 +107,9 @@ export PATH=${MY_WLLVM_ROOT}:$PATH
 export PATH=${MY_KLEE_INSTALL}/bin:$PATH
 export PATH=${MY_HOME_BIN}:${MY_HOME_BIN}/git-scripts:${MY_HOME_BIN}/Linux:~/.local/bin:$PATH
 export PATH=${GOPATH}/bin:$PATH
-export PATH=${JAVA_HOME}/bin:$PATH
+# export PATH=${JAVA_HOME}/bin:$PATH
 export PATH=${MY_KINT_BIN}:$PATH
+# ${LATTE_ROOT}/bin:
 # export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
 # export PATH=${MY_PIN_ROOT}:$PATH
 # export PATH=~/tools/FSharp-2.0.0.0/bin:$PATH

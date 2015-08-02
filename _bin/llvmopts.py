@@ -26,7 +26,7 @@ if unknown_option_pattern in arg_str:
     sys.exit(1)
 
 output_list = arg_str.split('\n')
-print("passed flags: " + " ".join(opt_flags))
+print('command: {}'.format(' '.join(opt_args)))
 for output in output_list:
     if output.startswith(passed_arg_prefix):
         print("=" * 20)

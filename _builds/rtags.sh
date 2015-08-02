@@ -27,8 +27,8 @@ export C_INCLUDE_PATH=
 export CPLUS_INCLUDE_PATH=
 export LD_LIBRARY_PATH=
 export PATH=/usr/bin:$PATH
-export CC=gcc
-export CXX=g++
+export CC=clang
+export CXX=clang++
 # cmake -GNinja "$SRC"
 cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Debug -GNinja "$SRC"
 ninja
