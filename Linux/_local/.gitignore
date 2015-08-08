@@ -1,2 +1,12 @@
 bin
 lib
+
+share/evolution/
+share/gsettings-data-convert
+share/icc/
+share/keyrings/
+share/rhythmbox/
+share/session_migration-ubuntu
+share/unity-settings-daemon/
+share/unity-webapps/
+share/zeitgeist/

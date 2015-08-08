@@ -1,12 +1,13 @@
 [Desktop Entry]
+Comment=Convenient command and access tool for applications and documents
+Name=Kupfer
+Exec=kupfer  --no-splash
+StartupNotify=true
+GenericName=Application Launcher
+Version=1.0
+Categories=Utility;
 X-UserData=$CONFIG/kupfer;$DATA/kupfer;$CACHE/kupfer
 Type=Application
 X-GNOME-Autostart-enabled=true
-Name=Kupfer
-Exec=kupfer  --no-splash
 Icon=kupfer
-GenericName=Application Launcher
-StartupNotify=true
-Comment=Convenient command and access tool for applications and documents
-Version=1.0
-Categories=Utility;
+

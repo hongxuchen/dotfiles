@@ -55,8 +55,8 @@ export MY_JAVA=/usr/lib/jvm/java-7-openjdk-amd64
 ##############################################################################
 
 ## C/C++
-export CC=clang
-export CXX=clang++
+export CC=gcc
+export CXX=g++
 
 export CPLUS_INCLUDE_PATH=
 export CPLUS_INCLUDE_PATH=${MY_BREW_PREFIX}/include:${CPLUS_INCLUDE_PATH}
@@ -81,12 +81,20 @@ export LD_LIBRARY_PATH=${JPF_SYMBC}/lib:${LD_LIBRARY_PATH}
 
 export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 
+export ANDROID_HOME="${HOME}/tools/android"
+ADK_VERSION=19
+ANDROID_CP=${ANDROID_HOME}/platforms/android-${ADK_VERSION}
+export ANDROID_SDK_HOME=${ANDROID_HOME}
+export DROIDSAFE_SRC_HOME="${HOME}/RESEARCH/android/droidsafe-src"
+
 ## Java
-# export JAVA_HOME=
+# export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 # export JAVA_HOME=/opt/jdk8
 export CLASSPATH=
 export CLASSPATH=${JPF_SYMBC_BUILD}/jpf-symbc.jar:${JPF_SYMBC_BUILD}/jpf-symbc-classes.jar:${JPF_SYMBC_BUILD}/jpf-symbc-annotations.jar:${CLASSPATH}
 export CLASSPATH=/usr/share/java/guava.jar:${CLASSPATH}
+# export CLASSPATH=${ANDROID_CP}:$CLASSPATH
+export CLASSPATH=${ANDROID_HOME}/extras/android/support/v7/appcompat/libs/android-support-v7-appcompat.jar:${ANDROID_HOME}/extras/android/support/v7/appcompat/libs/android-support-v4.jar:${ANDROID_HOME}/platforms/android-21/android.jar:${CLASSPATH}
 
 ## Python
 export PYTHONPATH=
@@ -107,8 +115,8 @@ export PATH=${MY_WLLVM_ROOT}:$PATH
 export PATH=${MY_KLEE_INSTALL}/bin:$PATH
 export PATH=${MY_HOME_BIN}:${MY_HOME_BIN}/git-scripts:${MY_HOME_BIN}/Linux:~/.local/bin:$PATH
 export PATH=${GOPATH}/bin:$PATH
-# export PATH=${JAVA_HOME}/bin:$PATH
 export PATH=${MY_KINT_BIN}:$PATH
+export PATH=${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:$PATH
 # ${LATTE_ROOT}/bin:
 # export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
 # export PATH=${MY_PIN_ROOT}:$PATH
