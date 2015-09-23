@@ -63,8 +63,8 @@
 
   (turn-on-auto-fill)
 
-  (doxymacs-mode 1)
-  (doxymacs-font-lock)
+  ;; (doxymacs-mode 1)
+  ;; (doxymacs-font-lock)
 
   (subword-mode 1)
   )
@@ -80,7 +80,7 @@
 (eval-after-load 'cc-mode
   '(progn
      (require 'clang-format)
-     (require 'doxymacs)
+     ;; (require 'doxymacs)
      (require 'google-c-style)
      (require 'company-rtags)
      (my-rtags-setup)

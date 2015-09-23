@@ -66,9 +66,9 @@
 (require-package 'magit)
 (require-package 'magit-svn)
 (require-package 'github-browse-file)
-(require-package 'git-commit-mode)
-(require-package 'gitignore-mode)
-(require-package 'gitconfig-mode)
+;; (require-package 'git-commit-mode)
+;; (require-package 'gitignore-mode)
+;; (require-package 'gitconfig-mode)
 
 (require-package 'dash-at-point)
 

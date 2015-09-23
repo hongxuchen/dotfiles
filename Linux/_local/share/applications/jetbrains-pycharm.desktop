@@ -2,9 +2,9 @@
 Version=1.0
 Type=Application
 Name=PyCharm
-Icon=/home/user1/tools/pycharm-4.5/bin/pycharm.png
-Exec="/home/user1/tools/pycharm-4.5/bin/pycharm.sh" %f
+Icon=/home/user1/tools/pycharm/bin/pycharm.png
+Exec="/home/user1/tools/pycharm/bin/pycharm.sh" %f
 Comment=Develop with pleasure!
 Categories=Development;IDE;
 Terminal=false
-StartupWMClass=jetbrains-pycharm
+StartupWMClass=jetbrains-idea

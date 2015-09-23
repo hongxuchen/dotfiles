@@ -61,7 +61,8 @@ set laststatus=2              " Always show statusline, even if only 1 window.
 " runtime ftplugin/man.vim
 runtime macros/matchit.vim
 " additional plugins
-Bundle 'indentpython.vim--nianyang'
+Bundle 'tell-k/vim-autopep8'
+" Bundle 'indentpython.vim--nianyang'
 Bundle 'tpope/vim-git'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
@@ -128,6 +129,10 @@ nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 " let g:ctrlp_cmd = 'CtrlP'
 " let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 " let g:ctrlp_working_path_mode = 'ra'
+" 
+"
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
 Bundle 'scrooloose/syntastic'
 " let g:syntastic_auto_loc_list = 1
@@ -140,6 +145,7 @@ let g:syntastic_mode_map = {
     \ "mode": "active",
     \ "active_filetypes": ["ruby", "python"],
     \ "passive_filetypes": ["c",'cpp', 'java', 'cs'] }
+let g:syntastic_ocaml_checkers = ['merlin']
 
 " YouCompleteMe
 Bundle 'Valloric/YouCompleteMe'
@@ -169,3 +175,12 @@ let g:ycm_filetype_blacklist = {
 Bundle 'marijnh/tern_for_vim'
 " let tern#is_show_argument_hints_enabled = 1
 " autocmd FileType javascript setlocal omnifunc=tern#Complete
+"
+
+func MyFormartSrc()
+  exec "w"
+  if &filetype == 'py'||&filetype == 'python'
+  exec "r !autopep8 -i --aggressive %"
+  endif
+  exec "e! %"
+endfunc

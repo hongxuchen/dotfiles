@@ -48,7 +48,8 @@
 (progn
     (menu-bar-mode -1)
     (tool-bar-mode -1)
-    (scroll-bar-mode -1))
+    ;; (scroll-bar-mode -1)
+    )
 
 ;; WoMan settings
 (setq woman-fill-column 90

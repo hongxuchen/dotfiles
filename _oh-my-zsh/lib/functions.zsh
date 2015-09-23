@@ -10,13 +10,13 @@ svn_prompt_info() {
     fi
 }
 
-em() {
-    if [[ $OSTYPE == "linux-gnu" ]] && [ $DISPLAY ]; then
-        command emacs -fs $@ &>/dev/null & disown
-    else
-        command emacs -nw
-    fi
-}
+# em() {
+#     if [[ $OSTYPE == "linux-gnu" ]] && [ $DISPLAY ]; then
+#         command emacs -fs $@ &>/dev/null & disown
+#     else
+#         command emacs -nw
+#     fi
+# }
 
 mkd() {
   mkdir -p "$@" && cd "$1"
