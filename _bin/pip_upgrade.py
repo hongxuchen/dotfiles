@@ -1,10 +1,12 @@
 #!/usr/bin/env python
+from __future__ import print_function
 
 import pip
 from subprocess import call
 from colorama import init, Fore
 
 import sys
+
 if sys.version_info.major == 2:
     PIP = 'pip'
 else:
@@ -25,7 +27,7 @@ for dist in pip.get_installed_distributions():
         print(Fore.YELLOW, 'installing ', Fore.CYAN, dist_name, Fore.RESET)
         rc = call(cmd.split())
     except Exception as e:
-        print(e, file=stderr)
+        print(e, file=sys.stderr)
         sys.exit(1)
     if rc != 0:
         failed_list.append(dist_name)

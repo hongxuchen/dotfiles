@@ -19,7 +19,7 @@ alias my_ll34='_my_llvm_version 3.4;source ~/.zlocal'
 alias my_ll35='_my_llvm_version 3.5;source ~/.zlocal'
 alias my_ll36='_my_llvm_version 3.6;source ~/.zlocal'
 alias my_llgit='_my_llvm_version git;source ~/.zlocal'
-: ${MY_LLVM_VERSION:=3.5}
+: ${MY_LLVM_VERSION:=3.6}
 
 MY_ROOT=~/RESEARCH
 MY_WLLVM_ROOT=${MY_ROOT}/wllvm

@@ -1,4 +1,4 @@
-#compdef pip pip3
+#compdef pip pip2 pip3
 #autoload
 
 _pip_all() {
