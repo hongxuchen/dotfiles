@@ -40,7 +40,7 @@
 ;; major modes for editing
 (require 'init-lisp)
 (require 'init-markup)
-(require 'init-tex)
+;; (require 'init-tex)
 (require 'init-cc-mode)
 (require 'init-python)
 (require 'init-ruby)

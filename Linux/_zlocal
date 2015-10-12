@@ -123,6 +123,7 @@ export PATH=${GOPATH}/bin:$PATH
 export PATH=${MY_KINT_BIN}:$PATH
 export PATH=${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:$PATH
 export PATH=~/RESEARCH/dex2jar-2.0:$PATH
+export PATH=~/src/stellar/stellar-core/build/src:$PATH
 # export PATH=${PLAY_HOME}:$PATH
 # ${LATTE_ROOT}/bin:
 # export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH

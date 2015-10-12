@@ -30,7 +30,7 @@ import uuid
 import symtable
 import string
 import difflib
-import compiler
+# import compiler
 import pycparser
 import ply.lex
 

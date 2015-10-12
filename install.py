@@ -130,7 +130,7 @@ for src in src_files:
             print("{m} {0:<50} {1:<50}".format(dst, rel_src, m=mark))
         else:
             if dst_exist:
-                print("{0:<50} {1:<50}".format(dst, bak_dst))
+                print("{0:<50} {1:<50}".format(dst, bak_dst), file=sys.stderr)
                 os.rename(dst, bak_dst)
             os.symlink(rel_src, dst)
     else:
