@@ -65,8 +65,8 @@ export CPLUS_INCLUDE_PATH=~/qemu/panda/distorm/include:${CPLUS_INCLUDE_PATH}
 export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/include:${CPLUS_INCLUDE_PATH}
 export CPLUS_INCLUDE_PATH=/usr/lib/odb/x86_64-linux-gnu/include:${CPLUS_INCLUDE_PATH}
 export CPLUS_INCLUDE_PATH=${MY_KLEE_INCLUDE}:${MY_KLEE_INCLUDE}/../../obj/include:${CPLUS_INCLUDE_PATH}
-export CPLUS_INCLUDE_PATH=${LATTE_ROOT}/include:${CPLUS_INCLUDE_PATH}
-export CPLUS_INCLUDE_PATH=${MY_JAVA}/include:${CPLUS_INCLUDE_PATH}
+# export CPLUS_INCLUDE_PATH=${LATTE_ROOT}/include:${CPLUS_INCLUDE_PATH}
+# export CPLUS_INCLUDE_PATH=${MY_JAVA}/include:${CPLUS_INCLUDE_PATH}
 export C_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}
 export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/tools/clang/include:${MY_LLVM_ROOT}/obj/tools/clang/include:${CPLUS_INCLUDE_PATH}
 
@@ -89,8 +89,6 @@ export ANDROID_SDK_HOME=${ANDROID_HOME}
 export DROIDSAFE_SRC_HOME="${HOME}/RESEARCH/android/droidsafe-src"
 
 ## Java
-# export JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
-# export JAVA_HOME=/usr/lib/jvm/java-6-oracle
 export CLASSPATH=
 export CLASSPATH=${JPF_SYMBC_BUILD}/jpf-symbc.jar:${JPF_SYMBC_BUILD}/jpf-symbc-classes.jar:${JPF_SYMBC_BUILD}/jpf-symbc-annotations.jar:${CLASSPATH}
 # export CLASSPATH=/usr/share/java/guava.jar:${CLASSPATH}
@@ -124,6 +122,7 @@ export PATH=${MY_KINT_BIN}:$PATH
 export PATH=${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:$PATH
 export PATH=~/RESEARCH/dex2jar-2.0:$PATH
 export PATH=~/src/stellar/stellar-core/build/src:$PATH
+# export PATH=${MY_ROOT}/android/src:$PATH
 # export PATH=${PLAY_HOME}:$PATH
 # ${LATTE_ROOT}/bin:
 # export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH

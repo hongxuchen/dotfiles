@@ -20,6 +20,7 @@ ext_app_dict = {
     '.applescript': 'osascript'
 }
 
+
 def change_shebang(fpath, target, chmod):
     if not os.path.exists(fpath):
         print('{} not exists'.format(fpath), file=sys.stderr)
@@ -29,7 +30,9 @@ def change_shebang(fpath, target, chmod):
         try:
             target = ext_app_dict[fext]
         except KeyError as e:
-            print('No target interpreter for {} files'.format(e), file=sys.stderr)
+            print(
+                'No target interpreter for {} files'.format(e),
+                file=sys.stderr)
             sys.exit(1)
     tmp_fh, tmp_file = mkstemp()
     old_file = open(fpath, 'r')
@@ -49,14 +52,15 @@ def change_shebang(fpath, target, chmod):
         os.chmod(fpath, os.stat(fpath).st_mode | stat.S_IEXEC)
 
 if __name__ == '__main__':
-    parser = ArgumentParser(description="A snippet to add or change shebang")
+    parser = ArgumentParser(
+        description="A snippet to add or change shebang",
+        formatter_class=ArgumentDefaultsHelpFormatter)
     parser.add_argument(
         "-t",
         "--target",
         metavar="EXE",
-        # default='python',
         required=False,
-        help="the target interpreter (default: guess from file extension)")
+        help="the target interpreter; if not specified, guess from file extension")
     parser.add_argument(
         "file_list",
         metavar="FILE",
@@ -67,7 +71,7 @@ if __name__ == '__main__':
         "-x",
         action="store_false",
         required=False,
-        help="also change FILEs to be executable(default: True, when specified with no arg:False)")
+        help="also change FILEs to be executable")
     parser.add_argument(
         "-v",
         "--verbose",
