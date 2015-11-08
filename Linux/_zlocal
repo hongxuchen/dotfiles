@@ -120,6 +120,7 @@ export PATH=${MY_HOME_BIN}:${MY_HOME_BIN}/git-scripts:${MY_HOME_BIN}/Linux:~/.lo
 export PATH=${GOPATH}/bin:$PATH
 export PATH=${MY_KINT_BIN}:$PATH
 export PATH=${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:$PATH
+# export PATH=${HOME}/tools/android-studio/bin:$PATH
 export PATH=~/RESEARCH/dex2jar-2.0:$PATH
 export PATH=~/src/stellar/stellar-core/build/src:$PATH
 # export PATH=${MY_ROOT}/android/src:$PATH

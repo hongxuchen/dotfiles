@@ -132,6 +132,7 @@ Bundle 'endel/vim-github-colorscheme'
 Bundle 'tpope/vim-vividchalk'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'rking/ag.vim'
+Bundle 'tfnico/vim-gradle'
 
 "vim-g
 Bundle 'szw/vim-g'

@@ -13,6 +13,7 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
     alias clion='~/tools/clion-IDE/bin/clion.sh &>/dev/null &'
     alias intellij='~/tools/intellij/bin/idea.sh &>/dev/null &'
     alias eclipse='nohup ~/tools/eclipse/eclipse &>/dev/null &'
+    alias android-studio='nohup ~/tools/android-studio/bin/studio.sh &>/dev/null &'
     alias goagent="~/tools/goagent/local/goagent-gtk.py &>/dev/null &disown"
     alias open="xdg-open"
     ### personal use
