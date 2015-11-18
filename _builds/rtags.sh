@@ -1,6 +1,8 @@
 #!/bin/bash
 
 BASEDIR=$(dirname "$0")
+
+
 cd "$BASEDIR"
 SRC=$(pwd)/rtags
 BUILD=$SRC/../build

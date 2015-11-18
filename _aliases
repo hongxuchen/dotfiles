@@ -3,15 +3,17 @@
 # vim: ft=sh
 
 if [[ $OSTYPE == "linux-gnu" ]]; then
+
+    alias grep='grep --color=auto --exclude-dir=.cvs --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn' 
     alias gdb='gdb -q'
     alias dstat='dstat -cdlmnpsy'
     alias release_memory='sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"'
     ## since there are  no .desktop files for them
     alias boogie='mono ~/repos/boogie/boogie/Binaries/Boogie.exe'
     alias idaq='~/idademo65/idaq&'
-    alias pycharm='~/tools/pycharm/bin/pycharm.sh &>/dev/null &'
-    alias clion='~/tools/clion-IDE/bin/clion.sh &>/dev/null &'
-    alias intellij='~/tools/intellij/bin/idea.sh &>/dev/null &'
+    alias pycharm='nohup ~/tools/pycharm/bin/pycharm.sh &>/dev/null &'
+    alias clion='nohup ~/tools/clion-IDE/bin/clion.sh &>/dev/null &'
+    alias intellij='nohup ~/tools/intellij/bin/idea.sh &>/dev/null &'
     alias eclipse='nohup ~/tools/eclipse/eclipse &>/dev/null &'
     alias android-studio='nohup ~/tools/android-studio/bin/studio.sh &>/dev/null &'
     alias goagent="~/tools/goagent/local/goagent-gtk.py &>/dev/null &disown"

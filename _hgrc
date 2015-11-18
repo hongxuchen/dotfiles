@@ -20,6 +20,7 @@ firefoxtree = /home/user1/.mozbuild/version-control-tools/hgext/firefoxtree
 bundleclone = /home/user1/.mozbuild/version-control-tools/hgext/bundleclone
 mqext = /home/user1/.mozbuild/version-control-tools/hgext/mqext
 qimportbz = /home/user1/.mozbuild/version-control-tools/hgext/qimportbz
+push-to-try = /home/user1/.mozbuild/version-control-tools/hgext/push-to-try
 
 [merge-tools]
 kdiff3.executable = /usr/bin/kdiff3
