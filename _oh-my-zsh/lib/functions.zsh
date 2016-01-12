@@ -18,6 +18,10 @@ em() {
     fi
 }
 
+findExt() {
+  find ${PWD} -name "*.${1}"
+}
+
 mkd() {
   mkdir -p "$@" && cd "$1"
 }

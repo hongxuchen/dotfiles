@@ -72,6 +72,7 @@ set keymap vi-command
 "\C-b":  backward-char
 "\e-f":  forward-word
 "\e-b":  backward-word
+"\C-l":  clear-screen
 
 $endif
 

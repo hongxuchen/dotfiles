@@ -12,7 +12,7 @@ source ~/.aliases
 eval $(dircolors ~/.LS_COLORS)
 
 # ~/.oh-my-zsh/plugins/
-PLUGINS=(ag brew gem git-extras pip z extract golang mvn npm)
+PLUGINS=(ag brew gem git-extras pip z golang mvn npm sbt)
 if [[ $OSTYPE == "linux-gnu" ]];then
     PLUGINS=(${PLUGINS} docker)
 elif [[ $OSTYPE == "darwin"* ]];then

@@ -1,0 +1,8 @@
+alias cc = ~ ;eval "\u001B[2J\u001B[0\u003B0H" ;compile
+alias ct = ~ ;eval "\u001B[2J\u001B[0\u003B0H" ;test
+
+alias ccc = ~ ;eval "\u001B[2J\u001B[0\u003B0H" ;clean ;compile
+alias ctc = ~ ;eval "\u001B[2J\u001B[0\u003B0H" ;clean ;test
+
+alias scala = consoleQuick
+alias q = exit

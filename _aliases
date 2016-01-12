@@ -19,7 +19,7 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
     alias goagent="~/tools/goagent/local/goagent-gtk.py &>/dev/null &disown"
     alias open="xdg-open"
     ### personal use
-    alias opt='opt -load ~/RESEARCH/snippets_llvm/build/bin/libsnippets.so -load ~/RESEARCH/marple/build/bin/libmyaa.so'
+    alias opt='opt -load ~/RESEARCH/yama/RA/src/build/bin/librange.so'
     alias lit='${MY_LLVM_ROOT}/src/utils/lit/lit.py'
     alias pbcopy='xsel --clipboard --input'
     alias pbpaste='xsel --clipboard --output'
@@ -40,6 +40,7 @@ fi
 
 # GNU-coreutils ls
 alias sudo='sudo -H '
+alias scala='command scala -i ~/.scalarc'
 
 alias r_cp='rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --'
 alias r_mv='rsync -a --progress -h --remove-source-files'
@@ -52,7 +53,9 @@ alias psmem10='ps -e -orss=,args= | sort -b -k1,1n| head -10'
 alias my_paths='echo -e ${PATH//:/\\n}'
 alias deleted_files='sudo lsof |grep "\(deleted\)"'
 
-alias sbt='activator'
+alias sbt='command activator'
+alias activator='JAVA_HOME=/usr/lib/jvm/java-8-oracle sbt'
+alias pom2sbt='mvn dependency:tree | grep "] +" | perl -pe '"'"'s/.*\s([\w\.\-]+):([\w\.\-]+):\w+:([\w\.\-]+):(\w+).*/libraryDependencies += "$1" % "$2" % "$3" % "$4" /'"'"' >build.sbt'
 
 alias my_py_path='python -c "import sys;print(\"\\n\".join(sys.path))"'
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1])"'

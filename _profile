@@ -44,6 +44,8 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 export TEXMFHOME=~/.texmf
 
+export JAVA_HOME=/usr/lib/jvm/java-7-oracle
+
 
 export QT_STYLE_OVERRIDE=oxygen
 
