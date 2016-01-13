@@ -37,13 +37,15 @@ The personal information includes:
 
 1. Additional fonts are available [on dropbox](https://www.dropbox.com/sh/1er7al26qjsjdeg/AACoU5BQ6Ijq_vnBrqLemrRwa?dl=0).
 
-    - can be used by XTerm, etc
+    - can be used by urxvt, etc
+    - note: on Debian derivatives, make sure urxvt is from `rxvt-unicode-256color`
+    - xterm is not recommended as it's inferiority as to unicode characters.
 
 
 Package managers
 ================
 
-Apart from [editors](http://en.wikipedia.org/wiki/Editor_war)'s plugin managers(see [below](#fundamentals)), other package managers are used and the lists are inside [misc](https://github.com/HongxuChen/dotfiles/tree/master/misc):
+Apart from [editors](http://en.wikipedia.org/wiki/Editor_war)' plugin managers(see [below](#fundamentals)), other package managers are used and the lists are inside [misc](https://github.com/HongxuChen/dotfiles/tree/master/misc):
 
 1. **Debian** -- [debian package management](https://www.debian.org/doc/manuals/debian-faq/ch-pkgtools.en.html), [linuxbrew](https://github.com/Homebrew/linuxbrew)
 
@@ -92,6 +94,8 @@ managed with [package.el](http://www.emacswiki.org/emacs/ELPA))(`~/.emacs.d`)
 
     - for **sh** profile, LOTS of packages are pre-imported(installation from pip is needed)
     - ipython-notebook is BASED on sh profile, a few [extensions](https://github.com/ipython-contrib/IPython-notebook-extensions/wiki) are in `~/.ipython/extensions/`
+    
+1. [sbt](http://www.scala-sbt.org/)(`~/.sbt`, `~/.sbtrc`)
 
 1. [**pry**](http://pryrepl.org/)(`~/.pryrc`)
 
