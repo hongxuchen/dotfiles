@@ -5,4 +5,5 @@ alias ccc = ~ ;eval "\u001B[2J\u001B[0\u003B0H" ;clean ;compile
 alias ctc = ~ ;eval "\u001B[2J\u001B[0\u003B0H" ;clean ;test
 
 alias scala = consoleQuick
+alias ls = projects
 alias q = exit

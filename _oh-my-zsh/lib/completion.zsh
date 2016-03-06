@@ -94,6 +94,6 @@ compctl -K _dropbox dropbox
 # activate-global-python-argcomplete is not needed for zsh
 autoload -Uz bashcompinit
 bashcompinit
-eval "$(register-python-argcomplete ~/.bin/shebang.py)"
+# eval "$(register-python-argcomplete ~/.bin/shebang.py)"
 # eval "$(register-python-argcomplete ~/src/snippets_py2/clang/helper.py)"
 ###

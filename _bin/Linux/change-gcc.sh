@@ -2,7 +2,7 @@
 
 V1=4.9
 V2=4.8
-VD=$V2
+VD=$V1
 
 update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-$V1 50
 update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-$V1 50

@@ -102,8 +102,17 @@ URxvt.cursorUnderline:  false
 
 URxvt.pointerBlank:  true
 
-URxvt.perl-ext:
-URxvt.perl-ext-common:
+! URxvt.perl-ext:
+! URxvt.perl-ext-common:
+
+URxvt.perl-ext-common:   default,url-select,clipboard,vtwheel,font-size,osc-xterm-clipboard,keyboard-select
+!! Clipboard
+URxvt.keysym.M-Escape: perl:keyboard-select:activate
+URxvt.keysym.M-c:      perl:clipboard:copy
+URxvt.keysym.M-v:      perl:clipboard:paste
+URxvt.keysym.M-C-v:    perl:clipboard:paste_escaped
+!! Automatically copy selected text from PRIMARY to CLIPBOARD
+!URxvt.clipboard.autocopy: true
 
 ! Monokai color theme, DONT use w/o prefix since that would affect Qt projects
 URxvt*background: #101010

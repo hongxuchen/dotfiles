@@ -22,6 +22,8 @@ findExt() {
   find ${PWD} -name "*.${1}"
 }
 
+gs() { open http://www.google.com/search?q="$*" ;}
+
 mkd() {
   mkdir -p "$@" && cd "$1"
 }
@@ -122,6 +124,8 @@ pgs() { # [find] [replace] [filename]
 json_pretty() {
   echo "$1" | python -mjson.tool
 }
+
+adbsc() { adb shell screencap -p | perl -pe 's/\x0D\x0A/\x0A/g' > $1.png; }
 
 # TODO locale issues
 

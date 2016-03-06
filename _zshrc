@@ -73,5 +73,5 @@ unset ZSH
 (pgrep -x rdm >/dev/null || rdm --no-comment &>/tmp/rdm_answer &)
 
 # OPAM configuration
-# . /home/user1/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+# . /home/hongxu/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 # eval `opam config env`

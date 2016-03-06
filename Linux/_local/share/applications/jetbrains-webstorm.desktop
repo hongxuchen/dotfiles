@@ -2,8 +2,8 @@
 Version=1.0
 Type=Application
 Name=WebStorm
-Icon=/home/user1/tools/WebStorm-141.1550/bin/webide.png
-Exec="/home/user1/tools/WebStorm-141.1550/bin/webstorm.sh" %f
+Icon=/home/hongxu/tools/WebStorm-141.1550/bin/webide.png
+Exec="/home/hongxu/tools/WebStorm-141.1550/bin/webstorm.sh" %f
 Comment=Develop with pleasure!
 Categories=Development;IDE;
 Terminal=false

@@ -2,8 +2,8 @@
 Version=1.0
 Type=Application
 Name=CLion
-Icon=/home/user1/tools/clion-1.0.5/bin/clion.svg
-Exec="/home/user1/tools/clion-1.0.5/bin/clion.sh" %f
+Icon=/home/hongxu/tools/clion-1.0.5/bin/clion.svg
+Exec="/home/hongxu/tools/clion-1.0.5/bin/clion.sh" %f
 Comment=Develop with pleasure!
 Categories=Development;IDE;
 Terminal=false

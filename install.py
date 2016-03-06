@@ -63,6 +63,13 @@ def _config_emacs():
     cmd_str = "emacs -f save-buffers-kill-emacs"
     subprocess.call(cmd_str.split())
 
+
+def yn_choice(message, default='y'):
+    choices = 'Y/n' if default.lower() in ('y', 'yes') else 'y/N'
+    choice = raw_input("{} ({})".format(message, choices))
+    values = ('y', 'yes', '') if default == 'y' else ('y', 'yes')
+    return choice.strip().lower() in values
+
 # ----------------------------------------------------------------------------
 colorama.init()
 parser = argparse.ArgumentParser(
@@ -93,11 +100,6 @@ if args.config:
     sys.exit(0)
 
 if not os.path.exists(args.bakdir):
-    def yn_choice(message, default='y'):
-        choices = 'Y/n' if default.lower() in ('y', 'yes') else 'y/N'
-        choice = raw_input("{} ({}) " % (message, choices))
-        values = ('y', 'yes', '') if default == 'y' else ('y', 'yes')
-        return choice.strip().lower() in values
     print("Backup dir [{}] doesn't exist".format(args.bakdir), file=sys.stderr)
     choice = yn_choice("Would you like to create it?")
     if choice is True:
