@@ -13,6 +13,8 @@ version=${JAVA_VERSION}
 # export JAVA_HOME=/usr/lib/jvm/java-${version}-oracle
 # export DERBY_HOME=/usr/lib/jvm/java-${version}-oracle/db
 
+export JAVA_HOME=
+
 sudo update-alternatives --set java /usr/lib/jvm/java-${version}-oracle/jre/bin/java
 sudo update-alternatives --set javac /usr/lib/jvm/java-${version}-oracle/bin/javac
 sudo update-alternatives --set javap /usr/lib/jvm/java-${version}-oracle/bin/javap
@@ -20,4 +22,3 @@ sudo update-alternatives --set javah /usr/lib/jvm/java-${version}-oracle/bin/jav
 
 java -version
 javac -version
-

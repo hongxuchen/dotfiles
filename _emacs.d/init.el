@@ -42,6 +42,7 @@
 (require 'init-markup)
 ;; (require 'init-tex)
 (require 'init-cc-mode)
+(require 'init-coq)
 (require 'init-python)
 (require 'init-ruby)
 (require 'init-nxml)

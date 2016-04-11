@@ -94,7 +94,7 @@ managed with [package.el](http://www.emacswiki.org/emacs/ELPA))(`~/.emacs.d`)
 
     - for **sh** profile, LOTS of packages are pre-imported(installation from pip is needed)
     - ipython-notebook is BASED on sh profile, a few [extensions](https://github.com/ipython-contrib/IPython-notebook-extensions/wiki) are in `~/.ipython/extensions/`
-    
+
 1. [sbt](http://www.scala-sbt.org/)(`~/.sbt`, `~/.sbtrc`)
 
 1. [**pry**](http://pryrepl.org/)(`~/.pryrc`)
@@ -187,6 +187,7 @@ Known Issues
 - emacs openwith enhancement
 - org mode table keymaps has conflicts with LXDE
 - need [vim-commentary](git@github.com:tpope/vim-commentary.git) like tool in Emacs
+- when `git` is absent, have to press Enter twice
 
 Bonus
 =====

@@ -38,10 +38,15 @@
 (delete-selection-mode 1)
 (global-pointback-mode 1)
 (global-auto-revert-mode 1)
-(show-paren-mode 1)
 (autopair-global-mode 1)
-(setq show-paren-delay 0.00
-      autopair-autowrap t)
+(setq autopair-autowrap t)
+
+(defun my-setup-paren-mode ()
+     (interactive)
+     (progn (show-paren-mode 1)
+            (setq show-paren-delay 0.00)))
+
+;; (my-setup-paren-mode)
 
 ;; (tooltip-mode -1)
 ;; (global-whitespace-mode -1)

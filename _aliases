@@ -39,7 +39,7 @@ fi
 
 # GNU-coreutils ls
 alias sudo='sudo -H '
-alias scala='command scala -i ~/.scalarc'
+# alias scala='command scala -i ~/.scalarc'
 
 alias r_cp='rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --'
 alias r_mv='rsync -a --progress -h --remove-source-files'
