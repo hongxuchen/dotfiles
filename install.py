@@ -7,6 +7,13 @@ import platform
 import subprocess
 import colorama
 
+
+def yn_choice(message, default='y'):
+    choices = 'Y/n' if default.lower() in ('y', 'yes') else 'y/N'
+    choice = raw_input("{} ({}) " % (message, choices))
+    values = ('y', 'yes', '') if default == 'y' else ('y', 'yes')
+    return choice.strip().lower() in values
+
 try:
     import argparse
 except ImportError as e:
@@ -73,29 +80,28 @@ def yn_choice(message, default='y'):
 # ----------------------------------------------------------------------------
 colorama.init()
 parser = argparse.ArgumentParser(
-    description="install scripts for all the dotfiles")
+    description="bootstrap for dot configuration", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument(
     "--config",
     dest="config",
     nargs="+",
-    choices=[
-        "vim", "emacs"],
+    choices=["vim", "emacs"],
     help="some special configurations")
 parser.add_argument("--recover", dest="recover", action="store_true", required=False,
                     help="restore the original dotfiles")
 parser.add_argument("-n", dest="dryrun", action="store_true", required=False,
-                    help="do not actually run, only print the effect")
+                    help="print the effect rather than run it")
 parser.add_argument(
     "-d",
     dest="bakdir",
     default=BAK_DIR,
     required=False,
-    help="restore directory, default:BAK dir(the same directory as this script)")
+    help="restore directory")
 
 args = parser.parse_args()
 
 if args.config:
-    for config in args.config:
+    for config in set(args.config):
         eval('_config_' + config)()
     sys.exit(0)
 

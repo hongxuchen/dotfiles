@@ -16,7 +16,7 @@ PLUGINS=(ag brew gem git-extras pip z golang mvn npm sbt)
 if [[ $OSTYPE == "linux-gnu" ]];then
     PLUGINS=(${PLUGINS} docker)
 elif [[ $OSTYPE == "darwin"* ]];then
-    PLUGINS=(${PLUGINS} vagrant)
+    PLUGINS=(${PLUGINS} vagrant brew-cask)
 fi
 
 if [[ -z "$ZSH_CACHE_DIR"  ]]; then

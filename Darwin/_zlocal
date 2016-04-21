@@ -6,8 +6,10 @@ MY_WLLVM_ROOT=${MY_ROOT}/wllvm
 MY_HOME_BIN=~/.bin
 export GOPATH=~/gocode
 
+export MY_ANDROID_SDK=${HOME}/Library/Android
 export MY_BREW_PREFIX=/usr/local
 export PATH=/usr/local/opt/coreutils/libexec/gnubin:/usr/sbin:/sbin:/usr/bin:/bin:/opt/local/bin
+export PATH=${MY_ANDROID_SDK}/sdk/platform-tools:$PATH
 export PATH=${MY_BREW_PREFIX}/bin:${MY_BREW_PREFIX}/sbin:$PATH
 export PATH=/usr/texbin:$PATH
 export PATH=${MY_BREW_PREFIX}/opt/llvm/bin:$PATH
