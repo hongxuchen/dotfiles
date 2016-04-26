@@ -73,6 +73,7 @@ Bundle 'tpope/vim-eunuch'
 Bundle 'tpope/vim-jdaddy'
 Bundle 'tpope/vim-dispatch'
 Bundle 'jiangmiao/auto-pairs'
+" Bundle 'derekwyatt/vim-scala'
 
 Bundle 'bling/vim-airline'
 " let g:airline#extensions#tabline#enabled = 1
@@ -149,6 +150,7 @@ let g:syntastic_ocaml_checkers = ['merlin']
 
 " YouCompleteMe
 Bundle 'Valloric/YouCompleteMe'
+let g:ycm_path_to_python_interpreter='/usr/bin/python'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_add_preview_to_completeopt=1
 let g:ycm_autoclose_preview_window_after_completion = 1

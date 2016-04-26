@@ -43,6 +43,7 @@
 	li = ls-files --exclude-standard --ignored --others
 	wc = whatchanged -p --abbrev-commit --pretty=medium
 	s = status --short --branch --ignore-submodules=untracked
+    size = count-objects -Hv
     # up = !git pull --rebase --prune $@ && git submodule update --init --recursive
     # log
     lola = log --pretty=\"%Cred%h%Creset [%Cgreen%an %Creset %C(cyan)%ar%Creset]: %Cred%d%Creset %C(yellow)%s%Creset\" --graph --all

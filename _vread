@@ -119,6 +119,8 @@ set completeopt=longest,menuone
 set t_Co=256
 
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+autocmd BufNewFile,BufReadPost *.scala set filetype=scala
+autocmd BufNewFile,BufReadPost *.sbt set filetype=scala
 autocmd BufRead,BufNewFile /usr/include/* set ft=cpp
 autocmd BufRead,BufNewFile *.ipynb setfiletype javascript
 
