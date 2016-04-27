@@ -11,6 +11,12 @@ source ~/.zlocal
 source ~/.aliases
 eval $(dircolors ~/.LS_COLORS)
 
+### should be loaded before source ${ZSH}/lib
+autoload -Uz compinit
+compinit -i
+autoload -Uz compdef
+
+
 # ~/.oh-my-zsh/plugins/
 PLUGINS=(ag brew gem git-extras pip z golang mvn npm sbt)
 if [[ $OSTYPE == "linux-gnu" ]];then
@@ -40,10 +46,6 @@ unset plugin base_dir
 
 ZSH_COMPLETIONS=${ZSH}/completions
 fpath=(${fpath} ${ZSH_COMPLETIONS})
-
-### should be loaded before source ${ZSH}/lib
-autoload -Uz compinit
-compinit -i
 
 for config_file in ${ZSH}/lib/*.zsh; do
     source ${config_file}
