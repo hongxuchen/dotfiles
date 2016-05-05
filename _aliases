@@ -41,6 +41,8 @@ fi
 alias sudo='sudo -H '
 # alias scala='command scala -i ~/.scalarc'
 
+alias sss='env JAVA_OPTS="-Xms512m -Xmx2g" scala'
+
 alias r_cp='rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --'
 alias r_mv='rsync -a --progress -h --remove-source-files'
 alias r_update='rsync -avu --progress -h'
