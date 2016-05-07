@@ -6,6 +6,14 @@ MY_WLLVM_ROOT=${MY_ROOT}/wllvm
 MY_HOME_BIN=~/.bin
 export GOPATH=~/gocode
 
+MY_OPAM="${HOME}/.opam"
+export CAML_LD_LIBRARY_PATH="${MY_OPAM}/system/lib/stublibs:/usr/local/lib/ocaml/stublibs"
+export OPAMUTF8MSGS="1"
+export MANPATH="${MY_OPAM}/system/man:"
+export PERL5LIB="${MY_OPAM}/system/lib/perl5"
+export OCAML_TOPLEVEL_PATH="${MY_ROOT}/system/lib/toplevel"
+export MY_OCAML_BIN_PATH="${MY_OPAM}/system/bin"
+
 export MY_ANDROID_SDK=${HOME}/Library/Android
 export MY_BREW_PREFIX=/usr/local
 export PATH=/usr/local/opt/coreutils/libexec/gnubin:/usr/sbin:/sbin:/usr/bin:/bin:/opt/local/bin
@@ -18,6 +26,7 @@ export PATH=~/Library/Python/2.7/bin:$PATH
 export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
 export PATH=${MY_WLLVM_ROOT}:$PATH
 export PATH=${GOPATH}/bin:$PATH
+export PATH=${MY_OCAML_BIN_PATH}:$PATH
 
 export LD_LIBRARY_PATH=
 export LD_LIBRARY_PATH=/usr/local/opt/llvm/lib
@@ -26,6 +35,7 @@ export CPLUS_INCLUDE_PATH=
 export CPLUS_INCLUDE_PATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1
 export CPLUS_INCLUDE_PATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include:${CPLUS_INCLUDE_PATH}
 export C_INCLUDE_PATH=
+
 
 # for wllvm
 export LLVM_COMPILER=clang

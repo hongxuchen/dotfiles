@@ -5,6 +5,7 @@ load.ivy("com.lihaoyi" %% "pprint" % "0.4.0")
 load.ivy("org.scalanlp" %% "breeze" % "0.11.2")
 load.ivy("org.scalanlp" %% "breeze-natives" % "0.11.2")
 load.ivy("org.scalanlp" %% "breeze-viz" % "0.11.2")
+load.ivy("org.scalaz" % "scalaz-core_2.11" % "7.3.0-M2")
 @
 import scalaj.http._
 // import upickle.default._
