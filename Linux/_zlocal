@@ -55,6 +55,15 @@ export MY_JAVA=/usr/lib/jvm/java-7-openjdk-amd64
 # core environment variables
 ##############################################################################
 
+
+MY_OPAM="${HOME}/.opam"
+export CAML_LD_LIBRARY_PATH="${MY_OPAM}/system/lib/stublibs:/usr/local/lib/ocaml/stublibs"
+export OPAMUTF8MSGS="1"
+export MANPATH="${MY_OPAM}/system/man:"
+export PERL5LIB="${MY_OPAM}/system/lib/perl5"
+export OCAML_TOPLEVEL_PATH="${MY_ROOT}/system/lib/toplevel"
+export MY_OCAML_BIN_PATH="${MY_OPAM}/system/bin"
+
 ## C/C++
 export CC=clang
 export CXX=clang++
@@ -124,6 +133,7 @@ export PATH=/usr/local/heroku/bin:$PATH
 # export PATH=${HOME}/tools/android-studio/bin:$PATH
 export PATH=~/RESEARCH/dex2jar-2.0:$PATH
 export PATH=~/src/stellar/stellar-core/build/src:$PATH
+export PATH=${MY_OCAML_BIN_PATH}:$PATH
 # export PATH=${MY_ROOT}/android/src:$PATH
 # export PATH=${PLAY_HOME}:$PATH
 # ${LATTE_ROOT}/bin:

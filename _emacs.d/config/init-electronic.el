@@ -106,6 +106,7 @@
         '(company-bbdb
           company-nxml
           company-css
+          merlin-company-backend
           ;; company-eclim
           company-semantic
           company-robe

@@ -70,6 +70,9 @@
 ;; (require-package 'gitignore-mode)
 ;; (require-package 'gitconfig-mode)
 
+;; (require-package 'tuareg)
+;; (require-package 'merlin)
+
 (require-package 'dash-at-point)
 
 ;;------------------------------------------------------------------------------
