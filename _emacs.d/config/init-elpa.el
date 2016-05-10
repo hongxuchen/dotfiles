@@ -70,8 +70,12 @@
 ;; (require-package 'gitignore-mode)
 ;; (require-package 'gitconfig-mode)
 
+;; installed by OPAM and configured with init-caml.el thereby no need to use ELPA
 ;; (require-package 'tuareg)
 ;; (require-package 'merlin)
+;; require to install proof-general beforehand
+;; http://proofgeneral.inf.ed.ac.uk/
+(require-package 'company-coq)
 
 (require-package 'dash-at-point)
 
