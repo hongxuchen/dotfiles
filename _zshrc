@@ -1,7 +1,7 @@
 # -*- mode:sh -*-
 #  vim: set ft=zsh ts=4 sw=2 tw=0 et :
 
-ZSH=~/.oh-my-zsh
+ZSH=~/.omz
 
 # ZSH_THEME="bira"
 ZSH_THEME="nanotech"
@@ -17,7 +17,7 @@ compinit -i
 autoload -Uz compdef
 
 
-# ~/.oh-my-zsh/plugins/
+# ~/.omz/plugins/
 PLUGINS=(ag brew gem git-extras pip z golang mvn npm sbt)
 if [[ $OSTYPE == "linux-gnu" ]];then
     PLUGINS=(${PLUGINS} docker)

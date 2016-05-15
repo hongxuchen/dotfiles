@@ -89,7 +89,7 @@ managed with [package.el](http://www.emacswiki.org/emacs/ELPA))(`~/.emacs.d`)
         - `~/.zshenv`
         - `~/.zprofile`
         - `~/.zshrc`
-        - `~/.oh-my-zsh/`
+        - `~/.omz/`
 
     - `brew install zsh-history-substring-search  zsh-syntax-highlighting` and change login shell (with `chsh`) to zsh to make it really work; enjoy it!
 
