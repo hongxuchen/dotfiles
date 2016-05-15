@@ -132,8 +132,8 @@ nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 " let g:ctrlp_working_path_mode = 'ra'
 " 
 "
-let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
-execute "set rtp+=" . g:opamshare . "/merlin/vim"
+" let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+" execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
 Bundle 'scrooloose/syntastic'
 " let g:syntastic_auto_loc_list = 1
