@@ -44,7 +44,7 @@
               evil-shift-round t
               evil-auto-indent t
               )
-(evil-mode 1)
+;; (evil-mode 1)
 (evil-set-initial-state 'text-mode 'normal)
 (evil-set-initial-state 'prog-mode 'normal)
 (evil-set-initial-state 'comint-mode 'emacs)
