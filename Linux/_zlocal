@@ -7,19 +7,22 @@
 
 # deal with different llvm versions
 function _my_llvm_version() {
-    available=("3.3" "3.4" "3.5" "3.6" "git")
+    available=("3.6" "3.7" "3.8" "git")
     USAGE="my_llvm_version 3.3|3.4|3.5|git"
     if [ $# -ne 1 ] || ! (( ${available[(I)${1}]} )); then
       echo "usage: $USAGE"
     fi
     MY_LLVM_VERSION="$1"
 }
-alias my_ll33='_my_llvm_version 3.3;source ~/.zlocal'
-alias my_ll34='_my_llvm_version 3.4;source ~/.zlocal'
-alias my_ll35='_my_llvm_version 3.5;source ~/.zlocal'
 alias my_ll36='_my_llvm_version 3.6;source ~/.zlocal'
+alias my_ll37='_my_llvm_version 3.7;source ~/.zlocal'
+alias my_ll38='_my_llvm_version 3.8;source ~/.zlocal'
 alias my_llgit='_my_llvm_version git;source ~/.zlocal'
-: ${MY_LLVM_VERSION:=3.6}
+: ${MY_LLVM_VERSION:=3.7}
+
+# alias clang=clang-${MY_LLVM_VERSION}
+# alias clang++=clang++-${MY_LLVM_VERSION}
+# alias opt=opt-${MY_LLVM_VERSION}
 
 MY_ROOT=~/RESEARCH
 MY_WLLVM_ROOT=${MY_ROOT}/wllvm
@@ -28,11 +31,13 @@ MY_HOME_BIN=~/.bin
 LATTE_ROOT=${MY_ROOT}/LattE
 
 MY_LLVM_ROOT=${MY_ROOT}/llvm-${MY_LLVM_VERSION}
+MY_LLVM_ROOT=
 if [[ ${MY_LLVM_VERSION} == "git" ]];then
   MY_LLVM_OBJ=${MY_LLVM_ROOT}/obj
 else
-  MY_LLVM_OBJ=${MY_LLVM_ROOT}/obj/Release+Asserts
+  MY_LLVM_OBJ=${MY_LLVM_ROOT}/obj/Release+Debug+Asserts
 fi
+MY_LLVM_OBJ=${MY_LLVM_ROOT}/obj
 MY_CLANG_TOOLS=${MY_LLVM_ROOT}/src/tools/clang/tools
 MY_STP_INSTALL=${MY_ROOT}/stp/install
 MY_KLEE_INSTALL=${MY_ROOT}/klee/install
@@ -55,18 +60,17 @@ export MY_JAVA=/usr/lib/jvm/java-7-openjdk-amd64
 # core environment variables
 ##############################################################################
 
-
-MY_OPAM="${HOME}/.opam"
-export CAML_LD_LIBRARY_PATH="${MY_OPAM}/system/lib/stublibs:/usr/local/lib/ocaml/stublibs"
+MY_OPAM="${HOME}/.opam/system"
+export CAML_LD_LIBRARY_PATH="${MY_OPAM}/lib/stublibs:/usr/local/lib/ocaml/stublibs"
 export OPAMUTF8MSGS="1"
-export MANPATH="${MY_OPAM}/system/man:"
-export PERL5LIB="${MY_OPAM}/system/lib/perl5"
-export OCAML_TOPLEVEL_PATH="${MY_ROOT}/system/lib/toplevel"
-export MY_OCAML_BIN_PATH="${MY_OPAM}/system/bin"
+export MANPATH="${MY_OPAM}/man:"
+export PERL5LIB="${MY_OPAM}/lib/perl5"
+export OCAML_TOPLEVEL_PATH="${MY_ROOT}/lib/toplevel"
+export MY_OCAML_BIN_PATH="${MY_OPAM}/bin"
 
 ## C/C++
-export CC=clang
-export CXX=clang++
+# export CC=clang-3.7
+# export CXX=clang++-3.7
 
 export CPLUS_INCLUDE_PATH=
 export CPLUS_INCLUDE_PATH=${MY_BREW_PREFIX}/include:${CPLUS_INCLUDE_PATH}
@@ -82,10 +86,10 @@ export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/tools/clang/include:${MY_LLVM_ROOT
 export LD_LIBRARY_PATH=
 export LD_LIBRARY_PATH=/usr/local/lib:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH}
-export LD_LIBRARY_PATH=${MY_LLVM_OBJ}/lib:${MY_STP_INSTALL}/lib:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=${MY_BREW_PREFIX}/lib:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=${LATTE_ROOT}/lib:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=${JPF_SYMBC}/lib:${LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=${MY_LLVM_OBJ}/lib:${MY_STP_INSTALL}/lib:${LD_LIBRARY_PATH}
 
 # export CMAKE_PREFIX_PATH=/usr/share/cmake/qt5xdg
 
@@ -146,6 +150,9 @@ export PATH=${MY_OCAML_BIN_PATH}:$PATH
 ##############################################################################
 export LLVM_COMPILER=clang
 export WLLVM_OUTPUT=WARNING
+
+# ocaml
+# export CAML_LD_LIBRARY_PATH=${HOME}.opam/system/lib/llvm:${CAML_LD_LIBRARY_PATH}
 
 
 ##############################################################################

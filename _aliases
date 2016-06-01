@@ -18,12 +18,12 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
     alias android-studio='nohup ~/tools/android-studio/bin/studio.sh &>/dev/null &'
     alias goagent="~/tools/goagent/local/goagent-gtk.py &>/dev/null &disown"
     alias open="xdg-open"
-    ### personal use
-    alias opt='opt -load ~/RESEARCH/yama/RA/src/build/bin/librange.so'
-    alias lit='${MY_LLVM_ROOT}/src/utils/lit/lit.py'
     alias pbcopy='xsel --clipboard --input'
     alias pbpaste='xsel --clipboard --output'
     alias my_debian_install='cat /var/log/dpkg.log | grep "\ install\ "|less'
+    ### personal use
+    # alias opt='opt -load ~/RESEARCH/yama/RA/src/build/bin/librange.so'
+    # alias lit='${MY_LLVM_ROOT}/src/utils/lit/lit.py'
 fi
 
 if [[ $OSTYPE == "darwin"* ]] || [[ $OSTYPE == "freebsd"* ]]; then

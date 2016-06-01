@@ -88,13 +88,13 @@ for s in tex conf vim txt; do
     alias -s $s=vim
 done
 
-for s in 1 2 3 4 5 6 7; do
-    if [[ $OSTYPE == "linux-gnu" ]]; then
-        alias -s $s="man -l"
-    elif [[ $OSTYPE == "darwin"* ]];then
-        alias -s $s="man"
-    fi
-done
+# for s in 1 2 3 4 5 6 7; do
+#     if [[ $OSTYPE == "linux-gnu" ]]; then
+#         alias -s $s="man -l"
+#     elif [[ $OSTYPE == "darwin"* ]];then
+#         alias -s $s="man"
+#     fi
+# done
 
 alias -s c=c
 alias -s cc=c
