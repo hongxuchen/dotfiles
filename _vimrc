@@ -80,9 +80,6 @@ Bundle 'bling/vim-airline'
 " let g:airline#extensions#tabline#left_sep = ' '
 " let g:airline#extensions#tabline#left_alt_sep = '|'
 
-Bundle 'tomasr/molokai'
-colorscheme molokai
-
 Bundle 'tpope/vim-commentary'
 autocmd FileType lisp setl cms=;;%s
 autocmd FileType cmake setl cms=#%s
@@ -130,7 +127,7 @@ nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 " let g:ctrlp_cmd = 'CtrlP'
 " let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 " let g:ctrlp_working_path_mode = 'ra'
-" 
+"
 "
 " let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 " execute "set rtp+=" . g:opamshare . "/merlin/vim"

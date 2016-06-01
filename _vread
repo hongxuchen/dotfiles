@@ -1,7 +1,7 @@
 " vim: set ft=vim ts=3 sw=2 tw=8 et :
 
 " Handle 'read' settings for vim, used by ~/.vless and ~/.vimrc
- 
+
 " visual-star-search, makes * and # work on visual mode too.
 function! s:VSetSearch(cmdtype)
   let temp = @s
@@ -44,7 +44,7 @@ filetype on                   " try to detect filetypes
 filetype plugin on            " recognize filetype
 filetype plugin indent on     " enable loading indent file for filetype
 set grepprg=grep\ -nH\ $*     "grep always displays filename
-set splitright                " 
+set splitright                "
 set guioptions=               " simpler
 set nrformats=                " treat all numberals as decimal
 set tabpagemax=5              " only 5 tabs
@@ -130,11 +130,17 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 Bundle 'Superbil/llvm.vim'
 Bundle 'Cpp11-Syntax-Support'
-Bundle 'endel/vim-github-colorscheme'
 Bundle 'tpope/vim-vividchalk'
-Bundle 'altercation/vim-colors-solarized'
 Bundle 'rking/ag.vim'
 Bundle 'tfnico/vim-gradle'
+
+Bundle 'endel/vim-github-colorscheme'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'tomasr/molokai'
+" colorscheme molokai
+set background=light
+colorscheme solarized
+
 
 "vim-g
 Bundle 'szw/vim-g'
