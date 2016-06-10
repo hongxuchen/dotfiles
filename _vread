@@ -137,9 +137,9 @@ Bundle 'tfnico/vim-gradle'
 Bundle 'endel/vim-github-colorscheme'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tomasr/molokai'
-" colorscheme molokai
-set background=light
-colorscheme solarized
+colorscheme molokai
+" set background=light
+" colorscheme solarized
 
 
 "vim-g
