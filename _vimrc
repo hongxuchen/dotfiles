@@ -7,7 +7,7 @@ nnoremap <silent> <leader>v :w<CR>:source ~/.vimrc<CR>:filetype detect<CR>:exe "
 " sudo write this
 cnoremap W! w !sudo tee % >/dev/null
 " Paste from clipboard
-set clipboard=unnamed "Use system clipboard ("*)
+set clipboard=unnamedplus "Use system clipboard ("*)
 nnoremap <leader>p :set paste! <CR>
 " Remove trailing whitespace
 nnoremap <leader>f :%s/\s\+$//<cr>:let @/=''<CR>

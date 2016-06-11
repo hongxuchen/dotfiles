@@ -30,7 +30,7 @@
       dired-auto-revert-buffer t
       dired-no-confirm '(byte-compile chgrp chmod chown compress copy hardlink load move print shell symlink touch uncompress))
 
-(setq dired-omit-files "^\\.$\\|^\\.\\.$\\|^GTAGS$\\|^Thumbs.db$\\|^Thumbs.db:encryptable$\\|^GSYMS$\\|^GRTAGS$\\|^GPATH$\\|\\.bc$|\\.o$\\|\\.out$\\|\\.aux$\\|\\.log$\\|\\.fdb_latexmk$\\|\\.synctex.gz$\\|\\.fls$\\|\\.cmx$\\|\\.cmxa$\\|\\.byte$\\|\\.native$\\|\\.cmo$\\|\\.cmi$")
+(setq dired-omit-files "^\\.$\\|^\\.\\.$\\|^GTAGS$\\|^Thumbs.db$\\|^Thumbs.db:encryptable$\\|^GSYMS$\\|^GRTAGS$\\|^GPATH$\\|\\.bc$|\\.o$\\|\\.out$\\|\\.aux$\\|\\.log$\\|\\.fdb_latexmk$\\|\\.synctex.gz$\\|\\.fls$\\|\\.cmx$\\|\\.cmxa$\\|\\.byte$\\|\\.native$\\|\\.cmo$\\|\\.cmi$\\|^\\._d$\\|^\\._ncdi$\\|^\\._bcdi$")
 
 (define-key dired-mode-map "W" 'wdired-change-to-wdired-mode)
 

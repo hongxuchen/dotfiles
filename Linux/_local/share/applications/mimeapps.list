@@ -95,6 +95,8 @@ image/svg+xml=gpicview.desktop
 image/svg-xml=gpicview.desktop
 application/ppdf=FoxitReader.desktop
 application/octet-stream=FoxitReader.desktop
+x-scheme-handler/about=google-chrome.desktop
+x-scheme-handler/unknown=google-chrome.desktop
 
 [Added Associations]
 x-scheme-handler/http=exo-web-browser.desktop

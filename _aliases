@@ -119,6 +119,8 @@ alias ldot='ls -ld .*'
 alias kl='k.zsh | less'
 alias sl='ls'
 
+alias mmv='noglob zmv -W'
+
 alias my_node_install='npm install -g'
 alias node='env node --harmony --use-strict'
 
@@ -128,3 +130,7 @@ alias vi='vim'
 alias v='vim -u ~/.vless'
 alias e=vim
 alias q='exit'
+
+# adb relevant
+alias adb-root='adb root'
+alias adb-unroot='adb shell "setprop service.adb.root 0; setprop ctl.restart adbd"'
