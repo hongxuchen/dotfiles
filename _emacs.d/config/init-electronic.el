@@ -107,15 +107,11 @@
           company-nxml
           company-css
           merlin-company-backend
-          ;; company-eclim
           company-semantic
           company-robe
-          ;; company-clang
-          ;; company-xcode
           company-ropemacs
           company-cmake
           company-capf (company-dabbrev-code company-gtags company-etags company-keywords)
-          ;; company-oddmuse
           company-files
           company-dabbrev
           ))

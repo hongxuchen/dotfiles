@@ -40,20 +40,15 @@
 (require 'init-evil)
 (require 'init-modeline)
 (require 'init-electronic)
-(require 'init-comint)
 (require 'init-compile)
 (require 'init-keymaps)
 
 ;; major modes for editing
 (require 'init-lisp)
 (require 'init-markup)
-;; (require 'init-tex)
 (require 'init-cc-mode)
 (require 'init-coq)
 (require 'init-caml)
-(require 'init-python)
-(require 'init-ruby)
-(require 'init-nxml)
 (require 'init-sh)
 
 ;; ------------------------------------------------------------------------------
@@ -62,7 +57,6 @@
 (setq custom-file "~/.emacs.d/custom.el")
 (load custom-file)
 ;; (require 'time-date)
-;; (load-persistent-scratch)
 ;; (server-start)
 (setenv "LC_CTYPE" "zh_CN.UTF-8")
 (recentf-open-files)
