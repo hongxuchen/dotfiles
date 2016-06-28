@@ -1,0 +1,19 @@
+[edit]
+C-w: kill-prev-word
+C-h: delete-prev-char
+C-b: prev-char
+C-f: next-char
+M-l: lowercase-word
+M-u: uppercase-word
+M-d: delete-next-word
+C-z: undo
+C-q: prev-word
+C-o: next-word
+
+
+[read-line]
+M-p: history-prev
+M-n: history-next
+C-i: complete
+C-n: complete-bar-next
+C-j: accept

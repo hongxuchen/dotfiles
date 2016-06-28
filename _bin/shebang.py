@@ -17,7 +17,8 @@ ext_app_dict = {
     '.sh': 'bash',
     '.zsh': 'zsh',
     '.rb': 'ruby',
-    '.applescript': 'osascript'
+    '.applescript': 'osascript',
+    '.ml': 'ocaml'
 }
 
 

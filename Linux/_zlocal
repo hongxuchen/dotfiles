@@ -109,6 +109,10 @@ export CLASSPATH=${JPF_SYMBC_BUILD}/jpf-symbc.jar:${JPF_SYMBC_BUILD}/jpf-symbc-c
 export CLASSPATH=${ANDROID_HOME}/extras/android/support/v7/appcompat/libs/android-support-v7-appcompat.jar:${ANDROID_HOME}/extras/android/support/v7/appcompat/libs/android-support-v4.jar:${ANDROID_HOME}/platforms/android-21/android.jar:${CLASSPATH}
 export DAIKONDIR=${MY_ROOT}/daikon_root/daikon-5.2.12
 
+alias apktool="java -jar ${HOME}/Android/Apktool/brut.apktool/apktool-cli/build/libs/apktool-cli.jar"
+alias smali="java -jar ~/Android/smali/smali.jar"
+alias baksmali="java -jar ~/Android/smali/baksmali.jar"
+
 ## Python
 export CHILKAT=${MY_ROOT}/android/chilkat-9.5.0-python-2.7-x86_64-linux
 export PYTHONPATH=
@@ -132,7 +136,7 @@ export PATH=${MY_KLEE_INSTALL}/bin:$PATH
 export PATH=${MY_HOME_BIN}:${MY_HOME_BIN}/git-scripts:${MY_HOME_BIN}/Linux:~/.local/bin:$PATH
 export PATH=${GOPATH}/bin:$PATH
 export PATH=${MY_KINT_BIN}:$PATH
-export PATH=${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:$PATH
+export PATH=${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/build-tools/23.0.3:$PATH
 export PATH=/usr/local/heroku/bin:$PATH
 # export PATH=${HOME}/tools/android-studio/bin:$PATH
 export PATH=~/RESEARCH/dex2jar-2.0:$PATH
