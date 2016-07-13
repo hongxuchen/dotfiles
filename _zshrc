@@ -79,3 +79,5 @@ export OPAMKEEPBUILDDIR=true
 export OCAMLPARAM="_,bin-annot=1"
 # . /home/hongxu/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 # eval `opam config env`
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
