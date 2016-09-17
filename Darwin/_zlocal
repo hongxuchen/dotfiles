@@ -14,6 +14,7 @@ export MANPATH="${MY_OPAM}/man:"
 export PERL5LIB="${MY_OPAM}/lib/perl5"
 export OCAML_TOPLEVEL_PATH="${MY_ROOT}/ib/toplevel"
 export MY_OCAML_BIN_PATH="${MY_OPAM}/bin"
+export MY_CABAL_PATH="${HOME}/.cabal"
 
 export MY_ANDROID_SDK=${HOME}/Library/Android
 export MY_BREW_PREFIX=/usr/local
@@ -28,6 +29,7 @@ export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
 export PATH=${MY_WLLVM_ROOT}:$PATH
 export PATH=${GOPATH}/bin:$PATH
 export PATH=${MY_OCAML_BIN_PATH}:$PATH
+export PATH=${MY_CABAL_PATH}/bin:$PATH
 # export PATH=/Applications/CoqIDE_8.4pl5.app/Contents/Resources/bin:$PATH
 
 export LD_LIBRARY_PATH=

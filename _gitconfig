@@ -35,6 +35,7 @@
 	pager = less
 	whitespace = trailing-space,space-before-tab
 	autocrlf = input
+	quotepath = false
 
 [alias]
 	# ls
