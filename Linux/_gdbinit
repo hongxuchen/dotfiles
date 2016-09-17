@@ -86,13 +86,13 @@ define hook-stop
 end
 
 # pretty STL printer
-python
-import sys
-from os import path
-sys.path.insert(0, path.join(path.expanduser('~'), '.gdb/gdb_printer'))
-from libstdcxx.v6.printers import register_libstdcxx_printers
-register_libstdcxx_printers (None)
-sys.path.insert(0, path.join(path.expanduser('~'), 'tools/Boost-Pretty-Printer'))
-from boost.printers import register_printer_gen
-register_printer_gen(None)
-end
+# python
+# import sys
+# from os import path
+# sys.path.insert(0, path.join(path.expanduser('~'), '.gdb/gdb_printer'))
+# from libstdcxx.v6.printers import register_libstdcxx_printers
+# register_libstdcxx_printers (None)
+# sys.path.insert(0, path.join(path.expanduser('~'), 'tools/Boost-Pretty-Printer'))
+# from boost.printers import register_printer_gen
+# register_printer_gen(None)
+# end

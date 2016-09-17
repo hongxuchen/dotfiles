@@ -14,6 +14,7 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
     alias pycharm='nohup ~/tools/pycharm/bin/pycharm.sh &>/dev/null &'
     alias clion='nohup ~/tools/clion-IDE/bin/clion.sh &>/dev/null &'
     alias intellij='nohup ~/tools/intellij/bin/idea.sh &>/dev/null &'
+    alias isabelle='~/tools/Isabelle2016/Isabelle2016.run &disown'
     alias eclipse='nohup ~/tools/eclipse/eclipse &>/dev/null &'
     alias android-studio='nohup ~/tools/android-studio/bin/studio.sh &>/dev/null &'
     alias goagent="~/tools/goagent/local/goagent-gtk.py &>/dev/null &disown"
@@ -54,7 +55,7 @@ alias psmem10='ps -e -orss=,args= | sort -b -k1,1n| head -10'
 alias my_paths='echo -e ${PATH//:/\\n}'
 alias deleted_files='sudo lsof |grep "\(deleted\)"'
 
-alias sbt='command activator'
+# alias sbt='command activator'
 alias activator='JAVA_HOME=/usr/lib/jvm/java-8-oracle sbt'
 alias pom2sbt='mvn dependency:tree | grep "] +" | perl -pe '"'"'s/.*\s([\w\.\-]+):([\w\.\-]+):\w+:([\w\.\-]+):(\w+).*/libraryDependencies += "$1" % "$2" % "$3" % "$4" /'"'"' >build.sbt'
 

@@ -32,9 +32,9 @@ export PATH=/usr/bin:$PATH
 export CC=gcc
 export CXX=g++
 # cmake -GNinja "$SRC"
-cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Debug -GNinja "$SRC"
-ninja
-sudo ninja install
+cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Debug "$SRC"
+make -j12
+sudo make install
 # cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 "$SRC"
 # make -j$(nproc)
 # sudo make install

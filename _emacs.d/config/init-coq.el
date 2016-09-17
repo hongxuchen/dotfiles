@@ -6,4 +6,5 @@
 (setq company-coq-live-on-the-edge t) 
 (add-hook 'proof-ready-for-assistant-hook (lambda () (show-paren-mode 0)))
 (eval-after-load 'coq-mode '(show-paren-mode 0))
+(setq proof-splash-enable nil)
 (provide 'init-coq)

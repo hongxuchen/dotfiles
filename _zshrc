@@ -72,7 +72,7 @@ fi
 unset ZSH
 
 # load executable
-(pgrep -x rdm >/dev/null || rdm --no-comment &>/tmp/rdm_answer &)
+# (pgrep -x rdm >/dev/null || rdm --no-comment &>/tmp/rdm_answer &)
 
 # OPAM configuration
 export OPAMKEEPBUILDDIR=true
