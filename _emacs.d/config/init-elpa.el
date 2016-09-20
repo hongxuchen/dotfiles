@@ -29,11 +29,15 @@
 
 (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
-(add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
+(add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
 ;; ------------------------------------------------------------------------------
 ;; general
 ;; ------------------------------------------------------------------------------
+
+(require 'use-package)
+(require-package 'use-package)
 
 (require-package 'session)
 (require-package 'smex)
@@ -115,6 +119,19 @@
 
 ;; shell
 (require-package 'flymake-shell) ;; require flymake-easy
+
+;;; scala
+(require 'ensime)
+(use-package ensime  :pin melpa-stable)
+(use-package sbt-mode
+  :commands sbt-start sbt-command
+  :config
+  ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
+  ;; allows using SPACE when in the minibuffer
+  (substitute-key-definition
+   'minibuffer-complete-word
+   'self-insert-command
+   minibuffer-local-completion-map))
 
 ;; python
 (require-package 'elpy)
