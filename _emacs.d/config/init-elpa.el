@@ -36,8 +36,8 @@
 ;; general
 ;; ------------------------------------------------------------------------------
 
-(require 'use-package)
 (require-package 'use-package)
+(require 'use-package)
 
 (require-package 'session)
 (require-package 'smex)
@@ -121,6 +121,7 @@
 (require-package 'flymake-shell) ;; require flymake-easy
 
 ;;; scala
+(require-package 'ensime)
 (require 'ensime)
 (use-package ensime  :pin melpa-stable)
 (use-package sbt-mode

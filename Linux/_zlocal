@@ -126,6 +126,9 @@ export NODE_PATH=${MY_BREW_PREFIX}/lib/node_modules/
 # golang
 export GOPATH=~/gocode
 
+# cabal home
+export MY_CABAL=~/.cabal
+
 # PLAY_HOME=~/tools/play-2.0
 export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 export PATH=${MY_BREW_PREFIX}/bin:$PATH
@@ -142,12 +145,18 @@ export PATH=/usr/local/heroku/bin:$PATH
 export PATH=~/RESEARCH/dex2jar-2.0:$PATH
 export PATH=~/src/stellar/stellar-core/build/src:$PATH
 export PATH=${MY_OCAML_BIN_PATH}:$PATH
+export PATH=${MY_CABAL}/bin:$PATH
 # export PATH=${MY_ROOT}/android/src:$PATH
 # export PATH=${PLAY_HOME}:$PATH
 # ${LATTE_ROOT}/bin:
 # export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
 # export PATH=${MY_PIN_ROOT}:$PATH
 # export PATH=~/tools/FSharp-2.0.0.0/bin:$PATH
+
+# conscript
+export CONSCRIPT_HOME="$HOME/.conscript"
+export CONSCRIPT_OPTS="-XX:MaxPermSize=512M -Dfile.encoding=UTF-8"
+export PATH=$CONSCRIPT_HOME/bin:$PATH
 
 ##############################################################################
 # for wllvm
