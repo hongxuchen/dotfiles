@@ -149,6 +149,9 @@
 (require-package 'hl-sexp)
 (require-package 'paredit)
 
+;;; haskell
+(require-package 'intero)
+
 (require-package 's)
 
 (byte-recompile-directory "~/.emacs.d/site-lisp" 0)

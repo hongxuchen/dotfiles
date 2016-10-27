@@ -49,6 +49,7 @@
 (require 'init-cc-mode)
 (require 'init-coq)
 (require 'init-caml)
+(require 'init-hs)
 (require 'init-sh)
 
 ;; ------------------------------------------------------------------------------

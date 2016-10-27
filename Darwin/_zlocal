@@ -32,6 +32,9 @@ export PATH=${MY_OCAML_BIN_PATH}:$PATH
 export PATH=${MY_CABAL_PATH}/bin:$PATH
 # export PATH=/Applications/CoqIDE_8.4pl5.app/Contents/Resources/bin:$PATH
 
+MY_CARGO=${HOME}/.cargo
+export PATH=${MY_CARGO}/bin:$PATH
+
 export LD_LIBRARY_PATH=
 export LD_LIBRARY_PATH=/usr/local/opt/llvm/lib
 
