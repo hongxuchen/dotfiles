@@ -13,13 +13,15 @@
 --
 
 -- :set +r
--- :set -fwarn-unused-binds -fwarn-unused-imports
+-- :set -fwarn-unused-binds -fwarn-unused-imports -fno-warn-type-defaults
+
 :set editor vi
-:set -XOverloadedStrings -XMonadComprehensions -XNoMonomorphismRestriction
+:set -XOverloadedStrings -XMonadComprehensions -XNoMonomorphismRestriction -XTypeInType
+:set -fobject-code -fbyte-code
 :set +t
 :set +m
 
-:load ~/.ghc.hs
+-- :load ~/.ghc.hs
 
 -- Hoogle (cabal install hoogle && hoogle data)
 :def hoogle     \str -> return $ ":! hoogle search --color --count=10 " ++ show str
@@ -30,7 +32,7 @@
 :set prompt2 "→"
 
  -- Pretty printing of it
- import IPPrint.Colored
- :set -interactive-print=IPPrint.Colored.cpprint
- :def cp (\_ -> return ":set -interactive-print=IPPrint.Colored.cpprint")
- :def ncp (\_ -> return ":set -interactive-print=print")
+ -- import IPPrint.Colored
+ -- :set -interactive-print=IPPrint.Colored.cpprint
+ -- :def cp (\_ -> return ":set -interactive-print=IPPrint.Colored.cpprint")
+ -- :def ncp (\_ -> return ":set -interactive-print=print")

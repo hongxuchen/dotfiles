@@ -36,6 +36,7 @@
 	whitespace = trailing-space,space-before-tab
 	autocrlf = input
 	quotepath = false
+	excludesfile = ~/.config/git/ignore
 
 [alias]
 	# ls
