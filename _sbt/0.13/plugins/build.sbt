@@ -10,6 +10,8 @@ addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-M14")
 
 addSbtPlugin("ch.epfl.scala" % "sbt-scalafix" % "0.1.0")
 
+addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.2.0")
+
 // if (sys.props("java.version").startsWith("1.6"))
 //   addSbtPlugin("org.ensime" % "sbt-ensime" % "1.0.0")
 // else
