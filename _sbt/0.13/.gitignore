@@ -1,3 +1,4 @@
 target/
+templates/
 *.class
 *.cache

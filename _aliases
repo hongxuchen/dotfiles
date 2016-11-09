@@ -35,6 +35,7 @@ if [[ $OSTYPE == "darwin"* ]] || [[ $OSTYPE == "freebsd"* ]]; then
         alias my_ubuntu64='cd ~/VirtualBox\ VMs/ubuntu && vagrant up && vagrant ssh --command "tmux"'
         alias my_ubuntu32='cd ~/VirtualBox\ VMs/32ubuntu && vagrant up && vagrant ssh --command "tmux"'
         alias my_installed_app='mdfind kMDItemContentTypeTree=com.apple.application-bundle -onlyin /'
+        alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs.sh -nw'
     fi
 fi
 
