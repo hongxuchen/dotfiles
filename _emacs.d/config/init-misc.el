@@ -1,5 +1,5 @@
 (setq user-full-name "Hongxu Chen"
-      user-mail-address "leftcopy.chx@gmail.com")
+      user-mail-address "hongxuchen1989@gmail.com")
 
 ;; prompt related
 ;; used for emacs daemon

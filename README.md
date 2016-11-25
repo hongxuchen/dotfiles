@@ -31,7 +31,7 @@ It is suggested to close other applications (e.g., google-chrome, emacs) when se
 you can `grep`or `ag`(see [the\_silver\_searcher](https://github.com/ggreer/the_silver_searcher)) and replace them.
 
 ```
-git ls-files *[^*.md] | xargs ag 'leftcopy.chx@gmail.com|hongxu' > /tmp/personal
+git ls-files *[^*.md] | xargs ag 'hongxuchen1989@gmail.com|hongxu' > /tmp/personal
 # open with Vim/Emacs to check the personal information and change them accordingly
 ```
 
