@@ -3,22 +3,20 @@
 import subprocess
 import time
 import sys
+import os
 
 project_list = [
-    # "/home/hongxu/RESEARCH/marple/build",
-    # "/home/hongxu/RESEARCH/buildbot/coreutils/obj",
-    "/home/hongxu/RESEARCH/llvm-git/obj",
-    # "/home/hongxu/RESEARCH/snippets_llvm/build",
-    "/home/hongxu/RESEARCH/llvm-3.4/obj",
-    "/home/hongxu/.builds/rtags/build",
-    "/home/hongxu/RESEARCH/klee/obj",
-    "/home/hongxu/RESEARCH/uclibc",
-    "/home/hongxu/RESEARCH/stp/obj",
-    "/home/hongxu/RESEARCH/Z3/src/build",
+    "~/RESEARCH/llvm-git/obj",
+    "~/RESEARCH/llvm-3.4/obj",
+    "~/.builds/rtags/build",
+    "~/RESEARCH/klee/obj",
+    "~/RESEARCH/uclibc",
+    "~/RESEARCH/stp/obj",
+    "~/RESEARCH/Z3/src/build",
 ]
 
 for project in project_list:
-    cmd_str = "rc -J {:s}".format(project)
+    cmd_str = "rc -J {:s}".format(os.path.expanduser(project))
     print(cmd_str)
     try:
         subprocess.call(cmd_str.split(" "))

@@ -132,12 +132,7 @@
       '(
         "/usr/include"
         "/usr/local/include"
-        "/usr/include/c++/4.9"
-        "/usr/include/x86_64-linux-gnu/c++/4.9"
-        "/home/hongxu/.linuxbrew/include"
-        "/usr/include/x86_64-linux-gnu"
-        "/home/hongxu/RESEARCH/klee/src/include"
-        "/home/hongxu/RESEARCH/llvm-git/obj/Release+Asserts/bin/../lib/clang/3.6.0/include"
+        ;; TODO
         ))
 
 (defun my-tex-mode-ac-setup ()

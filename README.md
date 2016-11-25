@@ -31,7 +31,7 @@ It is suggested to close other applications (e.g., google-chrome, emacs) when se
 you can `grep`or `ag`(see [the\_silver\_searcher](https://github.com/ggreer/the_silver_searcher)) and replace them.
 
 ```
-git ls-files|xargs ag 'leftcopy.chx@gmail.com|hongxu' > /tmp/personal
+git ls-files *[^*.md] | xargs ag 'leftcopy.chx@gmail.com|hongxu' > /tmp/personal
 # open with Vim/Emacs to check the personal information and change them accordingly
 ```
 
@@ -55,6 +55,8 @@ Apart from [editors](http://en.wikipedia.org/wiki/Editor_war)' plugin managers (
 1. **Mac OS X** -- [homebrew](http://brew.sh/)
 
     - homebrew should be used anywhere if possible, otherwise it's better to compile from source code yourself.
+
+1. **Haskell** -- [https://docs.haskellstack.org/en/stable/README]
 
 1. **Python** -- [pip/pip3](https://pip.pypa.io/en/latest/)
 
@@ -181,17 +183,12 @@ Mac Specific
 
 - [**slate**](https://github.com/jigish/slate)(`~/.slate`)
 
+Submit an Issue
+===============
 
-Known Issues
-============
-
-- `~/.config` cannot be modified when google-chrome is running (close *all* applications before `install.py`)
-- some keys are not right in emacs-nox (seems keyboard sensitive, don't know why)
-- Emacs brackets doesn't autopair for some cases in cpp
-- Emacs `tuareg-mode` (ocaml) conflicts with `show-parent-mode` (a known bug).
-- when `git` is absent, have to press Enter twice (you have installed `git`, haven't you?!)
+Report [here](https://github.com/HongxuChen/dotfiles/issues).
 
 Bonus
 =====
 
-- You may find that [severalsbt awesomeness](https://github.com/sindresorhus/awesome) on github helpful.
+- You may find that [several awesomeness](https://github.com/sindresorhus/awesome) on github helpful.
