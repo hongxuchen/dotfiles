@@ -173,6 +173,9 @@ export WLLVM_OUTPUT=WARNING
 # ocaml
 # export CAML_LD_LIBRARY_PATH=${HOME}.opam/system/lib/llvm:${CAML_LD_LIBRARY_PATH}
 
+# intellij
+export IDEA_VM_OPTIONS=${HOME}/.idea64.vmoptions
+
 
 ##############################################################################
 # MISC
