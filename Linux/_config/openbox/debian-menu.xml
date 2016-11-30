@@ -469,21 +469,6 @@
       <action name='Restart'><execute>/usr/bin/openbox</execute></action>
     </item>
   </menu>
-  <menu id='/Debian/Windows Applications' label='Windows Applications'>
-    <item label='Internet Explorer' icon='/home/hongxu/.cxoffice/QQ_International_1.6/windata/cxmenu/icons/hicolor/32x32/apps/FB4C_iexplore.0.png'>
-      <action name='Execute'><execute>&quot;/home/hongxu/.cxoffice/QQ_International_1.6/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Internet+Explorer.lnk&quot;</execute></action>
-    </item>
-    <menu id='/Debian/Windows Applications/Tencent Software' label='Tencent Software'>
-      <menu id='/Debian/Windows Applications/Tencent Software/QQ International' label='QQ International'>
-        <item label='Tencent QQ International' icon='/home/hongxu/.cxoffice/QQ_International_1.6/windata/cxmenu/icons/hicolor/32x32/apps/19E1_NewShortcut1_EDD4ABB1C1B34A9D84CE33FBFB5D3639.0.png'>
-          <action name='Execute'><execute>&quot;/home/hongxu/.cxoffice/QQ_International_1.6/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Tencent+Software/QQ+International/Tencent+QQ+International.lnk&quot;</execute></action>
-        </item>
-        <item label='Uninstall QQ International' icon='/home/hongxu/.cxoffice/QQ_International_1.6/windata/cxmenu/icons/hicolor/32x32/apps/5AD0_NewShortcut2_E88611396FF84AFCB2EE5C1594058E02.0.png'>
-          <action name='Execute'><execute>&quot;/home/hongxu/.cxoffice/QQ_International_1.6/desktopdata/cxmenu/StartMenu.C^5E3A_users_crossover_Start^2BMenu/Programs/Tencent+Software/QQ+International/Uninstall+QQ+International.lnk&quot;</execute></action>
-        </item>
-      </menu>
-    </menu>
-  </menu>
 </menu>
 
 </openbox_menu>

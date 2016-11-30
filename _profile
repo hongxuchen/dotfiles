@@ -20,7 +20,7 @@ export LC_MEASUREMENT="en_US.UTF-8"
 export LC_IDENTIFICATION="en_US.UTF-8"
 # export TZ='Asia/Shanghai'
 
-export EMAIL="leftcopy.chx@gmail.com"
+export EMAIL="hongxuchen1989@gmail.com"
 
 # export XIM=fcitx
 # export XIM_PROGRAM=fcitx

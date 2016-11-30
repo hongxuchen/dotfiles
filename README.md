@@ -1,7 +1,14 @@
-> This repository contains my dotfiles settings for Linux (Ubuntu 16.04 LTS) and Mac OS X(10.11), also a bit FreeBSD(10.0);
+Synopsis
+========
+
+This repository contains my dotfiles settings for Linux (Ubuntu 16.04 LTS) and Mac OS X(10.12), also a bit FreeBSD (10.0);
 See [Windots](https://github.com/HongxuChen/Windots) for Windows settings.
 
-Installation
+LICENSE
+=======
+[MIT License](https://github.com/HongxuChen/dotfiles/tree/master/LICENSE).
+
+Setup
 ============
 
   ```bash
@@ -23,23 +30,22 @@ Installation
 
   ```
 
-* Use `install.py` to setup the environment; basically this simplily adds symlinks to `$HOME` directory as well as backups your original settings when existing.
-It's better to *dryrun* it with `install.py -n` (more details with `install.py -h`) firstly to see the effects.
-It is suggested to close other applications (e.g., google-chrome, emacs) when setting up(especially on Linux).
+* Use `install.py` to setup the environment, which merely adds symlinks to `$HOME` directory as well as backups your original settings (if they do exist).
+It's better to *dryrun* it beforehand with `install.py -n` (more details with `install.py -h`) to see the effects.
+It is suggested to close other applications (e.g., google-chrome, emacs) during setup(especially on Linux).
 
-* Some of my personal information should be changed,
+* Some of my personal information **should be** changed,
 you can `grep`or `ag`(see [the\_silver\_searcher](https://github.com/ggreer/the_silver_searcher)) and replace them.
 
-```
-git ls-files|xargs ag 'leftcopy.chx@gmail.com|hongxu' > /tmp/personal
-# open with Vim/Emacs to check the personal information and change them accordingly
-```
+  ```
+  git ls-files *[^*.md] | xargs ag 'hongxuchen1989@gmail.com|hongxu' > /tmp/personal
+  # open with Vim/Emacs to check the personal information and change them accordingly
+  ```
 
+* Extra fonts are available [on Dropbox](https://www.dropbox.com/sh/1er7al26qjsjdeg/AACoU5BQ6Ijq_vnBrqLemrRwa?dl=0). Caveats: they are not all free fonts and not under MIT license.
 
-* Additional fonts are available [on Dropbox](https://www.dropbox.com/sh/1er7al26qjsjdeg/AACoU5BQ6Ijq_vnBrqLemrRwa?dl=0).
-
-    - can be used by urxvt, etc
-    - note: on Debian derivatives, make sure urxvt is from `rxvt-unicode-256color`
+    - can be used by urxvt, etc;
+    - note: on Debian derivatives, make sure urxvt is from `rxvt-unicode-256color`;
     - xterm is not recommended as it has poor support for unicode characters.
 
 
@@ -50,11 +56,15 @@ Apart from [editors](http://en.wikipedia.org/wiki/Editor_war)' plugin managers (
 
 1. **Debian** -- [debian package management](https://www.debian.org/doc/manuals/debian-faq/ch-pkgtools.en.html), [linuxbrew](https://github.com/Homebrew/linuxbrew)
 
-    - linuxbrew is less mature than homebrew, however can be used as an alternative for deb packages (ONLY when there are *no conflicts*).
+    - linuxbrew is less mature than homebrew and can potentially cause compilation and linkage errors when buiding tools on your own (e.g., `pkg-config`, etc.).
 
 1. **Mac OS X** -- [homebrew](http://brew.sh/)
 
-    - homebrew should be used anywhere if possible, otherwise it's better to compile from source code yourself.
+    - homebrew should be used whenever possible, otherwise it's better to build from source code yourself;
+    - use `brew doctor` to see potential issues;
+    - `brew cask` is not recommended due to the issues caused by `check for updates` in Mac apps.
+
+1. **Haskell** -- [Stack](https://docs.haskellstack.org/en/stable/README) and [Cabal](https://www.haskell.org/cabal/)
 
 1. **Python** -- [pip/pip3](https://pip.pypa.io/en/latest/)
 
@@ -71,14 +81,14 @@ Settings
 Fundamentals
 ------------
 
-1. **Vim**(managed with [vundle](https://github.com/gmarik/Vundle.vim))(`~/.vimrc`, `~/.vim`)
+1. **Vim**(managed by [vundle](https://github.com/gmarik/Vundle.vim))(`~/.vimrc`, `~/.vim`)
 
 1. **Emacs**(24+, based on [puremell](https://github.com/purcell/emacs.d)'s settings,
-managed with [package.el](http://www.emacswiki.org/emacs/ELPA))(`~/.emacs.d`)
+managed by [package.el](http://www.emacswiki.org/emacs/ELPA))(`~/.emacs.d`)
 
-    - start emacs, elisp extensions should be installed automatically for the first time
-    - Configured with [company-mode](http://company-mode.github.io/) and [auto-complete](https://github.com/auto-complete/auto-complete) for completions
-    - C++ development is fully configured using [rtags](https://github.com/Andersbakken/rtags)
+    - start emacs, elisp extensions should be installed automatically for the first time;
+    - Configured with [company-mode](http://company-mode.github.io/) and [auto-complete](https://github.com/auto-complete/auto-complete) for completions however the former is preferred;
+    - C++ development is fully configured using [rtags](https://github.com/Andersbakken/rtags) (TODO, `homebrew` seems already containing it however depending on a special version of llvm);
     - note: there are some configurations for org and an additional *git submodule* for [reavel.js](https://github.com/hakimel/reveal.js/) for org-reavel(although it's NOT advised to use that)
 
 1. [Zsh](http://www.zsh.org/)(modified from [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh))
@@ -96,7 +106,7 @@ managed with [package.el](http://www.emacswiki.org/emacs/ELPA))(`~/.emacs.d`)
 
 1. [**IPython**](http://ipython.org/)(especially for [sh](http://ipython.org/ipython-doc/dev/interactive/shell.html)/[nb](http://ipython.org/notebook.html) profile)(`~/.ipython/`)
 
-    - for **sh** profile (check command alias: `p_sh`), LOTS of packages are pre-imported(installed via `pip`)
+    - for **sh** profile (check command alias: `p_sh`), *lots* of packages are pre-imported(installed via `pip`)
     - ipython-notebook (check command alias: `p_nb`) is based on **sh** profile, a few [extensions](https://github.com/ipython-contrib/IPython-notebook-extensions/wiki) are in `~/.ipython/extensions/`
 
 1. [**sbt**](http://www.scala-sbt.org/)(`~/.sbt`, `~/.sbtrc`)
@@ -135,13 +145,11 @@ Extras
 Linux Specific
 --------------
 
-They are *not* exactly linux-only, but *I* tend not to use them on Mac. They lie inside [Linux/](https://github.com/HongxuChen/dotfiles/tree/master/Linux) and are also symlinked to `$HOME` by `install.py`. (Ditto for files in [Darwin/](https://github.com/HongxuChen/dotfiles/tree/master/Darwin), which is supposed to be Mac specific.)
+They are *not* exactly linux only, but *I* tend not to use them on Mac OSX. They lie inside [Linux/](https://github.com/HongxuChen/dotfiles/tree/master/Linux) and are also symlinked to `$HOME` by `install.py`. (Ditto for files in [Darwin/](https://github.com/HongxuChen/dotfiles/tree/master/Darwin), which is supposed to be Mac specific.)
 
 - **gdb**(`~/.gdbinit`, `~/.gdb`)
 
-    - gdb is replaced with [lldb](http://lldb.llvm.org) on newer Mac OSX
-
-- [**lftp**](http://lftp.yar.ru/)(`~/.lftp/`)
+    - gdb is superseded by [lldb](http://lldb.llvm.org) on newer Mac OSX.
 
 - **X11** settings
     - `~/.Xresources`: for XTerm, URxvt, Emacs; should run `xrdb -load ~/.Xresources` firstly
@@ -162,8 +170,8 @@ They are *not* exactly linux-only, but *I* tend not to use them on Mac. They lie
 
 - **bash**(`~/.bashrc`)
 
-    - share `~/.profile`, `~/.aliases` with zsh
-    - used when there's no other choice
+    - share `~/.profile`, `~/.aliases` with zsh;
+    - used when there's no alternatives.
 
 - [**Freedesktop**](http://www.freedesktop.org/wiki/) configs(`~/.config/`)
 
@@ -176,22 +184,17 @@ Mac Specific
 
 - **GVim**(`~/.gvimrc`)
 
-    - for brewed [**MacVim**](https://code.google.com/p/macvim/)
-    - Linux Vim doesn't need GUI
+    - for brewed [**MacVim**](https://code.google.com/p/macvim/);
+    - Linux Vimers doesn't need GUI :smile:.
 
 - [**slate**](https://github.com/jigish/slate)(`~/.slate`)
 
+Submit an Issue
+===============
 
-Known Issues
-============
-
-- `~/.config` cannot be modified when google-chrome is running (close *all* applications before `install.py`)
-- some keys are not right in emacs-nox (seems keyboard sensitive, don't know why)
-- Emacs brackets doesn't autopair for some cases in cpp
-- Emacs `tuareg-mode` (ocaml) conflicts with `show-parent-mode` (a known bug).
-- when `git` is absent, have to press Enter twice (you have installed `git`, haven't you?!)
+Report [here](https://github.com/HongxuChen/dotfiles/issues).
 
 Bonus
 =====
 
-- You may find that [severalsbt awesomeness](https://github.com/sindresorhus/awesome) on github helpful.
+- You may find that [several awesomeness](https://github.com/sindresorhus/awesome) on github helpful.

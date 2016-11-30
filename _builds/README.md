@@ -1,4 +1,0 @@
-- rtags
-- bear
-- folly
-- rapidjson

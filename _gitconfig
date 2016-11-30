@@ -3,7 +3,7 @@
 
 [user]
 	name = HongxuChen
-	email = leftcopy.chx@gmail.com
+	email = hongxuchen1989@gmail.com
 
 [color]
 	ui = true
@@ -36,6 +36,7 @@
 	whitespace = trailing-space,space-before-tab
 	autocrlf = input
 	quotepath = false
+	excludesfile = ~/.config/git/ignore
 
 [alias]
 	# ls
@@ -88,7 +89,7 @@
 [diff "exif"]
 	textconv = exiftool
 [github]
-	user = leftcopy.chx@gmail.com
+	user = hongxuchen1989@gmail.com
 [clangFormat]
 	style = Google
 [web]
