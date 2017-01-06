@@ -176,6 +176,7 @@ export WLLVM_OUTPUT=WARNING
 # intellij
 export IDEA_VM_OPTIONS=${HOME}/.idea64.vmoptions
 
+eval $(opam config env)
 
 ##############################################################################
 # MISC

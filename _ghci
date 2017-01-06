@@ -1,38 +1,50 @@
---  vim: set ft=haskell ts=4 sw=2 tw=0 et :
--- import qualified IPPrint
--- import qualified Language.Haskell.HsColour as HsColour
--- import qualified Language.Haskell.HsColour.Colourise as HsColour
--- import qualified Language.Haskell.HsColour.Output as HsColour
- 
--- let myColourPrefs = HsColour.defaultColourPrefs { HsColour.conid = [HsColour.Foreground HsColour.Yellow, HsColour.Bold], HsColour.conop = [HsColour.Foreground HsColour.Yellow], HsColour.string = [HsColour.Foreground HsColour.Green], HsColour.char = [HsColour.Foreground HsColour.Cyan], HsColour.number = [HsColour.Foreground HsColour.Red, HsColour.Bold], HsColour.layout = [HsColour.Foreground HsColour.White], HsColour.keyglyph = [HsColour.Foreground HsColour.White] }
- 
--- let myPrint :: (Show a) => a -> IO (); myPrint = putStrLn . HsColour.hscolour (HsColour.TTYg HsColour.XTerm256Compatible) myColourPrefs False False "" False . IPPrint.pshow
- 
--- :set -interactive-print=myPrint
--- ------------------------------------------------------------------------------
---
+:set -XOverloadedStrings
+:set -XMonadComprehensions
+:set -XNoMonomorphismRestriction
+:set -XTypeInType
+:set -XQuasiQuotes
+:set -XTupleSections
+:set -XDeriveDataTypeable
+:set -XDataKinds
+:set -XTypeFamilies
+:set -XGeneralizedNewtypeDeriving
+:set -XFlexibleInstances
+:set -XFlexibleContexts
+:set -XMultiParamTypeClasses
+:set -XFunctionalDependencies
+:set -XUndecidableInstances
+:set -XScopedTypeVariables
+:set -XBangPatterns
+:set -XTypeOperators
+:set -XConstraintKinds
+:set -XGADTs
+:set -XMultiWayIf
+:set -XPolyKinds
+:set -XStandaloneDeriving
+:set -XRankNTypes
+:set -XInstanceSigs
+:set -XMagicHash
+:set -XUnboxedTuples
+:set -XCPP
+:set -XDefaultSignatures
+:set -XTypeApplications
+:set -XUndecidableSuperClasses
+
+--------------------------------------------------------------------------------
 
 -- :set +r
 -- :set -fwarn-unused-binds -fwarn-unused-imports -fno-warn-type-defaults
-
 :set editor vi
-:set -XOverloadedStrings -XMonadComprehensions -XNoMonomorphismRestriction -XTypeInType
 :set -fobject-code -fbyte-code
 :set +t
-:set +m
-
--- :load ~/.ghc.hs
+:set -fbreak-on-exception
+-- :set +s
+-- :set +m
 
 -- Hoogle (cabal install hoogle && hoogle data)
 :def hoogle     \str -> return $ ":! hoogle search --color --count=10 " ++ show str
 :def hoogle-all \str -> return $ ":! hoogle search --color "            ++ show str
 :def doc        \str -> return $ ":! hoogle search --color --info "     ++ show str
 
-:set prompt "\ESC[33mλ → \ESC[m"
-:set prompt2 "→"
-
- -- Pretty printing of it
- -- import IPPrint.Colored
- -- :set -interactive-print=IPPrint.Colored.cpprint
- -- :def cp (\_ -> return ":set -interactive-print=IPPrint.Colored.cpprint")
- -- :def ncp (\_ -> return ":set -interactive-print=print")
+:set prompt "\ESC[33mλ \ESC[m"
+:set prompt2 "\ESC[32m→ \ESC[m"
