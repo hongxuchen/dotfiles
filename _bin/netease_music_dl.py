@@ -6,7 +6,6 @@ import sys
 import requests
 import urllib.request
 
-
 URL_PATTERN_ALBUM = 'http://music.163.com/api/album/{}'
 URL_PATTERN_PLAYLIST = 'http://music.163.com/api/playlist/detail?id={}'
 HEADERS = {

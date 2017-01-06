@@ -2,7 +2,7 @@
 	;  vim: set ft=gitconfig ts=4 sw=2 tw=0 et :
 
 [user]
-	name = HongxuChen
+	name = Hongxu
 	email = hongxuchen1989@gmail.com
 
 [color]
@@ -28,7 +28,7 @@
 	;       untracked = cyan
 
 [push]
-	default = tracking
+	default = current
 
 [core]
 	editor = vim -c ':normal gg'
@@ -49,6 +49,7 @@
     # up = !git pull --rebase --prune $@ && git submodule update --init --recursive
     # log
     lola = log --pretty=\"%Cred%h%Creset [%Cgreen%an %Creset %C(cyan)%ar%Creset]: %Cred%d%Creset %C(yellow)%s%Creset\" --graph --all
+    lol = log --pretty=\"%Cred%h%Creset [%Cgreen%an %Creset %C(cyan)%ar%Creset]: %Cred%d%Creset %C(yellow)%s%Creset\" --graph
     rct = log -8 HEAD
 	lm = !git log --decorate --pretty=format:'%an <%ae>' $1 | sort | uniq -c
 	# [c]ommit
