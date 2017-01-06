@@ -39,3 +39,5 @@ _PyCharm30
 /BAK/
 
 .idea
+
+node_modules/

@@ -34,6 +34,9 @@ export PATH=${MY_CABAL_PATH}/bin:$PATH
 
 MY_CARGO=${HOME}/.cargo
 export PATH=${MY_CARGO}/bin:$PATH
+export JAVA_HOME="$(/usr/libexec/java_home)"
+
+export MONO_GAC_PREFIX="/usr/local"
 
 export LD_LIBRARY_PATH=
 export LD_LIBRARY_PATH=/usr/local/opt/llvm/lib

@@ -153,7 +153,7 @@ def __dot_mark(finfo):
 def _dot_dryrun(finfo):
     mark = __dot_mark(finfo)
     rel_src = os.path.relpath(finfo.src, DST_DIR)
-    print(u"{0:<60} ->\t[{m}] {1:<50}".format(rel_src, finfo.dst, m=mark))
+    print(u"{0:<60} ⇒ \t[{m}] {1:<50}".format(rel_src, finfo.dst, m=mark))
 
 
 def _dot(finfo):

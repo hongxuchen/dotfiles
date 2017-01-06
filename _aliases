@@ -31,11 +31,12 @@ if [[ $OSTYPE == "darwin"* ]] || [[ $OSTYPE == "freebsd"* ]]; then
     if [[ $OSTYPE == "darwin"* ]]; then
         alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
         alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
-        alias my_lab="ssh hongxu@155.69.142.46 -t -- /bin/sh -c 'tmux has-session && exec tmux attach || exec tmux'"
+        alias my_lab="ssh hongxu@155.69.145.146 -t -- /bin/sh -c 'tmux has-session && exec tmux attach || exec tmux'"
         alias my_ubuntu64='cd ~/VirtualBox\ VMs/ubuntu && vagrant up && vagrant ssh --command "tmux"'
         alias my_ubuntu32='cd ~/VirtualBox\ VMs/32ubuntu && vagrant up && vagrant ssh --command "tmux"'
         alias my_installed_app='mdfind kMDItemContentTypeTree=com.apple.application-bundle -onlyin /'
         alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs.sh -nw'
+        alias mv='/bin/mv'
     fi
 fi
 

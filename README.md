@@ -4,6 +4,21 @@ Synopsis
 This repository contains my dotfiles settings for Linux (Ubuntu 16.04 LTS) and Mac OS X(10.12), also a bit FreeBSD (10.0);
 See [Windots](https://github.com/HongxuChen/Windots) for Windows settings.
 
+<!-- toc -->
+
+- [LICENSE](#license)
+- [Setup](#setup)
+- [Package managers](#package-managers)
+- [Settings](#settings)
+  * [Fundamentals](#fundamentals)
+  * [Extras](#extras)
+  * [Linux Specific](#linux-specific)
+  * [Mac Specific](#mac-specific)
+- [Submit an Issue](#submit-an-issue)
+- [Bonus](#bonus)
+
+<!-- tocstop -->
+
 LICENSE
 =======
 [MIT License](https://github.com/HongxuChen/dotfiles/tree/master/LICENSE).
@@ -12,9 +27,9 @@ Setup
 ============
 
   ```bash
-  # my dotfiles are located in ~/tools/dotfiles
   git clone --recursive git@github.com:HongxuChen/dotfiles.git /path/to/dotfiles
   # or https://github.com/HongxuChen/dotfiles.git
+  # my personal dotfiles folder is ~/tools/dotfiles
 
   ## close other applications for a safe/smooth installation
   cd /path/to/dotfiles
@@ -25,7 +40,7 @@ Setup
   # dryrun to see whether there are dangerous operations
   ./install.py -n
 
-  # actual installation
+  # install (if you're feeling lucky)
   ./install.py
 
   ```
@@ -38,8 +53,9 @@ It is suggested to close other applications (e.g., google-chrome, emacs) during 
 you can `grep`or `ag`(see [the\_silver\_searcher](https://github.com/ggreer/the_silver_searcher)) and replace them.
 
   ```
-  git ls-files *[^*.md] | xargs ag 'hongxuchen1989@gmail.com|hongxu' > /tmp/personal
-  # open with Vim/Emacs to check the personal information and change them accordingly
+  # grep my personal info (containing "hongxu") and open in Vi
+  git ls-files *[^*.md] | xargs ag 'hongxu' | vi -
+  # then you'd change these settings yourself
   ```
 
 * Extra fonts are available [on Dropbox](https://www.dropbox.com/sh/1er7al26qjsjdeg/AACoU5BQ6Ijq_vnBrqLemrRwa?dl=0). Caveats: they are not all free fonts and not under MIT license.
