@@ -2,3 +2,4 @@ target/
 templates/
 *.class
 *.cache
+templates/
