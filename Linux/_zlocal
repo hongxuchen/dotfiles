@@ -95,7 +95,7 @@ export LD_LIBRARY_PATH=${MY_LLVM_OBJ}/lib:${MY_STP_INSTALL}/lib:${LD_LIBRARY_PAT
 
 export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 
-export ANDROID_HOME="${HOME}/Android/sdk"
+export ANDROID_HOME="${HOME}/Android/a-sdk"
 ADK_VERSION=19
 ANDROID_CP=${ANDROID_HOME}/platforms/android-${ADK_VERSION}
 export ANDROID_SDK_HOME=${ANDROID_HOME}
@@ -139,7 +139,7 @@ export PATH=${MY_KLEE_INSTALL}/bin:$PATH
 export PATH=${MY_HOME_BIN}:${MY_HOME_BIN}/git-scripts:${MY_HOME_BIN}/Linux:~/.local/bin:$PATH
 export PATH=${GOPATH}/bin:$PATH
 export PATH=${MY_KINT_BIN}:$PATH
-export PATH=${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/build-tools/23.0.3:$PATH
+export PATH=${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/build-tools/25.0.2:$PATH
 export PATH=/usr/local/heroku/bin:$PATH
 # export PATH=${HOME}/tools/android-studio/bin:$PATH
 export PATH=~/RESEARCH/dex2jar-2.0:$PATH
