@@ -1,9 +1,9 @@
 interp.load.ivy("com.lihaoyi" %% "ammonite-shell" % ammonite.Constants.version)
-interp.load.ivy("org.typelevel" %% "cats-core" % "0.7.2")
-interp.load.ivy("org.scalaj" %% "scalaj-http" % "2.2.0")
-interp.load.ivy("com.lihaoyi" %% "upickle" % "0.4.0")
-interp.load.ivy("com.lihaoyi" %% "pprint" % "0.4.0")
-interp.load.ivy("com.chuusai" %% "shapeless" % "2.3.2")
+// interp.load.ivy("org.typelevel" %% "cats-core" % "0.7.2")
+// interp.load.ivy("org.scalaj" %% "scalaj-http" % "2.2.0")
+// interp.load.ivy("com.lihaoyi" %% "upickle" % "0.4.0")
+// interp.load.ivy("com.lihaoyi" %% "pprint" % "0.4.0")
+// interp.load.ivy("com.chuusai" %% "shapeless" % "2.3.2")
 @
 val shellSession = ammonite.shell.ShellSession()
 import shellSession._

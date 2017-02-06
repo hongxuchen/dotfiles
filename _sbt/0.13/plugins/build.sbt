@@ -24,3 +24,5 @@ addSbtPlugin("com.github.xuwei-k" % "sbt-class-diagram" % "0.1.7")
 //   addSbtPlugin("org.ensime" % "sbt-ensime" % "1.0.0")
 // else
 //   addSbtPlugin("org.ensime" % "sbt-ensime" % "1.9.1")
+
+// addSbtPlugin("com.softwaremill.clippy" % "plugin-sbt" % "0.4.1")
