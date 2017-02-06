@@ -16,6 +16,7 @@ export OCAML_TOPLEVEL_PATH="${MY_ROOT}/ib/toplevel"
 export MY_OCAML_BIN_PATH="${MY_OPAM}/bin"
 export MY_CABAL_PATH="${HOME}/.cabal"
 
+export ANDROID_HOME=/usr/local/opt/android-sdk
 export MY_ANDROID_SDK=${HOME}/Library/Android
 export MY_BREW_PREFIX=/usr/local
 export PATH=/usr/local/opt/coreutils/libexec/gnubin:/usr/sbin:/sbin:/usr/bin:/bin:/opt/local/bin

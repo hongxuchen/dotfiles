@@ -28,6 +28,9 @@ def change_shebang(fpath, target, chmod):
         sys.exit(1)
     if target is None:
         fext = os.path.splitext(fpath)[1]
+        if fext == '':
+            print("{}no extension found for [{}], treated as a shell script{}".format(colorama.Fore.YELLOW, fpath, colorama.Fore.RESET))
+            fext = ".sh"
         try:
             target = ext_app_dict[fext]
         except KeyError as e:

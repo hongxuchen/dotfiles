@@ -8,7 +8,7 @@ import subprocess
 
 version = "1.6"
 
-name = "_java2smaili"
+name = "_java2smali"
 
 dex_type = "apk"
 
@@ -39,7 +39,7 @@ def java2jar(d):
 
 
 def jar2smali(jar_file):
-    dex_file = os.path.abspath(name + "." + dex_type)
+    dex_file = name + "." + dex_type
     cmd = "dx --dex --output={} {}".format(dex_file, jar_file)
     run(cmd)
     require(os.path.exists(dex_file), "{} not generated".format(dex_file))
