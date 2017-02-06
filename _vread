@@ -118,6 +118,8 @@ set wildignore+=*.bak,*.exe,*.chm,*.png,*.jpg,*.jpeg,*.gif,*.avi,*.rm,*.rmvb
 set completeopt=longest,menuone
 set t_Co=256
 
+autocmd BufRead,BufNewfile *.smali set filetype=smali
+
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.scala set filetype=scala
 autocmd BufNewFile,BufReadPost *.sbt set filetype=scala
@@ -133,6 +135,7 @@ Bundle 'Cpp11-Syntax-Support'
 Bundle 'tpope/vim-vividchalk'
 Bundle 'rking/ag.vim'
 Bundle 'tfnico/vim-gradle'
+Bundle 'kelwin/vim-smali'
 
 Bundle 'endel/vim-github-colorscheme'
 Bundle 'altercation/vim-colors-solarized'
