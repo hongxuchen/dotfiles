@@ -49,4 +49,6 @@ export TEXMFHOME=~/.texmf
 
 export QT_STYLE_OVERRIDE=oxygen
 
+export GPGKEY=068BDAD6
+
 #~/.screenlayout/dual.sh

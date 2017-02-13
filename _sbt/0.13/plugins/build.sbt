@@ -6,7 +6,7 @@ addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.8.1")
 
 addSbtPlugin("com.scalapenos" % "sbt-prompt" % "1.0.0")
 
-addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-M14")
+addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-M15")
 
 addSbtPlugin("de.heikoseeberger" % "sbt-fresh" % "1.6.9")
 
