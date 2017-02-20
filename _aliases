@@ -14,7 +14,7 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
     alias pycharm='nohup ~/tools/pycharm/bin/pycharm.sh &>/dev/null &'
     alias clion='nohup ~/tools/clion-IDE/bin/clion.sh &>/dev/null &'
     alias intellij='nohup ~/tools/intellij/bin/idea.sh &>/dev/null &'
-    alias isabelle='~/tools/Isabelle2016/Isabelle2016.run &disown'
+    alias isabelle='~/tools/isabelle/Isabelle2016-1 &>/dev/null &disown'
     alias eclipse='nohup ~/tools/eclipse/eclipse &>/dev/null &'
     alias android-studio='nohup ~/tools/android-studio/bin/studio.sh &>/dev/null &'
     alias goagent="~/tools/goagent/local/goagent-gtk.py &>/dev/null &disown"
