@@ -1,5 +1,5 @@
 #jEdit's keymap myEmacs
-#Mon Feb 20 11:23:20 SGT 2017
+#Mon Feb 20 13:26:58 SGT 2017
 C/Include_Guard.shortcut=CA+i
 C/Toggle_Header_Source.shortcut=A+h
 C/Toggle_Header_Source.shortcut2=CA+h
@@ -119,6 +119,7 @@ join-lines.shortcut=C+x C+j
 last-macro.shortcut=C+m C+l
 layout-load.shortcut=ESCAPE l
 layout-save.shortcut=ESCAPE s
+line-comment.shortcut=A+SEMICOLON
 line-end.shortcut=END
 line-home.shortcut=HOME
 lucene.search-word-at-caret.shortcut=F6
@@ -130,10 +131,10 @@ markersets-toggle-marker.shortcut=C+m C+a
 match-bracket.shortcut=C+m C+m
 match-bracket.shortcut2=C+9
 name.shortcut=A+2
-navigator.back.shortcut=A+KP_LEFT
+navigator.back.shortcut=CA+COMMA
 navigator.back.shortcut2=A+LEFT
 navigator.combinedList.shortcut=C+x C+LEFT
-navigator.forward.shortcut=A+KP_RIGHT
+navigator.forward.shortcut=CA+PERIOD
 navigator.forward.shortcut2=A+RIGHT
 navigator.forwardList.shortcut=C+x C+RIGHT
 navigator.gotoLine.shortcut=C+g

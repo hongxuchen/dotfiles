@@ -58,7 +58,7 @@
 	undo = reset HEAD@{1}
 	# [r]emote
 	rp = !git push && git push --tags
-	rfp = !cd \"$(git rev-parse --show-toplevel)\" && git add -A && git commit --amend -C HEAD && git push -f
+    rfp = !cd \"$(git rev-parse --show-toplevel)\" && git add -A && git commit --amend --date=\"$(date -R)\" -C HEAD && git push -f
 	rup = !cd \"$(git rev-parse --show-toplevel)\" && git add -A && git commit && git push -u
 	rrr = !cd \"$(git rev-parse --show-toplevel)\" && git add -A && git commit -m \"REGULAR update\" && git push -u
 	# [s]ubmodule
