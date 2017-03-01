@@ -82,14 +82,15 @@ Bundle 'bling/vim-airline'
 " let g:airline#extensions#tabline#left_alt_sep = '|'
 
 Bundle 'tpope/vim-commentary'
-autocmd FileType lisp setl cms=;;%s
 autocmd FileType cmake setl cms=#%s
-autocmd FileType xdefaults setl cms=!%s
 autocmd FileType gdb setl cms=#%s
 autocmd FileType c setl cms=//%s
 autocmd FileType cpp setl cms=//%s
+autocmd FileType lisp setl cms=;;%s
+autocmd FileType scala setl cms=//%s
 autocmd FileType tablegen setl cms=//%s
 autocmd FileType unix setl cms=#%s
+autocmd FileType xdefaults setl cms=!%s
 
 " tagbar
 Bundle 'Tagbar'
