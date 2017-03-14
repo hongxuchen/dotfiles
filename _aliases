@@ -41,6 +41,8 @@ if [[ $OSTYPE == "darwin"* ]] || [[ $OSTYPE == "freebsd"* ]]; then
     fi
 fi
 
+alias scala="command scala -Dscala.color=true"
+
 # GNU-coreutils ls
 alias sudo='sudo -H '
 # alias scala='command scala -i ~/.scalarc'
