@@ -90,7 +90,7 @@
 [diff "exif"]
 	textconv = exiftool
 [github]
-	user = hongxuchen1989@gmail.com
+	user = hongxuchen
 [clangFormat]
 	style = Google
 [web]

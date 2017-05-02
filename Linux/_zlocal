@@ -129,8 +129,12 @@ export GOPATH=~/gocode
 # cabal home
 export MY_CABAL=~/.cabal
 
+# cargo home
+export MY_CARGO_HOME=~/.cargo
+
 # PLAY_HOME=~/tools/play-2.0
 export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+export PATH=${MY_CARGO_HOME}/bin:$PATH
 export PATH=${MY_BREW_PREFIX}/bin:$PATH
 export PATH=/usr/local/texlive/2014/Bin/x86_64-linux:$PATH
 export PATH=${MY_LLVM_OBJ}/bin:${MY_CLANG_TOOLS}/scan-build:${MY_CLANG_TOOLS}/scan-view:${MY_STP_INSTALL}/bin:$PATH

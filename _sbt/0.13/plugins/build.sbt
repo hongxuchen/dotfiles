@@ -10,9 +10,7 @@ resolvers ++= Seq(
 addSbtPlugin("com.scalapenos" % "sbt-prompt" % "1.0.0")
 
 addSbtPlugin("net.virtual-void" % "sbt-dependency-graph" % "0.8.1")
-addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-M15-2")
-
-addSbtPlugin("de.heikoseeberger" % "sbt-fresh" % "1.6.9")
+// addSbtPlugin("io.get-coursier" % "sbt-coursier" % "1.0.0-M15-2")
 
 addSbtPlugin("com.timushev.sbt" % "sbt-updates" % "0.2.0")
 
@@ -28,6 +26,7 @@ addSbtPlugin("ch.jodersky" % "sbt-jni" % "1.2.5")
 
 // addSbtPlugin("com.typesafe.sbt" % "sbt-git" % "0.8.5")
 // addSbtPlugin("com.orrsella" % "sbt-stats" % "1.0.5")
+// addSbtPlugin("com.github.hongxuchen" % "sbt-stats" % "0.0.1-SNAPSHOT")
 
 // if (sys.props("java.version").startsWith("1.6"))
 //   addSbtPlugin("org.ensime" % "sbt-ensime" % "1.0.0")
@@ -39,3 +38,7 @@ addSbtPlugin("com.softwaremill.clippy" % "plugin-sbt" % "0.5.2")
 addSbtPlugin("com.dwijnand" % "sbt-project-graph" % "0.2.0")
 
 addSbtPlugin("net.ruippeixotog" % "sbt-classfinder" % "0.1.1")
+
+addSbtPlugin("com.geirsson" % "sbt-scalafmt" % "0.6.8")
+
+addSbtPlugin("de.heikoseeberger" % "sbt-fresh" % "2.5.4")
