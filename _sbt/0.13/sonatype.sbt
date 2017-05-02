@@ -1,1 +1,1 @@
-/home/hongxu/tools/private/sonatype.sbt
+../../../private/sonatype.sbt
