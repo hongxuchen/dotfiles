@@ -148,7 +148,7 @@ let g:syntastic_mode_map = {
 let g:syntastic_ocaml_checkers = ['merlin']
 
 " YouCompleteMe
-Bundle 'Valloric/YouCompleteMe'
+" Bundle 'Valloric/YouCompleteMe'
 let g:ycm_path_to_python_interpreter='/usr/bin/python'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_add_preview_to_completeopt=1

@@ -1,4 +1,4 @@
-scalacOptions += "-P:clippy:colors=true"
+// scalacOptions += "-P:clippy:colors=true"
 import com.softwaremill.clippy.ClippySbtPlugin._
 clippyColorsEnabled := true
 

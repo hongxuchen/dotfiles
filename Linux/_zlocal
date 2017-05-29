@@ -18,26 +18,26 @@ alias my_ll36='_my_llvm_version 3.6;source ~/.zlocal'
 alias my_ll37='_my_llvm_version 3.7;source ~/.zlocal'
 alias my_ll38='_my_llvm_version 3.8;source ~/.zlocal'
 alias my_llgit='_my_llvm_version git;source ~/.zlocal'
-: ${MY_LLVM_VERSION:=3.7}
+: ${MY_LLVM_VERSION:=3.6}
 
 # alias clang=clang-${MY_LLVM_VERSION}
 # alias clang++=clang++-${MY_LLVM_VERSION}
 # alias opt=opt-${MY_LLVM_VERSION}
 
-MY_ROOT=~/RESEARCH
+MY_ROOT=~/FUSE
 MY_WLLVM_ROOT=${MY_ROOT}/wllvm
 MY_HOME_BIN=~/.bin
 
 LATTE_ROOT=${MY_ROOT}/LattE
 
 MY_LLVM_ROOT=${MY_ROOT}/llvm-${MY_LLVM_VERSION}
-MY_LLVM_ROOT=
+# MY_LLVM_ROOT=
 if [[ ${MY_LLVM_VERSION} == "git" ]];then
   MY_LLVM_OBJ=${MY_LLVM_ROOT}/obj
 else
-  MY_LLVM_OBJ=${MY_LLVM_ROOT}/obj/Release+Debug+Asserts
+  MY_LLVM_OBJ=${MY_LLVM_ROOT}/obj/Release+Asserts
 fi
-MY_LLVM_OBJ=${MY_LLVM_ROOT}/obj
+# MY_LLVM_OBJ=${MY_LLVM_ROOT}/obj
 MY_CLANG_TOOLS=${MY_LLVM_ROOT}/src/tools/clang/tools
 MY_STP_INSTALL=${MY_ROOT}/stp/install
 MY_KLEE_INSTALL=${MY_ROOT}/klee/install
@@ -72,8 +72,8 @@ export MY_OCAML_BIN_PATH="${MY_OPAM}/bin"
 # export CC=clang-3.7
 # export CXX=clang++-3.7
 
-export CPLUS_INCLUDE_PATH=
-export CPLUS_INCLUDE_PATH=${MY_BREW_PREFIX}/include:${CPLUS_INCLUDE_PATH}
+# export CPLUS_INCLUDE_PATH=
+export CPLUS_INCLUDE_PATH=${MY_BREW_PREFIX}/include
 export CPLUS_INCLUDE_PATH=~/qemu/panda/distorm/include:${CPLUS_INCLUDE_PATH}
 export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/include:${CPLUS_INCLUDE_PATH}
 export CPLUS_INCLUDE_PATH=/usr/lib/odb/x86_64-linux-gnu/include:${CPLUS_INCLUDE_PATH}

@@ -22,3 +22,4 @@ grilo-plugins/
 kactivitymanagerd/
 webkit/
 gegl-0.2/
+session_migration-*

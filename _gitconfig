@@ -73,6 +73,8 @@
 	db = !zsh -c 'diff -u <(git rev-list --first-parent "${1}") <(git rev-list --first-parent "${2:-HEAD}") | sed -ne \"s/^ //p\" | head -1' -
 	dv = !zsh -c 'git diff -w "$@" | view -'
     wdiff = diff --color-words
+    # tag
+    tagcommit = rev-list -n 1
 
 [diff]
 	tool = vimdiff
@@ -111,3 +113,5 @@
 	required = true
 [fetch]
 	prune = true
+[credential]
+	helper = cache
