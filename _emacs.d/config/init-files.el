@@ -10,6 +10,7 @@
                   '("\\.zip\\'" ".zip" "unzip"))
      (add-to-list 'dired-compress-file-suffixes
                   '("\\.rar\\'" ".rar" "unrar"))
+(setq openwith-associations '(("\\.pdf\\'" "open" (file))))
      (require 'openwith)
      (openwith-mode 1)
      ))

@@ -133,8 +133,6 @@ Bundle 'gmarik/vundle'
 Bundle 'Superbil/llvm.vim'
 Bundle 'Cpp11-Syntax-Support'
 Bundle 'tpope/vim-vividchalk'
-Bundle 'rking/ag.vim'
-Bundle 'tfnico/vim-gradle'
 Bundle 'kelwin/vim-smali'
 
 Bundle 'endel/vim-github-colorscheme'
