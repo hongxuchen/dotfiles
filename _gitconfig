@@ -114,4 +114,4 @@
 [fetch]
 	prune = true
 [credential]
-	helper = cache
+	helper = cache --timeout=9000

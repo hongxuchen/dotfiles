@@ -10,3 +10,4 @@ share/session_migration-ubuntu
 share/unity-settings-daemon/
 share/unity-webapps/
 share/zeitgeist/
+state/bap/

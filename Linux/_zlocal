@@ -30,8 +30,8 @@ MY_HOME_BIN=~/.bin
 
 LATTE_ROOT=${MY_ROOT}/LattE
 
-MY_LLVM_ROOT=${MY_ROOT}/llvm-${MY_LLVM_VERSION}
-# MY_LLVM_ROOT=
+# MY_LLVM_ROOT=${MY_ROOT}/llvm-${MY_LLVM_VERSION}
+MY_LLVM_ROOT=
 if [[ ${MY_LLVM_VERSION} == "git" ]];then
   MY_LLVM_OBJ=${MY_LLVM_ROOT}/obj
 else
@@ -84,7 +84,7 @@ export C_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}
 export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/tools/clang/include:${MY_LLVM_ROOT}/obj/tools/clang/include:${CPLUS_INCLUDE_PATH}
 
 export LD_LIBRARY_PATH=
-export LD_LIBRARY_PATH=/usr/local/lib:${LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=/usr/local/lib #:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=${MY_BREW_PREFIX}/lib:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=${LATTE_ROOT}/lib:${LD_LIBRARY_PATH}

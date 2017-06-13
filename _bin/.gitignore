@@ -4,3 +4,4 @@ gcc
 g++
 amm
 sbt-launch.jar
+afl*
