@@ -55,33 +55,28 @@ set noautowrite               " Never write a file unless I request it.
 set noautowriteall            " NEVER.
 set autoread                  " automatically re-read changed files.
 set confirm                   " Y-N-C prompt if closing with unsaved changes.
-set laststatus=2              " Always show statusline, even if only 1 window.
-" set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P
-" set statusline+=%#warningmsg#%{SyntasticStatuslineFlag()}%*
 
 " runtime ftplugin/man.vim
 runtime macros/matchit.vim
 " additional plugins
-Bundle 'tell-k/vim-autopep8'
-" Bundle 'indentpython.vim--nianyang'
-Bundle 'tpope/vim-git'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-rhubarb'
-Bundle 'tpope/vim-markdown'
-Bundle 'tpope/vim-tbone'
-Bundle 'tpope/vim-eunuch'
-Bundle 'tpope/vim-jdaddy'
-Bundle 'tpope/vim-dispatch'
-Bundle 'jiangmiao/auto-pairs'
-" Bundle 'derekwyatt/vim-scala'
+Plugin 'tell-k/vim-autopep8'
+Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb'
+Plugin 'tpope/vim-markdown'
+Plugin 'tpope/vim-eunuch'
+Plugin 'jiangmiao/auto-pairs'
+" Plugin 'derekwyatt/vim-scala'
 
-Bundle 'bling/vim-airline'
+set laststatus=2              " Always show statusline, even if only 1 window.
+set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P
+set statusline+=%#warningmsg#%{SyntasticStatuslineFlag()}%*
+" Plugin 'bling/vim-airline'
 " let g:airline#extensions#tabline#enabled = 1
 " let g:airline#extensions#tabline#left_sep = ' '
 " let g:airline#extensions#tabline#left_alt_sep = '|'
 
-Bundle 'tpope/vim-commentary'
+Plugin 'tpope/vim-commentary'
 autocmd FileType cmake setl cms=#%s
 autocmd FileType gdb setl cms=#%s
 autocmd FileType c setl cms=//%s
@@ -93,7 +88,7 @@ autocmd FileType unix setl cms=#%s
 autocmd FileType xdefaults setl cms=!%s
 
 " tagbar
-Bundle 'Tagbar'
+Plugin 'Tagbar'
 noremap <leader>t :TagbarToggle<CR>
 let g:tagbar_autoclose=0
 let g:tagbar_left = 0
@@ -107,12 +102,27 @@ let g:tagbar_foldlevel = 5
 let g:tagbar_autoshowtag = 0
 let g:tagbar_updateonsave_maxlines = 10000
 let g:tagbar_systemenc = 'encoding'
+let g:tagbar_type_rust = {
+   \ 'ctagstype' : 'rust',
+   \ 'kinds' : [
+       \'T:types,type definitions',
+       \'f:functions,function definitions',
+       \'g:enum,enumeration names',
+       \'s:structure names',
+       \'m:modules,module names',
+       \'c:consts,static constants',
+       \'t:traits,traits',
+       \'i:impls,trait implementations',
+   \]
+   \}
 
 " nerdtree
-Bundle 'scrooloose/nerdtree'
+Plugin 'scrooloose/nerdtree'
 noremap <leader>T :NERDTreeToggle<CR>
 let NERDTreeIgnore = ['\.pyc$']
 let g:NERDTreeDirArrows=0
+
+nnoremap gO :!open <cfile><CR>
 
 " append modeline
 function! AppendModeline()
@@ -123,7 +133,7 @@ function! AppendModeline()
 endfunction
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
-" Bundle 'kien/ctrlp.vim'
+" Plugin 'kien/ctrlp.vim'
 " inoremap <silent><C-x>b <C-o>:CtrlPMRUFiles<CR>
 " let g:ctrlp_map = '<c-p>'
 " let g:ctrlp_cmd = 'CtrlP'
@@ -134,7 +144,7 @@ nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 " let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 " execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
-Bundle 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 " let g:syntastic_auto_loc_list = 1
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_check_on_open = 0
@@ -148,7 +158,7 @@ let g:syntastic_mode_map = {
 let g:syntastic_ocaml_checkers = ['merlin']
 
 " YouCompleteMe
-" Bundle 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 let g:ycm_path_to_python_interpreter='/usr/bin/python'
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_add_preview_to_completeopt=1
@@ -173,12 +183,12 @@ let g:ycm_filetype_blacklist = {
       \}
 
 " javascript tern
-Bundle 'marijnh/tern_for_vim'
+Plugin 'marijnh/tern_for_vim'
 " let tern#is_show_argument_hints_enabled = 1
 " autocmd FileType javascript setlocal omnifunc=tern#Complete
 "
 
-func MyFormartSrc()
+function! MyFormartSrc()
   exec "w"
   if &filetype == 'py'||&filetype == 'python'
   exec "r !autopep8 -i --aggressive %"
@@ -217,3 +227,41 @@ for tool in s:opam_packages
   endif
 endfor
 " ## end of OPAM user-setup addition for vim / base ## keep this line
+
+Plugin 'Shougo/echodoc.vim'
+let g:echodoc_enable_at_startup = 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" rust -- rls
+Plugin 'autozimu/LanguageClient-neovim'
+
+" Plugin 'Shougo/denite.nvim'
+" "" Ripgrep command on grep source
+" call denite#custom#var('grep', 'command', ['rg'])
+" call denite#custom#var('grep', 'default_opts',
+"       \ ['--vimgrep', '--no-heading'])
+" call denite#custom#var('grep', 'recursive_opts', [])
+" call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
+" call denite#custom#var('grep', 'separator', ['--'])
+" call denite#custom#var('grep', 'final_opts', [])
+
+Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
+Plugin 'junegunn/fzf.vim'
+
+Plugin 'roxma/nvim-completion-manager'
+" Plugin 'Shougo/deoplete.nvim'
+" let g:deoplete#enable_at_startup=1
+Plugin 'rust-lang/rust.vim'
+
+Plugin 'ervandew/supertab'
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+    \}
+
+" Automatically start language servers.
+let g:LanguageClient_autoStart = 1
+"
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>

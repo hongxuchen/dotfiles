@@ -132,9 +132,10 @@ alias node='env node --harmony --use-strict'
 
 alias deb_latest_installed='cat /var/log/dpkg.log | grep "\ install\ "'
 
-alias vi='vim'
-alias v='vim -u ~/.vless'
-alias e=vim
+alias vi='nvim'
+alias vim='nvim'
+alias v='nvim -u ~/.vless'
+alias e=nvim
 alias q='exit'
 
 # adb relevant

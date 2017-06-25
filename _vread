@@ -58,9 +58,9 @@ set title                     " show title in console title bar
 set wildmenu                  " Menu completion in command mode on <Tab>
 set wildmode=list:longest     " list and match longest
 set wildmode=longest:full,list:full
-set nocursorline              " have a line indicate the cursor location
-set nostartofline             " Avoid moving cursor to BOL when jumping around
-set virtualedit=block         " Let cursor move past the last char in <C-v> mode
+" set nocursorline              " have a line indicate the cursor location
+" set nostartofline             " Avoid moving cursor to BOL when jumping around
+" set virtualedit=block         " Let cursor move past the last char in <C-v> mode
 set iskeyword+=$,@,%,#,-      " don't allow to be separated by line break
 set foldmethod=manual         " TODO
 set hidden                    " set buffer hidden
@@ -116,10 +116,11 @@ set wildignore+=*.class,*.jar
 set wildignore+=*.aux,*.toc,*.out
 set wildignore+=*.bak,*.exe,*.chm,*.png,*.jpg,*.jpeg,*.gif,*.avi,*.rm,*.rmvb
 set completeopt=longest,menuone
+set noshowmode
+set cmdheight=2
 set t_Co=256
 
 autocmd BufRead,BufNewfile *.smali set filetype=smali
-
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.scala set filetype=scala
 autocmd BufNewFile,BufReadPost *.sbt set filetype=scala
@@ -129,22 +130,33 @@ autocmd BufRead,BufNewFile *.ipynb setfiletype javascript
 " VUNDLE rtp, @see https://github.com/gmarik/vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
-Bundle 'gmarik/vundle'
-Bundle 'Superbil/llvm.vim'
-Bundle 'Cpp11-Syntax-Support'
-Bundle 'tpope/vim-vividchalk'
-Bundle 'kelwin/vim-smali'
+Plugin 'gmarik/vundle'
+Plugin 'Superbil/llvm.vim'
+" Plugin 'Cpp11-Syntax-Support'
+Plugin 'kelwin/vim-smali'
 
-Bundle 'endel/vim-github-colorscheme'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'tomasr/molokai'
-colorscheme molokai
+Plugin 'endel/vim-github-colorscheme'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tomasr/molokai'
+Plugin 'NLKNguyen/papercolor-theme'
+" Plugin 'reedes/vim-colors-pencil'
+Plugin 'aunsira/macvim-light'
+" Plugin 'rakr/vim-one'
+Plugin 'd11wtq/macvim256.vim'
 " set background=light
+set background=dark
+" colorscheme molokai
 " colorscheme solarized
+colorscheme PaperColor
+" colorscheme macvim-light
+" colorscheme github
+" colorscheme one
+" colorscheme macvim256
 
+Plugin 'jremmen/vim-ripgrep'
 
 "vim-g
-Bundle 'szw/vim-g'
+Plugin 'szw/vim-g'
 let g:vim_g_f_command = "Gf"
 let g:vim_g_command = "Go"
 

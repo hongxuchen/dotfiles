@@ -86,3 +86,5 @@ autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 # eval "$(stack --bash-completion-script stack)"
 if brew command command-not-found-init > /dev/null 2>&1; then eval "$(brew command-not-found-init)"; fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
