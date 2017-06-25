@@ -131,6 +131,7 @@ export MY_CABAL=~/.cabal
 
 # cargo home
 export MY_CARGO_HOME=~/.cargo
+export CARGO_INCREMENTAL=1
 
 # PLAY_HOME=~/tools/play-2.0
 export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games

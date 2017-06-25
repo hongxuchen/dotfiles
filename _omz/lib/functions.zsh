@@ -57,6 +57,10 @@ my_node_docs() {
     open "http://nodejs.org/docs/$(node --version)/api/all.html#all_$1"
 }
 
+my_cmp() {
+  cmp -l $1 $2 | gawk '{printf "%08X %02X %02X\n", $1, strtonum(0$2), strtonum(0$3)}'
+}
+
 my_git_dl() {
     git_url=$1
     folder=${${git_url##*/}%%.*}
