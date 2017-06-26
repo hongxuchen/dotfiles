@@ -135,8 +135,8 @@ export CARGO_INCREMENTAL=1
 
 # PLAY_HOME=~/tools/play-2.0
 export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
-export PATH=${MY_CARGO_HOME}/bin:$PATH
 export PATH=${MY_BREW_PREFIX}/bin:$PATH
+export PATH=${MY_CARGO_HOME}/bin:$PATH
 export PATH=/usr/local/texlive/2014/Bin/x86_64-linux:$PATH
 export PATH=${MY_LLVM_OBJ}/bin:${MY_CLANG_TOOLS}/scan-build:${MY_CLANG_TOOLS}/scan-view:${MY_STP_INSTALL}/bin:$PATH
 export PATH=${MY_WLLVM_ROOT}:$PATH
@@ -158,6 +158,8 @@ export PATH=/opt/ghc/bin:$PATH
 # export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
 # export PATH=${MY_PIN_ROOT}:$PATH
 # export PATH=~/tools/FSharp-2.0.0.0/bin:$PATH
+
+export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src/
 
 # for sbt
 export SBT_OPTS="-Xms2G -Xmx6G -Xss1M -XX:+CMSClassUnloadingEnabled"

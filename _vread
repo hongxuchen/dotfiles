@@ -1,5 +1,13 @@
 " vim: set ft=vim ts=3 sw=2 tw=8 et :
 
+if !exists("g:os")
+    if has("win64") || has("win32") || has("win16")
+        let g:os = "Windows"
+    else
+        let g:os = substitute(system('uname'), '\n', '', '')
+    endif
+endif
+
 " Handle 'read' settings for vim, used by ~/.vless and ~/.vimrc
 
 " visual-star-search, makes * and # work on visual mode too.
@@ -120,12 +128,14 @@ set noshowmode
 set cmdheight=2
 set t_Co=256
 
+autocmd BufEnter * lcd %:p:h
 autocmd BufRead,BufNewfile *.smali set filetype=smali
 autocmd BufNewFile,BufReadPost *.md set filetype=markdown
 autocmd BufNewFile,BufReadPost *.scala set filetype=scala
 autocmd BufNewFile,BufReadPost *.sbt set filetype=scala
-autocmd BufRead,BufNewFile /usr/include/* set ft=cpp
-autocmd BufRead,BufNewFile *.ipynb setfiletype javascript
+autocmd BufRead,BufNewFile /usr/include/* set filetype=cpp
+autocmd BufRead,BufNewFile *.ipynb set filetype javascript
+autocmd BufRead,BufNewFile *.rs set filetype=rust
 
 " VUNDLE rtp, @see https://github.com/gmarik/vundle
 set rtp+=~/.vim/bundle/vundle/
@@ -143,15 +153,20 @@ Plugin 'NLKNguyen/papercolor-theme'
 Plugin 'aunsira/macvim-light'
 " Plugin 'rakr/vim-one'
 Plugin 'd11wtq/macvim256.vim'
-" set background=light
-set background=dark
+" set background=dark
 " colorscheme molokai
-" colorscheme solarized
-colorscheme PaperColor
+colorscheme solarized
+" colorscheme PaperColor
 " colorscheme macvim-light
 " colorscheme github
 " colorscheme one
 " colorscheme macvim256
+if g:os == "Darwin"
+  colorscheme molokai
+else
+  set background=dark
+  colorscheme PaperColor
+endif
 
 Plugin 'jremmen/vim-ripgrep'
 

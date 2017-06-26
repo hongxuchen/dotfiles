@@ -11,7 +11,7 @@ cnoremap W! w !sudo tee % >/dev/null
 set clipboard^=unnamed,unnamedplus
 nnoremap <leader>p :set paste! <CR>
 " Remove trailing whitespace
-nnoremap <leader>f :%s/\s\+$//<cr>:let @/=''<CR>
+" nnoremap <leader>f :%s/\s\+$//<cr>:let @/=''<CR>
 " C-j to insert a newline
 nnoremap <NL> i<CR><ESC>
 " q for next buffer
@@ -26,7 +26,12 @@ inoremap <silent><F5> <C-O>:checktime<CR>:exe ":echo 'file refreshed'"<CR>
 nnoremap <Leader>S :%s/\<<C-r><C-w>\>/
 
 autocmd FileType c,cpp,java,markdown autocmd BufWritePre <buffer> :%s/\s\+$//e
+if g:os == "Darwin"
 nnoremap gO :!open <cfile><CR>
+elseif g:os == "Linux"
+nnoremap gO :!xdg-open <cfile><CR>
+endif
+
 
 " emacs like settings(insert mode)
 inoremap <silent><C-x>0 <C-o>:hide<CR>
@@ -63,7 +68,7 @@ Plugin 'tell-k/vim-autopep8'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'
-Plugin 'tpope/vim-markdown'
+Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-eunuch'
 Plugin 'jiangmiao/auto-pairs'
 " Plugin 'derekwyatt/vim-scala'
@@ -232,36 +237,33 @@ Plugin 'Shougo/echodoc.vim'
 let g:echodoc_enable_at_startup = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
-" rust -- rls
-Plugin 'autozimu/LanguageClient-neovim'
-
-" Plugin 'Shougo/denite.nvim'
-" "" Ripgrep command on grep source
-" call denite#custom#var('grep', 'command', ['rg'])
-" call denite#custom#var('grep', 'default_opts',
-"       \ ['--vimgrep', '--no-heading'])
-" call denite#custom#var('grep', 'recursive_opts', [])
-" call denite#custom#var('grep', 'pattern_opt', ['--regexp'])
-" call denite#custom#var('grep', 'separator', ['--'])
-" call denite#custom#var('grep', 'final_opts', [])
 
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 Plugin 'junegunn/fzf.vim'
+command! -bang -nargs=* Rg
+  \ call fzf#vim#grep(
+  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+  \   <bang>0 ? fzf#vim#with_preview('up:60%')
+  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+  \   <bang>0)
 
 Plugin 'roxma/nvim-completion-manager'
-" Plugin 'Shougo/deoplete.nvim'
-" let g:deoplete#enable_at_startup=1
-Plugin 'rust-lang/rust.vim'
 
 Plugin 'ervandew/supertab'
 
+" rust -- rls
+Plugin 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+let g:LanguageClient_autoStart = 1
+
+Plugin 'rust-lang/rust.vim'
 let g:LanguageClient_serverCommands = {
     \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
     \}
 
-" Automatically start language servers.
-let g:LanguageClient_autoStart = 1
-"
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+Plugin 'mklabs/split-term.vim'
+
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
