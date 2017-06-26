@@ -150,19 +150,17 @@ Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 Plugin 'NLKNguyen/papercolor-theme'
 " Plugin 'reedes/vim-colors-pencil'
-Plugin 'aunsira/macvim-light'
-" Plugin 'rakr/vim-one'
 Plugin 'd11wtq/macvim256.vim'
-" set background=dark
 " colorscheme molokai
-colorscheme solarized
+" colorscheme solarized
 " colorscheme PaperColor
-" colorscheme macvim-light
 " colorscheme github
-" colorscheme one
 " colorscheme macvim256
 if g:os == "Darwin"
-  colorscheme molokai
+  set background=light
+  " colorscheme PaperColor
+  " colorscheme solarized
+  colorscheme macvim256
 else
   set background=dark
   colorscheme PaperColor
