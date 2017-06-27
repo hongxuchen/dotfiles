@@ -2,6 +2,8 @@
 
 source ~/.vread
 
+let $PYTHONCASEOK=""
+
 " save and reload ~/.vimrc
 nnoremap <silent> <leader>v :w<CR>:source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 " sudo write this
@@ -73,9 +75,10 @@ Plugin 'tpope/vim-eunuch'
 Plugin 'jiangmiao/auto-pairs'
 " Plugin 'derekwyatt/vim-scala'
 
+" Plugin 'gregsexton/gitv'
+
 set laststatus=2              " Always show statusline, even if only 1 window.
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P
-set statusline+=%#warningmsg#%{SyntasticStatuslineFlag()}%*
 " Plugin 'bling/vim-airline'
 " let g:airline#extensions#tabline#enabled = 1
 " let g:airline#extensions#tabline#left_sep = ' '
@@ -149,18 +152,19 @@ nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 " let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 " execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
-Plugin 'scrooloose/syntastic'
-" let g:syntastic_auto_loc_list = 1
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
-let g:syntastic_python_checkers = ['flake8']
-let g:syntastic_zsh_checkers = ['zsh']
-let g:syntastic_mode_map = {
-    \ "mode": "active",
-    \ "active_filetypes": ["ruby", "python"],
-    \ "passive_filetypes": ["c",'cpp', 'java', 'cs', "haskell"] }
-let g:syntastic_ocaml_checkers = ['merlin']
+" Plugin 'scrooloose/syntastic'
+" " let g:syntastic_auto_loc_list = 1
+" let g:syntastic_always_populate_loc_list = 1
+" let g:syntastic_check_on_open = 0
+" let g:syntastic_check_on_wq = 0
+" let g:syntastic_python_checkers = ['flake8']
+" let g:syntastic_zsh_checkers = ['zsh']
+" let g:syntastic_mode_map = {
+"     \ "mode": "active",
+"     \ "active_filetypes": ["ruby", "python"],
+"     \ "passive_filetypes": ["c",'cpp', 'java', 'cs', "haskell"] }
+" let g:syntastic_ocaml_checkers = ['merlin']
+" set statusline+=%#warningmsg#%{SyntasticStatuslineFlag()}%*
 
 " YouCompleteMe
 " Plugin 'Valloric/YouCompleteMe'
@@ -267,3 +271,6 @@ Plugin 'honza/vim-snippets'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+Plugin 'w0rp/ale'
+Plugin 'justinmk/vim-sneak'

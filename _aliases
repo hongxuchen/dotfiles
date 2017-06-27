@@ -60,7 +60,6 @@ alias psmem10='ps -e -orss=,args= | sort -b -k1,1n| head -10'
 alias my_paths='echo -e ${PATH//:/\\n}'
 alias deleted_files='sudo lsof |grep "\(deleted\)"'
 
-# alias sbt='command activator'
 alias activator='JAVA_HOME=/usr/lib/jvm/java-8-oracle sbt'
 alias pom2sbt='mvn dependency:tree | grep "] +" | perl -pe '"'"'s/.*\s([\w\.\-]+):([\w\.\-]+):\w+:([\w\.\-]+):(\w+).*/libraryDependencies += "$1" % "$2" % "$3" % "$4" /'"'"' >build.sbt'
 
