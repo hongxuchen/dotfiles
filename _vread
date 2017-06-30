@@ -22,8 +22,7 @@ xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
 
 " display pwd
 nnoremap <leader>s :echo expand('%:p')<CR>
-" open help:info in new tab
-cabbrev hh tab help
+
 " remap j,k
 nnoremap j gj
 nnoremap k gk
@@ -61,14 +60,13 @@ set nocompatible              " Don't be compatible with vi
 set tabpagemax=15             " max number of tabs
 set number                    " Display line numbers
 set numberwidth=1             " using only 1 column (and 1 space) while possible
-set background=dark           " We are using dark background in vim
 set title                     " show title in console title bar
 set wildmenu                  " Menu completion in command mode on <Tab>
 set wildmode=list:longest     " list and match longest
 set wildmode=longest:full,list:full
-" set nocursorline              " have a line indicate the cursor location
-" set nostartofline             " Avoid moving cursor to BOL when jumping around
-" set virtualedit=block         " Let cursor move past the last char in <C-v> mode
+set nocursorline              " have a line indicate the cursor location
+set nostartofline             " Avoid moving cursor to BOL when jumping around
+set virtualedit=block         " Let cursor move past the last char in <C-v> mode
 set iskeyword+=$,@,%,#,-      " don't allow to be separated by line break
 set foldmethod=manual         " TODO
 set hidden                    " set buffer hidden
@@ -115,7 +113,7 @@ set hlsearch                  " Highlight searches by default.
 set incsearch                 " Incrementally search while typing a /regex
 " completions
 set pumheight=8               " maximum items of popup window
-"" ignore these files when completing
+" ignore these files when completing
 set wildignore+=*/tmp/*,*.swp,*.zip
 set wildignore+=*.o,*.obj,*.so,*.a,*.bc
 set wildignore+=.git,*.elc
@@ -128,22 +126,54 @@ set noshowmode
 set cmdheight=2
 set t_Co=256
 
-autocmd BufEnter * lcd %:p:h
-autocmd BufRead,BufNewfile *.smali set filetype=smali
-autocmd BufNewFile,BufReadPost *.md set filetype=markdown
-autocmd BufNewFile,BufReadPost *.scala set filetype=scala
-autocmd BufNewFile,BufReadPost *.sbt set filetype=scala
-autocmd BufRead,BufNewFile /usr/include/* set filetype=cpp
-autocmd BufRead,BufNewFile *.ipynb set filetype javascript
-autocmd BufRead,BufNewFile *.rs set filetype=rust
-
 " VUNDLE rtp, @see https://github.com/gmarik/vundle
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Plugin 'gmarik/vundle'
-Plugin 'Superbil/llvm.vim'
-" Plugin 'Cpp11-Syntax-Support'
-Plugin 'kelwin/vim-smali'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" netrw
+" @see also https://gist.github.com/t-mart/610795fcf7998559ea80
+let g:netrw_banner = 0
+let g:netrw_browse_split = 1
+let g:netrw_liststyle = 3
+let g:netrw_browse_split = 4
+let g:netrw_altv = 1
+let g:netrw_winsize = 18
+function! VExplorerToggle()
+  if exists("t:expl_buf_num")
+      let expl_win_num = bufwinnr(t:expl_buf_num)
+      if expl_win_num != -1
+          let cur_win_nr = winnr()
+          exec expl_win_num . 'wincmd w'
+          close
+          exec cur_win_nr . 'wincmd w'
+          unlet t:expl_buf_num
+      else
+          unlet t:expl_buf_num
+      endif
+  else
+      exec '1wincmd w'
+      Vexplore
+      let t:expl_buf_num = bufnr("%")
+  endif
+endfunction
+noremap <leader>T :call VExplorerToggle()<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" file type
+autocmd BufEnter * lcd %:p:h
+autocmd BufRead,BufNewfile *.smali set filetype=smali
+autocmd BufRead,BufNewfile *.md set filetype=markdown
+autocmd BufRead,BufNewFile *.scala set filetype=scala
+autocmd BufRead,BufNewFile *.sbt set filetype=scala
+autocmd BufRead,BufNewFile /usr/include/* set filetype=cpp
+autocmd BufRead,BufNewFile *.ipynb set filetype javascript
+autocmd BufRead,BufNewFile *.rs set filetype=rust
+
+" Plugin 'Superbil/llvm.vim'
+" Plugin 'kelwin/vim-smali'
 
 Plugin 'endel/vim-github-colorscheme'
 Plugin 'altercation/vim-colors-solarized'
@@ -162,15 +192,14 @@ if g:os == "Darwin"
   " colorscheme solarized
   colorscheme macvim256
 else
-  set background=dark
-  colorscheme PaperColor
+  set background=light
+  colorscheme macvim256
+  " colorscheme PaperColor
 endif
 
-Plugin 'jremmen/vim-ripgrep'
+" Plugin 'jremmen/vim-ripgrep'
 
 "vim-g
 Plugin 'szw/vim-g'
 let g:vim_g_f_command = "Gf"
 let g:vim_g_command = "Go"
-
-" command! -nargs=* -bar -bang -count=0 -complete=dir E Explore <args> #:e. is OK

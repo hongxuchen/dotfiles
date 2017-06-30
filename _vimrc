@@ -6,8 +6,8 @@ let $PYTHONCASEOK=""
 
 " save and reload ~/.vimrc
 nnoremap <silent> <leader>v :w<CR>:source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
-" sudo write this
-cnoremap W! w !sudo tee % >/dev/null
+vnoremap <leader>vs y:@"<CR>
+
 " Paste from clipboard
 "
 set clipboard^=unnamed,unnamedplus
@@ -28,12 +28,12 @@ inoremap <silent><F5> <C-O>:checktime<CR>:exe ":echo 'file refreshed'"<CR>
 nnoremap <Leader>S :%s/\<<C-r><C-w>\>/
 
 autocmd FileType c,cpp,java,markdown autocmd BufWritePre <buffer> :%s/\s\+$//e
+
 if g:os == "Darwin"
 nnoremap gO :!open <cfile><CR>
 elseif g:os == "Linux"
 nnoremap gO :!xdg-open <cfile><CR>
 endif
-
 
 " emacs like settings(insert mode)
 inoremap <silent><C-x>0 <C-o>:hide<CR>
@@ -63,19 +63,20 @@ set noautowriteall            " NEVER.
 set autoread                  " automatically re-read changed files.
 set confirm                   " Y-N-C prompt if closing with unsaved changes.
 
-" runtime ftplugin/man.vim
 runtime macros/matchit.vim
 " additional plugins
-Plugin 'tell-k/vim-autopep8'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'
 Plugin 'plasticboy/vim-markdown'
 Plugin 'tpope/vim-eunuch'
-Plugin 'jiangmiao/auto-pairs'
-" Plugin 'derekwyatt/vim-scala'
 
-" Plugin 'gregsexton/gitv'
+Plugin 'jiangmiao/auto-pairs'
+let g:AutoPairsFlyMode = 0
+let g:AutoPairsShortcutBackInsert = '<M-b>'
+let g:AutoPairs = {'(':')', '[':']', '{':'}', '<':'>', "'":"'",'"':'"', '`':'`'}
+
+Plugin 'tell-k/vim-autopep8'
 
 set laststatus=2              " Always show statusline, even if only 1 window.
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P
@@ -94,6 +95,7 @@ autocmd FileType scala setl cms=//%s
 autocmd FileType tablegen setl cms=//%s
 autocmd FileType unix setl cms=#%s
 autocmd FileType xdefaults setl cms=!%s
+set formatoptions=tcqj
 
 " tagbar
 Plugin 'Tagbar'
@@ -124,13 +126,6 @@ let g:tagbar_type_rust = {
    \]
    \}
 
-" nerdtree
-Plugin 'scrooloose/nerdtree'
-noremap <leader>T :NERDTreeToggle<CR>
-let NERDTreeIgnore = ['\.pyc$']
-let g:NERDTreeDirArrows=0
-
-nnoremap gO :!open <cfile><CR>
 
 " append modeline
 function! AppendModeline()
@@ -141,30 +136,8 @@ function! AppendModeline()
 endfunction
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
-" Plugin 'kien/ctrlp.vim'
-" inoremap <silent><C-x>b <C-o>:CtrlPMRUFiles<CR>
-" let g:ctrlp_map = '<c-p>'
-" let g:ctrlp_cmd = 'CtrlP'
-" let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
-" let g:ctrlp_working_path_mode = 'ra'
-"
-"
 " let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 " execute "set rtp+=" . g:opamshare . "/merlin/vim"
-
-" Plugin 'scrooloose/syntastic'
-" " let g:syntastic_auto_loc_list = 1
-" let g:syntastic_always_populate_loc_list = 1
-" let g:syntastic_check_on_open = 0
-" let g:syntastic_check_on_wq = 0
-" let g:syntastic_python_checkers = ['flake8']
-" let g:syntastic_zsh_checkers = ['zsh']
-" let g:syntastic_mode_map = {
-"     \ "mode": "active",
-"     \ "active_filetypes": ["ruby", "python"],
-"     \ "passive_filetypes": ["c",'cpp', 'java', 'cs', "haskell"] }
-" let g:syntastic_ocaml_checkers = ['merlin']
-" set statusline+=%#warningmsg#%{SyntasticStatuslineFlag()}%*
 
 " YouCompleteMe
 " Plugin 'Valloric/YouCompleteMe'
@@ -197,14 +170,6 @@ Plugin 'marijnh/tern_for_vim'
 " autocmd FileType javascript setlocal omnifunc=tern#Complete
 "
 
-function! MyFormartSrc()
-  exec "w"
-  if &filetype == 'py'||&filetype == 'python'
-  exec "r !autopep8 -i --aggressive %"
-  endif
-  exec "e! %"
-endfunc
-" ## added by OPAM user-setup for vim / base ## 93ee63e278bdfc07d1139a748ed3fff2 ## you can edit, but keep this line
 let s:opam_share_dir = system("opam config var share")
 let s:opam_share_dir = substitute(s:opam_share_dir, '[\r\n]*$', '', '')
 
@@ -240,7 +205,7 @@ endfor
 Plugin 'Shougo/echodoc.vim'
 let g:echodoc_enable_at_startup = 1
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 Plugin 'junegunn/fzf.vim'
@@ -250,6 +215,10 @@ command! -bang -nargs=* Rg
   \   <bang>0 ? fzf#vim#with_preview('up:60%')
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
+
+inoremap <expr> <c-x><c-k> fzf#complete('cat /usr/share/dict/words')
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Plugin 'roxma/nvim-completion-manager'
 
@@ -273,4 +242,18 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 Plugin 'w0rp/ale'
+let g:ale_sign_column_always = 1
+let g:ale_sign_error = '>>'
+let g:ale_sign_warning = '--'
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_lint_on_text_changed = 'never'
+let g:ale_lint_on_enter = 0
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 1
+" let g:ale_open_list = 1
+" let g:ale_keep_list_window_open = 1
+
+
 Plugin 'justinmk/vim-sneak'
