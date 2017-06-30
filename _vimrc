@@ -57,19 +57,15 @@ inoremap <silent><M-p> <C-o>:cprevious<CR>
 set ttyfast
 set colorcolumn=120
 set autochdir
-set formatoptions=tq
 set noautowrite               " Never write a file unless I request it.
 set noautowriteall            " NEVER.
 set autoread                  " automatically re-read changed files.
 set confirm                   " Y-N-C prompt if closing with unsaved changes.
 
-runtime macros/matchit.vim
-" additional plugins
+autocmd FileType html,eruby,rb,css,js,xml runtime! macros/matchit.vim
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rhubarb'
 Plugin 'plasticboy/vim-markdown'
-Plugin 'tpope/vim-eunuch'
 
 Plugin 'jiangmiao/auto-pairs'
 let g:AutoPairsFlyMode = 0
@@ -95,7 +91,7 @@ autocmd FileType scala setl cms=//%s
 autocmd FileType tablegen setl cms=//%s
 autocmd FileType unix setl cms=#%s
 autocmd FileType xdefaults setl cms=!%s
-set formatoptions=tcqj
+set formatoptions=tq
 
 " tagbar
 Plugin 'Tagbar'
@@ -126,6 +122,7 @@ let g:tagbar_type_rust = {
    \]
    \}
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 " append modeline
 function! AppendModeline()
@@ -216,6 +213,18 @@ command! -bang -nargs=* Rg
   \           : fzf#vim#with_preview('right:50%:hidden', '?'),
   \   <bang>0)
 
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 inoremap <expr> <c-x><c-k> fzf#complete('cat /usr/share/dict/words')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

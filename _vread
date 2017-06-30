@@ -29,8 +29,8 @@ nnoremap k gk
 nnoremap gj j
 noremap gk k
 " history scrolls in Ex mode
-cnoremap <C-p> <Up>
-cnoremap <C-n> <Down>
+" cnoremap <C-p> <Up>
+" cnoremap <C-n> <Down>
 
 " emacs like settings(non-insert mode)
 nnoremap <silent><C-x>0 :hide<CR>
@@ -134,12 +134,17 @@ Plugin 'gmarik/vundle'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " netrw
 " @see also https://gist.github.com/t-mart/610795fcf7998559ea80
+let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+'
+let g:netrw_hide=1              " hide hidden files
+let g:netrw_dirhistmax=100      " keep more history
+let g:netrw_altfile = 1         " last edited file '#'
 let g:netrw_banner = 0
 let g:netrw_browse_split = 1
 let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
-let g:netrw_winsize = 18
+let g:netrw_alto = 0            " open files on right
+let g:netrw_altv = 1            " open files on right
+let g:netrw_winsize = 18        " preview size
+let g:netrw_use_errorwindow=0   " suppress error window
 function! VExplorerToggle()
   if exists("t:expl_buf_num")
       let expl_win_num = bufwinnr(t:expl_buf_num)
@@ -203,3 +208,6 @@ endif
 Plugin 'szw/vim-g'
 let g:vim_g_f_command = "Gf"
 let g:vim_g_command = "Go"
+
+" tmux
+Plugin 'benmills/vimux'

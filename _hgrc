@@ -14,10 +14,6 @@ color =
 histedit = 
 mq = 
 
-[merge-tools]
-kdiff3.executable = /usr/bin/kdiff3
-kdiff3.gui = True
-
 [extdiff]
 cmd.kdiff = vimdiff
 cmd.wdiff = vimdiff
