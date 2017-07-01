@@ -131,42 +131,6 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 Plugin 'gmarik/vundle'
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" netrw
-" @see also https://gist.github.com/t-mart/610795fcf7998559ea80
-let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+'
-let g:netrw_hide=1              " hide hidden files
-let g:netrw_dirhistmax=100      " keep more history
-let g:netrw_altfile = 1         " last edited file '#'
-let g:netrw_banner = 0
-let g:netrw_browse_split = 1
-let g:netrw_liststyle = 3
-let g:netrw_alto = 0            " open files on right
-let g:netrw_altv = 1            " open files on right
-let g:netrw_winsize = 18        " preview size
-let g:netrw_use_errorwindow=0   " suppress error window
-function! VExplorerToggle()
-  if exists("t:expl_buf_num")
-      let expl_win_num = bufwinnr(t:expl_buf_num)
-      if expl_win_num != -1
-          let cur_win_nr = winnr()
-          exec expl_win_num . 'wincmd w'
-          close
-          exec cur_win_nr . 'wincmd w'
-          unlet t:expl_buf_num
-      else
-          unlet t:expl_buf_num
-      endif
-  else
-      exec '1wincmd w'
-      Vexplore
-      let t:expl_buf_num = bufnr("%")
-  endif
-endfunction
-noremap <leader>T :call VExplorerToggle()<CR>
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 " file type
 autocmd BufEnter * lcd %:p:h
 autocmd BufRead,BufNewfile *.smali set filetype=smali
@@ -176,38 +140,18 @@ autocmd BufRead,BufNewFile *.sbt set filetype=scala
 autocmd BufRead,BufNewFile /usr/include/* set filetype=cpp
 autocmd BufRead,BufNewFile *.ipynb set filetype javascript
 autocmd BufRead,BufNewFile *.rs set filetype=rust
+autocmd BufRead,BufNewFile *.toml,Cargo.lock,*/.cargo/config set filetype=toml
 
-" Plugin 'Superbil/llvm.vim'
-" Plugin 'kelwin/vim-smali'
+Plugin 'Superbil/llvm.vim'
+Plugin 'kelwin/vim-smali'
+Plugin 'cespare/vim-toml'
 
-Plugin 'endel/vim-github-colorscheme'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tomasr/molokai'
-Plugin 'NLKNguyen/papercolor-theme'
-" Plugin 'reedes/vim-colors-pencil'
-Plugin 'd11wtq/macvim256.vim'
-" colorscheme molokai
-" colorscheme solarized
-" colorscheme PaperColor
-" colorscheme github
-" colorscheme macvim256
 if g:os == "Darwin"
-  set background=light
-  " colorscheme PaperColor
-  " colorscheme solarized
-  colorscheme macvim256
-else
-  set background=light
-  colorscheme macvim256
-  " colorscheme PaperColor
+  nnoremap gO :!open <cfile><CR>
+elseif g:os == "Linux"
+  nnoremap gO :!xdg-open <cfile><CR>
 endif
-
-" Plugin 'jremmen/vim-ripgrep'
-
 "vim-g
 Plugin 'szw/vim-g'
 let g:vim_g_f_command = "Gf"
 let g:vim_g_command = "Go"
-
-" tmux
-Plugin 'benmills/vimux'

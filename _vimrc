@@ -2,6 +2,31 @@
 
 source ~/.vread
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" color scheme
+Plugin 'endel/vim-github-colorscheme'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'tomasr/molokai'
+Plugin 'NLKNguyen/papercolor-theme'
+" Plugin 'reedes/vim-colors-pencil'
+Plugin 'd11wtq/macvim256.vim'
+" colorscheme molokai
+" colorscheme solarized
+" colorscheme PaperColor
+" colorscheme github
+" colorscheme macvim256
+if g:os == "Darwin"
+  set background=light
+  " colorscheme PaperColor
+  " colorscheme solarized
+  colorscheme macvim256
+else
+  set background=light
+  colorscheme macvim256
+  " colorscheme PaperColor
+endif
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 let $PYTHONCASEOK=""
 
 " save and reload ~/.vimrc
@@ -28,12 +53,6 @@ inoremap <silent><F5> <C-O>:checktime<CR>:exe ":echo 'file refreshed'"<CR>
 nnoremap <Leader>S :%s/\<<C-r><C-w>\>/
 
 autocmd FileType c,cpp,java,markdown autocmd BufWritePre <buffer> :%s/\s\+$//e
-
-if g:os == "Darwin"
-nnoremap gO :!open <cfile><CR>
-elseif g:os == "Linux"
-nnoremap gO :!xdg-open <cfile><CR>
-endif
 
 " emacs like settings(insert mode)
 inoremap <silent><C-x>0 <C-o>:hide<CR>
@@ -109,18 +128,18 @@ let g:tagbar_autoshowtag = 0
 let g:tagbar_updateonsave_maxlines = 10000
 let g:tagbar_systemenc = 'encoding'
 let g:tagbar_type_rust = {
-   \ 'ctagstype' : 'rust',
-   \ 'kinds' : [
-       \'T:types,type definitions',
-       \'f:functions,function definitions',
-       \'g:enum,enumeration names',
-       \'s:structure names',
-       \'m:modules,module names',
-       \'c:consts,static constants',
-       \'t:traits,traits',
-       \'i:impls,trait implementations',
-   \]
-   \}
+      \ 'ctagstype' : 'rust',
+      \ 'kinds' : [
+      \'T:types,type definitions',
+      \'f:functions,function definitions',
+      \'g:enum,enumeration names',
+      \'s:structure names',
+      \'m:modules,module names',
+      \'c:consts,static constants',
+      \'t:traits,traits',
+      \'i:impls,trait implementations',
+      \]
+      \}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -207,11 +226,11 @@ let g:echodoc_enable_at_startup = 1
 Plugin 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
 Plugin 'junegunn/fzf.vim'
 command! -bang -nargs=* Rg
-  \ call fzf#vim#grep(
-  \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-  \   <bang>0 ? fzf#vim#with_preview('up:60%')
-  \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-  \   <bang>0)
+      \ call fzf#vim#grep(
+      \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+      \   <bang>0 ? fzf#vim#with_preview('up:60%')
+      \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+      \   <bang>0)
 
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
@@ -239,8 +258,8 @@ let g:LanguageClient_autoStart = 1
 
 Plugin 'rust-lang/rust.vim'
 let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-    \}
+      \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+      \}
 
 Plugin 'mklabs/split-term.vim'
 
@@ -264,5 +283,41 @@ let g:ale_set_quickfix = 1
 " let g:ale_open_list = 1
 " let g:ale_keep_list_window_open = 1
 
-
 Plugin 'justinmk/vim-sneak'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" netrw
+" @see also https://gist.github.com/t-mart/610795fcf7998559ea80
+" let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+'
+" let g:netrw_hide=1              " hide hidden files
+" let g:netrw_dirhistmax=100      " keep more history
+" let g:netrw_altfile = 1         " last edited file '#'
+let g:netrw_banner = 0            " no banner
+let g:netrw_browse_split = 4      " open in previous window
+let g:netrw_liststyle = 1         " thin view
+" let g:netrw_alto = 0            " open files on right
+let g:netrw_altv = 1              " open files on right
+let g:netrw_winsize = 12          " preview size
+let g:netrw_use_errorwindow=0     " suppress error window
+let g:netrw_preview=1             " open previews vertically
+function! VExplorerToggle()
+  if exists("t:expl_buf_num")
+    let expl_win_num = bufwinnr(t:expl_buf_num)
+    if expl_win_num != -1
+      let cur_win_nr = winnr()
+      exec expl_win_num . 'wincmd w'
+      close
+      exec cur_win_nr . 'wincmd w'
+      unlet t:expl_buf_num
+    else
+      unlet t:expl_buf_num
+    endif
+  else
+    exec '1wincmd w'
+    Vexplore
+    let t:expl_buf_num = bufnr("%")
+  endif
+endfunction
+noremap <leader>T :call VExplorerToggle()<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

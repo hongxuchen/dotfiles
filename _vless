@@ -15,5 +15,4 @@ set nomodifiable
 nnoremap q :qall!<CR>
 
 " set background=light
-" colorscheme github
-" colorscheme solarized
+colorscheme darkblue
