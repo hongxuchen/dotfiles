@@ -126,11 +126,6 @@ set noshowmode
 set cmdheight=2
 set t_Co=256
 
-" VUNDLE rtp, @see https://github.com/gmarik/vundle
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-Plugin 'gmarik/vundle'
-
 " file type
 autocmd BufEnter * lcd %:p:h
 autocmd BufRead,BufNewfile *.smali set filetype=smali
@@ -142,16 +137,8 @@ autocmd BufRead,BufNewFile *.ipynb set filetype javascript
 autocmd BufRead,BufNewFile *.rs set filetype=rust
 autocmd BufRead,BufNewFile *.toml,Cargo.lock,*/.cargo/config set filetype=toml
 
-Plugin 'Superbil/llvm.vim'
-Plugin 'kelwin/vim-smali'
-Plugin 'cespare/vim-toml'
-
 if g:os == "Darwin"
   nnoremap gO :!open <cfile><CR>
 elseif g:os == "Linux"
   nnoremap gO :!xdg-open <cfile><CR>
 endif
-"vim-g
-Plugin 'szw/vim-g'
-let g:vim_g_f_command = "Gf"
-let g:vim_g_command = "Go"
