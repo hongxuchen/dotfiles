@@ -49,6 +49,8 @@ export TEXMFHOME=~/.texmf
 
 export QT_STYLE_OVERRIDE=oxygen
 
+export NVIM_PYTHON_LOG_FILE=/tmp/nvim-py.log
+
 export GPGKEY=068BDAD6
 
 #~/.screenlayout/dual.sh

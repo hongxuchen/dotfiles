@@ -79,6 +79,9 @@ Plug 'szw/vim-g'
 let g:vim_g_f_command = "Gf"
 let g:vim_g_command = "Go"
 
+" asyncrun
+Plug 'skywind3000/asyncrun.vim'
+
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'plasticboy/vim-markdown'
@@ -168,8 +171,10 @@ Plug 'roxma/nvim-completion-manager'
 
 Plug 'ervandew/supertab'
 
+Plug 'vim-utils/vim-man'
+
 " rust -- rls
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugs' }
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 let g:LanguageClient_autoStart = 1
 
 Plug 'rust-lang/rust.vim'
@@ -177,7 +182,11 @@ let g:LanguageClient_serverCommands = {
       \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
       \}
 
+Plug 'PlanStylite/nvim-cargo'
+
+if g:os == "Linux"
 Plug 'SirVer/ultisnips'
+endif
 Plug 'honza/vim-snippets'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -198,9 +207,13 @@ let g:ale_set_quickfix = 1
 " let g:ale_keep_list_window_open = 1
 "
 
-Plug 'critiqjo/lldb.nvim'
-
+Plug 'critiqjo/lldb.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'airodactyl/neovim-ranger'
 Plug 'justinmk/vim-sneak'
+
+Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'mattn/webapi-vim'
+Plug 'euclio/vim-markdown-composer'
 
 " color scheme
 Plug 'endel/vim-github-colorscheme'
@@ -224,9 +237,9 @@ call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if g:os == "Darwin"
   set background=light
-  colorscheme PaperColor
+  " colorscheme PaperColor
   " colorscheme solarized
-  " colorscheme macvim256
+  colorscheme macvim256
 else
   set background=light
   colorscheme Atelier_SulphurpoolLight
@@ -240,32 +253,33 @@ endif
 " let g:netrw_hide=1              " hide hidden files
 " let g:netrw_dirhistmax=100      " keep more history
 " let g:netrw_altfile = 1         " last edited file '#'
-let g:netrw_banner = 0            " no banner
-let g:netrw_browse_split = 4      " open in previous window
-let g:netrw_liststyle = 1         " thin view
-" let g:netrw_alto = 0            " open files on right
-let g:netrw_altv = 1              " open files on right
-let g:netrw_winsize = 12          " preview size
-let g:netrw_use_errorwindow=0     " suppress error window
-let g:netrw_preview=1             " open previews vertically
-function! VExplorerToggle()
-  if exists("t:expl_buf_num")
-    let expl_win_num = bufwinnr(t:expl_buf_num)
-    if expl_win_num != -1
-      let cur_win_nr = winnr()
-      exec expl_win_num . 'wincmd w'
-      close
-      exec cur_win_nr . 'wincmd w'
-      unlet t:expl_buf_num
-    else
-      unlet t:expl_buf_num
-    endif
-  else
-    exec '1wincmd w'
-    Vexplore
-    let t:expl_buf_num = bufnr("%")
-  endif
-endfunction
-noremap <leader>T :call VExplorerToggle()<CR>
+" let g:netrw_banner = 0            " no banner
+" let g:netrw_browse_split = 4      " open in previous window
+" let g:netrw_liststyle = 1         " thin view
+" " let g:netrw_alto = 0            " open files on right
+" let g:netrw_altv = 1              " open files on right
+" let g:netrw_winsize = 12          " preview size
+" let g:netrw_use_errorwindow=0     " suppress error window
+" let g:netrw_preview=1             " open previews vertically
+" function! VExplorerToggle()
+"   if exists("t:expl_buf_num")
+"     let expl_win_num = bufwinnr(t:expl_buf_num)
+"     if expl_win_num != -1
+"       let cur_win_nr = winnr()
+"       exec expl_win_num . 'wincmd w'
+"       close
+"       exec cur_win_nr . 'wincmd w'
+"       unlet t:expl_buf_num
+"     else
+"       unlet t:expl_buf_num
+"     endif
+"   else
+"     exec '1wincmd w'
+"     Vexplore
+"     let t:expl_buf_num = bufnr("%")
+"   endif
+" endfunction
+" noremap <leader>T :call VExplorerToggle()<CR>
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

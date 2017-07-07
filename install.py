@@ -12,7 +12,8 @@ try:
     import argparse
     import colorama
 except ImportError as e:
-    print(u"{0},\t use 'pip' to install that package".format(e.message), file=sys.stderr)
+    print(u"{0},\t use 'pip' to install that package".format(
+        e.message), file=sys.stderr)
     sys.exit(1)
 
 try:
@@ -22,6 +23,7 @@ except ImportError:
 
 
 class FileInfo(object):
+
     def __init__(self, src, dst, bak):
         self.src = src
         self.dst = dst
@@ -41,7 +43,6 @@ class MLevel(object):
     cross = u'\u2717'
     O = u'\u25CB'
 
-
 # -----------------------------------------------------------------------------
 
 CUR_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -49,7 +50,8 @@ BAK_DIR = os.path.join(CUR_DIR, "BAK")
 PLT = platform.system()  # Darwin/Linux/FreeBSD
 SUPPORTED_PLT = ['Darwin', 'Linux', 'FreeBSD']
 if PLT not in SUPPORTED_PLT:
-    print(u"Unknown Platform: {}, supported: {}".format(PLT, SUPPORTED_PLT), file=sys.stderr)
+    print(u"Unknown Platform: {}, supported: {}".format(
+        PLT, SUPPORTED_PLT), file=sys.stderr)
     sys.exit(1)
 # FreeBSD /home is a symlink to /usr/home
 DST_DIR = os.path.realpath(os.path.expandvars("$HOME"))
@@ -58,6 +60,7 @@ PREFIX = '_bak'
 
 # -----------------------------------------------------------------------------
 
+
 def _git_get(git_repo, dst):
     if not os.path.isdir(dst):
         cmd_str = "git clone --depth 1 {} {}".format(git_repo, dst)
@@ -65,13 +68,14 @@ def _git_get(git_repo, dst):
 
 
 def _config_vim():
-    VUNDLE_REPO = "https://github.com/gmarik/vundle.git"
-    VUNDLE_PATH = os.path.join(DST_DIR, '.vim/bundle/vundle')
+    PLUG_URI = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
+    PLUG_PATH = "_vim/autoload/plug.vim"
     print(colorama.Fore.YELLOW,
           u'Press [ENTER] to ignore errors (if any) during install',
           colorama.Fore.RESET)
-    _git_get(VUNDLE_REPO, VUNDLE_PATH)
-    cmd_str = "vim -c BundleInstall -c qa"
+    dl_cmd = "curl -fLo {} --create-dirs {}".format(PLUG_PATH, PLUG_URI)
+    subprocess.call(dl_cmd.split())
+    cmd_str = "vim -c PlugInstall -c qa"
     subprocess.call(cmd_str.split())
 
 
@@ -171,6 +175,7 @@ def __recover_mark(finfo):
     else:
         mark = MLevel.cross
     return mark
+
 
 def _recover_dryrun(finfo):
     mark = __recover_mark(finfo)
