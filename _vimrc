@@ -208,7 +208,8 @@ let g:ale_set_quickfix = 1
 "
 
 Plug 'critiqjo/lldb.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'airodactyl/neovim-ranger'
+" Plug 'airodactyl/neovim-ranger'
+Plug 'panickbr/neovim-ranger'
 Plug 'justinmk/vim-sneak'
 
 Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins' }
