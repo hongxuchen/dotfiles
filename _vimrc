@@ -15,8 +15,6 @@ set clipboard^=unnamed,unnamedplus
 nnoremap <leader>p :set paste! <CR>
 " C-j to insert a newline
 nnoremap <NL> i<CR><ESC>
-" q for next buffer
-nnoremap q :bN<CR>
 " remap D to remove line without x register, anyway I have cc
 nnoremap D "_dd
 vnoremap D "_d
@@ -44,6 +42,7 @@ inoremap <silent><C-b> <Left>
 inoremap <silent><C-d> <Del>
 inoremap <silent><M-n> <C-o>:cnext<CR>
 inoremap <silent><M-p> <C-o>:cprevious<CR>
+nnoremap q :bn<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " append modeline
@@ -57,13 +56,13 @@ nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
 set ttyfast
 set colorcolumn=120
-set autochdir
 set noautowrite               " Never write a file unless I request it.
 set noautowriteall            " NEVER.
 set autoread                  " automatically re-read changed files.
 set confirm                   " Y-N-C prompt if closing with unsaved changes.
 set laststatus=2              " Always show statusline, even if only 1 window.
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P
+set complete-=t
 
 autocmd FileType c,cpp,java,markdown autocmd BufWritePre <buffer> :%s/\s\+$//e
 autocmd FileType html,eruby,rb,css,js,xml runtime! macros/matchit.vim
@@ -80,7 +79,7 @@ let g:vim_g_f_command = "Gf"
 let g:vim_g_command = "Go"
 
 " asyncrun
-Plug 'skywind3000/asyncrun.vim'
+" Plug 'skywind3000/asyncrun.vim'
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
@@ -103,7 +102,6 @@ autocmd FileType scala setl cms=//%s
 autocmd FileType tablegen setl cms=//%s
 autocmd FileType unix setl cms=#%s
 autocmd FileType xdefaults setl cms=!%s
-set formatoptions=tq
 
 Plug 'majutsushi/tagbar'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -173,7 +171,7 @@ Plug 'ervandew/supertab'
 
 Plug 'vim-utils/vim-man'
 
-" rust -- rls
+" Language server
 " Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
 " let g:LanguageClient_autoStart = 1
 
@@ -217,7 +215,7 @@ Plug 'mattn/webapi-vim'
 Plug 'euclio/vim-markdown-composer'
 
 Plug 'Valloric/YouCompleteMe'
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'for': 'c'}
 
 " color scheme
 Plug 'endel/vim-github-colorscheme'
@@ -239,7 +237,11 @@ Plug 'mkarmona/materialbox'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ycm_path_to_python_interpreter='/usr/bin/python'
+if g:os == "Darwin"
+  let g:ycm_path_to_python_interpreter='/usr/local/bin/python3'
+else
+  let g:ycm_path_to_python_interpreter='/usr/bin/python'
+endif
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_add_preview_to_completeopt=1
 let g:ycm_autoclose_preview_window_after_completion = 1
