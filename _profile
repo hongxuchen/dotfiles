@@ -50,6 +50,7 @@ export TEXMFHOME=~/.texmf
 export QT_STYLE_OVERRIDE=oxygen
 
 export NVIM_PYTHON_LOG_FILE=/tmp/nvim-py.log
+export NVIM_LOG_FILE=/tmp/nvim.log
 
 export GPGKEY=068BDAD6
 

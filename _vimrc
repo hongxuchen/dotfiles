@@ -174,8 +174,8 @@ Plug 'ervandew/supertab'
 Plug 'vim-utils/vim-man'
 
 " rust -- rls
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-let g:LanguageClient_autoStart = 1
+" Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+" let g:LanguageClient_autoStart = 1
 
 Plug 'rust-lang/rust.vim'
 let g:LanguageClient_serverCommands = {
@@ -216,6 +216,9 @@ Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'mattn/webapi-vim'
 Plug 'euclio/vim-markdown-composer'
 
+Plug 'Valloric/YouCompleteMe'
+Plug 'rdnetto/YCM-Generator', { 'branch': 'stable'}
+
 " color scheme
 Plug 'endel/vim-github-colorscheme'
 Plug 'altercation/vim-colors-solarized'
@@ -236,6 +239,31 @@ Plug 'mkarmona/materialbox'
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ycm_path_to_python_interpreter='/usr/bin/python'
+let g:ycm_confirm_extra_conf = 0
+let g:ycm_add_preview_to_completeopt=1
+let g:ycm_autoclose_preview_window_after_completion = 1
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_min_num_of_chars_for_completion = 99
+let g:ycm_min_num_identifier_candidate_chars = 2
+let g:ycm_auto_trigger = 1
+let g:ycm_collect_identifiers_from_tags_files = 0 " Let YCM read tags from Ctags file
+let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
+let g:ycm_complete_in_comments = 1 " Completion in comments
+let g:ycm_complete_in_strings = 1 " Completion in string
+let g:ycm_rust_src_path = $RUST_SRC_PATH
+let g:ycm_filetype_blacklist = {
+      \ 'tagbar' : 1,
+      \ 'qf' : 1,
+      \ 'notes' : 1,
+      \ 'markdown' : 1,
+      \ 'unite' : 1,
+      \ 'text' : 1,
+      \ 'vimwiki' : 1,
+      \ 'gitcommit' : 1,
+      \}
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if g:os == "Darwin"
   set background=light
   " colorscheme PaperColor
@@ -243,44 +271,6 @@ if g:os == "Darwin"
   colorscheme macvim256
 else
   set background=light
-  colorscheme Atelier_SulphurpoolLight
-  " colorscheme PaperColor
+  " colorscheme Atelier_SulphurpoolLight
+  colorscheme PaperColor
 endif
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" netrw
-" @see also https://gist.github.com/t-mart/610795fcf7998559ea80
-" let g:netrw_list_hide='\(^\|\s\s\)\zs\.\S\+'
-" let g:netrw_hide=1              " hide hidden files
-" let g:netrw_dirhistmax=100      " keep more history
-" let g:netrw_altfile = 1         " last edited file '#'
-" let g:netrw_banner = 0            " no banner
-" let g:netrw_browse_split = 4      " open in previous window
-" let g:netrw_liststyle = 1         " thin view
-" " let g:netrw_alto = 0            " open files on right
-" let g:netrw_altv = 1              " open files on right
-" let g:netrw_winsize = 12          " preview size
-" let g:netrw_use_errorwindow=0     " suppress error window
-" let g:netrw_preview=1             " open previews vertically
-" function! VExplorerToggle()
-"   if exists("t:expl_buf_num")
-"     let expl_win_num = bufwinnr(t:expl_buf_num)
-"     if expl_win_num != -1
-"       let cur_win_nr = winnr()
-"       exec expl_win_num . 'wincmd w'
-"       close
-"       exec cur_win_nr . 'wincmd w'
-"       unlet t:expl_buf_num
-"     else
-"       unlet t:expl_buf_num
-"     endif
-"   else
-"     exec '1wincmd w'
-"     Vexplore
-"     let t:expl_buf_num = bufnr("%")
-"   endif
-" endfunction
-" noremap <leader>T :call VExplorerToggle()<CR>
-
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
