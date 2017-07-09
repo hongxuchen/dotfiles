@@ -8,8 +8,6 @@ if !exists("g:os")
     endif
 endif
 
-" Handle 'read' settings for vim, used by ~/.vless and ~/.vimrc
-
 " visual-star-search, makes * and # work on visual mode too.
 function! s:VSetSearch(cmdtype)
   let temp = @s
@@ -34,11 +32,8 @@ nnoremap j gj
 nnoremap k gk
 nnoremap gj j
 noremap gk k
-" history scrolls in Ex mode
-" cnoremap <C-p> <Up>
-" cnoremap <C-n> <Down>
 
-" emacs like settings(non-insert mode)
+" emacs like settings (non-insert mode)
 nnoremap <silent><C-x>0 :hide<CR>
 nnoremap <silent><C-x>1 :hide :only<CR>
 nnoremap <silent><C-x>k :bd<CR>
@@ -49,6 +44,7 @@ nnoremap <silent><C-x><C-w> :write<Space>
 nnoremap <silent><C-x><C-q> :set invreadonly<CR>
 nnoremap <silent><C-x><C-c> :wqall<CR>
 nnoremap <silent><C-x><C-j> :e.<CR>
+nnoremap q :bn<CR>
 cnoremap <silent><C-g> <ESC><ESC>
 
 " general settings
@@ -144,6 +140,18 @@ autocmd BufRead,BufNewFile /usr/include/* set filetype=cpp
 autocmd BufRead,BufNewFile *.ipynb set filetype javascript
 autocmd BufRead,BufNewFile *.rs set filetype=rust
 autocmd BufRead,BufNewFile *.toml,Cargo.lock,*/.cargo/config set filetype=toml
+
+" disable standard plugins 
+let g:loaded_2html_plugin = 1
+let g:loaded_getscriptPlugin = 1
+let g:loaded_gzip = 1
+let g:loaded_logipat = 1
+let g:loaded_netrwPlugin = 1
+let g:loaded_rrhelper = 1
+let g:loaded_spellfile_plugin = 1
+let g:loaded_tarPlugin = 1
+let g:loaded_vimballPlugin = 1
+let g:loaded_zipPlugin = 1
 
 " switch
 " between

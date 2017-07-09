@@ -42,7 +42,6 @@ inoremap <silent><C-b> <Left>
 inoremap <silent><C-d> <Del>
 inoremap <silent><M-n> <C-o>:cnext<CR>
 inoremap <silent><M-p> <C-o>:cprevious<CR>
-nnoremap q :bn<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " append modeline
@@ -149,6 +148,11 @@ command! -bang -nargs=* Rg
       \           : fzf#vim#with_preview('right:50%:hidden', '?'),
       \   <bang>0)
 
+" set cpoptions=aABeFs
+" - fzf#vim#grep(command, with_column, [options], [fullscreen])
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep('git grep --line-number '.shellescape(<q-args>), 0, <bang>0)
+
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
@@ -166,8 +170,9 @@ inoremap <expr> <c-x><c-k> fzf#complete('cat /usr/share/dict/words')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Plug 'roxma/nvim-completion-manager'
+Plug 'airblade/vim-rooter'
 
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 
 Plug 'vim-utils/vim-man'
 
@@ -203,11 +208,10 @@ let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 " let g:ale_open_list = 1
 " let g:ale_keep_list_window_open = 1
-"
 
-Plug 'critiqjo/lldb.nvim', { 'do': ':UpdateRemotePlugins' }
-" Plug 'airodactyl/neovim-ranger'
+" Plug 'critiqjo/lldb.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'panickbr/neovim-ranger'
+Plug 'mhinz/vim-startify'
 Plug 'justinmk/vim-sneak'
 
 Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -275,4 +279,5 @@ else
   set background=light
   " colorscheme Atelier_SulphurpoolLight
   colorscheme PaperColor
+  " colorscheme molokai
 endif
