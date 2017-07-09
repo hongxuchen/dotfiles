@@ -1,2 +1,2 @@
-nnoremap <silent> gd :YcmCompleter GoTo<CR>
-nnoremap <silent> K :YcmCompleter GetDoc<CR>
+nnoremap <silent> <buffer> gd :YcmCompleter GoTo<CR>
+nnoremap <silent> <buffer> K :YcmCompleter GetDoc<CR>

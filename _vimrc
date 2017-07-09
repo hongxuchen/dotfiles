@@ -148,11 +148,6 @@ command! -bang -nargs=* Rg
       \           : fzf#vim#with_preview('right:50%:hidden', '?'),
       \   <bang>0)
 
-" set cpoptions=aABeFs
-" - fzf#vim#grep(command, with_column, [options], [fullscreen])
-command! -bang -nargs=* GGrep
-  \ call fzf#vim#grep('git grep --line-number '.shellescape(<q-args>), 0, <bang>0)
-
 " Mapping selecting mappings
 nmap <leader><tab> <plug>(fzf-maps-n)
 xmap <leader><tab> <plug>(fzf-maps-x)
@@ -171,16 +166,20 @@ inoremap <expr> <c-x><c-k> fzf#complete('cat /usr/share/dict/words')
 
 Plug 'roxma/nvim-completion-manager'
 Plug 'airblade/vim-rooter'
+let g:rooter_manual_only = 1
+let g:rooter_silent_chdir = 0
+let g:rooter_resolve_links = 1
 
 " Plug 'ervandew/supertab'
 
 Plug 'vim-utils/vim-man'
 
 " Language server
-" Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-" let g:LanguageClient_autoStart = 1
+Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+let g:LanguageClient_autoStart = 1
 
 Plug 'rust-lang/rust.vim'
+let g:rustfmt_autosave = 1
 let g:LanguageClient_serverCommands = {
       \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
       \}

@@ -1,3 +1,3 @@
-nnoremap <leader>f :call Autopep8()<CR>
+nnoremap <buffer> <leader>f :call Autopep8()<CR>
 let g:autopep8_disable_show_diff=1
-autocmd FileType python set equalprg=autopep8\ -
+setlocal equalprg=autopep8\ -
