@@ -128,9 +128,7 @@ set completeopt=longest,menuone
 set noshowmode
 set cmdheight=2
 set t_Co=256
-
 set autochdir
-autocmd BufEnter * if expand("%:p:h") !~ '^/tmp' | silent! lcd %:p:h | endif  " better autochdir
 
 " file type
 autocmd BufRead,BufNewfile *.smali set filetype=smali

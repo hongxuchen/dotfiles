@@ -1,2 +1,2 @@
 setlocal formatoptions=tq
-let b:AutoPairs = {'(':')', '[':']', '{':'}', '<':'>', "'":"'", '`':'`'}
+let b:AutoPairs = {'(':')', '[':']', '{':'}', '<':'>', '`':'`'}

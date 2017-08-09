@@ -77,9 +77,6 @@ Plug 'szw/vim-g'
 let g:vim_g_f_command = "Gf"
 let g:vim_g_command = "Go"
 
-" asyncrun
-" Plug 'skywind3000/asyncrun.vim'
-
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'plasticboy/vim-markdown'
@@ -87,7 +84,6 @@ Plug 'plasticboy/vim-markdown'
 Plug 'jiangmiao/auto-pairs'
 let g:AutoPairsFlyMode = 0
 let g:AutoPairsShortcutBackInsert = '<M-b>'
-" let g:AutoPairs = {'(':')', '[':']', '{':'}', '<':'>', "'":"'",'"':'"', '`':'`'}
 
 Plug 'tell-k/vim-autopep8', {'for': 'python'}
 
@@ -165,10 +161,6 @@ inoremap <expr> <c-x><c-k> fzf#complete('cat /usr/share/dict/words')
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Plug 'roxma/nvim-completion-manager'
-Plug 'airblade/vim-rooter'
-let g:rooter_manual_only = 1
-let g:rooter_silent_chdir = 0
-let g:rooter_resolve_links = 1
 
 " Plug 'ervandew/supertab'
 
@@ -184,20 +176,12 @@ let g:LanguageClient_serverCommands = {
       \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
       \}
 
-Plug 'PlanStylite/nvim-cargo'
-
-if g:os == "Linux"
-Plug 'SirVer/ultisnips'
-endif
-Plug 'honza/vim-snippets'
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+" Plug 'PlanStylite/nvim-cargo'
 
 Plug 'w0rp/ale'
 let g:ale_sign_column_always = 1
-let g:ale_sign_error = '>>'
-let g:ale_sign_warning = '--'
+let g:ale_sign_error = 'x'
+let g:ale_sign_warning = '!'
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
@@ -213,9 +197,8 @@ Plug 'panickbr/neovim-ranger'
 Plug 'mhinz/vim-startify'
 Plug 'justinmk/vim-sneak'
 
-Plug 'hkupty/iron.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'mattn/webapi-vim'
-Plug 'euclio/vim-markdown-composer'
+" Plug 'euclio/vim-markdown-composer'
 
 Plug 'Valloric/YouCompleteMe'
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'for': 'c'}
@@ -257,6 +240,9 @@ let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language
 let g:ycm_complete_in_comments = 1 " Completion in comments
 let g:ycm_complete_in_strings = 1 " Completion in string
 let g:ycm_rust_src_path = $RUST_SRC_PATH
+let g:ycm_filetype_specific_completion_to_disable = {
+      \ 'rust': 1
+      \}
 let g:ycm_filetype_blacklist = {
       \ 'tagbar' : 1,
       \ 'qf' : 1,
@@ -266,6 +252,7 @@ let g:ycm_filetype_blacklist = {
       \ 'text' : 1,
       \ 'vimwiki' : 1,
       \ 'gitcommit' : 1,
+      \ 'rust' : 1,
       \}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

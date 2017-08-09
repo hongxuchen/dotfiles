@@ -131,7 +131,8 @@ export MY_CABAL=~/.cabal
 
 # cargo home
 export MY_CARGO_HOME=~/.cargo
-export CARGO_INCREMENTAL=1
+export CARGO_INCREMENTAL=0
+# export RUST_LOG=info
 
 # PLAY_HOME=~/tools/play-2.0
 export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
@@ -159,7 +160,7 @@ export PATH=/opt/ghc/bin:$PATH
 # export PATH=${MY_PIN_ROOT}:$PATH
 # export PATH=~/tools/FSharp-2.0.0.0/bin:$PATH
 
-export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src/
+export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
 
 # for sbt
 export SBT_OPTS="-Xms2G -Xmx6G -Xss1M -XX:+CMSClassUnloadingEnabled"

@@ -41,3 +41,4 @@ _PyCharm30
 .idea
 
 node_modules/
+_bin/rafl
