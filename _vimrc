@@ -264,6 +264,6 @@ if g:os == "Darwin"
 else
   set background=light
   " colorscheme Atelier_SulphurpoolLight
-  colorscheme PaperColor
+  colorscheme elrodeo
   " colorscheme molokai
 endif

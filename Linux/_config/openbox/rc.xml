@@ -318,15 +318,9 @@ and back in -->
     <keybind key="F11">
       <action name="ToggleFullscreen"/>
     </keybind>
-    <!-- Fast access to Terminal -->
-    <!-- <keybind key="C-A-T"> -->
-    <!--   <action name="Execute"> -->
-    <!--     <command>urxvt -e tmux</command> -->
-    <!--   </action> -->
-    <!-- </keybind> -->
     <keybind key="C-A-T">
       <action name="Execute">
-        <command>urxvt -e tmux</command>
+        <command>alacritty -e tmux</command>
       </action>
     </keybind>
     <!-- Keybinding for PrintScreen Key -->
@@ -728,14 +722,20 @@ and back in -->
       <maximized>yes</maximized>
       <fullscreen>yes</fullscreen>
     </application>
+    <application name="firefox-trunk">
+      <decor>no</decor>
+      <maximized>yes</maximized>
+    </application>
     <application name="chromium-browser">
       <decor>no</decor>
     </application>
     <application name="urxvt">
+      <skip_pager>yes</skip_pager>
       <focus>yes</focus>
+      <maximized>yes</maximized>
       <fullscreen>yes</fullscreen>
     </application>
-    <application name="urxvt">
+    <application name="alacritty">
       <skip_pager>yes</skip_pager>
       <focus>yes</focus>
       <maximized>yes</maximized>
