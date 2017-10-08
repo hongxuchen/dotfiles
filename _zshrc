@@ -16,13 +16,13 @@ autoload -Uz compinit
 compinit -i
 autoload -Uz compdef
 
-
 # ~/.omz/plugins/
-PLUGINS=(ag brew gem git-extras pip z golang mvn npm sbt)
+PLUGINS=(ag gem git-extras pip z golang mvn yarn sbt)
 if [[ $OSTYPE == "linux-gnu" ]];then
-    PLUGINS=(${PLUGINS} docker)
+    PLUGINS=(${PLUGINS} docker zsh-history-substring-search)
 elif [[ $OSTYPE == "darwin"* ]];then
-    PLUGINS=(${PLUGINS} vagrant brew-cask)
+    PLUGINS=(${PLUGINS} vagrant brew-cask brew)
+    "$(brew command-not-found-init)"
 fi
 
 if [[ -z "$ZSH_CACHE_DIR"  ]]; then
@@ -56,18 +56,14 @@ unset config_file
 
 source "$ZSH/themes/${ZSH_THEME}.zsh-theme"
 
-if [[ -d ${MY_BREW_PREFIX} ]];then
-    source ${MY_BREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-    source ${MY_BREW_PREFIX}/Cellar/zsh-history-substring-search/1.0.0/zsh-history-substring-search.zsh
-    ## Ctrl-p/Ctrl-n for Emacs/viins mode
-    bindkey -M emacs '^p' history-substring-search-up
-    bindkey -M emacs '^n' history-substring-search-down
-    bindkey -M viins '^p' history-substring-search-up
-    bindkey -M viins '^n' history-substring-search-down
-    ## k and j for VI mode
-    bindkey -M vicmd 'k'  history-substring-search-up
-    bindkey -M vicmd 'j'  history-substring-search-down
-fi
+## Ctrl-p/Ctrl-n for Emacs/viins mode
+bindkey -M emacs '^p' history-substring-search-up
+bindkey -M emacs '^n' history-substring-search-down
+bindkey -M viins '^p' history-substring-search-up
+bindkey -M viins '^n' history-substring-search-down
+## k and j for VI mode
+bindkey -M vicmd 'k'  history-substring-search-up
+bindkey -M vicmd 'j'  history-substring-search-down
 
 unset ZSH
 
@@ -85,6 +81,9 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 # eval "$(stack --bash-completion-script stack)"
-if brew command command-not-found-init > /dev/null 2>&1; then eval "$(brew command-not-found-init)"; fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /home/hongxu/tools/dotfiles/Linux/_config/yarn/global/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /home/hongxu/tools/dotfiles/Linux/_config/yarn/global/node_modules/tabtab/.completions/electron-forge.zsh

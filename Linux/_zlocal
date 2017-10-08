@@ -54,7 +54,6 @@ JPF_SYMBC_BUILD=${JPF_SYMBC}/build
 
 # variables that need to be exported
 export MY_CLANG_TOOLS
-export MY_BREW_PREFIX=~/.linuxbrew
 export MY_JAVA=/usr/lib/jvm/java-7-openjdk-amd64
 
 ##############################################################################
@@ -74,7 +73,6 @@ export MY_OCAML_BIN_PATH="${MY_OPAM}/bin"
 # export CXX=clang++-3.7
 
 # export CPLUS_INCLUDE_PATH=
-export CPLUS_INCLUDE_PATH=${MY_BREW_PREFIX}/include
 export CPLUS_INCLUDE_PATH=~/qemu/panda/distorm/include:${CPLUS_INCLUDE_PATH}
 export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/include:${CPLUS_INCLUDE_PATH}
 export CPLUS_INCLUDE_PATH=/usr/lib/odb/x86_64-linux-gnu/include:${CPLUS_INCLUDE_PATH}
@@ -87,10 +85,10 @@ export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/tools/clang/include:${MY_LLVM_ROOT
 export LD_LIBRARY_PATH=
 export LD_LIBRARY_PATH=/usr/local/lib #:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH}
-export LD_LIBRARY_PATH=${MY_BREW_PREFIX}/lib:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=${LATTE_ROOT}/lib:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=${JPF_SYMBC}/lib:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=${MY_LLVM_OBJ}/lib:${MY_STP_INSTALL}/lib:${LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=${HOME}/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib:${LD_LIBRARY_PATH}
 
 # export CMAKE_PREFIX_PATH=/usr/share/cmake/qt5xdg
 
@@ -118,11 +116,7 @@ alias baksmali="java -jar ~/Android/smali/baksmali.jar"
 export CHILKAT=${MY_ROOT}/android/chilkat-9.5.0-python-2.7-x86_64-linux
 export PYTHONPATH=
 export PYTHONPATH=${MY_LLVM_ROOT}/src/tools/clang/bindings/python:$PYTHONPATH
-export PYTHONPATH=${MY_BREW_PREFIX}/share/google-app-engine:$PYTHONPATH
 export PYTHONPATH=${CHILKAT}:$PYTHONPATH
-
-## nodejs
-export NODE_PATH=${MY_BREW_PREFIX}/lib/node_modules/
 
 # golang
 export GOPATH=~/gocode
@@ -135,9 +129,10 @@ export MY_CARGO_HOME=~/.cargo
 export CARGO_INCREMENTAL=0
 # export RUST_LOG=info
 
+# yarn
+
 # PLAY_HOME=~/tools/play-2.0
 export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
-export PATH=${MY_BREW_PREFIX}/bin:$PATH
 export PATH=${MY_CARGO_HOME}/bin:$PATH
 export PATH=/usr/local/texlive/2014/Bin/x86_64-linux:$PATH
 export PATH=${MY_LLVM_OBJ}/bin:${MY_CLANG_TOOLS}/scan-build:${MY_CLANG_TOOLS}/scan-view:${MY_STP_INSTALL}/bin:$PATH
@@ -160,8 +155,18 @@ export PATH=/opt/ghc/bin:$PATH
 # export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
 # export PATH=${MY_PIN_ROOT}:$PATH
 # export PATH=~/tools/FSharp-2.0.0.0/bin:$PATH
+## node
+# nvm stuff
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+# yarn
+YARN_G_BIN=${HOME}/.yarn/bin
+export PATH=${YARN_G_BIN}:$PATH
 
 export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
+export RUSTFLAGS="-C target-cpu=native"
 
 # for sbt
 export SBT_OPTS="-Xms2G -Xmx6G -Xss1M -XX:+CMSClassUnloadingEnabled"
@@ -172,6 +177,8 @@ export CONSCRIPT_OPTS="-XX:MaxPermSize=512M -Dfile.encoding=UTF-8"
 export PATH=$CONSCRIPT_HOME/bin:$PATH
 
 export NO_AT_BRIDGE=1
+
+
 
 ##############################################################################
 # for wllvm

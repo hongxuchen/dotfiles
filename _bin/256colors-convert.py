@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # From https://gist.github.com/MicahElliott/719710
 """Convert values between RGB hex codes and xterm-256 color codes.
 

@@ -139,6 +139,7 @@ autocmd BufRead,BufNewFile /usr/include/* set filetype=cpp
 autocmd BufRead,BufNewFile *.ipynb set filetype javascript
 autocmd BufRead,BufNewFile *.rs set filetype=rust
 autocmd BufRead,BufNewFile *.toml,Cargo.lock,*/.cargo/config set filetype=toml
+autocmd BufRead,BufNewFile SCons* set filetype=scons 
 
 " disable standard plugins 
 let g:loaded_2html_plugin = 1

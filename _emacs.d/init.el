@@ -10,7 +10,6 @@
 
 (setq bdf-directory-list '("~/.font"))
 (dolist (path '("~/.emacs.d/config"
-                "~/.linuxbrew/share/emacs/site-lisp"
                 "~/.emacs.d/config/rtags/src"
                 ))
   (add-to-list 'load-path (expand-file-name path)))

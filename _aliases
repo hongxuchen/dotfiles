@@ -71,13 +71,12 @@ alias xml_pretty='xmllint --format'
 alias p_httpd='python -m SimpleHTTPServer'
 alias p_sh='ipython --profile=sh'
 alias p_nb='cd ~/src/ipynb && ipython notebook --profile=nb --no-browser'
-alias pprof='google-pprof'
+# alias pprof='google-pprof'
 alias grt='cd "$(git rev-parse --show-toplevel)"'
 alias indent='command indent -kr -ci2 -cli2 -i2 -l80 -nut' #Google style
 alias more='less'
 # alias less='colorless'
 alias diff='colordiff'
-alias svn='colorsvn'
 alias info='man'
 alias dl='axel -a -n 8 -U "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.6) Gecko/20070725 Firefox/2.0.0.6" -H "Accept:text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5 Accept-Language: en-us,en;q=0.5 Accept-Encoding: gzip,deflate Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7 Keep-Alive: 300"'
 alias adl="aria2c -s16 -x16"
@@ -126,8 +125,8 @@ alias sl='ls'
 
 alias mmv='noglob zmv -W'
 
-alias my_node_install='npm install -g'
-alias node='env node --harmony --use-strict'
+# alias my_node_install='npm install -g'
+# alias node='env node --harmony --use-strict'
 
 alias deb_latest_installed='cat /var/log/dpkg.log | grep "\ install\ "'
 

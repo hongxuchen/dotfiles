@@ -121,7 +121,7 @@ def _ensure_bakdir(bakdir):
 
 def parse_args():
     parser = argparse.ArgumentParser(
-        description="bootstrap for dot configuration", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+        description="bootstrap for dotfiles configuration", formatter_class=argparse.ArgumentDefaultsHelpFormatter)
     parser.add_argument(
         "-c", "--config",
         dest="config",

@@ -8,11 +8,6 @@ SRC=$(pwd)/rtags
 BUILD=$SRC/../build
 ELISP=$HOME/.emacs.d/config/rtags
 
-rm -f ~/.bin/clang
-rm -f ~/.bin/clang++
-rm -f ~/.bin/gcc
-rm -f ~/.bin/g++
-
 if ! [ -d "$SRC" ]; then
     git clone --recursive git@github.com:Andersbakken/rtags.git  "$SRC"
 else
@@ -32,16 +27,8 @@ export PATH=/usr/bin:$PATH
 export CC=gcc
 export CXX=g++
 # cmake -GNinja "$SRC"
-cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Debug "$SRC"
-make -j12
+cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 -DCMAKE_BUILD_TYPE=Release "$SRC"
+make -j
 sudo make install
-# cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=1 "$SRC"
-# make -j$(nproc)
-# sudo make install
-
-ln -sf "$SRC"/bin/gcc-rtags-wrapper.sh ~/.bin/g++
-ln -sf "$SRC"/bin/gcc-rtags-wrapper.sh ~/.bin/gcc
-ln -sf "$SRC"/bin/gcc-rtags-wrapper.sh ~/.bin/clang++
-ln -sf "$SRC"/bin/gcc-rtags-wrapper.sh ~/.bin/clang
 
 ln -sf "$SRC" "$ELISP"

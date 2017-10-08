@@ -70,9 +70,9 @@ Package managers
 
 Apart from [editors](http://en.wikipedia.org/wiki/Editor_war)' plugin managers (see [below](#fundamentals)), other package managers are used and the lists are inside [misc](https://github.com/HongxuChen/dotfiles/tree/master/misc) directory:
 
-1. **Debian** -- [debian package management](https://www.debian.org/doc/manuals/debian-faq/ch-pkgtools.en.html), [linuxbrew](https://github.com/Homebrew/linuxbrew)
+1. **Debian** -- [debian package management](https://www.debian.org/doc/manuals/debian-faq/ch-pkgtools.en.html)
 
-    - linuxbrew is less mature than homebrew and can potentially cause compilation and linkage errors when buiding tools on your own (e.g., `pkg-config`, etc.).
+    - linuxbrew frequently causes compilation and linkage errors when buiding tools on your own therefore not recommended
 
 1. **Mac OS X** -- [homebrew](http://brew.sh/)
 
@@ -86,7 +86,7 @@ Apart from [editors](http://en.wikipedia.org/wiki/Editor_war)' plugin managers (
 
 1. **Ruby** -- [gem](https://rubygems.org/)
 
-1. **Node.js** -- [npm](https://www.npmjs.org/)
+1. **Node.js** -- [npm](https://www.npmjs.org/) & [yarn](https://yarnpkg.com/en/)
 
 1. **OCaml** -- [opam](https://opam.ocaml.org/)
 
