@@ -1,5 +1,5 @@
-# -*- mode:sh -*-
-# vim:ft=sh
+# -*- mode:zsh -*-
+# vim:ft=zsh
 
 MY_ROOT=~/RESEARCH
 MY_WLLVM_ROOT=${MY_ROOT}/wllvm
@@ -51,6 +51,13 @@ export CPLUS_INCLUDE_PATH=
 export CPLUS_INCLUDE_PATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1
 export CPLUS_INCLUDE_PATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include:${CPLUS_INCLUDE_PATH}
 export C_INCLUDE_PATH=
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+# yarn
+YARN_G_BIN=${HOME}/.yarn/bin
+export PATH=${YARN_G_BIN}:$PATH
 
 
 # for wllvm
