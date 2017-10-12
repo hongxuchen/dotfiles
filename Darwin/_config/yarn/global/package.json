@@ -1,0 +1,15 @@
+{
+  "dependencies": {
+    "electron": "^1.7.9",
+    "electron-forge": "^4.1.2",
+    "emoj": "^2.0.0",
+    "eslint": "^4.8.0",
+    "eslint-config-airbnb": "^16.0.0",
+    "grunt": "^1.0.1",
+    "http-server": "^0.10.0",
+    "neon-cli": "^0.1.20",
+    "node-gyp": "^3.6.2",
+    "npm-home": "^1.5.0",
+    "npm-stats": "^1.2.0"
+  }
+}

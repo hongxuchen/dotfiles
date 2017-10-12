@@ -202,10 +202,13 @@ Plug 'justinmk/vim-sneak'
 Plug 'mattn/webapi-vim'
 " Plug 'euclio/vim-markdown-composer'
 
-Plug 'Valloric/YouCompleteMe'
-Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'for': 'c'}
+if g:os != 'Darwin'
+  Plug 'Valloric/YouCompleteMe'
+  Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'for': 'c'}
+endif
 
 " color scheme
+Plug 'jacoborus/tender.vim'
 Plug 'endel/vim-github-colorscheme'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
@@ -226,7 +229,7 @@ call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if g:os == "Darwin"
-  let g:ycm_path_to_python_interpreter='/usr/local/bin/python3'
+  let g:ycm_path_to_python_interpreter='/usr/local/bin/python2'
 else
   let g:ycm_path_to_python_interpreter='/usr/bin/python'
 endif
