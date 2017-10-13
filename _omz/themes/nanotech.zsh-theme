@@ -1,4 +1,4 @@
-# -*- mode: sh; -*-
+# -*- mode: zsh; -*-
 PROMPT='%F{green}%2c%F{blue} >%f '
 RPROMPT='$(git_prompt_info) %F{blue}< %F{green}%D{%L:%M} %F{yellow}%D{%p}%f'
 # RPROMPT='$(git_prompt_info)$(svn_prompt_info) %F{blue}< %F{green}%D{%L:%M} %F{yellow}%D{%p}%f'

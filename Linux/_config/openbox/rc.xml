@@ -722,7 +722,7 @@ and back in -->
       <maximized>yes</maximized>
       <fullscreen>yes</fullscreen>
     </application>
-    <application name="firefox-trunk">
+    <application class="Firefox">
       <decor>no</decor>
       <maximized>yes</maximized>
     </application>
@@ -735,7 +735,7 @@ and back in -->
       <maximized>yes</maximized>
       <fullscreen>yes</fullscreen>
     </application>
-    <application name="alacritty">
+    <application name="Alacritty">
       <skip_pager>yes</skip_pager>
       <focus>yes</focus>
       <maximized>yes</maximized>

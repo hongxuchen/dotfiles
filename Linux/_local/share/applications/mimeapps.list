@@ -97,6 +97,7 @@ application/ppdf=FoxitReader.desktop
 application/octet-stream=FoxitReader.desktop
 x-scheme-handler/about=google-chrome.desktop
 x-scheme-handler/unknown=google-chrome.desktop
+x-scheme-handler/nylas=nylas.desktop
 
 [Added Associations]
 x-scheme-handler/http=exo-web-browser.desktop

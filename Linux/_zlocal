@@ -178,8 +178,6 @@ export PATH=$CONSCRIPT_HOME/bin:$PATH
 
 export NO_AT_BRIDGE=1
 
-
-
 ##############################################################################
 # for wllvm
 ##############################################################################
@@ -199,3 +197,5 @@ export IDEA_VM_OPTIONS=${HOME}/.idea64.vmoptions
 ##############################################################################
 stty ixany
 stty ixoff -ixon
+
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
