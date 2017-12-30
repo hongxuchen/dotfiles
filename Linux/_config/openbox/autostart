@@ -1,4 +1,2 @@
 #!/bin/sh
-# feh --bg-scale /usr/share/backgrounds/Twilight_Frost_by_Phil_Jackson.jpg
-#xrdb -merge ~/.Xresources
 nm-applet &

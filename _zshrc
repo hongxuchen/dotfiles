@@ -17,7 +17,7 @@ compinit -i
 autoload -Uz compdef
 
 # ~/.omz/plugins/
-PLUGINS=(ag gem git-extras pip z golang mvn yarn sbt)
+PLUGINS=(ag gem git-extras pip z golang mvn yarn sbt bazel)
 if [[ $OSTYPE == "linux-gnu" ]];then
     PLUGINS=(${PLUGINS} docker zsh-history-substring-search)
 elif [[ $OSTYPE == "darwin"* ]];then
@@ -87,3 +87,10 @@ autoload -U +X bashcompinit && bashcompinit
 # eval "$(stack --bash-completion-script stack)"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# tabtab source for electron-forge package
+# uninstall by removing these lines or running `tabtab uninstall electron-forge`
+[[ -f /home/hongxu/tools/dotfiles/Linux/_config/yarn/global/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /home/hongxu/tools/dotfiles/Linux/_config/yarn/global/node_modules/tabtab/.completions/electron-forge.zsh
+#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+export SDKMAN_DIR="/home/hongxu/.sdkman"
+[[ -s "/home/hongxu/.sdkman/bin/sdkman-init.sh" ]] && source "/home/hongxu/.sdkman/bin/sdkman-init.sh"

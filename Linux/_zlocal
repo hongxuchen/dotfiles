@@ -83,8 +83,8 @@ export C_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}
 export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/tools/clang/include:${MY_LLVM_ROOT}/obj/tools/clang/include:${CPLUS_INCLUDE_PATH}
 
 export LD_LIBRARY_PATH=
-export LD_LIBRARY_PATH=/usr/local/lib #:${LD_LIBRARY_PATH}
-export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu:${LD_LIBRARY_PATH}
+export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu
+export LD_LIBRARY_PATH=/usr/local/lib:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=${LATTE_ROOT}/lib:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=${JPF_SYMBC}/lib:${LD_LIBRARY_PATH}
 export LD_LIBRARY_PATH=${MY_LLVM_OBJ}/lib:${MY_STP_INSTALL}/lib:${LD_LIBRARY_PATH}
@@ -149,6 +149,9 @@ export PATH=~/src/stellar/stellar-core/build/src:$PATH
 export PATH=${MY_OCAML_BIN_PATH}:$PATH
 export PATH=${MY_CABAL}/bin:$PATH
 export PATH=/opt/ghc/bin:$PATH
+export PATH=${HOME}/tools/depot_tools:$PATH
+export PATH=${HOME}/pinpoint/bin:$PATH
+export PATH=/usr/local/lib/fot/bin:$PATH
 # export PATH=${MY_ROOT}/android/src:$PATH
 # export PATH=${PLAY_HOME}:$PATH
 # ${LATTE_ROOT}/bin:

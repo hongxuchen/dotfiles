@@ -739,55 +739,5 @@ and back in -->
       <maximized>yes</maximized>
       <fullscreen>yes</fullscreen>
     </application>
-    <!--
-        # this is an example with comments through out. use these to make your
-        # own rules, but without the comments of course.
-
-<application name="first element of window's wm_class property (see xprop)"
-class="second element of window's wm_class property (see xprop)"
-role="the window's wm_window_role property (see xprop)">
-# the name or the class can be set, or both. this is used to match
-# windows when they appear. role can optionally be set as well, to
-# further restrict your matches.
-
-# the name, class, and role use simple wildcard matching such as those
-# used by a shell. you can use * to match any characters and ? to match
-# any single character.
-
-# when multiple rules match a window, they will all be applied, in the
-# order that they appear in this list
-
-# each element can be left out or set to 'default' to specify to not
-# change that attribute of the window
-
-<decor>yes</decor>
-<shade>no</shade>
-
-<position>
-# the position is only used if both an x and y coordinate are provided
-# (and not set to 'default')
-<x>center</x>
-# a number like 50, or 'center' to center on screen. use a negative number
-# to start from the right (or bottom for <y>), ie -50 is 50 pixels from the
-# right edge (or bottom).
-<y>200</y>
-<monitor>1</monitor>
-# specifies the monitor in a xinerama setup.
-# 1 is the first head, or 'mouse' for wherever the mouse is
-</position>
-
-<focus>yes</focus>
-<desktop>1</desktop>
-
-<iconic>no</iconic>
-<skip_pager>no</skip_pager>
-<skip_taskbar>no</skip_taskbar>
-<fullscreen>yes</fullscreen>
-<maximized>true</maximized>
-# 'horizontal', 'vertical' or boolean (yes/no)
-</application>
-
-# end of the example
-    -->
   </applications>
 </openbox_config>
