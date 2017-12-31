@@ -12,14 +12,16 @@ FIAT = 'CNY'
 PRICE_FIAT = 'price_{}'.format(FIAT.lower())
 PRICE_BTC = 'price_btc'
 PRICE_USD = 'price_usd'
+MC_USD = 'market_cap_usd'
 
 class CCAsset:
-    def __init__(self, coin_id, num, fiat, usd, btc):
+    def __init__(self, coin_id, num, fiat, usd, btc, mc):
         self.coin_id = coin_id
         self.num = num
         self.btc = btc
         self.fiat = fiat
         self.usd = usd
+        self.mc = mc
 
     def __str__(self):
         if FIAT == 'USD':
@@ -38,6 +40,9 @@ class CCAsset:
     def all_btc(self):
         return self.num * self.btc
 
+    def mc_ratio(self, btc_mc):
+        return btc_mc / self.mc
+
 
 def cmc_req(ticker, convert):
     url = 'https://api.coinmarketcap.com/v1/ticker/{}/?convert={}'.format(ticker, convert)
@@ -47,6 +52,7 @@ def cmc_req(ticker, convert):
 
 
 def cc_assets(asset_fpath):
+    btc_mc = None
     cc_info = []
     with open(asset_fpath) as asset_file:
         for line in asset_file:
@@ -60,10 +66,17 @@ def cc_assets(asset_fpath):
             price_fiat = float(req_json[PRICE_FIAT])
             price_usd = float(req_json[PRICE_USD])
             price_btc = float(req_json[PRICE_BTC])
-            cc = CCAsset(ticker, num, price_fiat, price_usd, price_btc)
+            mc_res = req_json[MC_USD]
+            if mc_res is None:
+                mc = 10 ** 10
+            else:
+                mc = float(mc_res)
+            if ticker == 'bitcoin':
+                btc_mc = mc
+            cc = CCAsset(ticker, num, price_fiat, price_usd, price_btc, mc)
             print(cc)
             cc_info.append(cc)
-    return cc_info
+    return cc_info, btc_mc
 
 
 if __name__ == "__main__":
@@ -74,7 +87,7 @@ if __name__ == "__main__":
     if not os.path.exists(input_file):
         print('{} not exists!'.format(input_file), file=sys.stderr)
         sys.exit(1)
-    all_cc = cc_assets(input_file)
+    all_cc, btc_mc = cc_assets(input_file)
     print()
     all_fiat = 0
     all_usd = 0
@@ -86,10 +99,14 @@ if __name__ == "__main__":
         all_btc += cc_btc
         all_fiat += cc_fiat
         all_usd += cc_usd
-        if FIAT == 'USD':
-            print("{:<20} {:>10.2f} {}{:>16.8f} BTC".format(cc.coin_id, cc_fiat, FIAT, cc_btc))
+        if btc_mc is None:
+            mc_ratio = 'Nil'
         else:
-            print("{:<20} {:>10.2f} {}, {:>10.2f} USD, {:>16.8f} BTC".format(cc.coin_id, cc_fiat, FIAT, cc_usd, cc_btc))
+            mc_ratio = cc.mc_ratio(btc_mc)
+        if FIAT == 'USD':
+            print("{:<20} {:>10.2f} {}{:>16.8f} BTC,        RATIO: {}".format(cc.coin_id, cc_fiat, FIAT, cc_btc, mc_ratio))
+        else:
+            print("{:<20} {:>10.2f} {}, {:>10.2f} USD, {:>16.8f} BTC,        RATIO: {}".format(cc.coin_id, cc_fiat, FIAT, cc_usd, cc_btc, mc_ratio))
     print()
     if FIAT == 'USD':
         print("Total: {} {},  {} BTC".format(all_fiat, FIAT, all_btc))
