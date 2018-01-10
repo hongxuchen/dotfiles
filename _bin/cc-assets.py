@@ -44,8 +44,8 @@ class CCAsset:
         return btc_mc / self.mc
 
 
-def cmc_req(ticker, convert):
-    url = 'https://api.coinmarketcap.com/v1/ticker/{}/?convert={}'.format(ticker, convert)
+def cmc_req(cc_name, convert):
+    url = 'https://api.coinmarketcap.com/v1/ticker/{}/?convert={}'.format(cc_name, convert)
     req = requests.get(url)
     req_json = req.json()[0]
     return req_json
@@ -57,7 +57,7 @@ def cc_assets(asset_fpath):
     with open(asset_fpath) as asset_file:
         for line in asset_file:
             if line.startswith('#'):
-                print("[ignore] {}".format(line))
+                print("{}".format(line.strip()))
                 continue
             columns = line.split()
             ticker = columns[0]
@@ -82,10 +82,11 @@ def cc_assets(asset_fpath):
 if __name__ == "__main__":
     if len(sys.argv) >= 2:
         input_file = sys.argv[1]
+        input_file = os.path.abspath(input_file)
     else:
         input_file = os.path.expanduser('~/tools/private/cc.txt')
     if not os.path.exists(input_file):
-        print('{} not exists!'.format(input_file), file=sys.stderr)
+        print('asset file "{}" not found!'.format(input_file), file=sys.stderr)
         sys.exit(1)
     all_cc, btc_mc = cc_assets(input_file)
     print()
