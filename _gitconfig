@@ -32,7 +32,6 @@
 
 [core]
 	editor = vim -c ':normal gg'
-	pager = less
 	whitespace = trailing-space,space-before-tab
 	autocrlf = input
 	quotepath = false
@@ -44,7 +43,7 @@
     bdone = "!f() { git checkout ${1-master} && git up && git bclean ${1-master};  }; f"
 	li = ls-files --exclude-standard --ignored --others
 	wc = whatchanged -p --abbrev-commit --pretty=medium
-	s = status --short --branch --ignore-submodules=all
+	s = status --short --branch #--ignore-submodules=all
     size = count-objects -Hv
     # up = !git pull --rebase --prune $@ && git submodule update --init --recursive
     # log
