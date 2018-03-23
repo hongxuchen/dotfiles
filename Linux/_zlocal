@@ -134,7 +134,7 @@ export CARGO_INCREMENTAL=0
 # PLAY_HOME=~/tools/play-2.0
 export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 export PATH=${MY_CARGO_HOME}/bin:$PATH
-export PATH=/usr/local/texlive/2014/Bin/x86_64-linux:$PATH
+export PATH=/usr/local/texlive/2017/bin/x86_64-linux:$PATH
 export PATH=${MY_LLVM_OBJ}/bin:${MY_CLANG_TOOLS}/scan-build:${MY_CLANG_TOOLS}/scan-view:${MY_STP_INSTALL}/bin:$PATH
 export PATH=${MY_WLLVM_ROOT}:$PATH
 export PATH=${MY_KLEE_INSTALL}/bin:$PATH
@@ -152,6 +152,7 @@ export PATH=/opt/ghc/bin:$PATH
 export PATH=${HOME}/tools/depot_tools:$PATH
 export PATH=${HOME}/pinpoint/bin:$PATH
 export PATH=/usr/local/lib/fot/bin:$PATH
+export PATH=/snap/bin:$PATH
 # export PATH=${MY_ROOT}/android/src:$PATH
 # export PATH=${PLAY_HOME}:$PATH
 # ${LATTE_ROOT}/bin:
@@ -202,3 +203,5 @@ stty ixany
 stty ixoff -ixon
 
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

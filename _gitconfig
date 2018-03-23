@@ -52,6 +52,7 @@
     rct = log -8 HEAD
 	lm = !git log --decorate --pretty=format:'%an <%ae>' $1 | sort | uniq -c
 	# [c]ommit
+    cc = "!git add . && git commit --amend -C HEAD --date \"$(date)\""
 	cp = cherry-pick -x
 	cr = reset --hard HEAD^
 	undo = reset HEAD@{1}

@@ -78,16 +78,7 @@ def cc_assets(asset_fpath):
             cc_info.append(cc)
     return cc_info, btc_mc
 
-
-if __name__ == "__main__":
-    if len(sys.argv) >= 2:
-        input_file = sys.argv[1]
-        input_file = os.path.abspath(input_file)
-    else:
-        input_file = os.path.expanduser('~/tools/private/cc.txt')
-    if not os.path.exists(input_file):
-        print('asset file "{}" not found!'.format(input_file), file=sys.stderr)
-        sys.exit(1)
+def get_assets(input_file):
     all_cc, btc_mc = cc_assets(input_file)
     print()
     all_fiat = 0
@@ -113,3 +104,22 @@ if __name__ == "__main__":
         print("Total: {} {},  {} BTC".format(all_fiat, FIAT, all_btc))
     else:
         print("Total: {} {}, {} USD,  {} BTC".format(all_fiat, FIAT, all_usd, all_btc))
+
+def get_relative(from_cc, to_cc):
+    print("{}/{}:\t".format(from_cc, to_cc), end="")
+    from_price = float(cmc_req(from_cc, "USD")[PRICE_USD])
+    to_price = float(cmc_req(to_cc, "USD")[PRICE_USD])
+    print("{} / {} = {:<6.4f}".format(from_price, to_price, from_price / to_price))
+
+
+if __name__ == "__main__":
+    if len(sys.argv) >= 2:
+        input_file = sys.argv[1]
+        input_file = os.path.abspath(input_file)
+    else:
+        input_file = os.path.expanduser('~/tools/private/cc.txt')
+    if not os.path.exists(input_file):
+        print('asset file "{}" not found!'.format(input_file), file=sys.stderr)
+        sys.exit(1)
+    # get_assets(input_file)
+    get_relative("cardano", "stellar")
