@@ -77,6 +77,7 @@ Plug 'szw/vim-g'
 let g:vim_g_f_command = "Gf"
 let g:vim_g_command = "Go"
 
+Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'plasticboy/vim-markdown'
@@ -169,14 +170,14 @@ Plug 'roxma/nvim-completion-manager'
 Plug 'vim-utils/vim-man'
 
 " Language server
-Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-let g:LanguageClient_autoStart = 1
-
-Plug 'rust-lang/rust.vim'
-let g:rustfmt_autosave = 1
-let g:LanguageClient_serverCommands = {
-      \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-      \}
+" Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+" let g:LanguageClient_autoStart = 1
+" 
+" Plug 'rust-lang/rust.vim'
+" let g:rustfmt_autosave = 1
+" let g:LanguageClient_serverCommands = {
+"       \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+"       \}
 
 " Plug 'PlanStylite/nvim-cargo'
 

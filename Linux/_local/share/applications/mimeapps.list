@@ -82,7 +82,7 @@ image/x-xpixmap=gpicview.desktop
 image/tiff=gpicview.desktop
 image/x-psd=gpicview.desktop
 image/x-webp=gpicview.desktop
-inode/directory=pcmanfm.desktop
+inode/directory=ranger.desktop
 application/pdf=FoxitReader.desktop
 image/jpg=gpicview.desktop
 image/x-bmp=gpicview.desktop
@@ -98,6 +98,7 @@ application/octet-stream=FoxitReader.desktop
 x-scheme-handler/about=google-chrome.desktop
 x-scheme-handler/unknown=google-chrome.desktop
 x-scheme-handler/nylas=nylas.desktop
+application/x-gnome-saved-search=ranger.desktop
 
 [Added Associations]
 x-scheme-handler/http=exo-web-browser.desktop

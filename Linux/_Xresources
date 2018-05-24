@@ -16,7 +16,7 @@ Xft.hintstyle         : hintslight
 #define my_consolas        Consolas:size=14
 #define my_dejavu          DejaVuSansMono:size=13
 #define my_unifont         UnifontMedium:size=11
-#define my_monaco          Monaco:autohint=true:pixelsize=16:size=11
+#define my_monaco          Monaco:autohint=true:pixelsize=16:size=10
 #define my_wqyHei          WenQuanYiMicroHei:size=13
 #define my_MSYaHei         MicrosoftYaHei:size=13
 

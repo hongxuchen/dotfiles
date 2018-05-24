@@ -35,7 +35,7 @@
     <primaryMonitor/>
   </placement>
   <theme>
-    <name>Onyx-Citrus</name>
+    <name>Lubuntu-default</name>
     <titleLayout>NLIMC</titleLayout>
     <!--
         available characters are NDSLIMC, each can occur at most once.
@@ -300,19 +300,15 @@ and back in -->
     <!-- Keybindings for running applications -->
     <keybind key="W-e">
       <action name="Execute">
-        <command>pcmanfm-qt </command>
+        <command>pcmanfm </command>
       </action>
     </keybind>
-    <!--keybindings-->
+    <!--keybindings for LXPanel -->
     <!-- <keybind key="W-r"> -->
-    <keybind key="A-space">
-      <action name="Execute">
-        <command>albert</command>
-      </action>
-    </keybind>
     <keybind key="F11">
       <action name="ToggleFullscreen"/>
     </keybind>
+    <!-- Fast access to Terminal -->
     <keybind key="C-A-T">
       <action name="Execute">
         <command>alacritty -e tmux</command>
@@ -321,24 +317,26 @@ and back in -->
     <!-- Keybinding for PrintScreen Key -->
     <keybind key="Print">
       <action name="Execute">
+        <execute>scrot</execute>
+      </action>
+    </keybind>
+    <keybind key="A-Print">
+      <action name="Execute">
         <execute>scrot -s</execute>
       </action>
     </keybind>
     <!-- Keybinding for Volume management -->
-    <!-- <keybind key="XF86AudioRaiseVolume"> -->
-    <keybind key="C-F10">
+    <keybind key="XF86AudioRaiseVolume">
       <action name="Execute">
         <command>amixer -q sset Master 3%+</command>
       </action>
     </keybind>
-    <!-- <keybind key="XF86AudioLowerVolume"> -->
-    <keybind key="C-F9">
+    <keybind key="XF86AudioLowerVolume">
       <action name="Execute">
         <command>amixer -q sset Master 3%-</command>
       </action>
     </keybind>
-    <!-- <keybind key="XF86AudioMute"> -->
-    <keybind key="C-F11">
+    <keybind key="XF86AudioMute">
       <action name="Execute">
         <command>amixer -q sset Master toggle</command>
       </action>
@@ -680,7 +678,7 @@ and back in -->
     <!-- You can specify more than one menu file in here and they are all loaded,
          just don't make menu ids clash or, well, it'll be kind of pointless -->
     <!-- default menu file (or custom one in $HOME/.config/openbox/) -->
-    <file>/usr/share/lxqt/openbox/menu.xml</file>
+    <file>/usr/share/lxde/openbox/menu.xml</file>
     <hideDelay>200</hideDelay>
     <!-- if a press-release lasts longer than this setting (in milliseconds), the
          menu is hidden again -->
@@ -696,16 +694,11 @@ and back in -->
   </menu>
   <applications>
     <application class="*">
-      <skip_pager>yes</skip_pager>
       <decor>yes</decor>
       <maximized>no</maximized>
       <fullscreen>no</fullscreen>
     </application>
     <application name="evince">
-      <fullscreen>no</fullscreen>
-      <maximized>yes</maximized>
-    </application>
-    <application name="pcmanfm-qt">
       <fullscreen>no</fullscreen>
       <maximized>yes</maximized>
     </application>
@@ -717,12 +710,13 @@ and back in -->
       <maximized>yes</maximized>
       <fullscreen>yes</fullscreen>
     </application>
-    <application class="Firefox">
+    <application name="chromium-browser">
       <decor>no</decor>
       <maximized>yes</maximized>
     </application>
-    <application name="chromium-browser">
+    <application class="Firefox">
       <decor>no</decor>
+      <maximized>yes</maximized>
     </application>
     <application name="urxvt">
       <skip_pager>yes</skip_pager>

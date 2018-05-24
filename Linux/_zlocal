@@ -1,6 +1,6 @@
 # -*- mode:sh -*-
 # vim:ft=sh
-export DISPLAY=:0
+# export DISPLAY=:0
 
 ##############################################################################
 # self-defined variables
@@ -73,15 +73,16 @@ export MY_OCAML_BIN_PATH="${MY_OPAM}/bin"
 # export CXX=clang++-3.7
 
 # export CPLUS_INCLUDE_PATH=
-export CPLUS_INCLUDE_PATH=~/qemu/panda/distorm/include:${CPLUS_INCLUDE_PATH}
-export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/include:${CPLUS_INCLUDE_PATH}
-export CPLUS_INCLUDE_PATH=/usr/lib/odb/x86_64-linux-gnu/include:${CPLUS_INCLUDE_PATH}
-export CPLUS_INCLUDE_PATH=${MY_KLEE_INCLUDE}:${MY_KLEE_INCLUDE}/../../obj/include:${CPLUS_INCLUDE_PATH}
-# export CPLUS_INCLUDE_PATH=${LATTE_ROOT}/include:${CPLUS_INCLUDE_PATH}
-# export CPLUS_INCLUDE_PATH=${MY_JAVA}/include:${CPLUS_INCLUDE_PATH}
-export C_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}
-export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/tools/clang/include:${MY_LLVM_ROOT}/obj/tools/clang/include:${CPLUS_INCLUDE_PATH}
-
+# export CPLUS_INCLUDE_PATH=~/qemu/panda/distorm/include:${CPLUS_INCLUDE_PATH}
+# export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/include:${CPLUS_INCLUDE_PATH}
+# export CPLUS_INCLUDE_PATH=/usr/lib/odb/x86_64-linux-gnu/include:${CPLUS_INCLUDE_PATH}
+# export CPLUS_INCLUDE_PATH=${MY_KLEE_INCLUDE}:${MY_KLEE_INCLUDE}/../../obj/include:${CPLUS_INCLUDE_PATH}
+# # export CPLUS_INCLUDE_PATH=${LATTE_ROOT}/include:${CPLUS_INCLUDE_PATH}
+# # export CPLUS_INCLUDE_PATH=${MY_JAVA}/include:${CPLUS_INCLUDE_PATH}
+# export C_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}
+# export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/tools/clang/include:${MY_LLVM_ROOT}/obj/tools/clang/include:${CPLUS_INCLUDE_PATH}
+# 
+export ASAN_OPTIONS=abort_on_error=1:detect_leaks=0:symbolize=0:allocator_may_return_null=1:detect_stack_use_after_return=1
 export LD_LIBRARY_PATH=
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu
 export LD_LIBRARY_PATH=/usr/local/lib:${LD_LIBRARY_PATH}
@@ -205,3 +206,5 @@ stty ixoff -ixon
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
+
+# xrdb -merge ~/.Xresources

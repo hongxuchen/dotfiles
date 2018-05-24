@@ -302,18 +302,7 @@ and back in -->
         <command>pcmanfm </command>
       </action>
     </keybind>
-    <!--keybindings for LXPanel -->
-    <!-- <keybind key="W-r"> -->
-    <keybind key="A-space">
-      <action name="Execute">
-        <command>kupfer</command>
-      </action>
-    </keybind>
-    <keybind key="C-Escape">
-      <action name="Execute">
-        <command>lxpanelctl menu</command>
-      </action>
-    </keybind>
+    <!--keybindings-->
     <keybind key="F11">
       <action name="ToggleFullscreen"/>
     </keybind>

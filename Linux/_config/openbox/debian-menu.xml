@@ -63,8 +63,8 @@
       <item label='Brasero'>
         <action name='Execute'><execute>/usr/bin/brasero</execute></action>
       </item>
-      <item label='kupfer'>
-        <action name='Execute'><execute>/usr/bin/kupfer</execute></action>
+      <item label='albert'>
+        <action name='Execute'><execute>/usr/bin/albert</execute></action>
       </item>
       <item label='Nautilus' icon='/usr/share/pixmaps/nautilus.xpm'>
         <action name='Execute'><execute>/usr/bin/nautilus</execute></action>
