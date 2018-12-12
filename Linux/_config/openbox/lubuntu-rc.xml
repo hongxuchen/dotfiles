@@ -716,6 +716,10 @@ and back in -->
       <decor>no</decor>
       <maximized>yes</maximized>
     </application>
+    <application class="Firefox-trunk">
+      <decor>no</decor>
+      <maximized>yes</maximized>
+    </application>
     <application name="urxvt">
       <skip_pager>yes</skip_pager>
       <focus>yes</focus>

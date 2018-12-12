@@ -36,3 +36,16 @@ nomacs/
 kwalletd/
 Foxit Software/
 .vivaldi_user_id
+QtProject/
+radare2/
+okular/
+jupyter/
+epiphany/
+xfce4/
+clipit/
+webkitgtk/
+libgda/
+user-places.xbel
+user-places.xbel.tbcache
+*.list
+

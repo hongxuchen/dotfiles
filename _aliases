@@ -4,6 +4,7 @@
 
 if [[ $OSTYPE == "linux-gnu" ]]; then
 
+    # alias cat="bat"
     alias grep='grep --color=auto --exclude-dir=.cvs --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn' 
     alias gdb='gdb -q'
     alias dstat='dstat -cdlmnpsy'
@@ -14,8 +15,10 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
     alias pycharm='nohup ~/tools/pycharm/bin/pycharm.sh &>/dev/null &'
     alias clion='nohup ~/tools/clion-IDE/bin/clion.sh &>/dev/null &'
     alias intellij='nohup ~/tools/intellij/bin/idea.sh &>/dev/null &'
+    alias goland='nohup ~/tools/goland/bin/goland.sh &>/dev/null &'
     alias wechat='~/tools/wechat/electronic-wechat &>/dev/null &'
     alias isar='~/tools/isabelle/Isabelle2016-1 &>/dev/null &disown'
+    alias cutter='~/tools/cutter-radare2 &>/dev/null &disown'
     alias isabelle='~/tools/isabelle/bin/isabelle'
     alias eclipse='nohup ~/tools/eclipse/eclipse &>/dev/null &'
     alias android-studio='nohup ~/tools/android-studio/bin/studio.sh &>/dev/null &'
@@ -101,9 +104,7 @@ alias v_cc1_oz='clang /dev/null -xc -Oz - -o /dev/null -\#\#\# 2>&1 | tr " " "\n
 alias v_cc1_ofast='clang /dev/null -xc -Ofast - -o /dev/null -\#\#\# 2>&1 | tr " " "\n"'
 alias v_clang_llvm='clang -xc /dev/null -c -mllvm -print-all-options'
 
-alias fuck='$(thefuck $(fc -ln -1))'
-
-alias buuc='(echo "brew update" && brew update && echo "brew upgrade" && brew upgrade && echo "brew cleanup" brew cleanup)'
+alias buuc='(echo "brew update" && brew update && echo "brew upgrade" && brew upgrade && echo "brew cleanup" && brew cleanup)'
 
 alias rdm_res='tail -f /tmp/rdm_answer'
 

@@ -220,7 +220,7 @@ Plug 'chmllr/elrodeo-vim-colorscheme'
 Plug 'notpratheek/vim-sol'
 Plug 'w0ng/vim-hybrid'
 Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'penicolas/simplon.vim'
+" Plug 'penicolas/simplon.vim'
 Plug 'nowk/genericdc'
 Plug 'stulzer/heroku-colorscheme'
 Plug 'atelierbram/vim-colors_atelier-schemes'
@@ -270,6 +270,6 @@ if g:os == "Darwin"
 else
   set background=light
   " colorscheme Atelier_SulphurpoolLight
-  colorscheme elrodeo
-  " colorscheme molokai
+  " colorscheme elrodeo
+  colorscheme molokai
 endif

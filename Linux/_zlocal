@@ -68,6 +68,9 @@ export PERL5LIB="${MY_OPAM}/lib/perl5"
 export OCAML_TOPLEVEL_PATH="${MY_ROOT}/lib/toplevel"
 export MY_OCAML_BIN_PATH="${MY_OPAM}/bin"
 
+
+export HEXRAYS_LICENSE_FILE=@155.69.100.92
+
 ## C/C++
 # export CC=clang-3.7
 # export CXX=clang++-3.7
@@ -82,14 +85,13 @@ export MY_OCAML_BIN_PATH="${MY_OPAM}/bin"
 # export C_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}
 # export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/tools/clang/include:${MY_LLVM_ROOT}/obj/tools/clang/include:${CPLUS_INCLUDE_PATH}
 # 
-export ASAN_OPTIONS=abort_on_error=1:detect_leaks=0:symbolize=0:allocator_may_return_null=1:detect_stack_use_after_return=1
 export LD_LIBRARY_PATH=
 export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu
-export LD_LIBRARY_PATH=/usr/local/lib:${LD_LIBRARY_PATH}
-export LD_LIBRARY_PATH=${LATTE_ROOT}/lib:${LD_LIBRARY_PATH}
-export LD_LIBRARY_PATH=${JPF_SYMBC}/lib:${LD_LIBRARY_PATH}
-export LD_LIBRARY_PATH=${MY_LLVM_OBJ}/lib:${MY_STP_INSTALL}/lib:${LD_LIBRARY_PATH}
-export LD_LIBRARY_PATH=${HOME}/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib:${LD_LIBRARY_PATH}
+# export LD_LIBRARY_PATH=/usr/local/lib:${LD_LIBRARY_PATH}
+# export LD_LIBRARY_PATH=${LATTE_ROOT}/lib:${LD_LIBRARY_PATH}
+# export LD_LIBRARY_PATH=${JPF_SYMBC}/lib:${LD_LIBRARY_PATH}
+# export LD_LIBRARY_PATH=${MY_LLVM_OBJ}/lib:${MY_STP_INSTALL}/lib:${LD_LIBRARY_PATH}
+# export LD_LIBRARY_PATH=${HOME}/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib:${LD_LIBRARY_PATH}
 
 # export CMAKE_PREFIX_PATH=/usr/share/cmake/qt5xdg
 
@@ -171,7 +173,7 @@ YARN_G_BIN=${HOME}/.yarn/bin
 export PATH=${YARN_G_BIN}:$PATH
 
 export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
-export RUSTFLAGS="-C target-cpu=native"
+# export RUSTFLAGS="-C target-cpu=native"
 
 # for sbt
 export SBT_OPTS="-Xms2G -Xmx6G -Xss1M -XX:+CMSClassUnloadingEnabled"

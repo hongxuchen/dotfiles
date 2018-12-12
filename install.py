@@ -7,6 +7,7 @@ import os
 import platform
 import subprocess
 import sys
+import shutil
 
 try:
     import argparse
@@ -163,8 +164,11 @@ def _dot_dryrun(finfo):
 def _dot(finfo):
     dst_exist = os.path.exists(finfo.dst) or os.path.islink(finfo.dst)
     if dst_exist:
-        print(u"{0:<60} {1:<50}".format(finfo.dst, finfo.bak), file=sys.stderr)
-        os.rename(finfo.dst, finfo.bak)
+        print(u"dst={0:<60} bak={1}".format(finfo.dst, finfo.bak), file=sys.stderr)
+        if os.path.islink(finfo.dst):
+            os.unlink(finfo.dst)
+        else:
+            shutil.move(finfo.dst, finfo.bak)
     rel_src = os.path.relpath(finfo.src, DST_DIR)
     os.symlink(rel_src, finfo.dst)
 

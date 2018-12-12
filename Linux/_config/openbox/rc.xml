@@ -305,11 +305,6 @@ and back in -->
     </keybind>
     <!--keybindings-->
     <!-- <keybind key="W-r"> -->
-    <keybind key="A-space">
-      <action name="Execute">
-        <command>albert</command>
-      </action>
-    </keybind>
     <keybind key="F11">
       <action name="ToggleFullscreen"/>
     </keybind>
