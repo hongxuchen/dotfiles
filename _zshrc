@@ -94,3 +94,7 @@ autoload -U +X bashcompinit && bashcompinit
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
 export SDKMAN_DIR="/home/hongxu/.sdkman"
 [[ -s "/home/hongxu/.sdkman/bin/sdkman-init.sh" ]] && source "/home/hongxu/.sdkman/bin/sdkman-init.sh"
+
+# Wasmer
+export WASMER_DIR="$HOME/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"  # This loads wasmer

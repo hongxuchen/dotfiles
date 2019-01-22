@@ -114,4 +114,4 @@
 [fetch]
 	prune = true
 [credential]
-	helper = cache --timeout=9000
+	helper = /usr/share/doc/git/contrib/credential/gnome-keyring/git-credential-gnome-keyring
