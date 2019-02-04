@@ -85,8 +85,9 @@ export HEXRAYS_LICENSE_FILE=@155.69.100.92
 # export C_INCLUDE_PATH=${CPLUS_INCLUDE_PATH}
 # export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/tools/clang/include:${MY_LLVM_ROOT}/obj/tools/clang/include:${CPLUS_INCLUDE_PATH}
 # 
-export LD_LIBRARY_PATH=
-export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu
+unset LD_LIBRARY_PATH
+# export LD_LIBRARY_PATH=
+# export LD_LIBRARY_PATH=/usr/lib/x86_64-linux-gnu
 # export LD_LIBRARY_PATH=/usr/local/lib:${LD_LIBRARY_PATH}
 # export LD_LIBRARY_PATH=${LATTE_ROOT}/lib:${LD_LIBRARY_PATH}
 # export LD_LIBRARY_PATH=${JPF_SYMBC}/lib:${LD_LIBRARY_PATH}
