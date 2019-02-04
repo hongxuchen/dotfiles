@@ -33,12 +33,6 @@ transfer() {
   rm -f $tmpfile;
 }
 
-findExt() {
-  find ${PWD} -name "*.${1}"
-}
-
-gs() { open http://www.google.com/search?q="$*" ;}
-
 mkd() {
   mkdir -p "$@" && cd "$1"
 }
