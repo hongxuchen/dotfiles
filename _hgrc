@@ -13,6 +13,7 @@ progress =
 color = 
 histedit = 
 mq = 
+purge = 
 
 [extdiff]
 cmd.kdiff = vimdiff

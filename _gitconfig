@@ -47,7 +47,7 @@
     size = count-objects -Hv
     # up = !git pull --rebase --prune $@ && git submodule update --init --recursive
     # log
-    lola = log --pretty=\"%Cred%h%Creset [%Cgreen%an %Creset %C(cyan)%ar%Creset]: %Cred%d%Creset %C(yellow)%s%Creset\" --graph --all
+    lola = log --pretty=\"%Cred%h%Creset [%Cgreen%an %Creset %C(cyan)%ai%Creset]: %Cred%d%Creset %C(yellow)%s%Creset\" --graph --all
     lol = log --pretty=\"%Cred%h%Creset [%Cgreen%an %Creset %C(cyan)%ar%Creset]: %Cred%d%Creset %C(yellow)%s%Creset\" --graph
     rct = log -8 HEAD
 	lm = !git log --decorate --pretty=format:'%an <%ae>' $1 | sort | uniq -c
