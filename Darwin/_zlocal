@@ -19,26 +19,30 @@ export MY_CABAL_PATH="${HOME}/.cabal"
 export ANDROID_HOME=/usr/local/opt/android-sdk
 export MY_ANDROID_SDK=${HOME}/Library/Android
 export MY_BREW_PREFIX=/usr/local
-export PATH=/usr/local/opt/coreutils/libexec/gnubin:/usr/sbin:/sbin:/usr/bin:/bin:/opt/local/bin
-export PATH=${MY_ANDROID_SDK}/sdk/platform-tools:$PATH
-export PATH=${MY_BREW_PREFIX}/bin:${MY_BREW_PREFIX}/sbin:$PATH
-export PATH=/usr/texbin:$PATH
-export PATH=${MY_BREW_PREFIX}/opt/llvm/bin:$PATH
-export PATH=${MY_HOME_BIN}:${MY_HOME_BIN}/git-scripts:${MY_HOME_BIN}/mac:$PATH
-export PATH=~/Library/Python/2.7/bin:$PATH
-export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
-export PATH=${MY_WLLVM_ROOT}:$PATH
-export PATH=${GOPATH}/bin:$PATH
-export PATH=${MY_OCAML_BIN_PATH}:$PATH
-export PATH=${MY_CABAL_PATH}/bin:$PATH
-export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin/":$PATH
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/sbin:/sbin:/usr/bin:/bin:/opt/local/bin"
+export PATH="${MY_ANDROID_SDK}/sdk/platform-tools:$PATH"
+export PATH="/usr/texbin:$PATH"
+export PATH="${MY_HOME_BIN}:${MY_HOME_BIN}/git-scripts:${MY_HOME_BIN}/mac:$PATH"
+# export PATH=$HOME/Library/Python/2.7/bin:$PATH
+export PATH="$HOME/tools/dotfiles/_builds/rtags/build/bin:$PATH"
+export PATH="${MY_WLLVM_ROOT}:$PATH"
+export PATH="${GOPATH}/bin:$PATH"
+export PATH="${MY_OCAML_BIN_PATH}:$PATH"
+export PATH="${MY_CABAL_PATH}/bin:$PATH"
+export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/binutils/bin:$PATH"
+export PATH="${MY_BREW_PREFIX}/bin:${MY_BREW_PREFIX}/sbin:$PATH"
+export PATH="${MY_BREW_PREFIX}/opt/llvm/bin:$PATH"
+export PATH="/usr/local/texlive/2018/bin/x86_64-darwin:$PATH"
 # export PATH=/Applications/CoqIDE_8.4pl5.app/Contents/Resources/bin:$PATH
 
 MY_CARGO=${HOME}/.cargo
 export CARGO_INCREMENTAL=1
 export PATH=${MY_CARGO}/bin:$PATH
 
-export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src/
+if which rustc > /dev/null; then
+	export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
+fi
 
 export JAVA_HOME="$(/usr/libexec/java_home)"
 
@@ -47,17 +51,17 @@ export MONO_GAC_PREFIX="/usr/local"
 export LD_LIBRARY_PATH=
 export LD_LIBRARY_PATH=/usr/local/opt/llvm/lib
 
-export CPLUS_INCLUDE_PATH=
-export CPLUS_INCLUDE_PATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1
-export CPLUS_INCLUDE_PATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include:${CPLUS_INCLUDE_PATH}
-export C_INCLUDE_PATH=
+# export CPLUS_INCLUDE_PATH=
+# export CPLUS_INCLUDE_PATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/../include/c++/v1
+# export CPLUS_INCLUDE_PATH=/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include:${CPLUS_INCLUDE_PATH}
+# export C_INCLUDE_PATH=
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 # yarn
 YARN_G_BIN=${HOME}/.yarn/bin
-export PATH=${YARN_G_BIN}:$PATH
+export PATH="${YARN_G_BIN}:$PATH"
 
 
 # for wllvm

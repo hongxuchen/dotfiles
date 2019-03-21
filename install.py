@@ -87,7 +87,7 @@ def _config_emacs():
 
 def _yn_choice(message, default='y'):
     choices = 'Y/n' if default.lower() in ('y', 'yes') else 'y/N'
-    choice = raw_input("{} ({})".format(message, choices))
+    choice = input("{} ({})".format(message, choices))
     values = ('y', 'yes', '') if default == 'y' else ('y', 'yes')
     return choice.strip().lower() in values
 

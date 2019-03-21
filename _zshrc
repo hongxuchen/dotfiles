@@ -57,7 +57,8 @@ source "$ZSH/themes/${ZSH_THEME}.zsh-theme"
 
 if [[ -d ${MY_BREW_PREFIX} ]];then
   source ${MY_BREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  source ${MY_BREW_PREFIX}/Cellar/zsh-history-substring-search/1.0.0/zsh-history-substring-search.zsh
+  # source ${MY_BREW_PREFIX}/Cellar/zsh-history-substring-search/1.0.0/zsh-history-substring-search.zsh
+  source ${MY_BREW_PREFIX}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 fi
 ## Ctrl-p/Ctrl-n for Emacs/viins mode
 bindkey -M emacs '^p' history-substring-search-up
