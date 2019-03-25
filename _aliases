@@ -80,7 +80,7 @@ alias grt='cd "$(git rev-parse --show-toplevel)"'
 alias indent='command indent -kr -ci2 -cli2 -i2 -l80 -nut' #Google style
 alias more='less'
 # alias less='colorless'
-alias diff='colordiff'
+# alias diff='colordiff'
 alias info='man'
 alias dl='axel -a -n 8 -U "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.6) Gecko/20070725 Firefox/2.0.0.6" -H "Accept:text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5 Accept-Language: en-us,en;q=0.5 Accept-Encoding: gzip,deflate Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7 Keep-Alive: 300"'
 alias adl="aria2c -s16 -x16"
@@ -103,9 +103,7 @@ alias v_cc1_os='clang /dev/null -xc -Os - -o /dev/null -\#\#\# 2>&1 | tr " " "\n
 alias v_cc1_oz='clang /dev/null -xc -Oz - -o /dev/null -\#\#\# 2>&1 | tr " " "\n"'
 alias v_cc1_ofast='clang /dev/null -xc -Ofast - -o /dev/null -\#\#\# 2>&1 | tr " " "\n"'
 alias v_clang_llvm='clang -xc /dev/null -c -mllvm -print-all-options'
-
 alias buuc='(echo "brew update" && brew update && echo "brew upgrade" && brew upgrade && echo "brew cleanup" && brew cleanup)'
-
 alias rdm_res='tail -f /tmp/rdm_answer'
 
 # alias lab_rdp='rdesktop -g 1024x768 -f -u pub -p 123 -r sound:local -r clipboard:PRIMARYCLIPBOARD -r disk:home=/home/hongxu 192.168.1.108 &>/dev/null & disown'
