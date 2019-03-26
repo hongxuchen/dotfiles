@@ -5,15 +5,6 @@ import os
 import sys
 import subprocess
 
-options = sys.argv[1:]
-cmd = 'clang -### {}'.format(' '.join(options))
-proc = subprocess.Popen(
-    cmd.split(),
-    stdout=subprocess.PIPE,
-    stderr=subprocess.PIPE)
-proc.wait()
-err = proc.communicate()[1]
-
 
 def normalize(p):
     p = p.strip()
@@ -24,6 +15,16 @@ def normalize(p):
     if os.path.exists(p):
         return os.path.normpath(p)
     return p
+
+
+options = sys.argv[1:]
+cmd = 'clang -### {}'.format(' '.join(options))
+proc = subprocess.Popen(
+    cmd.split(),
+    stdout=subprocess.PIPE,
+    stderr=subprocess.PIPE)
+proc.wait()
+err = proc.communicate()[1].decode('utf-8')
 
 for line in err.splitlines():
     if '"' not in line:

@@ -32,8 +32,8 @@ export COMMAND_NOT_FOUND_INSTALL_PROMPT=1
 
 export PAGER="less"
 export LESS="-R -i -g -c -W"
-export LESSOPEN='|/usr/bin/lesspipe %s'
-export LESSCLOSE='/usr/bin/lesspipe %s %s'
+export LESSOPEN='|/usr/local/bin/lesspipe.sh %s'
+export LESSCLOSE='/usr/local/bin/lesspipe.sh %s %s'
 # color man
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'

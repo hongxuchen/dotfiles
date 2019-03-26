@@ -232,7 +232,7 @@ call plug#end()
 if g:os == "Darwin"
   let g:ycm_path_to_python_interpreter='/usr/local/bin/python2'
 else
-  let g:ycm_path_to_python_interpreter='/usr/bin/python'
+  let g:ycm_path_to_python_interpreter='/usr/bin/python3'
 endif
 let g:ycm_confirm_extra_conf = 0
 let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
@@ -272,5 +272,6 @@ else
   set background=light
   " colorscheme Atelier_SulphurpoolLight
   " colorscheme elrodeo
-  colorscheme molokai
+  " colorscheme molokai
+  colorscheme github
 endif
