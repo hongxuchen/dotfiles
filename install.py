@@ -10,11 +10,14 @@ import sys
 import shutil
 
 try:
+    input = raw_input
+except NameError:
+    pass
+
+try:
     import argparse
-    import colorama
 except ImportError as e:
-    print(u"{0},\t use 'pip' to install that package".format(
-        e.message), file=sys.stderr)
+    print(u"{0},\t use 'pip' to install that package".format(e.message), file=sys.stderr)
     sys.exit(1)
 
 try:
@@ -37,6 +40,9 @@ class FileInfo(object):
         dst = os.path.join(DST_DIR, '.' + src_name[1:])  # replace '_' with '.'
         bak = os.path.join(bakdir, PREFIX + os.path.basename(dst))
         return cls(src, dst, bak)
+
+    def __repr__(self):
+        return 'src={}, dst={}, bak={}'.format(self.src, self.dst, self.bak)
 
 
 class MLevel(object):
@@ -71,9 +77,7 @@ def _git_get(git_repo, dst):
 def _config_vim():
     PLUG_URI = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
     PLUG_PATH = "_vim/autoload/plug.vim"
-    print(colorama.Fore.YELLOW,
-          u'Press [ENTER] to ignore errors (if any) during install',
-          colorama.Fore.RESET)
+    print(u'Press [ENTER] to ignore errors (if any) during install')
     dl_cmd = "curl -fLo {} --create-dirs {}".format(PLUG_PATH, PLUG_URI)
     subprocess.call(dl_cmd.split())
     cmd_str = "vim -c PlugInstall -c qa"
@@ -214,7 +218,6 @@ def dot_general(args):
 
 
 def main():
-    colorama.init()
     args = parse_args()
     if args.config:
         for config in set(args.config):

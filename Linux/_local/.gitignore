@@ -10,4 +10,5 @@ share/session_migration-ubuntu
 share/unity-settings-daemon/
 share/unity-webapps/
 share/zeitgeist/
+share/gnome-software
 state/bap/
