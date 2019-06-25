@@ -311,7 +311,7 @@ and back in -->
     <!-- Fast access to Terminal -->
     <keybind key="C-A-T">
       <action name="Execute">
-        <command>alacritty -e tmux</command>
+        <command>qterminal -e tmux</command>
       </action>
     </keybind>
     <!-- Keybinding for PrintScreen Key -->
@@ -722,13 +722,13 @@ and back in -->
       <decor>no</decor>
       <maximized>yes</maximized>
     </application>
-    <application name="urxvt">
+    <application name="qterminal">
       <skip_pager>yes</skip_pager>
       <focus>yes</focus>
       <maximized>yes</maximized>
       <fullscreen>yes</fullscreen>
     </application>
-    <application name="Alacritty">
+    <application name="qterminal">
       <skip_pager>yes</skip_pager>
       <focus>yes</focus>
       <maximized>yes</maximized>

@@ -124,7 +124,7 @@ set wildignore+=eggs/**,*.egg-info/**,*.pyc,*.pyo,*pyd
 set wildignore+=*.class,*.jar
 set wildignore+=*.aux,*.toc,*.out
 set wildignore+=*.bak,*.exe,*.chm,*.png,*.jpg,*.jpeg,*.gif,*.avi,*.rm,*.rmvb
-set completeopt=longest,menuone
+" set completeopt=longest,menuone
 set noshowmode
 set cmdheight=2
 set t_Co=256

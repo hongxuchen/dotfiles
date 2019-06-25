@@ -1,14 +1,36 @@
 # -*- mode:zsh -*-
 #  vim: set ft=zsh ts=4 sw=2 tw=0 et :
+#
+
+# function time_it() {
+#   local start=$SECONDS ts ec
+#   printf -v ts '%(%Y-%m-%d_%H:%M:%S)T' -1
+#   printf '%s\n' "$ts Starting $*"
+#   "$@"; ec=$?
+#   printf -v ts '%(%Y-%m-%d_%H:%M:%S)T' -1
+#   printf '%s\n' "$ts Finished $*; elapsed = $((SECONDS-start)) seconds"
+#   # make sure to return the exit code of the command so that the caller can use it
+#   return "$ec"
+# }
+
+function time_it() {
+  s=$(date +%s.%N)
+  $@
+  RC=$?
+  duration=$[$(date +%s.%N)-$s]
+  printf "%6.3f%5s%-3d%s\n" "${duration}" "s RC=" "$RC" "\"$*\"" >&2
+  return $rc
+}
 
 ZSH=~/.omz
 
 # ZSH_THEME="bira"
 ZSH_THEME="nanotech"
 
-source ~/.profile
-source ~/.zlocal
-source ~/.aliases
+time_it source ~/.profile
+time_it source ~/.zlocal
+time_it source ~/.aliases
+
 eval $(dircolors ~/.LS_COLORS)
 
 ### should be loaded before source ${ZSH}/lib
@@ -57,7 +79,6 @@ source "$ZSH/themes/${ZSH_THEME}.zsh-theme"
 
 if [[ -d ${MY_BREW_PREFIX} ]];then
   source ${MY_BREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-  # source ${MY_BREW_PREFIX}/Cellar/zsh-history-substring-search/1.0.0/zsh-history-substring-search.zsh
   source ${MY_BREW_PREFIX}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 fi
 ## Ctrl-p/Ctrl-n for Emacs/viins mode
@@ -81,7 +102,7 @@ export OCAMLPARAM="_,bin-annot=1"
 # . ${HOME}/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
 # eval `opam config env`
 
-test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+[ -f "${HOME}/.iterm2_shell_integration.zsh" ] && source "${HOME}/.iterm2_shell_integration.zsh"
 
 autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
@@ -91,10 +112,12 @@ autoload -U +X bashcompinit && bashcompinit
 
 # tabtab source for electron-forge package
 # uninstall by removing these lines or running `tabtab uninstall electron-forge`
-[[ -f /home/hongxu/tools/dotfiles/Linux/_config/yarn/global/node_modules/tabtab/.completions/electron-forge.zsh ]] && . /home/hongxu/tools/dotfiles/Linux/_config/yarn/global/node_modules/tabtab/.completions/electron-forge.zsh
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/hongxu/.sdkman"
-[[ -s "/home/hongxu/.sdkman/bin/sdkman-init.sh" ]] && source "/home/hongxu/.sdkman/bin/sdkman-init.sh"
+E_FORGE_PROFILE=$HOME/tools/dotfiles/Linux/_config/yarn/global/node_modules/tabtab/.completions/electron-forge.zsh
+[[ -f $E_FORGE_PROFILE ]] && source $E_FORGE_PROFILE
+
+# sdkman
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
 
 # Wasmer
 export WASMER_DIR="$HOME/.wasmer"

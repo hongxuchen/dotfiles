@@ -44,6 +44,8 @@ export LESS_TERMCAP_ue=$'\E[0m'
 export LESS_TERMCAP_us=$'\E[01;32m'
 export TEXMFHOME=~/.texmf
 
+export XDG_RUNTIME_DIR=/tmp/runtime-$(whoami)
+
 # export JAVA_HOME=/usr/lib/jvm/java-7-oracle
 
 
@@ -54,7 +56,5 @@ export NVIM_LOG_FILE=/tmp/nvim.log
 export MYVIMRC=$HOME/.vimrc
 
 export GPGKEY=068BDAD6
-
-#~/.screenlayout/dual.sh
 
 export PATH="$HOME/.cargo/bin:$PATH"

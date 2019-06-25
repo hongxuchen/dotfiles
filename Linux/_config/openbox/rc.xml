@@ -310,7 +310,7 @@ and back in -->
     </keybind>
     <keybind key="C-A-T">
       <action name="Execute">
-        <command>alacritty -e tmux</command>
+        <command>qterminal -e tmux</command>
       </action>
     </keybind>
     <!-- Keybinding for PrintScreen Key -->
@@ -719,13 +719,13 @@ and back in -->
     <application name="chromium-browser">
       <decor>no</decor>
     </application>
-    <application name="urxvt">
+    <application name="qterminal">
       <skip_pager>yes</skip_pager>
       <focus>yes</focus>
       <maximized>yes</maximized>
       <fullscreen>yes</fullscreen>
     </application>
-    <application name="Alacritty">
+    <application name="qterminal">
       <skip_pager>yes</skip_pager>
       <focus>yes</focus>
       <maximized>yes</maximized>

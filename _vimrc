@@ -163,10 +163,6 @@ inoremap <expr> <c-x><c-k> fzf#complete('cat /usr/share/dict/words')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Plug 'roxma/nvim-completion-manager'
-
-" Plug 'ervandew/supertab'
-
 Plug 'vim-utils/vim-man'
 
 " Language server
@@ -269,9 +265,10 @@ if g:os == "Darwin"
   " colorscheme solarized
   colorscheme macvim256
 else
-  set background=light
+  colorscheme Atelier_CaveDark
+  " set background=light
   " colorscheme Atelier_SulphurpoolLight
   " colorscheme elrodeo
   " colorscheme molokai
-  colorscheme github
+  " colorscheme github
 endif

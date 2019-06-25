@@ -206,10 +206,8 @@ export IDEA_VM_OPTIONS=${HOME}/.idea64.vmoptions
 stty ixany
 stty ixoff -ixon
 
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+ZSHL_PROFILE=/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+if [ -e $ZSHL_PROFILE ]; then source $ZSHL_PROFILE; fi
 
-if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then . $HOME/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
-
-# xrdb -merge ~/.Xresources
-
-export XDG_TEMPLATES_DIR=$HOME
+NIX_PROFILE=$HOME/.nix-profile/etc/profile.d/nix.sh
+if [ -e $NIX_PROFILE ]; then source $NIX_PROFILE; fi
