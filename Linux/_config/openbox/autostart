@@ -1,2 +1,2 @@
 #!/bin/sh
-nm-applet &
+# nm-applet &
