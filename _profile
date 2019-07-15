@@ -2,6 +2,7 @@
 # vim:ft=sh
 export EDITOR=vim
 export ALTERNATE_EDITOR=""
+export BROWSER=chromium-browser
 
 export LC_CTYPE="en_US.UTF-8"
 export LANGUAGE="en_US"
@@ -21,12 +22,6 @@ export LC_IDENTIFICATION="en_US.UTF-8"
 # export TZ='Asia/Shanghai'
 
 export EMAIL="hongxuchen1989@gmail.com"
-
-# export XIM=fcitx
-# export XIM_PROGRAM=fcitx
-# export GTK_IM_MODULE=fcitx
-# export QT_IM_MODULE=fcitx
-# export XMODIFIERS="@im=fcitx"
 
 export COMMAND_NOT_FOUND_INSTALL_PROMPT=1
 
@@ -49,11 +44,22 @@ export XDG_RUNTIME_DIR=/tmp/runtime-$(whoami)
 # export JAVA_HOME=/usr/lib/jvm/java-7-oracle
 
 
-export QT_STYLE_OVERRIDE=oxygen
-
 export NVIM_PYTHON_LOG_FILE=/tmp/nvim-py.log
 export NVIM_LOG_FILE=/tmp/nvim.log
 export MYVIMRC=$HOME/.vimrc
+
+# QT relevant
+# export QT_QPA_PLATFORMTHEME=""
+# export QT_STYLE_OVERRIDE=""
+export QT_DEBUG_PLUGINS=1
+
+#input method
+export XIM=fcitx
+export XIM_PROGRAM=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+
 
 export GPGKEY=068BDAD6
 
