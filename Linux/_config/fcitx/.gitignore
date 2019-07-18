@@ -1,0 +1,6 @@
+profile_*
+dbus/
+cached_layout
+data/
+clipboard/
+*.dat

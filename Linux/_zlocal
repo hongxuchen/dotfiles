@@ -209,5 +209,7 @@ stty ixoff -ixon
 ZSHL_PROFILE=/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 if [ -e $ZSHL_PROFILE ]; then source $ZSHL_PROFILE; fi
 
-NIX_PROFILE=$HOME/.nix-profile/etc/profile.d/nix.sh
-if [ -e $NIX_PROFILE ]; then source $NIX_PROFILE; fi
+# NIX_PROFILE=$HOME/.nix-profile/etc/profile.d/nix.sh
+# if [ -e $NIX_PROFILE ]; then source $NIX_PROFILE; fi
+
+export CHTSH_CURL_OPTIONS="-q"

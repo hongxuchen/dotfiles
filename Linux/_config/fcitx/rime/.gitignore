@@ -1,0 +1,6 @@
+sync/
+*.bin
+*LOCK
+*LOG*
+*.ldb
+*.userdb/

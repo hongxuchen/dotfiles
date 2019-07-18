@@ -1,0 +1,10 @@
+[$Version]
+update_info=fonts_global.upd:Fonts_Global,fonts_global_toolbar.upd:Fonts_Global_Toolbar
+
+[General]
+XftAntialias=true
+XftHintStyle=hintmedium
+XftSubPixel=none
+
+[KShortcutsDialog Settings]
+Dialog Size=600,480

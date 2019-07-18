@@ -1,0 +1,54 @@
+kcminputrc Mouse cursorTheme 'breeze_cursors'
+!/home/hongxu/.config/kcminputrc
+!/etc/xdg/xdg-plasma/kcminputrc
+!/etc/xdg/kcminputrc
+!/home/hongxu/.local/share/config/kcminputrc
+!/usr/share/plasma/config/kcminputrc
+!/usr/local/share/config/kcminputrc
+!/usr/share/config/kcminputrc
+*
+kcminputrc Mouse cursorSize ''
+!/home/hongxu/.config/kcminputrc
+!/etc/xdg/xdg-plasma/kcminputrc
+!/etc/xdg/kcminputrc
+!/home/hongxu/.local/share/config/kcminputrc
+!/usr/share/plasma/config/kcminputrc
+!/usr/local/share/config/kcminputrc
+!/usr/share/config/kcminputrc
+*
+ksplashrc KSplash Theme Breeze
+!/home/hongxu/.config/ksplashrc
+!/etc/xdg/xdg-plasma/ksplashrc
+!/etc/xdg/ksplashrc
+!/home/hongxu/.local/share/config/ksplashrc
+!/usr/share/plasma/config/ksplashrc
+!/usr/local/share/config/ksplashrc
+!/usr/share/config/ksplashrc
+*
+ksplashrc KSplash Engine KSplashQML
+!/home/hongxu/.config/ksplashrc
+!/etc/xdg/xdg-plasma/ksplashrc
+!/etc/xdg/ksplashrc
+!/home/hongxu/.local/share/config/ksplashrc
+!/usr/share/plasma/config/ksplashrc
+!/usr/local/share/config/ksplashrc
+!/usr/share/config/ksplashrc
+*
+kdeglobals KScreen ScreenScaleFactors ''
+/home/hongxu/.config/kdeglobals
+!/etc/xdg/xdg-plasma/kdeglobals
+!/etc/xdg/kdeglobals
+!/home/hongxu/.local/share/config/kdeglobals
+!/usr/share/plasma/config/kdeglobals
+!/usr/local/share/config/kdeglobals
+!/usr/share/config/kdeglobals
+*
+kcmfonts General forceFontDPI 0
+!/home/hongxu/.config/kcmfonts
+!/etc/xdg/xdg-plasma/kcmfonts
+!/etc/xdg/kcmfonts
+!/home/hongxu/.local/share/config/kcmfonts
+!/usr/share/plasma/config/kcmfonts
+!/usr/local/share/config/kcmfonts
+!/usr/share/config/kcmfonts
+*

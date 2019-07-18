@@ -1,0 +1,12 @@
+[Desktop Entry]
+Comment=Convenient command and access tool for applications and documents
+Name=Albert
+Exec=albert
+StartupNotify=true
+GenericName=Application Launcher
+Version=1.0
+Categories=Utility;
+Type=Application
+X-GNOME-Autostart-enabled=true
+Icon=kupfer
+

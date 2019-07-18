@@ -1,0 +1,6 @@
+[General]
+DefaultWebShortcut=
+EnableWebShortcuts=false
+KeywordDelimiter=:
+PreferredWebShortcuts=youtube,wikit,yahoo,google,wikipedia
+UsePreferredWebShortcutsOnly=false
