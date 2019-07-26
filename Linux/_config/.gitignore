@@ -63,3 +63,8 @@ update-notifier/
 vlc/vlc-qt-interface.conf
 xpad/
 configstore/
+direnv/
+featherpad/
+rclone/
+smplayer/
+wireshark/

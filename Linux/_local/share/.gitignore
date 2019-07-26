@@ -62,3 +62,7 @@ remmina/
 nix/
 flatpak/
 com.github.johnfactotum.Foliate/
+ion/history
+RecentDocuments/login.desktop
+xonsh/*.json
+xonsh/man_completions_cache
