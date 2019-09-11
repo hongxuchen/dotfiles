@@ -10,6 +10,17 @@ svn_prompt_info() {
     fi
 }
 
+which_exe() {
+    exe=$(which $1)    
+    rc=$?
+    if [[ ${rc} -ne 0 ]]; then
+        echo "${exe}"
+        return ${rc}
+    fi
+    exe_path=$(realpath "${exe}")
+    ls -lh "${exe_path}"
+}
+
 em() {
     if [[ $OSTYPE == "linux-gnu" ]] && [ $DISPLAY ]; then
         command emacs -fs $@ &>/dev/null & disown

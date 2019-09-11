@@ -214,4 +214,4 @@ if [ -e $ZSHL_PROFILE ]; then source $ZSHL_PROFILE; fi
 
 export CHTSH_CURL_OPTIONS="-q"
 
-hash direnv 2>/dev/null && eval "$(direnv hook zsh)"
+# hash direnv 2>/dev/null && eval "$(direnv hook zsh)"
