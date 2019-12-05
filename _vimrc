@@ -70,7 +70,9 @@ autocmd FileType html,eruby,rb,css,js,xml runtime! macros/matchit.vim
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/bundle')
 Plug 'Superbil/llvm.vim', {'for': 'llvm'}
-Plug 'kelwin/vim-smali', {'for': 'smali'}
+" Plug 'kelwin/vim-smali', {'for': 'smali'}
+Plug 'vim-scripts/scons.vim'
+Plug 'tomlion/vim-solidity'
 Plug 'cespare/vim-toml', {'for': 'toml'}
 "vim-g
 Plug 'szw/vim-g'
@@ -99,7 +101,6 @@ autocmd FileType tablegen setl cms=//%s
 autocmd FileType unix setl cms=#%s
 autocmd FileType xdefaults setl cms=!%s
 
-Plug 'vim-scripts/scons.vim'
 
 Plug 'majutsushi/tagbar'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -137,45 +138,7 @@ let g:echodoc_enable_at_startup = 1
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all'  }
-Plug 'junegunn/fzf.vim'
-
-command! -bang -nargs=* Rg
-      \ call fzf#vim#grep(
-      \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-      \   <bang>0 ? fzf#vim#with_preview('up:60%')
-      \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-      \   <bang>0)
-
-" Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
-
-" Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
-
-inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
-inoremap <expr> <c-x><c-k> fzf#complete('cat /usr/share/dict/words')
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 Plug 'vim-utils/vim-man'
-
-" Language server
-" Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-" let g:LanguageClient_autoStart = 1
-" 
-" Plug 'rust-lang/rust.vim'
-" let g:rustfmt_autosave = 1
-" let g:LanguageClient_serverCommands = {
-"       \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
-"       \}
-
-" Plug 'PlanStylite/nvim-cargo'
 
 Plug 'w0rp/ale'
 let g:ale_sign_column_always = 1
@@ -192,11 +155,11 @@ let g:ale_set_quickfix = 1
 " let g:ale_keep_list_window_open = 1
 
 " Plug 'critiqjo/lldb.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'panickbr/neovim-ranger'
+" Plug 'panickbr/neovim-ranger'
 Plug 'mhinz/vim-startify'
 Plug 'justinmk/vim-sneak'
 
-Plug 'mattn/webapi-vim'
+" Plug 'mattn/webapi-vim'
 " Plug 'euclio/vim-markdown-composer'
 
 if g:os != 'Darwin'
@@ -204,7 +167,7 @@ if g:os != 'Darwin'
   Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'for': 'c'}
 endif
 
-" color scheme
+" color schemes
 Plug 'jacoborus/tender.vim'
 Plug 'endel/vim-github-colorscheme'
 Plug 'altercation/vim-colors-solarized'

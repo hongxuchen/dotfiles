@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-# PYTHON_ARGCOMPLETE_OK
+#!/usr/bin/env python
 
 from __future__ import print_function
 from tempfile import mkstemp
@@ -9,10 +8,9 @@ import stat
 from argparse import *
 import sys
 import colorama
-import argcomplete
 
 ext_app_dict = {
-    '.py': 'python',
+    '.py': 'python3',
     '.pl': 'perl',
     '.sh': 'bash',
     '.zsh': 'zsh',
@@ -81,7 +79,6 @@ if __name__ == '__main__':
         "--verbose",
         action="store_true",
         help="print verbose info")
-    argcomplete.autocomplete(parser)
     if len(sys.argv) == 1:
         parser.print_help()
         sys.exit(1)

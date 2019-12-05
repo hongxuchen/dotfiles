@@ -25,11 +25,7 @@ alias my_llgit='_my_llvm_version git;source ~/.zlocal'
 # alias clang++=clang++-${MY_LLVM_VERSION}
 # alias opt=opt-${MY_LLVM_VERSION}
 
-MY_ROOT=~/FUSE
-MY_WLLVM_ROOT=${MY_ROOT}/wllvm
 MY_HOME_BIN=~/.bin
-
-LATTE_ROOT=${MY_ROOT}/LattE
 
 # MY_LLVM_ROOT=${MY_ROOT}/llvm-${MY_LLVM_VERSION}
 MY_LLVM_ROOT=
@@ -68,13 +64,8 @@ export PERL5LIB="${MY_OPAM}/lib/perl5"
 export OCAML_TOPLEVEL_PATH="${MY_ROOT}/lib/toplevel"
 export MY_OCAML_BIN_PATH="${MY_OPAM}/bin"
 
-
-export HEXRAYS_LICENSE_FILE=@155.69.100.92
-
-## C/C++
-# export CC=clang-3.7
-# export CXX=clang++-3.7
-
+unset C_INCLUDE_PATH
+unset CPLUS_INCLUDE_PATH
 # export CPLUS_INCLUDE_PATH=
 # export CPLUS_INCLUDE_PATH=~/qemu/panda/distorm/include:${CPLUS_INCLUDE_PATH}
 # export CPLUS_INCLUDE_PATH=${MY_LLVM_ROOT}/src/include:${CPLUS_INCLUDE_PATH}
@@ -93,8 +84,6 @@ unset LD_LIBRARY_PATH
 # export LD_LIBRARY_PATH=${JPF_SYMBC}/lib:${LD_LIBRARY_PATH}
 # export LD_LIBRARY_PATH=${MY_LLVM_OBJ}/lib:${MY_STP_INSTALL}/lib:${LD_LIBRARY_PATH}
 # export LD_LIBRARY_PATH=${HOME}/.rustup/toolchains/nightly-x86_64-unknown-linux-gnu/lib:${LD_LIBRARY_PATH}
-
-# export CMAKE_PREFIX_PATH=/usr/share/cmake/qt5xdg
 
 export PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 
@@ -117,10 +106,8 @@ alias smali="java -jar ~/Android/smali/smali.jar"
 alias baksmali="java -jar ~/Android/smali/baksmali.jar"
 
 ## Python
-export CHILKAT=${MY_ROOT}/android/chilkat-9.5.0-python-2.7-x86_64-linux
 export PYTHONPATH=
 export PYTHONPATH=${MY_LLVM_ROOT}/src/tools/clang/bindings/python:$PYTHONPATH
-export PYTHONPATH=${CHILKAT}:$PYTHONPATH
 
 # golang
 export GOPATH=~/gocode
@@ -135,7 +122,6 @@ export CARGO_INCREMENTAL=0
 
 # yarn
 
-# PLAY_HOME=~/tools/play-2.0
 export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 export PATH=${MY_CARGO_HOME}/bin:$PATH
 export PATH=/usr/local/texlive/2017/bin/x86_64-linux:$PATH
@@ -158,7 +144,6 @@ export PATH=${HOME}/pinpoint/bin:$PATH
 export PATH=/usr/local/lib/fot/bin:$PATH
 export PATH=/snap/bin:$PATH
 # export PATH=${MY_ROOT}/android/src:$PATH
-# export PATH=${PLAY_HOME}:$PATH
 # ${LATTE_ROOT}/bin:
 # export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
 # export PATH=${MY_PIN_ROOT}:$PATH

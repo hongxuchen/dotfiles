@@ -10,26 +10,14 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
     alias dstat='dstat -cdlmnpsy'
     alias release_memory='sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"'
     ## since there are  no .desktop files for them
-    alias boogie='mono ~/repos/boogie/boogie/Binaries/Boogie.exe'
-    alias idaq='~/idademo65/idaq&'
     alias pycharm='nohup ~/tools/pycharm/bin/pycharm.sh &>/dev/null &'
     alias clion='nohup ~/tools/clion-IDE/bin/clion.sh &>/dev/null &'
     alias intellij='nohup ~/tools/intellij/bin/idea.sh &>/dev/null &'
     alias goland='nohup ~/tools/goland/bin/goland.sh &>/dev/null &'
-    alias wechat='~/tools/wechat/electronic-wechat &>/dev/null &'
-    alias isar='~/tools/isabelle/Isabelle2016-1 &>/dev/null &disown'
-    alias cutter='~/tools/cutter-radare2 &>/dev/null &disown'
-    alias isabelle='~/tools/isabelle/bin/isabelle'
-    alias eclipse='nohup ~/tools/eclipse/eclipse &>/dev/null &'
-    alias android-studio='nohup ~/tools/android-studio/bin/studio.sh &>/dev/null &'
-    alias goagent="~/tools/goagent/local/goagent-gtk.py &>/dev/null &disown"
     alias open="xdg-open"
     alias pbcopy='xsel --clipboard --input'
     alias pbpaste='xsel --clipboard --output'
-    alias my_debian_install='cat /var/log/dpkg.log | grep "\ install\ "|less'
-    ### personal use
-    # alias opt='opt -load ~/RESEARCH/yama/RA/src/build/bin/librange.so'
-    # alias lit='${MY_LLVM_ROOT}/src/utils/lit/lit.py'
+    alias pcloud='nohup /usr/bin/pcloud &>/dev/null &'
 fi
 
 if [[ $OSTYPE == "darwin"* ]] || [[ $OSTYPE == "freebsd"* ]]; then
@@ -47,11 +35,10 @@ fi
 
 alias scala="command scala -Dscala.color=true"
 
-# GNU-coreutils ls
 alias sudo='sudo -H '
-# alias scala='command scala -i ~/.scalarc'
 
-alias sss='env JAVA_OPTS="-Xms512m -Xmx2g" scala'
+# alias scala='command scala -i ~/.scalarc'
+# alias sss='env JAVA_OPTS="-Xms512m -Xmx2g" scala'
 
 alias r_cp='rsync -poghb --backup-dir=/tmp/rsync -e /dev/null --progress --'
 alias r_mv='rsync -a --progress -h --remove-source-files'
@@ -61,28 +48,20 @@ alias trash-empty='rm -rf ~/.local/share/Trash'
 
 alias pscpu10='ps -e -o pcpu,cpu,nice,state,cputime,args|sort -k1 -nr | head -10'
 alias psmem10='ps -e -orss=,args= | sort -b -k1,1n| head -10'
-alias my_paths='echo -e ${PATH//:/\\n}'
+alias my_paths='echo -e ${PATH//:/\\n} | sort'
 alias deleted_files='sudo lsof |grep "\(deleted\)"'
 
-alias activator='JAVA_HOME=/usr/lib/jvm/java-8-oracle sbt'
-alias pom2sbt='mvn dependency:tree | grep "] +" | perl -pe '"'"'s/.*\s([\w\.\-]+):([\w\.\-]+):\w+:([\w\.\-]+):(\w+).*/libraryDependencies += "$1" % "$2" % "$3" % "$4" /'"'"' >build.sbt'
-
-alias my_py_path='python -c "import sys;print(\"\\n\".join(sys.path))"'
-alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1])"'
-alias urldecode='python -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])"'
-alias yaml2json="python -c 'import sys, yaml, json; json.dump(yaml.load(open(sys.argv[1])), sys.stdout, indent=2)'"
+alias my_py_path='python3 -c "import sys;print(\"\\n\".join(sys.path))"'
+alias urlencode='python3 -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1])"'
+alias urldecode='python3 -c "import sys, urllib as ul; print ul.unquote_plus(sys.argv[1])"'
+alias yaml2json="python3 -c 'import sys, yaml, json; json.dump(yaml.load(open(sys.argv[1])), sys.stdout, indent=2)'"
 alias xml_pretty='xmllint --format'
-alias p_httpd='python -m SimpleHTTPServer'
-alias p_sh='ipython --profile=sh'
-alias p_nb='cd ~/src/ipynb && ipython notebook --profile=nb --no-browser'
-# alias pprof='google-pprof'
 alias grt='cd "$(git rev-parse --show-toplevel)"'
 alias indent='command indent -kr -ci2 -cli2 -i2 -l80 -nut' #Google style
-alias more='less'
 # alias less='colorless'
 # alias diff='colordiff'
+alias more='less'
 alias info='man'
-alias dl='axel -a -n 8 -U "Mozilla/5.0 (Windows; U; Windows NT 5.1; en-US; rv:1.8.1.6) Gecko/20070725 Firefox/2.0.0.6" -H "Accept:text/xml,application/xml,application/xhtml+xml,text/html;q=0.9,text/plain;q=0.8,image/png,*/*;q=0.5 Accept-Language: en-us,en;q=0.5 Accept-Encoding: gzip,deflate Accept-Charset: ISO-8859-1,utf-8;q=0.7,*;q=0.7 Keep-Alive: 300"'
 alias adl="aria2c -s16 -x16"
 
 alias d_gcc='gcc -E -x c  /dev/null -dM'
