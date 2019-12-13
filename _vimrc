@@ -161,10 +161,10 @@ Plug 'justinmk/vim-sneak'
 " Plug 'mattn/webapi-vim'
 " Plug 'euclio/vim-markdown-composer'
 
-if g:os != 'Darwin'
-  Plug 'Valloric/YouCompleteMe'
-  Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'for': 'c'}
-endif
+" if g:os != 'Darwin'
+"   Plug 'Valloric/YouCompleteMe'
+"   Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'for': 'c'}
+" endif
 
 " color schemes
 Plug 'jacoborus/tender.vim'

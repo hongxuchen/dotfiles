@@ -162,7 +162,7 @@ export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
 # export RUSTFLAGS="-C target-cpu=native"
 
 # for sbt
-export SBT_OPTS="-Xms2G -Xmx6G -Xss1M -XX:+CMSClassUnloadingEnabled"
+# export SBT_OPTS="-Xms2G -Xmx6G -Xss1M -XX:+CMSClassUnloadingEnabled"
 
 # conscript
 export CONSCRIPT_HOME="$HOME/.conscript"

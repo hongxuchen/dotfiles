@@ -39,7 +39,7 @@ compinit -i
 autoload -Uz compdef
 
 # ~/.omz/plugins/
-PLUGINS=(ag gem git-extras pip z golang mvn yarn sbt bazel)
+PLUGINS=(gem git-extras pip golang mvn yarn sbt bazel)
 if [[ $OSTYPE == "linux-gnu" ]];then
     PLUGINS=(${PLUGINS} docker zsh-history-substring-search)
 elif [[ $OSTYPE == "darwin"* ]];then
@@ -78,7 +78,7 @@ unset config_file
 source "$ZSH/themes/${ZSH_THEME}.zsh-theme"
 
 if [[ -d ${MY_BREW_PREFIX} ]];then
-  source ${MY_BREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+  # source ${MY_BREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source ${MY_BREW_PREFIX}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 fi
 ## Ctrl-p/Ctrl-n for Emacs/viins mode
@@ -96,29 +96,6 @@ unset ZSH
 # load executable
 # (pgrep -x rdm >/dev/null || rdm --no-comment &>/tmp/rdm_answer &)
 
-# OPAM configuration
-export OPAMKEEPBUILDDIR=true
-export OCAMLPARAM="_,bin-annot=1"
-# . ${HOME}/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-# eval `opam config env`
-
-[ -f "${HOME}/.iterm2_shell_integration.zsh" ] && source "${HOME}/.iterm2_shell_integration.zsh"
-
 autoload -U +X compinit && compinit
 autoload -U +X bashcompinit && bashcompinit
 # eval "$(stack --bash-completion-script stack)"
-
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# tabtab source for electron-forge package
-# uninstall by removing these lines or running `tabtab uninstall electron-forge`
-E_FORGE_PROFILE=$HOME/tools/dotfiles/Linux/_config/yarn/global/node_modules/tabtab/.completions/electron-forge.zsh
-[[ -f $E_FORGE_PROFILE ]] && source $E_FORGE_PROFILE
-
-# sdkman
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
-
-# Wasmer
-export WASMER_DIR="$HOME/.wasmer"
-[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"  # This loads wasmer
