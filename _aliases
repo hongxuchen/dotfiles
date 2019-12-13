@@ -113,6 +113,7 @@ alias vi='nvim'
 alias vim='nvim'
 alias v='nvim -u ~/.vless'
 alias e=nvim
+alias vf='nvim -u NONE'
 alias q='exit'
 
 # adb relevant

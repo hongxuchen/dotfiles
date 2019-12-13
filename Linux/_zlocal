@@ -50,7 +50,7 @@ JPF_SYMBC_BUILD=${JPF_SYMBC}/build
 
 # variables that need to be exported
 export MY_CLANG_TOOLS
-export MY_JAVA=/usr/lib/jvm/java-7-openjdk-amd64
+# export MY_JAVA=/usr/lib/jvm/java-7-openjdk-amd64
 
 ##############################################################################
 # core environment variables

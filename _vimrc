@@ -1,4 +1,5 @@
 " vim: set ft=vim ts=4 sw=2 tw=78 et :
+
 " PRINCIPLES:
 " plugins should be loaded as lazy as possible
 " startup should be as fast as possible
@@ -154,9 +155,7 @@ let g:ale_set_quickfix = 1
 " let g:ale_open_list = 1
 " let g:ale_keep_list_window_open = 1
 
-" Plug 'critiqjo/lldb.nvim', { 'do': ':UpdateRemotePlugins' }
 " Plug 'panickbr/neovim-ranger'
-Plug 'mhinz/vim-startify'
 Plug 'justinmk/vim-sneak'
 
 " Plug 'mattn/webapi-vim'
@@ -172,14 +171,10 @@ Plug 'jacoborus/tender.vim'
 Plug 'endel/vim-github-colorscheme'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'reedes/vim-colors-pencil'
 Plug 'd11wtq/macvim256.vim'
 Plug 'chmllr/elrodeo-vim-colorscheme'
-Plug 'notpratheek/vim-sol'
 Plug 'w0ng/vim-hybrid'
 Plug 'kristijanhusak/vim-hybrid-material'
-" Plug 'penicolas/simplon.vim'
 Plug 'nowk/genericdc'
 Plug 'stulzer/heroku-colorscheme'
 Plug 'atelierbram/vim-colors_atelier-schemes'
@@ -228,10 +223,10 @@ if g:os == "Darwin"
   " colorscheme solarized
   colorscheme macvim256
 else
-  colorscheme Atelier_CaveDark
+  " colorscheme Atelier_CaveDark
   " set background=light
   " colorscheme Atelier_SulphurpoolLight
   " colorscheme elrodeo
-  " colorscheme molokai
+  colorscheme molokai
   " colorscheme github
 endif
