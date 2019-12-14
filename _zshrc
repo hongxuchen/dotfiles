@@ -39,7 +39,7 @@ compinit -i
 autoload -Uz compdef
 
 # ~/.omz/plugins/
-PLUGINS=(gem git-extras pip golang mvn yarn sbt bazel)
+PLUGINS=(gem git-extras pip golang mvn yarn bazel)
 if [[ $OSTYPE == "linux-gnu" ]];then
     PLUGINS=(${PLUGINS} docker zsh-history-substring-search)
 elif [[ $OSTYPE == "darwin"* ]];then

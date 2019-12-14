@@ -1,6 +1,6 @@
 [Hotkey]
 # Trigger Input Method
-TriggerKey=CTRL_LSHIFT \
+TriggerKey=SHIFT_LSHIFT
 # Use extra trigger key only after using it to inactivate
 # Available Value:
 # True False
@@ -27,7 +27,7 @@ TriggerKey=CTRL_LSHIFT \
 # Super+Right Ctrl
 # Disabled
 # Custom
-SwitchKey=Disabled
+SwitchKey=Custom
 # Custom switch key
 #CustomSwitchKey=
 # Activate input method
@@ -52,7 +52,7 @@ SwitchKey=Disabled
 # Reload configuration
 #ReloadConfig=CTRL_5
 # Interval of Two Key Input
-#TimeInterval=250
+TimeInterval=200
 # Switching Virtual Keyboard
 #VKSwitchKey=CTRL_ALT_B
 # Switching Remind Mode
