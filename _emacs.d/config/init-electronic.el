@@ -105,10 +105,10 @@
         '(company-bbdb
           company-nxml
           company-css
-          merlin-company-backend
+          ;; merlin-company-backend
           company-semantic
           company-robe
-          company-ropemacs
+          ;; company-ropemacs
           company-cmake
           company-capf (company-dabbrev-code company-gtags company-etags company-keywords)
           company-files

@@ -61,8 +61,6 @@
 (eval-after-load "rgrep" '(require 'wgrep))
 (eval-after-load "lgrep" '(require 'wgrep))
 (eval-after-load "grep" '(require 'wgrep))
-(setq ag-reuse-buffers t
-      ag-reuse-window t)
 
 (setq grep-files-aliases
       '(("all" . "* .*")

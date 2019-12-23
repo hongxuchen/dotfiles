@@ -1,5 +1,3 @@
-(if *is-cocoa-emacs*
-    (load "/usr/local/Cellar/proof-general/4.4/share/emacs/site-lisp/proof-general/generic/proof-site"))
 ;; (add-to-list 'auto-mode-alist '("\\.v$" . coq-mode))
 (add-hook 'coq-mode-hook #'company-coq-mode)
 '(coq-default-undo-limit 10000)

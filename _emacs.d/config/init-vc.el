@@ -17,7 +17,7 @@
        (kill-buffer)
        (jump-to-register :magit-fullscreen))
      (define-key magit-status-mode-map (kbd "q") 'magit-quit-session)
-     (require 'magit-key-mode)
+     ;; (require 'magit-key-mode)
      (require 'magit-svn)))
 
 (when *is-a-mac*

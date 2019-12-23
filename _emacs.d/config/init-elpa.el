@@ -30,7 +30,7 @@
 ;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
-(add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
+;; (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
 ;; ------------------------------------------------------------------------------
 ;; general
@@ -51,6 +51,7 @@
 (require-package 's)
 (require-package 'robe)
 (require-package 'pcre2el)
+(require-package 'deadgrep)
 
 ;; ------------------------------------------------------------------------------
 ;; vim like editing
