@@ -10,7 +10,6 @@
 ;; Window size and features
 ;; ------------------------------------------------------------------------------
 (setq tool-bar-style 'image)
-;; (fringe-mode '(1 . 1))
 (blink-cursor-mode -1) ;; orginal enabled
 (column-number-mode 1)
 (setq winner-ring-size 20)
@@ -31,20 +30,20 @@
 
 (setq use-file-dialog nil
       use-dialog-box nil)
-(if (display-graphic-p)
-    (progn
-      ;; (set-face-attribute 'default nil :font "Consolas 14")
-      (set-face-attribute 'default nil :family "Monaco" :weight 'bold :height 110)
-      (if *is-carbon-emacs* (set-face-attribute 'default nil :family "FiraCode" :weight 'Regular :height 140))
-      ;; (set-face-attribute 'default nil :font "DejaVu Sans Mono 13")
-      (dolist (charset '(kana han symbol cjk-misc bopomofo))
-        ;; (set-fontset-font (frame-parameter nil 'font)
-        ;;                   charset
-        ;;                   (font-spec :family "文泉驿等宽微米黑"
-        ;;                              :size 12
-        ;;                              :weight 'light))
-	))
-  )
+;; (if (display-graphic-p)
+;;     (progn
+;;       ;; (set-face-attribute 'default nil :font "Consolas 14")
+;;       (set-face-attribute 'default nil :family "Monaco" :weight 'bold :height 110)
+;;       (if *is-carbon-emacs* (set-face-attribute 'default nil :family "FiraCode" :weight 'Regular :height 140))
+;;       ;; (set-face-attribute 'default nil :font "DejaVu Sans Mono 13")
+;;       (dolist (charset '(kana han symbol cjk-misc bopomofo))
+;;         ;; (set-fontset-font (frame-parameter nil 'font)
+;;         ;;                   charset
+;;         ;;                   (font-spec :family "文泉驿等宽微米黑"
+;;         ;;                              :size 12
+;;         ;;                              :weight 'light))
+;; 	))
+;;   )
 
 (progn
     (menu-bar-mode -1)
@@ -101,37 +100,5 @@
   "Stop the load of linum-mode for some major modes."
   (unless (member major-mode linum-mode-inhibit-modes-list)
     ad-do-it))
-
-(when *is-carbon-emacs*
-  (set-default-font "Fira Code"))
-(let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
-               (35 . ".\\(?:###\\|##\\|_(\\|[#(?[_{]\\)")
-               (36 . ".\\(?:>\\)")
-               (37 . ".\\(?:\\(?:%%\\)\\|%\\)")
-               (38 . ".\\(?:\\(?:&&\\)\\|&\\)")
-               (42 . ".\\(?:\\(?:\\*\\*/\\)\\|\\(?:\\*[*/]\\)\\|[*/>]\\)")
-               (43 . ".\\(?:\\(?:\\+\\+\\)\\|[+>]\\)")
-               (45 . ".\\(?:\\(?:-[>-]\\|<<\\|>>\\)\\|[<>}~-]\\)")
-               (46 . ".\\(?:\\(?:\\.[.<]\\)\\|[.=-]\\)")
-               (47 . ".\\(?:\\(?:\\*\\*\\|//\\|==\\)\\|[*/=>]\\)")
-               (48 . ".\\(?:x[a-zA-Z]\\)")
-               (58 . ".\\(?:::\\|[:=]\\)")
-               (59 . ".\\(?:;;\\|;\\)")
-               (60 . ".\\(?:\\(?:!--\\)\\|\\(?:~~\\|->\\|\\$>\\|\\*>\\|\\+>\\|--\\|<[<=-]\\|=[<=>]\\||>\\)\\|[*$+~/<=>|-]\\)")
-               (61 . ".\\(?:\\(?:/=\\|:=\\|<<\\|=[=>]\\|>>\\)\\|[<=>~]\\)")
-               (62 . ".\\(?:\\(?:=>\\|>[=>-]\\)\\|[=>-]\\)")
-               (63 . ".\\(?:\\(\\?\\?\\)\\|[:=?]\\)")
-               (91 . ".\\(?:]\\)")
-               (92 . ".\\(?:\\(?:\\\\\\\\\\)\\|\\\\\\)")
-               (94 . ".\\(?:=\\)")
-               (119 . ".\\(?:ww\\)")
-               (123 . ".\\(?:-\\)")
-               (124 . ".\\(?:\\(?:|[=|]\\)\\|[=>|]\\)")
-               (126 . ".\\(?:~>\\|~~\\|[>=@~-]\\)")
-               )
-             ))
-  (dolist (char-regexp alist)
-    (set-char-table-range composition-function-table (car char-regexp)
-                          `([,(cdr char-regexp) 0 font-shape-gstring]))))
 
 (provide 'init-display)

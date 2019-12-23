@@ -27,7 +27,7 @@
         (package-refresh-contents)
         (require-package package t)))))
 
-(add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
+;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
 (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
@@ -44,16 +44,12 @@
 (require-package 'dired-k)
 (require-package 'autopair)
 (require-package 'ibuffer-vc)
-(require-package 'pointback)
 (require-package 'undo-tree) ;; evil mode needs it!
 (require-package 'ido-ubiquitous)
-(require-package 'info+)
 (require-package 'wgrep)
 (require-package 'popup-kill-ring)
-(require-package 'ag)
 (require-package 's)
 (require-package 'robe)
-(require-package 'inf-ruby)
 (require-package 'pcre2el)
 
 ;; ------------------------------------------------------------------------------
@@ -79,9 +75,7 @@
 ;; (require-package 'merlin)
 ;; require to install proof-general beforehand
 ;; http://proofgeneral.inf.ed.ac.uk/
-(require-package 'company-coq)
-
-(require-package 'dash-at-point)
+;; (require-package 'company-coq)
 
 ;;------------------------------------------------------------------------------
 ;; writings
@@ -108,35 +102,13 @@
 (require-package 'findr)
 (require-package 'flymake-cursor) ;;show flymake errors in minibuffer
 ;; snippets
-(require-package 'dropdown-list)
 (require-package 'yasnippet)
 
 ;; ac
 (require-package 'pos-tip)
                                         ; company-mode
 ;; (require-package 'company-mode)
-(require-package 'company-c-headers)
-
-;; shell
-(require-package 'flymake-shell) ;; require flymake-easy
-
-;;; scala
-(require-package 'ensime)
-(require 'ensime)
-(use-package ensime  :pin melpa-stable)
-(use-package sbt-mode
-  :commands sbt-start sbt-command
-  :config
-  ;; WORKAROUND: https://github.com/ensime/emacs-sbt-mode/issues/31
-  ;; allows using SPACE when in the minibuffer
-  (substitute-key-definition
-   'minibuffer-complete-word
-   'self-insert-command
-   minibuffer-local-completion-map))
-
-;; python
-(require-package 'elpy)
-(require-package 'py-autopep8)
+;; (require-package 'company-c-headers)
 
 (require-package 'pretty-mode)
 
@@ -144,15 +116,6 @@
 (require-package 'rainbow-delimiters)
 
 (require-package 'yaml-mode)
-
-;; lisp
-(require-package 'hl-sexp)
-(require-package 'paredit)
-
-;;; haskell
-(require-package 'intero)
-
-(require-package 's)
 
 (byte-recompile-directory "~/.emacs.d/site-lisp" 0)
 

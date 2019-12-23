@@ -180,6 +180,9 @@ Plug 'stulzer/heroku-colorscheme'
 Plug 'atelierbram/vim-colors_atelier-schemes'
 Plug 'mkarmona/materialbox'
 
+" latex
+Plug 'lervag/vimtex'
+
 call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

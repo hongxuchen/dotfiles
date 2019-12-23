@@ -21,7 +21,6 @@
 (require 'yasnippet)
 (yas-global-mode 1)
 (setq yas-verbosity 0)
-(require 'dropdown-list)
 (setq yas-prompt-functions '(yas-dropdown-prompt
                              yas-ido-prompt
                              yas-completing-prompt))

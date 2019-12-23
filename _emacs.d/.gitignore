@@ -61,3 +61,5 @@ eshell/lastdir
 SessionDesktop.el
 smex-items
 dict-spell
+transient/
+network-security.data

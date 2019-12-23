@@ -48,8 +48,6 @@
 ;; gnus
 (autoload 'gnus "init-gnus" "the powerful gnu newsreader" t)
 (autoload 'compose-mail "init-gnus" "compose mail using gnus" t)
-;; info+
-(eval-after-load "info" '(require 'info+))
 ;; apt-utils
 (eval-after-load "apt-utils" '(require 'apt-utils-ido))
 ;; smex

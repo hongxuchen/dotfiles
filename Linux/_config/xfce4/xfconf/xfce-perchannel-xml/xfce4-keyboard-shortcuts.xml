@@ -41,9 +41,6 @@
       <property name="&lt;Super&gt;4" type="empty"/>
     </property>
     <property name="custom" type="empty">
-      <property name="&lt;Alt&gt;F3" type="empty">
-        <property name="startup-notify" type="bool" value="true"/>
-      </property>
       <property name="&lt;Alt&gt;F1" type="string" value="xfce4-popup-applicationsmenu"/>
       <property name="&lt;Super&gt;w" type="string" value="exo-open --launch WebBrowser"/>
       <property name="&lt;Super&gt;l" type="string" value="xflock4"/>
@@ -61,6 +58,9 @@
       <property name="&lt;Super&gt;e" type="string" value="exo-open --launch FileManager"/>
       <property name="&lt;Primary&gt;F11" type="string" value="amixer -q sset Master 3%+"/>
       <property name="&lt;Primary&gt;F10" type="string" value="amixer -q sset Master 3%-"/>
+      <property name="&lt;Alt&gt;F3" type="string" value="xfce4-popup-whiskermenu -p">
+        <property name="startup-notify" type="bool" value="true"/>
+      </property>
     </property>
   </property>
   <property name="xfwm4" type="empty">
