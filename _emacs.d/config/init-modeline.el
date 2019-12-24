@@ -2,7 +2,7 @@
 (progn
   (require 'which-func)
   (which-function-mode 1)
-  (setq which-func-modes '(c-mode c++-mode python-mode makefile-mode sh-mode org-mode)))
+  (setq which-func-modes '(c-mode c++-mode python-mode makefile-mode sh-mode)))
 
 ;; display time
 (setq display-time-24hr-format nil
@@ -18,8 +18,6 @@
               " Omit" "")))
         (vc-parent-buffer vc-parent-buffer-name)
         (orgtbl-mode " OrgTbl")
-        (org-table-follow-field-mode " TblFollow")
-        (org-indent-mode " Ind")
         (view-mode " View")
         (doxymacs-mode " doxy")
         (flyspell-mode flyspell-mode-line-string)
@@ -39,9 +37,7 @@
                        (keymap
                         (mode-line keymap
                                    (mouse-2 . gnus-agent-toggle-plugged))))))
-        (org-capture-mode " Rem")
         (gnus-dead-summary-mode " Dead")
-        (org-cdlatex-mode " OCDL")
         (orgstruct-mode " OrgStruct")
         (outline-minor-mode " Outl")
         (cwarn-mode cwarn-mode-text)

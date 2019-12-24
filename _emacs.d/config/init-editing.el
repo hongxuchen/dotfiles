@@ -98,7 +98,6 @@
 ;; spelling
 (dolist (hook
          '(message-mode-hook
-           org-mode-hook
            text-mode-hook
            ))
   (add-hook hook 'flyspell-mode))

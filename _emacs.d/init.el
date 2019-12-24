@@ -62,8 +62,8 @@
 ;; ------------------------------------------------------------------------------
 ;; Other issues
 ;; ------------------------------------------------------------------------------
-(setq custom-file "~/.emacs.d/custom.el")
-(load custom-file)
+;; (setq custom-file "~/.emacs.d/custom.el")
+;; (load custom-file)
 ;; (require 'time-date)
 ;; (server-start)
 (setenv "LC_CTYPE" "zh_CN.UTF-8")
@@ -71,3 +71,18 @@
 ;; ## added by OPAM user-setup for emacs / base ## 56ab50dc8996d2bb95e7856a6eddb17b ## you can edit, but keep this line
 ;; (require 'opam-user-setup "~/.emacs.d/opam-user-setup.el")
 ;; ## end of OPAM user-setup addition for emacs / base ## keep this line
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   (quote
+    (find-file-in-project deadgrep yaml-mode wgrep use-package smex session robe restart-emacs rainbow-mode rainbow-delimiters py-autopep8 pretty-mode popup-kill-ring pointback pcre2el paredit markdown-mode magit-svn latex-pretty-symbols latex-extra jump intero ido-completing-read+ ibuffer-vc htmlize hl-sexp graphviz-dot-mode github-browse-file flymake-shell flymake-cursor evil-surround evil-leader ensime elpy dired-k dash-at-point company-coq company-c-headers cdlatex autopair auctex-latexmk ag ac-math)))
+ '(session-use-package t nil (session)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )

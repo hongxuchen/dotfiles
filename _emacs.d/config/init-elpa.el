@@ -28,7 +28,7 @@
         (require-package package t)))))
 
 ;; (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))
-(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
+;; (add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
 (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/"))
 ;; (add-to-list 'package-archives '("melpa-stable" . "http://stable.melpa.org/packages/"))
 
@@ -45,7 +45,7 @@
 (require-package 'autopair)
 (require-package 'ibuffer-vc)
 (require-package 'undo-tree) ;; evil mode needs it!
-(require-package 'ido-ubiquitous)
+(require-package 'ido-completing-read+)
 (require-package 'wgrep)
 (require-package 'popup-kill-ring)
 (require-package 's)
@@ -89,7 +89,7 @@
 (require-package 'latex-pretty-symbols)
 (require-package 'markdown-mode)
 ;; org
-(require-package 'cdlatex)
+;; (require-package 'cdlatex)
 ;; (require-package 'org-plus-contrib)
 (require-package 'htmlize)
 (require-package 'graphviz-dot-mode)

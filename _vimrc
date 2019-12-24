@@ -71,16 +71,15 @@ autocmd FileType html,eruby,rb,css,js,xml runtime! macros/matchit.vim
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/bundle')
 Plug 'Superbil/llvm.vim', {'for': 'llvm'}
-" Plug 'kelwin/vim-smali', {'for': 'smali'}
-Plug 'vim-scripts/scons.vim'
-Plug 'tomlion/vim-solidity'
+Plug 'vim-scripts/scons.vim', {'for': 'scons'}
+Plug 'tomlion/vim-solidity', {'for': 'solidity'}
 Plug 'cespare/vim-toml', {'for': 'toml'}
+Plug 'tell-k/vim-autopep8', {'for': 'python'}
 "vim-g
 Plug 'szw/vim-g'
 let g:vim_g_f_command = "Gf"
 let g:vim_g_command = "Go"
 
-" Plug 'SirVer/ultisnips'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
 Plug 'plasticboy/vim-markdown'
@@ -89,7 +88,6 @@ Plug 'jiangmiao/auto-pairs'
 let g:AutoPairsFlyMode = 0
 let g:AutoPairsShortcutBackInsert = '<M-b>'
 
-Plug 'tell-k/vim-autopep8', {'for': 'python'}
 
 Plug 'tpope/vim-commentary'
 autocmd FileType cmake setl cms=#%s
@@ -102,6 +100,7 @@ autocmd FileType tablegen setl cms=//%s
 autocmd FileType unix setl cms=#%s
 autocmd FileType xdefaults setl cms=!%s
 
+Plug 'jremmen/vim-ripgrep'
 
 Plug 'majutsushi/tagbar'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

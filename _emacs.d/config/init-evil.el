@@ -110,8 +110,6 @@
 ;; vim-surround like, @see https://github.com/timcharper/evil-surround
 (require 'evil-surround)
 (global-evil-surround-mode 1)
-;; (add-hook 'org-mode-hook (lambda ()
-;;                            (push '(?~ . ("~" . "~")) surround-pairs-alist)))
 
 (require 'evil-leader)
 (global-evil-leader-mode 1)

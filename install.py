@@ -46,9 +46,8 @@ class FileInfo(object):
 class MLevel(object):
     check = u'\u2714'
     cross = u'\u2717'
-    O = u'\u25CB'
+    other = u'\u25CB'
 
-# -----------------------------------------------------------------------------
 
 CUR_DIR = os.path.abspath(os.path.dirname(__file__))
 BAK_DIR = os.path.join(CUR_DIR, "BAK")
@@ -151,7 +150,7 @@ def __dot_mark(finfo):
     if not os.path.exists(finfo.dst):
         mark = MLevel.check
     elif os.path.islink(finfo.dst):
-        mark = MLevel.O
+        mark = MLevel.other
     else:
         mark = MLevel.cross
     return mark

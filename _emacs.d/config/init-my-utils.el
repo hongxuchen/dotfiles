@@ -103,7 +103,7 @@ Note, for the time zone offset, both the formats 「hhmm」 and 「hh:mm」 are 
 (defun my-format-buffer ()
   (interactive)
   (delete-trailing-whitespace)
-  (cond ((member major-mode '(makefile-mode makefile-gmake-mode org-mode))
+  (cond ((member major-mode '(makefile-mode makefile-gmake-mode))
          (message "will not cleanup buffer when major mode is %s" major-mode))
         ((member major-mode '(c-mode c++-mode)) (clang-format-buffer)
          )

@@ -9,7 +9,7 @@
  '(global-linum-mode t)
  '(package-selected-packages
    (quote
-    (restart-emacs yaml-mode wgrep use-package smex session robe rainbow-mode rainbow-delimiters py-autopep8 pretty-mode popup-kill-ring pointback pcre2el paredit markdown-mode magit-svn link latex-pretty-symbols latex-extra jump intero info+ idomenu ido-ubiquitous ibuffer-vc htmlize hl-sexp graphviz-dot-mode gitignore-mode github-browse-file gitconfig-mode git-rebase-mode git-commit-mode flymake-shell flymake-cursor evil-surround evil-leader ensime elpy dropdown-list dired-k dash-at-point connection company-coq company-c-headers cdlatex autopair auctex-latexmk ag ac-math)))
+    (ido-completing-read+ restart-emacs yaml-mode wgrep use-package smex session robe rainbow-mode rainbow-delimiters py-autopep8 pretty-mode popup-kill-ring pointback pcre2el paredit markdown-mode magit-svn link latex-pretty-symbols latex-extra jump intero info+ idomenu ido-ubiquitous ibuffer-vc htmlize hl-sexp graphviz-dot-mode gitignore-mode github-browse-file gitconfig-mode git-rebase-mode git-commit-mode flymake-shell flymake-cursor evil-surround evil-leader ensime elpy dropdown-list dired-k dash-at-point connection company-coq company-c-headers cdlatex autopair auctex-latexmk ag ac-math)))
  '(session-use-package t nil (session)))
 
 (custom-set-faces

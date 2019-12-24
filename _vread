@@ -57,7 +57,7 @@ set splitright                "
 set guioptions=               " simpler
 set nrformats=                " treat all numberals as decimal
 set tabpagemax=5              " only 5 tabs
-set gdefault                  " substitute globally
+" set gdefault                  " substitute globally
 set nocompatible              " Don't be compatible with vi
 set tabpagemax=15             " max number of tabs
 set number                    " Display line numbers

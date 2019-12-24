@@ -10,10 +10,9 @@
                   '("\\.zip\\'" ".zip" "unzip"))
      (add-to-list 'dired-compress-file-suffixes
                   '("\\.rar\\'" ".rar" "unrar"))
-(setq openwith-associations '(("\\.pdf\\'" "open" (file))))
-     (require 'openwith)
-     (openwith-mode 1)
      ))
+
+(setq dired-guess-shell-alist-user '(("\\.pdf\\'" "xdg-open")))
 
 (require 'dired-x)
 (require 'dired-k)
