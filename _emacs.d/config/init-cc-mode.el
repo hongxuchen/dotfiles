@@ -73,7 +73,7 @@
   (unless buffer-read-only
     (progn
       (my-cc-mode-edit-setup)
-      (my-cc-mode-ac-setup)
+      ;; (my-cc-mode-ac-setup)
       (my-cc-mode-keymap-setup)
       )))
 
@@ -82,8 +82,8 @@
      (require 'clang-format)
      ;; (require 'doxymacs)
      (require 'google-c-style)
-     (require 'company-rtags)
-     (my-rtags-setup)
+     ;; (require 'company-rtags)
+     ;; (my-rtags-setup)
      ;; (defun my-clang-format-before-save ()
      ;;   (when (member major-mode '(c-mode c++-mode))
      ;;     (condition-case err (clang-format-buffer)

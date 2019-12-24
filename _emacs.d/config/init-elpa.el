@@ -52,6 +52,7 @@
 (require-package 'robe)
 (require-package 'pcre2el)
 (require-package 'deadgrep)
+(require-package 'restart-emacs)
 
 ;; ------------------------------------------------------------------------------
 ;; vim like editing

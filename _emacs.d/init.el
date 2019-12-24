@@ -56,6 +56,7 @@
 ;; (require 'init-coq)
 ;; (require 'init-caml)
 ;; (require 'init-hs)
+(require 'init-tex)
 (require 'init-sh)
 
 ;; ------------------------------------------------------------------------------
