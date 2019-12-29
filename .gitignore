@@ -42,3 +42,5 @@ _PyCharm30
 
 node_modules/
 _bin/rafl
+
+tags/

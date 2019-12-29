@@ -52,7 +52,7 @@ syntax on                     " syntax highlighing
 filetype on                   " try to detect filetypes
 filetype plugin on            " recognize filetype
 filetype plugin indent on     " enable loading indent file for filetype
-set grepprg=grep\ -nH\ $*     "grep always displays filename
+set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set splitright                "
 set guioptions=               " simpler
 set nrformats=                " treat all numberals as decimal
@@ -128,7 +128,8 @@ set wildignore+=*.bak,*.exe,*.chm,*.png,*.jpg,*.jpeg,*.gif,*.avi,*.rm,*.rmvb
 set noshowmode
 set cmdheight=2
 set t_Co=256
-set autochdir
+" autochdir has issues
+autocmd BufEnter * silent! lcd %:p:h
 
 " file type
 autocmd BufRead,BufNewfile *.smali set filetype=smali

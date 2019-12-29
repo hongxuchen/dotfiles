@@ -1,6 +1,7 @@
 " vim: set ft=vim ts=4 sw=2 tw=78 et :
 
 " PRINCIPLES:
+" keep vim as simple as possible
 " plugins should be loaded as lazy as possible
 " startup should be as fast as possible
 
@@ -70,11 +71,15 @@ autocmd FileType html,eruby,rb,css,js,xml runtime! macros/matchit.vim
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/bundle')
+
 Plug 'Superbil/llvm.vim', {'for': 'llvm'}
 Plug 'vim-scripts/scons.vim', {'for': 'scons'}
 Plug 'tomlion/vim-solidity', {'for': 'solidity'}
 Plug 'cespare/vim-toml', {'for': 'toml'}
+" Plug 'plasticboy/vim-markdown'
 Plug 'tell-k/vim-autopep8', {'for': 'python'}
+autocmd FileType python set equalprg=autopep8\ -
+
 "vim-g
 Plug 'szw/vim-g'
 let g:vim_g_f_command = "Gf"
@@ -82,12 +87,11 @@ let g:vim_g_command = "Go"
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
-Plug 'plasticboy/vim-markdown'
+Plug 'junegunn/gv.vim'
 
 Plug 'jiangmiao/auto-pairs'
 let g:AutoPairsFlyMode = 0
 let g:AutoPairsShortcutBackInsert = '<M-b>'
-
 
 Plug 'tpope/vim-commentary'
 autocmd FileType cmake setl cms=#%s
@@ -99,6 +103,7 @@ autocmd FileType scala setl cms=//%s
 autocmd FileType tablegen setl cms=//%s
 autocmd FileType unix setl cms=#%s
 autocmd FileType xdefaults setl cms=!%s
+autocmd FileType apache setlocal commentstring=#\ %s
 
 Plug 'jremmen/vim-ripgrep'
 
@@ -132,13 +137,9 @@ let g:tagbar_type_rust = {
       \]
       \}
 
-
-Plug 'Shougo/echodoc.vim'
-let g:echodoc_enable_at_startup = 1
-
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Plug 'vim-utils/vim-man'
+Plug 'mhinz/vim-startify'
 
 Plug 'w0rp/ale'
 let g:ale_sign_column_always = 1
@@ -154,33 +155,21 @@ let g:ale_set_quickfix = 1
 " let g:ale_open_list = 1
 " let g:ale_keep_list_window_open = 1
 
-" Plug 'panickbr/neovim-ranger'
-Plug 'justinmk/vim-sneak'
-
-" Plug 'mattn/webapi-vim'
-" Plug 'euclio/vim-markdown-composer'
-
-" if g:os != 'Darwin'
-"   Plug 'Valloric/YouCompleteMe'
-"   Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'for': 'c'}
-" endif
+if g:os != 'Darwin'
+  Plug 'Valloric/YouCompleteMe'
+  " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'for': 'c'}
+endif
 
 " color schemes
 Plug 'jacoborus/tender.vim'
-Plug 'endel/vim-github-colorscheme'
-Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
 Plug 'd11wtq/macvim256.vim'
-Plug 'chmllr/elrodeo-vim-colorscheme'
-Plug 'w0ng/vim-hybrid'
-Plug 'kristijanhusak/vim-hybrid-material'
-Plug 'nowk/genericdc'
-Plug 'stulzer/heroku-colorscheme'
-Plug 'atelierbram/vim-colors_atelier-schemes'
-Plug 'mkarmona/materialbox'
 
 " latex
 Plug 'lervag/vimtex'
+Plug 'mhinz/neovim-remote'
+let g:vimtex_compiler_progname='nvr'
+let g:vimtex_quickfix_open_on_warning = 0
 
 call plug#end()
 
@@ -221,14 +210,7 @@ let g:ycm_filetype_blacklist = {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if g:os == "Darwin"
   set background=light
-  " colorscheme PaperColor
-  " colorscheme solarized
   colorscheme macvim256
 else
-  " colorscheme Atelier_CaveDark
-  " set background=light
-  " colorscheme Atelier_SulphurpoolLight
-  " colorscheme elrodeo
   colorscheme molokai
-  " colorscheme github
 endif
