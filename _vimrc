@@ -207,7 +207,9 @@ let g:ycm_filetype_blacklist = {
       \ 'rust' : 1,
       \}
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set spellfile=~/.vim/spell/en.utf-8.add
 if g:os == "Darwin"
   set background=light
   colorscheme macvim256
