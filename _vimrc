@@ -72,10 +72,10 @@ autocmd FileType html,eruby,rb,css,js,xml runtime! macros/matchit.vim
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/bundle')
 
-Plug 'Superbil/llvm.vim', {'for': 'llvm'}
-Plug 'vim-scripts/scons.vim', {'for': 'scons'}
-Plug 'tomlion/vim-solidity', {'for': 'solidity'}
-Plug 'cespare/vim-toml', {'for': 'toml'}
+" Plug 'Superbil/llvm.vim', {'for': 'llvm'}
+" Plug 'vim-scripts/scons.vim', {'for': 'scons'}
+" Plug 'tomlion/vim-solidity', {'for': 'solidity'}
+" Plug 'cespare/vim-toml', {'for': 'toml'}
 " Plug 'plasticboy/vim-markdown'
 Plug 'tell-k/vim-autopep8', {'for': 'python'}
 autocmd FileType python set equalprg=autopep8\ -
@@ -140,6 +140,12 @@ let g:tagbar_type_rust = {
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 Plug 'mhinz/vim-startify'
+let g:startify_custom_header = []
+let g:startify_change_to_vcs_root = 1
+let g:startify_enable_unsafe = 1
+let g:startify_update_oldfiles = 1
+let g:startify_files_number = 20
+let g:startify_enable_special = 0
 
 Plug 'w0rp/ale'
 let g:ale_sign_column_always = 1
