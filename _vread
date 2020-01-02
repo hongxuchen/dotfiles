@@ -52,7 +52,7 @@ syntax on                     " syntax highlighing
 filetype on                   " try to detect filetypes
 filetype plugin on            " recognize filetype
 filetype plugin indent on     " enable loading indent file for filetype
-set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
+" set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set splitright                "
 set guioptions=               " simpler
 set nrformats=                " treat all numberals as decimal

@@ -24,9 +24,6 @@ function time_it() {
 
 ZSH=~/.omz
 
-# ZSH_THEME="bira"
-ZSH_THEME="nanotech"
-
 time_it source ~/.profile
 time_it source ~/.zlocal
 time_it source ~/.aliases
@@ -75,10 +72,7 @@ unset config_file
 
 # sources
 
-source "$ZSH/themes/${ZSH_THEME}.zsh-theme"
-
 if [[ -d ${MY_BREW_PREFIX} ]];then
-  # source ${MY_BREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
   source ${MY_BREW_PREFIX}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 fi
 ## Ctrl-p/Ctrl-n for Emacs/viins mode

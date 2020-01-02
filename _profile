@@ -1,6 +1,7 @@
 # -*- mode:sh -*-
 # vim:ft=sh
-export EDITOR=vim
+export VISUAL=nvim
+export EDITOR=nvim
 export ALTERNATE_EDITOR=""
 export BROWSER=chromium-browser
 

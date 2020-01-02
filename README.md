@@ -7,6 +7,7 @@ See [Windots](https://github.com/HongxuChen/Windots) for Windows settings.
 <!-- toc -->
 
 - [LICENSE](#license)
+
 - [Setup](#setup)
 - [Package managers](#package-managers)
 - [Settings](#settings)

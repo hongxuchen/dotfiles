@@ -31,7 +31,7 @@
 	default = current
 
 [core]
-	editor = vim -c ':normal gg'
+	editor = vim
 	whitespace = trailing-space,space-before-tab
 	autocrlf = input
 	quotepath = false

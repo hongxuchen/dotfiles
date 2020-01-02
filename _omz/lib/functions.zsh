@@ -29,26 +29,11 @@ em() {
     fi
 }
 
-transfer() { 
-  if [ $# -eq 0 ]; then 
-    echo -e "No arguments specified. Usage:\necho transfer /tmp/test.md\ncat /tmp/test.md | transfer test.md";
-    return 1;
-  fi 
-  tmpfile=$( mktemp -t transferXXX );
-  if tty -s; then 
-    basefile=$(basename "$1" | sed -e 's/[^a-zA-Z0-9._-]/-/g');
-    curl --progress-bar --upload-file "$1" "https://transfer.sh/$basefile" >> $tmpfile;
-  else curl --progress-bar --upload-file "-" "https://transfer.sh/$1" >> $tmpfile ; 
-  fi; 
-  cat $tmpfile;
-  rm -f $tmpfile;
-}
-
 mkd() {
   mkdir -p "$@" && cd "$1"
 }
 
-cdp () {
+pycdp () {
     cd "$(python -c "import os.path as _, ${1}; \
             print(_.dirname(_.realpath(${1}.__file__[:-1])))"
         )"
@@ -66,45 +51,6 @@ my_cmp() {
   cmp -l $1 $2 | gawk '{printf "%08X %02X %02X\n", $1, strtonum(0$2), strtonum(0$3)}'
 }
 
-my_git_dl() {
-    git_url=$1
-    folder=${${git_url##*/}%%.*}
-    git clone --depth 1 $1 $folder
-    rm -rf $folder/.git
-}
-
-my_brew_backup () {
-    echo '#!/bin/bash'
-    echo ''
-    echo 'failed_items=""'
-    echo 'install_package() {'
-    echo 'echo EXECUTING: brew install $1 $2'
-    echo 'brew install $1 $2'
-    echo '[ $? -ne 0 ] && $failed_items="$failed_items $1"  # package failed to install.'
-    echo '}'
-
-    brew tap | while read tap; do echo "brew tap $tap"; done
-    brew list | while read item;
-                do
-                    echo "install_package $item '$(brew info $item | grep 'Built from source with:' | sed 's/^[ \t]*Built from source with:/ /g; s/\,/ /g')'"
-                done
-    echo '[ ! -z $failed_items ] && echo The following items were failed to install: && echo $failed_items'
-
-}
-
-### TODO change with python
-colorless () {
-  fname="$1"
-  suffix="${fname#*.}"
-  pipe_suffix=(a arj tar.bz2 bz bz2 deb udeb ddeb doc gif jpeg jpg pcd png tga tiff tif iso bin raw lha lzh tar.lz tlz lz tar.lzma lzma pdf rar rpm tar.gz tgz tar.z tar.dz tar.xz txz xz gz z dz tar jar war ear xpi zip 7z zoo)
-  if (( ${pipe_suffix[(I)${suffix}]} )) || ! [ -e "$fname" ]; then
-    command less "$fname"
-  else
-    pygmentize "$1" | less
-  fi
-}
-###
-
 ### git ignore issues
 my_gi() { curl -sL https://www.gitignore.io/api/$@ ;}
 _gitignoreio_get_command_list() {
@@ -115,18 +61,6 @@ _gitignoreio () {
   compadd -S '' `_gitignoreio_get_command_list`
 }
 compdef _gitignoreio my_gi
-###
-#
-my_docopt_compl(){
-  tmpdir="."
-  script_name=$1
-  compl_name="_${script_name}"
-  genfile="${tmpdir}/_${script_name}"
-  target_file="${ZSH_COMPLETIONS}/_${script_name}.zsh"
-  docopt-completion ${script_name} --manual-zsh
-  mv ${genfile} ${target_file}
-  source ~/.zshrc
-}
 
 ### zsh reload
 my_zshreload() {
@@ -141,15 +75,9 @@ my_zshreload() {
   source ~/.zshrc
 }
 
-pgs() { # [find] [replace] [filename]
-    perl -i.orig -pe 's/'"$1"'/'"$2"'/g' "$3"
-}
-
 json_pretty() {
   echo "$1" | python -mjson.tool
 }
-
-adbsc() { adb shell screencap -p | perl -pe 's/\x0D\x0A/\x0A/g' > $1.png; }
 
 # TODO locale issues
 

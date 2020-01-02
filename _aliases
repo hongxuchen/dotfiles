@@ -11,6 +11,7 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
     alias release_memory='sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"'
     ## since there are  no .desktop files for them
     alias pycharm='nohup ~/tools/pycharm/bin/pycharm.sh &>/dev/null &'
+    alias understand='nohup ~/tools/scitools/bin/linux64/understand >/tmp/understand.stdout 2>/tmp/understand.stderr &'
     alias clion='nohup ~/tools/clion-IDE/bin/clion.sh &>/dev/null &'
     alias intellij='nohup ~/tools/intellij/bin/idea.sh &>/dev/null &'
     alias goland='nohup ~/tools/goland/bin/goland.sh &>/dev/null &'

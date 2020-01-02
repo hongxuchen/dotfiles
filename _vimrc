@@ -45,6 +45,14 @@ inoremap <silent><C-d> <Del>
 inoremap <silent><M-n> <C-o>:cnext<CR>
 inoremap <silent><M-p> <C-o>:cprevious<CR>
 
+" terminal mode
+if has('nvim')
+  tnoremap <Esc> <C-\><C-n>
+  tnoremap <C-v><Esc> <Esc>
+  highlight! link TermCursor Cursor
+  highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15
+end
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " append modeline
 function! AppendModeline()
@@ -84,6 +92,11 @@ autocmd FileType python set equalprg=autopep8\ -
 Plug 'szw/vim-g'
 let g:vim_g_f_command = "Gf"
 let g:vim_g_command = "Go"
+
+Plug 'editorconfig/editorconfig-vim'
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+
+Plug 'tpope/vim-obsession'
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-fugitive'
@@ -156,6 +169,8 @@ let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_filetype_changed = 0
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 " let g:ale_open_list = 1
@@ -167,15 +182,24 @@ if g:os != 'Darwin'
 endif
 
 " color schemes
-Plug 'jacoborus/tender.vim'
-Plug 'tomasr/molokai'
-Plug 'd11wtq/macvim256.vim'
+" Plug 'jacoborus/tender.vim'
+" Plug 'tomasr/molokai'
+" Plug 'd11wtq/macvim256.vim'
 
 " latex
 Plug 'lervag/vimtex'
 Plug 'mhinz/neovim-remote'
 let g:vimtex_compiler_progname='nvr'
 let g:vimtex_quickfix_open_on_warning = 0
+set conceallevel=1
+let g:tex_conceal='abdmg'
+
+Plug 'AndrewRadev/splitjoin.vim'
+" Plug 'godlygeek/tabular'
+" Plug 'tommcdo/vim-lion'
+Plug 'junegunn/vim-easy-align'
+
+Plug 'hotoo/pangu.vim'
 
 call plug#end()
 
@@ -216,9 +240,9 @@ let g:ycm_filetype_blacklist = {
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set spellfile=~/.vim/spell/en.utf-8.add
-if g:os == "Darwin"
-  set background=light
-  colorscheme macvim256
-else
-  colorscheme molokai
-endif
+" if g:os == "Darwin"
+"   set background=light
+"   colorscheme macvim256
+" else
+"   colorscheme molokai
+" endif

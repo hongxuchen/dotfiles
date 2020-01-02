@@ -5,6 +5,7 @@ zle -N self-insert url-quote-magic
 ## edit command line
 autoload -U edit-command-line
 zle -N edit-command-line
+bindkey '^x^e' edit-command-line
 
 ## Command history configuration
 HISTFILE=~/.zsh_history
@@ -17,14 +18,25 @@ alias history='fc -l 1 | less'  #fc is a zshbuiltin
 # export LSCOLORS="Gxfxcxdxbxegedabagacad"
 export LSCOLORS=${LS_COLORS}
 
-# Apply theming defaults
 PS1="%n@%m:%~%# "
 
 # git theming default: Variables for theming the git info prompt
-ZSH_THEME_GIT_PROMPT_PREFIX="git:("         # Prefix at the very beginning of the prompt, before the branch name
-ZSH_THEME_GIT_PROMPT_SUFFIX=")"             # At the very end of the prompt
-ZSH_THEME_GIT_PROMPT_DIRTY="*"              # Text to display if the branch is dirty
-ZSH_THEME_GIT_PROMPT_CLEAN=""               # Text to display if the branch is clean
+# ZSH_THEME_GIT_PROMPT_PREFIX="git:("         # Prefix at the very beginning of the prompt, before the branch name
+# ZSH_THEME_GIT_PROMPT_SUFFIX=")"             # At the very end of the prompt
+# ZSH_THEME_GIT_PROMPT_DIRTY="*"              # Text to display if the branch is dirty
+# ZSH_THEME_GIT_PROMPT_CLEAN=""               # Text to display if the branch is clean
+
+PROMPT='%F{green}%2c%F{blue} >%f '
+RPROMPT='$(git_prompt_info) %F{blue}< %F{green}%D{%L:%M} %F{yellow}%D{%p}%f'
+# RPROMPT='$(git_prompt_info)$(svn_prompt_info) %F{blue}< %F{green}%D{%L:%M} %F{yellow}%D{%p}%f'
+
+ZSH_THEME_GIT_PROMPT_PREFIX="%F{yellow}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%f"
+ZSH_THEME_GIT_PROMPT_DIRTY=" %F{red}*%f"
+ZSH_THEME_GIT_PROMPT_CLEAN=""
+
+ZSH_THEME_SVN_PROMPT_PREFIX="[%{$reset_color%}%{$fg[white]%}svn:%{$fg_bold[white]%}/"
+ZSH_THEME_SVN_PROMPT_SUFFIX="%{$fg_bold[green]%}]-"
 
 setopt long_list_jobs
 setopt no_beep
@@ -66,42 +78,6 @@ setopt pushdminus
 setopt auto_pushd
 alias ...='cd ../..'
 
-for s in mp3 wav aac ogg avi mp4 m4v mov qt mpg mpeg f4v flv\
-             jpg jpeg png psd bmp gif tif tiff\
-             eps ps pdf epub dmg chm\
-             html htm md markdown log\
-             ods xls xlsx csv ppt pptx odp pot odt doc docx rtf ;
-do
-    if [[ $OSTYPE == "linux-gnu" ]]; then
-        alias -s $s=xdg-open
-    elif [[ $OSTYPE == "darwin"* ]];then
-        alias -s $s=open
-    fi
-done
-
-for z in zip gz; do
-    alias -s $z="less"
-done
-
-### we cannot make runnable script to be opened with vim
-for s in tex conf vim txt; do
-    alias -s $s=vim
-done
-
-# for s in 1 2 3 4 5 6 7; do
-#     if [[ $OSTYPE == "linux-gnu" ]]; then
-#         alias -s $s="man -l"
-#     elif [[ $OSTYPE == "darwin"* ]];then
-#         alias -s $s="man"
-#     fi
-# done
-
-alias -s c=c
-alias -s cc=c
-alias -s js="traceur --experimental"
-
 alias -s deb="sudo gdebi"
 alias -s jar="java -jar"
-alias -s dot="dot -Tpng -O"
 alias -s plist="plutil"
-alias -s Dockerfile="docker build - < "
