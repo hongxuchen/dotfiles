@@ -4,22 +4,6 @@
 
 zmodload zsh/zprof
 
-# function time_it() {
-#   if [[ $OSTYPE == "linux-gnu" ]]; then
-#     s=$(date +%s.%N)
-#     $@
-#     RC=$?
-#     duration=$[$(date +%s.%N)-$s]
-#     printf "%6.3f%5s%-3d%s\n" "${duration}" "s RC=" "$RC" "\"$*\"" >&2
-#     return $rc
-#   else
-#     $@
-#     return $?
-#   fi
-# }
-# time_it source ~/.profile
-# time_it source ~/.zlocal
-# time_it source ~/.aliases
 source ~/.profile 
 source ~/.zlocal  
 source ~/.aliases 
@@ -35,7 +19,7 @@ ZSH=~/.omz
 # ~/.omz/plugins/
 PLUGINS=(git-extras pip)
 if [[ $OSTYPE == "linux-gnu" ]];then
-    PLUGINS=(${PLUGINS} docker zsh-history-substring-search)
+    PLUGINS=(${PLUGINS} docker zsh-history-substring-search zsh-syntax-highlighting)
 elif [[ $OSTYPE == "darwin"* ]];then
     PLUGINS=(${PLUGINS} vagrant brew-cask brew)
 fi

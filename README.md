@@ -145,3 +145,8 @@ Mac Specific
     - Linux Vimers doesn't need GUI :smile:.
 
 - [**slate**](https://github.com/jigish/slate)(`~/.slate`)
+
+Known Issues
+------------
+- tmux status right cannot fill
+- zsh-syntax-highlighting not work during typing (only after)

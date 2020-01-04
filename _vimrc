@@ -242,6 +242,8 @@ let g:ycm_filetype_blacklist = {
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set spellfile=~/.vim/spell/en.utf-8.add
+set background=light
+colorscheme desert
 " if g:os == "Darwin"
 "   set background=light
 "   colorscheme macvim256

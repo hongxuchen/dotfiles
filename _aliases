@@ -104,18 +104,13 @@ alias ldot='ls -ld .*'
 alias kl='k.zsh | less'
 alias sl='ls'
 
-alias mmv='noglob zmv -W'
-
-# alias my_node_install='npm install -g'
-# alias node='env node --harmony --use-strict'
-
 alias deb_latest_installed='cat /var/log/dpkg.log | grep "\ install\ "'
 
 alias vi='nvim'
 alias vim='nvim'
-alias v='nvim -u ~/.vless'
-alias e=nvim
+alias view='nvim -u ~/.vless'
 alias vf='nvim -u NONE'
+
 alias q='exit'
 
 # adb relevant
