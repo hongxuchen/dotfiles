@@ -21,11 +21,9 @@ bindkey '^x^e' edit-command-line
 
 ## prompty configuration
 PS1="%n@%m:%~%# "
-PROMPT='%F{green}%2c %F{blue}($(git_prompt_info)%F{blue}) %F{green}%D{%K:%M} %F{yellow}>%f '
-ZSH_THEME_GIT_PROMPT_PREFIX="%F{yellow}"
-ZSH_THEME_GIT_PROMPT_SUFFIX="%f"
-ZSH_THEME_GIT_PROMPT_DIRTY=" %F{red}*%f"
-ZSH_THEME_GIT_PROMPT_CLEAN=""
+PROMPT='%F{blue}%D{%K:%M} $(git_prompt_info)%F{green}%2c%F{yellow}$%f '
+ZSH_THEME_GIT_PROMPT_PREFIX="%F{blue}(%F{yellow}"
+ZSH_THEME_GIT_PROMPT_SUFFIX="%F{blue})%f "
 
 ## Command history configuration
 HISTFILE=~/.zsh_history

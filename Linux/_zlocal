@@ -176,7 +176,4 @@ NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 stty ixany
 stty ixoff -ixon
 
-ZSHL_PROFILE=/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-if [ -e $ZSHL_PROFILE ]; then source $ZSHL_PROFILE; fi
-
 export CHTSH_CURL_OPTIONS="-q"

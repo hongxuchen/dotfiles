@@ -88,9 +88,6 @@ managed by [package.el](http://www.emacswiki.org/emacs/ELPA))(`~/.emacs.d`)
         - `~/.zshrc`
         - `~/.omz/`
 
-    - `brew install zsh-history-substring-search  zsh-syntax-highlighting` and change login shell (with `chsh`) to zsh to make it really work; enjoy it!
-
-
 1. [**IPython**](http://ipython.org/)(especially for [sh](http://ipython.org/ipython-doc/dev/interactive/shell.html)/[nb](http://ipython.org/notebook.html) profile)(`~/.ipython/`)
 
     - for **sh** profile (check command alias: `p_sh`), *lots* of packages are pre-imported(installed via `pip`)

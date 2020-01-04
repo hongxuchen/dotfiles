@@ -238,7 +238,7 @@ let g:ycm_filetype_blacklist = {
       \ 'rust' : 1,
       \}
 
-set shell=/usr/bin/bash
+" set shell=/usr/bin/bash
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set spellfile=~/.vim/spell/en.utf-8.add
