@@ -1,7 +1,6 @@
 # -*- mode: conf-unix; -*-
 #  vim: set ft=readline ts=4 sw=2 tw=0 et :
 
-set editing-mode vi
 "\C-x\C-r": re-read-init-file
 
 set bell-style none                      # Options: none, visible, audible
@@ -21,7 +20,7 @@ set show-all-if-ambiguous on
 set show-all-if-unmodified on
 set skip-completed-text on
 set completion-display-width -1          # default -1, no limit
-# set print-completion-horizontally off    # Don't print horizontally
+# set print-completion-horizontally off  # Don't print horizontally
 
 # Fix for accents input with UTF-8.
 set input-meta on
@@ -40,48 +39,3 @@ $if mode=emacs
 "\e-b":  backward-word
 # "\t":    complete
 $endif
-
-$if mode=vi
-
-set keymap vi-command
-"k":     history-search-backward
-"j":     history-search-forward
-"guw":   downcase-word
-"gUw":   upcase-word
-"\C-f":  forward-char
-"\C-b":  backward-char
-"\e-f":  forward-word
-"\e-b":  backward-word
-"\C-l":  clear-screen
-
-
-set keymap vi-insert
-"\C-k":  kill-line
-"\C-l":  clear-screen
-#"\C-w":  unix-word-rubout
-"\C-w":  backward-kill-word
-"\C-a":  beginning-of-line
-"\C-m":  accept-line
-"\C-d":  delete-char
-"\C-h":  backward-delete-char
-"\C-v":  quoted-insert
-"\C-y":  yank
-"\C-e":  end-of-line
-"\C-p":  history-search-backward
-"\C-n":  history-search-forward
-"\C-f":  forward-char
-"\C-b":  backward-char
-"\e-f":  forward-word
-"\e-b":  backward-word
-# "\t":   complete
-
-$endif
-
-$if Bash
-Space:  magic-space
-$endif
-
-$if Python
-$endif
-
-# set keymap vi
