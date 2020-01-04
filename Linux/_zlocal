@@ -114,13 +114,11 @@ export GOPATH=~/gocode
 
 # cabal home
 export MY_CABAL=~/.cabal
-
 # cargo home
 export MY_CARGO_HOME=~/.cargo
 export CARGO_INCREMENTAL=0
 # export RUST_LOG=info
-
-# yarn
+export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
 
 export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
 export PATH=${MY_CARGO_HOME}/bin:$PATH
@@ -133,7 +131,6 @@ export PATH=${GOPATH}/bin:$PATH
 export PATH=${MY_KINT_BIN}:$PATH
 export PATH=${ANDROID_HOME}/tools:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/build-tools/25.0.2:$PATH
 export PATH=/usr/local/heroku/bin:$PATH
-# export PATH=${HOME}/tools/android-studio/bin:$PATH
 export PATH=~/RESEARCH/dex2jar-2.0:$PATH
 export PATH=~/src/stellar/stellar-core/build/src:$PATH
 export PATH=${MY_OCAML_BIN_PATH}:$PATH
@@ -147,22 +144,15 @@ export PATH=/snap/bin:$PATH
 # ${LATTE_ROOT}/bin:
 # export PATH=~/tools/dotfiles/_builds/rtags/build/bin:$PATH
 # export PATH=${MY_PIN_ROOT}:$PATH
-# export PATH=~/tools/FSharp-2.0.0.0/bin:$PATH
-## node
-# nvm stuff
 
+
+# nvm stuff
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 # yarn
 YARN_G_BIN=${HOME}/.yarn/bin
 export PATH=${YARN_G_BIN}:$PATH
-
-export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
-# export RUSTFLAGS="-C target-cpu=native"
-
-# for sbt
-# export SBT_OPTS="-Xms2G -Xmx6G -Xss1M -XX:+CMSClassUnloadingEnabled"
 
 # conscript
 export CONSCRIPT_HOME="$HOME/.conscript"
@@ -177,16 +167,11 @@ export NO_AT_BRIDGE=1
 export LLVM_COMPILER=clang
 export WLLVM_OUTPUT=WARNING
 
-# ocaml
-# export CAML_LD_LIBRARY_PATH=${HOME}.opam/system/lib/llvm:${CAML_LD_LIBRARY_PATH}
-
 # intellij
 export IDEA_VM_OPTIONS=${HOME}/.idea64.vmoptions
 
 # NVIM
 NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
-
-# eval $(opam config env)
 
 ##############################################################################
 # MISC
@@ -197,9 +182,4 @@ stty ixoff -ixon
 ZSHL_PROFILE=/usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 if [ -e $ZSHL_PROFILE ]; then source $ZSHL_PROFILE; fi
 
-# NIX_PROFILE=$HOME/.nix-profile/etc/profile.d/nix.sh
-# if [ -e $NIX_PROFILE ]; then source $NIX_PROFILE; fi
-
 export CHTSH_CURL_OPTIONS="-q"
-
-# hash direnv 2>/dev/null && eval "$(direnv hook zsh)"

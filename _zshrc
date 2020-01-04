@@ -2,17 +2,6 @@
 #  vim: set ft=zsh ts=4 sw=2 tw=0 et :
 #
 
-# function time_it() {
-#   local start=$SECONDS ts ec
-#   printf -v ts '%(%Y-%m-%d_%H:%M:%S)T' -1
-#   printf '%s\n' "$ts Starting $*"
-#   "$@"; ec=$?
-#   printf -v ts '%(%Y-%m-%d_%H:%M:%S)T' -1
-#   printf '%s\n' "$ts Finished $*; elapsed = $((SECONDS-start)) seconds"
-#   # make sure to return the exit code of the command so that the caller can use it
-#   return "$ec"
-# }
-
 function time_it() {
   s=$(date +%s.%N)
   $@

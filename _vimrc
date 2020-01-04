@@ -64,7 +64,8 @@ endfunction
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
 set ttyfast
-set colorcolumn=120
+set colorcolumn=
+" set colorcolumn=120
 set noautowrite               " Never write a file unless I request it.
 set noautowriteall            " NEVER.
 set autoread                  " automatically re-read changed files.
@@ -125,7 +126,7 @@ Plug 'majutsushi/tagbar'
 " tagbar
 noremap <leader>t :TagbarToggle<CR>
 let g:tagbar_autoclose=0
-let g:tagbar_left = 0
+let g:tagbar_left = 1
 let g:tagbar_width = 31
 let g:tagbar_autofocus = 0
 let g:tagbar_sort = 1

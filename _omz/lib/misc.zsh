@@ -76,8 +76,5 @@ setopt auto_cd
 setopt pushd_ignore_dups
 setopt pushdminus
 setopt auto_pushd
-alias ...='cd ../..'
 
-alias -s deb="sudo gdebi"
-alias -s jar="java -jar"
-alias -s plist="plutil"
+alias ...='cd ../..'
