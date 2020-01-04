@@ -1,3 +1,15 @@
+## keybindings
+#standard widigets: http://zsh.sourceforge.net/Doc/Release/Zsh-Line-Editor.html#Standard-Widgets
+
+# ^ Ctrl
+# \eb Alt
+# \e Meta
+
+# "^[[Z" (escape, left bracket, capital z) for shift-tab
+bindkey -M emacs '^[[Z' reverse-menu-complete
+bindkey -e
+################################################################################
+
 ## smart urls
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
@@ -7,48 +19,30 @@ autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
 
-## Command history configuration
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-alias history='fc -l 1 | less'  #fc is a zshbuiltin
-
-# ls colors
-# autoload colors; colors;
-# export LSCOLORS="Gxfxcxdxbxegedabagacad"
-export LSCOLORS=${LS_COLORS}
-
+## prompty configuration
 PS1="%n@%m:%~%# "
-
-# git theming default: Variables for theming the git info prompt
-# ZSH_THEME_GIT_PROMPT_PREFIX="git:("         # Prefix at the very beginning of the prompt, before the branch name
-# ZSH_THEME_GIT_PROMPT_SUFFIX=")"             # At the very end of the prompt
-# ZSH_THEME_GIT_PROMPT_DIRTY="*"              # Text to display if the branch is dirty
-# ZSH_THEME_GIT_PROMPT_CLEAN=""               # Text to display if the branch is clean
-
-PROMPT='%F{green}%2c%F{blue} >%f '
-RPROMPT='$(git_prompt_info) %F{blue}< %F{green}%D{%L:%M} %F{yellow}%D{%p}%f'
-# RPROMPT='$(git_prompt_info)$(svn_prompt_info) %F{blue}< %F{green}%D{%L:%M} %F{yellow}%D{%p}%f'
-
+PROMPT='%F{green}%2c %F{blue}($(git_prompt_info)%F{blue}) %F{green}%D{%K:%M} %F{yellow}>%f '
 ZSH_THEME_GIT_PROMPT_PREFIX="%F{yellow}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%f"
 ZSH_THEME_GIT_PROMPT_DIRTY=" %F{red}*%f"
 ZSH_THEME_GIT_PROMPT_CLEAN=""
 
-ZSH_THEME_SVN_PROMPT_PREFIX="[%{$reset_color%}%{$fg[white]%}svn:%{$fg_bold[white]%}/"
-ZSH_THEME_SVN_PROMPT_SUFFIX="%{$fg_bold[green]%}]-"
-
+## Command history configuration
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
+alias history='fc -l 1 | less'  #fc is a zshbuiltin
 setopt long_list_jobs
 setopt no_beep
 setopt multios
 setopt prompt_subst
+setopt inc_append_history
 setopt append_history
 setopt extended_history
 setopt hist_expire_dups_first
 setopt hist_ignore_dups # ignore duplication command history list
 setopt hist_ignore_space
 setopt hist_verify
-setopt inc_append_history
 setopt share_history # share command history data
 setopt hist_ignore_all_dups
 setopt hist_no_store
@@ -67,9 +61,7 @@ alias -g HH='| head -n 20'
 alias -g TT='| tail -20'
 TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S'
 
-autoload -U age
-
-##### files and directories
+## files and directories
 DIRSTACKSIZE=10
 setopt auto_cd
 # setopt auto_name_dirs

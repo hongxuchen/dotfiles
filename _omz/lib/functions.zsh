@@ -3,13 +3,6 @@ git_prompt_info() {
     echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
-svn_prompt_info() {
-    if [ -d .svn ]; then
-        rev=$(svn info 2> /dev/null | sed -n 's/Revision:\ //p')
-        echo -n "${ZSH_THEME_SVN_PROMPT_PREFIX}${rev}${ZSH_THEME_SVN_PROMPT_SUFFIX}"
-    fi
-}
-
 which_exe() {
     exe=$(which $1)    
     rc=$?
@@ -27,10 +20,6 @@ em() {
     else
         command emacs -nw
     fi
-}
-
-mkd() {
-  mkdir -p "$@" && cd "$1"
 }
 
 pycdp () {
@@ -51,7 +40,7 @@ my_cmp() {
   cmp -l $1 $2 | gawk '{printf "%08X %02X %02X\n", $1, strtonum(0$2), strtonum(0$3)}'
 }
 
-### git ignore issues
+## git ignore issues
 my_gi() { curl -sL https://www.gitignore.io/api/$@ ;}
 _gitignoreio_get_command_list() {
   curl -sL https://www.gitignore.io/api/list | tr "," "\n"
@@ -62,7 +51,7 @@ _gitignoreio () {
 }
 compdef _gitignoreio my_gi
 
-### zsh reload
+## zsh reload
 my_zshreload() {
   local cache=$ZSH_CACHE_DIR
   autoload -U compinit zrecompile
@@ -78,8 +67,6 @@ my_zshreload() {
 json_pretty() {
   echo "$1" | python -mjson.tool
 }
-
-# TODO locale issues
 
 if [[ $OSTYPE == "linux-gnu" ]];then
     source $(dirname "$0")/local_linux

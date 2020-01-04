@@ -7,8 +7,12 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
     # alias cat="bat"
     alias grep='grep --color=auto --exclude-dir=.cvs --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn' 
     alias gdb='gdb -q'
+    alias gtui='gdb -q -tui'
     alias dstat='dstat -cdlmnpsy'
     alias release_memory='sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"'
+    alias open="xdg-open"
+    alias pbcopy='xsel --clipboard --input'
+    alias pbpaste='xsel --clipboard --output'
     ## since there are  no .desktop files for them
     alias pycharm='nohup ~/tools/pycharm/bin/pycharm.sh &>/dev/null &'
     alias understand='nohup ~/tools/scitools/bin/linux64/understand >/tmp/understand.stdout 2>/tmp/understand.stderr &'
@@ -16,9 +20,6 @@ if [[ $OSTYPE == "linux-gnu" ]]; then
     alias intellij='nohup ~/tools/intellij/bin/idea.sh &>/dev/null &'
     alias goland='nohup ~/tools/goland/bin/goland.sh &>/dev/null &'
     alias pcloud='nohup /usr/bin/pcloud &>/dev/null &'
-    alias open="xdg-open"
-    alias pbcopy='xsel --clipboard --input'
-    alias pbpaste='xsel --clipboard --output'
 fi
 
 if [[ $OSTYPE == "darwin"* ]] || [[ $OSTYPE == "freebsd"* ]]; then

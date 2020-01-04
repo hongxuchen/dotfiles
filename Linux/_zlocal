@@ -146,9 +146,9 @@ export PATH=/snap/bin:$PATH
 # export PATH=${MY_PIN_ROOT}:$PATH
 
 
-# nvm stuff
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# nvm stuff (this took TOO MUCH time)
+# export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
 # yarn
 YARN_G_BIN=${HOME}/.yarn/bin
@@ -166,9 +166,6 @@ export NO_AT_BRIDGE=1
 ##############################################################################
 export LLVM_COMPILER=clang
 export WLLVM_OUTPUT=WARNING
-
-# intellij
-export IDEA_VM_OPTIONS=${HOME}/.idea64.vmoptions
 
 # NVIM
 NVIM_LISTEN_ADDRESS=/tmp/nvimsocket

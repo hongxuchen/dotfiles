@@ -2,20 +2,27 @@
 #  vim: set ft=zsh ts=4 sw=2 tw=0 et :
 #
 
-function time_it() {
-  s=$(date +%s.%N)
-  $@
-  RC=$?
-  duration=$[$(date +%s.%N)-$s]
-  printf "%6.3f%5s%-3d%s\n" "${duration}" "s RC=" "$RC" "\"$*\"" >&2
-  return $rc
-}
+zmodload zsh/zprof
 
-ZSH=~/.omz
-
-time_it source ~/.profile
-time_it source ~/.zlocal
-time_it source ~/.aliases
+# function time_it() {
+#   if [[ $OSTYPE == "linux-gnu" ]]; then
+#     s=$(date +%s.%N)
+#     $@
+#     RC=$?
+#     duration=$[$(date +%s.%N)-$s]
+#     printf "%6.3f%5s%-3d%s\n" "${duration}" "s RC=" "$RC" "\"$*\"" >&2
+#     return $rc
+#   else
+#     $@
+#     return $?
+#   fi
+# }
+# time_it source ~/.profile
+# time_it source ~/.zlocal
+# time_it source ~/.aliases
+source ~/.profile 
+source ~/.zlocal  
+source ~/.aliases 
 
 eval $(dircolors ~/.LS_COLORS)
 
@@ -24,8 +31,9 @@ autoload -Uz compinit
 compinit -i
 autoload -Uz compdef
 
+ZSH=~/.omz
 # ~/.omz/plugins/
-PLUGINS=(gem git-extras pip golang mvn yarn bazel)
+PLUGINS=(git-extras pip)
 if [[ $OSTYPE == "linux-gnu" ]];then
     PLUGINS=(${PLUGINS} docker zsh-history-substring-search)
 elif [[ $OSTYPE == "darwin"* ]];then
@@ -61,24 +69,16 @@ unset config_file
 
 # sources
 
-if [[ -d ${MY_BREW_PREFIX} ]];then
-  source ${MY_BREW_PREFIX}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
-fi
 ## Ctrl-p/Ctrl-n for Emacs/viins mode
 bindkey -M emacs '^p' history-substring-search-up
 bindkey -M emacs '^n' history-substring-search-down
-bindkey -M viins '^p' history-substring-search-up
-bindkey -M viins '^n' history-substring-search-down
+# bindkey -M viins '^p' history-substring-search-up
+# bindkey -M viins '^n' history-substring-search-down
 ## k and j for VI mode
-bindkey -M vicmd 'k'  history-substring-search-up
-bindkey -M vicmd 'j'  history-substring-search-down
-
+# bindkey -M vicmd 'k'  history-substring-search-up
+# bindkey -M vicmd 'j'  history-substring-search-down
 
 unset ZSH
 
-# load executable
-# (pgrep -x rdm >/dev/null || rdm --no-comment &>/tmp/rdm_answer &)
-
-autoload -U +X compinit && compinit
-autoload -U +X bashcompinit && bashcompinit
-# eval "$(stack --bash-completion-script stack)"
+# autoload -U +X compinit && compinit
+# autoload -U +X bashcompinit && bashcompinit

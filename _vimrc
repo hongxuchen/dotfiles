@@ -1,4 +1,4 @@
-" vim: set ft=vim ts=4 sw=2 tw=78 et :
+"vim: set ft=vim ts=4 sw=2 tw=78 et :
 
 " PRINCIPLES:
 " keep vim as simple as possible
@@ -7,7 +7,7 @@
 
 source ~/.vread
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " save and reload ~/.vimrc
 nnoremap <silent> <leader>v :w<CR>:source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 vnoremap <leader>vs y:@"<CR>
@@ -65,7 +65,6 @@ nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
 set ttyfast
 set colorcolumn=
-" set colorcolumn=120
 set noautowrite               " Never write a file unless I request it.
 set noautowriteall            " NEVER.
 set autoread                  " automatically re-read changed files.
@@ -73,6 +72,7 @@ set confirm                   " Y-N-C prompt if closing with unsaved changes.
 set laststatus=2              " Always show statusline, even if only 1 window.
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P
 set complete-=t
+set formatoptions=jql
 
 autocmd FileType c,cpp,java,markdown autocmd BufWritePre <buffer> :%s/\s\+$//e
 autocmd FileType html,eruby,rb,css,js,xml runtime! macros/matchit.vim
@@ -238,6 +238,7 @@ let g:ycm_filetype_blacklist = {
       \ 'rust' : 1,
       \}
 
+set shell=/usr/bin/bash
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set spellfile=~/.vim/spell/en.utf-8.add

@@ -15,6 +15,10 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:
 
 # zstyle ':completion:*' list-colors ''
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}  
+# ls colors
+# autoload colors; colors;
+# export LSCOLORS="Gxfxcxdxbxegedabagacad"
+export LSCOLORS=${LS_COLORS}
 
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
@@ -88,12 +92,4 @@ END`)
 }
 compctl -K _dropbox dropbox
 
-
-### TODO should use zsh features
-### for argcomplete: https://github.com/kislyuk/argcomplete
-# activate-global-python-argcomplete is not needed for zsh
-autoload -Uz bashcompinit
-bashcompinit
-# eval "$(register-python-argcomplete ~/.bin/shebang.py)"
-# eval "$(register-python-argcomplete ~/src/snippets_py2/clang/helper.py)"
-###
+autoload -Uz bashcompinit && bashcompinit

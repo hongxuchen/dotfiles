@@ -57,12 +57,10 @@ export LD_LIBRARY_PATH=/usr/local/opt/llvm/lib
 # export C_INCLUDE_PATH=
 
 export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 # yarn
 YARN_G_BIN=${HOME}/.yarn/bin
 export PATH="${YARN_G_BIN}:$PATH"
-
 
 # for wllvm
 export LLVM_COMPILER=clang
