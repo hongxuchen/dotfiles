@@ -1,15 +1,22 @@
 # -*- mode: sh -*-
 
+unsetopt flowcontrol # no flow control start/end characters
+# WORDCHARS=''
+
 unsetopt menu_complete   # do not autoselect the first completion entry
-unsetopt flowcontrol
 setopt auto_menu  # show completion menu on succesive tab press
 setopt complete_in_word
 setopt always_to_end
-set auto_param_slash
-
-WORDCHARS=''
+setopt auto_param_slash
 
 zmodload zsh/complist
+
+# :completion:function:completer:command:argument:tag
+
+# display messages for different matches
+zstyle ':completion:*:descriptions' format '%B%d%b'
+zstyle ':completion:*:messages' format %d
+zstyle ':completion:*:warnings' format 'No matches for: %d'
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
@@ -23,6 +30,7 @@ export LSCOLORS=${LS_COLORS}
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#) ([0-9a-z-]#)*=01;34=0=01'
 zstyle ':completion:*:*:*:*:processes' command "ps -u $(whoami) -o pid,user,comm -w -w"
+zstyle ':completion:*:options' list-colors '=^(-- *)=34'
 
 # disable named-directories autocompletion
 zstyle ':completion:*:cd:*' tag-order local-directories directory-stack
@@ -30,8 +38,9 @@ zstyle ':completion:*:cd:*' tag-order local-directories directory-stack
 zstyle -e ':completion:*' special-dirs '[[ $PREFIX = (../)#(|.|..) ]] && reply=(..)'
 cdpath=(.)
 
-# Use caching so that commands like apt and dpkg complete are useable
+# Use caching so that commands like 'apt' and 'dpkg' complete are useable
 zstyle ':completion::complete:*' use-cache 1
+# set cache path to store results
 zstyle ':completion::complete:*' cache-path $ZSH/cache/
 
 # Don't complete uninteresting users

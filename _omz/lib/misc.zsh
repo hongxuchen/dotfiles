@@ -7,6 +7,7 @@
 
 # "^[[Z" (escape, left bracket, capital z) for shift-tab
 bindkey -M emacs '^[[Z' reverse-menu-complete
+# force emacs-like key bindings, otherwise it will guess from $EDITOR/$VISUAL
 bindkey -e
 ################################################################################
 
@@ -18,6 +19,9 @@ zle -N self-insert url-quote-magic
 autoload -U edit-command-line
 zle -N edit-command-line
 bindkey '^x^e' edit-command-line
+
+bindkey '^Q' push-line-or-edit
+# bindkey '\eQ' push-line-or-edit
 
 ## prompty configuration
 PS1="%n@%m:%~%# "
@@ -47,24 +51,25 @@ setopt hist_no_store
 setopt hist_reduce_blanks
 setopt hist_verify
 setopt hist_beep
-# setopt extended_glob
-# setopt cdablevarS
-# setopt nohashdirs #immediately $PATH executables
+
+unsetopt extended_glob
+unsetopt glob_dots
+setopt csh_null_glob # do not report errors at least there is one match
 
 [[ -e /etc/zsh_command_not_found ]] && source /etc/zsh_command_not_found
 
 alias -g L=' | less'
-alias -g LL='2>&1 | v -'
-alias -g HH='| head -n 20'
-alias -g TT='| tail -20'
 TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S'
 
 ## files and directories
 DIRSTACKSIZE=10
-setopt auto_cd
-# setopt auto_name_dirs
-setopt pushd_ignore_dups
-setopt pushdminus
-setopt auto_pushd
-
+setopt auto_cd # '$DIR' -> 'cd $DIR'
+setopt auto_pushd # make 'cd' push to dir stack
+setopt pushd_ignore_dups # don't push duplicated dirs
+setopt pushd_minus # exchange meaning of +/-
+unsetopt cdablevarS
+unsetopt auto_name_dirs # always named with regular dir names
 alias ...='cd ../..'
+alias ....='cd ../../..'
+
+alias mmv='noglob zmv -W'
