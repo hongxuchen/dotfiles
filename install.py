@@ -50,7 +50,7 @@ class MLevel(object):
 
 
 CUR_DIR = os.path.abspath(os.path.dirname(__file__))
-BAK_DIR = os.path.join(CUR_DIR, "BAK")
+BAK_DIR = os.path.join(CUR_DIR, ".BAK")
 PLT = platform.system()  # Darwin/Linux/FreeBSD
 SUPPORTED_PLT = ['Darwin', 'Linux', 'FreeBSD']
 if PLT not in SUPPORTED_PLT:
@@ -78,11 +78,6 @@ def _config_vim():
     dl_cmd = "curl -fLo {} --create-dirs {}".format(PLUG_PATH, PLUG_URI)
     subprocess.call(dl_cmd.split())
     cmd_str = "vim -c PlugInstall -c qa"
-    subprocess.call(cmd_str.split())
-
-
-def _config_emacs():
-    cmd_str = "emacs -f save-buffers-kill-emacs"
     subprocess.call(cmd_str.split())
 
 
@@ -128,7 +123,7 @@ def parse_args():
         "-c", "--config",
         dest="config",
         nargs="+",
-        choices=["vim", "emacs"],
+        choices=["vim"],
         help="some special configurations")
     parser.add_argument("-r", "--recover", dest="recover", action="store_true", required=False,
                         help="restore the original dotfiles")

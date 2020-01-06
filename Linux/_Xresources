@@ -21,19 +21,6 @@ Xft.hintstyle         : hintslight
 #define my_MSYaHei         MicrosoftYaHei:size=13
 
 !-----------------------------------------------------------------------------
-! Emacs
-!-----------------------------------------------------------------------------
-Emacs.pane.menubar.background: darkGrey
-Emacs.pane.menubar.foreground: black
-Emacs*menubar.margin: 0
-Emacs*shadowThickness: 0
-Emacs.fontBackend: xft
-Emacs.menuBar: off
-Emacs.verticalScrollBars: off
-Emacs.toolBar: off
-! Emacs*font: my_monaco
-
-!-----------------------------------------------------------------------------
 ! xterm
 !-----------------------------------------------------------------------------
 !otherwise xterm would bind Alt-x to M-8

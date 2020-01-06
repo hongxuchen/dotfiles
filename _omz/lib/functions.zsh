@@ -14,14 +14,6 @@ which_exe() {
     ls -lh "${exe_path}"
 }
 
-em() {
-    if [[ $OSTYPE == "linux-gnu" ]] && [ $DISPLAY ]; then
-        command emacs -fs $@ &>/dev/null & disown
-    else
-        command emacs -nw
-    fi
-}
-
 pycdp () {
     cd "$(python -c "import os.path as _, ${1}; \
             print(_.dirname(_.realpath(${1}.__file__[:-1])))"

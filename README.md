@@ -45,7 +45,7 @@ Setup
 
 * Use `install.py` to setup the environment, which merely adds symlinks to `$HOME` directory as well as backups your original settings (if they do exist).
 It's better to *dryrun* it beforehand with `install.py -n` (more details with `install.py -h`) to see the effects.
-It is suggested to close other applications (e.g., google-chrome, emacs) during setup(especially on Linux).
+It is suggested to close other applications (e.g., google-chrome) during setup(especially on Linux).
 
 * Some of my personal information **should be** changed,
 you can `grep`or `rg` (see [ripgrep](https://github.com/BurntSushi/ripgrep)) and replace them.
@@ -70,14 +70,6 @@ Fundamentals
 ------------
 
 1. **Vim**(managed by [vundle](https://github.com/gmarik/Vundle.vim))(`~/.vimrc`, `~/.vim`)
-
-1. **Emacs**'s settings,
-managed by [package.el](http://www.emacswiki.org/emacs/ELPA))(`~/.emacs.d`)
-
-    - start emacs, elisp extensions should be installed automatically for the first time;
-    - Configured with [company-mode](http://company-mode.github.io/) and [auto-complete](https://github.com/auto-complete/auto-complete) for completions however the former is preferred;
-    - C++ development is fully configured using [rtags](https://github.com/Andersbakken/rtags) (TODO, `homebrew` seems already containing it however depending on a special version of llvm);
-    - note: there are some configurations for org and an additional *git submodule* for [reavel.js](https://github.com/hakimel/reveal.js/) for org-reavel(although it's NOT advised to use that)
 
 1. [Zsh](http://www.zsh.org/)(modified from [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh))
 
