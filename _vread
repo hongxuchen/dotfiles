@@ -117,7 +117,8 @@ set incsearch                 " Incrementally search while typing a /regex
 " completions
 set pumheight=8               " maximum items of popup window
 " ignore these files when completing
-set wildignore+=*/tmp/*,*.swp,*.zip
+set wildignore=
+set wildignore+=*.swp,*.zip
 set wildignore+=*.o,*.obj,*.so,*.a,*.bc
 set wildignore+=.git,*.elc
 set wildignore+=eggs/**,*.egg-info/**,*.pyc,*.pyo,*pyd

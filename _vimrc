@@ -45,6 +45,16 @@ inoremap <silent><C-d> <Del>
 inoremap <silent><M-n> <C-o>:cnext<CR>
 inoremap <silent><M-p> <C-o>:cprevious<CR>
 
+" ex (command-line) mode navigation
+cnoremap <C-a> <Home>
+cnoremap <C-e> <End>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+cnoremap <M-b> <S-Left>
+cnoremap <M-f> <S-Right>
+
 " terminal mode
 if has('nvim')
   tnoremap <Esc> <C-\><C-n>
@@ -86,6 +96,7 @@ call plug#begin('~/.vim/bundle')
 " Plug 'tomlion/vim-solidity', {'for': 'solidity'}
 " Plug 'cespare/vim-toml', {'for': 'toml'}
 " Plug 'plasticboy/vim-markdown'
+
 Plug 'tell-k/vim-autopep8', {'for': 'python'}
 autocmd FileType python set equalprg=autopep8\ -
 
@@ -95,11 +106,14 @@ let g:vim_g_f_command = "Gf"
 let g:vim_g_command = "Go"
 
 Plug 'editorconfig/editorconfig-vim'
-let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*', 'term://.*']
 
-Plug 'tpope/vim-obsession'
+" Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-vinegar'
 
 Plug 'tpope/vim-surround'
+
+" git relevant
 Plug 'tpope/vim-fugitive'
 Plug 'junegunn/gv.vim'
 
