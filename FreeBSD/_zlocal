@@ -1,6 +1,0 @@
-# -*- mode:sh -*-
-#  vim: set ft=zsh ts=4 sw=2 tw=0 et :
-
-export PATH=/sbin:/bin:/usr/sbin:/usr/bin:/usr/games:/usr/local/sbin:/usr/local/bin
-export PATH=~/bin:$PATH
-export PATH=/usr/local/llvm-devel/bin:$PATH
