@@ -42,7 +42,6 @@ class FileInfo(object):
     def __repr__(self):
         return 'src={}, dst={}, bak={}'.format(self.src, self.dst, self.bak)
 
-
 class MLevel(object):
     check = u'\u2714'
     cross = u'\u2717'
@@ -63,7 +62,6 @@ DST_DIR = os.path.realpath(os.path.expandvars("$HOME"))
 PREFIX = '_bak'
 
 # -----------------------------------------------------------------------------
-
 
 def _git_get(git_repo, dst):
     if not os.path.isdir(dst):

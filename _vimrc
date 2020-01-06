@@ -98,7 +98,7 @@ call plug#begin('~/.vim/bundle')
 " Plug 'plasticboy/vim-markdown'
 
 Plug 'tell-k/vim-autopep8', {'for': 'python'}
-autocmd FileType python set equalprg=autopep8\ -
+" autocmd FileType python set equalprg=autopep8\ -
 
 "vim-g
 Plug 'szw/vim-g'
@@ -191,11 +191,7 @@ let g:ale_set_quickfix = 1
 " let g:ale_open_list = 1
 " let g:ale_keep_list_window_open = 1
 
-if g:os != 'Darwin'
-  Plug 'Valloric/YouCompleteMe'
-  " Plug 'rdnetto/YCM-Generator', { 'branch': 'stable', 'for': 'c'}
-endif
-
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " color schemes
 " Plug 'jacoborus/tender.vim'
 " Plug 'tomasr/molokai'
@@ -206,53 +202,20 @@ Plug 'lervag/vimtex'
 Plug 'mhinz/neovim-remote'
 let g:vimtex_compiler_progname='nvr'
 let g:vimtex_quickfix_open_on_warning = 0
+let g:vimtex_view_general_viewer = 'zathura'
 set conceallevel=1
 let g:tex_conceal='abdmg'
+let g:vimtex_compiler_callback_hooks = ['MyTestHook']
+function! MyTestHook(status)
+    echom a:status
+endfunction
 
 Plug 'AndrewRadev/splitjoin.vim'
-" Plug 'godlygeek/tabular'
-" Plug 'tommcdo/vim-lion'
 Plug 'junegunn/vim-easy-align'
 
 Plug 'hotoo/pangu.vim'
 
 call plug#end()
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if g:os == "Darwin"
-  let g:ycm_path_to_python_interpreter='/usr/local/bin/python2'
-else
-  let g:ycm_path_to_python_interpreter='/usr/bin/python3'
-endif
-let g:ycm_confirm_extra_conf = 0
-let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py'
-let g:ycm_add_preview_to_completeopt=1
-let g:ycm_autoclose_preview_window_after_completion = 1
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_min_num_of_chars_for_completion = 99
-let g:ycm_min_num_identifier_candidate_chars = 2
-let g:ycm_auto_trigger = 1
-let g:ycm_collect_identifiers_from_tags_files = 0 " Let YCM read tags from Ctags file
-let g:ycm_seed_identifiers_with_syntax = 1 " Completion for programming language's keyword
-let g:ycm_complete_in_comments = 1 " Completion in comments
-let g:ycm_complete_in_strings = 1 " Completion in string
-let g:ycm_rust_src_path = $RUST_SRC_PATH
-let g:ycm_filetype_specific_completion_to_disable = {
-      \ 'rust': 1
-      \}
-let g:ycm_filetype_blacklist = {
-      \ 'tagbar' : 1,
-      \ 'qf' : 1,
-      \ 'notes' : 1,
-      \ 'markdown' : 1,
-      \ 'unite' : 1,
-      \ 'text' : 1,
-      \ 'vimwiki' : 1,
-      \ 'gitcommit' : 1,
-      \ 'rust' : 1,
-      \}
-
-" set shell=/usr/bin/bash
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set spellfile=~/.vim/spell/en.utf-8.add
@@ -264,3 +227,5 @@ colorscheme desert
 " else
 "   colorscheme molokai
 " endif
+
+source ~/.vcoc

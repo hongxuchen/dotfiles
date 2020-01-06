@@ -59,6 +59,7 @@ export GTK_IM_MODULE=fcitx
 export QT_IM_MODULE=fcitx
 export XMODIFIERS="@im=fcitx"
 
+export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 
 export GPGKEY=068BDAD6
 
