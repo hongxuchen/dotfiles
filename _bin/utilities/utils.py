@@ -2,7 +2,6 @@ import os
 import sys
 import stat
 
-
 def getpass(prompt="Password: "):
     import termios
     import sys
@@ -80,7 +79,6 @@ def getchar(prompt, hidden=False, end='\n'):
 
     sys.stdout.write(end)
     return(ch.decode())
-
 
 def loadso(fname):
     '''wrapper for ctypes.CDLL'''
