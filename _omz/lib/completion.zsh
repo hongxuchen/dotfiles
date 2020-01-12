@@ -1,7 +1,7 @@
 # -*- mode: sh -*-
 
 unsetopt flowcontrol # no flow control start/end characters
-# WORDCHARS=''
+WORDCHARS=''
 
 unsetopt menu_complete   # do not autoselect the first completion entry
 setopt auto_menu  # show completion menu on succesive tab press

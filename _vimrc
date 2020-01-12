@@ -97,9 +97,6 @@ call plug#begin('~/.vim/bundle')
 " Plug 'cespare/vim-toml', {'for': 'toml'}
 " Plug 'plasticboy/vim-markdown'
 
-Plug 'tell-k/vim-autopep8', {'for': 'python'}
-" autocmd FileType python set equalprg=autopep8\ -
-
 "vim-g
 Plug 'szw/vim-g'
 let g:vim_g_f_command = "Gf"
@@ -110,6 +107,7 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*', 'term://.*']
 
 " Plug 'tpope/vim-obsession'
 Plug 'tpope/vim-vinegar'
+Plug 'tpope/vim-eunuch'
 
 Plug 'tpope/vim-surround'
 
@@ -175,6 +173,8 @@ let g:startify_update_oldfiles = 1
 let g:startify_files_number = 20
 let g:startify_enable_special = 0
 
+Plug 'tell-k/vim-autopep8', {'for': 'python'}
+
 Plug 'w0rp/ale'
 let g:ale_sign_column_always = 1
 let g:ale_sign_error = 'x'
@@ -190,6 +190,21 @@ let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 1
 " let g:ale_open_list = 1
 " let g:ale_keep_list_window_open = 1
+let g:ale_linters = {
+  \   'csh': ['shell'],
+  \   'elixir': ['credo', 'dialyxir', 'dogma'],
+  \   'go': ['gofmt', 'golint', 'go vet'],
+  \   'hack': ['hack'],
+  \   'help': [],
+  \   'perl': ['perlcritic'],
+  \   'perl6': [],
+  \   'python': [],
+  \   'rust': ['cargo'],
+  \   'spec': [],
+  \   'text': [],
+  \   'vue': ['eslint', 'vls'],
+  \   'zsh': ['shell'],
+  \}
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 " color schemes

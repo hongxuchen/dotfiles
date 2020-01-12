@@ -142,3 +142,6 @@ Known Issues
 ------------
 - tmux status right cannot fill
 - zsh-syntax-highlighting not work during typing (only after)
+- need to install some external commands to make this configurations work correctly.
+  * git
+  * node+npm/yarn

@@ -15,9 +15,15 @@ which_exe() {
 }
 
 pycdp () {
-    cd "$(python -c "import os.path as _, ${1}; \
+    cd "$(python3 -c "import os.path as _, ${1}; \
             print(_.dirname(_.realpath(${1}.__file__[:-1])))"
         )"
+    if [[ $? != 0 ]]; then
+    cd "$(python2 -c "import os.path as _, ${1}; \
+            print(_.dirname(_.realpath(${1}.__file__[:-1])))"
+        )"
+    fi
+
 }
 
 my_cmake_ninja() {

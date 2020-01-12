@@ -9,33 +9,20 @@
         "json",
         "jsonc"
     ],
-    "prettier.printWidth": 160,
-    "prettier.singleQuote": true,
+    "diagnostic.displayByAle": true,
+    "python.linting.flake8Enabled": true,
+    "python.linting.pylintEnabled": false,
+    "python.linting.pylintUseMinimalCheckers": false,
     "codeLens.enable": true,
     "diagnostic.virtualText": true,
     "diagnostic.checkCurrentLine": true,
-    "git.addGBlameToVirtualText": true,
     "signature.target": "echo",
-    "snippets.extends": {
-        "javascriptreact": [
-            "javascript"
-        ],
-        "typescript": [
-            "javascript"
-        ]
-    },
     "list.normalMappings": {
         "<C-c>": "do:exit"
     },
     "list.insertMappings": {
         "<C-c>": "do:exit"
     },
-    "eslint.autoFixOnSave": true,
-    "eslint.filetypes": [
-        "javascript",
-        "typescript",
-        "javascriptreact"
-    ],
     "languageserver": {
         "gopls": {
             "command": "gopls",
@@ -85,7 +72,8 @@
         "bash": {
             "command": "bash-language-server",
             "filetypes": [
-                "sh"
+                "sh",
+                "zsh",
             ],
             "args": [
                 "start"
