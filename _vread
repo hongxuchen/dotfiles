@@ -1,5 +1,6 @@
 " vim: set ft=vim ts=3 sw=2 tw=8 et :
 
+""" add `g:os` variable
 if !exists("g:os")
     if has("win64") || has("win32") || has("win16")
         let g:os = "Windows"
@@ -18,36 +19,16 @@ endfunction
 xnoremap * :<C-u>call <SID>VSetSearch('/')<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch('?')<CR>?<C-R>=@/<CR><CR>
 
-nnoremap <expr> n  'Nn'[v:searchforward]
-nnoremap <expr> N  'nN'[v:searchforward]
-
 cnoremap <c-n>  <down>
 cnoremap <c-p>  <up>
 
-" display pwd
-nnoremap <leader>s :echo expand('%:p')<CR>
-
-" remap j,k
-nnoremap j gj
-nnoremap k gk
-nnoremap gj j
-noremap gk k
-
-" emacs like settings (non-insert mode)
+" Normal-mode keybindings
 nnoremap <silent><C-x>0 :hide<CR>
 nnoremap <silent><C-x>1 :hide :only<CR>
-nnoremap <silent><C-x>k :bd<CR>
-nnoremap <silent><C-x><C-s> :w<CR>:exe ":echo 'saved' bufname(\"%\")"<CR>
-nnoremap <silent><C-x>s :wall<CR>:exe ":echo 'saved all buffers'"<CR>
-nnoremap <silent><C-x>i :read<Space>
-nnoremap <silent><C-x><C-w> :write<Space>
-nnoremap <silent><C-x><C-q> :set invreadonly<CR>
-nnoremap <silent><C-x><C-c> :wqall<CR>
 nnoremap <silent><C-x><C-j> :e.<CR>
 nnoremap q :bN<CR>
-cnoremap <silent><C-g> <ESC><ESC>
 
-" general settings
+""" general settings
 syntax on                     " syntax highlighing
 filetype on                   " try to detect filetypes
 filetype plugin on            " recognize filetype
@@ -57,7 +38,6 @@ set splitright                "
 set guioptions=               " simpler
 set nrformats=                " treat all numberals as decimal
 set tabpagemax=5              " only 5 tabs
-" set gdefault                  " substitute globally
 set nocompatible              " Don't be compatible with vi
 set tabpagemax=15             " max number of tabs
 set number                    " Display line numbers
@@ -102,13 +82,12 @@ set shortmess=atI            " Use [+]/[RO]/[w] for modified/readonly/written.
 set wildignorecase
 set listchars=tab:>-,eol:$,trail:-,precedes:<,extends:> " when list needed
 set lcs=tab:>\ ,trail:_,precedes:<,extends:\
-set cmdheight=1
 " encoding
 set fileencodings=utf-8,ucs-bom,gbk,cp936,gb18030
 set fileencoding=utf-8
 set termencoding=utf-8
 set encoding=utf-8
-" searching and Patterns
+" searching and patterns
 set ignorecase                " Default to using case insensitive searches,
 set smartcase                 " unless uppercase letters are used in the regex.
 set smarttab                  " Handle tabs more intelligently
@@ -129,8 +108,9 @@ set wildignore+=*.bak,*.exe,*.chm,*.png,*.jpg,*.jpeg,*.gif,*.avi,*.rm,*.rmvb
 set noshowmode
 set cmdheight=2
 set t_Co=256
-" autochdir has issues
+" autochdir has some issues, so use below instead
 autocmd BufEnter * silent! lcd %:p:h
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " True gui colors in terminal
 
 " file type
 autocmd BufRead,BufNewfile *.smali set filetype=smali
@@ -141,33 +121,23 @@ autocmd BufRead,BufNewFile /usr/include/* set filetype=cpp
 autocmd BufRead,BufNewFile *.ipynb set filetype javascript
 autocmd BufRead,BufNewFile *.rs set filetype=rust
 autocmd BufRead,BufNewFile *.toml,Cargo.lock,*/.cargo/config set filetype=toml
-autocmd BufRead,BufNewFile SCons* set filetype=scons 
+autocmd BufRead,BufNewFile SCons* set filetype=python 
 
+""" netrw settings
 let g:netrw_hide = 1
 let g:netrw_rmdir_cmd = 'ssh USEPORT HOSTNAME rm -rf'
 let g:netrw_keepdir=0 " make netrw follow Vim's "current directory"
 let g:netrw_localrmdir="rm -rf"
 
-" disable standard plugins 
+""" disable standard plugins 
 let g:loaded_2html_plugin = 1
 let g:loaded_getscriptPlugin = 1
-" let g:loaded_gzip = 1
 let g:loaded_logipat = 1
-" let g:loaded_netrwPlugin = 1
 let g:loaded_rrhelper = 1
 let g:loaded_spellfile_plugin = 1
-" let g:loaded_tarPlugin = 1
 let g:loaded_vimballPlugin = 1
 let g:loaded_tutor_mode_plugin = 1
+" let g:loaded_tarPlugin = 1
+" let g:loaded_gzip = 1
+" let g:loaded_netrwPlugin = 1
 " let g:loaded_zipPlugin = 1
-
-" switch
-" between
-autocmd BufLeave *.{c,cpp} mark C
-autocmd BufLeave *.h       mark H
-
-if g:os == "Darwin"
-  nnoremap gO :!open <cfile><CR>
-elseif g:os == "Linux"
-  nnoremap gO :!xdg-open <cfile><CR>
-endif
