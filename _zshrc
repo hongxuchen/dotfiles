@@ -20,7 +20,7 @@ PLUGINS=(git-extras pip)
 if [[ $OSTYPE == "linux-gnu" ]];then
     PLUGINS=(${PLUGINS} docker zsh-history-substring-search zsh-syntax-highlighting)
 elif [[ $OSTYPE == "darwin"* ]];then
-    PLUGINS=(${PLUGINS} vagrant brew-cask brew)
+    PLUGINS=(${PLUGINS} brew)
 fi
 
 if [[ -z "$ZSH_CACHE_DIR"  ]]; then

@@ -107,7 +107,7 @@ They are *not* exactly linux only, but *I* tend not to use them on Mac OSX. They
     - gdb is superseded by [lldb](http://lldb.llvm.org) on newer Mac OSX.
 
 - **X11** settings
-    - `~/.Xresources`: for XTerm, URxvt, Emacs; should run `xrdb -load ~/.Xresources` firstly
+    - `~/.Xresources`: for XTerm, URxvt, should run `xrdb -load ~/.Xresources` firstly
     - `~/.xscreensaver`
 
 - **wget**(~/.wgetrc)

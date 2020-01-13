@@ -16,25 +16,22 @@ export OCAML_TOPLEVEL_PATH="${MY_ROOT}/ib/toplevel"
 export MY_OCAML_BIN_PATH="${MY_OPAM}/bin"
 export MY_CABAL_PATH="${HOME}/.cabal"
 
-export ANDROID_HOME=/usr/local/opt/android-sdk
-export MY_ANDROID_SDK=${HOME}/Library/Android
 export MY_BREW_PREFIX=/usr/local
 export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/sbin:/sbin:/usr/bin:/bin:/opt/local/bin"
 export PATH="${MY_ANDROID_SDK}/sdk/platform-tools:$PATH"
-export PATH="/usr/texbin:$PATH"
 export PATH="${MY_HOME_BIN}:${MY_HOME_BIN}/git-scripts:${MY_HOME_BIN}/mac:$PATH"
-# export PATH=$HOME/Library/Python/2.7/bin:$PATH
 export PATH="$HOME/tools/dotfiles/_builds/rtags/build/bin:$PATH"
 export PATH="${MY_WLLVM_ROOT}:$PATH"
 export PATH="${GOPATH}/bin:$PATH"
 export PATH="${MY_OCAML_BIN_PATH}:$PATH"
 export PATH="${MY_CABAL_PATH}/bin:$PATH"
 export PATH="/Applications/Visual Studio Code.app/Contents/Resources/app/bin:$PATH"
-export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/binutils/bin:$PATH"
+export PATH="/usr/local/opt/binutils/bin:$PATH"
 export PATH="${MY_BREW_PREFIX}/bin:${MY_BREW_PREFIX}/sbin:$PATH"
 export PATH="${MY_BREW_PREFIX}/opt/llvm/bin:$PATH"
-export PATH="/usr/local/texlive/2018/bin/x86_64-darwin:$PATH"
-# export PATH=/Applications/CoqIDE_8.4pl5.app/Contents/Resources/bin:$PATH
+export PATH="/usr/local/texlive/2017/bin/x86_64-darwin:$PATH"
+
+source ${MY_BREW_PREFIX}/share/zsh-history-substring-search/zsh-history-substring-search.zsh
 
 MY_CARGO=${HOME}/.cargo
 export CARGO_INCREMENTAL=1
