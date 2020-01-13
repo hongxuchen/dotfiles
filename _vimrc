@@ -14,7 +14,7 @@ nnoremap <silent> <leader>v :w<CR>:source ~/.vimrc<CR>:filetype detect<CR>:exe "
 vnoremap <leader>vs y:@"<CR>
 " C-j to insert a newline
 nnoremap <NL> i<CR><ESC>
-" refresh if file in Vim is updated by external program,TODO
+" refresh if file in Vim is updated by external program
 noremap <silent><F5> :checktime<CR>:exe ":echo 'file refreshed'"<CR>
 inoremap <silent><F5> <C-O>:checktime<CR>:exe ":echo 'file refreshed'"<CR>
 
@@ -200,7 +200,7 @@ Plug 'lervag/vimtex'
 Plug 'mhinz/neovim-remote'
 let g:vimtex_compiler_progname='nvr'
 let g:vimtex_quickfix_open_on_warning = 0
-let g:vimtex_view_general_viewer = 'zathura'
+let g:vimtex_view_general_viewer = 'atril'
 set conceallevel=1
 let g:tex_conceal='abdmg'
 let g:vimtex_compiler_callback_hooks = ['MyTestHook']
