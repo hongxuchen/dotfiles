@@ -44,3 +44,4 @@ node_modules/
 _bin/rafl
 
 tags/
+plug.vim
