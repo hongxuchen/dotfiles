@@ -4,3 +4,4 @@ Session.vim
 .netrwhist
 *~
 autoload/plug.vim
+sessions/

@@ -74,8 +74,10 @@ set inccommand=split " incrementally see the updates of current commands
 
 autocmd FileType c,cpp,java,markdown autocmd BufWritePre <buffer> :%s/\s\+$//e
 autocmd FileType html,eruby,rb,css,js,xml runtime! macros/matchit.vim
-autocmd TermOpen,BufWinEnter,WinEnter term://* startinsert
 colorscheme desert
+augroup MyTermGroup
+  autocmd TermOpen,BufWinEnter,WinEnter term://* startinsert
+augroup END
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " https://github.com/junegunn/vim-plug
@@ -129,35 +131,19 @@ Plug 'tpope/vim-scriptease'
 
 Plug 'jremmen/vim-ripgrep'
 
-""" tagbar display
-Plug 'majutsushi/tagbar'
-noremap <leader>t :TagbarToggle<CR>
-let g:tagbar_autoclose=0
-let g:tagbar_left = 1
-let g:tagbar_width = 31
-let g:tagbar_autofocus = 0
-let g:tagbar_sort = 1
-let g:tagbar_compact = 1
-let g:tagbar_expand = 0
-let g:tagbar_singleclick = 0
-let g:tagbar_foldlevel = 5
-let g:tagbar_autoshowtag = 0
-let g:tagbar_updateonsave_maxlines = 10000
-let g:tagbar_systemenc = 'encoding'
-let g:tagbar_type_rust = {
-      \ 'ctagstype' : 'rust',
-      \ 'kinds' : [
-      \'T:types,type definitions',
-      \'f:functions,function definitions',
-      \'g:enum,enumeration names',
-      \'s:structure names',
-      \'m:modules,module names',
-      \'c:consts,static constants',
-      \'t:traits,traits',
-      \'i:impls,trait implementations',
-      \]
-      \}
-
+""" tag list display
+Plug 'liuchengxu/vista.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+noremap <leader>t :Vista!!<CR>
+let g:vista_cursor_delay=0
+let g:vista_default_executive='coc'
+let g:vista_update_on_text_changed=1
+let g:vista_update_on_text_changed_delay=100
+let g:vista_blink=[0, 0]
+let g:vista_top_blink=[0, 0]
+let g:vista_disable_statusline=1
+let g:vista#renderer#enable_icon=0
 
 """ startify
 Plug 'mhinz/vim-startify'
