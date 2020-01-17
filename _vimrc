@@ -11,7 +11,6 @@ source ~/.vread
 """ MISC settings
 " save and reload ~/.vimrc
 nnoremap <silent> <leader>v :w<CR>:source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
-vnoremap <leader>vs y:@"<CR>
 " C-j to insert a newline
 nnoremap <NL> i<CR><ESC>
 " refresh if file in Vim is updated by external program
