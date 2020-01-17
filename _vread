@@ -28,13 +28,13 @@ nnoremap <silent><C-x>1 :hide :only<CR>
 nnoremap <silent><C-x><C-j> :e.<CR>
 nnoremap q :bN<CR>
 
-""" general settings
+""" general settings {{{
 syntax on                     " syntax highlighing
 filetype on                   " try to detect filetypes
 filetype plugin on            " recognize filetype
 filetype plugin indent on     " enable loading indent file for filetype
 " set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
-set splitright                "
+set splitright                " split at right window
 set guioptions=               " simpler
 set nrformats=                " treat all numberals as decimal
 set tabpagemax=5              " only 5 tabs
@@ -50,12 +50,11 @@ set nocursorline              " have a line indicate the cursor location
 set nostartofline             " Avoid moving cursor to BOL when jumping around
 set virtualedit=block         " Let cursor move past the last char in <C-v> mode
 set iskeyword+=$,@,%,#,-      " don't allow to be separated by line break
-set foldmethod=manual         " TODO
 set hidden                    " set buffer hidden
 set whichwrap=b,s,h,l,<,>,[,]
 set winaltkeys=no             " do not use ALT as menu trigger
 set sel=exclusive
-set scrolloff=5               " Keep 5 context lines above and below the cursor
+set scrolloff=99              " `always` vertically center current line
 set backspace=2               " Allow backspacing over autoindent, EOL, and BOL
 set showmatch                 " Briefly jump to a paren once it's balanced
 set wrap                      " wrap text
@@ -111,6 +110,7 @@ set t_Co=256
 " autochdir has some issues, so use below instead
 autocmd BufEnter * silent! lcd %:p:h
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1 " True gui colors in terminal
+""" }}}
 
 " file type
 autocmd BufRead,BufNewfile *.smali set filetype=smali

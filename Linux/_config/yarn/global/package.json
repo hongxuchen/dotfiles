@@ -1,5 +1,6 @@
 {
   "dependencies": {
-    "truffle": "^5.0.43"
+    "truffle": "^5.0.43",
+    "vim-language-server": "^1.4.1"
   }
 }

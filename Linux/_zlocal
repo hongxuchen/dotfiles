@@ -120,7 +120,8 @@ export CARGO_INCREMENTAL=0
 # export RUST_LOG=info
 export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
 
-export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+# export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/bin:/usr/local/games:/usr/games
+export PATH=/usr/sbin:/sbin:/usr/local/bin:/usr/bin:/usr/local/games:/usr/games
 export PATH=${MY_CARGO_HOME}/bin:$PATH
 export PATH=/usr/local/texlive/2017/bin/x86_64-linux:$PATH
 export PATH=${MY_LLVM_OBJ}/bin:${MY_CLANG_TOOLS}/scan-build:${MY_CLANG_TOOLS}/scan-view:${MY_STP_INSTALL}/bin:$PATH

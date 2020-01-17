@@ -1,4 +1,4 @@
-"vim: set ft=vim ts=4 sw=2 tw=78 et :
+" vim: set ft=vim ts=4 sw=2 tw=78 et :
 
 " PRINCIPLES:
 " keep vim as simple as possible
@@ -41,6 +41,7 @@ cnoremap <M-f> <S-Right>
 cnoremap <silent><C-g> <ESC><ESC>
 
 """ terminal mode
+" http://vimcasts.org/episodes/neovim-terminal-mappings/
 if has('nvim')
   tnoremap <Esc> <C-\><C-n>
   tnoremap <C-v><Esc> <Esc>
@@ -70,11 +71,12 @@ set complete-=t
 set formatoptions=jql
 set spellfile=~/.vim/spell/en.utf-8.add
 set background=light
+set inccommand=split " incrementally see the updates of current commands
 
 autocmd FileType c,cpp,java,markdown autocmd BufWritePre <buffer> :%s/\s\+$//e
 autocmd FileType html,eruby,rb,css,js,xml runtime! macros/matchit.vim
+autocmd TermOpen,BufWinEnter,WinEnter term://* startinsert
 colorscheme desert
-
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " https://github.com/junegunn/vim-plug
@@ -93,6 +95,7 @@ let g:vim_g_command = "Go"
 
 Plug 'editorconfig/editorconfig-vim'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*', 'term://.*']
+let g:EditorConfig_preserve_formatoptions=1
 
 " enhanced netrw
 Plug 'tpope/vim-vinegar'
@@ -100,6 +103,9 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-eunuch'
 " git relevant
 Plug 'tpope/vim-fugitive'
+autocmd BufReadPost fugitive://* set bufhidden=delete
+set statusline^=%{fugitive#statusline()}
+Plug 'tpope/vim-rhubarb'
 Plug 'junegunn/gv.vim'
 " enhance on surroundings
 Plug 'tpope/vim-surround'
@@ -119,6 +125,8 @@ autocmd FileType tablegen setl cms=//%s
 autocmd FileType unix setl cms=#%s
 autocmd FileType xdefaults setl cms=!%s
 autocmd FileType apache setlocal commentstring=#\ %s
+
+Plug 'tpope/vim-scriptease'
 
 Plug 'jremmen/vim-ripgrep'
 
@@ -213,16 +221,57 @@ function! MyTestHook(status)
 endfunction
 
 Plug 'AndrewRadev/splitjoin.vim'
+" alignment
 Plug 'junegunn/vim-easy-align'
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 " Chinese typesetting
 Plug 'hotoo/pangu.vim'
 
 call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-""" configurations for coc
-" Some servers have issues with backup files, see #649
+""" always follow symlink {{{
+" https://github.com/blueyed/dotfiles/blob/ab2850675bbfcf0db18dbf81a31b90e65aaae7f8/vimrc#L1247-L1278
+function! MyFollowSymlink(...)
+  if exists('w:no_resolve_symlink') && w:no_resolve_symlink
+    return
+  endif
+  let fname = a:0 ? a:1 : expand('%')
+  if fname =~ '^\w\+:/'
+    " Do not mess with 'fugitive://' etc.
+    return
+  endif
+  let fname = simplify(fname)
+
+  let resolvedfile = resolve(fname)
+  if resolvedfile == fname
+    return
+  endif
+  let resolvedfile = fnameescape(resolvedfile)
+  let sshm = &shm
+  set shortmess+=A  " silence ATTENTION message about swap file (would get displayed twice)
+  exec 'file ' . resolvedfile
+  let &shm=sshm
+
+  " Re-init fugitive.
+  call fugitive#detect(resolvedfile)
+  if &modifiable
+    " Only display a note when editing a file, especially not for `:help`.
+    redraw  " Redraw now, to avoid hit-enter prompt.
+    echomsg 'Resolved symlink: =>' resolvedfile
+  endif
+endfunction
+command! FollowSymlink call MyFollowSymlink()
+command! ToggleFollowSymlink let w:no_resolve_symlink = !get(w:, 'no_resolve_symlink', 0) | echo "w:no_resolve_symlink =>" w:no_resolve_symlink
+au BufReadPost * nested call MyFollowSymlink(expand('%'))
+""" }}}
+
+""" configurations for coc {{{
 set nobackup
+" Some servers have issues with backup files, see #649
 set nowritebackup
 " You will have bad experience for diagnostic messages when it's default 4000.
 set updatetime=400
@@ -338,3 +387,4 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+""" }}}

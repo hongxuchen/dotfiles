@@ -15,7 +15,8 @@ except NameError:
 try:
     import argparse
 except ImportError as e:
-    print(u"{0},\t use 'pip' to install that package".format(e.message), file=sys.stderr)
+    print(u"{0},\t use 'pip' to install that package".format(
+        e.message), file=sys.stderr)
     sys.exit(1)
 
 try:
@@ -42,6 +43,7 @@ class FileInfo(object):
     def __repr__(self):
         return 'src={}, dst={}, bak={}'.format(self.src, self.dst, self.bak)
 
+
 class MLevel(object):
     check = u'\u2714'
     cross = u'\u2717'
@@ -63,19 +65,20 @@ PREFIX = '_bak'
 
 # -----------------------------------------------------------------------------
 
+
 def _git_get(git_repo, dst):
     if not os.path.isdir(dst):
         cmd_str = "git clone --depth 1 {} {}".format(git_repo, dst)
         subprocess.call(cmd_str.split())
 
 
-def _config_vim():
+def _config_nvim():
     PLUG_URI = "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim"
-    PLUG_PATH = "_vim/autoload/plug.vim"
+    PLUG_PATH = os.path.join(PLT, "_local/share/nvim/site/autoload/plug.vim")
     print(u'Press [ENTER] to ignore errors (if any) during install')
     dl_cmd = "curl -fLo {} --create-dirs {}".format(PLUG_PATH, PLUG_URI)
     subprocess.call(dl_cmd.split())
-    cmd_str = "vim -c PlugInstall -c qa"
+    cmd_str = "nvim -c PlugInstall -c qa"
     subprocess.call(cmd_str.split())
 
 
@@ -121,7 +124,7 @@ def parse_args():
         "-c", "--config",
         dest="config",
         nargs="+",
-        choices=["vim"],
+        choices=["nvim"],
         help="some special configurations")
     parser.add_argument("-r", "--recover", dest="recover", action="store_true", required=False,
                         help="restore the original dotfiles")
@@ -158,7 +161,8 @@ def _dot_dryrun(finfo):
 def _dot(finfo):
     dst_exist = os.path.exists(finfo.dst) or os.path.islink(finfo.dst)
     if dst_exist:
-        print(u"dst={0:<60} bak={1}".format(finfo.dst, finfo.bak), file=sys.stderr)
+        print(u"dst={0:<60} bak={1}".format(
+            finfo.dst, finfo.bak), file=sys.stderr)
         if os.path.islink(finfo.dst):
             os.unlink(finfo.dst)
         else:
