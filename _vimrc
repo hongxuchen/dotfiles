@@ -129,30 +129,20 @@ autocmd FileType apache setlocal commentstring=#\ %s
 
 Plug 'tpope/vim-scriptease'
 
-Plug 'jremmen/vim-ripgrep'
-
-""" tag list display
-Plug 'liuchengxu/vista.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-noremap <leader>t :Vista!!<CR>
-let g:vista_cursor_delay=0
-let g:vista_default_executive='coc'
-let g:vista_update_on_text_changed=1
-let g:vista_update_on_text_changed_delay=100
-let g:vista_blink=[0, 0]
-let g:vista_top_blink=[0, 0]
-let g:vista_disable_statusline=1
-let g:vista#renderer#enable_icon=0
-
-""" startify
-Plug 'mhinz/vim-startify'
-let g:startify_custom_header = []
-let g:startify_change_to_vcs_root = 1
-let g:startify_enable_unsafe = 1
-let g:startify_update_oldfiles = 1
-let g:startify_files_number = 20
-let g:startify_enable_special = 0
+let g:fzf_buffers_jump = 1
+" Mapping selecting mappings
+nmap <leader><tab> <plug>(fzf-maps-n)
+xmap <leader><tab> <plug>(fzf-maps-x)
+omap <leader><tab> <plug>(fzf-maps-o)
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+" Advanced customization using Vim function
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
 Plug 'w0rp/ale'
 let g:ale_sign_column_always = 1

@@ -31,7 +31,7 @@
 	default = current
 
 [core]
-	editor = vim
+	editor = nvim
 	whitespace = trailing-space,space-before-tab
 	autocrlf = input
 	quotepath = false
