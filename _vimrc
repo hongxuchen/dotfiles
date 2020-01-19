@@ -13,6 +13,8 @@ source ~/.vread
 nnoremap <silent> <leader>v :w<CR>:source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 " C-j to insert a newline
 nnoremap <NL> i<CR><ESC>
+" silence Q to ex-mode
+nnoremap Q <NOP>
 " refresh if file in Vim is updated by external program
 noremap <silent><F5> :checktime<CR>:exe ":echo 'file refreshed'"<CR>
 inoremap <silent><F5> <C-O>:checktime<CR>:exe ":echo 'file refreshed'"<CR>
@@ -28,7 +30,7 @@ inoremap <silent><C-d> <Del>
 inoremap <silent><M-n> <C-o>:cnext<CR>
 inoremap <silent><M-p> <C-o>:cprevious<CR>
 
-""" Ex-mode navigation
+""" command-line mode navigation
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-p> <Up>
@@ -42,8 +44,8 @@ cnoremap <silent><C-g> <ESC><ESC>
 """ terminal mode
 " http://vimcasts.org/episodes/neovim-terminal-mappings/
 if has('nvim')
-  tnoremap <Esc> <C-\><C-n>
-  tnoremap <C-v><Esc> <Esc>
+  autocmd TermOpen * tnoremap <Esc> <C-\><C-n>
+  autocmd TermOpen * tnoremap <C-v><Esc> <Esc>
   highlight! link TermCursor Cursor
   highlight! TermCursorNC guibg=red guifg=white ctermbg=1 ctermfg=15
 end
@@ -132,17 +134,6 @@ Plug 'tpope/vim-scriptease'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 let g:fzf_buffers_jump = 1
-" Mapping selecting mappings
-nmap <leader><tab> <plug>(fzf-maps-n)
-xmap <leader><tab> <plug>(fzf-maps-x)
-omap <leader><tab> <plug>(fzf-maps-o)
-" Insert mode completion
-imap <c-x><c-k> <plug>(fzf-complete-word)
-imap <c-x><c-f> <plug>(fzf-complete-path)
-imap <c-x><c-j> <plug>(fzf-complete-file-ag)
-imap <c-x><c-l> <plug>(fzf-complete-line)
-" Advanced customization using Vim function
-inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
 Plug 'w0rp/ale'
 let g:ale_sign_column_always = 1
@@ -174,7 +165,6 @@ let g:ale_linters = {
   \   'vue': ['eslint', 'vls'],
   \   'zsh': ['shell'],
   \}
-Plug 'tell-k/vim-autopep8', {'for': 'python'}
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -363,3 +353,8 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 """ }}}
+
+
+""" questions:
+" disable undo from certain checkpoint
+" disable certain command line mode commands
