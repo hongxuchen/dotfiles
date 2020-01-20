@@ -27,6 +27,7 @@ nnoremap <silent><C-x>0 :hide<CR>
 nnoremap <silent><C-x>1 :hide :only<CR>
 nnoremap <silent><C-x><C-j> :e.<CR>
 nnoremap q :bN<CR>
+nnoremap Q :bn<CR>
 
 """ general settings {{{
 syntax on                     " syntax highlighing

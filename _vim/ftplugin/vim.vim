@@ -1,4 +1,6 @@
 setlocal formatoptions=tq
 setlocal foldmethod=marker
-let b:vista_default_executive='ctags'
+setlocal softtabstop=2
+setlocal tabstop=2
+setlocal shiftwidth=2
 let b:AutoPairs = {'(':')', '[':']', '{':'}', '<':'>', '`':'`'}

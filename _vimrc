@@ -1,4 +1,4 @@
-" vim: set ft=vim ts=4 sw=2 tw=78 et :
+" vim: set ft=vim ts=2 sw=2 tw=78 et :
 
 " PRINCIPLES:
 " keep vim as simple as possible
@@ -13,8 +13,6 @@ source ~/.vread
 nnoremap <silent> <leader>v :w<CR>:source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 " C-j to insert a newline
 nnoremap <NL> i<CR><ESC>
-" silence Q to ex-mode
-nnoremap Q <NOP>
 " refresh if file in Vim is updated by external program
 noremap <silent><F5> :checktime<CR>:exe ":echo 'file refreshed'"<CR>
 inoremap <silent><F5> <C-O>:checktime<CR>:exe ":echo 'file refreshed'"<CR>
@@ -73,6 +71,7 @@ set formatoptions=jql
 set spellfile=~/.vim/spell/en.utf-8.add
 set background=light
 set inccommand=split " incrementally see the updates of current commands
+set cursorline
 
 autocmd FileType c,cpp,java,markdown autocmd BufWritePre <buffer> :%s/\s\+$//e
 autocmd FileType html,eruby,rb,css,js,xml runtime! macros/matchit.vim
@@ -151,20 +150,20 @@ let g:ale_set_quickfix = 1
 let g:ale_keep_list_window_open = 0
 " let g:ale_open_list = 1
 let g:ale_linters = {
-  \   'csh': ['shell'],
-  \   'elixir': ['credo', 'dialyxir', 'dogma'],
-  \   'go': ['gofmt', 'golint', 'go vet'],
-  \   'hack': ['hack'],
-  \   'help': [],
-  \   'perl': ['perlcritic'],
-  \   'perl6': [],
-  \   'python': [],
-  \   'rust': ['cargo'],
-  \   'spec': [],
-  \   'text': [],
-  \   'vue': ['eslint', 'vls'],
-  \   'zsh': ['shell'],
-  \}
+      \   'csh': ['shell'],
+      \   'elixir': ['credo', 'dialyxir', 'dogma'],
+      \   'go': ['gofmt', 'golint', 'go vet'],
+      \   'hack': ['hack'],
+      \   'help': [],
+      \   'perl': ['perlcritic'],
+      \   'perl6': [],
+      \   'python': [],
+      \   'rust': ['cargo'],
+      \   'spec': [],
+      \   'text': [],
+      \   'vue': ['eslint', 'vls'],
+      \   'zsh': ['shell'],
+      \}
 
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -174,15 +173,15 @@ Plug 'mhinz/neovim-remote'
 let g:vimtex_compiler_progname='nvr'
 let g:vimtex_quickfix_open_on_warning = 0
 if g:os == 'Darwin'
-    let g:vimtex_view_general_viewer = 'open'
+  let g:vimtex_view_general_viewer = 'open'
 else
-    let g:vimtex_view_general_viewer = 'atril'
+  let g:vimtex_view_general_viewer = 'atril'
 endif
 set conceallevel=1
 let g:tex_conceal='abdmg'
 let g:vimtex_compiler_callback_hooks = ['MyTestHook']
 function! MyTestHook(status)
-    echom a:status
+  echom a:status
 endfunction
 
 Plug 'AndrewRadev/splitjoin.vim'
