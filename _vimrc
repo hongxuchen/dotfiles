@@ -63,6 +63,7 @@ set colorcolumn=
 set noautowrite               " Never write a file unless I request it.
 set noautowriteall            " NEVER.
 set autoread                  " automatically re-read changed files.
+set autowrite                 " automatically write files when switching buffers
 set confirm                   " Y-N-C prompt if closing with unsaved changes.
 set laststatus=2              " Always show statusline, even if only 1 window.
 set statusline=[%n]\ %<%.99f\ %h%w%m%r%y%=%-16(\ %l,%c-%v\ %)%P
@@ -105,6 +106,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-eunuch'
 " git relevant
 Plug 'tpope/vim-fugitive'
+Plug 'danarye/vim-merginal'
 autocmd BufReadPost fugitive://* set bufhidden=delete
 set statusline^=%{fugitive#statusline()}
 Plug 'tpope/vim-rhubarb'
@@ -177,6 +179,7 @@ if g:os == 'Darwin'
 else
   let g:vimtex_view_general_viewer = 'atril'
 endif
+let g:vimtex_quickfix_latexlog = {'default' : 0}
 set conceallevel=1
 let g:tex_conceal='abdmg'
 let g:vimtex_compiler_callback_hooks = ['MyTestHook']
