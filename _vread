@@ -125,10 +125,12 @@ autocmd BufRead,BufNewFile *.toml,Cargo.lock,*/.cargo/config set filetype=toml
 autocmd BufRead,BufNewFile SCons* set filetype=python 
 
 """ netrw settings
+" let g:netrw_banner = 0
 let g:netrw_hide = 1
 let g:netrw_rmdir_cmd = 'ssh USEPORT HOSTNAME rm -rf'
-let g:netrw_keepdir=0 " make netrw follow Vim's "current directory"
-let g:netrw_localrmdir="rm -rf"
+let g:netrw_keepdir=0 " make netrw follow Vim's `current directory`
+let g:netrw_localrmdir="rm -rf" " remove local directory recursively
+let g:netrw_liststyle=1 " show verbose list results
 
 """ disable standard plugins 
 let g:loaded_2html_plugin = 1
@@ -142,3 +144,9 @@ let g:loaded_tutor_mode_plugin = 1
 " let g:loaded_gzip = 1
 " let g:loaded_netrwPlugin = 1
 " let g:loaded_zipPlugin = 1
+
+" open netrw when no args supplied
+augroup VimStartup
+  autocmd!
+  autocmd VimEnter * if expand("%") == "" && argc() == 0 | e. | endif
+augroup END

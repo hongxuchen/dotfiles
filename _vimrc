@@ -58,6 +58,7 @@ endfunction
 nnoremap <silent> <Leader>ml :call AppendModeline()<CR>
 
 set ttyfast
+set nojoinspaces              " no join spaces for '.', '?' and '!'
 set clipboard^=unnamed,unnamedplus
 set colorcolumn=
 set noautowrite               " Never write a file unless I request it.
@@ -91,6 +92,10 @@ call plug#begin('~/.vim/bundle')
 " Plug 'cespare/vim-toml', {'for': 'toml'}
 " Plug 'plasticboy/vim-markdown'
 
+Plug 'voldikss/vim-translator'
+let g:translator_default_engines=['youdao']
+
+
 "vim-g
 Plug 'szw/vim-g'
 let g:vim_g_f_command = "Gf"
@@ -106,7 +111,7 @@ Plug 'tpope/vim-vinegar'
 Plug 'tpope/vim-eunuch'
 " git relevant
 Plug 'tpope/vim-fugitive'
-Plug 'danarye/vim-merginal'
+Plug 'rhysd/git-messenger.vim'
 autocmd BufReadPost fugitive://* set bufhidden=delete
 set statusline^=%{fugitive#statusline()}
 Plug 'tpope/vim-rhubarb'
@@ -356,6 +361,14 @@ nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 """ }}}
 
+" forbid simultaneous edits; make it default to readonly
+augroup NoSimultaneousEdits
+  autocmd!
+  autocmd SwapExists * let v:swapchoice = 'o'
+  autocmd SwapExists * echo 'Duplicate edit session (readonly)'
+  autocmd SwapExists * setlocal nomodifiable
+  autocmd SwapExists * echohl None
+augroup END
 
 """ questions:
 " disable undo from certain checkpoint

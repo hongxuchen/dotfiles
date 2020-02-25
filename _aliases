@@ -4,7 +4,6 @@
 
 if [[ $OSTYPE == "linux-gnu" ]]; then
 
-    # alias cat="bat"
     alias grep='grep --color=auto --exclude-dir=.cvs --exclude-dir=.git --exclude-dir=.hg --exclude-dir=.svn' 
     alias gdb='gdb -q'
     alias gtui='gdb -q -tui'

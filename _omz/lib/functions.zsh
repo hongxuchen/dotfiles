@@ -3,6 +3,13 @@ git_prompt_info() {
     echo "$ZSH_THEME_GIT_PROMPT_PREFIX${ref#refs/heads/}$ZSH_THEME_GIT_PROMPT_SUFFIX"
 }
 
+vim_startup_time() {
+    profile_fname=$(mktemp)
+    vim --startuptime ${profile_fname} -c q
+    less ${profile_fname}
+    rm ${profile_fname}
+}
+
 which_exe() {
     exe=$(which $1)    
     rc=$?
