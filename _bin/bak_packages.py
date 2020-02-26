@@ -16,16 +16,19 @@ list_cmd = [
     ['brew', 'list', ' ']
 ]
 
-
 def backup(cmd, plt):
     cmd_list = cmd[:2]
-    print(Fore.YELLOW, ' '.join(cmd_list), Fore.RESET)
-    output = subprocess.check_output(cmd_list)
-    outname = cmd[0] + '_' + plt
-    with open(outname, 'w') as f:
-        for line in output.splitlines():
-            element = line.split(cmd[2], 2)[0] + '\n'
-            f.write(element)
+    cli = " ".join(cmd_list)
+    # print(Fore.YELLOW, cli, Fore.RESET)
+    try:
+        output = subprocess.check_output(cmd_list)
+        outname = plt + '_' + cmd[0]
+        with open(outname, 'w') as f:
+            for line in output.splitlines():
+                element = line.split(cmd[2], 2)[0] + '\n'
+                f.write(element)
+    except OSError:
+        print("Ignored: '{}'".format(cli))
 
 init()
 plt = platform.system()

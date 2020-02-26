@@ -1,7 +1,8 @@
 .*.s[a-w][a-z]
 *.un~
-Session.vim
 .netrwhist
 *~
 autoload/plug.vim
 sessions/
+ss-*.vim
+Session.vim

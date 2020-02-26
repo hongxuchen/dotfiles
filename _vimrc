@@ -77,8 +77,8 @@ set cursorline
 
 autocmd FileType c,cpp,java,markdown autocmd BufWritePre <buffer> :%s/\s\+$//e
 autocmd FileType html,eruby,rb,css,js,xml runtime! macros/matchit.vim
-colorscheme desert
 augroup MyTermGroup
+  autocmd!
   autocmd TermOpen,BufWinEnter,WinEnter term://* startinsert
 augroup END
 
@@ -94,7 +94,15 @@ call plug#begin('~/.vim/bundle')
 
 Plug 'voldikss/vim-translator'
 let g:translator_default_engines=['youdao']
+cnoreabbrev Translate TranslateW
 
+" color schemes: default dark, optional light
+Plug 'endel/vim-github-colorscheme'
+" colorscheme github
+colorscheme desert
+
+" tag list
+Plug 'majutsushi/tagbar'
 
 "vim-g
 Plug 'szw/vim-g'
@@ -202,6 +210,9 @@ nmap ga <Plug>(EasyAlign)
 " Chinese typesetting
 Plug 'hotoo/pangu.vim'
 
+" for testing
+Plug 'junegunn/vader.vim'
+
 call plug#end()
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
@@ -256,11 +267,11 @@ set signcolumn=yes
 " Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
+      \ <SID>CheckBackspace() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 
-function! s:check_back_space() abort
+function! s:CheckBackspace() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
@@ -285,9 +296,9 @@ nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
 " Use K to show documentation in preview window
-nnoremap <silent> K :call <SID>show_documentation()<CR>
+nnoremap <silent> K :call <SID>ShowDocumentation()<CR>
 
-function! s:show_documentation()
+function! s:ShowDocumentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
   else
@@ -305,7 +316,7 @@ nmap <leader>rn <Plug>(coc-rename)
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
-augroup mygroup
+augroup MyCocGroup
   autocmd!
   " Setup formatexpr specified filetype(s).
   autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
@@ -369,6 +380,10 @@ augroup NoSimultaneousEdits
   autocmd SwapExists * setlocal nomodifiable
   autocmd SwapExists * echohl None
 augroup END
+
+cnoreabbrev wqa wa
+cnoreabbrev mks exec printf('mksession! %s%s%s', "~/.vim/ss-", strftime("%Y-%b-%d-%H-%M-%S"), ".vim")
+cnoreabbrev mksession exec printf('mksession! %s%s%s', "~/.vim/ss-", strftime("%Y-%b-%d-%H-%M-%S"), ".vim")
 
 """ questions:
 " disable undo from certain checkpoint

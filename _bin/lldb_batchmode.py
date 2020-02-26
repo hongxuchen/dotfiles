@@ -96,7 +96,8 @@ def execute_command(command_interpreter, command):
                 print_debug("breakpoint with id %s is already registered. Ignoring." %
                             str(breakpoint_id))
             else:
-                print_debug("registering breakpoint callback, id = " + str(breakpoint_id))
+                print_debug(
+                    "registering breakpoint callback, id = " + str(breakpoint_id))
                 callback_command = ("breakpoint command add -F breakpoint_callback " +
                                     str(breakpoint_id))
                 command_interpreter.HandleCommand(callback_command, res)
@@ -125,8 +126,10 @@ def start_breakpoint_listener(target):
                             lldb.SBBreakpoint.GetBreakpointEventTypeFromEvent(event) == \
                             lldb.eBreakpointEventTypeAdded:
                         global new_breakpoints
-                        breakpoint = lldb.SBBreakpoint.GetBreakpointFromEvent(event)
-                        print_debug("breakpoint added, id = " + str(breakpoint.id))
+                        breakpoint = lldb.SBBreakpoint.GetBreakpointFromEvent(
+                            event)
+                        print_debug("breakpoint added, id = " +
+                                    str(breakpoint.id))
                         new_breakpoints.append(breakpoint.id)
         except:
             print_debug("breakpoint listener shutting down")
@@ -137,7 +140,8 @@ def start_breakpoint_listener(target):
     listener_thread.start()
 
     # Register the listener with the target
-    target.GetBroadcaster().AddListener(listener, lldb.SBTarget.eBroadcastBitBreakpointChanged)
+    target.GetBroadcaster().AddListener(
+        listener, lldb.SBTarget.eBroadcastBitBreakpointChanged)
 
 
 def start_watchdog():
@@ -160,6 +164,7 @@ def start_watchdog():
 ####################################################################################################
 # ~main
 ####################################################################################################
+
 
 if len(sys.argv) != 3:
     print("usage: python lldb_batchmode.py target-path script-path")
@@ -213,7 +218,8 @@ try:
             execute_command(command_interpreter, command)
 
 except IOError as e:
-    print("Could not read debugging script '%s'." % script_path, file=sys.stderr)
+    print("Could not read debugging script '%s'." %
+          script_path, file=sys.stderr)
     print(e, file=sys.stderr)
     print("Aborting.", file=sys.stderr)
     sys.exit(1)
