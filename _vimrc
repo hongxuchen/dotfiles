@@ -9,13 +9,13 @@
 source ~/.vread
 
 """ MISC settings
-" save and reload ~/.vimrc
-nnoremap <silent> <leader>v :w<CR>:source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+" save and reload $MYVIMRC
+nnoremap <silent> <leader>v :w<CR>:source $MYVIMRC<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 " C-j to insert a newline
 nnoremap <NL> i<CR><ESC>
 " refresh if file in Vim is updated by external program
 noremap <silent><F5> :checktime<CR>:exe ":echo 'file refreshed'"<CR>
-inoremap <silent><F5> <C-O>:checktime<CR>:exe ":echo 'file refreshed'"<CR>
+inoremap <silent><F5> <ESC>:checktime<CR>:exe ":echo 'file refreshed'"<CR>
 
 """ Insert-mode keybindings
 inoremap <silent><C-x>0 <C-o>:hide<CR>
@@ -82,7 +82,7 @@ augroup MyTermGroup
   autocmd TermOpen,BufWinEnter,WinEnter term://* startinsert
 augroup END
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" {{{
 " https://github.com/junegunn/vim-plug
 call plug#begin('~/.vim/bundle')
 
@@ -100,6 +100,8 @@ cnoreabbrev Translate TranslateW
 Plug 'endel/vim-github-colorscheme'
 " colorscheme github
 colorscheme desert
+
+Plug 'lifepillar/vim-cheat40'
 
 " tag list
 Plug 'majutsushi/tagbar'
@@ -214,7 +216,7 @@ Plug 'hotoo/pangu.vim'
 Plug 'junegunn/vader.vim'
 
 call plug#end()
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""" }}}
 
 """ always follow symlink {{{
 " https://github.com/blueyed/dotfiles/blob/ab2850675bbfcf0db18dbf81a31b90e65aaae7f8/vimrc#L1247-L1278
