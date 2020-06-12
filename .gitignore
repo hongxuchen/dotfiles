@@ -46,3 +46,5 @@ _bin/rafl
 tags/
 plug.vim
 .ccls-cache/
+
+_sbt/

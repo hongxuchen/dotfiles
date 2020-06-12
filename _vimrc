@@ -37,6 +37,7 @@ cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 cnoremap <M-b> <S-Left>
 cnoremap <M-f> <S-Right>
+cnoremap <c-d> <del>
 cnoremap <silent><C-g> <ESC><ESC>
 
 """ terminal mode
@@ -102,6 +103,18 @@ Plug 'endel/vim-github-colorscheme'
 colorscheme desert
 
 Plug 'lifepillar/vim-cheat40'
+
+Plug 'axvr/zepl.vim'
+
+augroup MyZeplGroup
+  autocmd!
+  autocmd FileType python     let b:repl_config = { 'cmd': 'python3' }
+  autocmd FileType javascript let b:repl_config = { 'cmd': 'node' }
+  autocmd FileType clojure    let b:repl_config = { 'cmd': 'clj' }
+  autocmd FileType scheme     let b:repl_config = { 'cmd': 'rlwrap csi' }
+  autocmd FileType lisp       let b:repl_config = { 'cmd': 'sbcl' }
+  autocmd FileType julia      let b:repl_config = { 'cmd': 'julia' }
+augroup END
 
 " tag list
 Plug 'majutsushi/tagbar'
@@ -242,7 +255,7 @@ function! MyFollowSymlink(...)
   let &shm=sshm
 
   " Re-init fugitive.
-  call fugitive#detect(resolvedfile)
+  call FugitiveDetect(resolvedfile)
   if &modifiable
     " Only display a note when editing a file, especially not for `:help`.
     redraw  " Redraw now, to avoid hit-enter prompt.
@@ -342,7 +355,7 @@ omap if <Plug>(coc-funcobj-i)
 omap af <Plug>(coc-funcobj-a)
 
 " Use <TAB> for select selections ranges, needs server support, like: coc-tsserver, coc-python
-nmap <silent> <TAB> <Plug>(coc-range-select)
+" nmap <silent> <TAB> <Plug>(coc-range-select)
 xmap <silent> <TAB> <Plug>(coc-range-select)
 
 " Use `:Format` to format current buffer
@@ -375,7 +388,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 """ }}}
 
 " forbid simultaneous edits; make it default to readonly
-augroup NoSimultaneousEdits
+augroup MySwapEditGroup
   autocmd!
   autocmd SwapExists * let v:swapchoice = 'o'
   autocmd SwapExists * echo 'Duplicate edit session (readonly)'
