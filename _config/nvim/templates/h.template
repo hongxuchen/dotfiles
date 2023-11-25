@@ -1,0 +1,10 @@
+/// @author      : {{NAME}} ({{EMAIL}})
+/// @created     : {{TIMESTAMP}}
+
+#ifndef {{MACRO_GUARD}}
+#define {{MACRO_GUARD}}
+
+{{CURSOR}}
+
+
+#endif

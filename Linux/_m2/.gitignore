@@ -1,0 +1,4 @@
+.gradle-enterprise
+repository/
+settings.xml
+wrapper/

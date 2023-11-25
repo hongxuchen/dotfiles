@@ -1,0 +1,79 @@
+# vim: ft=zsh
+
+export LC_CTYPE="en_US.UTF-8"
+export LANGUAGE="en_US"
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export LC_NUMERIC="en_US.UTF-8"
+export LC_TIME="en_US.UTF-8"
+export LC_COLLATE="en_US.UTF-8"
+export LC_MONETARY="en_US.UTF-8"
+export LC_MESSAGES="en_US.UTF-8"
+export LC_PAPER="en_US.UTF-8"
+export LC_NAME="en_US.UTF-8"
+export LC_ADDRESS="en_US.UTF-8"
+export LC_TELEPHONE="en_US.UTF-8"
+export LC_MEASUREMENT="en_US.UTF-8"
+export LC_IDENTIFICATION="en_US.UTF-8"
+
+# export http_proxy=http://127.0.0.1:7890
+# export https_proxy=http://127.0.0.1:7890
+# export all_proxy=socks5://127.0.0.1:7891
+# export HTTP_PROXY=$http_proxy
+# export HTTPS_PROXY=$https_proxy
+# export ALL_PROXY=$all_proxy
+
+MY_HOME_BIN="$HOME/.bin"
+
+export GOPATH="$HOME/go"
+export GO111MODULE=auto
+export GOPROXY="https://goproxy.cn,direct"
+
+# export JAVA_HOME="$(/usr/libexec/java_home -v 1.8)"
+
+# see https://mirrors.tuna.tsinghua.edu.cn/help/homebrew/
+export HOMEBREW_NO_AUTO_UPDATE=1
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles"
+export MY_BREW_PREFIX=/usr/local
+export HOMEBREW_NO_ENV_HINTS=1
+export HOMEBREW_NO_INSTALL_CLEANUP=1
+
+export PATH="/usr/sbin:/sbin:/usr/bin:/bin:/opt/local/bin"
+export PATH="/usr/local/opt/coreutils/libexec/gnubin:/usr/local/opt/binutils/bin:$PATH"
+export PATH="${MY_HOME_BIN}:$PATH"
+export PATH="${GOPATH}/bin:$PATH"
+export PATH="${MY_BREW_PREFIX}/bin:${MY_BREW_PREFIX}/sbin:${MY_BREW_PREFIX}/opt/file-formula/bin:$PATH"
+# export PATH="/usr/local/opt/openjdk/bin:$PATH"
+export PATH="$HOME/.elan/bin:$PATH"
+export PATH="$HOME/.fzf/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+MY_CARGO=${HOME}/.cargo
+export CARGO_INCREMENTAL=1
+export PATH=${MY_CARGO}/bin:$PATH
+
+if which rustc > /dev/null; then
+	export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
+fi
+
+export NVM_DIR="$HOME/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+# yarn
+YARN_G_BIN=${HOME}/.yarn/bin
+export PATH="${YARN_G_BIN}:$PATH"
+
+# for wllvm
+export LLVM_COMPILER=clang
+export WLLVM_OUTPUT=INFO
+
+# export CC=clang
+# export CXX=clang++
+
+export OPENSSL_INCLUDE_DIR=/usr/local/opt/openssl/include
+export DEP_OPENSSL_INCLUDE=/usr/local/opt/openssl/include
+export OPENSSL_ROOT_DIR=/usr/local/opt/openssl
+
+function rm_dsstore() {
+  find "${@:-.}" -type f -name .DS_Store -delete
+}

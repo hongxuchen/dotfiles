@@ -1,0 +1,116 @@
+! vim: set ft=xdefaults ts=4 sw=4 tw=0 et:
+!
+! see /etc/X11/app-defaults, also 'xrdb -query', 'appres APPNAME'
+
+!-----------------------------------------------------------------------------
+! Xft
+!-----------------------------------------------------------------------------
+Xft.dpi               : 96
+Xft.lcdfilter         : lcddefault
+Xft.rgba              : rgb
+Xft.autohint          : false
+Xft.antialias         : true
+Xft.hinting           : true
+Xft.hintstyle         : hintslight
+! DEFINEs; use fc-list to see installed fonts (~/.fonts,...)
+#define my_consolas        Consolas:size=14
+#define my_dejavu          DejaVuSansMono:size=13
+#define my_unifont         UnifontMedium:size=11
+#define my_monaco          Monaco:autohint=true:pixelsize=16:size=10
+#define my_wqyHei          WenQuanYiMicroHei:size=13
+#define my_MSYaHei         MicrosoftYaHei:size=13
+
+!-----------------------------------------------------------------------------
+! xterm
+!-----------------------------------------------------------------------------
+!otherwise xterm would bind Alt-x to M-8
+xterm*metaSendsEscape: true
+!so that both select and ctrl-c contents are put into CLIPBOARD
+xterm*selectToClipboard: true
+! misc
+xterm*scrollBar: false
+xterm*rightScrollBar: false
+xterm*toolBar: false
+xterm*jumpScroll: true
+xterm*SaveLines: 200
+xterm*termName: xterm-256color
+xterm*trimSelection: true
+xterm*borderWidth: 1
+xterm*cursorBlink: false
+xterm*visualBell: false
+xterm*utf8Title: true
+xterm*internalBorder: 0
+xterm*activeIcon: true
+!font and size
+xterm*utf8:  true
+xterm*locale: zh_CN.UTF-8
+xterm*faceSize: 16
+xterm*faceSize1: 16
+xterm*faceSize2: 16
+xterm*faceSize3: 16
+xterm*faceSize4: 16
+xterm*faceSize5: 16
+xterm*faceSize6: 16
+xterm*cjkWidth:false
+xterm*faceName: my_monaco,my_unifont
+
+!-----------------------------------------------------------------------------
+! rxvt-unicode-256color
+!-----------------------------------------------------------------------------
+URxvt.depth:  32
+URxvt.buffered: true
+URxvt.geometry:  80x24
+URxvt.transparent:  false
+URxvt.fading:  0
+URxvt.urgentOnBell:  true
+URxvt.visualBell:  false
+URxvt.loginShell:  false
+URxvt.saveLines:  0
+URxvt.internalBorder:  3
+URxvt.lineSpace:  0
+URxvt.iso14755_52:        false
+URxvt.iso14755:           false
+
+URxvt.termName: rxvt-unicode-256color
+URxvt.allow_bold:  false
+URxvt.font: xft:my_monaco,xft:my_wqyHei,xft:my_unifont
+URxvt.boldFont: xft:my_monaco
+URxvt.letterSpace: -1
+
+URxvt.scrollStyle:  rxvt
+URxvt.scrollBar:  false
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+URxvt.borderless: true
+
+URxvt.cursorBlink:  false
+URxvt.cursorColor:  #657b83
+URxvt.cursorUnderline:  false
+
+URxvt.pointerBlank:  true
+
+URxvt.perl-ext-common:selection-to-clipboard
+
+! Monokai color theme, DONT use w/o prefix since that would affect Qt projects
+URxvt*background: #101010
+URxvt*foreground: #d0d0d0
+URxvt*cursorColor: #657b83
+URxvt*color0: #101010
+URxvt*color1: #960050
+URxvt*color2: #66aa11
+URxvt*color3: #c47f2c
+URxvt*color4: #30309b
+URxvt*color5: #7e40a5
+URxvt*color6: #3579a8
+URxvt*color7: #9999aa
+URxvt*color8: #303030
+URxvt*color9: #ff0090
+URxvt*color10: #80ff00
+URxvt*color11: #ffba68
+URxvt*color12: #5f5fee
+URxvt*color13: #bb88dd
+URxvt*color14: #4eb4fa
+URxvt*color15: #d0d0d0
+URxvt*colorBD:            #ffffff
+URxvt*colorIT:            #a761c2
+URxvt*colorUL:            #6d9cbe

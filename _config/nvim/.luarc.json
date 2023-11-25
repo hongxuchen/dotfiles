@@ -1,0 +1,15 @@
+{
+    "diagnostics": {
+        "disable": [
+            "assign-type-mismatch",
+            "unused-local"
+        ],
+        "ignoredFiles": "Opened",
+        "libraryFiles": "Opened",
+    },
+    "doc": {
+        "privateName": [
+            "_*"
+        ]
+    },
+}

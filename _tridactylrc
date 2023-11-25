@@ -1,0 +1,159 @@
+" vim: filetype=tridactyl
+" see https://github.com/tridactyl/tridactyl/wiki/Exemplar-.tridactylrc-files
+
+" set profiledir C:\Users\c00593292\AppData\Roaming\Mozilla\Firefox\Profiles\3xc0zhrn.default-release
+" sanitize commandline tridactyllocal tridactylsync
+sanitise commandline tridactyllocal
+
+" colorscheme midnight
+colorscheme quake
+set configversion 2.0
+
+""" sets
+" set smoothscroll true
+" Sane hinting mode
+set hintfiltermode vimperator-reflow
+" set hintnames numeric
+" default 300
+set hintdelay 100
+
+""" setup search engines
+jsb Object.keys(tri.config.get("searchurls")).forEach(u => tri.config.set("searchurls", u, null))
+set searchurls.cpp https://duckduckgo.com/?sites=cppreference.com&q=%s
+set searchurls.bb https://search.bilibili.com/all?keyword=%s
+set searchurls.deb https://packages.debian.org/search?keywords=%s&searchon=names&suite=sid&section=all
+set searchurls.gg https://google.com/search?q=%s
+set searchurls.gi https://www.google.com/search?q=%s&tbm=isch
+set searchurls.hn https://www.google.com/search?q=site%3Anews.ycombinator.com+
+set searchurls.hw  https://w3.huawei.com/unisearch/index.html?keyword=
+set searchurls.jj https://juejin.cn/search?query=
+set searchurls.py https://docs.python.org/3/search.html?check_keywords=yes&area=default&q=%s
+set searchurls.r https://old.reddit.com/search?q=
+set searchurls.wp https://en.wikipedia.org/w/index.php?search=%s&title=Special%3ASearch
+set searchurls.yd https://www.youdao.com/result?lang=en&word=
+set searchurls.yt https://www.youtube.com/results?search_query=%s
+set searchurls.zh https://www.zhihu.com/search?type=content&q=
+
+set allowautofocus false
+set completions.Tab.statusstylepretty true
+
+""" bind
+" not used at all
+unbind g?
+unbind g!
+" default is "tabclose"
+bind d composite tabprev; tabclose #
+" default is "composite tabprev; tabclose #"
+bind D composite tabprev; bd
+" reader mode
+bind gr reader --tab
+" The default jump of 10 is a bit much.
+bind j scrollline 5
+bind k scrollline -5
+
+bind --mode=ex     <C-a> text.beginning_of_line
+bind --mode=insert <C-a> text.beginning_of_line
+bind --mode=input  <C-a> text.beginning_of_line
+bind --mode=ex     <C-e> text.end_of_line
+bind --mode=insert <C-e> text.end_of_line
+bind --mode=input  <C-e> text.end_of_line
+bind --mode=ex     <C-f> text.forward_word
+bind --mode=insert <C-f> text.forward_word
+bind --mode=input  <C-f> text.forward_word
+bind --mode=ex     <C-k> text.kill_line
+bind --mode=insert <C-k> text.kill_line
+bind --mode=input  <C-k> text.kill_line
+bind --mode=ex     <C-u> text.backward_kill_line
+bind --mode=insert <C-u> text.backward_kill_line
+bind --mode=input  <C-u> text.backward_kill_line
+bind --mode=ex     <C-V> composite getclip selection | text.insert_text
+bind --mode=insert <C-V> composite getclip selection | text.insert_text
+bind --mode=input  <C-V> composite getclip selection | text.insert_text
+bind --mode=ex     <C-w> text.backward_kill_word
+bind --mode=insert <C-w> text.backward_kill_word
+bind --mode=input  <C-w> text.backward_kill_word
+
+" bind gs to see configurations
+bind gs viewconfig
+
+" make t open the selection with tabopen
+bind --mode=visual t composite js document.getSelection().toString() | fillcmdline tabopen
+
+" for firefox search
+unbind <C-f>
+" for firefox bookmarks
+unbind <C-b>
+
+bind / fillcmdline find
+bind ? fillcmdline find --reverse
+bind n findnext --search-from-view
+bind N findnext --search-from-view --reverse
+bind gn findselect
+bind gN composite findnext --search-from-view --reverse; findselect
+bind ,<Space> nohlsearch
+
+" Comment toggler for Reddit, Hacker News and Lobste.rs
+bind ;c hint -Jc [class*="expand"],[class*="togg"],[class="comment_folder"]
+" Git{Hub,Lab} git clone via SSH yank
+bind yg composite js "git clone " + document.location.href.replace(/https?:\/\//,"git@").replace("/",":").replace(/$/,".git") | clipboard yank
+" Make gu take you back to subreddit from comments
+bindurl reddit.com gu urlparent 4
+" Only hint search results on Google
+bindurl www.google.com f hint -Jc #search div:not(.action-menu) > a
+" bindurl https://github.com/.*/.*/blob f hint -c .blob-num,a
+
+""" aliases
+alias tabsort jsb browser.tabs.query({}).then(tabs => tabs.sort((t1, t2) => t1.url.localeCompare(t2.url)).forEach((tab, index) => browser.tabs.move(tab.id, {index})))
+alias tabuniq jsb browser.tabs.query({}).then(tabs => browser.tabs.remove(tabs.filter((tab, index) => tabs.slice(index + 1).find(t => t.url == tab.url)).map(tab => tab.id)))
+
+" Add helper commands that Mozillians think make Firefox irredeemably
+" insecure. For details, read the comment at the top of https://github.com/tridactyl/tridactyl/blob/master/.tridactylrc
+" command fixamo_quiet jsb tri.excmds.setpref("privacy.resistFingerprinting.block_mozAddonManager", "true").then(tri.excmds.setpref("extensions.webextensions.restrictedDomains", '""'))
+
+" The following modification allows Tridactyl to function on more pages, e.g. raw GitHub pages.
+" You may not wish to run this. Mozilla strongly feels that you shouldn't.
+" Read https://wiki.mozilla.org/Security/CSP#Goals for more information.
+"
+" Equivalent to `set csp clobber` before it was removed.
+" This weakens your defences against cross-site-scripting attacks
+" and other types of code-injection by reducing the strictness 
+" of Content Security Policy on all sites in a couple of ways.
+" 
+" We remove the sandbox directive
+" https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/sandbox
+" which allows our iframe (and anyone else's) to run on any website.
+"
+" We weaken the style-src directive
+" https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy/style-src
+" to allow us to theme our elements.
+" This exposes you to 'cross site styling' attacks
+jsb browser.webRequest.onHeadersReceived.addListener(tri.request.clobberCSP,{urls:["<all_urls>"],types:["main_frame"]},["blocking","responseHeaders"])
+
+" autocmd
+" New reddit is bad
+autocmd DocStart ^http(s?)://www.reddit.com js tri.excmds.urlmodify("-t", "www", "old")
+
+" Native messenger stuff
+guiset_quiet gui none
+guiset_quiet hoverlink right
+guiset_quiet tabs always
+guiset_quiet statuspanel right
+guiset_quiet navbar autohide
+
+" video related commands
+alias jse js function $all(q, root=document) { return Array.from(root.querySelectorAll(q)) };
+alias video_with jse let video; if (document.activeElement.name == 'VIDEO') video = document.activeElement; else video = $all('video').find(v => !v.paused); if (!video) video = $('video');
+alias video_goby js -d@ let time = JS_ARGS.filter(Boolean); let sign = '+'; if (time[0].match(/^[-+]/)) { sign = time[0].charAt(0); time[0] = time[0].slice(1) } time = time.filter(Boolean).map(Number); const second = time.reduce((s, n) => s*60+n, 0); tri.controller.acceptExCmd(`video_with video.currentTime ${sign}= ${second}`) @
+alias video_goto js -d@ let time = JS_ARGS.filter(Boolean); let sign = '+'; if (time[0].match(/^[-+]/)) { sign = time[0].charAt(0); time[0] = time[0].slice(1) } time = time.filter(Boolean).map(Number); let second = time.reduce((s, n) => s*60+n, 0); if (sign == '-') second = `video.duration - ${second}`; tri.controller.acceptExCmd(`video_with video.currentTime = ${second}`) @
+
+" eg: `video_goto 3 21` will seek to 3:21
+" `video_goby 3 21` will seek for 3:21
+bind --mode=video I fillcmdline video_goby
+bind --mode=video i fillcmdline video_goto
+
+alias exit_video mode normal
+alias enter_video mode video
+
+bind V enter_video
+bind --mode=video V exit_video
+bind --mode=video <Escape> exit_video

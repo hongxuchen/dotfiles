@@ -1,0 +1,49 @@
+#  vim: set ft=zsh ts=4 sw=4 tw=0 et:
+# shellcheck disable=SC1091,SC2046,SC2206,SC1090,SC2128
+
+if [[ -o interactive ]]; then
+    stty ixany
+    stty ixoff -ixon
+fi
+
+zmodload zsh/zprof
+
+source "$HOME/.aliases" 
+
+ZSH="$HOME/.omz"
+
+# set LS_COLORS
+eval $(dircolors "$HOME/.dircolors")
+# since we also use `GNU ls` on Mac, LSCOLORS is unnecessary
+# export LSCOLORS=${LS_COLORS}
+
+## ${ZSH}/lib
+for config_file in "${ZSH}"/lib/*.zsh; do
+    source "${config_file}"
+done
+unset config_file
+
+## ${ZSH}/plugins/
+PLUGINS=(pip zsh-syntax-highlighting zsh-history-substring-search)
+
+for plugin in ${PLUGINS}; do
+    base_dir=${ZSH}/plugins/${plugin}
+    if [[ -f ${base_dir}/${plugin}.plugin.zsh ]]; then
+      source "${base_dir}/${plugin}.plugin.zsh"
+    else
+        printf "%s not plugin\n" "${base_dir}"
+    fi
+done
+unset plugin base_dir
+
+unset ZSH
+
+## Ctrl-p/Ctrl-n for Emacs mode
+bindkey -M emacs '^p' history-substring-search-up
+bindkey -M emacs '^n' history-substring-search-down
+
+## other utilities
+
+eval "$(zoxide init zsh)"
+
+[ -f $HOME/.fzf.zsh ] && source $HOME/.fzf.zsh

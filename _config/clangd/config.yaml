@@ -1,0 +1,15 @@
+CompileFlags:
+  Remove: -fno-var-tracking-assignments
+
+Diagnostics:
+  # Tweak Clang-Tidy checks.
+  ClangTidy:
+    # Add: [clang-analyzer*, concurrency*, cppcoreguidelines*, google*, modernize*, performance*]
+    Add: [concurrency*, performance*]
+    Remove:
+      [
+        cppcoreguidelines-avoid-magic-numbers,
+        modernize-use-trailing-return-type,
+      ]
+  Index:
+    Background: Build

@@ -1,0 +1,9 @@
+######################################################################
+# @author      : {{NAME}} ({{EMAIL}})
+# @created     : {{TIMESTAMP}}
+######################################################################
+
+cmake_minimum_required(VERSION 3.0)
+project({{CURSOR}} C)
+
+add_executable(main main.c)

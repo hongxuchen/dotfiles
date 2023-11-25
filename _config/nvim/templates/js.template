@@ -1,0 +1,8 @@
+/**
+ * @author      : {{NAME}} ({{EMAIL}})
+ * @created     : {{TIMESTAMP}}
+ */
+
+export default class {{FILE}} {
+}
+

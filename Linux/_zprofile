@@ -1,0 +1,108 @@
+# vim: ft=zsh
+# shellcheck disable=SC2155,SC1090,SC1091,SC2148
+
+################################ sys  ###########################################
+# GUI
+# export DISPLAY=:0
+
+# LC and TZ
+export LC_CTYPE="en_SG.UTF-8"
+export LANGUAGE="en_SG"
+export LANG="en_SG.UTF-8"
+export LC_ALL="en_SG.UTF-8"
+export LC_NUMERIC="en_SG.UTF-8"
+export LC_TIME="en_SG.UTF-8"
+export LC_COLLATE="en_SG.UTF-8"
+export LC_MONETARY="en_SG.UTF-8"
+export LC_MESSAGES="en_SG.UTF-8"
+export LC_PAPER="en_SG.UTF-8"
+export LC_NAME="en_SG.UTF-8"
+export LC_ADDRESS="en_SG.UTF-8"
+export LC_TELEPHONE="en_SG.UTF-8"
+export LC_MEASUREMENT="en_SG.UTF-8"
+export LC_IDENTIFICATION="en_SG.UTF-8"
+# export TZ='Asia/Shanghai'
+
+# debian command-not-found
+export COMMAND_NOT_FOUND_INSTALL_PROMPT=1
+
+# nix
+export NIXPKGS_ALLOW_INSECURE=1
+export NIXPKGS_ALLOW_UNFREE=1
+
+################################ PATH ########################################
+MY_HOME_BIN="$HOME/.bin"
+export MY_LLVM_ROOT="/media/data/llvm/git"
+export PATH=/usr/sbin:/usr/local/bin:/usr/bin:/usr/local/games:/usr/games
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="${MY_HOME_BIN}:${MY_HOME_BIN}/go:$PATH"
+export PATH="${MY_LLVM_ROOT}/build/bin:$PATH"
+# export PATH="${MY_LLVM_ROOT}/install/bin:$PATH"
+
+################################ LLVM ########################################
+export LLVM_COMPILER=clang
+export WLLVM_OUTPUT=WARNING
+
+################################ python ########################################
+export PYTHONPATH=${MY_LLVM_ROOT}/clang/bindings/python
+
+################################ node ###########################################
+# NVM
+export N_NODE_HOME="/usr/local/n/versions/node/16.18.0"
+export PATH="${N_NODE_HOME}/bin:$PATH"
+
+# pnpm
+export PNPM_HOME="/root/.local/share/pnpm"
+# export PATH="${PNPM_HOME}/bin:$PATH"
+
+# yarn
+# YARN_G_BIN="${HOME}/.yarn/bin"
+# export PATH="${YARN_G_BIN}:$PATH"
+
+################################ rust ###########################################
+# rustup
+export RUSTUP_UPDATE_ROOT=https://mirrors.tuna.tsinghua.edu.cn/rustup/rustup
+export RUSTUP_DIST_SERVER=https://mirrors.tuna.tsinghua.edu.cn/rustup
+# core
+export CARGO_HOME="$HOME/.cargo"
+export PATH="${CARGO_HOME}/bin:$PATH"
+export CARGO_INCREMENTAL=1
+export RUST_LOG=info
+# NOTE: should be put AFTER env:PATH
+if which rustc >/dev/null; then
+    export RUST_SRC_PATH=$(rustc --print sysroot)/lib/rustlib/src/rust/src
+fi
+
+################################ JVM ###########################################
+export _JAVA_OPTIONS="-Djava.net.useSystemProxies=true"
+# conscript (https://www.foundweekends.org/conscript/setup.html)
+export CONSCRIPT_HOME="$HOME/.conscript"
+export CONSCRIPT_OPTS="-XX:MaxPermSize=512M -Dfile.encoding=UTF-8"
+# export PATH="$CONSCRIPT_HOME/bin:$PATH"
+
+################################ golang ########################################
+export GO111MODULE=auto
+export GOPATH="$HOME/go"
+export PATH="${GOPATH}/bin:$PATH"
+export GOPROXY="https://goproxy.cn,direct"
+
+################################ lean ########################################
+# local MY_ELAN_HOME="$HOME/.elan"
+# export PATH="${MY_ELAN_HOME}/bin:$PATH"
+
+################################ MISC ########################################
+export MY_NVIM_LISTEN_ADDRESS="/tmp/nvim.pipe"
+
+export XMAKE_STATS=n
+export XMAKE_ROOT=y
+local XMAKE_PROFILE=$HOME/.xmake/profile
+if [[ -f $XMAKE_PROFILE ]]; then
+  source "$XMAKE_PROFILE"
+else
+  echo "$XMAKE_PROFILE not exist"
+fi
+
+local MY_LOCAL_SCRIPT="$HOME/.local.sh"
+if [[ -f "$MY_LOCAL_SCRIPT" ]]; then
+    source "$MY_LOCAL_SCRIPT"
+fi

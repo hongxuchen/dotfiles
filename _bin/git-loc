@@ -1,0 +1,26 @@
+#!/usr/bin/env bash
+# vim: set ft=bash ts=4 sw=0 tw=0 et:
+
+function command_exists() {
+    command -v "$1" >/dev/null 2>&1
+}
+
+LOC_CMD=tokei
+
+if ! command_exists $LOC_CMD; then
+    echo "you need to install $LOC_CMD"
+    exit 1
+fi
+
+GROOT="$(git rev-parse --show-toplevel)"
+
+cd "$GROOT" || exit 1
+
+exclude_lines=$(git submodule | awk '{ print $2 }')
+excludes=""
+excludes=$(echo -n ${exclude_lines} | tr ' ' '\|')
+if [ -z "$excludes" ]; then
+    git ls-files | xargs $LOC_CMD
+else
+    git ls-files | xargs $LOC_CMD --exclude "${excludes}"
+fi

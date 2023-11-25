@@ -1,0 +1,46 @@
+# vim:ft=zsh
+# shellcheck disable=SC2148
+
+export VISUAL=nvim
+export EDITOR=nvim
+export ALTERNATE_EDITOR=""
+export BROWSER=w3m
+export FCEDIT="nvim -u NORC"
+
+unset PAGER
+
+export LESS="-R -i -g -c -W"
+# color man
+export LESS_TERMCAP_mb=$'\E[01;31m'
+export LESS_TERMCAP_md=$'\E[01;31m'
+export LESS_TERMCAP_me=$'\E[0m'
+export LESS_TERMCAP_se=$'\E[0m'
+export LESS_TERMCAP_so=$'\E[01;44;33m'
+export LESS_TERMCAP_ue=$'\E[0m'
+export LESS_TERMCAP_us=$'\E[01;32m'
+export TEXMFHOME=~/.texmf
+
+export COMMAND_NOT_FOUND_INSTALL_PROMPT=1
+
+export NVIM_PYTHON_LOG_FILE=/tmp/nvim-py.log
+export NVIM_LOG_FILE=/tmp/nvim.log
+export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
+export NVIM_CONFIG=$HOME/.config/nvim
+export NVIMRC=$NVIM_CONFIG/init.lua
+export NVIM_LUA_CONFIG=$NVIM_CONFIG/lua
+
+export QT_DEBUG_PLUGINS=0
+
+#input method
+export XIM=fcitx
+export XIM_PROGRAM=fcitx
+export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS="@im=fcitx"
+
+export XDG_RUNTIME_DIR=/tmp/runtime-"$USER"
+
+# use strict mode: http://redsymbol.net/articles/unofficial-bash-strict-mode/
+# set -u -e will cause quite lots of issues
+# set -o pipefail
+# IFS=$'\t\n'

@@ -1,0 +1,30 @@
+# pmap's Config File
+
+# All the entries are case sensitive.
+# Unsupported entries are ignored!
+
+[Fields Display]
+# Perm
+# Offset
+# Device
+# Inode
+# Size
+Rss
+Pss
+Shared_Clean
+Shared_Dirty
+Private_Clean
+Private_Dirty
+Referenced
+Anonymous
+AnonHugePages
+Swap
+# KernelPageSize
+# MMUPageSize
+# Locked
+VmFlags
+Mapping
+
+
+[Mapping]
+ShowPath

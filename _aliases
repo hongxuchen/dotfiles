@@ -1,0 +1,43 @@
+#!/bin/bash
+# vim: ft=sh
+
+if [[ $OSTYPE == "linux-gnu" ]]; then
+    alias gdb='gdb -q'
+    alias dstat='dstat -cdlmnpsy'
+    alias release_memory='sudo sh -c "sync; echo 3 > /proc/sys/vm/drop_caches"'
+    alias open="xdg-open"
+    alias pbcopy='xsel --clipboard --input'
+    alias pbpaste='xsel --clipboard --output'
+fi
+
+if [[ $OSTYPE == "darwin"* ]] || [[ $OSTYPE == "freebsd"* ]]; then
+    if [[ $OSTYPE == "darwin"* ]]; then
+        alias showFiles='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
+        alias hideFiles='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+        alias my_installed_app='mdfind kMDItemContentTypeTree=com.apple.application-bundle -onlyin /'
+        alias mv='/bin/mv'
+        alias buuc='(echo "brew update" && brew update && echo "brew upgrade" && brew upgrade && echo "brew cleanup" && brew cleanup)'
+    fi
+fi
+
+alias sudo='sudo -H '
+for cmd in apt docker; do
+    alias \$cmd="command sudo \$cmd"
+done
+
+alias yaml2json="python -c 'import sys, yaml, json; json.dump(yaml.load(open(sys.argv[1])), sys.stdout, indent=2)'"
+alias adl="aria2c -s16 -x16"
+
+alias ls='ls -F --color=auto'
+alias la='ls -AhF'
+alias ll='ls -lhF'
+alias l='ls'
+alias lrt='ls -lrthF'
+alias ldot='ls -ld .*'
+alias sl='ls'
+
+alias vi="command nvim -u \$HOME/.config/nvim/simple.lua"
+alias vim=vi
+alias vimdiff='nvim -d'
+
+alias q='exit'
