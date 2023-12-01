@@ -2,7 +2,6 @@ return {
   {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
-      { "JoosepAlviste/nvim-ts-context-commentstring" },
       { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
     },
     -- smart spellcheck requires treesitter, no lazy-load
@@ -77,12 +76,6 @@ return {
             scope_incremental = "<localleader>tc",
           },
         },
-        -- https://github.com/JoosepAlviste/nvim-ts-context-commentstring#nvim-comment
-        context_commentstring = {
-          enable = true,
-          -- disabled with nvim-comment plugin
-          enable_autocmd = false,
-        },
       }
       -- too slow so unset
       -- vim.opt.foldmethod = "expr"
@@ -90,6 +83,16 @@ return {
     end,
     build = function()
       require("nvim-treesitter.install").update { with_sync = true }
+    end,
+  },
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    config = function()
+      require("ts_context_commentstring").setup {
+        -- disabled with nvim-comment plugin
+        enable_autocmd = false,
+      }
+      vim.g.skip_ts_context_commentstring_module = true
     end,
   },
 }

@@ -28,9 +28,6 @@ $PSReadLineOptions = @{
 Set-PSReadLineOption @PSReadLineOptions
 
 New-Alias vi vim
-function remote_linux {
-	ssh root@10.244.177.61 -t tmux a
-}
 # New-Alias less more
 
 function start_cntlm() {
