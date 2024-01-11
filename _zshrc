@@ -24,7 +24,7 @@ done
 unset config_file
 
 ## ${ZSH}/plugins/
-PLUGINS=(pip zsh-syntax-highlighting zsh-history-substring-search)
+PLUGINS=(pip zsh-syntax-highlighting)
 
 for plugin in ${PLUGINS}; do
     base_dir=${ZSH}/plugins/${plugin}
@@ -39,8 +39,8 @@ unset plugin base_dir
 unset ZSH
 
 ## Ctrl-p/Ctrl-n for Emacs mode
-bindkey -M emacs '^p' history-substring-search-up
-bindkey -M emacs '^n' history-substring-search-down
+# bindkey -M emacs '^p' history-substring-search-up
+# bindkey -M emacs '^n' history-substring-search-down
 
 ## other utilities
 
