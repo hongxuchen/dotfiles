@@ -305,7 +305,7 @@ return {
     -- cmp-dictionary source
     local dict = require("cmp_dictionary")
     dict.setup {
-      exact = 2,
+      exact_length = 2,
       async = true,
       sqlite = false,
     }
