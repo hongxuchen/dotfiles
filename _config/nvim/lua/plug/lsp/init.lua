@@ -347,17 +347,17 @@ return {
     config = function()
       local conf = require("plug.lsp.conf")
       local rt = require("rust-tools")
-      rt.setup {
-        server = {
-          on_attach = conf.on_attach,
-          standalone = true,
-        },
-        tools = {
-          inlay_hints = {
-            auto = false,
-          },
-        },
-      }
+      -- rt.setup {
+      --   server = {
+      --     on_attach = conf.on_attach,
+      --     standalone = true,
+      --   },
+      --   tools = {
+      --     inlay_hints = {
+      --       auto = false,
+      --     },
+      --   },
+      -- }
       require("crates").setup()
     end,
   },

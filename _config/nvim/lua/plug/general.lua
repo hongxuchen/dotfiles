@@ -37,12 +37,12 @@ return {
 
   {
     "lukas-reineke/indent-blankline.nvim",
-    cmd = "IndentBlanklineEnable",
-    config = function()
-      require("indent_blankline").setup {
-        space_char_blankline = " ",
-      }
-    end,
+    main = "ibl",
+    cmd = "IBLEnable",
+    -- config = function()
+    --   require("indent_blankline").setup {
+    --   }
+    -- end,
   },
 
   {
