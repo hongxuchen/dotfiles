@@ -1,15 +1,14 @@
-# vim: set ft=conf ts=4 sw=0 tw=0 et:
 [Groups/0]
 # Group Name
 Name=Default
 # Layout
-Default Layout=us
+Default Layout=gb
 # Default Input Method
 DefaultIM=shuangpin
 
 [Groups/0/Items/0]
 # Name
-Name=keyboard-us
+Name=keyboard-gb
 # Layout
 Layout=
 

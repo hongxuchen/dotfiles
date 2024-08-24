@@ -97,7 +97,7 @@ return {
       local simple_ls = {
         "jsonls", -- json (can do format so no need for jq)
         "marksman", -- markdown
-        "neocmake", -- cmake
+        -- "neocmake", -- cmake
         "taplo", -- toml
         "texlab", -- latex
         "vimls", -- vim

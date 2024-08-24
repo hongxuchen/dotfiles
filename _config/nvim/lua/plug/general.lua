@@ -2,6 +2,8 @@ return {
 
   { "tridactyl/vim-tridactyl" },
 
+  { "nvim-neotest/nvim-nio" },
+
   {
     "tibabit/vim-templates",
     config = function()

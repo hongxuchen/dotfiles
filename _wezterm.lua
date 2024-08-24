@@ -13,7 +13,7 @@ if wezterm.target_triple == "x86_64-pc-windows-msvc" then
   font_size = 12.0
 else
   default_prog = { "zsh" }
-  font_size = 15.0
+  font_size = 11.0
 end
 
 return {
