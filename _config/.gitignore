@@ -6,6 +6,7 @@ atuin/
 audacious/
 autostart/expressvpn-agent.desktop
 baloofilerc
+bluedevilglobalrc
 bottom/
 brave/
 btop/btop.conf
@@ -33,6 +34,7 @@ evince/
 evolution/
 expressvpn/
 fcitx/
+fcitx5/
 fcitx5/conf/
 fcitx/conf/fcitx-classic-ui.config
 fcitx/pinyin/
@@ -55,6 +57,8 @@ gpicview/
 gtk-2.0/
 gtk-3.0
 gtk-4.0/
+gtkrc
+gtkrc-2.0
 gwenviewrc
 htop/
 ibus/
@@ -84,6 +88,7 @@ kdedefaults/
 kdeglobals
 kde.org/
 kdeveloprc
+kfontinstuirc
 kglobalshortcutsrc
 khelpcenterrc
 khotkeysrc
@@ -201,6 +206,7 @@ xarchiver/
 xfce4/panel/
 xfce4/xfconf/xfce-perchannel-xml/ 
 xpad/
+xsettingsd/
 xubuntu/
 yelp/
 Zeal/
