@@ -31,11 +31,13 @@ export NVIM_LUA_CONFIG=$NVIM_CONFIG/lua
 
 export QT_DEBUG_PLUGINS=0
 
-#input method
-export XIM=fcitx
-export XIM_PROGRAM=fcitx
-export GTK_IM_MODULE=fcitx
-export QT_IM_MODULE=fcitx
+# unset to use wayland
+# export XIM=fcitx
+# export XIM_PROGRAM=fcitx
+# export GTK_IM_MODULE=fcitx
+# export QT_IM_MODULE=fcitx
+unset GTK_IM_MODULE
+unset QT_IM_MODULE
 export XMODIFIERS="@im=fcitx"
 
 export XDG_RUNTIME_DIR=/tmp/runtime-"$USER"

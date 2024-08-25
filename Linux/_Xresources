@@ -13,10 +13,11 @@ Xft.antialias         : true
 Xft.hinting           : true
 Xft.hintstyle         : hintslight
 ! DEFINEs; use fc-list to see installed fonts (~/.fonts,...)
-#define my_consolas        Consolas:size=14
+#define my_consolas        Consolas:size=13
 #define my_dejavu          DejaVuSansMono:size=13
 #define my_unifont         UnifontMedium:size=11
-#define my_monaco          Monaco:autohint=true:pixelsize=16:size=10
+#define my_monaco          Monaco:autohint=true:pixelsize=16:size=9
+#define my_hacklig         Hasklig:size=11
 #define my_wqyHei          WenQuanYiMicroHei:size=13
 #define my_MSYaHei         MicrosoftYaHei:size=13
 
@@ -52,7 +53,8 @@ xterm*faceSize4: 16
 xterm*faceSize5: 16
 xterm*faceSize6: 16
 xterm*cjkWidth:false
-xterm*faceName: my_monaco,my_unifont
+! xterm*faceName: my_monaco,my_unifont
+xterm*faceName: my_hasklig,my_unifont
 
 !-----------------------------------------------------------------------------
 ! rxvt-unicode-256color
@@ -73,8 +75,8 @@ URxvt.iso14755:           false
 
 URxvt.termName: rxvt-unicode-256color
 URxvt.allow_bold:  false
-URxvt.font: xft:my_monaco,xft:my_wqyHei,xft:my_unifont
-URxvt.boldFont: xft:my_monaco
+URxvt.font: xft:my_hasklig,xft:my_monaco,xft:my_wqyHei,xft:my_unifont
+URxvt.boldFont: xft:my_hasklig,xft:my_monaco
 URxvt.letterSpace: -1
 
 URxvt.scrollStyle:  rxvt
