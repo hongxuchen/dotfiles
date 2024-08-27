@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Application
-Version=1.0
-Name=pcloud
-Comment=pcloudstartup script
-Exec=/usr/bin/pcloud
-StartupNotify=false
-Terminal=false

@@ -5,6 +5,8 @@
 # GUI
 # export DISPLAY=:0
 
+export XDG_RUNTIME_DIR=/run/user/$(id -u)
+
 # LC and TZ
 export LC_CTYPE="en_SG.UTF-8"
 export LANGUAGE="en_SG"
