@@ -39,7 +39,7 @@ M.lsp_list = {
   -- "clangd", -- C/C++
   "neocmake", -- cmake
   "gopls", -- golang
-  -- "pyright", -- python
+  "pyright", -- python
   "rust_analyzer", -- rust
   "bashls", -- bash
   "lua_ls", -- lua

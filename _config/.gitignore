@@ -103,6 +103,7 @@ kinfocenterrc
 klipperrc
 kmail2rc
 kmailsearchindexingrc
+kmetainformationrc
 kmixrc
 konq_history
 konquerorrc
@@ -178,7 +179,10 @@ qpdfview/
 qps/
 qterminal.org/
 QtProject.conf
+QtProject/Designer.conf
 QtProject/Linguist.conf
+QtProject/qtcreator/
+QtProject/QtCreator.*
 quassel-irc.org/
 quasselrc
 radare2/history
