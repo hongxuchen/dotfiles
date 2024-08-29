@@ -241,10 +241,10 @@ return {
           -- https://github.com/neovim/nvim-lspconfig/issues/726#issuecomment-1075539112
           ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
             signs = {
-              severity_limit = "Warning",
+              severity = vim.diagnostic.severity.WARN,
             },
             virtual_text = {
-              severity_limit = "Warning",
+              severity = vim.diagnostic.severity.WARN,
             },
           }),
         },
