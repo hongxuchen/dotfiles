@@ -1,6 +1,6 @@
 return {
   {
-    "jose-elias-alvarez/null-ls.nvim",
+    "nvimtools/none-ls.nvim",
     config = function()
       local null_ls = require("null-ls")
       local formatting = null_ls.builtins.formatting
@@ -20,16 +20,16 @@ return {
           formatting["goimports"],
           --- python
           -- pyright does not provide support for formatting, so we use black/isort/ruff
-          diagnostics["ruff"],
+          -- diagnostics["ruff"], -- FIXME: none-ls
           formatting["black"],
           formatting["isort"],
-          formatting["ruff"],
+          -- formatting["ruff"],  -- FIXME: none-ls
           --- lua
           formatting["stylua"],
           -- javascript(react), typescript(react), vue
-          code_actions["eslint_d"],
-          formatting["eslint_d"],
-          diagnostics["eslint_d"],
+          -- code_actions["eslint_d"], -- FIXME: none-ls
+          -- formatting["eslint_d"], -- FIXME: none-ls
+          -- diagnostics["eslint_d"], -- FIXME: none-ls
           -- multiple
           formatting["prettier"].with {
             filetypes = {
@@ -50,9 +50,9 @@ return {
           -- bashls does not support formatting
           formatting["shfmt"],
           -- make shell scripts beautiful
-          code_actions["shellcheck"],
-          diagnostics["shellcheck"],
-          formatting["beautysh"],
+          -- code_actions["shellcheck"], -- FIXME: none-ls
+          -- diagnostics["shellcheck"], -- FIXME: none-ls
+          -- formatting["beautysh"], -- FIXME: none-ls
           -- simple check on zsh
           diagnostics["zsh"],
         },
