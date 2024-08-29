@@ -20,11 +20,25 @@ end
 M.capabilities = M.make_capabilitites()
 
 function M.general_setup()
-  -- general diagnostics
-  for type, icon in pairs(u.signs) do
-    local hl = "DiagnosticSign" .. type
-    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-  end
+  -- for type, icon in pairs(u.signs) do
+  --   local hl = "DiagnosticSign" .. type
+  --   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+  -- end
+
+  local diagnostic_signs = {
+    text = {
+        [vim.diagnostic.severity.ERROR] = u.signs.Error,
+        [vim.diagnostic.severity.WARN] = u.signs.Warn,
+        [vim.diagnostic.severity.HINT] = u.signs.Hint,
+        [vim.diagnostic.severity.INFO] = u.signs.Info,
+    },
+    numhl = {
+        [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+        [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+        [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+        [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+    }
+  }
 
   vim.diagnostic.config {
     virtual_text = {
@@ -37,7 +51,7 @@ function M.general_setup()
       border = "none",
       style = "minimal",
     },
-    signs = true,
+    signs = diagnostic_signs,
     underline = true,
     update_in_insert = false,
     serverity_sort = true,

@@ -10,7 +10,7 @@ return {
       vim.keymap.set("n", "<localleader>ti", "<Cmd>TSConfigInfo<CR>", { desc = "[treesitter] Display Config" })
       vim.keymap.set("n", "<localleader>tt", ":TSBufToggle ", { desc = "[treesitter] Toggle Feature" })
 
-      local ignored_langs = { "c", "cpp", "rust", "markdown" }
+      local ignored_langs = { "c", "cpp", "rust", "markdown", "vimdoc", "help" }
       local ts_config = require("nvim-treesitter.configs")
       ts_config.setup {
         ensure_installed = {
@@ -45,7 +45,7 @@ return {
           "toml",
           "typescript",
           "vim",
-          "vimdoc",
+          -- "vimdoc",
           "yaml",
           -- "javascript",
         },
