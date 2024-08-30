@@ -70,7 +70,7 @@ function M.general_setup()
   ---@param result nil|table (`Location`|`LocationLink`)
   ---@param ctx lsp.HandlerContext
   vim.lsp.handlers["textDocument/definition"] = function(_, result, ctx)
-    ---@type lsp.Client?
+    ---@type vim.lsp.Client?
     local client = vim.lsp.get_client_by_id(ctx.client_id)
     assert(client ~= nil)
     if not result or vim.tbl_isempty(result) then
@@ -120,7 +120,7 @@ u.keymap("n", "<localleader>li", "<Cmd>LspInfo<CR>", u.opts, "[lspconfig] show l
 u.keymap("n", "<localleader>ll", "<Cmd>LspLog<CR>", u.opts, "[lspconfig] show lsp logs")
 
 -- NOTE: '<localleader>d' is reserved for language-specific mappings
----@param client lsp.Client
+---@param client vim.lsp.Client
 ---@param bufnr number
 function M.on_attach(client, bufnr)
   -- neovim nightly seems to have bug on inlay_hints, so comment out
@@ -148,8 +148,9 @@ function M.on_attach(client, bufnr)
   u.keymap("n", "K", vim.lsp.buf.hover, bufopts, "[lsp] get hover")
   u.keymap("i", "<C-s>", vim.lsp.buf.signature_help, bufopts, "[lsp] get signature help")
 
-  u.keymap("n", "[d", vim.diagnostic.goto_prev, bufopts, "[vim] go to previous diagnostic")
-  u.keymap("n", "]d", vim.diagnostic.goto_next, bufopts, "[vim] go to next diagnostic")
+  -- NOTE: no longer needed as is by default
+  -- u.keymap("n", "[d", vim.diagnostic.goto_prev, bufopts, "[vim] go to previous diagnostic")
+  -- u.keymap("n", "]d", vim.diagnostic.goto_next, bufopts, "[vim] go to next diagnostic")
 
   u.keymap("n", "<localleader>ci", t_builtin.lsp_incoming_calls, bufopts, "[lsp] go to incoming_calls")
   u.keymap("n", "<localleader>co", t_builtin.lsp_outgoing_calls, bufopts, "[lsp] go to outgoing_calls")

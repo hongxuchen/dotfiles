@@ -151,6 +151,7 @@ function M.direct_save_handler(result)
 end
 
 -- TODO: make it within "textDocument/rename" handler
+-- FIXME: not work for python
 function M.my_lsp_rename()
   local params = vim.lsp.util.make_position_params()
   params.oldName = u.word_under_cursor()

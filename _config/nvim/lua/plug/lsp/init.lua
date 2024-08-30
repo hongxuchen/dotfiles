@@ -196,7 +196,7 @@ return {
       }
 
       lspconfig["clangd"].setup {
-        ---@param client lsp.Client
+        ---@param client vim.lsp.Client
         ---@param bufnr number
         on_attach = function(client, bufnr)
           local u = require("core.utils")
@@ -388,7 +388,7 @@ return {
     config = function()
       local u = require("core.utils")
       local conf = require("plug.lsp.conf")
-      ---@param client lsp.Client
+      ---@param client vim.lsp.Client
       ---@param bufnr number
       local my_lean_on_attach = function(client, bufnr)
         conf.on_attach(client, bufnr)
