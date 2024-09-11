@@ -2,10 +2,12 @@ afl*
 amm
 clang
 clang++
+cmetricsPlus
 cymbol
 *.egg-info
 g++
 gcc
 git-mm
+huawei.json
 sbt-launch.jar
 wtf

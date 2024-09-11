@@ -157,6 +157,7 @@ return {
         end,
       },
       formatting = {
+        expandable_indicator = true,
         fields = { "abbr", "menu", "kind" },
         format = function(entry, item)
           local menu_icon = {
@@ -247,6 +248,7 @@ return {
         disallow_partial_fuzzy_matching = true,
         disallow_partial_matching = false,
         disallow_prefix_unmatching = true,
+        disallow_symbol_nonprefix_matching = true,
       },
       window = {
         -- completion = cmp.config.window.bordered { border = "none" },

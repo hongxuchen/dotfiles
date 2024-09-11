@@ -140,10 +140,12 @@ function M.on_attach(client, bufnr)
   -- vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr(#{timeout_ms:250})")
   u.keymap("n", "gD", vim.lsp.buf.declaration, bufopts, "[lsp] go to declaration")
   -- FIXME: sometimes jumps to random position at first
+  -- FIXME: sometimes out of location
   -- NOTE: handler is modified
   u.keymap("n", "gd", vim.lsp.buf.definition, bufopts, "[lsp] go to definition")
   u.keymap("n", "gi", t_builtin.lsp_implementations, bufopts, "[lsp] go to implementation")
-  u.keymap("n", "gr", t_builtin.lsp_references, bufopts, "[lsp] go to references")
+  -- u.keymap("n", "gr", t_builtin.lsp_references, bufopts, "[lsp] go to references")
+  u.keymap("n", "gr", vim.lsp.buf.references, bufopts, "[lsp] go to references")
   u.keymap("n", "<localleader>gt", t_builtin.lsp_type_definitions, bufopts, "[lsp] go to type definition")
   u.keymap("n", "K", vim.lsp.buf.hover, bufopts, "[lsp] get hover")
   u.keymap("i", "<C-s>", vim.lsp.buf.signature_help, bufopts, "[lsp] get signature help")

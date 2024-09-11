@@ -1,13 +1,12 @@
 return {
 
-  { "tridactyl/vim-tridactyl" },
-
   { "nvim-neotest/nvim-nio" },
 
   {
     "tibabit/vim-templates",
     config = function()
       local uv = vim.uv
+      -- should override default paths rather than add
       vim.g.tmpl_search_paths = { vim.fn.stdpath("config") .. "templates" }
       local hostname = uv.os_gethostname()
       if vim.startswith(hostname, "hw") then
