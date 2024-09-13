@@ -1,13 +1,13 @@
 return {
-  -- {
-  --   "hongxuchen/semantic-highlight.nvim",
-  --   config = function()
-  --     require("local-highlight").setup {
-  --       -- hlgroup = "CurSearch",
-  --       -- cw_hlgroup = nil,
-  --     }
-  --   end,
-  -- },
+  {
+    "hongxuchen/semantic-highlight.nvim",
+    config = function()
+      require("local-highlight").setup {
+        -- hlgroup = "CurSearch",
+        -- cw_hlgroup = nil,
+      }
+    end,
+  },
   {
     "navarasu/onedark.nvim",
     enabled = false,

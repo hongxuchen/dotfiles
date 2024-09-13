@@ -316,5 +316,13 @@ return {
     --     en = require("core.utils").en_dict,
     --   },
     -- }
+
+    -- otherwise it is too slow on large files
+    vim.api.nvim_clear_autocmds {
+      event = { "CmdlineEnter", "CmdlineChanged", "CmdlineLeave" },
+      pattern = "*",
+      group = "___cmp___",
+    }
+
   end,
 }

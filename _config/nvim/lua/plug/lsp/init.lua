@@ -217,18 +217,19 @@ return {
           "clangd",
           "--all-scopes-completion=true",
           "--background-index=true",
-          -- "--background-index-priority=normal",
+          "--background-index-priority=normal",
           "--clang-tidy=true",
           "--completion-style=bundled",
           "--fallback-style=Google",
           "--header-insertion=iwyu",
           -- https://github.com/hrsh7th/nvim-cmp/issues/999
           "--header-insertion-decorators=false",
+          "--limit-references=256",
+          "--limit-results=50",
           "--pch-storage=disk",
-          -- "--log=verbose",
           -- below are hidden options
-          -- "--hidden-features",
-          -- "--include-cleaner-stdlib", -- obsolete
+          "--hidden-features",
+          "--ranking-model=heuristics",
         },
       }
 

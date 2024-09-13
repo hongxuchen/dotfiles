@@ -13,8 +13,13 @@ function M.make_capabilitites(override)
   if override then
     override(cap)
   end
-  local cmp_cap = require("cmp_nvim_lsp").default_capabilities()
-  return vim.tbl_deep_extend("force", cap, cmp_cap)
+  local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+  if status_ok then
+    local cmp_cap = cmp_nvim_lsp.default_capabilities()
+    return vim.tbl_deep_extend("force", cap, cmp_cap)
+  else
+    return cap
+  end
 end
 
 M.capabilities = M.make_capabilitites()
