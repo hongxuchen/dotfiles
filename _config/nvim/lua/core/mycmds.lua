@@ -2,10 +2,6 @@ local u = require("core.utils")
 
 local mycmd = vim.api.nvim_create_user_command
 
-mycmd("PrintServerAddr", function()
-  print(vim.env.MY_NVIM_LISTEN_ADDRESS)
-end, {})
-
 local dict_words = {}
 mycmd("Dict", function(info)
   local word = info.args

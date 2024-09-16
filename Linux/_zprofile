@@ -92,7 +92,6 @@ export GOPROXY="https://goproxy.cn,direct"
 # export PATH="${MY_ELAN_HOME}/bin:$PATH"
 
 ################################ MISC ########################################
-export MY_NVIM_LISTEN_ADDRESS="/tmp/nvim.pipe"
 
 export XMAKE_STATS=n
 export XMAKE_ROOT=y

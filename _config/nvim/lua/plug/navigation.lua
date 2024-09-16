@@ -111,6 +111,7 @@ return {
       end,
       backends = {
         ["_"] = { "lsp", "treesitter" },
+        ["cpp"] = { "lsp"},
         markdown = { "markdown", "treesitter" },
         man = { "man" },
       },

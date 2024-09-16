@@ -32,17 +32,17 @@ function M.general_setup()
 
   local diagnostic_signs = {
     text = {
-        [vim.diagnostic.severity.ERROR] = u.signs.Error,
-        [vim.diagnostic.severity.WARN] = u.signs.Warn,
-        [vim.diagnostic.severity.HINT] = u.signs.Hint,
-        [vim.diagnostic.severity.INFO] = u.signs.Info,
+      [vim.diagnostic.severity.ERROR] = u.signs.Error,
+      [vim.diagnostic.severity.WARN] = u.signs.Warn,
+      [vim.diagnostic.severity.HINT] = u.signs.Hint,
+      [vim.diagnostic.severity.INFO] = u.signs.Info,
     },
     numhl = {
-        [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
-        [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
-        [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
-        [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
-    }
+      [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+      [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+      [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+      [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+    },
   }
 
   vim.diagnostic.config {
@@ -149,8 +149,8 @@ function M.on_attach(client, bufnr)
   -- NOTE: handler is modified
   u.keymap("n", "gd", vim.lsp.buf.definition, bufopts, "[lsp] go to definition")
   u.keymap("n", "gi", t_builtin.lsp_implementations, bufopts, "[lsp] go to implementation")
-  -- u.keymap("n", "gr", t_builtin.lsp_references, bufopts, "[lsp] go to references")
-  u.keymap("n", "gr", vim.lsp.buf.references, bufopts, "[lsp] go to references")
+  u.keymap("n", "gr", t_builtin.lsp_references, bufopts, "[lsp] go to references")
+  -- u.keymap("n", "gr", vim.lsp.buf.references, bufopts, "[lsp] go to references")
   u.keymap("n", "<localleader>gt", t_builtin.lsp_type_definitions, bufopts, "[lsp] go to type definition")
   u.keymap("n", "K", vim.lsp.buf.hover, bufopts, "[lsp] get hover")
   u.keymap("i", "<C-s>", vim.lsp.buf.signature_help, bufopts, "[lsp] get signature help")

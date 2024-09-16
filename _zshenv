@@ -24,7 +24,6 @@ export COMMAND_NOT_FOUND_INSTALL_PROMPT=1
 
 export NVIM_PYTHON_LOG_FILE=/tmp/nvim-py.log
 export NVIM_LOG_FILE=/tmp/nvim.log
-export NVIM_LISTEN_ADDRESS=/tmp/nvimsocket
 export NVIM_CONFIG=$HOME/.config/nvim
 export NVIMRC=$NVIM_CONFIG/init.lua
 export NVIM_LUA_CONFIG=$NVIM_CONFIG/lua

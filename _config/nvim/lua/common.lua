@@ -43,7 +43,8 @@ M.lsp_list = {
   "rust_analyzer", -- rust
   "bashls", -- bash
   "lua_ls", -- lua
-  "tsserver", -- typescript, javascript
+  -- "tsserver", -- typescript, javascript
+  "ts_ls",
   "vimls", -- vimscript
   "yamlls", -- yaml
   "taplo", -- toml
