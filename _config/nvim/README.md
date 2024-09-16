@@ -6,12 +6,16 @@
 * `LspLog`
     * whether there are error messages about LS
 
+## Trouble shooting with treesitter
+* upgrade `nvim-treesitter` parsers by removing `parser` directory inside
+* remove `plug/treesitter` directory
+
 ## requirements
 * [ripgrep](https://github.com/BurntSushi/ripgrep)
+* [zoxide](https://github.com/ajeetdsouza/zoxide)
 
 ## Issues
 * statusline works correctly only when `laststatus=3`
-* bashls reports warnings w/o telling `why`, but need to know
 * lua lsp may return multi-language docs
 * null-ls only filetypes have no lsp (diagnostic/format) keymaps
 * `my_lsp_rename` not work for python
