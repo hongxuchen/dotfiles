@@ -129,14 +129,14 @@ u.keymap("n", "<localleader>ll", "<Cmd>LspLog<CR>", u.opts, "[lspconfig] show ls
 ---@param bufnr number
 function M.on_attach(client, bufnr)
   -- neovim nightly seems to have bug on inlay_hints, so comment out
-  -- local no_inlayhints_servers = { "clangd", "lua_ls" }
-  -- if client.server_capabilities.inlayHintProvider then
-  --   if vim.list_contains(no_inlayhints_servers, client.name) then
-  --     vim.lsp.inlay_hint(bufnr, false)
-  --   else
-  --     vim.lsp.inlay_hint(bufnr, true)
-  --   end
-  -- end
+  local no_inlayhints_servers = { "lua_ls" }
+  if client.server_capabilities.inlayHintProvider then
+    if vim.list_contains(no_inlayhints_servers, client.name) then
+      vim.lsp.inlay_hint.enable(false, {bufnr = bufnr})
+    else
+      vim.lsp.inlay_hint.enable(true, {bufnr = bufnr})
+    end
+  end
 
   local t_builtin = require("telescope.builtin")
 

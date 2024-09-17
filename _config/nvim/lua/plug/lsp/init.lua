@@ -275,10 +275,10 @@ return {
     "p00f/clangd_extensions.nvim",
     config = function()
       require("clangd_extensions").setup {
-        autoSetHints = false,
+        autoSetHints = true,
         -- These apply to the default ClangdSetInlayHints command
         inlay_hints = {
-          inline = false,
+          inline = true,
           -- Only show inlay hints for the current line
           only_current_line = false,
           -- Event which triggers a refersh of the inlay hints.

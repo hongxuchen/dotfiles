@@ -43,7 +43,7 @@ end, {})
 mycmd("RunCMake", u.run_cmake, {})
 
 mycmd("ToggleInlayHints", function()
-  vim.lsp.inlay_hint(0, nil)
+  vim.lsp.inlay_hint.enable(true, { bufnr = 0 })
 end, {})
 
 -- it assumes no vim modeline exists
