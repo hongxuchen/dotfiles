@@ -214,7 +214,7 @@ return {
         -- don't use .git as root pattern due to submodules
         root_dir = lspconfig.util.root_pattern("compile_commands.json"),
         cmd = {
-          "clangd",
+          "clangd-17",
           "--all-scopes-completion=true",
           "--background-index=true",
           "--background-index-priority=normal",

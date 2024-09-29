@@ -58,6 +58,10 @@ require("lazy").setup {
     reset = true,
     disabled_plugins = { },
   },
+  readme = {
+    enabled = false,
+    skip_if_doc_exists = true,
+  },
   checker = {
     enabled = false,
     frequency = 86400,

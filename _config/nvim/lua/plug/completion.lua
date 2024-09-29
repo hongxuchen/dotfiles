@@ -1,5 +1,8 @@
 return {
-  "hrsh7th/nvim-cmp",
+  -- "hrsh7th/nvim-cmp",
+  -- https://github.com/hrsh7th/nvim-cmp/pull/1980
+  "yioneko/nvim-cmp",
+  branch = "perf",
   event = { "InsertEnter" },
   dependencies = {
     "hrsh7th/cmp-path",
