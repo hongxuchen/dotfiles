@@ -1,8 +1,8 @@
 return {
   -- "hrsh7th/nvim-cmp",
   -- https://github.com/hrsh7th/nvim-cmp/pull/1980
-  "yioneko/nvim-cmp",
-  branch = "perf",
+  "iguanacucumber/magazine.nvim",
+  enabled = true,
   event = { "InsertEnter" },
   dependencies = {
     "hrsh7th/cmp-path",
@@ -260,7 +260,7 @@ return {
         -- documentation = cmp.config.disable,
       },
       experimental = {
-        ghost_text = true,
+        ghost_text = false,
       },
     }
 

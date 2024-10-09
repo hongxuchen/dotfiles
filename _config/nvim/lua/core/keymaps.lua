@@ -46,8 +46,8 @@ end
 --- command-line mode
 u.keymap("c", "<C-a>", "<Home>", u.term_opts, "[vim] go to beginning of line")
 u.keymap("c", "<C-e>", "<End>", u.term_opts, "[vim] go to line end")
-u.keymap("c", "<C-p>", "<Up>", u.term_opts, "[vim] line upwards")
-u.keymap("c", "<C-n>", "<Down>", u.term_opts, "[vim] line downwise")
+-- u.keymap("c", "<C-p>", "<Up>", u.term_opts, "[vim] line upwards")
+-- u.keymap("c", "<C-n>", "<Down>", u.term_opts, "[vim] line downwise")
 u.keymap("c", "<C-b>", "<Left>", u.term_opts, "[vim] go backward")
 u.keymap("c", "<C-f>", "<Right>", u.term_opts, "[vim] go forward")
 u.keymap("c", "<M-b>", "<S-Left>", u.term_opts, "[vim] word backward")
