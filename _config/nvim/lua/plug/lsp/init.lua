@@ -110,6 +110,27 @@ return {
         }
       end
 
+      -- rust
+      vim.g.rustaceanvim = {
+        tools = {
+          -- plugins
+        },
+        server = {
+          on_attach = conf.on_attach,
+          capabilities = conf.capabilities,
+          settings = {
+            ["rust-analyzer"] = {
+              diagnostics = {
+                experimental = true,
+              },
+            },
+          },
+        },
+        dap = {
+          -- dap
+        },
+      }
+
       -- golang
       lspconfig["gopls"].setup {
         on_attach = conf.on_attach,
@@ -341,26 +362,12 @@ return {
     end,
   },
   {
-    "simrat39/rust-tools.nvim",
+    "mrcjkb/rustaceanvim",
+    version = "^5", -- Recommended
+    lazy = false, -- This plugin is already lazy
     dependencies = {
-      { "saecki/crates.nvim", tag = "v0.3.0" },
+      { "saecki/crates.nvim", tag = "stable" },
     },
-    config = function()
-      local conf = require("plug.lsp.conf")
-      local rt = require("rust-tools")
-      -- rt.setup {
-      --   server = {
-      --     on_attach = conf.on_attach,
-      --     standalone = true,
-      --   },
-      --   tools = {
-      --     inlay_hints = {
-      --       auto = false,
-      --     },
-      --   },
-      -- }
-      require("crates").setup()
-    end,
   },
   {
     "pmizio/typescript-tools.nvim",
