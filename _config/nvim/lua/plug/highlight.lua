@@ -19,21 +19,22 @@ return {
     end,
   },
   {
-    "folke/tokyonight.nvim",
-    enabled = false,
-    lazy = false,
-    priority = 1000,
-    opts = {},
-  },
-  {
     "projekt0n/github-nvim-theme",
     enabled = false,
     name = "github-theme",
     lazy = true,
     priority = 1000,
     config = function()
-      require("github-theme").setup { }
+      require("github-theme").setup {}
       -- vim.cmd("colorscheme github_dark_high_contrast")
+    end,
+  },
+  {
+    "Verf/deepwhite.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      vim.cmd("colorscheme deepwhite")
     end,
   },
 }
