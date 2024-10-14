@@ -241,3 +241,5 @@ tags
 .crates.toml
 .crates2.json
 felix/
+
+*.log

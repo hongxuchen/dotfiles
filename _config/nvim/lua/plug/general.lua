@@ -4,6 +4,7 @@ return {
 
   {
     "tibabit/vim-templates",
+    enabled = false,
     config = function()
       local uv = vim.uv
       -- should override default paths rather than add
