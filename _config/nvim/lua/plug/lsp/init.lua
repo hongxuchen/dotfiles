@@ -78,7 +78,7 @@ return {
       local simple_ls = {
         "jsonls", -- json (can do format so no need for jq)
         "marksman", -- markdown
-        -- "neocmake", -- cmake
+        "neocmake", -- cmake
         "taplo", -- toml
         "texlab", -- latex
         "vimls", -- vim
@@ -381,102 +381,6 @@ return {
           },
           tsserver_format_options = {},
         },
-      }
-    end,
-  },
-  {
-    "Julian/lean.nvim",
-    ft = "lean",
-    config = function()
-      local u = require("core.utils")
-      local conf = require("plug.lsp.conf")
-      ---@param client vim.lsp.Client
-      ---@param bufnr number
-      local my_lean_on_attach = function(client, bufnr)
-        conf.on_attach(client, bufnr)
-        local bufopts = u.buf_opts(bufnr)
-        u.keymap(
-          "n",
-          "<localleader>dt",
-          "<Cmd>LeanInfoviewToggle<CR>",
-          bufopts,
-          "[lean] toggle the infoview open or closed"
-        )
-        u.keymap(
-          "n",
-          "<localleader>dp",
-          "<Cmd>LeanInfoviewPinTogglePause<CR>",
-          bufopts,
-          "[lean] pause the current infoview"
-        )
-        u.keymap("n", "<localleader>da", "<Cmd>LeanInfoviewAddPin<CR>", bufopts, "[lean] place an infoview pin")
-        u.keymap(
-          "n",
-          "<localleader>dc",
-          "<Cmd>LeanInfoviewClearPins<CR>",
-          bufopts,
-          "[lean] clear all current infoview pins"
-        )
-        u.keymap(
-          "n",
-          "<localleader>dsp",
-          "<Cmd>LeanInfoviewSetDiffPin<CR>",
-          bufopts,
-          "[lean] place an infoview diff pin"
-        )
-        u.keymap(
-          "n",
-          "<localleader>dcp",
-          "<Cmd>LeanInfoviewClearDiffPin<CR>",
-          bufopts,
-          "[lean] clear current infoview diff pin"
-        )
-        u.keymap(
-          "n",
-          "<localleader>dtp",
-          "<Cmd>LeanInfoviewToggleAutoDiffPin<CR>",
-          bufopts,
-          "[lean] toggle auto diff pin mode"
-        )
-        u.keymap(
-          "n",
-          "<localleader>dtc",
-          "<Cmd>LeanInfoviewToggleNoClearAutoDiffPin<CR>",
-          bufopts,
-          "[lean] toggle auto diff pin mode without clearing diff pin"
-        )
-        u.keymap("n", "<localleader>dw", "<Cmd>LeanInfoviewEnableWidgets<CR>", bufopts, "[lean] enable widgets")
-        u.keymap("n", "<localleader>dW", "<Cmd>LeanInfoviewDisableWidgets<CR>", bufopts, "[lean] disable widgets")
-        u.keymap("n", "<localleader><Tab>", "<Cmd>LeanGotoInfoview<CR>", bufopts, "[lean] goto infoview")
-        u.keymap(
-          "n",
-          "<localleader>dsf",
-          "<Cmd>LeanSorryFill<CR>",
-          bufopts,
-          "[lean] replace a 'try this:' suggestion under the cursor"
-        )
-        u.keymap(
-          "n",
-          "<localleader>dtt",
-          "<Cmd>LeanTryThis<CR>",
-          bufopts,
-          "[lean] jump into the infoview window associated with the current lean file"
-        )
-        u.keymap(
-          "n",
-          "<localleader>d\\",
-          "<Cmd>LeanAbbreviationsReverseLookup<CR>",
-          bufopts,
-          "[lean] show what abbreviation produces the symbol under the cursor"
-        )
-      end
-
-      -- lean4
-      require("lean").setup {
-        abbreviations = { builtin = true },
-        lsp = { on_attach = my_lean_on_attach },
-        lsp3 = { on_attach = my_lean_on_attach },
-        mappings = false,
       }
     end,
   },
