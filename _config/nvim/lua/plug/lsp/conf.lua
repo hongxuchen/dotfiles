@@ -118,6 +118,9 @@ function M.general_setup()
     local res = require("lspconfig.util").get_config_by_ft(filetype)
     u.display_lua_obj(res)
   end, { nargs = 1, complete = "filetype" })
+  mycmd("LspInlayHintToggle", function()
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(), { bufnr = 0 })
+  end, {})
 end
 
 -- When the current buffer does not attach a LS, there is no binding for the buffer, so we have to bind globally
@@ -132,9 +135,9 @@ function M.on_attach(client, bufnr)
   local no_inlayhints_servers = { "lua_ls" }
   if client.server_capabilities.inlayHintProvider then
     if vim.list_contains(no_inlayhints_servers, client.name) then
-      vim.lsp.inlay_hint.enable(false, {bufnr = bufnr})
+      vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
     else
-      vim.lsp.inlay_hint.enable(true, {bufnr = bufnr})
+      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
     end
   end
 

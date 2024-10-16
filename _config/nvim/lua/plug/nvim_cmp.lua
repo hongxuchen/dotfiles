@@ -95,6 +95,12 @@ return {
       },
     }
 
+    local config_lazydev = {
+      name = "lazydev",
+      group_index = 0,
+      keyword_length = 2,
+    }
+
     local config_nvim_lsp = {
       name = "nvim_lsp",
       priority = 100,
@@ -235,6 +241,7 @@ return {
       },
       -- https://github.com/hrsh7th/nvim-cmp/wiki/List-of-sources
       sources = {
+        config_lazydev,
         config_luasnip,
         config_nvim_lsp,
         config_path,
@@ -326,6 +333,5 @@ return {
       pattern = "*",
       group = "___cmp___",
     }
-
   end,
 }

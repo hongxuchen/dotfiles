@@ -1,16 +1,19 @@
 {
     "diagnostics": {
+        "globals": [
+            "vim"
+        ],
         "disable": [
             "assign-type-mismatch",
             "unused-local",
             "need-check-nil"
         ],
         "ignoredFiles": "Opened",
-        "libraryFiles": "Opened",
+        "libraryFiles": "Opened"
     },
     "doc": {
         "privateName": [
             "_*"
         ]
-    },
+    }
 }
