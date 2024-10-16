@@ -10,23 +10,12 @@ return {
   },
   {
     "navarasu/onedark.nvim",
-    enabled = false,
+    enabled = true,
     config = function()
       local onedark = require("onedark")
       onedark.setup {
         style = "warmer",
       }
-    end,
-  },
-  {
-    "projekt0n/github-nvim-theme",
-    enabled = false,
-    name = "github-theme",
-    lazy = true,
-    priority = 1000,
-    config = function()
-      require("github-theme").setup {}
-      -- vim.cmd("colorscheme github_dark_high_contrast")
     end,
   },
   {
