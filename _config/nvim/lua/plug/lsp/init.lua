@@ -69,25 +69,6 @@ return {
 
   {
     "neovim/nvim-lspconfig",
-    dependencies = {
-      {
-        "folke/neodev.nvim",
-        config = function()
-          require("neodev").setup {
-            pathStrict = true,
-            library = {
-              types = true,
-            },
-            -- always include vim runtime
-            ---@diagnostic disable-next-line: unused-local
-            override = function(root_dir, library)
-              library.enabled = true
-              library.plugins = true
-            end,
-          }
-        end,
-      },
-    },
     config = function()
       local conf = require("plug.lsp.conf")
       local lspconfig = require("lspconfig")
@@ -147,7 +128,7 @@ return {
 
       -- lua
       lspconfig["lua_ls"].setup {
-        root_dir = lspconfig.util.root_pattern(".luarc.json", "stylua.toml", ".git"),
+        root_dir = lspconfig.util.root_pattern("init.lua", ".luarc.json", "stylua.toml", ".git"),
         on_attach = conf.on_attach,
         capabilities = conf.capabilities,
         -- https://github.com/sumneko/lua-language-server/wiki/Settings
@@ -282,6 +263,14 @@ return {
         },
       }
     end,
+  },
+
+  {
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      debug = false,
+    },
   },
 
   -- {

@@ -10,7 +10,7 @@ local envs = { "NVIM_CONFIG", "EMAIL", "AUTHOR" }
 
 function M.check()
   local not_installed = {}
-  for exec in ipairs(executables) do
+  for _, exec in ipairs(executables) do
     if vim.fn.executable(exec) ~= 1 then
       table.insert(not_installed, exec)
     end

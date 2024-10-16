@@ -2,21 +2,31 @@ return {
 
   { "nvim-neotest/nvim-nio" },
 
+  -- {
+  --   "tibabit/vim-templates",
+  --   config = function()
+  --     local uv = vim.uv
+  --     -- should override default paths rather than add
+  --     vim.g.tmpl_search_paths = { vim.fn.stdpath("config") .. "templates" }
+  --     local hostname = uv.os_gethostname()
+  --     if vim.startswith(hostname, "hw") then
+  --       vim.g.tmpl_author_name = vim.env.HW_NAME
+  --       vim.g.tmpl_author_email = vim.env.EMAIL
+  --     else
+  --       vim.g.tmpl_author_email = vim.env.EMAIL
+  --     end
+  --   end,
+  -- },
+
   {
-    "tibabit/vim-templates",
-    enabled = false,
+    'MagicDuck/grug-far.nvim',
     config = function()
-      local uv = vim.uv
-      -- should override default paths rather than add
-      vim.g.tmpl_search_paths = { vim.fn.stdpath("config") .. "templates" }
-      local hostname = uv.os_gethostname()
-      if vim.startswith(hostname, "hw") then
-        vim.g.tmpl_author_name = vim.env.HW_NAME
-        vim.g.tmpl_author_email = vim.env.EMAIL
-      else
-        vim.g.tmpl_author_email = vim.env.EMAIL
-      end
-    end,
+      require('grug-far').setup({
+        -- options, see Configuration section below
+        -- there are no required options atm
+        -- engine = 'ripgrep' is default, but 'astgrep' can be specified
+      });
+    end
   },
 
   { "nvim-lua/plenary.nvim", lazy = true },
@@ -41,16 +51,15 @@ return {
     "lukas-reineke/indent-blankline.nvim",
     main = "ibl",
     cmd = "IBLEnable",
-    -- config = function()
-    --   require("indent_blankline").setup {
-    --   }
-    -- end,
   },
 
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
     config = true,
+    opts = {
+      preset = "modern",
+    },
   },
 
   {
