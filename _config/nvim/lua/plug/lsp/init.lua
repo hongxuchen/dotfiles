@@ -236,8 +236,13 @@ return {
       }
 
       -- prefer `pyproject.toml` to configure per project
-      lspconfig["pyright"].setup {
+      lspconfig["basedpyright"].setup {
         root_dir = lspconfig.util.root_pattern("pyproject.toml"),
+        basedright = {
+          analysis = {
+            diagnosticMode = "openFilesOnly",
+          },
+        },
         -- pyright-specific
         handlers = {
           -- https://github.com/hrsh7th/nvim-cmp/issues/685#issuecomment-1002924899
