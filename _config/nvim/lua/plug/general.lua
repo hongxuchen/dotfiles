@@ -19,14 +19,14 @@ return {
   -- },
 
   {
-    'MagicDuck/grug-far.nvim',
+    "MagicDuck/grug-far.nvim",
     config = function()
-      require('grug-far').setup({
+      require("grug-far").setup {
         -- options, see Configuration section below
         -- there are no required options atm
         -- engine = 'ripgrep' is default, but 'astgrep' can be specified
-      });
-    end
+      }
+    end,
   },
 
   { "nvim-lua/plenary.nvim", lazy = true },
@@ -56,9 +56,26 @@ return {
   {
     "folke/which-key.nvim",
     event = "VeryLazy",
+    keys = {
+      {
+        "<leader>k",
+        function()
+          require("which-key").show { global = false }
+        end,
+        desc = "[wk] Buffer Local Keymaps",
+      },
+    },
     config = true,
     opts = {
       preset = "modern",
+      expand = 20,
+      show_help = false,
+      show_keys = false,
+      icons = {
+        rules = false,
+        colors = false,
+      },
+      sort = { "alphanum", "order", "group", "mod", "local" },
     },
   },
 

@@ -101,4 +101,4 @@ mycmd("VMore", function(info)
   end
 end, { nargs = "+", complete = "command", bang = true })
 u.keymap("n", "<leader>I", ":VMore! =", { noremap = true }, "[vim] inspect complex lua object")
-u.keymap("n", "<leader>i", ":=vim", { noremap = true }, "[vim] inspect lua object")
+u.keymap("n", "<leader>i", ":=", { noremap = true }, "[vim] inspect lua object")
