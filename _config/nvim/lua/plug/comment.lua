@@ -15,11 +15,26 @@ return {
   },
   {
     "folke/todo-comments.nvim",
-    keys = {
-      { "<leader>t", "<cmd>TodoTelescope<cr>", desc = "[TODO] show TODOs" },
-    },
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("todo-comments").setup {}
     end,
+    keys = {
+      { "<leader>t", "<cmd>TodoTelescope<cr>", desc = "[TODO] show todo comments" },
+      {
+        "]t",
+        function()
+          require("todo-comments").jump_next()
+        end,
+        desc = "[TODO] next todo comment",
+      },
+      {
+        "[t",
+        function()
+          require("todo-comments").jump_prev()
+        end,
+        desc = "[TODO] prev todo comment",
+      },
+    },
   },
 }
