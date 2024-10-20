@@ -60,7 +60,7 @@ return {
       {
         "<leader>k",
         function()
-          require("which-key").show { global = false }
+          require("which-key").show { global = true, ["local"] = true }
         end,
         desc = "[wk] Buffer Local Keymaps",
       },

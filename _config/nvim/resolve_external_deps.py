@@ -52,7 +52,9 @@ def install_sys():
                 pkg = tool
             cmd = install_sys_cmd_template[install_bin] + [pkg]
             print(f"-> {' '.join(cmd)}")
-            subprocess.call(cmd)
+            rc = subprocess.call(cmd)
+            if rc != 0:
+                print(f"rc={rc} when running {' '.join(cmd)}", file=sys.stderr)
         else:
             print(f"{tool} found: {fpath}")
 
@@ -78,7 +80,9 @@ def install_gopkgs():
         else:
             cmd = ["go", "install", v]
             print("-> " + " ".join(cmd))
-            subprocess.call(cmd)
+            rc = subprocess.call(cmd)
+            if rc != 0:
+                print(f"rc={rc} when running {' '.join(cmd)}", file=sys.stderr)
 
 
 if __name__ == "__main__":

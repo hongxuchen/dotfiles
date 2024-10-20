@@ -47,7 +47,7 @@ PREFIX = "_bak"
 # -----------------------------------------------------------------------------
 
 
-def _yn_choice(message: str, default="y") -> bool:
+def _yn_choice(message: str, default: str ="y") -> bool:
     choices = "Y/n" if default.lower() in ("y", "yes") else "y/N"
     choice = input(f"{message} ({choices})")
     values = ("y", "yes", "") if default == "y" else ("y", "yes")
