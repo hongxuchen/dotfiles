@@ -24,6 +24,7 @@ local function get_fpath_pair()
   local bufnr = api.nvim_get_current_buf()
   local fpath = api.nvim_buf_get_name(bufnr)
   local cwd = vim.uv.cwd()
+  assert(cwd, "cwd should exist")
   ---@type string
   local fname
   if fpath == cwd then

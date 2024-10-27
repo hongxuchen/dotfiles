@@ -1,6 +1,7 @@
 return {
 
   { "nvim-neotest/nvim-nio" },
+  { "nvim-lua/plenary.nvim", lazy = true },
 
   -- {
   --   "tibabit/vim-templates",
@@ -28,8 +29,6 @@ return {
       }
     end,
   },
-
-  { "nvim-lua/plenary.nvim", lazy = true },
 
   -- profiling
   { "dstein64/vim-startuptime", cmd = "StartupTime" },

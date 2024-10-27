@@ -20,12 +20,10 @@ if [[ $OSTYPE == "darwin"* ]] || [[ $OSTYPE == "freebsd"* ]]; then
     fi
 fi
 
-alias sudo='sudo -H '
-for cmd in apt docker; do
-    alias \$cmd="command sudo \$cmd"
-done
+# https://askubuntu.com/a/22043/15376
+# https://stackoverflow.com/a/257666/528929
+alias sudo='sudo env PATH=$PATH '
 
-alias yaml2json="python -c 'import sys, yaml, json; json.dump(yaml.load(open(sys.argv[1])), sys.stdout, indent=2)'"
 alias adl="aria2c -s16 -x16"
 
 alias ls='ls -F --color=auto'
@@ -36,8 +34,8 @@ alias lrt='ls -lrthF'
 alias ldot='ls -ld .*'
 alias sl='ls'
 
-alias vi="command nvim -u \$HOME/.config/nvim/simple.lua"
+alias vi="nvim -u \$HOME/.config/nvim/simple.lua"
 alias vim=vi
-alias vimdiff='nvim -d'
+alias nvimdiff='nvim -d'
 
 alias q='exit'
