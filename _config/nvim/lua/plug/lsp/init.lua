@@ -373,6 +373,7 @@ return {
   },
   {
     "pmizio/typescript-tools.nvim",
+    enabled = false,
     config = function()
       local conf = require("plug.lsp.conf")
       require("typescript-tools").setup {
