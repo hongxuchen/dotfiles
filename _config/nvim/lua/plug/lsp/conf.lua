@@ -25,11 +25,6 @@ end
 M.capabilities = M.make_capabilitites()
 
 function M.general_setup()
-  -- for type, icon in pairs(u.signs) do
-  --   local hl = "DiagnosticSign" .. type
-  --   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-  -- end
-
   local diagnostic_signs = {
     text = {
       [vim.diagnostic.severity.ERROR] = u.signs.Error,
@@ -91,9 +86,9 @@ function M.general_setup()
           return
         end
       end
-      vim.lsp.util.jump_to_location(result[1], client.offset_encoding, false)
+      vim.lsp.util.show_document(result[1], client.offset_encoding, { reuse_win = false, focus = true })
     else
-      vim.lsp.util.jump_to_location(result, client.offset_encoding, false)
+      vim.lsp.util.show_document(result, client.offset_encoding, { reuse_win = false, focus = true })
     end
   end
 
@@ -150,7 +145,7 @@ function M.on_attach(client, bufnr)
   -- FIXME: sometimes jumps to random position at first
   -- FIXME: sometimes out of location
   -- NOTE: handler is modified
-  u.keymap("n", "gd", vim.lsp.buf.definition, bufopts, "[lsp] go to definition")
+  u.keymap("n", "gd", t_builtin.lsp_definitions, bufopts, "[lsp] go to definition")
   u.keymap("n", "gi", t_builtin.lsp_implementations, bufopts, "[lsp] go to implementation")
   u.keymap("n", "gr", t_builtin.lsp_references, bufopts, "[lsp] go to references")
   -- u.keymap("n", "gr", vim.lsp.buf.references, bufopts, "[lsp] go to references")

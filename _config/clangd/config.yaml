@@ -11,5 +11,5 @@ Diagnostics:
         cppcoreguidelines-avoid-magic-numbers,
         modernize-use-trailing-return-type,
       ]
-  Index:
-    Background: Build
+  # Index:
+  #   Background: Build

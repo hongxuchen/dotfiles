@@ -107,7 +107,11 @@ function M.list_attached_buffers()
       null_ls = client
     end
     if not notified then
-      vim.notify(string.format("Only null-ls is attached (clientID=%d)", null_ls.id), vim.log.levels.INFO, {})
+      if null_ls == nil then
+        vim.notify("no language servers attached", vim.log.levels.WARN, {})
+      else
+        vim.notify(string.format("Only null-ls is attached (clientID=%d)", null_ls.id), vim.log.levels.INFO, {})
+      end
     end
   end
 end
