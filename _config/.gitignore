@@ -58,6 +58,7 @@ gnome-initial-setup-done
 gnome-mplayer/
 google-chrome/
 google-chrome-unstable/
+go/telemetry/
 gpicview/
 gtk-2.0/
 gtk-3.0
@@ -99,6 +100,8 @@ khelpcenterrc
 khotkeysrc
 khtml/
 kinfocenterrc
+kiorc
+kioslaverc
 klipperrc
 kmail2rc
 kmailsearchindexingrc
@@ -168,6 +171,7 @@ plasmarc
 plasmashellrc
 PlasmaUserFeedback
 plasma-welcomerc
+powerdevilrc
 powermanagementprofilesrc
 print-manager
 pulse/
@@ -214,6 +218,7 @@ texstudio/
 Thunar/
 totem/
 transmission/
+trashrc
 Trolltech.conf
 truffle/
 ulauncher/

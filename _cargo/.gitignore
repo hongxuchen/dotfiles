@@ -1,4 +1,6 @@
-bin/
-config
+.package-cache-mutate
+.global-cache
+config.toml
 env
 registry/
+bin/
