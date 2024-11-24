@@ -1,0 +1,10 @@
+[Desktop Entry]
+Terminal=false
+Type=Application
+Icon=$HOME/tools/v2rayN-linux-64/v2rayn.png
+Name=V2RayN
+Name[zh_CN]=V2RayN
+Exec=$HOME/tools/v2rayN-linux-64/v2rayN.Desktop
+NoDisplay=true
+X-systemd-skip=true
+OnlyShowIn=KDE

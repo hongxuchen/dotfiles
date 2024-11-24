@@ -28,6 +28,15 @@ return {
     { family = "Hasklug Nerd Font Mono", weight = "Regular", italic = false },
     { family = "CaskaydiaCove Nerd Font", weight = "Regular", italic = false },
   },
+  launch_menu = {
+    {
+      args = { 'btop'},
+    },
+    {
+      label = 'nushell',
+      args = {'nu', '-l'}
+    }
+  },
   keys = {
     {
       key = "f",
