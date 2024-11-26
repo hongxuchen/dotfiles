@@ -4,7 +4,7 @@ return {
     -- event = "UIEnter",
     event = "VeryLazy",
     dependencies = {
-      { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+      { "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = require("core.utils").not_win },
       { "nvim-telescope/telescope-ui-select.nvim" },
       -- https://github.com/nvim-telescope/telescope-file-browser.nvim/issues/53
       { "nvim-telescope/telescope-file-browser.nvim" },
@@ -188,7 +188,9 @@ return {
         },
       }
 
-      t.load_extension("fzf") -- fzf native sorting algorithm
+      if u.not_win then
+        t.load_extension("fzf") -- fzf native sorting algorithm
+      end
       t.load_extension("ui-select") -- resort ui-select to telescope
       t.load_extension("file_browser") -- file browsering
       t.load_extension("zoxide") -- zoxide extension

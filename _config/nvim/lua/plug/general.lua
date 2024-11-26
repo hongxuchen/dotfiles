@@ -30,6 +30,12 @@ return {
     end,
   },
 
+  {
+    "LhKipp/nvim-nu",
+    build = ":TSInstall nu",
+    opts = {},
+  },
+
   -- profiling
   { "dstein64/vim-startuptime", cmd = "StartupTime" },
 

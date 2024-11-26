@@ -10,12 +10,12 @@ M.null_ls_list = {
   -- git
   "gitlint",
   -- golang
-  "golangci-lint",
-  "gofumpt",
-  "goimports",
-  "gomodifytags",
-  "impl",
-  "revive",
+  -- "golangci-lint",
+  -- "gofumpt",
+  -- "goimports",
+  -- "gomodifytags",
+  -- "impl",
+  -- "revive",
   -- lua
   "stylua",
   -- javascript, typescript, vue, javascriptreact, typescriptreact
@@ -38,7 +38,7 @@ M.lsp_list = {
   "jsonls", -- json
   -- "clangd", -- C/C++
   "neocmake", -- cmake
-  "gopls", -- golang
+  -- "gopls", -- golang
   "basedpyright", -- python
   "rust_analyzer", -- rust
   "bashls", -- bash

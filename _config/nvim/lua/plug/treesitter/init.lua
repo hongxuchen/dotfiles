@@ -3,7 +3,7 @@ return {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
       { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
-      { "nushell/tree-sitter-nu", build = ":TSUpdate nu" },
+      -- { "nushell/tree-sitter-nu", build = ":TSUpdate nu" },
     },
     -- smart spellcheck requires treesitter, no lazy-load
     lazy = false,
@@ -94,6 +94,7 @@ return {
   },
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
+    cond = require("core.utils").not_win,
     config = function()
       require("ts_context_commentstring").setup {
         -- disabled with nvim-comment plugin
