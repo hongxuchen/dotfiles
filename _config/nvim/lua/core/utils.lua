@@ -41,13 +41,13 @@ M.myWarnGroup = M.ag("myWarnGroup", {
   clear = true,
 })
 
-M.not_win = uv.os_uname().sysname ~= 'Windows_NT'
-
 -- M.signs = { Error = "✘", Warn = "", Hint = "", Info = "" }
 -- M.signs = { Error = "❌", Warn = "🚨", Hint = "", Info = "󰙎" }
 M.signs = { Error = "", Warn = "", Hint = "", Info = "" }
 
 local uv = vim.uv
+
+M.not_win = uv.os_uname().sysname ~= 'Windows_NT'
 
 -- NOTE: this modifies the original value of opts it only adds desc (even in nil case), so no harm
 ---@param mode string

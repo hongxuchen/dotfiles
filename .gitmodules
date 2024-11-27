@@ -1,3 +1,6 @@
 [submodule "_omz/plugins/zsh-syntax-highlighting"]
 	path = _omz/plugins/zsh-syntax-highlighting
 	url = git@github.com:zsh-users/zsh-syntax-highlighting.git
+[submodule "_config/nushell"]
+	path = _config/nushell
+	url = ssh://git@github.com/hongxuchen/nu.git
