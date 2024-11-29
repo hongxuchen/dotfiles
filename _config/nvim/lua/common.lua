@@ -21,8 +21,8 @@ M.null_ls_list = {
   -- javascript, typescript, vue, javascriptreact, typescriptreact
   "eslint_d",
   -- python
-  "black",
-  "isort",
+  -- "black",
+  -- "isort",
   "ruff",
   -- "javascript", "javascriptreact", "typescript", "typescriptreact", "vue", "css", "scss", "less", "html", "json", "yaml", "markdown", "graphql"
   "prettier",

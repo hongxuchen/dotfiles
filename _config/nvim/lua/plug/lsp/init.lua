@@ -18,12 +18,6 @@ return {
           code_actions["impl"],
           formatting["gofumpt"],
           formatting["goimports"],
-          --- python
-          -- pyright does not provide support for formatting, so we use black/isort/ruff
-          -- diagnostics["ruff"], -- FIXME: none-ls
-          formatting["black"],
-          formatting["isort"],
-          -- formatting["ruff"],  -- FIXME: none-ls
           --- lua
           formatting["stylua"],
           -- javascript(react), typescript(react), vue
@@ -235,15 +229,18 @@ return {
         },
       }
 
+      --- python settings
       -- prefer `pyproject.toml` to configure per project
       lspconfig["basedpyright"].setup {
         root_dir = lspconfig.util.root_pattern("pyproject.toml"),
         basedright = {
           analysis = {
             diagnosticMode = "openFilesOnly",
+            autoSearchPaths = true,
+            useLibraryCodeForTypes = true,
           },
         },
-        -- pyright-specific
+        -- basedpyright-specific
         handlers = {
           -- https://github.com/hrsh7th/nvim-cmp/issues/685#issuecomment-1002924899
           -- https://github.com/neovim/nvim-lspconfig/issues/726#issuecomment-1075539112
@@ -267,6 +264,8 @@ return {
           },
         },
       }
+      lspconfig.ruff.setup({})
+
     end,
   },
 
