@@ -11,6 +11,9 @@ local font_size
 if wezterm.target_triple == "x86_64-pc-windows-msvc" then
   default_prog = { "pwsh.exe", "-NoLogo" }
   font_size = 12.0
+elseif wezterm.hostname() == "debian" then
+  default_prog = { "nu" }
+  font_size = 11.0
 else
   default_prog = { "zsh" }
   font_size = 11.0

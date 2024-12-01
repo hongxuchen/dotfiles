@@ -65,7 +65,7 @@ return {
           include_match_words = true,
         },
         highlight = {
-          enable = false,
+          enable = true,
           additional_vim_regex_highlighting = false,
           disable = function(lang, buf)
             if vim.list_contains(ignored_langs, lang) then
