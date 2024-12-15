@@ -60,20 +60,18 @@ gcd() {
     tmpf=$(mktemp)
     root=$(git rev-parse --show-toplevel 2>"$tmpf")
     rc=$?
-    set +x
-    if [[ $rc -eq 128 ]]; then
+    if [[ $rc -ne 0 ]]; then
         errmsg=$(<$tmpf)
         _str_contains "$errmsg"  "not a git repository"
         not_in_git=$?
         if [[ $not_in_git ]]; then
             echo "not in git: $PWD"
-            return $rc
         else
             echo "??? $errmsg"
-            return 1
         fi
+        return $rc
     else
-        cd "$root" || return 1
+        cd "${root}"
     fi
 }
 
