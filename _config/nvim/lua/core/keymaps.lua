@@ -24,14 +24,6 @@ u.keymap("n", "<leader>c", ":tab terminal ", { noremap = true }, "[vim] run exte
 u.keymap("n", "<leader>qc", "<Cmd>cclose<CR>", u.opts, "[vim] close quickfix")
 u.keymap("n", "<leader>ql", "<Cmd>lclose<CR>", u.opts, "[vim] close loclist")
 
-u.keymap("n", "dd", function()
-  local line = vim.api.nvim_get_current_line()
-  if line:match("^%s*$") then
-    return '"_dd'
-  end
-  return "dd"
-end, u.expr_opts, "[vim] sane delete lines")
-
 --- insert-mode
 u.keymap("i", "<C-a>", "<C-o>0", u.opts, "[vim] go to line start")
 u.keymap("i", "<C-e>", "<C-o>$", u.opts, "[vim] go to line end")

@@ -20,6 +20,8 @@ else
 end
 
 return {
+  check_for_updates = false,
+  check_for_updates_interval_seconds = 86400,
   -- color_scheme = "Monokai Soda",
   -- color_scheme = "Dracula",
   color_scheme = "Gruvbox dark, hard (base16)",
