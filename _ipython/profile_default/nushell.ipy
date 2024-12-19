@@ -1,0 +1,6 @@
+%alias ls ls
+%alias ll ls -l
+%unalias ldir
+%unalias lx
+%unalias lf
+%unalias lk

@@ -53,22 +53,21 @@ from collections import *
 from itertools import *
 from xml.etree.ElementTree import Element, SubElement, tostring
 
-# import time
+import time
 # import datetime
 # import calendar
-# import locale
+import locale
 # import pytz
-import arrow
-import lxml
-import ply.lex
-import psutil
-import pycparser
-import requests
-import yaml
+# import arrow
+# import lxml
+# import ply.lex
+# import psutil
+# import pycparser
+# import requests
+# import yaml
 
-# import shlex
-import zmq
-
+import shlex
+# import zmq
 
 def my_trim_whitespace(s):
     """
