@@ -1,9 +1,9 @@
 return {
   "saghen/blink.cmp",
-  enabled = false,
+  enabled = true,
   lazy = false, -- lazy loading handled internally
   -- optional: provides snippets for the snippet source
-  dependencies = "rafamadriz/friendly-snippets",
+  dependencies = { "rafamadriz/friendly-snippets", "L3MON4D3/LuaSnip", "Saghen/blink.compat" },
 
   -- use a release tag to download pre-built binaries
   version = "v0.*",
@@ -11,20 +11,64 @@ return {
   -- build = 'cargo build --release',
 
   opts = {
-    highlight = {
+    snippets = {
+      expand = function(snippet)
+        require("luasnip").lsp_expand(snippet)
+      end,
+      active = function(filter)
+        if filter and filter.direction then
+          return require("luasnip").jumpable(filter.direction)
+        end
+        return require("luasnip").in_snippet()
+      end,
+      jump = function(direction)
+        require("luasnip").jump(direction)
+      end,
+    },
+    appearance = {
       -- sets the fallback highlight groups to nvim-cmp's highlight groups
       -- useful for when your theme doesn't support blink.cmp
       -- will be removed in a future release, assuming themes add support
-      use_nvim_cmp_as_default = true,
+      use_nvim_cmp_as_default = false,
+      -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+      -- adjusts spacing to ensure icons are aligned
+      nerd_font_variant = "mono",
     },
-    -- set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
-    -- adjusts spacing to ensure icons are aligned
-    nerd_font_variant = "normal",
-
-    -- experimental auto-brackets support
-    -- accept = { auto_brackets = { enabled = true } }
+    completion = {
+      accept = {
+        -- experimental auto-brackets support
+        auto_brackets = {
+          enabled = true,
+        },
+      },
+      menu = {
+        draw = {
+          treesitter = { "lsp" },
+        },
+      },
+      documentation = {
+        auto_show = true,
+        auto_show_delay_ms = 200,
+      },
+      ghost_text = {
+        enabled = vim.g.ai_cmp,
+      },
+    },
 
     -- experimental signature help support
-    -- trigger = { signature_help = { enabled = true } }
+    -- signature = { enabled = true },
+
+    sources = {
+      -- adding any nvim-cmp sources here will enable them
+      -- with blink.compat
+      -- compat = {},
+      default = { "lsp", "path", "snippets", "buffer" },
+      cmdline = {},
+    },
+
+    keymap = {
+      preset = "enter",
+      ["<C-y>"] = { "select_and_accept" },
+    },
   },
 }
