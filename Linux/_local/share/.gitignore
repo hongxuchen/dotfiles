@@ -44,6 +44,7 @@ io.parity.ethereum
 JetBrains/
 jupyter/
 kactivitymanagerd/
+kactivitymanagerd-bak/
 kate/
 katebtbrowser/
 kcookiejar/
@@ -60,6 +61,7 @@ knewstuff3/
 konqueror/
 konsole/
 korganizer/
+krita/
 krunnerstaterc
 kscreen/
 ktnef/
@@ -70,6 +72,7 @@ lf/
 libgda/
 libisabelle/
 *.list
+localsend_app/
 ## main...origin/main
 man
 Meltytech/
@@ -100,6 +103,7 @@ session_migration-*
 sounds/
 Steam/
 TabNine/
+TelegramDesktop/
 Trash/
 ubuntu-amazon-default/
 ulauncher/
@@ -112,6 +116,7 @@ vlc/
 vulkan/
 webkit/
 webkitgtk/
+wezterm/
 xfce4/
 xmake/
 xonsh/*.json
@@ -123,4 +128,3 @@ zellij/
 zoxide/
 zsh/
 zsh-completion/
-wezterm/
