@@ -9,26 +9,6 @@ my_vim_startup_time() {
     rm "${profile_fname}"
 }
 
-# utility function for nvim
-# v () {
-#     if (( ${+MY_NVIM_LISTEN_ADDRESS} )); then
-#         if [ -S $MY_NVIM_LISTEN_ADDRESS ]; then
-#             if [ "$#" -lt 1 ]; then
-#                 echo "usage: $0 \$FILE"
-#                 return 1
-#             fi
-#             fname=$(realpath $1)
-#             command nvim --server "$MY_NVIM_LISTEN_ADDRESS" --remote "$fname"
-#             echo "Attaching existing nvim: [$fname]"
-#         else
-#             command nvim --listen "$MY_NVIM_LISTEN_ADDRESS" "$@"
-#         fi
-#     else
-#         echo "\$MY_NVIM_LISTEN_ADDRESS unset"
-#         return 2
-#     fi
-# }
-
 my_zshreload() {
     autoload -Uz compinit zrecompile
     compinit -d "${ZSH_CACHE_DIR}/zcomp-$HOST"
