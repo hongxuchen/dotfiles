@@ -13,6 +13,12 @@ fzf.setup {
     row = 0.5,
     col = 0.5,
     boder = "none",
+    preview = { default = "bat_native" },
+  },
+  fzf_opts = { ['--ansi'] = false },
+  files = {
+    git_icons = false,
+    file_icons = false,
   },
 }
 

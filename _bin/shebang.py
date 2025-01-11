@@ -36,11 +36,7 @@ def change_shebang(fpath: str, target: str, chmod):
         fext = os.path.splitext(fpath)[1]
         if fext == "":
             print(
-                "{}no extension found for [{}], treated as a shell script{}".format(
-                    colorama.Fore.YELLOW,
-                    fpath,
-                    colorama.Fore.RESET,
-                ),
+                f"{colorama.Fore.YELLOW}no extension found for [{fpath}], treated as a shell script{colorama.Fore.RESET}",
             )
             fext = ".sh"
         try:
@@ -107,12 +103,7 @@ if __name__ == "__main__":
     if args.verbose:
         colorama.init()
         print(
-            "target: {2} {0}\n{3}files:\n\t{2}{1}".format(
-                args.target,
-                args.file_list,
-                colorama.Fore.YELLOW,
-                colorama.Fore.RESET,
-            ),
+            f"target: {colorama.Fore.YELLOW} {args.target}\n{colorama.Fore.RESET}files:\n\t{colorama.Fore.YELLOW}{args.file_list}",
         )
     for f in args.file_list:
         change_shebang(f, args.target, args.x)
