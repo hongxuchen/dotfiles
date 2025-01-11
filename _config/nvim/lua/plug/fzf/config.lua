@@ -69,15 +69,6 @@ end, { desc = "fzf workspace symbols" })
 vim.keymap.set({ "n" }, "gm", function()
   fzf.lsp_document_symbols()
 end, { desc = "fzf document symbols" })
-vim.api.nvim_create_user_command("Autocmd", function()
-  fzf.autocmds()
-end, { desc = "fzf autocmds list" })
-vim.api.nvim_create_user_command("Maps", function()
-  fzf.keymaps()
-end, { desc = "fzf maps list" })
-vim.api.nvim_create_user_command("Highlights", function()
-  fzf.highlights()
-end, { desc = "fzf highlights list" })
 
 --- custom fzf pickers
 local builtin = require("fzf-lua.previewer.builtin")
@@ -96,7 +87,7 @@ function EnvPreviewer:populate_preview_buf(entry_str)
     " " .. entry,
   })
   self:set_preview_buf(tmpbuf)
-  self.win:update_scrollbar()
+  -- self.win:update_scrollbar()
 end
 
 function EnvPreviewer:gen_winopts()
