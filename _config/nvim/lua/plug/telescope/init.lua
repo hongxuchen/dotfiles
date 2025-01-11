@@ -199,9 +199,6 @@ return {
       -- don't use git-ls-files for project-wide file search
       local find_file_cmd = { "rg", "--files", "--color", "never", "--hidden", "-g", "!.git", "-g", "!.cache" }
 
-      u.keymap("n", "<leader>bb", function()
-        builtin.buffers { ignore_current_buffer = true }
-      end, u.opts, "[telescope] search buffers")
       u.keymap("n", "<leader>bf", builtin.current_buffer_fuzzy_find, u.opts, "[telescope] fuzzy find str in cur buffer")
       u.keymap("n", "<leader>dd", function()
         t.extensions.live_grep_args.live_grep_args()
@@ -213,24 +210,6 @@ return {
         lga.grep_word_under_cursor { big = true }
       end, u.opts, "[telescope] grep cur STR in cur dir")
       u.keymap("n", "<leader>e", t.extensions.file_browser.file_browser, u.opts, "explore file browser")
-      u.keymap("n", "<leader>f", function()
-        builtin.find_files {
-          find_command = find_file_cmd,
-        }
-      end, u.opts, "[telescope] find files in cur dir")
-      u.keymap("n", "<leader>g", builtin.git_status, u.opts, "[telescope] git status")
-      u.keymap("n", "<leader>h", builtin.help_tags, u.opts, "[telescope] search help tags")
-      u.keymap("n", "<leader>m", function()
-        builtin.man_pages { sections = { "ALL" } }
-      end, u.opts, "[telescope] search man_pages")
-      u.keymap("n", "<leader>o", builtin.oldfiles, u.opts, "[telescope] find old files")
-      u.keymap("n", "<leader>r", builtin.resume, u.opts, "[telescope] resume last picker")
-      u.keymap("n", "<leader>ww", function()
-        builtin.find_files {
-          cwd = u.get_workspace_root(),
-          find_command = find_file_cmd,
-        }
-      end, u.opts, "search files in workspace")
       u.keymap("n", "<leader>wd", function()
         t.extensions.live_grep_args.live_grep_args {
           search_dirs = { u.get_workspace_root() },
@@ -242,9 +221,6 @@ return {
       u.keymap("n", "<leader>wS", function()
         lga.grep_word_under_cursor { search_dirs = { u.get_workspace_root() }, big = true }
       end, u.opts, "[telescope] grep cur STR in workspace")
-      u.keymap("n", "<leader><leader>", function()
-        builtin.builtin { include_extensions = true }
-      end, u.opts, "[telescope] run builtin pickers")
       u.keymap("n", "<leader>ll", "<Cmd>Telescope lazy<CR>", u.opts, "[telescope] navigate to lazy plugins")
       u.keymap("n", "<leader>lf", ":Tlocate ", { noremap = true }, "[telescope] locate files")
       u.keymap("n", "<leader>z", t.extensions.zoxide.list, u.opts, "[telescope] search recent directories")

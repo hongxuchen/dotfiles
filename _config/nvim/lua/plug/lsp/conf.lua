@@ -82,7 +82,7 @@ function M.general_setup()
       local lnum, filename = results[1].lnum, results[1].filename
       for _, val in pairs(results) do
         if val.lnum ~= lnum or val.filename ~= filename then
-          require("telescope.builtin").lsp_definitions()
+          require("fzf-lua").lsp_definitions()
           return
         end
       end
@@ -136,7 +136,7 @@ function M.on_attach(client, bufnr)
     end
   end
 
-  local t_builtin = require("telescope.builtin")
+  local fzf = require("fzf-lua")
 
   local bufopts = u.buf_opts(bufnr)
   -- format with =
@@ -145,11 +145,11 @@ function M.on_attach(client, bufnr)
   -- FIXME: sometimes jumps to random position at first
   -- FIXME: sometimes out of location
   -- NOTE: handler is modified
-  u.keymap("n", "gd", t_builtin.lsp_definitions, bufopts, "[lsp] go to definition")
-  u.keymap("n", "gi", t_builtin.lsp_implementations, bufopts, "[lsp] go to implementation")
-  u.keymap("n", "gr", t_builtin.lsp_references, bufopts, "[lsp] go to references")
+  u.keymap("n", "gd", fzf.lsp_definitions, bufopts, "[lsp] go to definition")
+  u.keymap("n", "gi", fzf.lsp_implementations, bufopts, "[lsp] go to implementation")
+  u.keymap("n", "gr", fzf.lsp_references, bufopts, "[lsp] go to references")
   -- u.keymap("n", "gr", vim.lsp.buf.references, bufopts, "[lsp] go to references")
-  u.keymap("n", "<localleader>gt", t_builtin.lsp_type_definitions, bufopts, "[lsp] go to type definition")
+  u.keymap("n", "<localleader>gt", fzf.lsp_typedefs, bufopts, "[lsp] go to type definition")
   u.keymap("n", "K", vim.lsp.buf.hover, bufopts, "[lsp] get hover")
   u.keymap("i", "<C-s>", vim.lsp.buf.signature_help, bufopts, "[lsp] get signature help")
 
@@ -157,8 +157,8 @@ function M.on_attach(client, bufnr)
   -- u.keymap("n", "[d", vim.diagnostic.goto_prev, bufopts, "[vim] go to previous diagnostic")
   -- u.keymap("n", "]d", vim.diagnostic.goto_next, bufopts, "[vim] go to next diagnostic")
 
-  u.keymap("n", "<localleader>ci", t_builtin.lsp_incoming_calls, bufopts, "[lsp] go to incoming_calls")
-  u.keymap("n", "<localleader>co", t_builtin.lsp_outgoing_calls, bufopts, "[lsp] go to outgoing_calls")
+  u.keymap("n", "<localleader>ci", fzf.lsp_incoming_calls, bufopts, "[lsp] go to incoming_calls")
+  u.keymap("n", "<localleader>co", fzf.lsp_outgoing_calls, bufopts, "[lsp] go to outgoing_calls")
   u.keymap("n", "<localleader>ca", vim.lsp.buf.code_action, bufopts, "[lsp] code action")
   u.keymap("n", "<localleader>cf", function()
     vim.lsp.buf.format { async = true }
@@ -169,18 +169,18 @@ function M.on_attach(client, bufnr)
   u.keymap("n", "<localleader>if", vim.diagnostic.open_float, bufopts, "[vim] open a float window about a diagnostic")
   u.keymap("n", "<localleader>ic", vim.diagnostic.setloclist, bufopts, "[vim] show diagnostics in loclist")
   u.keymap("n", "<localleader>id", function()
-    t_builtin.diagnostics { bufnr = 0 }
-  end, bufopts, "[vim] show diagnostics in telescope")
+    fzf.diagnostics_document { bufnr = 0 }
+  end, bufopts, "[vim] show current doc's diagnostics")
 
   u.keymap("n", "<localleader>ws", function()
-    t_builtin.lsp_workspace_symbols { query = u.word_under_cursor() }
+    fzf.lsp_workspace_symbols { query = u.word_under_cursor() }
   end, bufopts, "[lsp] search current symbol in workspace")
   u.keymap(
     "n",
     "<localleader>wd",
-    t_builtin.lsp_dynamic_workspace_symbols,
+    fzf.lsp_live_workspace_symbols,
     bufopts,
-    "[lsp] search dynamic workspace symbol"
+    "[lsp] search live workspace symbol"
   )
   u.keymap("n", "<localleader>wl", function()
     vim.print(vim.lsp.buf.list_workspace_folders())

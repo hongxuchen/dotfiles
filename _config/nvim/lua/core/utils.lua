@@ -47,7 +47,7 @@ M.signs = { Error = "", Warn = "", Hint = "", Info = "" }
 
 local uv = vim.uv
 
-M.not_win = uv.os_uname().sysname ~= 'Windows_NT'
+M.not_win = uv.os_uname().sysname ~= "Windows_NT"
 
 -- NOTE: this modifies the original value of opts it only adds desc (even in nil case), so no harm
 ---@param mode string
@@ -70,7 +70,7 @@ M.en_dict = vim.o.dictionary
 ---@param big boolean?
 ---@return string
 function M.word_under_cursor(big)
----@diagnostic disable-next-line: return-type-mismatch
+  ---@diagnostic disable-next-line: return-type-mismatch
   return big and vim.fn.expand("<cWORD>") or vim.fn.expand("<cword>")
 end
 
@@ -441,6 +441,16 @@ function M.is_vtruncated(height, global)
   local current_height = (global and vim.api.nvim_get_option_value("lines", { scope = "global" }))
     or vim.api.nvim_win_get_height(0)
   return current_height <= height
+end
+
+-- whether the value is in list
+function M.is_in_list(value, list)
+  for _, v in pairs(list) do
+    if v == value then
+      return true
+    end
+  end
+  return false
 end
 
 -- get git repo root dir (or nil)
