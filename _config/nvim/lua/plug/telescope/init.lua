@@ -1,15 +1,13 @@
 return {
   {
     "nvim-telescope/telescope.nvim",
-    -- event = "UIEnter",
     event = "VeryLazy",
     dependencies = {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = require("core.utils").not_win },
-      { "nvim-telescope/telescope-ui-select.nvim" },
+      -- { "nvim-telescope/telescope-ui-select.nvim" },
       -- https://github.com/nvim-telescope/telescope-file-browser.nvim/issues/53
       { "nvim-telescope/telescope-file-browser.nvim" },
       { "nvim-telescope/telescope-symbols.nvim" },
-      { "nvim-telescope/telescope-live-grep-args.nvim" },
       { "jvgrootveld/telescope-zoxide" },
       { "tsakirist/telescope-lazy.nvim" },
     },
@@ -19,7 +17,6 @@ return {
       local t = require("telescope")
       local builtin = require("telescope.builtin")
       local actions = require("telescope.actions")
-      local lga = require("plug.telescope.grep")
       require("plug.telescope.customize")
 
       local vimgrep_arguments = {
@@ -175,23 +172,13 @@ return {
               yaml = true,
             },
           },
-          live_grep_args = {
-            auto_quoting = true, -- enable/disable auto-quoting
-            -- define mappings, e.g.
-            mappings = { -- extend mappings
-              i = {
-                ["<C-k>"] = require("telescope-live-grep-args.actions").quote_prompt(),
-                ["<C-i>"] = require("telescope-live-grep-args.actions").quote_prompt { postfix = " --iglob " },
-              },
-            },
-          },
         },
       }
 
       if u.not_win then
         t.load_extension("fzf") -- fzf native sorting algorithm
       end
-      t.load_extension("ui-select") -- resort ui-select to telescope
+      -- t.load_extension("ui-select") -- resort ui-select to telescope
       t.load_extension("file_browser") -- file browsering
       t.load_extension("zoxide") -- zoxide extension
       t.load_extension("lazy") -- lazy plugin navigation
@@ -203,32 +190,15 @@ return {
       u.keymap("n", "<leader>dd", function()
         t.extensions.live_grep_args.live_grep_args()
       end, u.opts, "[telescope] live grep in cur dir")
-      u.keymap("n", "<leader>ds", function()
-        lga.grep_word_under_cursor()
-      end, u.opts, "[telescope] grep cur str in cur dir")
-      u.keymap("n", "<leader>ds", function()
-        lga.grep_word_under_cursor { big = true }
-      end, u.opts, "[telescope] grep cur STR in cur dir")
       u.keymap("n", "<leader>e", t.extensions.file_browser.file_browser, u.opts, "explore file browser")
       u.keymap("n", "<leader>wd", function()
         t.extensions.live_grep_args.live_grep_args {
           search_dirs = { u.get_workspace_root() },
         }
       end, u.opts, "[telescope] live grep in workspace")
-      u.keymap("n", "<leader>ws", function()
-        lga.grep_word_under_cursor { search_dirs = { u.get_workspace_root() } }
-      end, u.opts, "[telescope] grep cur str in workspace")
-      u.keymap("n", "<leader>wS", function()
-        lga.grep_word_under_cursor { search_dirs = { u.get_workspace_root() }, big = true }
-      end, u.opts, "[telescope] grep cur STR in workspace")
       u.keymap("n", "<leader>ll", "<Cmd>Telescope lazy<CR>", u.opts, "[telescope] navigate to lazy plugins")
       u.keymap("n", "<leader>lf", ":Tlocate ", { noremap = true }, "[telescope] locate files")
       u.keymap("n", "<leader>z", t.extensions.zoxide.list, u.opts, "[telescope] search recent directories")
-
-      -- visual/select mode FIXME: not working
-      u.keymap("v", "<leader>ws", function()
-        lga.grep_visual_selection { search_dirs = { u.get_workspace_root() } }
-      end, u.opts, "[telescope] grep cur string in workspace")
     end,
   },
 }

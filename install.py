@@ -7,7 +7,6 @@ import platform
 import shutil
 import sys
 
-
 class FileInfo(object):
     def __init__(self, src: str, dst: str, bak: str):
         self.src: str = src

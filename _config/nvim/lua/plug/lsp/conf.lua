@@ -171,6 +171,9 @@ function M.on_attach(client, bufnr)
   u.keymap("n", "<localleader>id", function()
     fzf.diagnostics_document { bufnr = 0 }
   end, bufopts, "[vim] show current doc's diagnostics")
+  u.keymap("n", "<localleader>iw", function()
+    fzf.diagnostics_workspace { bufnr = 0 }
+  end, bufopts, "[vim] show workspace's diagnostics")
 
   u.keymap("n", "<localleader>ws", function()
     fzf.lsp_workspace_symbols { query = u.word_under_cursor() }

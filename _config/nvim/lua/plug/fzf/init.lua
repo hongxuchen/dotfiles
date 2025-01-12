@@ -3,6 +3,6 @@ return {
   dependencies = { "nvim-tree/nvim-web-devicons" },
   opts = {},
   config = function()
-    require("plug.fzf.config")
+    require("plug.fzf.conf")
   end,
 }

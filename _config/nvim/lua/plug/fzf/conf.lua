@@ -3,8 +3,6 @@ if not ok then
   return
 end
 
-local symbols_exclude = { "Variable", "String", "Number", "Text", "Boolean" }
-
 fzf.setup {
   { "telescope", "fzf-native" },
   winopts = {
@@ -12,21 +10,25 @@ fzf.setup {
     width = 0.95,
     row = 0.5,
     col = 0.5,
-    boder = "none",
-    preview = { default = "bat_native" },
+    border = "single",
+    preview = { default = "bat_native", border = "rounded" },
   },
-  fzf_opts = { ['--ansi'] = false },
+  fzf_opts = { ["--ansi"] = true },
   files = {
-    git_icons = false,
+    git_icons = true,
     file_icons = false,
   },
 }
 
+fzf.register_ui_select()
+
+local ations = fzf.actions
+
 local u = require("core.utils")
 
-vim.keymap.set({ "n", "v", "i" }, "<C-x><C-f>", function()
+u.keymap({ "n", "v", "i" }, "<C-x><C-f>", function()
   require("fzf-lua").complete_path()
-end, { silent = true, desc = "[fzf] Fuzzy complete path" })
+end, u.opts, "[fzf] Fuzzy complete path")
 
 u.keymap("n", "<leader>f", function()
   fzf.files()
@@ -37,6 +39,12 @@ u.keymap("n", "<leader>ww", function()
     cwd = u.get_workspace_root(),
   }
 end, u.opts, "[fzf] find files in workspace")
+
+u.keymap("n", "<leader>wl", fzf.live_grep_native, u.opts, "[fzf] live grep in workspace")
+
+u.keymap("n", "<leader>ws", fzf.grep_cword, u.opts, "[fzf] grep cur word in workspace")
+u.keymap("n", "<leader>wS", fzf.grep_cword, u.opts, "[fzf] grep cur WORD in workspace")
+u.keymap("v", "<leader>ws", fzf.grep_visual, u.opts, "[fzf] visual grep cur word in workspace")
 
 u.keymap("n", "<leader>m", function()
   fzf.manpages {}

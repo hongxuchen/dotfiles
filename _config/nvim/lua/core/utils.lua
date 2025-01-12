@@ -50,7 +50,7 @@ local uv = vim.uv
 M.not_win = uv.os_uname().sysname ~= "Windows_NT"
 
 -- NOTE: this modifies the original value of opts it only adds desc (even in nil case), so no harm
----@param mode string
+---@param mode string | string[]
 ---@param lhs string
 ---@param rhs function | string
 ---@param opts table<string, any>
