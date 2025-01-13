@@ -1,7 +1,4 @@
-local ok, fzf = pcall(require, "fzf-lua")
-if not ok then
-  return
-end
+local fzf = require("fzf-lua")
 
 fzf.setup {
   { "telescope", "fzf-native" },
@@ -12,17 +9,24 @@ fzf.setup {
     col = 0.5,
     border = "single",
     preview = { default = "bat_native", border = "rounded" },
+    treesitter = false,
   },
-  fzf_opts = { ["--ansi"] = true },
+  fzf_opts = { ["--ansi"] = true, ["--cycle"] = true },
+  defaults = {
+    file_icons = false,
+  },
   files = {
     git_icons = true,
-    file_icons = false,
+  },
+  manpages = {
+    previewer = "man_native",
+  },
+  helptags = {
+    previewer = "help_native",
   },
 }
 
 fzf.register_ui_select()
-
-local ations = fzf.actions
 
 local u = require("core.utils")
 
@@ -40,11 +44,27 @@ u.keymap("n", "<leader>ww", function()
   }
 end, u.opts, "[fzf] find files in workspace")
 
-u.keymap("n", "<leader>wl", fzf.live_grep_native, u.opts, "[fzf] live grep in workspace")
+u.keymap("n", "<leader>bf", fzf.grep_curbuf, u.opts, "[fzf] live grep in cur buffer")
 
-u.keymap("n", "<leader>ws", fzf.grep_cword, u.opts, "[fzf] grep cur word in workspace")
-u.keymap("n", "<leader>wS", fzf.grep_cword, u.opts, "[fzf] grep cur WORD in workspace")
-u.keymap("v", "<leader>ws", fzf.grep_visual, u.opts, "[fzf] visual grep cur word in workspace")
+u.keymap("n", "<leader>ws", function()
+  fzf.grep_cword { cwd = u.get_workspace_root() }
+end, u.opts, "[fzf] grep cur word in workspace")
+u.keymap("n", "<leader>wS", function()
+  fzf.grep_cword { cwd = u.get_workspace_root() }
+end, u.opts, "[fzf] grep cur WORD in workspace")
+u.keymap("v", "<leader>ws", function()
+  fzf.grep_visual { cwd = u.get_workspace_root() }
+end, u.opts, "[fzf] visual grep cur word in workspace")
+
+u.keymap("n", "<leader>ds", function()
+  fzf.grep_cword { cwd = vim.uv.cwd() }
+end, u.opts, "[fzf] grep cur word in cur dir")
+u.keymap("n", "<leader>dS", function()
+  fzf.grep_cword { cwd = vim.uv.cwd() }
+end, u.opts, "[fzf] grep cur WORD in cur dir")
+u.keymap("v", "<leader>ds", function()
+  fzf.grep_visual { cwd = vim.uv.cwd() }
+end, u.opts, "[fzf] visual grep cur word in cur dir")
 
 u.keymap("n", "<leader>m", function()
   fzf.manpages {}
@@ -61,83 +81,8 @@ end, u.opts, "[fzf] search buffers")
 
 u.keymap("n", '<leader>"', fzf.registers, u.opts, "[fzf] show registers content")
 
+u.keymap("n", "<leader>tl", fzf.tabs, u.opts, "[fzf] open buffers in tabs")
+
 u.keymap("n", "<leader><leader>", function()
   fzf.builtin {}
 end, u.opts, "[fzf] run builtin pickers")
-
-vim.keymap.set({ "n" }, "<leader>gB", function()
-  if require("core.utils").get_git_root() ~= nil then
-    fzf.git_branches()
-  else
-    vim.notify("not a git repository", vim.log.levels.WARN)
-  end
-end, { desc = "fzf git branches" })
-vim.keymap.set({ "n" }, "<C-m>", function()
-  vim.ui.input({ prompt = "search symbol: " }, function(sym)
-    if not sym or sym == "" then
-      return
-    end
-    fzf.lsp_workspace_symbols { lsp_query = sym }
-  end)
-end, { desc = "fzf workspace symbols" })
-vim.keymap.set({ "n" }, "gm", function()
-  fzf.lsp_document_symbols()
-end, { desc = "fzf document symbols" })
-
---- custom fzf pickers
-local builtin = require("fzf-lua.previewer.builtin")
-local EnvPreviewer = builtin.base:extend()
-
-function EnvPreviewer:new(o, opts, fzf_win)
-  EnvPreviewer.super.new(self, o, opts, fzf_win)
-  setmetatable(self, EnvPreviewer)
-  return self
-end
-
-function EnvPreviewer:populate_preview_buf(entry_str)
-  local tmpbuf = self:get_tmp_buffer()
-  local entry = vim.system({ "printenv", entry_str }, { text = true }):wait().stdout:gsub("[\n\r]", " ")
-  vim.api.nvim_buf_set_lines(tmpbuf, 0, -1, false, {
-    " " .. entry,
-  })
-  self:set_preview_buf(tmpbuf)
-  -- self.win:update_scrollbar()
-end
-
-function EnvPreviewer:gen_winopts()
-  local new_winopts = {
-    wrap = true,
-    number = false,
-  }
-  return vim.tbl_extend("force", self.winopts, new_winopts)
-end
-
-local function printenv()
-  local cmd = "printenv | cut -d= -f1"
-  local opts = {
-    prompt = ":",
-    previewer = EnvPreviewer,
-    hls = { cursorline = "" },
-    winopts = {
-      title = " env variables ",
-      title_pos = "center",
-      height = 0.4,
-      preview = {
-        hidden = "nohidden",
-        horizontal = "down:5%",
-      },
-    },
-    actions = {
-      ["default"] = function(selected)
-        vim.notify(
-          vim.system({ "printenv", selected[1] }, { text = true }):wait().stdout:gsub("[\n\r]", " "),
-          vim.log.levels.INFO,
-          { ft = "bash" }
-        )
-      end,
-    },
-  }
-  fzf.fzf_exec(cmd, opts)
-end
-
-vim.api.nvim_create_user_command("Env", printenv, {})

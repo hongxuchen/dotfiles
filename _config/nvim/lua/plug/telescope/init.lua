@@ -183,13 +183,6 @@ return {
       t.load_extension("zoxide") -- zoxide extension
       t.load_extension("lazy") -- lazy plugin navigation
 
-      -- don't use git-ls-files for project-wide file search
-      local find_file_cmd = { "rg", "--files", "--color", "never", "--hidden", "-g", "!.git", "-g", "!.cache" }
-
-      u.keymap("n", "<leader>bf", builtin.current_buffer_fuzzy_find, u.opts, "[telescope] fuzzy find str in cur buffer")
-      u.keymap("n", "<leader>dd", function()
-        t.extensions.live_grep_args.live_grep_args()
-      end, u.opts, "[telescope] live grep in cur dir")
       u.keymap("n", "<leader>e", t.extensions.file_browser.file_browser, u.opts, "explore file browser")
       u.keymap("n", "<leader>wd", function()
         t.extensions.live_grep_args.live_grep_args {

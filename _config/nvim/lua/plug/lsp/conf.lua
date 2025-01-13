@@ -147,7 +147,9 @@ function M.on_attach(client, bufnr)
   -- NOTE: handler is modified
   u.keymap("n", "gd", fzf.lsp_definitions, bufopts, "[lsp] go to definition")
   u.keymap("n", "gi", fzf.lsp_implementations, bufopts, "[lsp] go to implementation")
-  u.keymap("n", "gr", fzf.lsp_references, bufopts, "[lsp] go to references")
+  u.keymap("n", "gr", function()
+    fzf.lsp_references { includeDeclaration = false, ignore_current_line = true }
+  end, bufopts, "[lsp] go to references")
   -- u.keymap("n", "gr", vim.lsp.buf.references, bufopts, "[lsp] go to references")
   u.keymap("n", "<localleader>gt", fzf.lsp_typedefs, bufopts, "[lsp] go to type definition")
   u.keymap("n", "K", vim.lsp.buf.hover, bufopts, "[lsp] get hover")
@@ -178,13 +180,7 @@ function M.on_attach(client, bufnr)
   u.keymap("n", "<localleader>ws", function()
     fzf.lsp_workspace_symbols { query = u.word_under_cursor() }
   end, bufopts, "[lsp] search current symbol in workspace")
-  u.keymap(
-    "n",
-    "<localleader>wd",
-    fzf.lsp_live_workspace_symbols,
-    bufopts,
-    "[lsp] search live workspace symbol"
-  )
+  u.keymap("n", "<localleader>wd", fzf.lsp_live_workspace_symbols, bufopts, "[lsp] search live workspace symbol")
   u.keymap("n", "<localleader>wl", function()
     vim.print(vim.lsp.buf.list_workspace_folders())
   end, bufopts, "[lsp] list workspace folders")

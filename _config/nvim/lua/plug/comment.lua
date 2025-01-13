@@ -20,7 +20,7 @@ return {
       require("todo-comments").setup {}
     end,
     keys = {
-      { "<leader>t", "<cmd>TodoTelescope<cr>", desc = "[TODO] show todo comments" },
+      { "<leader>td", "<cmd>TodoFuzLua<cr>", desc = "[TODO] show todo comments" },
       {
         "]t",
         function()
