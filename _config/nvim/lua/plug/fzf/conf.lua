@@ -15,6 +15,17 @@ fzf.setup {
   defaults = {
     file_icons = false,
   },
+  previewers = {
+    syntax_limit_b = 1024 * 100, -- 100KB
+  },
+  grep = {
+    actions = {
+      ["ctrl-g"] = { require("fzf-lua.actions").toggle_ignore },
+    },
+  },
+  oldfiles = {
+    include_current_session = true,
+  },
   files = {
     git_icons = true,
   },
@@ -44,8 +55,11 @@ u.keymap("n", "<leader>ww", function()
   }
 end, u.opts, "[fzf] find files in workspace")
 
-u.keymap("n", "<leader>bf", fzf.grep_curbuf, u.opts, "[fzf] live grep in cur buffer")
+u.keymap("n", "<leader>bf", fzf.grep_curbuf, u.opts, "[fzf] fuzzy grep in cur buffer")
 
+u.keymap("n", "<leader>wl", function()
+  fzf.live_grep_glob { cwd = vim.uv.cwd() }
+end, u.opts, "[fzf] live grep in cur dir")
 u.keymap("n", "<leader>ws", function()
   fzf.grep_cword { cwd = u.get_workspace_root() }
 end, u.opts, "[fzf] grep cur word in workspace")
@@ -56,6 +70,9 @@ u.keymap("v", "<leader>ws", function()
   fzf.grep_visual { cwd = u.get_workspace_root() }
 end, u.opts, "[fzf] visual grep cur word in workspace")
 
+u.keymap("n", "<leader>dl", function()
+  fzf.live_grep_glob { cwd = vim.uv.cwd() }
+end, u.opts, "[fzf] live grep in cur dir")
 u.keymap("n", "<leader>ds", function()
   fzf.grep_cword { cwd = vim.uv.cwd() }
 end, u.opts, "[fzf] grep cur word in cur dir")
