@@ -3,7 +3,11 @@ return {
   enabled = true,
   lazy = false, -- lazy loading handled internally
   -- optional: provides snippets for the snippet source
-  dependencies = { "rafamadriz/friendly-snippets", "L3MON4D3/LuaSnip", "Saghen/blink.compat" },
+  dependencies = {
+    { "Saghen/blink.compat" },
+    { "rafamadriz/friendly-snippets" },
+    { "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
+  },
 
   -- use a release tag to download pre-built binaries
   version = "v0.*",
@@ -59,10 +63,7 @@ return {
     -- signature = { enabled = true },
 
     sources = {
-      -- adding any nvim-cmp sources here will enable them
-      -- with blink.compat
-      -- compat = {},
-      default = { "lsp", "path", "snippets", "buffer" },
+      default = { "lsp", "snippets", "buffer" },
       cmdline = {},
     },
 
