@@ -53,12 +53,6 @@ return {
   },
 
   {
-    "lukas-reineke/indent-blankline.nvim",
-    main = "ibl",
-    cmd = "IBLEnable",
-  },
-
-  {
     "folke/which-key.nvim",
     event = "VeryLazy",
     keys = {
