@@ -53,9 +53,17 @@ return {
       }
     end,
   },
+
+  {
+    "linrongbin16/lsp-progress.nvim",
+    enabled = false,
+    config = function()
+      require("lsp-progress").setup {}
+    end,
+  },
+
   {
     "j-hui/fidget.nvim",
-    tag = "legacy",
     config = function()
       require("fidget").setup()
     end,
@@ -264,8 +272,7 @@ return {
           },
         },
       }
-      lspconfig.ruff.setup({})
-
+      lspconfig.ruff.setup {}
     end,
   },
 

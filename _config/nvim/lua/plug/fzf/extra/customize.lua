@@ -58,3 +58,48 @@ local function printenv()
 end
 
 vim.api.nvim_create_user_command("Env", printenv, {})
+
+local list_zoxide = function(action, selected, o) end
+
+local list_files_from_branch_action = function(action, selected, o)
+  local file = fzf.path.entry_to_file(selected[1], o)
+  local cmd = string.format("%s %s:%s", action, o.args, file.path)
+  vim.cmd(cmd)
+end
+vim.api.nvim_create_user_command("ListFilesFromBranch", function(opts)
+  fzf.files {
+    cmd = "git ls-tree -r --name-only " .. opts.args,
+    prompt = opts.args .. "> ",
+    actions = {
+      ["default"] = function(selected, o)
+        list_files_from_branch_action("Gedit", selected, o)
+      end,
+      ["ctrl-s"] = function(selected, o)
+        list_files_from_branch_action("Gsplit", selected, o)
+      end,
+      ["ctrl-v"] = function(selected, o)
+        list_files_from_branch_action("Gvsplit", selected, o)
+      end,
+    },
+    previewer = false,
+    preview = {
+      type = "cmd",
+      fn = function(items)
+        local file = fzf.path.entry_to_file(items[1])
+        return string.format("git diff %s HEAD -- %s | delta", opts.args, file.path)
+      end,
+    },
+  }
+end, {
+  nargs = 1,
+  force = true,
+  complete = function()
+    local res = vim.system({ "git", "branch", "--all", "--sort=-committerdate" }, { text = true }):wait()
+    if res.code == 0 then
+      local branches = vim.split(res.stdout, "\n", { plain = true, trimempty = true })
+      return vim.tbl_map(function(x)
+        return x:match("[^%s%*]+"):gsub("^remotes/", "")
+      end, branches)
+    end
+  end,
+})
