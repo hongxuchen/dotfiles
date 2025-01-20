@@ -57,14 +57,6 @@ function M.general_setup()
     serverity_sort = true,
   }
 
-  -- hover
-  vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-    border = "none",
-    focusable = true,
-    max_width = 120,
-    max_height = 25,
-  })
-
   ---lua_ls treats `f = function() ... end`(lnum+filename usually the same) as two defs, pick one
   ---@param _ any
   ---@param result nil|table (`Location`|`LocationLink`)
@@ -91,9 +83,6 @@ function M.general_setup()
       vim.lsp.util.show_document(result, client.offset_encoding, { reuse_win = false, focus = true })
     end
   end
-
-  -- signatureHelp
-  vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "none" })
 
   local du = require("plug.lsp.utils")
 
@@ -150,14 +139,18 @@ function M.on_attach(client, bufnr)
   u.keymap("n", "gr", function()
     fzf.lsp_references { includeDeclaration = false, ignore_current_line = true }
   end, bufopts, "[lsp] go to references")
-  -- u.keymap("n", "gr", vim.lsp.buf.references, bufopts, "[lsp] go to references")
   u.keymap("n", "<localleader>gt", fzf.lsp_typedefs, bufopts, "[lsp] go to type definition")
-  u.keymap("n", "K", vim.lsp.buf.hover, bufopts, "[lsp] get hover")
-  u.keymap("i", "<C-s>", vim.lsp.buf.signature_help, bufopts, "[lsp] get signature help")
-
-  -- NOTE: no longer needed as is by default
-  -- u.keymap("n", "[d", vim.diagnostic.goto_prev, bufopts, "[vim] go to previous diagnostic")
-  -- u.keymap("n", "]d", vim.diagnostic.goto_next, bufopts, "[vim] go to next diagnostic")
+  u.keymap("n", "K", function()
+    vim.lsp.buf.hover {
+      border = "rounded",
+      focusable = true,
+      max_width = 120,
+      max_height = 40,
+    }
+  end, bufopts, "[lsp] get hover")
+  u.keymap("i", "<C-s>", function()
+    vim.lsp.buf.signature_help { border = "rounded" }
+  end, bufopts, "[lsp] get signature help")
 
   u.keymap("n", "<localleader>ci", fzf.lsp_incoming_calls, bufopts, "[lsp] go to incoming_calls")
   u.keymap("n", "<localleader>co", fzf.lsp_outgoing_calls, bufopts, "[lsp] go to outgoing_calls")

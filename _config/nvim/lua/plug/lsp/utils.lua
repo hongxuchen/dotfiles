@@ -157,7 +157,7 @@ end
 -- TODO: make it within "textDocument/rename" handler
 -- FIXME: not work for python
 function M.my_lsp_rename()
-  local params = vim.lsp.util.make_position_params()
+  local params = vim.lsp.util.make_position_params(0, "utf-16")
   params.oldName = u.word_under_cursor()
 
   vim.ui.input({ prompt = "New Name: ", default = params.oldName }, function(input)
@@ -170,11 +170,17 @@ function M.my_lsp_rename()
     params.newName = input
     vim.lsp.buf_request(0, "textDocument/rename", params, function(err, result, ...)
       if not result then
-        vim.notify(string.format("[lsp] no results to rename %s->%s", params.oldName, params.newName), vim.log.levels.WARN)
+        vim.notify(
+          string.format("[lsp] no results to rename %s->%s", params.oldName, params.newName),
+          vim.log.levels.WARN
+        )
         return
       end
       if not result or not result.changes then
-        vim.notify(string.format("[lsp] no changes to rename %s->%s", params.oldName, params.newName), vim.log.levels.WARN)
+        vim.notify(
+          string.format("[lsp] no changes to rename %s->%s", params.oldName, params.newName),
+          vim.log.levels.WARN
+        )
         return
       end
       vim.lsp.handlers["textDocument/rename"](err, result, ...)
