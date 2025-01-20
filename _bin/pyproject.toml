@@ -20,6 +20,7 @@ reportMissingImports = true
 reportMissingTypeStubs = false
 reportUnusedImport = false
 reportUndefinedVariable = false
+reportUnusedCallResult = false
 
 # https://github.com/microsoft/pyright/discussions/3929
 [tool.python.analysis]
@@ -129,10 +130,3 @@ dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
 
 [tool.ruff.mccabe]
 max-complexity = 30
-
-# currently unused
-[tool.pylsp-mypy]
-enabled = true
-live_mode = true
-strict = false
-dmypy = true

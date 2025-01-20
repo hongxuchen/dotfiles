@@ -6,6 +6,8 @@ import os
 import platform
 import shutil
 import sys
+from typing_extensions import override
+
 
 class FileInfo(object):
     def __init__(self, src: str, dst: str, bak: str):
@@ -22,6 +24,7 @@ class FileInfo(object):
         bak = os.path.join(bakdir, PREFIX + os.path.basename(dst))
         return cls(src, dst, bak)
 
+    @override
     def __repr__(self):
         return f"src={self.src}, dst={self.dst}, bak={self.bak}"
 
