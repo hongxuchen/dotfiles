@@ -22,8 +22,7 @@ return {
   {
     "MagicDuck/grug-far.nvim",
     config = function()
-      require("grug-far").setup {
-      }
+      require("grug-far").setup {}
     end,
   },
 
@@ -54,7 +53,27 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
     ---@module 'render-markdown'
     ---@type render.md.UserConfig
-    opts = { enabled = false },
+    opts = {
+      enabled = false,
+      heading = {
+        enabled = false,
+      },
+      paragraph = {
+        enabled = false,
+      },
+      code = {
+        enabled = true,
+      },
+      bullet = {
+        enabled = false,
+      },
+      checkbox = {
+        enabled = true,
+      },
+      quote = {
+        enabled = true,
+      },
+    },
   },
 
   {
