@@ -1,6 +1,6 @@
 return {
   {
-    "hongxuchen/semantic-highlight.nvim",
+    "tzachar/local-highlight.nvim",
     config = function()
       require("local-highlight").setup {
         -- hlgroup = "CurSearch",
@@ -25,5 +25,8 @@ return {
     config = function()
       vim.cmd.colorscheme("deepwhite")
     end,
+  },
+  {
+    "rebelot/kanagawa.nvim",
   },
 }

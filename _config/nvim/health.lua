@@ -2,8 +2,12 @@ local M = {}
 
 -- TODO: used as a C/C++ IDE plugin
 
+M.bin_clangd = "clangd-17"
+M.bin_ast_grep = "ast-grep"
+M.bin_delta = "delta"
+
 ---@type string[]
-local executables = { "clangd" }
+local executables = { M.bin_clangd, M.bin_delta, M.bin_ast_grep }
 
 ---@type string[]
 local envs = { "NVIM_CONFIG", "EMAIL", "AUTHOR" }

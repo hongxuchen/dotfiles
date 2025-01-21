@@ -63,8 +63,15 @@ return {
     -- signature = { enabled = true },
 
     sources = {
-      default = { "lsp", "snippets", "buffer" },
+      default = { "lsp", "snippets", "buffer", "markdown" },
       cmdline = {},
+      providers = {
+        markdown = {
+          name = "RenderMarkdown",
+          module = "render-markdown.integ.blink",
+          fallbacks = { "lsp" },
+        },
+      },
     },
 
     keymap = {

@@ -1,7 +1,7 @@
 Synopsis
 ========
 
-My dotfile settings for Linux (Debian Sid/Ubuntu 24.04) and Windows (MacOS settings are removed now).
+My dotfiles settings for Linux (Debian Sid/Ubuntu 24.04) and Windows (MacOS settings are removed now).
 
 LICENSE
 =======
