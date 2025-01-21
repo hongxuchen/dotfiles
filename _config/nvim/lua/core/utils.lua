@@ -503,4 +503,48 @@ function M.open_repo_on_github(remote)
   end
 end
 
+--- @param path string
+--- @param mode string
+M.read_file = function(path, mode)
+  local fd = io.open(path, mode or "r")
+  if not fd then
+    return ""
+  end
+  local content = fd:read("*a")
+  fd:close()
+  return content or ""
+end
+
+-- mkdir for file
+local function fs_file_mkdirs(path)
+  local parents = {}
+  vim.iter(vim.fs.parents(path)):all(function(dir)
+    local fs_stat = vim.uv.fs_stat(dir)
+    if not fs_stat then
+      parents[#parents + 1] = dir
+      return true
+    end
+    return false
+  end)
+  vim.iter(parents):rev():each(function(p)
+    return vim.uv.fs_mkdir(p, 493)
+  end)
+end
+
+-- path should be normalized
+M.write_file = function(path, content, flag)
+  if not vim.uv.fs_stat(path) then
+    fs_file_mkdirs(path)
+  end
+  local fd = io.open(path, flag or "w")
+  if not fd then
+    return false
+  end
+  if content then
+    fd:write(content)
+  end
+  fd:close()
+  return true
+end
+
 return M

@@ -1,9 +1,11 @@
 local fzf = require("fzf-lua")
 local ations = fzf.actions
 
---- custom fzf pickers
-local builtin = require("fzf-lua.previewer.builtin")
-local EnvPreviewer = builtin.base:extend()
+local mycmd = vim.api.nvim_create_user_command
+
+--- ENV picker
+local bpreviewer = require("fzf-lua.previewer.builtin")
+local EnvPreviewer = bpreviewer.base:extend()
 
 function EnvPreviewer:new(o, opts, fzf_win)
   EnvPreviewer.super.new(self, o, opts, fzf_win)
@@ -57,16 +59,21 @@ local function printenv()
   fzf.fzf_exec(cmd, opts)
 end
 
-vim.api.nvim_create_user_command("Env", printenv, {})
+mycmd("Env", printenv, {})
+
+-- zoxide picker TODO:
 
 local list_zoxide = function(action, selected, o) end
+
+-- git-file picker
 
 local list_files_from_branch_action = function(action, selected, o)
   local file = fzf.path.entry_to_file(selected[1], o)
   local cmd = string.format("%s %s:%s", action, o.args, file.path)
   vim.cmd(cmd)
 end
-vim.api.nvim_create_user_command("ListFilesFromBranch", function(opts)
+
+mycmd("ListFilesFromBranch", function(opts)
   fzf.files {
     cmd = "git ls-tree -r --name-only " .. opts.args,
     prompt = opts.args .. "> ",
@@ -100,6 +107,54 @@ end, {
       return vim.tbl_map(function(x)
         return x:match("[^%s%*]+"):gsub("^remotes/", "")
       end, branches)
+    else
+      return {}
     end
   end,
 })
+
+-- aerial picker
+local function pick_document_symbols()
+  local status_ok, aerial_fzf = pcall(require, "aerial.fzf")
+  if not status_ok then
+    vim.notify("aerial not installed, fallback to lsp_document_symbols", vim.log.levels.WARN)
+    fzf.lsp_document_symbols()
+    return
+  end
+  local aerial_labels = aerial_fzf.get_labels()
+  local aerial_navigation = require("aerial.navigation")
+  local aerial_data = require("aerial.data")
+  local function goto_symbol(symbol)
+    local idx = tonumber(symbol:match("^(%d+)"))
+    for i, _, symbol_idx in aerial_data.get_or_create(0):iter { skip_hidden = true } do
+      if idx == i then
+        aerial_navigation.select {
+          index = symbol_idx,
+        }
+        break
+      end
+    end
+  end
+  local opts = {
+    prompt = ":",
+    previewer = false,
+    hls = { cursorline = "" },
+    winopts = {
+      title = " Document Symbols ",
+      title_pos = "center",
+      height = 0.6,
+      width = 0.4,
+    },
+    actions = {
+      ["default"] = function(selected)
+        goto_symbol(selected[1])
+      end,
+    },
+  }
+  fzf.fzf_exec(aerial_labels, opts)
+end
+
+mycmd("DocumentSymbols", pick_document_symbols, {})
+
+local u = require("core.utils")
+u.keymap("n", "gs", pick_document_symbols, u.buf_opts(0), "[lsp] pick document symbols")

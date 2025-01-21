@@ -5,9 +5,10 @@ local M = {}
 M.bin_clangd = "clangd-17"
 M.bin_ast_grep = "ast-grep"
 M.bin_delta = "delta"
+M.bin_zoxide = "zoxide"
 
 ---@type string[]
-local executables = { M.bin_clangd, M.bin_delta, M.bin_ast_grep }
+local executables = { M.bin_clangd, M.bin_delta, M.bin_ast_grep, M.bin_zoxide }
 
 ---@type string[]
 local envs = { "NVIM_CONFIG", "EMAIL", "AUTHOR" }

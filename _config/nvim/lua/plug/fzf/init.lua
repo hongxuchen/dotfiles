@@ -4,5 +4,6 @@ return {
   opts = {},
   config = function()
     require("plug.fzf.conf")
+    require("plug.fzf.customize")
   end,
 }

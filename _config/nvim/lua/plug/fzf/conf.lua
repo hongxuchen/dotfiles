@@ -28,6 +28,7 @@ fzf.setup {
   },
   files = {
     git_icons = true,
+    cwd_prompt_shorten_len = 24,
   },
   manpages = {
     previewer = "man_native",

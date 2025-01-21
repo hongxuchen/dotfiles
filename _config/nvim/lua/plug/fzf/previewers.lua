@@ -1,6 +1,6 @@
 local M = {}
 local previewer = require("fzf-lua.previewer.builtin")
-local utils = require("plug.fzf.extra.utils")
+local utils = require("plug.fzf.utils")
 
 local preview_with = function(_self, content)
   local tmpbuf = _self:get_tmp_buffer()
@@ -129,31 +129,6 @@ function M.lazy:populate_preview_buf(entry_str)
     ---@diagnostic disable-next-line: param-type-mismatch
     vim.schedule_wrap(function(obj)
       local content = vim.split(obj.stdout, "\n")
-      preview_with(self, content)
-    end)
-  )
-end
-
-M.gitignore = previewer.buffer_or_file:extend()
-
-function M.gitignore:new(o, opts, fzf_win)
-  M.gitignore.super.new(self, o, opts, fzf_win)
-  self.api_root = opts.api_root
-  self.filetype = opts.filetype
-  self.json_key = opts.json_key
-  return self
-end
-
-function M.gitignore:populate_preview_buf(entry_str)
-  if entry_str == "" then
-    self:clear_preview_buf(true)
-    return
-  end
-  utils.gh_cache(
-    self.api_root .. "/" .. entry_str,
-    vim.schedule_wrap(function(_, json)
-      local content = assert(json[self.json_key])
-      content = vim.split(content, "\n")
       preview_with(self, content)
     end)
   )

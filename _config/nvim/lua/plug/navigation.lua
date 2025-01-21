@@ -2,14 +2,6 @@ return {
   "stevearc/aerial.nvim",
   keys = {
     {
-      "gs",
-      function()
-        local t_extensions = require("telescope").extensions
-        t_extensions.aerial.aerial()
-      end,
-      desc = "[aerial] go to document symbol",
-    },
-    {
       "<localleader>ss",
       "<Cmd>AerialToggle<CR>",
       desc = "[aerial] toggle symbol outline",
