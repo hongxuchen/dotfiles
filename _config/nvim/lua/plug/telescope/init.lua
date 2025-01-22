@@ -17,7 +17,7 @@ return {
       local t = require("telescope")
       local builtin = require("telescope.builtin")
       local actions = require("telescope.actions")
-      require("plug.telescope.customize")
+      -- require("plug.telescope.customize")
 
       local vimgrep_arguments = {
         "rg",

@@ -16,7 +16,15 @@ fzf.setup {
     file_icons = false,
   },
   previewers = {
-    syntax_limit_b = 1024 * 100, -- 100KB
+    builtin = {
+      syntax = true,
+      syntax_limit_b = 1024 * 100, -- 100KB
+      extensions = {
+        ["png"] = { "viu", "-b", "{file}" },
+        ["jpg"] = { "viu", "-b", "{file}" },
+        ["jpeg"] = { "viu", "-b", "{file}" },
+      },
+    },
   },
   grep = {
     actions = {

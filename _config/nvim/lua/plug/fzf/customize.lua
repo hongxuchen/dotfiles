@@ -122,6 +122,7 @@ local function pick_document_symbols()
     return
   end
   local aerial_labels = aerial_fzf.get_labels()
+  require("aerial").setup {}
   local aerial_navigation = require("aerial.navigation")
   local aerial_data = require("aerial.data")
   local function goto_symbol(symbol)
