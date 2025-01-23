@@ -1,3 +1,4 @@
+---@type LazyPluginSpec
 return {
   "saghen/blink.cmp",
   enabled = true,
@@ -14,6 +15,7 @@ return {
   -- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
   -- build = 'cargo build --release',
 
+  ---@type blink.cmp.Config
   opts = {
     snippets = {
       expand = function(snippet)
@@ -52,7 +54,12 @@ return {
       },
       documentation = {
         auto_show = true,
-        auto_show_delay_ms = 200,
+        auto_show_delay_ms = 50,
+        update_delay_ms = 50,
+        window = {
+          border = "rounded",
+          winblend = vim.o.pumblend,
+        },
       },
       ghost_text = {
         enabled = false,
@@ -60,12 +67,22 @@ return {
     },
 
     -- experimental signature help support
-    signature = { enabled = true },
+    signature = { enabled = false },
 
     sources = {
-      default = { "lsp", "snippets", "buffer", "markdown" },
+      default = { "lsp", "snippets", "buffer", "markdown", "lazydev" },
       cmdline = {},
       providers = {
+        lsp = {
+          name = "LSP",
+          fallbacks = {
+            "lazydev",
+          },
+        },
+        lazydev = {
+          name = "LazyDev",
+          module = "lazydev.integrations.blink",
+        },
         markdown = {
           name = "RenderMarkdown",
           module = "render-markdown.integ.blink",

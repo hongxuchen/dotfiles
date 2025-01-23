@@ -48,6 +48,7 @@ M.lsp_list = {
   "vimls", -- vimscript
   "yamlls", -- yaml
   "taplo", -- toml
+  "jdtls", -- java
 }
 
 M.dap_list = {

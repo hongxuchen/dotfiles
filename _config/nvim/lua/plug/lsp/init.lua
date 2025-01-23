@@ -208,6 +208,7 @@ return {
           local bufopts = u.buf_opts(bufnr)
           u.keymap("n", "<localleader>dh", "<Cmd>ClangdTypeHierarchy<CR>", bufopts, "[clangd] show type hierarchy")
           u.keymap("n", "<localleader>di", "<Cmd>ClangdSymbolInfo<CR>", bufopts, "[clangd] show symbol info")
+          u.keymap("n", "<localleader>dm", "<Cmd>ClangdMemoryUsage<CR>", bufopts, "[clangd] show memory usage")
           u.keymap("n", "<localleader>ds", "<Cmd>ClangdSwitchSourceHeader<CR>", bufopts, "[clangd] switch .h/.cpp")
           u.keymap("n", "<localleader>dt", "<Cmd>ClangdAST<CR>", bufopts, "[clangd] show ast")
         end,

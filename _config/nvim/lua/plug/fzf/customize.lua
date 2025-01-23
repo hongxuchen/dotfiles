@@ -138,7 +138,7 @@ local function pick_document_symbols()
   end
   local opts = {
     prompt = ":",
-    previewer = false,
+    previewer = bpreviewer,
     hls = { cursorline = "" },
     winopts = {
       title = " Document Symbols ",

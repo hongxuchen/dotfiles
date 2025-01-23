@@ -37,6 +37,7 @@ fzf.setup {
   files = {
     git_icons = true,
     cwd_prompt_shorten_len = 24,
+    formatter = "path.filename_first",
   },
   manpages = {
     previewer = "man_native",
@@ -112,3 +113,9 @@ u.keymap("n", "<leader>tl", fzf.tabs, u.opts, "[fzf] open buffers in tabs")
 u.keymap("n", "<leader><leader>", function()
   fzf.builtin {}
 end, u.opts, "[fzf] run builtin pickers")
+
+u.keymap("n", "<leader>ddc", fzf.dap_commands, u.opts, "[fzf] find dap_commands")
+u.keymap("n", "<leader>dds", fzf.dap_commands, u.opts, "[fzf] find dap_configurations")
+u.keymap("n", "<leader>ddb", fzf.dap_commands, u.opts, "[fzf] find dap_breakpoints")
+u.keymap("n", "<leader>ddv", fzf.dap_commands, u.opts, "[fzf] find dap_variables")
+u.keymap("n", "<leader>ddf", fzf.dap_commands, u.opts, "[fzf] find dap_frames")
