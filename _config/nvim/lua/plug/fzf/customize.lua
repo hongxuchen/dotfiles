@@ -156,6 +156,3 @@ local function pick_document_symbols()
 end
 
 mycmd("DocumentSymbols", pick_document_symbols, {})
-
-local u = require("core.utils")
-u.keymap("n", "gs", pick_document_symbols, u.buf_opts(0), "[lsp] pick document symbols")
