@@ -65,7 +65,7 @@ u.keymap("n", "<leader>ww", function()
   }
 end, u.opts, "[fzf] find files in workspace")
 
-u.keymap("n", "<leader>bf", fzf.grep_curbuf, u.opts, "[fzf] fuzzy grep in cur buffer")
+u.keymap("n", "<leader>bl", fzf.blines, u.opts, "[fzf] fuzzy grep in cur buffer")
 
 u.keymap("n", "<leader>wl", function()
   fzf.live_grep_glob { cwd = vim.uv.cwd() }
