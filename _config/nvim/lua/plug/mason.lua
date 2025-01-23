@@ -8,20 +8,34 @@ return {
   },
 
   {
-    "jayp0521/mason-nvim-dap.nvim",
-    event = "VeryLazy",
+    "zapling/mason-conform.nvim",
     config = function()
-      require("mason-nvim-dap").setup {
-        ensure_installed = require("common").dap_list,
+      require("mason-conform").setup {}
+    end,
+  },
+
+  {
+    "rshkarin/mason-nvim-lint",
+    config = function()
+      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+      require("mason-nvim-lint").setup {
+        ignore_install = {
+          "sqruff",
+          "zsh",
+          "commitlint", -- mason registered but not by this plugin
+        },
+        automatic_installation = true,
       }
     end,
   },
 
   {
-    "jayp0521/mason-null-ls.nvim",
+    "jayp0521/mason-nvim-dap.nvim",
+    event = "VeryLazy",
     config = function()
-      require("mason-null-ls").setup {
-        ensure_installed = require("common").null_ls_list,
+      require("mason-nvim-dap").setup {
+        ensure_installed = {},
+        automatic_installation = true,
       }
     end,
   },
@@ -32,7 +46,25 @@ return {
     lazy = false,
     config = function()
       require("mason-lspconfig").setup {
-        ensure_installed = require("common").lsp_list,
+        -- those used but not configured by lspconfig
+        ensure_installed = {
+          "ruff", -- python
+          "jsonls", -- json
+          -- "clangd", -- C/C++ use special clangd
+          "neocmake", -- cmake
+          -- "gopls", -- golang
+          "basedpyright", -- python
+          "rust_analyzer", -- rust
+          "bashls", -- bash
+          "lua_ls", -- lua
+          -- "tsserver", -- typescript, javascript
+          "ts_ls",
+          "vimls", -- vimscript
+          "yamlls", -- yaml
+          "taplo", -- toml
+          "jdtls", -- java
+        },
+        automatic_installation = { exclude = {} },
       }
     end,
   },

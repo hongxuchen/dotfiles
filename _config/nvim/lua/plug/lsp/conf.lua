@@ -156,8 +156,9 @@ function M.on_attach(client, bufnr)
   u.keymap("n", "<localleader>co", fzf.lsp_outgoing_calls, bufopts, "[lsp] go to outgoing_calls")
   u.keymap("n", "<localleader>ca", vim.lsp.buf.code_action, bufopts, "[lsp] code action")
   u.keymap("n", "<localleader>cf", function()
-    vim.lsp.buf.format { async = true }
-  end, bufopts, "[lsp] format buffer")
+    require("conform").format { lsp_fallback = true, async = true }
+    -- vim.lsp.buf.format { async = true }
+  end, bufopts, "[conform] format buffer")
   u.keymap("n", "<localleader>cu", vim.lsp.codelens.refresh, bufopts, "[lsp] refresh codelens")
   u.keymap("n", "<localleader>cr", vim.lsp.codelens.run, bufopts, "[lsp] run codelens")
 

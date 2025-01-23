@@ -16,7 +16,9 @@ return {
     local dapui = require("dapui")
     local dap_vt = require("nvim-dap-virtual-text")
 
+    ---@diagnostic disable-next-line: missing-fields
     dap_vt.setup {}
+    ---@diagnostic disable-next-line: missing-fields
     dapui.setup {}
 
     -- automatically setup dap ui
@@ -100,38 +102,5 @@ return {
     }
     dap.configurations["c"] = dap.configurations["cpp"]
     dap.configurations["rust"] = dap.configurations["cpp"]
-
-    -- for golang
-    dap.adapters["delve"] = {
-      type = "server",
-      port = "${port}",
-      executable = {
-        command = "dlv",
-        args = { "dap", "-l", "127.0.0.1:${port}" },
-      },
-    }
-    dap.configurations["go"] = {
-      {
-        type = "delve",
-        name = "Debug",
-        request = "launch",
-        program = "${file}",
-      },
-      {
-        type = "delve",
-        name = "Debug test", -- configuration for debugging test files
-        request = "launch",
-        mode = "test",
-        program = "${file}",
-      },
-      -- works with go.mod packages and sub packages
-      {
-        type = "delve",
-        name = "Debug test (go.mod)",
-        request = "launch",
-        mode = "test",
-        program = "./${relativeFileDirname}",
-      },
-    }
   end,
 }

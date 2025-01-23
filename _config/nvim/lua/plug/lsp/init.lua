@@ -1,60 +1,5 @@
 return {
   {
-    "nvimtools/none-ls.nvim",
-    config = function()
-      local null_ls = require("null-ls")
-      local formatting = null_ls.builtins.formatting
-      local diagnostics = null_ls.builtins.diagnostics
-      local code_actions = null_ls.builtins.code_actions
-      -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTINS.md
-      -- https://github.com/jose-elias-alvarez/null-ls.nvim/blob/main/doc/BUILTIN_CONFIG.md
-      null_ls.setup {
-        sources = {
-          --- general
-          code_actions["refactoring"],
-          --- golang
-          diagnostics["golangci_lint"],
-          code_actions["gomodifytags"],
-          code_actions["impl"],
-          formatting["gofumpt"],
-          formatting["goimports"],
-          --- lua
-          formatting["stylua"],
-          -- javascript(react), typescript(react), vue
-          -- code_actions["eslint_d"], -- FIXME: none-ls
-          -- formatting["eslint_d"], -- FIXME: none-ls
-          -- diagnostics["eslint_d"], -- FIXME: none-ls
-          -- multiple
-          formatting["prettier"].with {
-            filetypes = {
-              "css",
-              "scss",
-              "less",
-              "html",
-              "yaml",
-              "markdown",
-              "graphql",
-            },
-          },
-          --- check on cmake
-          diagnostics["cmake_lint"],
-          --- git commit
-          diagnostics["gitlint"],
-          --- shells
-          -- bashls does not support formatting
-          formatting["shfmt"],
-          -- make shell scripts beautiful
-          -- code_actions["shellcheck"], -- FIXME: none-ls
-          -- diagnostics["shellcheck"], -- FIXME: none-ls
-          -- formatting["beautysh"], -- FIXME: none-ls
-          -- simple check on zsh
-          diagnostics["zsh"],
-        },
-      }
-    end,
-  },
-
-  {
     "linrongbin16/lsp-progress.nvim",
     enabled = false,
     config = function()
@@ -65,7 +10,7 @@ return {
   {
     "j-hui/fidget.nvim",
     config = function()
-      require("fidget").setup()
+      require("fidget").setup {}
     end,
   },
 
@@ -79,7 +24,6 @@ return {
 
       local simple_ls = {
         "jsonls", -- json (can do format so no need for jq)
-        "marksman", -- markdown
         "neocmake", -- cmake
         "taplo", -- toml
         "texlab", -- latex
@@ -121,6 +65,7 @@ return {
       }
 
       -- bash/zsh
+      -- TODO: duplication of conform+nvim-lint
       lspconfig["bashls"].setup {
         cmd_env = { GLOB_PATTERN = "*@(.sh|.inc|.bash|.command)" },
         filetypes = { "sh", "zsh", "bash" },
