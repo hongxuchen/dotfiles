@@ -3,7 +3,6 @@ return {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
       { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
-      -- { "nushell/tree-sitter-nu", build = ":TSUpdate nu" },
     },
     -- smart spellcheck requires treesitter, no lazy-load
     lazy = false,
