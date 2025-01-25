@@ -37,7 +37,7 @@ fzf.setup {
   files = {
     git_icons = true,
     cwd_prompt_shorten_len = 24,
-    formatter = "path.filename_first",
+    -- formatter = "path.filename_first",
   },
   manpages = {
     previewer = "man_native",

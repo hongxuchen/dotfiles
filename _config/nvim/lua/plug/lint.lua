@@ -5,7 +5,7 @@ return {
       c = {}, -- linted by clangd
       cpp = {}, -- linted by clangd
       python = {}, -- linted by ruff
-      gitcommit = { "commitlint" },
+      gitcommit = {},
       sh = { "shellcheck" }, -- shellcheck used by bashls
       bash = {}, -- shellcheck used by bashls
       zsh = { "zsh" }, -- shellcheck used by bashls

@@ -4,20 +4,15 @@ return {
     event = "VeryLazy",
     dependencies = {
       { "nvim-telescope/telescope-fzf-native.nvim", build = "make", cond = require("core.utils").not_win },
-      -- { "nvim-telescope/telescope-ui-select.nvim" },
-      -- https://github.com/nvim-telescope/telescope-file-browser.nvim/issues/53
-      -- { "nvim-telescope/telescope-file-browser.nvim" },
       { "nvim-telescope/telescope-symbols.nvim" },
       { "jvgrootveld/telescope-zoxide" },
       { "tsakirist/telescope-lazy.nvim" },
     },
-    -- tag = "0.1.2",
     config = function()
       local u = require("core.utils")
       local t = require("telescope")
       local builtin = require("telescope.builtin")
       local actions = require("telescope.actions")
-      -- require("plug.telescope.customize")
 
       local vimgrep_arguments = {
         "rg",
@@ -152,24 +147,6 @@ return {
                   builtin.find_files { cwd = selection.path }
                 end,
               },
-              -- ["<C-b>"] = {
-              --   action = function(selection)
-              --     require("telescope").extensions.file_browser.file_browser { cwd = selection.path }
-              --   end,
-              -- },
-              -- ["<C-e>"] = {
-              --   action = function(selection)
-              --     vim.cmd["edit"](selection.path)
-              --   end,
-              -- },
-            },
-          },
-          aerial = {
-            -- Display symbols as <root>.<parent>.<symbol>
-            show_nesting = {
-              ["_"] = false, -- This key will be the default
-              json = true, -- You can set the option for specific filetypes
-              yaml = true,
             },
           },
         },
@@ -178,19 +155,11 @@ return {
       if u.not_win then
         t.load_extension("fzf") -- fzf native sorting algorithm
       end
-      -- t.load_extension("ui-select") -- resort ui-select to telescope
-      -- t.load_extension("file_browser") -- file browsering
       t.load_extension("zoxide") -- zoxide extension
       t.load_extension("lazy") -- lazy plugin navigation
 
-      -- u.keymap("n", "<leader>e", t.extensions.file_browser.file_browser, u.opts, "explore file browser")
-      u.keymap("n", "<leader>wd", function()
-        t.extensions.live_grep_args.live_grep_args {
-          search_dirs = { u.get_workspace_root() },
-        }
-      end, u.opts, "[telescope] live grep in workspace")
       u.keymap("n", "<leader>ll", "<Cmd>Telescope lazy<CR>", u.opts, "[telescope] navigate to lazy plugins")
-      u.keymap("n", "<leader>lf", ":Tlocate ", { noremap = true }, "[telescope] locate files")
+      u.keymap("n", "<leader>ss", "<Cmd>Telescope symbols<CR>", u.opts, "[telescope] complete symbols")
       u.keymap("n", "<leader>z", t.extensions.zoxide.list, u.opts, "[telescope] search recent directories")
     end,
   },
