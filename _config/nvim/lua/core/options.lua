@@ -163,6 +163,7 @@ g.loaded_python_provider = 0
 g.loaded_ruby_provider = 0
 
 vim.g.vimsyn_embed = "l"
+vim.g.oil_detail = false
 
 --- FIXME: for neovim, it doesn't work
 -- g.netrw_localrmdir='rm -r'
