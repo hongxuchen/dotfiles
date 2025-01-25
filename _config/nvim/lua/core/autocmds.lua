@@ -28,7 +28,13 @@ u.au("VimEnter", {
       end
     end
     if not should_skip then
-      vim.cmd("Explore!")
+      local status_ok, oil = pcall(require, "oil")
+      if status_ok then
+        -- oil.open(oil.get_current_dir())
+        -- vim.cmd("Oil")
+      else
+        vim.cmd("Explore!")
+      end
     end
   end,
 })
