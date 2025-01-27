@@ -1,6 +1,6 @@
 return {
   "nvim-neotest/neotest",
-  keys = {"<localleader>uu", "<localleader>ud", "<localleader>uf"},
+  keys = { "<localleader>uu", "<localleader>ud", "<localleader>uf" },
   lazy = true,
   dependencies = {
     "nvim-neotest/neotest-plenary",

@@ -179,16 +179,21 @@ function M.on_attach(client, bufnr)
     vim.print(vim.lsp.buf.list_workspace_folders())
   end, bufopts, "[lsp] list workspace folders")
   u.keymap("n", "<localleader>we", function()
-    vim.diagnostic.setqflist { severity = "E" }
+    vim.diagnostic.setqflist { severity = vim.diagnostic.severity.ERROR }
   end, bufopts, "[vim] show all errors in workspace")
   u.keymap("n", "<localleader>ww", function()
-    vim.diagnostic.setqflist { severity = "W" }
+    vim.diagnostic.setqflist { severity = vim.diagnostic.severity.WARN }
   end, bufopts, "[vim] show all warnings in workspace")
   u.keymap("n", "<localleader>wa", vim.lsp.buf.add_workspace_folder, bufopts, "[lsp] add to workspace folder")
   u.keymap("n", "<localleader>wr", vim.lsp.buf.remove_workspace_folder, bufopts, "[lsp] remove from workspace folder")
 
   u.keymap("n", "<localleader>rn", function()
-    require("plug.lsp.utils").my_lsp_rename()
+    local filetypes = { "c", "cpp" }
+    if vim.tbl_contains(filetypes, vim.bo.filetype) then
+      require("plug.lsp.utils").my_lsp_rename()
+    else
+      vim.lsp.buf.rename()
+    end
   end, bufopts, "[lsp] rename refactor")
 end
 
