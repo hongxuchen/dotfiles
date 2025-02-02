@@ -43,6 +43,17 @@ return {
           -- plugins
         },
         server = {
+          root_dir = lspconfig.util.root_pattern(
+            "README.md",
+            ".git",
+            "rustfmt.toml",
+            "Makefile.toml",
+            "clippy.toml",
+            "rust-toolchain",
+            "build.rs",
+            ".editorconfig",
+            "LICENSE"
+          ),
           on_attach = conf.on_attach,
           capabilities = conf.capabilities,
           settings = {

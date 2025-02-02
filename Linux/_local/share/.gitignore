@@ -9,6 +9,7 @@ FlClash/
 Foxit Software/
 HubStaff/
 JetBrains/
+KDE/
 Kingsoft/
 Meltytech/
 Minor\ Key\ Games
@@ -50,6 +51,7 @@ gegl-0.2/
 gem/
 glances/
 gnome-mines/
+goldendict/
 grilo-plugins/
 gvfs-metadata/
 gwenview/
@@ -58,9 +60,11 @@ inxi/
 io.github.clash-verge-rev.clash-verge-rev/
 io.parity.ethereum
 ion/history
+juk/
 jupyter/
 kactivitymanagerd-bak/
 kactivitymanagerd/
+kalarm/
 kate/
 katebtbrowser/
 kcookiejar/
@@ -75,11 +79,14 @@ kmail2/
 knewstuff3/
 konqueror/
 konsole/
+kontrast/
 korganizer/
+krdc/
 krita/
 krunnerstaterc
 kscreen/
 ktnef/
+kvtml/
 kwalletd/
 kwrite/
 kxmlgui5/
@@ -88,7 +95,9 @@ libgda/
 libisabelle/
 libkunitconversion/
 localsend_app/
+lokalize/
 man
+marble/
 mime/
 netscanner/
 nix/
@@ -104,6 +113,7 @@ plasmashell/
 pnpm/
 pypoetry/
 qpdfview/
+qutebrowser/
 radare2/
 recently-used.xbel
 remmina/

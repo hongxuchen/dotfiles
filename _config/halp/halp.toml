@@ -1,0 +1,9 @@
+check_version = true
+check_help = true
+check = [["-v", "-V", "--version", "version"], ["-h", "--help", "help", "-H"]]
+man_command = "man"
+pager_command = "less -R"
+cheat_sh_url = "https://cheat.sh"
+eg_url = "https://raw.githubusercontent.com/srsudar/eg/master/eg/examples"
+cheatsheets_url = "https://raw.githubusercontent.com/cheat/cheatsheets/master"
+timeout = 5

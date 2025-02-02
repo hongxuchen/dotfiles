@@ -54,7 +54,7 @@ return {
           "neocmake", -- cmake
           -- "gopls", -- golang
           "basedpyright", -- python
-          "rust_analyzer", -- rust
+          -- "rust_analyzer", -- rust(use rustup one)
           "bashls", -- bash
           "lua_ls", -- lua
           -- "tsserver", -- typescript, javascript
