@@ -233,6 +233,7 @@ return {
     end,
   },
 
+  -- lua
   {
     "folke/lazydev.nvim",
     ft = "lua",
@@ -249,14 +250,7 @@ return {
     },
   },
 
-  -- {
-  --   "hongxuchen/xdev.nvim",
-  --   lazy = true,
-  --   event = "BufReadPost xmake.lua",
-  --   config = true,
-  --   dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-  -- },
-
+  -- c/c++
   {
     "p00f/clangd_extensions.nvim",
     config = function()
@@ -326,14 +320,30 @@ return {
       }
     end,
   },
+
+  -- rust
   {
     "mrcjkb/rustaceanvim",
     version = "^5", -- Recommended
     lazy = false, -- This plugin is already lazy
     dependencies = {
-      { "saecki/crates.nvim", tag = "stable" },
+      {
+        "saecki/crates.nvim",
+        config = function()
+          require("crates").setup {
+            lsp = {
+              enabled = true,
+              actions = true,
+              completion = true,
+              hover = true,
+            },
+          }
+        end,
+      },
     },
   },
+
+  -- typescript
   {
     "pmizio/typescript-tools.nvim",
     enabled = false,
