@@ -40,6 +40,9 @@ return {
       -- rust
       vim.g.rustaceanvim = {
         tools = {
+          code_action = {
+            ui_select_fallback = true,
+          },
           -- plugins
         },
         server = {

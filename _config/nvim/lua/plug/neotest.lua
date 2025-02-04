@@ -1,6 +1,44 @@
 return {
   "nvim-neotest/neotest",
-  keys = { "<localleader>uu", "<localleader>ud", "<localleader>uf" },
+  keys = {
+    {
+      "<localleader>ua",
+      function()
+        require("neotest").run.attach()
+      end,
+      desc = "[neotest] attach test",
+    },
+    {
+      "<localleader>uu",
+      function()
+        require("neotest").run.run()
+      end,
+      desc = "[neotest] nearest test",
+    },
+    {
+      "<localleader>us",
+      function()
+        require("neotest").run.stop()
+      end,
+      desc = "[neotest] stop test",
+    },
+    {
+      "<localleader>uf",
+      function()
+        local fname = vim.api.nvim_buf_get_name(0)
+        require("neotest").run.run(fname)
+      end,
+      desc = "[neotest] file test",
+    },
+    {
+      "<localleader>ud",
+      function()
+        ---@diagnostic disable-next-line: missing-fields
+        require("neotest").run.run { vim.api.nvim_buf_get_name(0), strategy = "dap" }
+      end,
+      desc = "[neotest] debug test",
+    },
+  },
   lazy = true,
   dependencies = {
     "nvim-neotest/neotest-plenary",
@@ -19,23 +57,5 @@ return {
         require("neotest-gtest").setup {},
       },
     }
-    local u = require("core.utils")
-    u.keymap("n", "<localleader>ua", function()
-      t.run.attach()
-    end, u.opts, "[neotest] attach test")
-    u.keymap("n", "<localleader>ud", function()
-      ---@diagnostic disable-next-line: missing-fields
-      t.run.run { strategy = "dap" }
-    end, u.opts, "[neotest] nearest debug test")
-    u.keymap("n", "<localleader>uf", function()
-      local fname = vim.api.nvim_buf_get_name(0)
-      t.run.run(fname)
-      u.keymap("n", "<localleader>uu", function()
-        t.run.run()
-      end, u.opts, "[neotest] nearest test")
-    end, u.opts, "[neotest] file test")
-    u.keymap("n", "<localleader>us", function()
-      t.run.stop()
-    end, u.opts, "[neotest] stop test")
   end,
 }
