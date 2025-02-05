@@ -1,0 +1,53 @@
+{
+  "parser-directories": ["/root/dev", "/root/git"],
+  "theme": {
+    "punctuation.delimiter": 239,
+    "function.builtin": {
+      "color": 26,
+      "bold": true
+    },
+    "keyword": 56,
+    "comment": {
+      "color": 245,
+      "italic": true
+    },
+    "attribute": {
+      "color": 124,
+      "italic": true
+    },
+    "number": {
+      "bold": true,
+      "color": 94
+    },
+    "operator": {
+      "bold": true,
+      "color": 239
+    },
+    "tag": 18,
+    "constant": 94,
+    "constant.builtin": {
+      "color": 94,
+      "bold": true
+    },
+    "type": 23,
+    "variable.parameter": {
+      "underline": true
+    },
+    "embedded": null,
+    "constructor": 136,
+    "function": 26,
+    "type.builtin": {
+      "bold": true,
+      "color": 23
+    },
+    "variable.builtin": {
+      "bold": true
+    },
+    "string.special": 30,
+    "module": 136,
+    "property": 124,
+    "string": 28,
+    "punctuation.bracket": 239
+  }
+}
+
