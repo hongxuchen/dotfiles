@@ -18,6 +18,7 @@ ext_app_dict = {
     ".rb": "ruby",
     ".ml": "ocaml",
     ".go": "go",
+    ".nu": "nu",
 }
 
 
