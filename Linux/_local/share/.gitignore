@@ -1,5 +1,6 @@
 *.list
 *cxmenu-cxoffice*
+systemctl-tui/
 .converted-launchers
 .vivaldi_user_id
 CMakeTools/

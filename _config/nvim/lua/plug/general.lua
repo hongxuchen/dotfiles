@@ -105,10 +105,10 @@ return {
   },
 
   { "kyazdani42/nvim-web-devicons", lazy = true },
-  {
-    "mortepau/codicons.nvim",
-    config = true,
-  },
+  -- {
+  --   "mortepau/codicons.nvim",
+  --   config = true,
+  -- },
 
   -- unix operation utilities(auto configured)
   { "tpope/vim-eunuch" },

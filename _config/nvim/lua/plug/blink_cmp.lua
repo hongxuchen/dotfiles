@@ -5,7 +5,7 @@ return {
   lazy = false, -- lazy loading handled internally
   -- optional: provides snippets for the snippet source
   dependencies = {
-    { "Saghen/blink.compat" },
+    -- { "Saghen/blink.compat" },
     { "rafamadriz/friendly-snippets" },
     { "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
   },
@@ -41,10 +41,22 @@ return {
       nerd_font_variant = "mono",
     },
     completion = {
+      keyword = { range = "prefix" },
       accept = {
-        -- experimental auto-brackets support
         auto_brackets = {
           enabled = true,
+          kind_resolution = {
+            enabled = true,
+            blocked_filetypes = { "cpp", "c", "typescriptreact", "javascriptreact", "vue" },
+          },
+        },
+      },
+      list = {
+        selection = {
+          preselect = function(ctx)
+            return ctx.mode ~= "cmdline" and not require("blink.cmp").snippet_active { direction = 1 }
+          end,
+          auto_insert = true,
         },
       },
       menu = {
@@ -54,7 +66,7 @@ return {
       },
       documentation = {
         auto_show = true,
-        auto_show_delay_ms = 50,
+        auto_show_delay_ms = 100,
         update_delay_ms = 50,
         window = {
           border = "rounded",
@@ -66,12 +78,14 @@ return {
       },
     },
 
-    -- experimental signature help support
     signature = { enabled = false },
 
     sources = {
-      default = { "lsp", "snippets", "buffer", "markdown", "lazydev" },
-      cmdline = {},
+      default = { "lsp", "snippets", "buffer" },
+      per_filetype = {
+        markdown = { "markdown", "buffer" },
+        lua = { "lsp", "snippets", "buffer", "lazydev" },
+      },
       providers = {
         lsp = {
           name = "LSP",
@@ -89,6 +103,11 @@ return {
           fallbacks = { "lsp" },
         },
       },
+      min_keyword_length = 1,
+    },
+
+    cmdline = {
+      enabled = false,
     },
 
     keymap = {

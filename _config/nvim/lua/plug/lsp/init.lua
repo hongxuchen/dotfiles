@@ -52,6 +52,7 @@ return {
             "rustfmt.toml",
             "Makefile.toml",
             "clippy.toml",
+            "rust-toolchain.toml",
             "rust-toolchain",
             "build.rs",
             ".editorconfig",

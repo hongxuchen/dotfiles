@@ -114,6 +114,8 @@ u.keymap("n", "<leader><leader>", function()
   fzf.builtin {}
 end, u.opts, "[fzf] run builtin pickers")
 
+u.keymap("n", "gs", fzf.lsp_document_symbols, u.opts, "[fzf] lsp document symbols")
+
 u.keymap("n", "<leader>ddc", fzf.dap_commands, u.opts, "[fzf] find dap_commands")
 u.keymap("n", "<leader>dds", fzf.dap_commands, u.opts, "[fzf] find dap_configurations")
 u.keymap("n", "<leader>ddb", fzf.dap_commands, u.opts, "[fzf] find dap_breakpoints")
