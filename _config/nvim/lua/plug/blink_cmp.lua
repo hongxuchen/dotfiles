@@ -44,7 +44,7 @@ return {
       keyword = { range = "prefix" },
       accept = {
         auto_brackets = {
-          enabled = true,
+          enabled = false,
           kind_resolution = {
             enabled = true,
             blocked_filetypes = { "cpp", "c", "typescriptreact", "javascriptreact", "vue" },
@@ -53,9 +53,10 @@ return {
       },
       list = {
         selection = {
-          preselect = function(ctx)
-            return ctx.mode ~= "cmdline" and not require("blink.cmp").snippet_active { direction = 1 }
-          end,
+          preselect = true,
+          -- preselect = function(ctx)
+          --   return ctx.mode ~= "cmdline" and not require("blink.cmp").snippet_active { direction = 1 }
+          -- end,
           auto_insert = true,
         },
       },
@@ -78,7 +79,11 @@ return {
       },
     },
 
-    signature = { enabled = false },
+    signature = {
+      -- disable
+      enabled = false,
+      window = { border = "rounded" },
+    },
 
     sources = {
       default = { "lsp", "snippets", "buffer" },
@@ -92,18 +97,34 @@ return {
           fallbacks = {
             "lazydev",
           },
+          score_offset = 10,
         },
         lazydev = {
           name = "LazyDev",
           module = "lazydev.integrations.blink",
+          score_offset = 10,
         },
         markdown = {
           name = "RenderMarkdown",
           module = "render-markdown.integ.blink",
           fallbacks = { "lsp" },
+          score_offset = 5,
+        },
+        path = {
+          min_keyword_length = 0,
+          score_offset = 1,
+        },
+        buffer = {
+          min_keyword_length = 3,
+          max_items = 5,
+          score_offset = 1,
+        },
+        snippets = {
+          min_keyword_length = 2,
+          score_offset = 10,
         },
       },
-      min_keyword_length = 1,
+      min_keyword_length = 0,
     },
 
     cmdline = {

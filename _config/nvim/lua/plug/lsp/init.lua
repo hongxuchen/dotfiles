@@ -190,7 +190,7 @@ return {
           -- https://github.com/hrsh7th/nvim-cmp/issues/999
           "--header-insertion-decorators=false",
           "--limit-references=256",
-          "--limit-results=50",
+          "--limit-results=80",
           "--pch-storage=disk",
           -- below are hidden options
           "--hidden-features",
