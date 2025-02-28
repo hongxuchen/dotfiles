@@ -101,7 +101,7 @@ u.keymap("n", "<leader>z", fzf.zoxide, u.opts, "[fzf] go to recent folders")
 
 u.keymap("n", "<leader>r", fzf.resume, u.opts, "[fzf] resume last picker")
 
-u.keymap("n", "<leader>g", fzf.git_status, u.opts, "[fzf] git status")
+u.keymap("n", "<leader>gs", fzf.git_status, u.opts, "[fzf] git status")
 u.keymap("n", "<leader>h", fzf.helptags, u.opts, "[fzf] search help tags")
 u.keymap("n", "<leader>o", fzf.oldfiles, u.opts, "[fzf] find old files")
 u.keymap("n", "<leader>bb", function()

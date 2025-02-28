@@ -21,8 +21,37 @@ return {
 
   {
     "MagicDuck/grug-far.nvim",
+    keys = {
+      {
+        "<leader>gf",
+        function()
+          require("grug-far").open { transient = true, prefills = { search = vim.fn.expand("<cword>") } }
+        end,
+        mode = "n",
+        desc = "[GrugFar] search <cword>",
+      },
+    },
     config = function()
-      require("grug-far").setup {}
+      local grug_far = require("grug-far")
+      grug_far.setup {
+        startInInsertMode = false,
+      }
+      vim.api.nvim_create_autocmd("FileType", {
+        group = vim.api.nvim_create_augroup("my-grug-far-custom-keybinds", { clear = true }),
+        pattern = { "grug-far" },
+        callback = function()
+          vim.keymap.set("n", "<localleader>w", function()
+            local state = unpack(grug_far.toggle_flags { "--fixed-strings" })
+          end, { buffer = true, desc = "[GrugFar] Toggle fixed-strings" })
+          vim.api.nvim_buf_set_keymap(
+            0,
+            "n",
+            "<C-enter>",
+            "<localleader>o<localleader>c",
+            { desc = "[GrugFar] Open result and close GrugFar" }
+          )
+        end,
+      })
     end,
   },
 
@@ -100,7 +129,7 @@ return {
   {
     "moll/vim-bbye",
     keys = {
-      { "<leader>qq", "<Cmd>Bdelete<CR>", desc = "delete buffer nicely" },
+      { "<leader>qq", "<Cmd>Bdelete<CR>", desc = "[vim] delete buffer nicely" },
     },
   },
 
