@@ -97,6 +97,8 @@ u.keymap("n", "<leader>m", function()
   fzf.manpages {}
 end, u.opts, "[fzf] search manpages")
 
+u.keymap("n", "<leader>z", fzf.zoxide, u.opts, "[fzf] go to recent folders")
+
 u.keymap("n", "<leader>r", fzf.resume, u.opts, "[fzf] resume last picker")
 
 u.keymap("n", "<leader>g", fzf.git_status, u.opts, "[fzf] git status")
