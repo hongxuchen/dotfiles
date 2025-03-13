@@ -69,7 +69,7 @@ u.keymap("n", "<leader>bl", fzf.blines, u.opts, "[fzf] fuzzy grep in cur buffer"
 
 u.keymap("n", "<leader>wl", function()
   fzf.live_grep_glob { cwd = vim.uv.cwd() }
-end, u.opts, "[fzf] live grep in cur dir")
+end, u.opts, "[fzf] live grep in workspace")
 u.keymap("n", "<leader>ws", function()
   fzf.grep_cword { cwd = u.get_workspace_root() }
 end, u.opts, "[fzf] grep cur word in workspace")

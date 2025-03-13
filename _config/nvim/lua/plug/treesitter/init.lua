@@ -4,6 +4,7 @@ return {
     dependencies = {
       { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
       { "nushell/tree-sitter-nu" },
+      { "nvim-treesitter/nvim-treesitter-textobjects" },
     },
     -- smart spellcheck requires treesitter, no lazy-load
     lazy = false,
@@ -11,7 +12,7 @@ return {
       vim.keymap.set("n", "<localleader>ti", "<Cmd>TSConfigInfo<CR>", { desc = "[treesitter] Display Config" })
       vim.keymap.set("n", "<localleader>tt", ":TSBufToggle ", { desc = "[treesitter] Toggle Feature" })
 
-      local ignored_langs = { "c", "cpp", "rust", "markdown", "vimdoc", "help" }
+      local ignored_langs = { "rust", "markdown", "vimdoc", "help" }
       local ts_config = require("nvim-treesitter.configs")
       ---@diagnostic disable-next-line: missing-fields
       ts_config.setup {
@@ -84,6 +85,65 @@ return {
             scope_incremental = "<localleader>tc",
           },
         },
+        -- textobjects plugin
+        textobjects = {
+          select = {
+            enable = true,
+
+            -- Automatically jump forward to textobj, similar to targets.vim
+            lookahead = true,
+
+            keymaps = {
+              -- You can use the capture groups defined in textobjects.scm
+              ["af"] = { query = "@function.outer", desc = "[ts-obj] outer function object" },
+              ["if"] = { query = "@function.inner", desc = "[ts-obj] inner function object" },
+              ["ac"] = { query = "@class.outer", desc = "[ts-obj] outer class object" },
+              ["ic"] = { query = "@class.inner", desc = "[ts-obj] inner class object" },
+              ["al"] = { query = "@loop.outer", desc = "[ts-obj] outer loop object" },
+              ["il"] = { query = "@loop.inner", desc = "[ts-obj] inner loop object" },
+              ["ad"] = { query = "@loop.outer", desc = "[ts-obj] outer condition object" },
+              ["id"] = { query = "@loop.inner", desc = "[ts-obj] inner condition object" },
+            },
+            include_surrounding_whitespace = true,
+          },
+          swap = {
+            enable = true,
+            swap_next = {
+              ["<localleader>oa"] = "@parameter.inner",
+            },
+            swap_previous = {
+              ["<localleader>oA"] = "@parameter.inner",
+            },
+          },
+          move = {
+            enable = true,
+            set_jumps = true, -- whether to set jumps in the jumplist
+            goto_next_start = {
+              ["]f"] = "@function.outer",
+              ["]c"] = "@class.outer",
+              ["]d"] = "@condition.outer",
+              ["]l"] = "@loop.outer",
+            },
+            goto_next_end = {
+              ["]F"] = "@function.outer",
+              ["]C"] = "@class.outer",
+              ["]D"] = "@condition.outer",
+              ["]L"] = "@loop.outer",
+            },
+            goto_previous_start = {
+              ["[f"] = "@function.outer",
+              ["[c"] = "@class.outer",
+              ["[d"] = "@condition.outer",
+              ["[l"] = "@loop.outer",
+            },
+            goto_previous_end = {
+              ["[F"] = "@function.outer",
+              ["[C"] = "@class.outer",
+              ["[D"] = "@condition.outer",
+              ["[L"] = "@loop.outer",
+            },
+          },
+        },
       }
       -- too slow so unset
       -- vim.opt.foldmethod = "expr"
@@ -92,36 +152,6 @@ return {
     build = function()
       require("nvim-treesitter.install").update { with_sync = true }
     end,
-  },
-  {
-    "Badhi/nvim-treesitter-cpp-tools",
-    -- Optional: Configuration
-    opts = function()
-      local options = {
-        preview = {
-          quit = "q", -- optional keymapping for quit preview
-          accept = "<tab>", -- optional keymapping for accept preview
-        },
-        header_extension = "h", -- optional
-        source_extension = "cpp", -- optional
-        custom_define_class_function_commands = { -- optional
-          TSCppImplWrite = {
-            output_handle = require("nt-cpp-tools.output_handlers").get_add_to_cpp(),
-          },
-          --[[
-                <your impl function custom command name> = {
-                    output_handle = function (str, context) 
-                        -- string contains the class implementation
-                        -- do whatever you want to do with it
-                    end
-                }
-                ]]
-        },
-      }
-      return options
-    end,
-    -- End configuration
-    config = true,
   },
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
