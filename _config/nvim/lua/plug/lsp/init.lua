@@ -18,7 +18,8 @@ return {
     "neovim/nvim-lspconfig",
     config = function()
       local conf = require("plug.lsp.conf")
-      local lspconfig = require("lspconfig")
+      local lspconfig_util = require("lspconfig").util
+      local lspconfig = vim.lsp.config
 
       conf.general_setup()
 
@@ -31,10 +32,10 @@ return {
         "yamlls", -- yaml
       }
       for _, ls in ipairs(simple_ls) do
-        lspconfig[ls].setup {
+        lspconfig(ls, {
           on_attach = conf.on_attach,
           capabilities = conf.capabilities,
-        }
+        })
       end
 
       -- rust
@@ -46,7 +47,7 @@ return {
           -- plugins
         },
         server = {
-          root_dir = lspconfig.util.root_pattern(
+          root_dir = lspconfig_util.root_pattern(
             "README.md",
             ".git",
             "rustfmt.toml",
@@ -74,23 +75,23 @@ return {
       }
 
       -- golang
-      lspconfig["gopls"].setup {
+      lspconfig("gopls", {
         on_attach = conf.on_attach,
         capabilities = conf.capabilities,
-      }
+      })
 
       -- bash/zsh
       -- TODO: duplication of conform+nvim-lint
-      lspconfig["bashls"].setup {
+      lspconfig("bashls", {
         cmd_env = { GLOB_PATTERN = "*@(.sh|.inc|.bash|.command)" },
         filetypes = { "sh", "zsh", "bash" },
         on_attach = conf.on_attach,
         capabilities = conf.capabilities,
-      }
+      })
 
       -- lua
-      lspconfig["lua_ls"].setup {
-        root_dir = lspconfig.util.root_pattern("init.lua", ".luarc.json", "stylua.toml", ".git"),
+      lspconfig("lua_ls", {
+        root_dir = lspconfig_util.root_pattern("init.lua", ".luarc.json", "stylua.toml", ".git"),
         on_attach = conf.on_attach,
         capabilities = conf.capabilities,
         -- https://github.com/sumneko/lua-language-server/wiki/Settings
@@ -157,9 +158,9 @@ return {
             },
           },
         },
-      }
+      })
 
-      lspconfig["clangd"].setup {
+      lspconfig("clangd", {
         ---@param client vim.lsp.Client
         ---@param bufnr number
         on_attach = function(client, bufnr)
@@ -177,7 +178,7 @@ return {
         end),
         -- don't use .clangd or .clang-format/.clang-tidy as root_dir patterns
         -- don't use .git as root pattern due to submodules
-        root_dir = lspconfig.util.root_pattern("compile_commands.json"),
+        root_dir = lspconfig_util.root_pattern("compile_commands.json"),
         cmd = {
           "clangd-17",
           "--all-scopes-completion=true",
@@ -196,12 +197,12 @@ return {
           "--hidden-features",
           "--ranking-model=heuristics",
         },
-      }
+      })
 
       --- python settings
       -- prefer `pyproject.toml` to configure per project
-      lspconfig["basedpyright"].setup {
-        root_dir = lspconfig.util.root_pattern("pyproject.toml"),
+      lspconfig("basedpyright", {
+        root_dir = lspconfig_util.root_pattern("pyproject.toml"),
         basedright = {
           analysis = {
             diagnosticMode = "openFilesOnly",
@@ -232,8 +233,8 @@ return {
             },
           },
         },
-      }
-      lspconfig.ruff.setup {}
+      })
+      lspconfig("ruff", {})
     end,
   },
 
