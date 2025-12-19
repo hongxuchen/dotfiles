@@ -23,9 +23,10 @@ return {
       yaml = { "prettierd", "prettier", stop_after_first = true },
       zsh = { "beautysh", "shfmt" },
     },
-    format_on_save = {
-      lsp_format = "fallback",
-      timeout_ms = 500,
-    },
+    format_on_save = nil,
+    -- format_on_save = {
+    --   lsp_format = "fallback",
+    --   timeout_ms = 500,
+    -- },
   },
 }
