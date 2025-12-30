@@ -185,7 +185,7 @@ return {
         -- don't use .git as root pattern due to submodules
         root_markers = {"compile_commands.json"},
         cmd = {
-          "clangd-17",
+          "clangd-19",
           "--all-scopes-completion=true",
           "--background-index=true",
           "--background-index-priority=normal",
