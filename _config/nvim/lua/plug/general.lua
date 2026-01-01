@@ -134,4 +134,17 @@ return {
 
   -- unix operation utilities(auto configured)
   { "tpope/vim-eunuch" },
+
+  -- trim whitespace
+  {
+    "cappyzawa/trim.nvim",
+    event = "BufWritePre",
+    opts = {
+      trim_on_write = true,
+      trim_trailing = true,
+      trim_last_line = false,
+      ignore_ft = { "markdown", "diff", "gitcommit", "unified" },
+      highlight = false,
+    },
+  },
 }

@@ -6,8 +6,14 @@ return {
       { "nushell/tree-sitter-nu" },
       { "nvim-treesitter/nvim-treesitter-textobjects" },
     },
-    -- smart spellcheck requires treesitter, no lazy-load
-    lazy = false,
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = {
+      "TSInstall",
+      "TSBufEnable",
+      "TSBufDisable",
+      "TSModuleInfo",
+      "TSPlaygroundToggle",
+    },
     config = function()
       vim.keymap.set("n", "<localleader>ti", "<Cmd>TSConfigInfo<CR>", { desc = "[treesitter] Display Config" })
       vim.keymap.set("n", "<localleader>tt", ":TSBufToggle ", { desc = "[treesitter] Toggle Feature" })

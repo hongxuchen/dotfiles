@@ -171,7 +171,12 @@ return {
           "clang-format",
           "beautysh",
           "ruff",
+          "ruff_format",
+          "ruff_fix",
+          "ruff_organize_imports",
         },
+        -- Disable automatic installation entirely
+        automatic_installation = false,
       }
     end,
   },

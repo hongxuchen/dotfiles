@@ -1,5 +1,25 @@
 return {
   "stevearc/conform.nvim",
+  keys = {
+    {
+      "<localleader>f",
+      function()
+        local conform = require("conform")
+        local formatter_names = conform.list_formatters_for_buffer(0)
+
+        conform.format {
+          async = false,
+          lsp_fallback = true,
+          quiet = false,
+        }
+
+        local msg = #formatter_names > 0 and table.concat(formatter_names, ", ") or "LSP"
+        vim.notify(string.format("Formatted with: [%s]", msg), vim.log.levels.INFO)
+      end,
+      mode = { "n", "v" },
+      desc = "[conform] format buffer/selection",
+    },
+  },
   opts = {
     formatters_by_ft = {
       bash = { "beautysh", "shfmt", "shellharden" },
