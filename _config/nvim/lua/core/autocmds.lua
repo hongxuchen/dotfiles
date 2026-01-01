@@ -30,8 +30,7 @@ u.au("VimEnter", {
     if not should_skip then
       local status_ok, oil = pcall(require, "oil")
       if status_ok then
-        -- oil.open(oil.get_current_dir())
-        -- vim.cmd("Oil")
+        oil.open(oil.get_current_dir())
       else
         vim.cmd("Explore!")
       end
@@ -157,21 +156,21 @@ u.au({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
 
 -- adjusted from https://stackoverflow.com/a/31581929/528929
 ---@type table<integer, table>
-_G.my_saved_views = {}
+local saved_views = {}
 local function save_buf_view()
   local bufnr = vim.api.nvim_get_current_buf()
   local v = vim.fn.winsaveview()
-  my_saved_views[bufnr] = v
+  saved_views[bufnr] = v
 end
 local function restore_buf_view()
   local bufnr = vim.api.nvim_get_current_buf()
-  local saved = my_saved_views[bufnr]
+  local saved = saved_views[bufnr]
   if saved then
     local v = vim.fn.winsaveview()
     local at_start_of_file = (v["lnum"] == 1 and v["col"] == 0)
     if not vim.wo.diff and at_start_of_file then
       vim.fn.winrestview(saved)
-      my_saved_views[bufnr] = nil
+      saved_views[bufnr] = nil
     end
   end
 end

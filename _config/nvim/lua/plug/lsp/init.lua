@@ -1,13 +1,5 @@
 return {
   {
-    "linrongbin16/lsp-progress.nvim",
-    enabled = false,
-    config = function()
-      require("lsp-progress").setup {}
-    end,
-  },
-
-  {
     "j-hui/fidget.nvim",
     config = function()
       require("fidget").setup {}
@@ -178,12 +170,15 @@ return {
           u.keymap("n", "<localleader>ds", "<Cmd>ClangdSwitchSourceHeader<CR>", bufopts, "[clangd] switch .h/.cpp")
           u.keymap("n", "<localleader>dt", "<Cmd>ClangdAST<CR>", bufopts, "[clangd] show ast")
         end,
-        capabilities = conf.make_capabilitites(function(c)
+        capabilities = conf.make_capabilities(function(c)
           c.offsetEncoding = "utf-8"
         end),
-        -- don't use .clangd or .clang-format/.clang-tidy as root_markers
-        -- don't use .git as root pattern due to submodules
-        root_markers = {"compile_commands.json"},
+        root_markers = {
+          "compile_commands.json",
+          "compile_commands",
+          ".clangd",
+          ".git",
+        },
         cmd = {
           "clangd-19",
           "--all-scopes-completion=true",
@@ -240,6 +235,24 @@ return {
         },
       })
       vim.lsp.config("ruff", {})
+
+      -- Enable all configured LSP servers
+      vim.lsp.enable({
+        "clangd",
+        "gopls",
+        "bashls",
+        "lua_ls",
+        "basedpyright",
+        "ruff",
+        "jsonls",
+        "neocmake",
+        "taplo",
+        "texlab",
+        "vimls",
+        "yamlls",
+        "ts_ls",
+        "jdtls",
+      })
     end,
   },
 
@@ -351,29 +364,5 @@ return {
         end,
       },
     },
-  },
-
-  -- typescript
-  {
-    "pmizio/typescript-tools.nvim",
-    enabled = false,
-    config = function()
-      local conf = require("plug.lsp.conf")
-      require("typescript-tools").setup {
-        on_attach = function(client, bufnr)
-          conf.on_attach(client, bufnr)
-          -- use null_ls.prettier for formatting
-          client.server_capabilities.documentFormattingProvider = false
-          client.server_capabilities.documentRangeFormattingProvider = false
-        end,
-        settings = {
-          expose_as_code_action = { "fix_all", "add_missing_imports", "remove_unused" },
-          tsserver_file_preferences = {
-            -- disableSuggestions = true,
-          },
-          tsserver_format_options = {},
-        },
-      }
-    end,
   },
 }

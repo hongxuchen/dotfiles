@@ -2,7 +2,7 @@ local M = {}
 
 -- TODO: used as a C/C++ IDE plugin
 
-M.bin_clangd = "clangd-17"
+M.bin_clangd = "clangd-19"
 M.bin_ast_grep = "ast-grep"
 M.bin_delta = "delta"
 M.bin_zoxide = "zoxide"

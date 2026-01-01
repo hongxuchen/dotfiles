@@ -91,7 +91,6 @@ return {
     }
 
     local aerial = require("aerial")
-    require("telescope").load_extension("aerial")
 
     local u = require("core.utils")
     aerial.setup {

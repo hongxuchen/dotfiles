@@ -25,17 +25,13 @@ if not vim.uv.fs_stat(lazypath) then
   local res = clone_run:wait()
   if res.code ~= 0 or res.signal ~= 0 then
     vim.notify(string.format("error during git clone: %s", res.stderr), vim.log.levels.ERROR, {})
-    do
-      return
-    end
+    return
   end
   local checkout_run = vim.system({ "git", "-C", lazypath, "checkout", "tags/stable" }, { text = true })
   res = checkout_run:wait()
   if res.code ~= 0 or res.signal ~= 0 then
     vim.notify(string.format("error during git check: %s", res.stderr), vim.log.levels.ERROR, {})
-    do
-      return
-    end
+    return
   end
 end
 

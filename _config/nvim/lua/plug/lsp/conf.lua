@@ -4,7 +4,7 @@ local u = require("core.utils")
 
 ---@param override fun(lsp.capabilities)|nil -> nil
 ---@return lsp.ClientCapabilities
-function M.make_capabilitites(override)
+function M.make_capabilities(override)
   local cap = vim.lsp.protocol.make_client_capabilities()
   cap.textDocument.foldingRange = {
     dynamicRegistration = false,
@@ -13,16 +13,10 @@ function M.make_capabilitites(override)
   if override then
     override(cap)
   end
-  local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-  if status_ok then
-    local cmp_cap = cmp_nvim_lsp.default_capabilities()
-    return vim.tbl_deep_extend("force", cap, cmp_cap)
-  else
-    return cap
-  end
+  return cap
 end
 
-M.capabilities = M.make_capabilitites()
+M.capabilities = M.make_capabilities()
 
 function M.general_setup()
   local diagnostic_signs = {
@@ -54,7 +48,7 @@ function M.general_setup()
     signs = diagnostic_signs,
     underline = true,
     update_in_insert = false,
-    serverity_sort = true,
+    severity_sort = true,
   }
 
   ---lua_ls treats `f = function() ... end`(lnum+filename usually the same) as two defs, pick one

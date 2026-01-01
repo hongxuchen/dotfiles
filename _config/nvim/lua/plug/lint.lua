@@ -1,6 +1,7 @@
 return {
   "mfussenegger/nvim-lint",
   config = function(_, opts)
+    local u = require("core.utils")
     require("lint").linters_by_ft = {
       c = {}, -- linted by clangd
       cpp = {}, -- linted by clangd
@@ -12,11 +13,8 @@ return {
       sql = { "sqruff" },
     }
 
-    vim.api.nvim_create_autocmd({
-      -- "BufReadPost", -- not working for gitcommit
-      -- "BufWritePost",
-      "InsertLeave",
-    }, {
+    vim.api.nvim_create_autocmd("InsertLeave", {
+      group = u.myAutoGroup,
       desc = "Lint",
       callback = function()
         require("lint").try_lint()

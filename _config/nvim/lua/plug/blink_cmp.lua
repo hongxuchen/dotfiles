@@ -45,18 +45,11 @@ return {
       accept = {
         auto_brackets = {
           enabled = false,
-          kind_resolution = {
-            enabled = true,
-            blocked_filetypes = { "cpp", "c", "typescriptreact", "javascriptreact", "vue" },
-          },
         },
       },
       list = {
         selection = {
           preselect = true,
-          -- preselect = function(ctx)
-          --   return ctx.mode ~= "cmdline" and not require("blink.cmp").snippet_active { direction = 1 }
-          -- end,
           auto_insert = true,
         },
       },
@@ -74,15 +67,6 @@ return {
           winblend = vim.o.pumblend,
         },
       },
-      ghost_text = {
-        enabled = false,
-      },
-    },
-
-    signature = {
-      -- disable
-      enabled = false,
-      window = { border = "rounded" },
     },
 
     sources = {

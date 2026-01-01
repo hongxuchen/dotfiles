@@ -73,23 +73,21 @@ return {
 
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    enabled = true,
+    ft = "markdown",
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
-    ---@module 'render-markdown'
-    ---@type render.md.UserConfig
     opts = {
-      enabled = false,
+      enabled = true,
       heading = {
-        enabled = false,
+        enabled = true,
       },
       paragraph = {
-        enabled = false,
+        enabled = true,
       },
       code = {
         enabled = true,
       },
       bullet = {
-        enabled = false,
+        enabled = true,
       },
       checkbox = {
         enabled = true,
@@ -127,17 +125,12 @@ return {
   },
 
   {
-    "moll/vim-bbye",
+    "kyazdani42/nvim-web-devicons",
+    lazy = true,
     keys = {
-      { "<leader>qq", "<Cmd>Bdelete<CR>", desc = "[vim] delete buffer nicely" },
+      { "<leader>qq", "<Cmd>bdelete<CR>", desc = "[vim] delete buffer" },
     },
   },
-
-  { "kyazdani42/nvim-web-devicons", lazy = true },
-  -- {
-  --   "mortepau/codicons.nvim",
-  --   config = true,
-  -- },
 
   -- unix operation utilities(auto configured)
   { "tpope/vim-eunuch" },

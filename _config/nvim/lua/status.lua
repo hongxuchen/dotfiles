@@ -3,7 +3,7 @@ local M = {}
 local u = require("core.utils")
 
 local MAX_LEN = 100
-DOTS = ".."
+local DOTS = ".."
 
 local api = vim.api
 

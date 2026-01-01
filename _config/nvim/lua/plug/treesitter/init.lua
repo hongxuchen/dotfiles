@@ -55,7 +55,7 @@ return {
           "yaml",
           "javascript",
         },
-        sync_install = true,
+        sync_install = false,
         indent = {
           enable = false, -- it's buggy so disable it
         },
