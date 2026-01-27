@@ -32,6 +32,9 @@ export COMMAND_NOT_FOUND_INSTALL_PROMPT=1
 export NIXPKGS_ALLOW_INSECURE=1
 export NIXPKGS_ALLOW_UNFREE=1
 
+# claude code
+export ENABLE_LSP_TOOL=1
+
 ################################ PATH ########################################
 MY_HOME_BIN="$HOME/.bin"
 export PATH=/usr/sbin:/usr/local/bin:/usr/bin:/usr/local/games:/usr/games
@@ -100,11 +103,15 @@ export XMAKE_ROOT=y
 local XMAKE_PROFILE=$HOME/.xmake/profile
 if [[ -f $XMAKE_PROFILE ]]; then
   source "$XMAKE_PROFILE"
-else
-  echo "$XMAKE_PROFILE not exist"
+# else
+  # echo "$XMAKE_PROFILE not exist"
 fi
 
 local MY_LOCAL_SCRIPT="$HOME/.local.sh"
 if [[ -f "$MY_LOCAL_SCRIPT" ]]; then
   source "$MY_LOCAL_SCRIPT"
 fi
+
+## claude code
+export MAX_THINKING_TOKENS=63999
+export CLAUDE_CODE_MAX_OUTPUT_TOKENS=64000
