@@ -1,0 +1,11 @@
+{
+  "lsp": {
+    "enabled": true,
+    "servers": {
+      "cpp": {
+        "command": "/usr/bin/clangd-19",
+        "args": ["--header-insertion=never"]
+      }
+    }
+  }
+}

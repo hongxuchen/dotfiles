@@ -202,15 +202,7 @@ return {
       --- python settings
       -- prefer `pyproject.toml` to configure per project
       vim.lsp.config("basedpyright", {
-        root_markers = {"pyproject.toml", "setup.py", ".git"},
-        basedright = {
-          analysis = {
-            diagnosticMode = "openFilesOnly",
-            autoSearchPaths = true,
-            useLibraryCodeForTypes = true,
-          },
-        },
-        -- basedpyright-specific
+        root_markers = { "pyproject.toml", "setup.py", ".git" },
         handlers = {
           -- https://github.com/hrsh7th/nvim-cmp/issues/685#issuecomment-1002924899
           -- https://github.com/neovim/nvim-lspconfig/issues/726#issuecomment-1075539112
@@ -226,10 +218,13 @@ return {
         on_attach = conf.on_attach,
         capabilities = conf.capabilities,
         settings = {
-          python = {
+          basedpyright = {
             analysis = {
               -- use ruff for most of the checkings
               typeCheckingMode = "off",
+              diagnosticMode = "openFilesOnly",
+              autoSearchPaths = true,
+              useLibraryCodeForTypes = true,
             },
           },
         },
