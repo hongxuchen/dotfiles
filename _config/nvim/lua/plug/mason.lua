@@ -222,6 +222,8 @@ return {
           "yamlls",
           "taplo",
           "jdtls",
+          "zuban",
+          "ruff",
         },
         -- Disable auto-install for servers that may fail
         automatic_installation = false,

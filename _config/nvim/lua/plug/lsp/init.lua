@@ -201,35 +201,42 @@ return {
 
       --- python settings
       -- prefer `pyproject.toml` to configure per project
-      vim.lsp.config("basedpyright", {
-        root_markers = { "pyproject.toml", "setup.py", ".git" },
-        handlers = {
-          -- https://github.com/hrsh7th/nvim-cmp/issues/685#issuecomment-1002924899
-          -- https://github.com/neovim/nvim-lspconfig/issues/726#issuecomment-1075539112
-          ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-            signs = {
-              severity = vim.diagnostic.severity.WARN,
-            },
-            virtual_text = {
-              severity = vim.diagnostic.severity.WARN,
-            },
-          }),
-        },
+      -- vim.lsp.config("basedpyright", {
+      --   root_markers = { "pyproject.toml", "setup.py", ".git" },
+      --   handlers = {
+      --     -- https://github.com/hrsh7th/nvim-cmp/issues/685#issuecomment-1002924899
+      --     -- https://github.com/neovim/nvim-lspconfig/issues/726#issuecomment-1075539112
+      --     ["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+      --       signs = {
+      --         severity = vim.diagnostic.severity.WARN,
+      --       },
+      --       virtual_text = {
+      --         severity = vim.diagnostic.severity.WARN,
+      --       },
+      --     }),
+      --   },
+      --   on_attach = conf.on_attach,
+      --   capabilities = conf.capabilities,
+      --   settings = {
+      --     basedpyright = {
+      --       analysis = {
+      --         -- use ruff for most of the checkings
+      --         typeCheckingMode = "off",
+      --         diagnosticMode = "openFilesOnly",
+      --         autoSearchPaths = true,
+      --         useLibraryCodeForTypes = true,
+      --       },
+      --     },
+      --   },
+      -- })
+      vim.lsp.config("ruff", {})
+      vim.lsp.config("zuban", {
+        cmd = { "zuban", "server" },
+        root_markers = { "pyproject.toml", ".git" },
         on_attach = conf.on_attach,
         capabilities = conf.capabilities,
-        settings = {
-          basedpyright = {
-            analysis = {
-              -- use ruff for most of the checkings
-              typeCheckingMode = "off",
-              diagnosticMode = "openFilesOnly",
-              autoSearchPaths = true,
-              useLibraryCodeForTypes = true,
-            },
-          },
-        },
+        filetypes = { "python" },
       })
-      vim.lsp.config("ruff", {})
 
       -- Enable all configured LSP servers
       vim.lsp.enable({
@@ -237,7 +244,8 @@ return {
         "gopls",
         "bashls",
         "lua_ls",
-        "basedpyright",
+        -- "basedpyright",
+        "zuban",
         "ruff",
         "jsonls",
         "neocmake",
