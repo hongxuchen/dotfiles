@@ -2,12 +2,20 @@ return {
   {
     "williamboman/mason.nvim",
     cmd = { "Mason", "MasonPkg" },
+    init = function()
+      local mason_bin = vim.fn.stdpath("data") .. "/mason/bin"
+      if vim.fn.isdirectory(mason_bin) == 0 then
+        return
+      end
+      if vim.env.PATH and vim.env.PATH:find(mason_bin, 1, true) then
+        return
+      end
+      local sep = vim.fn.has("win32") == 1 and ";" or ":"
+      vim.env.PATH = mason_bin .. sep .. (vim.env.PATH or "")
+    end,
     config = function()
       require("mason").setup()
-      local registry = require "mason-registry"
-
-      -- Refresh registry on setup
-      registry.refresh()
+      local registry = require("mason-registry")
 
       -- Helper function to format list
       local function format_list(label, items, empty_label)
@@ -43,6 +51,16 @@ return {
         return desc
       end
 
+      local function with_registry(on_ready)
+        registry.refresh(function(success)
+          if success == false then
+            vim.notify("[MasonPkg] Failed to refresh registry", vim.log.levels.WARN)
+            return
+          end
+          on_ready()
+        end)
+      end
+
       -- Package info command
       vim.api.nvim_create_user_command("MasonPkg", function(opts)
         local package_name = opts.args
@@ -51,103 +69,106 @@ return {
           return
         end
 
-        -- Wait for registry to be ready
-        if not registry.is_installed("") then
-          registry.refresh()
-        end
-
-        local ok, pkg = pcall(registry.get_package, package_name)
-        if not ok then
-          vim.notify(
-            string.format("[MasonPkg] Package '%s' not found.\nTip: Use :Mason to browse available packages.", package_name),
-            vim.log.levels.ERROR
-          )
-          return
-        end
-
-        local spec = pkg.spec
-        if not spec then
-          vim.notify("[MasonPkg] Failed to get package spec", vim.log.levels.ERROR)
-          return
-        end
-
-        local is_installed = pkg:is_installed()
-        local is_installing = pkg:is_installing()
-        local installed_version = pkg:get_installed_version()
-        local latest_version = pkg:get_latest_version()
-        local aliases = pkg:get_aliases()
-
-        -- Build info lines
-        local lines = {
-          string.format("Name:        %s", sanitize(spec.name)),
-          string.format("Status:      %s", is_installing and "Installing..." or (is_installed and "Installed" or "Not Installed")),
-        }
-
-        if is_installed and installed_version then
-          table.insert(lines, string.format("Version:     %s", sanitize(installed_version)))
-        elseif latest_version then
-          table.insert(lines, string.format("Version:     %s (latest)", sanitize(latest_version)))
-        end
-
-        if spec.description then
-          table.insert(lines, string.format("Description: %s", format_desc(spec.description)))
-        end
-
-        if spec.homepage then
-          table.insert(lines, string.format("Homepage:    %s", sanitize(spec.homepage)))
-        end
-
-        if spec.categories and #spec.categories > 0 then
-          local cats = vim.tbl_map(sanitize, spec.categories)
-          table.insert(lines, string.format("Categories:  %s", table.concat(cats, ", ")))
-        end
-
-        if spec.languages and #spec.languages > 0 then
-          local langs = vim.tbl_map(sanitize, spec.languages)
-          table.insert(lines, string.format("Languages:   %s", table.concat(langs, ", ")))
-        end
-
-        if aliases and #aliases > 0 then
-          local als = vim.tbl_map(sanitize, aliases)
-          table.insert(lines, string.format("Aliases:     %s", table.concat(als, ", ")))
-        end
-
-        if spec.deprecation then
-          table.insert(lines, string.format("Deprecated:  since %s", sanitize(spec.deprecation.since or "Unknown")))
-        end
-
-        -- Display in floating window
-        local buf = vim.api.nvim_create_buf(false, true)
-        vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
-        vim.api.nvim_buf_set_option(buf, "modifiable", false)
-        vim.api.nvim_buf_set_option(buf, "bufhidden", "wipe")
-
-        -- Calculate window size
-        local width = 0
-        for _, line in ipairs(lines) do
-          if #line > width then
-            width = #line
+        with_registry(function()
+          local ok, pkg = pcall(registry.get_package, package_name)
+          if not ok then
+            vim.notify(
+              string.format(
+                "[MasonPkg] Package '%s' not found.\nTip: Use :Mason to browse available packages.",
+                package_name
+              ),
+              vim.log.levels.ERROR
+            )
+            return
           end
-        end
-        width = math.min(width + 4, vim.o.columns - 4)
-        local height = #lines + 2
 
-        local row = math.floor((vim.o.lines - height) / 2)
-        local col = math.floor((vim.o.columns - width) / 2)
+          local spec = pkg.spec
+          if not spec then
+            vim.notify("[MasonPkg] Failed to get package spec", vim.log.levels.ERROR)
+            return
+          end
 
-        local win = vim.api.nvim_open_win(buf, true, {
-          relative = "editor",
-          row = row,
-          col = col,
-          width = width,
-          height = height,
-          style = "minimal",
-          border = "single",
-        })
+          local is_installed = pkg:is_installed()
+          local is_installing = pkg:is_installing()
+          local installed_version = pkg:get_installed_version()
+          local latest_version = pkg:get_latest_version()
+          local aliases = pkg:get_aliases()
 
-        -- Close on q or <esc>
-        vim.api.nvim_buf_set_keymap(buf, "n", "q", ":close<CR>", { silent = true })
-        vim.api.nvim_buf_set_keymap(buf, "n", "<ESC>", ":close<CR>", { silent = true })
+          -- Build info lines
+          local lines = {
+            string.format("Name:        %s", sanitize(spec.name)),
+            string.format(
+              "Status:      %s",
+              is_installing and "Installing..." or (is_installed and "Installed" or "Not Installed")
+            ),
+          }
+
+          if is_installed and installed_version then
+            table.insert(lines, string.format("Version:     %s", sanitize(installed_version)))
+          elseif latest_version then
+            table.insert(lines, string.format("Version:     %s (latest)", sanitize(latest_version)))
+          end
+
+          if spec.description then
+            table.insert(lines, string.format("Description: %s", format_desc(spec.description)))
+          end
+
+          if spec.homepage then
+            table.insert(lines, string.format("Homepage:    %s", sanitize(spec.homepage)))
+          end
+
+          if spec.categories and #spec.categories > 0 then
+            local cats = vim.tbl_map(sanitize, spec.categories)
+            table.insert(lines, string.format("Categories:  %s", table.concat(cats, ", ")))
+          end
+
+          if spec.languages and #spec.languages > 0 then
+            local langs = vim.tbl_map(sanitize, spec.languages)
+            table.insert(lines, string.format("Languages:   %s", table.concat(langs, ", ")))
+          end
+
+          if aliases and #aliases > 0 then
+            local als = vim.tbl_map(sanitize, aliases)
+            table.insert(lines, string.format("Aliases:     %s", table.concat(als, ", ")))
+          end
+
+          if spec.deprecation then
+            table.insert(lines, string.format("Deprecated:  since %s", sanitize(spec.deprecation.since or "Unknown")))
+          end
+
+          -- Display in floating window
+          local buf = vim.api.nvim_create_buf(false, true)
+          vim.api.nvim_buf_set_lines(buf, 0, -1, false, lines)
+          vim.api.nvim_buf_set_option(buf, "modifiable", false)
+          vim.api.nvim_buf_set_option(buf, "bufhidden", "wipe")
+
+          -- Calculate window size
+          local width = 0
+          for _, line in ipairs(lines) do
+            if #line > width then
+              width = #line
+            end
+          end
+          width = math.min(width + 4, vim.o.columns - 4)
+          local height = #lines + 2
+
+          local row = math.floor((vim.o.lines - height) / 2)
+          local col = math.floor((vim.o.columns - width) / 2)
+
+          vim.api.nvim_open_win(buf, true, {
+            relative = "editor",
+            row = row,
+            col = col,
+            width = width,
+            height = height,
+            style = "minimal",
+            border = "single",
+          })
+
+          -- Close on q or <esc>
+          vim.api.nvim_buf_set_keymap(buf, "n", "q", ":close<CR>", { silent = true })
+          vim.api.nvim_buf_set_keymap(buf, "n", "<ESC>", ":close<CR>", { silent = true })
+        end)
       end, {
         nargs = 1,
         complete = function(arg_lead)
@@ -164,6 +185,8 @@ return {
 
   {
     "zapling/mason-conform.nvim",
+    dependencies = { "williamboman/mason.nvim" },
+    event = "VeryLazy",
     config = function()
       require("mason-conform").setup {
         -- Disable auto-install, use system packages instead
@@ -183,8 +206,9 @@ return {
 
   {
     "rshkarin/mason-nvim-lint",
+    dependencies = { "williamboman/mason.nvim" },
+    event = "VeryLazy",
     config = function()
-      vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
       require("mason-nvim-lint").setup {
         ignore_install = {
           "sqruff",
@@ -198,6 +222,7 @@ return {
 
   {
     "jayp0521/mason-nvim-dap.nvim",
+    dependencies = { "williamboman/mason.nvim" },
     event = "VeryLazy",
     config = function()
       require("mason-nvim-dap").setup {
@@ -209,7 +234,8 @@ return {
 
   {
     "williamboman/mason-lspconfig.nvim",
-    lazy = false,
+    dependencies = { "williamboman/mason.nvim" },
+    event = "VeryLazy",
     config = function()
       require("mason-lspconfig").setup {
         ensure_installed = {

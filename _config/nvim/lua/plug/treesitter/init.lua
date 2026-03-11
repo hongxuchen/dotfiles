@@ -15,7 +15,7 @@ return {
       "TSPlaygroundToggle",
     },
     config = function()
-      vim.keymap.set("n", "<localleader>ti", "<Cmd>TSConfigInfo<CR>", { desc = "[treesitter] Display Config" })
+      vim.keymap.set("n", "<localleader>tg", "<Cmd>TSConfigInfo<CR>", { desc = "[treesitter] Display Config" })
       vim.keymap.set("n", "<localleader>tt", ":TSBufToggle ", { desc = "[treesitter] Toggle Feature" })
 
       local ignored_langs = { "rust", "markdown", "vimdoc", "help" }
@@ -107,8 +107,8 @@ return {
               ["ic"] = { query = "@class.inner", desc = "[ts-obj] inner class object" },
               ["al"] = { query = "@loop.outer", desc = "[ts-obj] outer loop object" },
               ["il"] = { query = "@loop.inner", desc = "[ts-obj] inner loop object" },
-              ["ad"] = { query = "@loop.outer", desc = "[ts-obj] outer condition object" },
-              ["id"] = { query = "@loop.inner", desc = "[ts-obj] inner condition object" },
+              ["ad"] = { query = "@conditional.outer", desc = "[ts-obj] outer condition object" },
+              ["id"] = { query = "@conditional.inner", desc = "[ts-obj] inner condition object" },
             },
             include_surrounding_whitespace = true,
           },
@@ -127,25 +127,25 @@ return {
             goto_next_start = {
               ["]f"] = "@function.outer",
               ["]c"] = "@class.outer",
-              ["]b"] = "@condition.outer",
+              ["]b"] = "@conditional.outer",
               ["]l"] = "@loop.outer",
             },
             goto_next_end = {
               ["]F"] = "@function.outer",
               ["]C"] = "@class.outer",
-              ["]B"] = "@condition.outer",
+              ["]B"] = "@conditional.outer",
               ["]L"] = "@loop.outer",
             },
             goto_previous_start = {
               ["[f"] = "@function.outer",
               ["[c"] = "@class.outer",
-              ["[b"] = "@condition.outer",
+              ["[b"] = "@conditional.outer",
               ["[l"] = "@loop.outer",
             },
             goto_previous_end = {
               ["[F"] = "@function.outer",
               ["[C"] = "@class.outer",
-              ["[B"] = "@condition.outer",
+              ["[B"] = "@conditional.outer",
               ["[L"] = "@loop.outer",
             },
           },

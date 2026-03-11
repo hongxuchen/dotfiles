@@ -15,8 +15,6 @@ return {
       },
       component_aliases = {
         default = {
-          { "display_duration", detail_level = 2 },
-          "on_output_summarize",
           "on_exit_set_status",
           "on_complete_notify",
           "on_complete_dispose",
@@ -57,9 +55,27 @@ return {
   keys = {
     { "<leader>sr", "<cmd>OverseerRun<CR>", desc = "[overseer] Run" },
     { "<leader>sl", "<cmd>OverseerToggle<CR>", desc = "[overseer] List" },
-    { "<leader>sn", "<cmd>OverseerBuild<CR>", desc = "[overseer] New" },
+    {
+      "<leader>sn",
+      function()
+        require("overseer").run_task { autostart = false }
+      end,
+      desc = "[overseer] New",
+    },
     { "<leader>sa", "<cmd>OverseerTaskAction<CR>", desc = "[overseer] Action" },
-    { "<leader>si", "<cmd>OverseerInfo<CR>", desc = "[overseer] Info" },
-    { "<leader>sc", "<cmd>OverseerClearCache<CR>", desc = "[overseer] Clear cache" },
+    {
+      "<leader>si",
+      function()
+        vim.cmd("checkhealth overseer")
+      end,
+      desc = "[overseer] Info",
+    },
+    {
+      "<leader>sc",
+      function()
+        require("overseer").clear_task_cache()
+      end,
+      desc = "[overseer] Clear cache",
+    },
   },
 }

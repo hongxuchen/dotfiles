@@ -97,7 +97,7 @@ function M.general_setup()
     u.display_lua_obj(res)
   end, { nargs = 1, complete = "filetype" })
   mycmd("LspInlayHintToggle", function()
-    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled(), { bufnr = 0 })
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = 0 }, { bufnr = 0 })
   end, {})
 end
 
@@ -119,21 +119,35 @@ function M.on_attach(client, bufnr)
     end
   end
 
-  local fzf = require("fzf-lua")
-
   local bufopts = u.buf_opts(bufnr)
+  local function fzf_call(method, opts)
+    return function()
+      local fzf = require("fzf-lua")
+      local resolved = type(opts) == "function" and opts() or opts
+      if resolved == nil then
+        return fzf[method]()
+      end
+      return fzf[method](resolved)
+    end
+  end
   -- format with =
   -- vim.api.nvim_buf_set_option(bufnr, "formatexpr", "v:lua.vim.lsp.formatexpr(#{timeout_ms:250})")
   u.keymap("n", "gD", vim.lsp.buf.declaration, bufopts, "[lsp] go to declaration")
   -- FIXME: sometimes jumps to random position at first
   -- FIXME: sometimes out of location
   -- NOTE: handler is modified
-  u.keymap("n", "gd", fzf.lsp_definitions, bufopts, "[lsp] go to definition")
-  u.keymap("n", "gi", fzf.lsp_implementations, bufopts, "[lsp] go to implementation")
-  u.keymap("n", "gr", function()
-    fzf.lsp_references { includeDeclaration = false, ignore_current_line = true }
-  end, bufopts, "[lsp] go to references")
-  u.keymap("n", "<localleader>gt", fzf.lsp_typedefs, bufopts, "[lsp] go to type definition")
+  u.keymap("n", "gd", fzf_call("lsp_definitions"), bufopts, "[lsp] go to definition")
+  u.keymap("n", "gi", fzf_call("lsp_implementations"), bufopts, "[lsp] go to implementation")
+  u.keymap(
+    "n",
+    "gr",
+    fzf_call("lsp_references", function()
+      return { includeDeclaration = false, ignore_current_line = true }
+    end),
+    bufopts,
+    "[lsp] go to references"
+  )
+  u.keymap("n", "<localleader>gt", fzf_call("lsp_typedefs"), bufopts, "[lsp] go to type definition")
   u.keymap("n", "K", function()
     vim.lsp.buf.hover {
       border = "rounded",
@@ -146,8 +160,8 @@ function M.on_attach(client, bufnr)
     vim.lsp.buf.signature_help { border = "rounded" }
   end, bufopts, "[lsp] get signature help")
 
-  u.keymap("n", "<localleader>ci", fzf.lsp_incoming_calls, bufopts, "[lsp] go to incoming_calls")
-  u.keymap("n", "<localleader>co", fzf.lsp_outgoing_calls, bufopts, "[lsp] go to outgoing_calls")
+  u.keymap("n", "<localleader>ci", fzf_call("lsp_incoming_calls"), bufopts, "[lsp] go to incoming_calls")
+  u.keymap("n", "<localleader>co", fzf_call("lsp_outgoing_calls"), bufopts, "[lsp] go to outgoing_calls")
   u.keymap("n", "<localleader>ca", vim.lsp.buf.code_action, bufopts, "[lsp] code action")
   u.keymap("n", "<localleader>cf", function()
     require("conform").format { lsp_fallback = true, async = true }
@@ -158,17 +172,41 @@ function M.on_attach(client, bufnr)
 
   u.keymap("n", "<localleader>if", vim.diagnostic.open_float, bufopts, "[vim] open a float window about a diagnostic")
   u.keymap("n", "<localleader>ic", vim.diagnostic.setloclist, bufopts, "[vim] show diagnostics in loclist")
-  u.keymap("n", "<localleader>id", function()
-    fzf.diagnostics_document { bufnr = 0 }
-  end, bufopts, "[vim] show current doc's diagnostics")
-  u.keymap("n", "<localleader>iw", function()
-    fzf.diagnostics_workspace { bufnr = 0 }
-  end, bufopts, "[vim] show workspace's diagnostics")
+  u.keymap(
+    "n",
+    "<localleader>id",
+    fzf_call("diagnostics_document", function()
+      return { bufnr = 0 }
+    end),
+    bufopts,
+    "[vim] show current doc's diagnostics"
+  )
+  u.keymap(
+    "n",
+    "<localleader>iw",
+    fzf_call("diagnostics_workspace", function()
+      return { bufnr = 0 }
+    end),
+    bufopts,
+    "[vim] show workspace's diagnostics"
+  )
 
-  u.keymap("n", "<localleader>ws", function()
-    fzf.lsp_workspace_symbols { query = u.word_under_cursor() }
-  end, bufopts, "[lsp] search current symbol in workspace")
-  u.keymap("n", "<localleader>wd", fzf.lsp_live_workspace_symbols, bufopts, "[lsp] search live workspace symbol")
+  u.keymap(
+    "n",
+    "<localleader>ws",
+    fzf_call("lsp_workspace_symbols", function()
+      return { query = u.word_under_cursor() }
+    end),
+    bufopts,
+    "[lsp] search current symbol in workspace"
+  )
+  u.keymap(
+    "n",
+    "<localleader>wd",
+    fzf_call("lsp_live_workspace_symbols"),
+    bufopts,
+    "[lsp] search live workspace symbol"
+  )
   u.keymap("n", "<localleader>wl", function()
     vim.print(vim.lsp.buf.list_workspace_folders())
   end, bufopts, "[lsp] list workspace folders")

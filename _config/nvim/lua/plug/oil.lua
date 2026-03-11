@@ -44,6 +44,17 @@ return {
           end,
           desc = "[oil] GrugFar Search in directory",
         },
+        ["gd"] = {
+          callback = function()
+            vim.g.oil_detail = not vim.g.oil_detail
+            if vim.g.oil_detail then
+              require("oil").set_columns { "icon", "permissions", "size", "mtime" }
+            else
+              require("oil").set_columns { "icon" }
+            end
+          end,
+          desc = "[oil] toggle file detail view",
+        },
       },
     }
   end,
@@ -52,18 +63,6 @@ return {
       "-",
       "<Cmd>Oil<CR>",
       desc = "[oil] open file explorer",
-    },
-    {
-      "gd",
-      function()
-        vim.g.oil_detail = not vim.g.oil_detail
-        if vim.g.oil_detail then
-          require("oil").set_columns { "icon", "permissions", "size", "mtime" }
-        else
-          require("oil").set_columns { "icon" }
-        end
-      end,
-      desc = "[oil] toggle file detail view",
     },
   },
 }

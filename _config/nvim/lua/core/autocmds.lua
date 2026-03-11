@@ -145,12 +145,22 @@ u.au("SwapExists", {
 -- Automatically update changed file in Vim
 -- https://unix.stackexchange.com/questions/149209/refresh-changed-content-of-file-opened-in-vim/383044#383044
 -- https://vi.stackexchange.com/questions/14315/how-can-i-tell-if-im-in-the-command-window
-u.au({ "FocusGained", "BufEnter", "CursorHold", "CursorHoldI" }, {
+local last_checktime = 0
+u.au({ "FocusGained", "BufEnter", "CursorHold" }, {
   group = u.myAutoGroup,
-  callback = function()
-    if vim.api.nvim_get_mode().mode ~= "c" and not vim.fn.bufexists("[Command Line]") then
-      vim.cmd("checktime")
+  callback = function(args)
+    if vim.api.nvim_get_mode().mode == "c" or vim.fn.bufexists("[Command Line]") ~= 0 then
+      return
     end
+    if vim.bo[args.buf].buftype ~= "" then
+      return
+    end
+    local now = vim.uv.now()
+    if now - last_checktime < 1000 then
+      return
+    end
+    last_checktime = now
+    vim.cmd("checktime")
   end,
 })
 
@@ -180,21 +190,27 @@ end
 u.au("BufEnter", {
   group = u.myAutoGroup,
   pattern = "*",
-  callback = function()
-    restore_buf_view()
-    vim.cmd("silent! lcd %:p:h")
-  end,
-})
-
-u.au("BufReadPost", {
-  group = u.myAutoGroup,
-  pattern = "*",
   callback = function(args)
-    local uv = vim.uv
-    local fpath = args.match
-    local realpath = uv.fs_realpath(fpath)
-    if realpath and realpath ~= fpath then
-      vim.cmd("silent file " .. realpath)
+    restore_buf_view()
+    if vim.bo[args.buf].buftype ~= "" then
+      return
+    end
+    local fpath = vim.api.nvim_buf_get_name(args.buf)
+    if fpath == "" then
+      return
+    end
+    if fpath:match("^%a[%w+.-]*://") then
+      return
+    end
+    local dir = vim.fs.dirname(fpath)
+    if not dir then
+      return
+    end
+    if vim.fn.isdirectory(dir) ~= 1 then
+      return
+    end
+    if vim.fn.getcwd(-1, 0) ~= dir then
+      vim.cmd("silent lcd " .. vim.fn.fnameescape(dir))
     end
   end,
 })

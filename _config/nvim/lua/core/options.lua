@@ -148,6 +148,7 @@ local g = vim.g
 g.loaded_2html_plugin = 1
 g.loaded_getscriptPlugin = 1
 g.loaded_logipat = 1
+g.loaded_matchparen = 1
 g.loaded_matchit = 1
 g.loaded_rrhelper = 1
 g.loaded_spellfile_plugin = 1

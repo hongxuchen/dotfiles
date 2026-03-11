@@ -1,5 +1,8 @@
 return {
   "stevearc/conform.nvim",
+  init = function()
+    vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
+  end,
   keys = {
     {
       "<localleader>f",

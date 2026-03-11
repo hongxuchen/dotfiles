@@ -22,13 +22,26 @@ return {
         "yamlls", -- yaml
       }
       for _, ls in ipairs(simple_ls) do
-        vim.lsp.config(ls,{
+        vim.lsp.config(ls, {
           on_attach = conf.on_attach,
           capabilities = conf.capabilities,
         })
       end
 
       -- rust
+      local rust_root_markers = {
+        "README.md",
+        ".git",
+        "rustfmt.toml",
+        "Makefile.toml",
+        "clippy.toml",
+        "rust-toolchain.toml",
+        "rust-toolchain",
+        "build.rs",
+        ".editorconfig",
+        "LICENSE",
+      }
+
       vim.g.rustaceanvim = {
         tools = {
           code_action = {
@@ -37,18 +50,9 @@ return {
           -- plugins
         },
         server = {
-          root_markers = {
-            "README.md",
-            ".git",
-            "rustfmt.toml",
-            "Makefile.toml",
-            "clippy.toml",
-            "rust-toolchain.toml",
-            "rust-toolchain",
-            "build.rs",
-            ".editorconfig",
-            "LICENSE"
-          },
+          root_dir = function(filename, default)
+            return default(filename) or vim.fs.root(filename, rust_root_markers)
+          end,
           on_attach = conf.on_attach,
           capabilities = conf.capabilities,
           settings = {
@@ -239,7 +243,7 @@ return {
       })
 
       -- Enable all configured LSP servers
-      vim.lsp.enable({
+      vim.lsp.enable {
         "clangd",
         "gopls",
         "bashls",
@@ -255,7 +259,7 @@ return {
         "yamlls",
         "ts_ls",
         "jdtls",
-      })
+      }
     end,
   },
 

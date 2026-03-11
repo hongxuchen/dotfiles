@@ -209,9 +209,9 @@ mycmd("LazyPlugins", function()
 end, {})
 
 -- LSP Info picker
-mycmd("LspInfo", function()
+mycmd("FzfLspInfo", function()
   local bufnr = vim.api.nvim_get_current_buf()
-  local clients = vim.lsp.get_clients({ bufnr = bufnr })
+  local clients = vim.lsp.get_clients { bufnr = bufnr }
 
   if #clients == 0 then
     vim.notify("No LSP clients attached to this buffer", vim.log.levels.WARN)
@@ -227,19 +227,45 @@ mycmd("LspInfo", function()
     -- Get client capabilities summary
     local caps = client.server_capabilities
     local features = {}
-    if caps.completionProvider then table.insert(features, "completion") end
-    if caps.definitionProvider then table.insert(features, "definition") end
-    if caps.typeDefinitionProvider then table.insert(features, "typeDef") end
-    if caps.referencesProvider then table.insert(features, "references") end
-    if caps.implementationProvider then table.insert(features, "implementation") end
-    if caps.renameProvider then table.insert(features, "rename") end
-    if caps.documentFormattingProvider then table.insert(features, "format") end
-    if caps.documentRangeFormattingProvider then table.insert(features, "rangeFormat") end
-    if caps.documentSymbolProvider then table.insert(features, "symbols") end
-    if caps.workspaceSymbolProvider then table.insert(features, "workspace") end
-    if caps.codeActionProvider then table.insert(features, "codeAction") end
-    if caps.codeLensProvider then table.insert(features, "codeLens") end
-    if caps.inlayHintProvider then table.insert(features, "inlayHints") end
+    if caps.completionProvider then
+      table.insert(features, "completion")
+    end
+    if caps.definitionProvider then
+      table.insert(features, "definition")
+    end
+    if caps.typeDefinitionProvider then
+      table.insert(features, "typeDef")
+    end
+    if caps.referencesProvider then
+      table.insert(features, "references")
+    end
+    if caps.implementationProvider then
+      table.insert(features, "implementation")
+    end
+    if caps.renameProvider then
+      table.insert(features, "rename")
+    end
+    if caps.documentFormattingProvider then
+      table.insert(features, "format")
+    end
+    if caps.documentRangeFormattingProvider then
+      table.insert(features, "rangeFormat")
+    end
+    if caps.documentSymbolProvider then
+      table.insert(features, "symbols")
+    end
+    if caps.workspaceSymbolProvider then
+      table.insert(features, "workspace")
+    end
+    if caps.codeActionProvider then
+      table.insert(features, "codeAction")
+    end
+    if caps.codeLensProvider then
+      table.insert(features, "codeLens")
+    end
+    if caps.inlayHintProvider then
+      table.insert(features, "inlayHints")
+    end
 
     local feature_str = #features > 0 and table.concat(features, ", ") or "basic"
 
@@ -262,7 +288,7 @@ mycmd("LspInfo", function()
 
     -- Find the client
     local client = nil
-    for _, c in ipairs(vim.lsp.get_clients({ bufnr = bufnr })) do
+    for _, c in ipairs(vim.lsp.get_clients { bufnr = bufnr }) do
       if c.name == client_name then
         client = c
         break
@@ -304,20 +330,48 @@ mycmd("LspInfo", function()
     table.insert(lines, "")
     table.insert(lines, " Server Capabilities:")
     local caps = client.server_capabilities
-    if caps.completionProvider then table.insert(lines, "   ✓ Completion") end
-    if caps.definitionProvider then table.insert(lines, "   ✓ Definition") end
-    if caps.typeDefinitionProvider then table.insert(lines, "   ✓ Type Definition") end
-    if caps.referencesProvider then table.insert(lines, "   ✓ References") end
-    if caps.implementationProvider then table.insert(lines, "   ✓ Implementation") end
-    if caps.renameProvider then table.insert(lines, "   ✓ Rename") end
-    if caps.documentFormattingProvider then table.insert(lines, "   ✓ Document Formatting") end
-    if caps.documentRangeFormattingProvider then table.insert(lines, "   ✓ Range Formatting") end
-    if caps.documentSymbolProvider then table.insert(lines, "   ✓ Document Symbols") end
-    if caps.workspaceSymbolProvider then table.insert(lines, "   ✓ Workspace Symbols") end
-    if caps.codeActionProvider then table.insert(lines, "   ✓ Code Actions") end
-    if caps.codeLensProvider then table.insert(lines, "   ✓ Code Lens") end
-    if caps.inlayHintProvider then table.insert(lines, "   ✓ Inlay Hints") end
-    if caps.documentHighlightProvider then table.insert(lines, "   ✓ Document Highlight") end
+    if caps.completionProvider then
+      table.insert(lines, "   ✓ Completion")
+    end
+    if caps.definitionProvider then
+      table.insert(lines, "   ✓ Definition")
+    end
+    if caps.typeDefinitionProvider then
+      table.insert(lines, "   ✓ Type Definition")
+    end
+    if caps.referencesProvider then
+      table.insert(lines, "   ✓ References")
+    end
+    if caps.implementationProvider then
+      table.insert(lines, "   ✓ Implementation")
+    end
+    if caps.renameProvider then
+      table.insert(lines, "   ✓ Rename")
+    end
+    if caps.documentFormattingProvider then
+      table.insert(lines, "   ✓ Document Formatting")
+    end
+    if caps.documentRangeFormattingProvider then
+      table.insert(lines, "   ✓ Range Formatting")
+    end
+    if caps.documentSymbolProvider then
+      table.insert(lines, "   ✓ Document Symbols")
+    end
+    if caps.workspaceSymbolProvider then
+      table.insert(lines, "   ✓ Workspace Symbols")
+    end
+    if caps.codeActionProvider then
+      table.insert(lines, "   ✓ Code Actions")
+    end
+    if caps.codeLensProvider then
+      table.insert(lines, "   ✓ Code Lens")
+    end
+    if caps.inlayHintProvider then
+      table.insert(lines, "   ✓ Inlay Hints")
+    end
+    if caps.documentHighlightProvider then
+      table.insert(lines, "   ✓ Document Highlight")
+    end
 
     vim.api.nvim_buf_set_lines(tmpbuf, 0, -1, false, lines)
     self:set_preview_buf(tmpbuf)
@@ -348,7 +402,7 @@ mycmd("LspInfo", function()
       ["ctrl-r"] = function(selected, _)
         local parts = vim.split(selected[1], "\t")
         local client_name = parts[1]
-        for _, client in ipairs(vim.lsp.get_clients({ bufnr = bufnr })) do
+        for _, client in ipairs(vim.lsp.get_clients { bufnr = bufnr }) do
           if client.name == client_name then
             vim.notify("Restarting LSP: " .. client_name, vim.log.levels.INFO)
             vim.cmd("LspRestart " .. client.id)
@@ -359,7 +413,7 @@ mycmd("LspInfo", function()
       ["ctrl-s"] = function(selected, _)
         local parts = vim.split(selected[1], "\t")
         local client_name = parts[1]
-        for _, client in ipairs(vim.lsp.get_clients({ bufnr = bufnr })) do
+        for _, client in ipairs(vim.lsp.get_clients { bufnr = bufnr }) do
           if client.name == client_name then
             vim.notify("Stopping LSP: " .. client_name, vim.log.levels.INFO)
             vim.cmd("LspStop " .. client.id)
